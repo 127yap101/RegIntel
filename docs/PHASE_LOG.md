@@ -2,6 +2,14 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## GitHub publication — source push verified, 11 October
+
+User explicitly authorized copying the current project to `https://github.com/127yap101/RegIntel`. Inspected existing main: only the10-byte README in initial commit e4c22bb. Configured origin and attached local main to that commit without changing working files. Independent read-only audit covered195candidate text files/1.67MB: no detected actual secrets, oversized/binary artifacts or accidental credential URLs. Ignored secrets, original PDFs, model/runtime caches, Docker/database backups, environments/build outputs and generated contracts remain excluded.
+
+Staged-byte audit caught CRLF normalization in existing fixture source and three data JSON files. Updated project attributes to keep LF for ordinary text and exact data JSON/fixture bytes, without editing product source, immutable migrations or finalized specifications. Retained intentional Markdown hard breaks and validated other whitespace. All195staged files and a separate checkout passed SHA-256 identity checks; this is snapshot reproduction, not full fresh-clone application execution. Saved ignored audit reports under `.cache/github-staged-audit.json` and `.cache/github-checkout-verification.json`.
+
+Committed3c0f0b8934e3e2c36e1cd670f1bcc094cff55c1c, "Implement M0 foundation and M1A filing evidence pipeline"; normal fast-forward push to main succeeded using existing Git authentication. Remote main SHA matched local; original repository history retained, no forced update. GitHub Actions run38128174434 started; result pending. Updated publication state/continuation records. Existing local M1A/storage checks remain the measured validation; no unnecessary broad suite rerun or new implementation/provider/database operation. M1B remains unstarted.
+
 ## Environment maintenance — Docker storage move verified, 11 October
 
 User authorized relocation to D:\DockerData. Created an exclusive-access cold backup of both WSL disks and settings while Docker/VM were stopped; disk byte lengths/SHA-256 and settings hash verified in ignored `.cache/docker-storage-backups/20261011-142236-ae158942fb9e4b7680a1bb17ec0d03d9`. Desktop-control initialization failed twice with an asset-path error and CLI startup did not initially produce an engine; user applied the supported Desktop setting manually. This history is distinct from successful post-move verification.
