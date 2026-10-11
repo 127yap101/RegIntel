@@ -1,0 +1,818 @@
+{
+  "architecture": "amd64",
+  "base_image": "python:3.12.15-slim-bookworm@sha256:34386ef0cb081344d7ec1c103ba398e6e9f64e9ab3a1509accc92a4e24a07258",
+  "metadata": [
+    {
+      "filename": "bookworm.InRelease",
+      "sha256": "77737fa4b34f2693e982cc9ee35736816c35a7778fc2d326cc1bbf5b301fe1aa",
+      "size_bytes": 151075,
+      "url": "https://mirrors.edge.kernel.org/debian/dists/bookworm/InRelease"
+    },
+    {
+      "filename": "bookworm-amd64.Packages.xz",
+      "sha256": "9e0b5aabb2465b3d2e7a7fe27f9913846277833f7a2826e7767acccff5b588c5",
+      "size_bytes": 8790396,
+      "url": "https://mirrors.edge.kernel.org/debian/dists/bookworm/main/binary-amd64/Packages.xz"
+    }
+  ],
+  "mirror": "https://mirrors.edge.kernel.org/debian",
+  "packages": [
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libbsd0_0.11.7-2_amd64.deb",
+        "sha256": "bb31cc8b40f962a85b2cec970f7f79cc704a1ae4bad24257a822055404b2c60b",
+        "size_bytes": 117416,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libb/libbsd/libbsd0_0.11.7-2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 23960,
+        "copyright_sha256": "00fd7be5d907a6bcc409a80f2d565f508673db4761d54623691f89ae3aa20fc7",
+        "license_labels": [
+          "BSD-2-clause",
+          "BSD-2-clause-NetBSD",
+          "BSD-2-clause-author",
+          "BSD-2-clause-verbatim",
+          "BSD-3-clause",
+          "BSD-3-clause-John-Birrell",
+          "BSD-3-clause-Regents",
+          "BSD-3-clause-Regents and BSD-2-clause-NetBSD",
+          "BSD-3-clause-author",
+          "BSD-4-clause-Niels-Provos",
+          "Beerware",
+          "Expat",
+          "ISC",
+          "ISC-Original",
+          "libutil-David-Nugent",
+          "public-domain"
+        ]
+      },
+      "name": "libbsd0",
+      "version": "0.11.7-2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libdrm-amdgpu1_2.4.114-1+b1_amd64.deb",
+        "sha256": "b75a71e96f1faac0f131ac657e09efcbe8968eef62cc34b8abfcff2ff9f0cccd",
+        "size_bytes": 20864,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libd/libdrm/libdrm-amdgpu1_2.4.114-1+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 15612,
+        "copyright_sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0",
+        "license_labels": []
+      },
+      "name": "libdrm-amdgpu1",
+      "version": "2.4.114-1+b1"
+    },
+    {
+      "architecture": "all",
+      "artifact": {
+        "filename": "libdrm-common_2.4.114-1_all.deb",
+        "sha256": "32f9664138b38b224383c6986457d5ad2ec8efd559b1a0ce7749405f7a451aad",
+        "size_bytes": 7112,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libd/libdrm/libdrm-common_2.4.114-1_all.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 15612,
+        "copyright_sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0",
+        "license_labels": []
+      },
+      "name": "libdrm-common",
+      "version": "2.4.114-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libdrm-intel1_2.4.114-1+b1_amd64.deb",
+        "sha256": "b0e39318d14c07f4d85668b6da7f66a1341addf87a47d785c34d5a8b393f544c",
+        "size_bytes": 64032,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libd/libdrm/libdrm-intel1_2.4.114-1+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 15612,
+        "copyright_sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0",
+        "license_labels": []
+      },
+      "name": "libdrm-intel1",
+      "version": "2.4.114-1+b1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libdrm-nouveau2_2.4.114-1+b1_amd64.deb",
+        "sha256": "ba59bb9ec6e1baf59fc4d4eb095a524e40d045af2413dad9d28df517005388b6",
+        "size_bytes": 19064,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libd/libdrm/libdrm-nouveau2_2.4.114-1+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 15612,
+        "copyright_sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0",
+        "license_labels": []
+      },
+      "name": "libdrm-nouveau2",
+      "version": "2.4.114-1+b1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libdrm-radeon1_2.4.114-1+b1_amd64.deb",
+        "sha256": "2da3a9233187f995ad5a3e6db3d37252ea7209f0ca9605484d03478ebcc15feb",
+        "size_bytes": 21848,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libd/libdrm/libdrm-radeon1_2.4.114-1+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 15612,
+        "copyright_sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0",
+        "license_labels": []
+      },
+      "name": "libdrm-radeon1",
+      "version": "2.4.114-1+b1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libdrm2_2.4.114-1+b1_amd64.deb",
+        "sha256": "be18fb670797ba32da9628cf3e8acd83160d8db8c8dd842501dd8e401c3b5371",
+        "size_bytes": 37472,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libd/libdrm/libdrm2_2.4.114-1+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 15612,
+        "copyright_sha256": "512c9a57fd8b449aa157351da9df07bf8e19f767e496a72205a4020268ddb2e0",
+        "license_labels": []
+      },
+      "name": "libdrm2",
+      "version": "2.4.114-1+b1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libedit2_3.1-20221030-2_amd64.deb",
+        "sha256": "1cf14abf2716d3279db12d0657a5737cf70074a1e71d3bdf73206625e3c89ce6",
+        "size_bytes": 92992,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libe/libedit/libedit2_3.1-20221030-2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1840,
+        "copyright_sha256": "2b53671050f6319be6fcdcafa434e8ccb8af629359b4afc83185867204f3927d",
+        "license_labels": [
+          "BSD-3-clause"
+        ]
+      },
+      "name": "libedit2",
+      "version": "3.1-20221030-2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libelf1_0.188-2.1_amd64.deb",
+        "sha256": "619add379c606b3ac6c1a175853b918e6939598a83d8ebadf3bdfd50d10b3c8c",
+        "size_bytes": 173796,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/e/elfutils/libelf1_0.188-2.1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 8709,
+        "copyright_sha256": "d754a0edec1a510561aa643040456266536e3ec26bdb22e69a11c3f7b5de2339",
+        "license_labels": [
+          "BSD-2-clause",
+          "GFDL-NIV-1.3",
+          "GPL-3+",
+          "GPL-3+ with Bison exception",
+          "LGPL-2.1+",
+          "LGPL-3+ or GPL-2+"
+        ]
+      },
+      "name": "libelf1",
+      "version": "0.188-2.1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libexpat1_2.5.0-1+deb12u2_amd64.deb",
+        "sha256": "2255e62fc22a86d2c544b8a3f516da9aee19383ad5742722ab4ce7f66a30dbc8",
+        "size_bytes": 99888,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/e/expat/libexpat1_2.5.0-1+deb12u2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1756,
+        "copyright_sha256": "60919fe1a156395ff14511bb6ff79756c50ade2fff59ac60c9bae1d8a7fe6292",
+        "license_labels": [
+          "MIT"
+        ]
+      },
+      "name": "libexpat1",
+      "version": "2.5.0-1+deb12u2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libgl1_1.6.0-1_amd64.deb",
+        "sha256": "6f89b1702c48e9a2437bb3c1ffac8e1ab2d828fc28b3d14b2eecd4cc19b2c790",
+        "size_bytes": 88448,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libg/libglvnd/libgl1_1.6.0-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 4283,
+        "copyright_sha256": "cf246da9d8979f9be80e5b9c3ce0010c09786f11a55637ff3d09f1a36d269b25",
+        "license_labels": [
+          "Apache-2.0",
+          "BSD-1-clause",
+          "GPL",
+          "GPL-3+",
+          "MIT"
+        ]
+      },
+      "name": "libgl1",
+      "version": "1.6.0-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libgl1-mesa-dri_22.3.6-1+deb12u2_amd64.deb",
+        "sha256": "350e4263aaacd521f6f757951262b57c003930edaf0419508f2c5675317577fe",
+        "size_bytes": 7239704,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/m/mesa/libgl1-mesa-dri_22.3.6-1+deb12u2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 14241,
+        "copyright_sha256": "30c36421275bf40e318d5d3e8662db6e332f97f047fa963bdb44e28ef9112232",
+        "license_labels": [
+          "Apache-2.0",
+          "BSD-2-clause",
+          "BSD-3-google",
+          "BSL",
+          "GPL",
+          "Khronos",
+          "MIT",
+          "MLAA",
+          "SGI"
+        ]
+      },
+      "name": "libgl1-mesa-dri",
+      "version": "22.3.6-1+deb12u2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libglapi-mesa_22.3.6-1+deb12u2_amd64.deb",
+        "sha256": "2db5b13a6b7f4042f9a417ad7fa4338b6c47528dc64d7f89cfd5e53d07d76bc4",
+        "size_bytes": 35900,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/m/mesa/libglapi-mesa_22.3.6-1+deb12u2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 14241,
+        "copyright_sha256": "30c36421275bf40e318d5d3e8662db6e332f97f047fa963bdb44e28ef9112232",
+        "license_labels": [
+          "Apache-2.0",
+          "BSD-2-clause",
+          "BSD-3-google",
+          "BSL",
+          "GPL",
+          "Khronos",
+          "MIT",
+          "MLAA",
+          "SGI"
+        ]
+      },
+      "name": "libglapi-mesa",
+      "version": "22.3.6-1+deb12u2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libglib2.0-0_2.74.6-2+deb12u9_amd64.deb",
+        "sha256": "7ff85197685d89e150e342b29a59aab1beee400050ba7da73de81cd999ffee5a",
+        "size_bytes": 1403216,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/g/glib2.0/libglib2.0-0_2.74.6-2+deb12u9_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 51488,
+        "copyright_sha256": "03cbcd6142c92bb14c997af557b8c73b1534710c34fe7f69788f8e8fc5fd941d",
+        "license_labels": [
+          "AFL-2.0",
+          "AFL-2.0 or LGPL-2.1+",
+          "Apache-2.0 with LLVM exception",
+          "BSD-3-clause-pcre",
+          "CC-BY-SA-3.0",
+          "CC0-1.0",
+          "Expat",
+          "FSFULLR",
+          "GPL-2+",
+          "GPL-2+ with Autoconf exception",
+          "Iconv-PD",
+          "Janik-permissive",
+          "Kuchling-PD",
+          "LGPL-2+",
+          "LGPL-2+ and LGPL-2.1+ and FSFULLR and CC0-1.0 and Janik-permissive and Iconv-PD and Mingw-PD and Old-GLib-Tests-permissive",
+          "LGPL-2.1+",
+          "LGPL-2.1+ and BSD-3-clause-pcre",
+          "LGPL-2.1+ and Expat",
+          "LGPL-2.1+ and Kuchling-PD and Plumb-PD",
+          "LGPL-3+",
+          "Mingw-PD",
+          "Old-GLib-Tests-permissive",
+          "Plumb-PD",
+          "Unicode-DFS-2016",
+          "bzip2-1.0.6"
+        ]
+      },
+      "name": "libglib2.0-0",
+      "version": "2.74.6-2+deb12u9"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libglvnd0_1.6.0-1_amd64.deb",
+        "sha256": "b6da5b153dd62d8b5e5fbe25242db1fc05c068707c365db49abda8c2427c75f8",
+        "size_bytes": 51820,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libg/libglvnd/libglvnd0_1.6.0-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 4283,
+        "copyright_sha256": "cf246da9d8979f9be80e5b9c3ce0010c09786f11a55637ff3d09f1a36d269b25",
+        "license_labels": [
+          "Apache-2.0",
+          "BSD-1-clause",
+          "GPL",
+          "GPL-3+",
+          "MIT"
+        ]
+      },
+      "name": "libglvnd0",
+      "version": "1.6.0-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libglx-mesa0_22.3.6-1+deb12u2_amd64.deb",
+        "sha256": "88e7ffa61f1a0a86c30736ad7657ab4774c9b711bbaff76cef0bd32ffb85ec90",
+        "size_bytes": 147676,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/m/mesa/libglx-mesa0_22.3.6-1+deb12u2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 14241,
+        "copyright_sha256": "30c36421275bf40e318d5d3e8662db6e332f97f047fa963bdb44e28ef9112232",
+        "license_labels": [
+          "Apache-2.0",
+          "BSD-2-clause",
+          "BSD-3-google",
+          "BSL",
+          "GPL",
+          "Khronos",
+          "MIT",
+          "MLAA",
+          "SGI"
+        ]
+      },
+      "name": "libglx-mesa0",
+      "version": "22.3.6-1+deb12u2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libglx0_1.6.0-1_amd64.deb",
+        "sha256": "95f568df73dedf43ae66834a75502112e0d4f3ad7124f3dbfa790b739383b896",
+        "size_bytes": 34384,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libg/libglvnd/libglx0_1.6.0-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 4283,
+        "copyright_sha256": "cf246da9d8979f9be80e5b9c3ce0010c09786f11a55637ff3d09f1a36d269b25",
+        "license_labels": [
+          "Apache-2.0",
+          "BSD-1-clause",
+          "GPL",
+          "GPL-3+",
+          "MIT"
+        ]
+      },
+      "name": "libglx0",
+      "version": "1.6.0-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libicu72_72.1-3+deb12u1_amd64.deb",
+        "sha256": "f7f6f99c6d7b025914df2447fc93e11d22c44c0c8bdd8b6f36691c9e7ddcef88",
+        "size_bytes": 9376124,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/i/icu/libicu72_72.1-3+deb12u1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 2214,
+        "copyright_sha256": "5bbff5f646ce750ac0a347e7f91793279b7422a1119820b5f75d98879c201c68",
+        "license_labels": [
+          "GPL-3",
+          "MIT"
+        ]
+      },
+      "name": "libicu72",
+      "version": "72.1-3+deb12u1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libllvm15_15.0.6-4+b1_amd64.deb",
+        "sha256": "9f0751109ba89e65b1313a4f3e34a29977a0db6fa30ed475e2c6bd555fa9e866",
+        "size_bytes": 23115156,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/l/llvm-toolchain-15/libllvm15_15.0.6-4+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 6897,
+        "copyright_sha256": "dc2a171c75ca72818f7f4312602f27cb0e4bf6d010a86e7073a3797cb228ddff",
+        "license_labels": [
+          "APACHE-2-LLVM-EXCEPTIONS",
+          "BSD-3-Clause",
+          "BSD-3-clause",
+          "MIT",
+          "Python",
+          "solar-public-domain"
+        ]
+      },
+      "name": "libllvm15",
+      "version": "1:15.0.6-4+b1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libpciaccess0_0.17-2_amd64.deb",
+        "sha256": "4025f3608cf431c163efb94fdc553e7b93e16b8f0d741ea87762e19025ffc80e",
+        "size_bytes": 51384,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libp/libpciaccess/libpciaccess0_0.17-2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 5421,
+        "copyright_sha256": "59f90c1ad1face5bd0a516feb8a71e005075d532c522b64ff06b2bfeebde8fe8",
+        "license_labels": []
+      },
+      "name": "libpciaccess0",
+      "version": "0.17-2"
+    },
+    {
+      "architecture": "all",
+      "artifact": {
+        "filename": "libsensors-config_3.6.0-7.1_all.deb",
+        "sha256": "7f3c9fbd822858a9e30335e4a7f66c9468962eb26cd375b93bc8b789660bf02f",
+        "size_bytes": 14252,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/l/lm-sensors/libsensors-config_3.6.0-7.1_all.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 2861,
+        "copyright_sha256": "36df1f6d732ef306eba85489352b2afe329f7b54c6850c3e2094f7c5df1bc46b",
+        "license_labels": []
+      },
+      "name": "libsensors-config",
+      "version": "1:3.6.0-7.1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libsensors5_3.6.0-7.1_amd64.deb",
+        "sha256": "b7eb91dce728fbb9203aec8b22637303b29821c3384e5f78a8ff348b4e44efe3",
+        "size_bytes": 34160,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/l/lm-sensors/libsensors5_3.6.0-7.1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 2861,
+        "copyright_sha256": "36df1f6d732ef306eba85489352b2afe329f7b54c6850c3e2094f7c5df1bc46b",
+        "license_labels": []
+      },
+      "name": "libsensors5",
+      "version": "1:3.6.0-7.1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libx11-6_1.8.4-2+deb12u2_amd64.deb",
+        "sha256": "d88c973e79fd9b65838d77624142952757e47a6eb1a58602acf0911cf35989f4",
+        "size_bytes": 759544,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libx11/libx11-6_1.8.4-2+deb12u2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 47102,
+        "copyright_sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e",
+        "license_labels": []
+      },
+      "name": "libx11-6",
+      "version": "2:1.8.4-2+deb12u2"
+    },
+    {
+      "architecture": "all",
+      "artifact": {
+        "filename": "libx11-data_1.8.4-2+deb12u2_all.deb",
+        "sha256": "987a848aeb1c358e4186368871b0526f10bb14c6b53214ab3bf8b69abb830191",
+        "size_bytes": 291884,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libx11/libx11-data_1.8.4-2+deb12u2_all.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 47102,
+        "copyright_sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e",
+        "license_labels": []
+      },
+      "name": "libx11-data",
+      "version": "2:1.8.4-2+deb12u2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libx11-xcb1_1.8.4-2+deb12u2_amd64.deb",
+        "sha256": "f5da45e1d881a793250a96613f28c471a248877f1a0f18a5c90e2a620a76c898",
+        "size_bytes": 192356,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libx11/libx11-xcb1_1.8.4-2+deb12u2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 47102,
+        "copyright_sha256": "0b380a7fd5b2228f26e9585e56f14812efd3350f3df307507d2bc055dfd8de3e",
+        "license_labels": []
+      },
+      "name": "libx11-xcb1",
+      "version": "2:1.8.4-2+deb12u2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxau6_1.0.9-1_amd64.deb",
+        "sha256": "679db1c4579ec7c61079adeaae8528adeb2e4bf5465baa6c56233b995d714750",
+        "size_bytes": 19720,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxau/libxau6_1.0.9-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1224,
+        "copyright_sha256": "118dd263a7b91c8f21c489f949bf13281dff9e766deea92b829dac4dce66601a",
+        "license_labels": []
+      },
+      "name": "libxau6",
+      "version": "1:1.0.9-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-dri2-0_1.15-1_amd64.deb",
+        "sha256": "ef4959aa9e09a0d38d1de432e747585129d5d2dc1d84c8b6b3d2ffc3708b5805",
+        "size_bytes": 106792,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-dri2-0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-dri2-0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-dri3-0_1.15-1_amd64.deb",
+        "sha256": "02699b144b9467de8636d27a76984b8f4e7b66e2d25d96df2b9677be86ee9a29",
+        "size_bytes": 106676,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-dri3-0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-dri3-0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-glx0_1.15-1_amd64.deb",
+        "sha256": "1bce55fc292d93fa5f7fa50f84cef99ec29be70d0ffe98e86b8008e59f4a34fa",
+        "size_bytes": 122392,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-glx0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-glx0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-present0_1.15-1_amd64.deb",
+        "sha256": "89383e627a4d17b9390d609b2459481bfd2029566367b43068586769e418b6e5",
+        "size_bytes": 105420,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-present0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-present0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-randr0_1.15-1_amd64.deb",
+        "sha256": "f86e3d8ff8622871008833e9d064919b7a6237399c903c59fc330ff00f199ff5",
+        "size_bytes": 116680,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-randr0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-randr0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-shm0_1.15-1_amd64.deb",
+        "sha256": "c1afcef29dc78b95c475159b181b28b1dedaf1d5aa06efd2fa6d90c73bfbe0e5",
+        "size_bytes": 105472,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-shm0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-shm0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-sync1_1.15-1_amd64.deb",
+        "sha256": "3366ce715220d38dd0148b78a8e738137bade25ef7eec0698850c6f66800844f",
+        "size_bytes": 108692,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-sync1_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-sync1",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb-xfixes0_1.15-1_amd64.deb",
+        "sha256": "d744a7ebad2cbcf301c96cd6a1ab3ee856e436fc7be5cff5b7c28ac2ac181a64",
+        "size_bytes": 109368,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb-xfixes0_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb-xfixes0",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxcb1_1.15-1_amd64.deb",
+        "sha256": "fdc61332a3892168f3cc9cfa1fe9cf11a91dc3e0acacbc47cbc50ebaa234cc71",
+        "size_bytes": 144052,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxcb/libxcb1_1.15-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1781,
+        "copyright_sha256": "4f7cb9db6bf6542f5417e3d674c780d3a5fd12291a54d63054fb576ee0cfae80",
+        "license_labels": []
+      },
+      "name": "libxcb1",
+      "version": "1.15-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxdmcp6_1.1.2-3_amd64.deb",
+        "sha256": "ecb8536f5fb34543b55bb9dc5f5b14c9dbb4150a7bddb3f2287b7cab6e9d25ef",
+        "size_bytes": 26344,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxdmcp/libxdmcp6_1.1.2-3_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1265,
+        "copyright_sha256": "1bcbb50f8603fe8b86d330bfa460b772ea04fbd3c70e4499f0768b5340b9fd6e",
+        "license_labels": []
+      },
+      "name": "libxdmcp6",
+      "version": "1:1.1.2-3"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxext6_1.3.4-1+b1_amd64.deb",
+        "sha256": "504b7be9d7df4f6f4519e8dd4d6f9d03a9fb911a78530fa23a692fba3058cba6",
+        "size_bytes": 52932,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxext/libxext6_1.3.4-1+b1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 10421,
+        "copyright_sha256": "bc57e445ca1d9fe082c8d54189dd411ff26caa8552c9c63d44ea06a982f32124",
+        "license_labels": []
+      },
+      "name": "libxext6",
+      "version": "2:1.3.4-1+b1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxfixes3_6.0.0-2_amd64.deb",
+        "sha256": "1cd616396ff2ecae77e6e8b5b7695d414f0146de2d147837a2a02165f99e1a2c",
+        "size_bytes": 22684,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxfixes/libxfixes3_6.0.0-2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 2320,
+        "copyright_sha256": "051ffe073ab38244c504bb379903b4ecda6081fb3d97d0d3dce44bc11712eef2",
+        "license_labels": []
+      },
+      "name": "libxfixes3",
+      "version": "1:6.0.0-2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxml2_2.9.14+dfsg-1.3~deb12u6_amd64.deb",
+        "sha256": "4460e39dda10a815881374217cde08474747cfa018358cd8612c14b390eff53b",
+        "size_bytes": 688760,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxml2/libxml2_2.9.14+dfsg-1.3~deb12u6_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 3067,
+        "copyright_sha256": "ee746b96cfa5be73c3ea3e4cfb1285e9b315d4c9267f99b2ee9c5d911d9fe3f4",
+        "license_labels": [
+          "ISC",
+          "MIT-1"
+        ]
+      },
+      "name": "libxml2",
+      "version": "2.9.14+dfsg-1.3~deb12u6"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxshmfence1_1.3-1_amd64.deb",
+        "sha256": "1a38142e40e3d32dc4f9a326bf5617363b7d9b4bb762fdcdd262f2192092024d",
+        "size_bytes": 8820,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxshmfence/libxshmfence1_1.3-1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1215,
+        "copyright_sha256": "6a76b32c9174c0cb9e3d94c323a14d33d6a42bd2a61579b189cbc5addeb94abe",
+        "license_labels": []
+      },
+      "name": "libxshmfence1",
+      "version": "1.3-1"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libxxf86vm1_1.1.4-1+b2_amd64.deb",
+        "sha256": "6f4ca916aaec26d7000fa7f58de3f71119309ab7590ce1f517abfe1825a676c7",
+        "size_bytes": 20820,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/libx/libxxf86vm/libxxf86vm1_1.1.4-1+b2_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 1370,
+        "copyright_sha256": "8a18884e1be08a37bf1b8fc9a14eba800e65a98d6ea19bb5d8b0ccf35f9bbcc4",
+        "license_labels": []
+      },
+      "name": "libxxf86vm1",
+      "version": "1:1.1.4-1+b2"
+    },
+    {
+      "architecture": "amd64",
+      "artifact": {
+        "filename": "libz3-4_4.8.12-3.1_amd64.deb",
+        "sha256": "6221ca25ad5abcfbe1965801029d85a88b4775320384b4b716de8fab7a4d2f7a",
+        "size_bytes": 7216172,
+        "url": "https://mirrors.edge.kernel.org/debian/pool/main/z/z3/libz3-4_4.8.12-3.1_amd64.deb"
+      },
+      "copyright": {
+        "copyright_bytes": 2283,
+        "copyright_sha256": "807f874c81a0dbce7d4e32b1a4e1ef1e094b9a3fe8579f34e60fda4f2077289c",
+        "license_labels": [
+          "Expat",
+          "GPL-2+"
+        ]
+      },
+      "name": "libz3-4",
+      "version": "4.8.12-3.1"
+    }
+  ],
+  "root_packages": [
+    "libgl1",
+    "libglib2.0-0",
+    "libxcb1"
+  ],
+  "schema_version": "worker-runtime-libs-v1",
+  "signature_verification": "gpgv with digest-pinned base Debian archive keyring"
+}

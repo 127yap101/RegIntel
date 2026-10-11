@@ -1,0 +1,2376 @@
+{
+  "contract_version": "1.0.0",
+  "description": "Curated synthetic M0.5 wire validation vectors; not source filings, acceptance decisions or research evaluation.",
+  "vectors": [
+    {
+      "name": "valid-VersionContext",
+      "contract": "VersionContext",
+      "valid": true,
+      "payload": {
+        "corpus_version_id": null,
+        "filing_version_id": null,
+        "parse_version_id": null,
+        "glossary_version_id": null,
+        "quote_version_id": null,
+        "portfolio_version_id": null
+      }
+    },
+    {
+      "name": "valid-ResponseMeta",
+      "contract": "ResponseMeta",
+      "valid": true,
+      "payload": {
+        "request_id": "00000000-0000-4000-8000-000000000001",
+        "contract_version": "1.0.0",
+        "versions": {
+          "corpus_version_id": null,
+          "filing_version_id": null,
+          "parse_version_id": null,
+          "glossary_version_id": null,
+          "quote_version_id": null,
+          "portfolio_version_id": null
+        }
+      }
+    },
+    {
+      "name": "valid-UserIdentity",
+      "contract": "UserIdentity",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000020",
+        "username": "learner",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "valid-UserEnvelope",
+      "contract": "UserEnvelope",
+      "valid": true,
+      "payload": {
+        "data": {
+          "id": "00000000-0000-4000-8000-000000000020",
+          "username": "learner",
+          "role": "learner"
+        },
+        "meta": {
+          "request_id": "00000000-0000-4000-8000-000000000001",
+          "contract_version": "1.0.0",
+          "versions": {
+            "corpus_version_id": null,
+            "filing_version_id": null,
+            "parse_version_id": null,
+            "glossary_version_id": null,
+            "quote_version_id": null,
+            "portfolio_version_id": null
+          }
+        }
+      }
+    },
+    {
+      "name": "valid-ErrorDetail",
+      "contract": "ErrorDetail",
+      "valid": true,
+      "payload": {
+        "location": "body",
+        "code": "INVALID_VALUE"
+      }
+    },
+    {
+      "name": "valid-ApiError",
+      "contract": "ApiError",
+      "valid": true,
+      "payload": {
+        "code": "VALIDATION_ERROR",
+        "message": "Invalid request.",
+        "details": [
+          {
+            "location": "body",
+            "code": "INVALID_VALUE"
+          }
+        ]
+      }
+    },
+    {
+      "name": "valid-ErrorEnvelope",
+      "contract": "ErrorEnvelope",
+      "valid": true,
+      "payload": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "Invalid request.",
+          "details": []
+        },
+        "meta": {
+          "request_id": "00000000-0000-4000-8000-000000000001",
+          "contract_version": "1.0.0",
+          "versions": {
+            "corpus_version_id": null,
+            "filing_version_id": null,
+            "parse_version_id": null,
+            "glossary_version_id": null,
+            "quote_version_id": null,
+            "portfolio_version_id": null
+          }
+        }
+      }
+    },
+    {
+      "name": "valid-FinancialPeriod",
+      "contract": "FinancialPeriod",
+      "valid": true,
+      "payload": {
+        "kind": "UNKNOWN",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "valid-QuantitativeValue",
+      "contract": "QuantitativeValue",
+      "valid": true,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "9007199254740993.123456789012345678901234567890",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "valid-EvidenceSource",
+      "contract": "EvidenceSource",
+      "valid": true,
+      "payload": {
+        "filing_id": "00000000-0000-4000-8000-000000000003",
+        "filing_version_id": "00000000-0000-4000-8000-000000000004",
+        "parse_version_id": "00000000-0000-4000-8000-000000000005",
+        "page_id": "00000000-0000-4000-8000-000000000006",
+        "page_index": 0
+      }
+    },
+    {
+      "name": "valid-TextSpan",
+      "contract": "TextSpan",
+      "valid": true,
+      "payload": {
+        "block_id": "00000000-0000-4000-8000-000000000007",
+        "start": 5,
+        "end": 8,
+        "quote": "A😀B"
+      }
+    },
+    {
+      "name": "valid-PdfRectangle",
+      "contract": "PdfRectangle",
+      "valid": true,
+      "payload": {
+        "x0": -20,
+        "y0": -10,
+        "x1": 580,
+        "y1": 790
+      }
+    },
+    {
+      "name": "valid-PageGeometry",
+      "contract": "PageGeometry",
+      "valid": true,
+      "payload": {
+        "width": 600,
+        "height": 800,
+        "media_box": {
+          "x0": -20,
+          "y0": -10,
+          "x1": 580,
+          "y1": 790
+        },
+        "crop_box": {
+          "x0": -30,
+          "y0": -20,
+          "x1": 560,
+          "y1": 780
+        },
+        "rotation": 90,
+        "coordinate_space": "UNROTATED_PDF_POINTS",
+        "origin": "BOTTOM_LEFT"
+      }
+    },
+    {
+      "name": "valid-CellReference",
+      "contract": "CellReference",
+      "valid": true,
+      "payload": {
+        "table_id": "00000000-0000-4000-8000-000000000008",
+        "cell_id": "00000000-0000-4000-8000-000000000009",
+        "row_index": 0,
+        "column_index": 2,
+        "row_span": 1,
+        "column_span": 2,
+        "row_label_cell_ids": [
+          "00000000-0000-4000-8000-000000000010",
+          "00000000-0000-4000-8000-000000000011"
+        ],
+        "period_column_cell_ids": [],
+        "unit_header_cell_ids": [],
+        "basis_header_cell_ids": []
+      }
+    },
+    {
+      "name": "valid-TextEvidence",
+      "contract": "TextEvidence",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000002",
+        "kind": "text",
+        "source": {
+          "filing_id": "00000000-0000-4000-8000-000000000003",
+          "filing_version_id": "00000000-0000-4000-8000-000000000004",
+          "parse_version_id": "00000000-0000-4000-8000-000000000005",
+          "page_id": "00000000-0000-4000-8000-000000000006",
+          "page_index": 0
+        },
+        "page_geometry": {
+          "width": 600,
+          "height": 800,
+          "media_box": {
+            "x0": -20,
+            "y0": -10,
+            "x1": 580,
+            "y1": 790
+          },
+          "crop_box": {
+            "x0": -30,
+            "y0": -20,
+            "x1": 560,
+            "y1": 780
+          },
+          "rotation": 90,
+          "coordinate_space": "UNROTATED_PDF_POINTS",
+          "origin": "BOTTOM_LEFT"
+        },
+        "boxes": [
+          {
+            "x0": 0,
+            "y0": 10,
+            "x1": 100,
+            "y1": 30
+          }
+        ],
+        "span": {
+          "block_id": "00000000-0000-4000-8000-000000000007",
+          "start": 5,
+          "end": 8,
+          "quote": "A😀B"
+        }
+      }
+    },
+    {
+      "name": "valid-CellEvidence",
+      "contract": "CellEvidence",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000012",
+        "kind": "table_cell",
+        "source": {
+          "filing_id": "00000000-0000-4000-8000-000000000003",
+          "filing_version_id": "00000000-0000-4000-8000-000000000004",
+          "parse_version_id": "00000000-0000-4000-8000-000000000005",
+          "page_id": "00000000-0000-4000-8000-000000000013",
+          "page_index": 1
+        },
+        "page_geometry": {
+          "width": 600,
+          "height": 800,
+          "media_box": {
+            "x0": -20,
+            "y0": -10,
+            "x1": 580,
+            "y1": 790
+          },
+          "crop_box": {
+            "x0": -30,
+            "y0": -20,
+            "x1": 560,
+            "y1": 780
+          },
+          "rotation": 270,
+          "coordinate_space": "UNROTATED_PDF_POINTS",
+          "origin": "BOTTOM_LEFT"
+        },
+        "boxes": [
+          {
+            "x0": 0,
+            "y0": 0,
+            "x1": 100,
+            "y1": 50
+          }
+        ],
+        "cell": {
+          "table_id": "00000000-0000-4000-8000-000000000008",
+          "cell_id": "00000000-0000-4000-8000-000000000009",
+          "row_index": 0,
+          "column_index": 2,
+          "row_span": 1,
+          "column_span": 2,
+          "row_label_cell_ids": [
+            "00000000-0000-4000-8000-000000000010",
+            "00000000-0000-4000-8000-000000000011"
+          ],
+          "period_column_cell_ids": [],
+          "unit_header_cell_ids": [],
+          "basis_header_cell_ids": []
+        }
+      }
+    },
+    {
+      "name": "valid-EvidenceSupport",
+      "contract": "EvidenceSupport",
+      "valid": true,
+      "payload": {
+        "records": [
+          {
+            "id": "00000000-0000-4000-8000-000000000002",
+            "kind": "text",
+            "source": {
+              "filing_id": "00000000-0000-4000-8000-000000000003",
+              "filing_version_id": "00000000-0000-4000-8000-000000000004",
+              "parse_version_id": "00000000-0000-4000-8000-000000000005",
+              "page_id": "00000000-0000-4000-8000-000000000006",
+              "page_index": 0
+            },
+            "page_geometry": {
+              "width": 600,
+              "height": 800,
+              "media_box": {
+                "x0": -20,
+                "y0": -10,
+                "x1": 580,
+                "y1": 790
+              },
+              "crop_box": {
+                "x0": -30,
+                "y0": -20,
+                "x1": 560,
+                "y1": 780
+              },
+              "rotation": 90,
+              "coordinate_space": "UNROTATED_PDF_POINTS",
+              "origin": "BOTTOM_LEFT"
+            },
+            "boxes": [
+              {
+                "x0": 0,
+                "y0": 10,
+                "x1": 100,
+                "y1": 30
+              }
+            ],
+            "span": {
+              "block_id": "00000000-0000-4000-8000-000000000007",
+              "start": 5,
+              "end": 8,
+              "quote": "A😀B"
+            }
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000012",
+            "kind": "table_cell",
+            "source": {
+              "filing_id": "00000000-0000-4000-8000-000000000003",
+              "filing_version_id": "00000000-0000-4000-8000-000000000004",
+              "parse_version_id": "00000000-0000-4000-8000-000000000005",
+              "page_id": "00000000-0000-4000-8000-000000000013",
+              "page_index": 1
+            },
+            "page_geometry": {
+              "width": 600,
+              "height": 800,
+              "media_box": {
+                "x0": -20,
+                "y0": -10,
+                "x1": 580,
+                "y1": 790
+              },
+              "crop_box": {
+                "x0": -30,
+                "y0": -20,
+                "x1": 560,
+                "y1": 780
+              },
+              "rotation": 270,
+              "coordinate_space": "UNROTATED_PDF_POINTS",
+              "origin": "BOTTOM_LEFT"
+            },
+            "boxes": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "x1": 100,
+                "y1": 50
+              }
+            ],
+            "cell": {
+              "table_id": "00000000-0000-4000-8000-000000000008",
+              "cell_id": "00000000-0000-4000-8000-000000000009",
+              "row_index": 0,
+              "column_index": 2,
+              "row_span": 1,
+              "column_span": 2,
+              "row_label_cell_ids": [
+                "00000000-0000-4000-8000-000000000010",
+                "00000000-0000-4000-8000-000000000011"
+              ],
+              "period_column_cell_ids": [],
+              "unit_header_cell_ids": [],
+              "basis_header_cell_ids": []
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "valid-RelationReference",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "valid-FilingLineage",
+      "contract": "FilingLineage",
+      "valid": true,
+      "payload": {
+        "parent_filing_id": "00000000-0000-4000-8000-000000000003",
+        "child_filing_id": "00000000-0000-4000-8000-000000000021",
+        "lineage_type": "CORRIGENDUM_TO"
+      }
+    },
+    {
+      "name": "valid-AmendmentEffect",
+      "contract": "AmendmentEffect",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "SUPERSEDE",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "direction-OWNS",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": null
+      }
+    },
+    {
+      "name": "direction-PROMOTER_OF",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "PROMOTER_OF",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": null
+      }
+    },
+    {
+      "name": "direction-SUBSIDIARY_OF",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "SUBSIDIARY_OF",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": null
+      }
+    },
+    {
+      "name": "direction-SUPPLIES_TO",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "SUPPLIES_TO",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": null
+      }
+    },
+    {
+      "name": "direction-AUDITS",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "AUDITS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": null
+      }
+    },
+    {
+      "name": "direction-LENDS_TO",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "LENDS_TO",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": null
+      }
+    },
+    {
+      "name": "effect-ADD",
+      "contract": "AmendmentEffect",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "ADD",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "effect-CORRECT",
+      "contract": "AmendmentEffect",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "CORRECT",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "effect-SUPPLEMENT",
+      "contract": "AmendmentEffect",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "SUPPLEMENT",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "effect-SUPERSEDE",
+      "contract": "AmendmentEffect",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "SUPERSEDE",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "effect-REMOVE",
+      "contract": "AmendmentEffect",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "REMOVE",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "state-shape-CANDIDATE",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "CANDIDATE",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "state-shape-ACCEPTED",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "ACCEPTED",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "state-shape-REVIEW",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "state-shape-QUARANTINED",
+      "contract": "RelationReference",
+      "valid": true,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "QUARANTINED",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "missing-is-not-zero",
+      "contract": "QuantitativeValue",
+      "valid": true,
+      "payload": {
+        "raw_value": "-",
+        "normalized_value": null,
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "decimal-negative-zero-scale",
+      "contract": "QuantitativeValue",
+      "valid": true,
+      "payload": {
+        "raw_value": "-0.00",
+        "normalized_value": "-0.00",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "decimal-maximum-precision",
+      "contract": "QuantitativeValue",
+      "valid": true,
+      "payload": {
+        "raw_value": "999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+        "normalized_value": "999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999.111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "missing-instant-date",
+      "contract": "FinancialPeriod",
+      "valid": true,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "partial-duration",
+      "contract": "FinancialPeriod",
+      "valid": true,
+      "payload": {
+        "kind": "DURATION",
+        "start_date": "2024-04-01",
+        "end_date": null,
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "valid-leap-date",
+      "contract": "FinancialPeriod",
+      "valid": true,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": "2024-02-29",
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "safe-page-index-bound",
+      "contract": "EvidenceSource",
+      "valid": true,
+      "payload": {
+        "filing_id": "00000000-0000-4000-8000-000000000003",
+        "filing_version_id": "00000000-0000-4000-8000-000000000004",
+        "parse_version_id": "00000000-0000-4000-8000-000000000005",
+        "page_id": "00000000-0000-4000-8000-000000000006",
+        "page_index": 9007199254740990
+      }
+    },
+    {
+      "name": "noncanonical-uuid",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-B000-000000000020",
+        "username": "learner",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "uuid-v1",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-1000-8000-000000000020",
+        "username": "learner",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "invalid-uuid-variant",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-7000-000000000020",
+        "username": "learner",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "uuid-trailing-newline",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000020\n",
+        "username": "learner",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "numeric-id",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": 42,
+        "username": "learner",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "extra-field",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000020",
+        "username": "learner",
+        "role": "learner",
+        "synthetic_private_field": "not allowed"
+      }
+    },
+    {
+      "name": "missing-role",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000020",
+        "username": "learner"
+      }
+    },
+    {
+      "name": "username-tail-newline",
+      "contract": "UserIdentity",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000020",
+        "username": "learner\n",
+        "role": "learner"
+      }
+    },
+    {
+      "name": "decimal-json-number",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": 100.25,
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "decimal-integer",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": 0,
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "decimal-boolean",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": false,
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"1e3\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "1e3",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"NaN\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "NaN",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"Infinity\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "Infinity",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"+1\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "+1",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"00.1\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "00.1",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"1\\n\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "1\n",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-\"1.\"",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "1.",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-121",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "9999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999999",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-decimal-123",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "0.1111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111111",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "missing-null-field",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "9007199254740993.123456789012345678901234567890",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "duplicate-quantity-evidence",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "9007199254740993.123456789012345678901234567890",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002",
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "invalid-basis",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "9007199254740993.123456789012345678901234567890",
+        "normalized_value": "9007199254740993.123456789012345678901234567890",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "MIXED",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "lone-surrogate-text",
+      "contract": "QuantitativeValue",
+      "valid": false,
+      "payload": {
+        "raw_value": "\ud800",
+        "normalized_value": "9007199254740993.123456789012345678901234567890",
+        "raw_unit": "Rs. crore",
+        "normalized_unit": null,
+        "raw_currency": "Rs.",
+        "currency": null,
+        "period": {
+          "kind": "UNKNOWN",
+          "start_date": null,
+          "end_date": null,
+          "instant_date": null,
+          "raw_label": "Period label requires review"
+        },
+        "basis": "UNKNOWN",
+        "raw_basis_label": "Unclassified reported basis",
+        "denominator": null,
+        "stake_kind": null,
+        "ownership_date": null,
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ]
+      }
+    },
+    {
+      "name": "empty-period-type",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "invalid-date-\"0000-01-01\"",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": "0000-01-01",
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "invalid-date-\"2025-02-29\"",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": "2025-02-29",
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "invalid-date-\"2024-13-01\"",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": "2024-13-01",
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "invalid-date-\"2024-01-01\\n\"",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": null,
+        "end_date": null,
+        "instant_date": "2024-01-01\n",
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "duration-reversed",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "DURATION",
+        "start_date": "2025-01-01",
+        "end_date": "2024-01-01",
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "instant-duration-conflict",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "INSTANT",
+        "start_date": "2024-01-01",
+        "end_date": null,
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "unknown-interpreted-date",
+      "contract": "FinancialPeriod",
+      "valid": false,
+      "payload": {
+        "kind": "UNKNOWN",
+        "start_date": "2024-01-01",
+        "end_date": null,
+        "instant_date": null,
+        "raw_label": "Period label requires review"
+      }
+    },
+    {
+      "name": "unsafe-page-index",
+      "contract": "EvidenceSource",
+      "valid": false,
+      "payload": {
+        "filing_id": "00000000-0000-4000-8000-000000000003",
+        "filing_version_id": "00000000-0000-4000-8000-000000000004",
+        "parse_version_id": "00000000-0000-4000-8000-000000000005",
+        "page_id": "00000000-0000-4000-8000-000000000006",
+        "page_index": 9007199254740991
+      }
+    },
+    {
+      "name": "boolean-page-index",
+      "contract": "EvidenceSource",
+      "valid": false,
+      "payload": {
+        "filing_id": "00000000-0000-4000-8000-000000000003",
+        "filing_version_id": "00000000-0000-4000-8000-000000000004",
+        "parse_version_id": "00000000-0000-4000-8000-000000000005",
+        "page_id": "00000000-0000-4000-8000-000000000006",
+        "page_index": false
+      }
+    },
+    {
+      "name": "fraction-page-index",
+      "contract": "EvidenceSource",
+      "valid": false,
+      "payload": {
+        "filing_id": "00000000-0000-4000-8000-000000000003",
+        "filing_version_id": "00000000-0000-4000-8000-000000000004",
+        "parse_version_id": "00000000-0000-4000-8000-000000000005",
+        "page_id": "00000000-0000-4000-8000-000000000006",
+        "page_index": 1.5
+      }
+    },
+    {
+      "name": "string-page-index",
+      "contract": "EvidenceSource",
+      "valid": false,
+      "payload": {
+        "filing_id": "00000000-0000-4000-8000-000000000003",
+        "filing_version_id": "00000000-0000-4000-8000-000000000004",
+        "parse_version_id": "00000000-0000-4000-8000-000000000005",
+        "page_id": "00000000-0000-4000-8000-000000000006",
+        "page_index": "0"
+      }
+    },
+    {
+      "name": "utf16-span-length",
+      "contract": "TextSpan",
+      "valid": false,
+      "payload": {
+        "block_id": "00000000-0000-4000-8000-000000000007",
+        "start": 5,
+        "end": 9,
+        "quote": "A😀B"
+      }
+    },
+    {
+      "name": "empty-span",
+      "contract": "TextSpan",
+      "valid": false,
+      "payload": {
+        "block_id": "00000000-0000-4000-8000-000000000007",
+        "start": 5,
+        "end": 5,
+        "quote": "A😀B"
+      }
+    },
+    {
+      "name": "negative-span",
+      "contract": "TextSpan",
+      "valid": false,
+      "payload": {
+        "block_id": "00000000-0000-4000-8000-000000000007",
+        "start": -1,
+        "end": 8,
+        "quote": "A😀B"
+      }
+    },
+    {
+      "name": "boolean-span-offset",
+      "contract": "TextSpan",
+      "valid": false,
+      "payload": {
+        "block_id": "00000000-0000-4000-8000-000000000007",
+        "start": false,
+        "end": 8,
+        "quote": "A😀B"
+      }
+    },
+    {
+      "name": "reversed-rectangle",
+      "contract": "PdfRectangle",
+      "valid": false,
+      "payload": {
+        "x0": -20,
+        "y0": -10,
+        "x1": -20,
+        "y1": 790
+      }
+    },
+    {
+      "name": "coordinate-string",
+      "contract": "PdfRectangle",
+      "valid": false,
+      "payload": {
+        "x0": "0",
+        "y0": -10,
+        "x1": 580,
+        "y1": 790
+      }
+    },
+    {
+      "name": "dimension-mismatch",
+      "contract": "PageGeometry",
+      "valid": false,
+      "payload": {
+        "width": 601,
+        "height": 800,
+        "media_box": {
+          "x0": -20,
+          "y0": -10,
+          "x1": 580,
+          "y1": 790
+        },
+        "crop_box": {
+          "x0": -30,
+          "y0": -20,
+          "x1": 560,
+          "y1": 780
+        },
+        "rotation": 90,
+        "coordinate_space": "UNROTATED_PDF_POINTS",
+        "origin": "BOTTOM_LEFT"
+      }
+    },
+    {
+      "name": "invalid-rotation",
+      "contract": "PageGeometry",
+      "valid": false,
+      "payload": {
+        "width": 600,
+        "height": 800,
+        "media_box": {
+          "x0": -20,
+          "y0": -10,
+          "x1": 580,
+          "y1": 790
+        },
+        "crop_box": {
+          "x0": -30,
+          "y0": -20,
+          "x1": 560,
+          "y1": 780
+        },
+        "rotation": 45,
+        "coordinate_space": "UNROTATED_PDF_POINTS",
+        "origin": "BOTTOM_LEFT"
+      }
+    },
+    {
+      "name": "boolean-rotation",
+      "contract": "PageGeometry",
+      "valid": false,
+      "payload": {
+        "width": 600,
+        "height": 800,
+        "media_box": {
+          "x0": -20,
+          "y0": -10,
+          "x1": 580,
+          "y1": 790
+        },
+        "crop_box": {
+          "x0": -30,
+          "y0": -20,
+          "x1": 560,
+          "y1": 780
+        },
+        "rotation": false,
+        "coordinate_space": "UNROTATED_PDF_POINTS",
+        "origin": "BOTTOM_LEFT"
+      }
+    },
+    {
+      "name": "wrong-coordinate-system",
+      "contract": "PageGeometry",
+      "valid": false,
+      "payload": {
+        "width": 600,
+        "height": 800,
+        "media_box": {
+          "x0": -20,
+          "y0": -10,
+          "x1": 580,
+          "y1": 790
+        },
+        "crop_box": {
+          "x0": -30,
+          "y0": -20,
+          "x1": 560,
+          "y1": 780
+        },
+        "rotation": 90,
+        "coordinate_space": "UNROTATED_PDF_POINTS",
+        "origin": "TOP_LEFT"
+      }
+    },
+    {
+      "name": "duplicate-cell-context",
+      "contract": "CellReference",
+      "valid": false,
+      "payload": {
+        "table_id": "00000000-0000-4000-8000-000000000008",
+        "cell_id": "00000000-0000-4000-8000-000000000009",
+        "row_index": 0,
+        "column_index": 2,
+        "row_span": 1,
+        "column_span": 2,
+        "row_label_cell_ids": [
+          "00000000-0000-4000-8000-000000000010",
+          "00000000-0000-4000-8000-000000000011",
+          "00000000-0000-4000-8000-000000000010"
+        ],
+        "period_column_cell_ids": [],
+        "unit_header_cell_ids": [],
+        "basis_header_cell_ids": []
+      }
+    },
+    {
+      "name": "cell-endpoint-overflow",
+      "contract": "CellReference",
+      "valid": false,
+      "payload": {
+        "table_id": "00000000-0000-4000-8000-000000000008",
+        "cell_id": "00000000-0000-4000-8000-000000000009",
+        "row_index": 9007199254740991,
+        "column_index": 2,
+        "row_span": 1,
+        "column_span": 2,
+        "row_label_cell_ids": [
+          "00000000-0000-4000-8000-000000000010",
+          "00000000-0000-4000-8000-000000000011"
+        ],
+        "period_column_cell_ids": [],
+        "unit_header_cell_ids": [],
+        "basis_header_cell_ids": []
+      }
+    },
+    {
+      "name": "zero-cell-span",
+      "contract": "CellReference",
+      "valid": false,
+      "payload": {
+        "table_id": "00000000-0000-4000-8000-000000000008",
+        "cell_id": "00000000-0000-4000-8000-000000000009",
+        "row_index": 0,
+        "column_index": 2,
+        "row_span": 0,
+        "column_span": 2,
+        "row_label_cell_ids": [
+          "00000000-0000-4000-8000-000000000010",
+          "00000000-0000-4000-8000-000000000011"
+        ],
+        "period_column_cell_ids": [],
+        "unit_header_cell_ids": [],
+        "basis_header_cell_ids": []
+      }
+    },
+    {
+      "name": "wrong-evidence-kind",
+      "contract": "TextEvidence",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000002",
+        "kind": "table_cell",
+        "source": {
+          "filing_id": "00000000-0000-4000-8000-000000000003",
+          "filing_version_id": "00000000-0000-4000-8000-000000000004",
+          "parse_version_id": "00000000-0000-4000-8000-000000000005",
+          "page_id": "00000000-0000-4000-8000-000000000006",
+          "page_index": 0
+        },
+        "page_geometry": {
+          "width": 600,
+          "height": 800,
+          "media_box": {
+            "x0": -20,
+            "y0": -10,
+            "x1": 580,
+            "y1": 790
+          },
+          "crop_box": {
+            "x0": -30,
+            "y0": -20,
+            "x1": 560,
+            "y1": 780
+          },
+          "rotation": 90,
+          "coordinate_space": "UNROTATED_PDF_POINTS",
+          "origin": "BOTTOM_LEFT"
+        },
+        "boxes": [
+          {
+            "x0": 0,
+            "y0": 10,
+            "x1": 100,
+            "y1": 30
+          }
+        ],
+        "span": {
+          "block_id": "00000000-0000-4000-8000-000000000007",
+          "start": 5,
+          "end": 8,
+          "quote": "A😀B"
+        }
+      }
+    },
+    {
+      "name": "missing-evidence-box",
+      "contract": "TextEvidence",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000002",
+        "kind": "text",
+        "source": {
+          "filing_id": "00000000-0000-4000-8000-000000000003",
+          "filing_version_id": "00000000-0000-4000-8000-000000000004",
+          "parse_version_id": "00000000-0000-4000-8000-000000000005",
+          "page_id": "00000000-0000-4000-8000-000000000006",
+          "page_index": 0
+        },
+        "page_geometry": {
+          "width": 600,
+          "height": 800,
+          "media_box": {
+            "x0": -20,
+            "y0": -10,
+            "x1": 580,
+            "y1": 790
+          },
+          "crop_box": {
+            "x0": -30,
+            "y0": -20,
+            "x1": 560,
+            "y1": 780
+          },
+          "rotation": 90,
+          "coordinate_space": "UNROTATED_PDF_POINTS",
+          "origin": "BOTTOM_LEFT"
+        },
+        "boxes": [],
+        "span": {
+          "block_id": "00000000-0000-4000-8000-000000000007",
+          "start": 5,
+          "end": 8,
+          "quote": "A😀B"
+        }
+      }
+    },
+    {
+      "name": "duplicate-crosspage-record",
+      "contract": "EvidenceSupport",
+      "valid": false,
+      "payload": {
+        "records": [
+          {
+            "id": "00000000-0000-4000-8000-000000000002",
+            "kind": "text",
+            "source": {
+              "filing_id": "00000000-0000-4000-8000-000000000003",
+              "filing_version_id": "00000000-0000-4000-8000-000000000004",
+              "parse_version_id": "00000000-0000-4000-8000-000000000005",
+              "page_id": "00000000-0000-4000-8000-000000000006",
+              "page_index": 0
+            },
+            "page_geometry": {
+              "width": 600,
+              "height": 800,
+              "media_box": {
+                "x0": -20,
+                "y0": -10,
+                "x1": 580,
+                "y1": 790
+              },
+              "crop_box": {
+                "x0": -30,
+                "y0": -20,
+                "x1": 560,
+                "y1": 780
+              },
+              "rotation": 90,
+              "coordinate_space": "UNROTATED_PDF_POINTS",
+              "origin": "BOTTOM_LEFT"
+            },
+            "boxes": [
+              {
+                "x0": 0,
+                "y0": 10,
+                "x1": 100,
+                "y1": 30
+              }
+            ],
+            "span": {
+              "block_id": "00000000-0000-4000-8000-000000000007",
+              "start": 5,
+              "end": 8,
+              "quote": "A😀B"
+            }
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000012",
+            "kind": "table_cell",
+            "source": {
+              "filing_id": "00000000-0000-4000-8000-000000000003",
+              "filing_version_id": "00000000-0000-4000-8000-000000000004",
+              "parse_version_id": "00000000-0000-4000-8000-000000000005",
+              "page_id": "00000000-0000-4000-8000-000000000013",
+              "page_index": 1
+            },
+            "page_geometry": {
+              "width": 600,
+              "height": 800,
+              "media_box": {
+                "x0": -20,
+                "y0": -10,
+                "x1": 580,
+                "y1": 790
+              },
+              "crop_box": {
+                "x0": -30,
+                "y0": -20,
+                "x1": 560,
+                "y1": 780
+              },
+              "rotation": 270,
+              "coordinate_space": "UNROTATED_PDF_POINTS",
+              "origin": "BOTTOM_LEFT"
+            },
+            "boxes": [
+              {
+                "x0": 0,
+                "y0": 0,
+                "x1": 100,
+                "y1": 50
+              }
+            ],
+            "cell": {
+              "table_id": "00000000-0000-4000-8000-000000000008",
+              "cell_id": "00000000-0000-4000-8000-000000000009",
+              "row_index": 0,
+              "column_index": 2,
+              "row_span": 1,
+              "column_span": 2,
+              "row_label_cell_ids": [
+                "00000000-0000-4000-8000-000000000010",
+                "00000000-0000-4000-8000-000000000011"
+              ],
+              "period_column_cell_ids": [],
+              "unit_header_cell_ids": [],
+              "basis_header_cell_ids": []
+            }
+          },
+          {
+            "id": "00000000-0000-4000-8000-000000000002",
+            "kind": "text",
+            "source": {
+              "filing_id": "00000000-0000-4000-8000-000000000003",
+              "filing_version_id": "00000000-0000-4000-8000-000000000004",
+              "parse_version_id": "00000000-0000-4000-8000-000000000005",
+              "page_id": "00000000-0000-4000-8000-000000000006",
+              "page_index": 0
+            },
+            "page_geometry": {
+              "width": 600,
+              "height": 800,
+              "media_box": {
+                "x0": -20,
+                "y0": -10,
+                "x1": 580,
+                "y1": 790
+              },
+              "crop_box": {
+                "x0": -30,
+                "y0": -20,
+                "x1": 560,
+                "y1": 780
+              },
+              "rotation": 90,
+              "coordinate_space": "UNROTATED_PDF_POINTS",
+              "origin": "BOTTOM_LEFT"
+            },
+            "boxes": [
+              {
+                "x0": 0,
+                "y0": 10,
+                "x1": 100,
+                "y1": 30
+              }
+            ],
+            "span": {
+              "block_id": "00000000-0000-4000-8000-000000000007",
+              "start": 5,
+              "end": 8,
+              "quote": "A😀B"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "name": "nested-invalid-period",
+      "contract": "RelationReference",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": "2024-01-01",
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "unknown-relation",
+      "contract": "RelationReference",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "CO_OCCURS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "REVIEW",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "invalid-state",
+      "contract": "RelationReference",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000014",
+        "relation_type": "OWNS",
+        "subject_entity_id": "00000000-0000-4000-8000-000000000015",
+        "object_entity_id": "00000000-0000-4000-8000-000000000016",
+        "state": "PUBLISHED",
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "quantitative_context": {
+          "raw_value": "9007199254740993.123456789012345678901234567890",
+          "normalized_value": "9007199254740993.123456789012345678901234567890",
+          "raw_unit": "Rs. crore",
+          "normalized_unit": null,
+          "raw_currency": "Rs.",
+          "currency": null,
+          "period": {
+            "kind": "UNKNOWN",
+            "start_date": null,
+            "end_date": null,
+            "instant_date": null,
+            "raw_label": "Period label requires review"
+          },
+          "basis": "UNKNOWN",
+          "raw_basis_label": "Unclassified reported basis",
+          "denominator": null,
+          "stake_kind": null,
+          "ownership_date": null,
+          "evidence_ids": [
+            "00000000-0000-4000-8000-000000000002"
+          ]
+        }
+      }
+    },
+    {
+      "name": "self-lineage",
+      "contract": "FilingLineage",
+      "valid": false,
+      "payload": {
+        "parent_filing_id": "00000000-0000-4000-8000-000000000003",
+        "child_filing_id": "00000000-0000-4000-8000-000000000003",
+        "lineage_type": "CORRIGENDUM_TO"
+      }
+    },
+    {
+      "name": "reject-supersedes-alias",
+      "contract": "AmendmentEffect",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "SUPERSEDES",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [
+          "00000000-0000-4000-8000-000000000002"
+        ],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "no-effect-evidence",
+      "contract": "AmendmentEffect",
+      "valid": false,
+      "payload": {
+        "id": "00000000-0000-4000-8000-000000000017",
+        "effect_type": "SUPERSEDE",
+        "affected_observation_ids": [
+          "00000000-0000-4000-8000-000000000018"
+        ],
+        "new_observation_ids": [
+          "00000000-0000-4000-8000-000000000019"
+        ],
+        "evidence_ids": [],
+        "reviewed_decision_id": null,
+        "effective_date": null
+      }
+    },
+    {
+      "name": "wrong-contract-version",
+      "contract": "ResponseMeta",
+      "valid": false,
+      "payload": {
+        "request_id": "00000000-0000-4000-8000-000000000001",
+        "contract_version": "2.0.0",
+        "versions": {
+          "corpus_version_id": null,
+          "filing_version_id": null,
+          "parse_version_id": null,
+          "glossary_version_id": null,
+          "quote_version_id": null,
+          "portfolio_version_id": null
+        }
+      }
+    },
+    {
+      "name": "missing-meta-version-key",
+      "contract": "VersionContext",
+      "valid": false,
+      "payload": {
+        "filing_version_id": null,
+        "parse_version_id": null,
+        "glossary_version_id": null,
+        "quote_version_id": null,
+        "portfolio_version_id": null
+      }
+    },
+    {
+      "name": "error-field-leak",
+      "contract": "ErrorDetail",
+      "valid": false,
+      "payload": {
+        "location": "synthetic-private-key",
+        "code": "INVALID_VALUE"
+      }
+    },
+    {
+      "name": "error-code-newline",
+      "contract": "ErrorDetail",
+      "valid": false,
+      "payload": {
+        "location": "body",
+        "code": "INVALID_VALUE\n"
+      }
+    },
+    {
+      "name": "error-message-lone-surrogate",
+      "contract": "ApiError",
+      "valid": false,
+      "payload": {
+        "code": "VALIDATION_ERROR",
+        "message": "\ud800",
+        "details": []
+      }
+    },
+    {
+      "name": "nested-error-message-lone-surrogate",
+      "contract": "ErrorEnvelope",
+      "valid": false,
+      "payload": {
+        "error": {
+          "code": "VALIDATION_ERROR",
+          "message": "\udfff",
+          "details": []
+        },
+        "meta": {
+          "request_id": "00000000-0000-4000-8000-000000000001",
+          "contract_version": "1.0.0",
+          "versions": {
+            "corpus_version_id": null,
+            "filing_version_id": null,
+            "parse_version_id": null,
+            "glossary_version_id": null,
+            "quote_version_id": null,
+            "portfolio_version_id": null
+          }
+        }
+      }
+    }
+  ]
+}

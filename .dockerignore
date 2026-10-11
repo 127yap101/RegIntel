@@ -1,0 +1,14 @@
+**
+!backend
+!backend/pyproject.toml
+!backend/uv.lock
+!backend/src
+!backend/src/**
+!infra
+!infra/worker.Dockerfile
+!.cache
+!.cache/worker-debs
+!.cache/worker-debs/*.deb
+!.cache/worker-debs/SHA256SUMS
+!.cache/worker-debs/bookworm.InRelease
+!.cache/worker-debs/bookworm-amd64.Packages.xz

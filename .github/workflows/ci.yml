@@ -1,0 +1,135 @@
+name: Foundation checks
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: foundation-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  foundation:
+    name: Foundation (${{ matrix.os }})
+    runs-on: ${{ matrix.os }}
+    timeout-minutes: 25
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [windows-2025, ubuntu-24.04]
+    env:
+      CI: "true"
+      UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
+      UV_PYTHON_INSTALL_DIR: ${{ github.workspace }}/.tools/python
+      UV_PYTHON_BIN_DIR: ${{ github.workspace }}/.tools/python-bin
+      UV_PYTHON_INSTALL_REGISTRY: "false"
+      PLAYWRIGHT_BROWSERS_PATH: ${{ github.workspace }}/.cache/ms-playwright
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: Set up Node.js
+        uses: actions/setup-node@820762786026740c76f36085b0efc47a31fe5020 # v7.0.0
+        with:
+          node-version: "24.19.0"
+          package-manager-cache: false
+
+      - name: Set up pnpm
+        uses: pnpm/action-setup@ea17c68df8912ef543352723c149a84f56e3d413 # v6.1.0
+        with:
+          version: "11.19.0"
+          run_install: false
+
+      - name: Set up uv
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          version: "0.12.23"
+          python-version: "3.12.14"
+          enable-cache: false
+
+      - name: Install pinned Python
+        run: uv python install 3.12.14
+
+      - name: Install locked backend dependencies
+        run: uv sync --project backend --locked
+
+      - name: Generate shared wire contracts
+        run: uv run --project backend --locked --no-sync python scripts/export-contracts.py
+
+      - name: Generate synthetic fixture artifacts
+        run: |
+          uv run --project backend --locked --no-sync python scripts/generate-fixtures.py
+          uv run --project backend --locked --no-sync python scripts/export-fixture-cases.py
+
+      - name: Install locked frontend dependencies
+        run: pnpm --dir frontend install --frozen-lockfile --store-dir "${{ github.workspace }}/.cache/pnpm-store"
+
+      - name: Install Chromium on Windows
+        if: runner.os == 'Windows'
+        run: node frontend/node_modules/@playwright/test/cli.js install chromium
+
+      - name: Install Chromium and system dependencies on Linux
+        if: runner.os == 'Linux'
+        run: node frontend/node_modules/@playwright/test/cli.js install --with-deps chromium
+
+      - name: Run foundation checks on Windows
+        if: runner.os == 'Windows'
+        shell: pwsh
+        run: ./scripts/run-checks.ps1
+
+      - name: Run foundation checks on Linux
+        if: runner.os == 'Linux'
+        shell: bash
+        run: bash scripts/run-checks.sh
+
+  infrastructure:
+    name: Local data infrastructure (Linux)
+    needs: foundation
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    env:
+      UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
+      UV_PYTHON_INSTALL_DIR: ${{ github.workspace }}/.tools/python
+      UV_PYTHON_BIN_DIR: ${{ github.workspace }}/.tools/python-bin
+      UV_PYTHON_INSTALL_REGISTRY: "false"
+    steps:
+      - name: Check out source
+        uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - name: Set up uv and Python
+        uses: astral-sh/setup-uv@c18668ad3cf93ea998bef934396af7bb5c839dc7 # v10.2.0
+        with:
+          version: "0.12.23"
+          python-version: "3.12.14"
+          enable-cache: false
+      - name: Install locked backend dependencies
+        run: uv sync --project backend --locked
+      - name: Generate ephemeral local development secrets
+        run: uv run --project backend --locked --no-sync python scripts/init-local-env.py
+      - name: Start digest-pinned services
+        run: bash scripts/compose.sh up
+      - name: Apply and verify migrations
+        run: |
+          uv run --project backend --locked --no-sync regintel-db migrate --env-file .env
+          uv run --project backend --locked --no-sync regintel-db migrate --env-file .env
+          uv run --project backend --locked --no-sync regintel-db check --env-file .env
+          uv run --project backend --locked --no-sync python scripts/check-migrations.py
+      - name: Generate and verify local authentication
+        run: |
+          uv run --project backend --locked --no-sync python scripts/init-auth-env.py
+          uv run --project backend --locked --no-sync regintel-auth seed --env-file .env --auth-env-file .env.auth
+          uv run --project backend --locked --no-sync regintel-auth seed --env-file .env --auth-env-file .env.auth
+          uv run --project backend --locked --no-sync regintel-auth check --env-file .env --auth-env-file .env.auth
+      - name: Verify authenticated services and restart persistence
+        run: uv run --project backend --locked --no-sync python scripts/check-infra.py --restart
+      - name: Stop project services
+        if: always()
+        run: bash scripts/compose.sh stop

@@ -1,0 +1,100 @@
+{
+  "manifest_version": "1.0.0",
+  "purpose": "M1A controlled real-filing ingestion/evidence acceptance; not research gold",
+  "documents": [
+    {
+      "company_name_raw": "Premier Energies Limited",
+      "cin_raw": "U40106TG1995PLC019909",
+      "document_type": "ADDENDUM",
+      "contains_corrigendum": true,
+      "source_page_url": "https://www.sebi.gov.in/filings/public-issues/aug-2024/premier-energies-limited-addendum-to-rhp_86351.html",
+      "source_url": "https://www.sebi.gov.in/sebi_data/attachdocs/aug-2024/1725009610554.PDF",
+      "source_listing_date": "2024-08-26",
+      "source_document_date": "2024-08-24",
+      "publication_date": null,
+      "parent_reference": "Red Herring Prospectus dated August 20, 2024",
+      "parent_filing_id": null,
+      "filing_id": "2a3774fa-620d-42ff-8c4f-f07b9791f609",
+      "filing_version_id": "295214b3-1c7a-44d4-8201-bf97a986a950",
+      "sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+      "byte_size": 196270,
+      "page_count": 3,
+      "local_path": "data/raw/premier-energies-addendum-rhp-sebi-20240826.pdf",
+      "downloaded_on": "2026-10-06",
+      "verification": {
+        "pdf_header": "%PDF-1.7",
+        "all_pages_rendered_and_inspected": true,
+        "preliminary_parser": "pypdf 6.19.0",
+        "native_text_codepoint_counts": [
+          12807,
+          18676,
+          7409
+        ],
+        "source_warnings": [
+          "pypdf: Xref table not zero-indexed; reader corrected object IDs in memory",
+          "Poppler: Invalid least number of objects reading page offset hints table"
+        ],
+        "original_bytes_changed": false,
+        "docling_processed": true,
+        "evidence_persisted": true,
+        "accepted_or_published": false,
+        "ingestion": {
+          "job_id": "b2aaaf4d-c2fc-4537-9414-3e6dad710171",
+          "configuration_sha256": "bdaccdd3c44d4dc9319d2095f05bcf205744276b55131223f79c3ddb84d08ee4",
+          "state": "SOURCE_VERIFIED",
+          "attempts": 1,
+          "worker": "Linux UID/GID10001 Python3.12.15 Celery5.6.3",
+          "broker_outage_and_replay_checked": true,
+          "graceful_restart_and_consumed_duplicates_checked": true
+        },
+        "parsing_probe": {
+          "measured_on": "2026-10-07",
+          "mode": "controlled offline probe, not persisted job result",
+          "status": "success",
+          "raw_capture_sha256": "76fab45348c9d5e867f5314745aedb6ea9f3f963127dcd77f2d82ad0831eaa00",
+          "source_bytes_changed": false,
+          "network_attempts": 0,
+          "pdf_pages": 3,
+          "runtime": {
+            "conversion_seconds": 66.27344814300022,
+            "initialization_seconds": 15.691184176000206,
+            "max_rss_kib": 2287252,
+            "network_attempts": 0,
+            "network_disabled": true,
+            "output_bytes": 4616516,
+            "status": "success"
+          },
+          "runtime_freeze_retested": false,
+          "exact_evidence_persisted": false,
+          "network_attempt_scope": "Intercepted Python socket.connect/create_connection calls; Docker networknone isolates the process. Native-library and DNS attempt counters are not audited."
+        },
+        "evidence_persistence": {
+          "measured_on": "2026-10-09",
+          "state": "PARSED",
+          "job_id": "c81a8c48-2895-4c00-8d88-e45a99bd114e",
+          "parse_version_id": "38819124-f764-4f41-acef-44ac000dbc45",
+          "attempts": 1,
+          "processing_configuration_sha256": "0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f",
+          "sdk_configuration_sha256": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+          "artifact_sha256": "f430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f",
+          "worker_image_id": "sha256:8d07f27d3040505c9a9e8a3c53ccb2c1bda09feca1840d024fd17d40db240862",
+          "page_count": 3,
+          "original_block_count": 982,
+          "exact_text_evidence_count": 878,
+          "processed_tables_retained": 15,
+          "processed_cells_retained": 435,
+          "exact_relational_table_cell_count": 0,
+          "selected_evidence_id": "a2491199-24e3-439f-bba6-3e380db8a28d",
+          "authenticated_source_http_checks": 8,
+          "persisted_cin_highlight_inspected": true,
+          "consumed_terminal_duplicate_checked": true,
+          "legacy_job_preserved": true,
+          "original_bytes_changed": false,
+          "accepted_or_published": false,
+          "validation_report": "data/evidence-validation-report.json"
+        }
+      },
+      "source_blob_id": "9eb1f328-d6c3-43f1-a2c9-3f056f44e238"
+    }
+  ]
+}

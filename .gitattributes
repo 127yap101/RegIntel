@@ -1,0 +1,13 @@
+* text=auto eol=lf
+*.sh text eol=lf
+*.ps1 text eol=lf
+*.yml text eol=lf
+*.yaml text eol=lf
+*.py text eol=lf
+*.sql text eol=lf
+*.ts text eol=lf
+*.tsx text eol=lf
+
+# Preserve exact recorded parser/report and existing fixture-source bytes.
+data/*.json -text whitespace=cr-at-eol
+backend/src/regintel/fixtures/sources.py -text whitespace=cr-at-eol

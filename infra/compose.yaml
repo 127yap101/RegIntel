@@ -1,0 +1,107 @@
+name: regintel
+
+services:
+  postgres:
+    image: pgvector/pgvector:0.8.7-pg16-bookworm@sha256:7b822b0aac60967beb1ea5e576b8602c94c300a157d187f385ae3e0da199b90a
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER:?Generate the local .env first}
+      POSTGRES_DB: ${POSTGRES_DB:?Generate the local .env first}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD:?Generate the local .env first}
+    ports:
+      - "127.0.0.1:5432:5432"
+    volumes:
+      - postgres_data:/var/lib/postgresql/data
+    restart: "no"
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U \"$$POSTGRES_USER\" -d \"$$POSTGRES_DB\""]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+      start_period: 10s
+
+  neo4j:
+    image: neo4j:5.26.31-community-trixie@sha256:d9cfe82983d27f5a75b3aaae8f316d04f9a698a3b7f6103a508f7caf8362f255
+    environment:
+      NEO4J_AUTH: ${NEO4J_AUTH:?Generate the local .env first}
+      NEO4J_server_memory_heap_initial__size: 256m
+      NEO4J_server_memory_heap_max__size: 512m
+      NEO4J_server_memory_pagecache_size: 256m
+    ports:
+      - "127.0.0.1:7687:7687"
+    volumes:
+      - neo4j_data:/data
+    restart: "no"
+    healthcheck:
+      test:
+        - CMD-SHELL
+        - 'export NEO4J_USERNAME="$${NEO4J_AUTH%%/*}" NEO4J_PASSWORD="$${NEO4J_AUTH#*/}"; cypher-shell -a bolt://localhost:7687 "RETURN 1;" >/dev/null'
+      interval: 5s
+      timeout: 10s
+      retries: 30
+      start_period: 30s
+
+  redis:
+    image: redis:7.2.16-bookworm@sha256:0637954999d01b7c9ce9167db2da50656e2590d3b884f1c600c5f63bb6e6773c
+    user: redis
+    environment:
+      REDIS_PASSWORD: ${REDIS_PASSWORD:?Generate the local .env first}
+    command:
+      - /bin/sh
+      - -ec
+      - 'umask 077; printf "requirepass %s\nappendonly yes\nappendfsync everysec\ndir /data\n" "$$REDIS_PASSWORD" > /tmp/regintel-redis.conf; exec redis-server /tmp/regintel-redis.conf'
+    ports:
+      - "127.0.0.1:6379:6379"
+    volumes:
+      - redis_data:/data
+    restart: "no"
+    healthcheck:
+      test: ["CMD-SHELL", "REDISCLI_AUTH=\"$$REDIS_PASSWORD\" redis-cli ping | grep -qx PONG"]
+      interval: 5s
+      timeout: 5s
+      retries: 20
+
+  worker:
+    profiles: [ingestion]
+    build:
+      context: ..
+      dockerfile: infra/worker.Dockerfile
+    image: regintel-ingestion:local
+    user: "10001:10001"
+    read_only: true
+    cap_drop: [ALL]
+    security_opt: [no-new-privileges:true]
+    environment:
+      REGINTEL_DATABASE_URL: postgresql://${POSTGRES_USER}:${POSTGRES_PASSWORD}@postgres:5432/${POSTGRES_DB}
+      REGINTEL_BROKER_URL: redis://:${REDIS_PASSWORD}@redis:6379/0
+      REGINTEL_SOURCE_ROOT: /sources
+      REGINTEL_MODEL_ROOT: /models
+      REGINTEL_PARSER_CONFIG: /configuration/parser-runtime-config.json
+      HF_HUB_OFFLINE: "1"
+      TRANSFORMERS_OFFLINE: "1"
+      HF_HUB_DISABLE_TELEMETRY: "1"
+      HF_HOME: /tmp/huggingface
+      TORCH_HOME: /tmp/torch
+      DOCLING_CACHE_DIR: /tmp/docling
+    volumes:
+      - ../data/uploads:/sources:ro
+      - ../models/m1a-v1:/models:ro
+      - ../data/parser-runtime-config.json:/configuration/parser-runtime-config.json:ro
+    tmpfs:
+      - /tmp:rw,noexec,nosuid,size=256m
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+    restart: "no"
+    healthcheck:
+      test: [CMD, celery, "--app=regintel.ingestion.worker:app", inspect, ping, "--destination=ingestion@regintel", "--timeout=3"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 20s
+
+volumes:
+  postgres_data:
+  neo4j_data:
+  redis_data:

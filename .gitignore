@@ -1,0 +1,44 @@
+# Credentials and machine-local settings
+.env
+.env.*
+!.env.example
+!.env.*.example
+*.pem
+*.key
+
+# Python and project-local tools
+.venv/
+.tools/
+.cache/
+__pycache__/
+*.py[cod]
+.pytest_cache/
+.ruff_cache/
+.mypy_cache/
+.coverage
+htmlcov/
+*.egg-info/
+
+# JavaScript and browser-test outputs
+node_modules/
+dist/
+coverage/
+playwright-report/
+test-results/
+
+# Original filings, models and generated artifacts
+*.pdf
+data/raw/
+data/uploads/
+data/artifacts/
+models/
+artifacts/
+frontend/src/contracts/generated.ts
+frontend/src/contracts/schema.json
+frontend/src/contracts/fixtures.generated.json
+*.log
+
+# Editor and OS files
+.DS_Store
+Thumbs.db
+.idea/

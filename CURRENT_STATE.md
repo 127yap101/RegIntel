@@ -1,0 +1,156 @@
+# RegIntel Finance — Current State
+
+Updated: 2026-10-11 (Asia/Calcutta).
+
+## Authorized scope and decisions
+
+- User authorized prerequisite/setup work and sequential implementation with verification and durable phase records.
+- User explicitly approved Windows x64 development while preserving the specified application stack.
+- User authorized M0 foundation work, now complete. On2026-10-06 the user explicitly waived the deck gate and authorized M1A. The actual presentation remains unavailable/unverified; no correction or verification result is claimed.
+- User approved `SUPERSEDE`, M1 backend search/M2 profile UI, and M2 quote API/M4 immutable snapshot resolutions for M0.5.
+- On2026-10-06 the user explicitly approved one non-root Linux Celery/Docling worker container on the existing Compose network, with native Windows API/frontend and existing data services, no worker port or host installation. M1A (1.1–1.4) is verified and complete.
+- On11October the user explicitly authorized committing and pushing the current project to `https://github.com/127yap101/RegIntel`, using its existing `main` branch and preserving repository history. Source/tests/configuration examples/locked dependencies/design and measured reports are in scope; secrets, original PDFs, models, Docker/database state, caches and generated artifacts remain ignored. Paid API/model calls and public service exposure are not authorized. Generated project-local development secrets remain part of the approved setup.
+- Final specification files remain unchanged under `docs/`.
+
+## Latest verified state
+
+- **GitHub publication preparation,11October:** repository `127yap101/RegIntel` is public and its existing initial README commit `e4c22bb5fe2b0d7bb84c46afd1086cb9054211a0` is preserved as the parent of this snapshot. `origin` points to the requested HTTPS repository. Independent audit found195publishable text files totaling1.67MB, with no detected actual secrets/oversized artifacts. Source state remains verified M0/M1A; only documentation and publication preparation changed. Commit/push and hosted CI outcomes remain pending until confirmed by Git/GitHub.
+- **Docker storage maintenance complete, 11 October:** user applied the supported Desktop move; both live WSL disks are verified under `D:\DockerData\DockerDesktopWSL`, and the original C: disk paths are absent. Engine29.7.2 and all four existing services are healthy. Original three volume timestamps, worker image/security/loopback-only ports and migration checksums/status `[1,2,3,4,5]/[]` are preserved. Generated admin/learner authentication, existing PARSED job/attempt1, artifact/configuration/evidence fingerprints, 878 evidence records and eight original-PDF HTTP checks pass; authoritative and legacy snapshots unchanged. C: has36.2GB free and D:43.1GB free at09:09UTC. The verified29.4GB cold backup remains in ignored `.cache/docker-storage-backups/20261011-142236-ae158942fb9e4b7680a1bb17ec0d03d9`. New proof `.cache/docker-storage-verification-bba8913f8fcc45d1a7bc2abb63442b07`; see `docs/DOCKER_STORAGE_MOVE.md`. Temporary API stopped; no new ingestion, rebuild, prune, reset or agent disk deletion. M1B remains unstarted.
+- **M1A (1.1-1.4) is complete, 9 October.** Real Premier Energies job `c81a8c48-2895-4c00-8d88-e45a99bd114e` reached `PARSED` in one attempt, with parse `38819124-f764-4f41-acef-44ac000dbc45`, three pages, 982 original blocks and 878 exact text evidence records. Immutable artifact SHA256 is `f430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f`. Measured end-to-end engineering proof took 120.265 seconds; no filing-wide research accuracy claim.
+- Authenticated exact evidence and eight original-PDF full/range/HEAD/conditional/denial checks pass. The saved HTTP evidence box aligns with the actual CIN line on source page 1; cover, full source-page render and 300-DPI detail were visually inspected. One terminal duplicate was actually consumed (task counter 1 to 2), with unchanged attempt, parse/artifact/evidence identities and legacy job; worker/broker drained.
+- Primary migration status is `[1,2,3,4,5]`, pending `[]`; all five checksums remain frozen. Current worker image `8d07f27d3040505c9a9e8a3c53ccb2c1bda09feca1840d024fd17d40db240862` matches all 53 current Python files and project/lock inputs. Offline preflight verifies the same 109 packages, processing `0674ad...`, SDK `73a44...`, model/backend/code hashes and CPU-only runtime. Existing volumes/accounts/source and legacy `SOURCE_VERIFIED` job are preserved. Data services and worker are healthy; worker is UID/GID10001, read-only and has no published port. The task-owned API was stopped.
+- Final checks pass: 887 backend tests (six disclosed Windows skips), 138 live database tests, 212 frontend tests and three Chromium tests, plus lint/types/build, Ruff100 and strict mypy65. Independent implementation/pre-activation review is complete; root checked the actual runtime/duplicate/visual proof. Metadata and limitations are recorded in `data/evidence-validation-report.json`; original PDFs/models/credentials/generated QA remain ignored.
+- The complete sidecar retains 15 processed tables/435 cells, with original table-cell text unavailable. No exact table cells are fabricated; known OCR/table/currency-glyph limitations remain in the parser report. Candidate, acceptance audit, fact/relation observation and corpus counts are all zero. No financial facts or corpus are accepted/published, and no commit/push exists. M1B-M4/integration have not started.
+- **Historical build limitation, resolved for storage on11October:** the9October build drove C: to286MB free and task-owned clients were stopped. The complete retained image was independently checked before use. The authorized Desktop relocation now places Docker storage on D:, with36.2GB free on C: and43.1GB on D: including the retained backup. Check headroom before future large builds. Hosted CI, macOS/ARM, fresh-clone reproduction and crash-recovery validation remain unverified.
+
+## Historical verification records
+
+### M1.4 pre-acceptance checkpoints (superseded)
+
+- **Latest runtime progress:** Docker is responding, all three original data volumes (created 5 October) are retained, and the original generated admin/learner accounts authenticate. Primary migration 0005 is now applied: status `[1,2,3,4,5]`, pending `[]`. Current image `8d07f27d3040505c9a9e8a3c53ccb2c1bda09feca1840d024fd17d40db240862` is present despite task-client termination during export; all 53 installed Python paths/hashes match current source, lock/project inputs match, and its offline non-root/read-only/network-none preflight verifies all 109 packages and frozen processing/SDK/model/backend identities. Worker is healthy; the task-owned native API on loopback 8000 is verifying real job `c81a8c48-2895-4c00-8d88-e45a99bd114e`. Real result, exact HTTP evidence highlight and consumed duplicate remain pending. The full build consumed almost all C: space; it was stopped at 286 MB free, then the completed image was verified independently. No delta image, pruning, data/configuration reset or host installation was performed.
+- **Latest M1.4 checkpoint, 9 October:** implementation and independent review are complete; runtime acceptance remains pending. Append0005 is frozen at89369f5d29628fba557094d51754e6b7151cdc5910aed64ec837576e35db9f0d. All138 disposable live tests pass228.22s, and a final scoped26 evidence-storage run passes31.91s. The complete native runner exits0 with887backend/6Windows skips/138live deselected,212frontend/3Chromium, lint/types/build, Ruff100files and strict mypy65sources. POSIX FIFO rejection also passed in an isolated Linux container.
+- Exact persistence now seals original-text projection, canonical full artifact/configuration sidecar and PARSED job result atomically. Deterministic evidence IDs, source/configuration membership, Unicode spans, raw-quad geometry, rollback, transient retry, concurrent duplicates and preserved legacy jobs are verified with authored tests. Admin evidence/PDFGET/HEAD/range/conditional/authentication contracts are implemented. No original table text or financial acceptance is invented.
+- A final rebuild failed with a bus error and Docker API500/EOF; Desktop reports stopped and its CLI restart stalled. Read-only primary status now fails to connect. Only two task-owned stalled CLI clients were stopped; no Docker data/configuration/caches were reset or deleted. A manual Desktop recovery question is pending. **Primary0005 is not applied; no real M1.4 evidence result is yet persisted.** Last successful image7df0331611667aa2d8046c83dc70a273d632c0dd3f767dd93d179bf63317e42d predates the final descriptor-read size guard and needs a fresh build before runtime proof.
+- The app fallback changed pnpm to11.25.0. Restored the already specified11.19.0 through Corepack into ignored .cache/corepack and .tools/pnpm; check runners enforce the pin and propagate it to browser subprocesses. No system shim or frontend dependency changed. A caught CORS expectation/OpenAPI duplicate-ID issue and descriptor-file size race are corrected and the complete runner now passes.
+- **Resume checkpoint:** Compose validation passes and all five migration checksums remain frozen. A bounded engine query still times out although Desktop/backend processes exist. Only the task-owned info client was stopped. The worker Dockerfile now installs locked dependencies before copying source, then performs the same exact sync; this build-order change is reviewed but not yet built. No dependency/configuration identity or Docker data/settings changed. Before the real upload, the rebuilt image must pass the ignored .cache/check-final-worker.py offline identity preflight; render the genuine saved HTTP evidence boxes separately from preview-only parser overlays.
+- The ignored `.cache/render-persisted-evidence.py` operator helper is ready and passes Ruff, strict mypy, compilation and `--help`. After a genuine `.cache/evidence-runtime-UUID` proof exists, invoke it with `--proof-directory D:/RegIntel/.cache/evidence-runtime-UUID`, following the PDF skill's authoring marker. It verifies source/artifact/evidence identities and geometry, then renders only the saved HTTP evidence boxes with the actual evidence/parse IDs on a separate cover. Inspect both resulting PNGs before recording visual completion. No rendering or real persisted result is claimed yet.
+
+
+### Earlier milestones
+
+- **At M1.3 closure, 9 October:** Docker29.7.2/Linux was running; Compose restored the original three data volumes (created5October) and healthy services without reset. Primary status was applied[1,2,3,4]/pending[]. Final image6695cab1db9b122412aff5724b92cbb1847fa2066f7882e52e961187d16f7437 passed offline imports and four independent non-root/read-only/network-none conversions with hash seeds11/37/71/101. All verify processingSHA0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f and SDKSHA73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412. Raw original text/quads, canonical boxes and page geometry match the previously visually inspected captures. Fresh ignored proofs are under .cache/parser-probes/20261009-final; first captures are preserved. Zero intercepted Python connection attempts; Docker network isolation is the process boundary, not a native/DNS audit.
+- Final parser/full verification passes752backend/5Windows skips,212frontend/3Chromium, lint/types/build, Ruff84/mypy57; a fresh disposable live run passes103tests in112.37s and removes only its generated database. data/parser-validation-report.json retains actual cold timings/memory/hashes and the disclosed OCR/table/currency limits. **M1.4 implementation is now active** within existing authorization; no primary0005, persisted evidence, fact acceptance or publication is claimed yet. Older pending-runtime notes below are historical.
+
+- **Current checkpoint, 9 October:** M1.3 has actual offline conversions for all three synthetic PDFs and the three-page Premier source. Original captures/measurements/artifacts are retained under ignored `.cache/parser-probes/20261007-v1`. Four synthetic and three real annotated pages were rendered and visually inspected; `CROP_ROTATED_TOP_LEFT` maps this pinned backend to original unrotated PDF coordinates across all four fixture rotations and negative crop/media origins. This is bounded local calibration, not universal parser accuracy.
+- The 123-package lock installs 109 worker production packages and 60 native default packages. CPU-only Docling/RapidOCR imports passed offline as UID/GID10001 with a read-only root/models. Required SciPy1.18.1/Rtree1.4.1 and 42 signed/hash-verified Debian runtime libraries resolved actual missing imports. Model manifest remains `c8788bd39485f36507c44a6728a8e6c5a423de62c8de28ad52ed7b67490727d2`; 15 files/391535814 bytes. No host parser installation or additional OCR engine.
+- Fixture measurements: all 58 native lines match exactly as individual lines; sequential CER/WER includes footer-first reading order. Raster page3 matches 3/5 lines, reverses the two disclosure lines, garbles its title and omits its footer. SDK table structure is 4x5/14 cells versus authored6x4, with no header flags; table-cell original text is unavailable. These failures must remain explicit and cannot support automatic financial context acceptance.
+- Premier candidate artifact contains 3 pages/982 blocks/15 tables/435 cells; 16 assembled spans are invalid/unavailable and every SDK table cell lacks original text. Actual source bytes remain unchanged. No evidence is persisted and no facts are accepted or published. Low-level original text and SDK processed text remain distinct.
+- Configuration freeze is **not yet complete**: first captures exposed process-dependent order in the SDK's set-valued `supported_engines` metadata. Only that known set is canonicalized; ordered option lists remain ordered. Five regression cases passed. Mandatory selected-frame provenance is retained in the artifact identity; 127 adapter/model tests passed.
+- Final provenance repairs passed135targeted tests: assembled SDK geometry now has RAW_GEOMETRY_UNAVAILABLE and is retained only for preview; every table provenance entry survives partial/unknown mapping with explicit diagnostics. Fresh reviewed-v2 artifacts preserve all earlier captures/candidates. Exact eligible low-level blocks:45base/13corrigendum/4later-conflict/878Premier; all449SDK table cells remain unavailable.
+- Lightweight runtime configuration helper passes82tests and imports no heavy SDK. The selected descriptor in data/parser-runtime-config.json natively validates current code, source limits and frame; processingSHA0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f. Full resolved options in data/parser-sdk-options.json share normalized SDK identity73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412 across the four historical captures. This is a semantic metadata replay; final Linux cross-process execution remains pending.
+- data/parser-validation-report.json records four exact small real metadata snippets and a separate visible-currency-glyph challenge: the native price-band line loses three rupee glyphs. Five selected snippets are not filing-wide/held-out accuracy. data/manifest.json now records the actual successful Docling probe, while evidence persistence/acceptance/publication stayfalse. No primary migration changed;0001–0004 hashes remain unchanged.
+- The interrupted full runner had reached 662 backend passes/5 Windows platform skips, Ruff82 files and mypy56 sources; it had not yet returned a complete frontend/browser result. A fresh full runner is active on9October. Docker's Linux engine was unavailable at resume; only the existing application was launched, with no reset/configuration/volume changes. Restore/verify existing services before the remaining cross-process parser freeze and live checks. Historical foundation results below do not prove current service availability.
+
+- The read-only assessment verified 13 original files: root `AGENTS.md` and twelve specification documents, with no file changes.
+- Host: Windows x64 build 26200; PowerShell 7.6.5; Git 2.51.2.windows.1; Node 24.19.0; npm 11.17.0; pnpm 11.19.0; Corepack 0.35.0; VS Code 1.140.0.
+- Project-local uv0.12.23/Python3.12.14 and backend/.venv are installed. Final M0.6 full runner exits0:47-package lock,319 backend tests, Ruff47 files and strict mypy33 sources; all58 live migration/auth tests passed at M0.5 closure and their disposable database was removed. M0.6 changes no database/auth behavior.
+- React/strict TypeScript/Vite/Tailwind foundation is installed with a frozen pnpm lock. Frontend lint, typecheck,212 unit tests, production build and three Chromium tests pass, including a real browser-to-API connection. Ajv8.20.0/ajv-formats3.0.1 validate generated shared contracts and fixture cases.
+- Bootstrap previously exited0; its M0.6 generation additions pass syntax/static review and their commands pass individually. The final full check runner exits0. Windows browser teardown required an approved outside-sandbox run. CI configuration passes static actionlint; hosted CI has not run.
+- Docker Engine29.7.2/Linux x86_64 and digest-pinned PostgreSQL16.15/pgvector0.8.7, Neo4j Community5.26.31 and Redis7.2.16 are healthy on loopback with named volumes. After initial2026-10-06 startup failure the user started Desktop; Compose reused volumes. No persistent Docker data or runtime directories were reset.
+- Read-only2026-10-06 migration status validates applied[1,2]/pending[]. Both SQL files are immutable. Live tests cover history/atomicity/concurrency, UUID/account constraints, idempotent/conflicting/concurrent seeds, login/roles and token revocation. M0.3 authenticated probes survived orderly container restart and were cleaned up.
+- psycopg binary3.3.6/libpq18.4 and explicit dotenv parsing enforce the selected local database target and SCRAM. Verification uses fresh ignored project-cache paths to avoid Windows security-context conflicts.
+- Hosted CI, ARM64/macOS execution and crash recovery remain unverified. Initial Desktop startup recurrence was observed; preserve earlier Docker socket-directory backups. Automatic approval review rejected repeat isolation, but user startup made that operation unnecessary; it was not performed.
+- JWT/Argon2id application auth is implemented: token login, safe identity and admin-only identity endpoints, authoritative DB account/role/version checks and automatic revocation on security-field changes. Two local accounts are seeded; repetition preserves them. Explicit native API login/role/cache checks pass; temporary API test process was stopped.
+- Ignored .env.auth contains generated auth secrets; no values were printed. Original .env/0001 and specifications are preserved. M1.1 schemas and M1.2 upload/jobs now exist; no auth/review UI, parser, accepted fact or publication is yet claimed.
+- One real source is acquired for M1A: Premier Energies' three-page SEBI addendum/corrigendum,196270 bytes with recorded SHA256 in data/manifest.json. Native text and all rendered pages are preliminarily inspected; no Docling/persisted evidence/acceptance/publication is yet claimed. No presentation deck is available or verified.
+- M0.5 implements20 strict shared models, canonical IDs/versions, directed ontology, exact Decimal strings, evidence geometry/context and lineage/effect references. Generated JSON Schema/TypeScript artifacts are ignored and reproducible through bootstrap/CI;106 shared vectors test Python/frontend parity. These are shape contracts, not evidence acceptance or publication capabilities.
+- Auth identity endpoints return typed success envelopes; JSON API errors are sanitized envelopes with matching server request IDs. OAuth2 token/liveness and auth/cache/HTTP/CORS semantics are preserved. Independent review fixed Unicode error-message parity; live verification caught and fixed CORS preflight cache headers. Final local/full/live checks pass; M0.5 is complete.
+- M0.6 is complete: three labelled synthetic PDFs/six pages, fixed source recipes/IDs, manifest hashes, contextual evidence and explicit scoped amendment examples. Thirty-one authored cases cover all18 adversarial categories:29 wire-shape cases and two mocked provider events. Future gate expectations remain data; no Docling/OCR/model/gate/effectiveness capability is claimed.
+- Sixteen new backend and40 frontend fixture tests verify repeatable local generation, native/raster content, offsets/rotations, spans/cells/source references, output confinement/tampering and structural parity. All six pages were rendered and visually inspected; the amended supersession page was inspected again after its scoped-source fix. Dev-only ReportLab5.0.1/pypdf6.19.0/Pillow12.3.0/types-reportlab5.0.0.20260911 are pinned. Generated PDFs/manifests/case exports are ignored.
+
+## Phase status
+
+| Phase | Status | Next acceptance requirement |
+|---|---|---|
+| Prerequisite assessment | Complete | Findings preserved in execution records |
+| M0.1 Repository + instructions | Complete | Git main branch, exclusions and original-file hashes verified |
+| M0.2 Toolchain + CI | Complete | Locked bootstrap, backend4/frontend18/browser3 and static checks passed |
+| M0.3 Data infrastructure | Complete | Live services/migrations/restart checks and expanded full runner passed |
+| M0.4 Authentication | Complete | Unit/live/native checks, roles/revocation/seeds and full runner passed |
+| M0.5 Shared contracts | Complete | 303 backend/172 frontend/browser3/live58 and independent review passed |
+| M0.6 Fixtures | Complete | 319 backend/212 frontend/browser3, deterministic/integrity/visual checks and independent review passed |
+| M1.1 Ingestion schemas | Complete | 350 backend/87 live/212 frontend/browser3;0003 verified and activated in M1.2 |
+| M1.2 Upload/jobs | Complete | 373 backend/103 live/212 frontend/browser3; real outage/replay/consumed duplicates/graceful restart and safe repeat probe passed |
+| M1.3 Parsing | Complete | Frozen offline runtime, four measured sources, geometry/provenance/limits and full/live verification |
+| M1.4 Evidence | Complete | Real atomic PARSED result, 878 exact records, authenticated PDF checks, persisted highlight and consumed duplicate |
+| M1A milestone | Complete | Ingestion through exact persisted evidence verified on one controlled real filing |
+| M1B–M4 and integration | Not started | Respective prerequisites and verification |
+
+## Resume instructions
+
+The authorized M1A milestone is complete. Preserve the actual source, jobs, immutable parse/evidence, generated accounts, original volumes and frozen migrations 0001-0005. M1B is the next milestone and has not started; implement it only within a subsequent authorized scope. Do not repeat the deck/worker approval, M1.3 benchmark or completed M1.4 proof merely to resume.
+
+Read `data/evidence-validation-report.json`, the latest phase log and `docs/CONTINUATION_PROMPT.md`. Original source/legacy verification and the new evidence proof are separate entries in `data/manifest.json`. Docker storage relocation is verified complete; use `docs/DOCKER_STORAGE_MOVE.md` and the11October preservation proof. Keep the verified cold backup; further deletion, relocation or system changes need an explicitly authorized action. No commit/push, provider budget, accepted observations, amendment decisions or corpus publication is authorized by M1A.
+
+## Historical resume notes (superseded)
+
+**Latest runtime checkpoint:** M1.4 code/review/default+live checks pass; Docker crashed during final worker rebuild and manual recovery is pending. Restore the existing engine and original services without reset, verify frozen migrations0001–0004 and selected parser identity, build current worker, then apply reviewed0005 and run scripts/check-evidence-runtime.py against a task-owned native authenticated API. Inspect its genuine persisted highlight, consumed terminal duplicate and final primary status; stop the owned API and update manifest/records only after proof. Root schema remains0001–0004, real legacy job SOURCE_VERIFIED unchanged, no accepted/published facts. M1.3 remains complete; do not reask deck/worker approval or advanceM1B.
+
+**Latest9October closure overrides the older checkpoint below:** M1.3 is complete and M1.4 code is being implemented. Finish/review append0005, run disposable live evidence/job/auth/range checks before primary activation, rebuild the approved worker, then prove a real PARSED result and authenticated exact evidence/original source access. Preserve legacy SOURCE_VERIFIED jobs, original PDFs, secrets/accounts/volumes and frozen0001–0004. No deck/worker approval, commit/push, fact acceptance or publication is needed/authorized.
+
+**9 October checkpoint takes precedence over historical records below.** Resume the full check runner, confirm the existing Docker Linux engine and services, then run final offline captures with distinct hash seeds to prove one deterministic SDK configuration. Preserve the first captures/measurement identities. Freeze model/package/backend/adapter/geometry/configuration provenance, disclose OCR/table/Unicode/span limits and close M1.3 only after verification. M1.4 remains authorized: atomic sealed parse/evidence persistence and authenticated original-PDF/range access. No repeated deck/worker approval is needed; no commit/push is authorized.
+
+Final native backend verification encountered the Windows sandbox HTTP-client
+teardown stall and exited1 without completion. The approved outside-sandbox full
+runner subsequently exits0:752backend/5Windows skips/103live deselected in15.55s,
+212frontend and3Chromium in9.3s, lint/types/build, Ruff84files/mypy57sources.
+Native model verification and the selected processing descriptor pass again;
+original real source SHA256 remains unchanged. Existing Docker application
+launch reports already running but exits without its Linux pipe; a manual engine
+status question is pending. Do not reset Docker data/configuration or bypass the
+M1.3 gate. Read docs/M1_4_EVIDENCE_PLAN.md for the reviewed subsequent design.
+
+**M1.2 is complete:**373 backend/103 live/212 frontend/browser3 pass.0003/0004
+are primary-applied, status[1,2,3,4]/pending[], both seeded roles authenticate.
+61-package lock includes runtimeCelery5.6.3/Redis6.4.0 and promotedpypdf6.19.0;
+worker builds43 production packages. Final runner includes the runtime helper:
+Ruff64files/mypy45sources;373 backend/212 frontend/browser3 (15.3s), exit0.
+Independent M1.1/M1.2 reviews are complete. Strengthened29 constraint cases pass
+in27.88s and prevent sealing/duplicate-key errors from masking span/box gates.
+Preserve frozen0004 SHA256e2be2e54071e776ff5155086333bdff524510f654138ccc0a0aef82e0894b534.
+
+**Active: M1.3 parsing, within authorized M1A.** Real job
+b2aaaf4d-c2fc-4537-9414-3e6dad710171 verifies the original three-page Premier source;
+data/manifest.json records actual registration/configuration. Broker outage retained
+intent; replay, consumed duplicates and graceful restart preserved one result. Safe
+existing-job probe also passes. Worker remains healthy UID/GID10001/read-only/no
+ports, imagec3774067af7d7ecb3729fa847c27a48a39c8c32003cebf116a1061991c6639d8.
+Read docs/M1_3_PARSING_PLAN.md. Install only worker-required Docling/one OCR engine
+and verified model artifacts; calibrate provenance/geometry and benchmark, then
+M1.4 exact persistence/access. Reuse secrets/accounts/volumes. The deck waiver and
+worker approval persist; do not ask again.
+
+2026-10-07 preparation: the frozen121-package lock resolves worker-only Docling
+Slim2.134.0/core2.99.0/parse7.22.1/IBM models4.0.3, RapidOCR3.9.2,
+ONNXRuntime1.30.0 and official CPU Torch2.13.0+cpu/Vision0.28.0+cpu. Core2.99.0
+corrects the initial incompatible proposed2.98.0 pin. Native frozen sync remains
+60 packages without heavy parsing/GPU packages; Linux extra dry-run succeeds,
+with no NVIDIA/Triton/GPU ONNX lock entries. Actual worker build/import is pending.
+All15 selected model/config/card/license files were anonymously acquired into
+ignored models/m1a-v1:391535814bytes, manifest SHA256
+c8788bd39485f36507c44a6728a8e6c5a423de62c8de28ad52ed7b67490727d2.
+Weight hashes match recorded publisher expectations; actual conversion is untested.
+125 parsing DTO/geometry unit tests pass with configured Ruff/strict mypy. Raw
+invalid offsets remain diagnostic data; canonical geometry is never fitted/clamped.
+SDK/probe skeleton passes static checks but has not run against Docling.
+The previous download attempt did not execute because approval review hit an
+account usage limit; the resumed approved acquisition completed today. Docker
+Desktop initially exited after launch; the user manually started it and confirmed
+the engine running. Original volumes were verified, stopped services restored,
+and primary status remains1–4/pending[]. The first parsing image built107packages;
+import smoke found missing SciPy and OpenCV libxcb. Minimal explicit Linuxworker
+requirements are being resolved; no host software or duplicate OCR backend.
+Do not claim M1.3 complete or apply M1.4 implementation before parser/frame acceptance.
+Search/profile/quote/ledger, accepted observations and publication remain later.
+
+Read `AGENTS.md`, this file, `docs/CONTINUATION_PROMPT.md` and the active phase entry in `docs/PHASE_LOG.md`; then only relevant specifications and execution plans. Inspect Git status before editing. Do not mark a phase complete or advance until its relevant checks pass. Record actual commands, changed files, decisions, errors/fixes and remaining work. No commit or push exists. The explicit user waiver controls the presentation gate; preserve the finalized specifications and do not substitute databases or skip verification.

@@ -1,0 +1,325 @@
+{
+  "configuration_cross_process_runtime_retested": true,
+  "final_linux_execution": {
+    "date": "2026-10-09",
+    "geometry_scope": "Original low-level text, raw quads, canonical boxes and page geometry equal the previously visually inspected captures.",
+    "image_id": "sha256:6695cab1db9b122412aff5724b92cbb1847fa2066f7882e52e961187d16f7437",
+    "network_scope": "Docker network none isolates each process; zero Python socket connect/create_connection interceptions. No native/DNS audit claim.",
+    "operator_script_sha256": "a1c4592cc920377e9c3cf96d41a10162eaeb46b7973def3131a64654a74e56bf",
+    "processes": [
+      {
+        "artifact_sha256": "ceb4c2d6cde17fd40d5d2c1dd14f76345ae0e7b64251b4891cf0aa8411a56fa2",
+        "blocks": 69,
+        "calibrated_original_geometry_unchanged": true,
+        "capture_bytes": 201756,
+        "capture_sha256": "27fd9f36181179ea7c3ecab2dce23e9b11fce2329f93935c65f7b9962448c145",
+        "cells": 14,
+        "key": "base",
+        "low_level_exact_blocks": 45,
+        "measurements": {
+          "conversion_seconds": 20.544840773000033,
+          "initialization_seconds": 18.401734111999986,
+          "max_rss_kib": 1984304,
+          "network_attempts": 0,
+          "network_disabled": true,
+          "output_bytes": 201756,
+          "status": "success"
+        },
+        "pages": 4,
+        "parse_id": "afe7e3fd-a36a-4d1c-8fe7-36a6d7936446",
+        "processing_configuration_sha256": "0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f",
+        "python_hash_seed": 11,
+        "sdk_configuration_sha256": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+        "tables": 1
+      },
+      {
+        "artifact_sha256": "686d534a3787079d941da74b098e5424a1fb85b051590f3a7f10e8fdce86e845",
+        "blocks": 24,
+        "calibrated_original_geometry_unchanged": true,
+        "capture_bytes": 87655,
+        "capture_sha256": "c28cbe98264e82b9c304ef8904d296f91f957af4c1da1bbba11665f9d145377c",
+        "cells": 0,
+        "key": "corrigendum",
+        "low_level_exact_blocks": 13,
+        "measurements": {
+          "conversion_seconds": 12.846451572999968,
+          "initialization_seconds": 14.796051875999979,
+          "max_rss_kib": 1246976,
+          "network_attempts": 0,
+          "network_disabled": true,
+          "output_bytes": 87655,
+          "status": "success"
+        },
+        "pages": 1,
+        "parse_id": "0b0ba922-e304-44a9-a245-1dadd38bc5e4",
+        "processing_configuration_sha256": "0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f",
+        "python_hash_seed": 37,
+        "sdk_configuration_sha256": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+        "tables": 0
+      },
+      {
+        "artifact_sha256": "083239cdb94a237e452ee9b82705c8f7c88cfa840865e7c2dccec91579941b3c",
+        "blocks": 8,
+        "calibrated_original_geometry_unchanged": true,
+        "capture_bytes": 35676,
+        "capture_sha256": "eee9d4a3b776b0f091bc9b42c097f011e6ebbf851107fb685a4cc1a5390f4d10",
+        "cells": 0,
+        "key": "later-conflict",
+        "low_level_exact_blocks": 4,
+        "measurements": {
+          "conversion_seconds": 19.62295501699998,
+          "initialization_seconds": 28.595043675000056,
+          "max_rss_kib": 1250068,
+          "network_attempts": 0,
+          "network_disabled": true,
+          "output_bytes": 35676,
+          "status": "success"
+        },
+        "pages": 1,
+        "parse_id": "d3ae8078-c019-41e4-8d0d-687869d10643",
+        "processing_configuration_sha256": "0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f",
+        "python_hash_seed": 71,
+        "sdk_configuration_sha256": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+        "tables": 0
+      },
+      {
+        "artifact_sha256": "09c38260672d43bcc41072cb94cba5c86b5c066aac0fc0ec0bf57a74cb8c5b96",
+        "blocks": 982,
+        "calibrated_original_geometry_unchanged": true,
+        "capture_bytes": 4616619,
+        "capture_sha256": "9f4bf1fd0c956971149c7483ec77523c9bf9e7e8ad842f25f9501b36d149919a",
+        "cells": 435,
+        "key": "premier",
+        "low_level_exact_blocks": 878,
+        "measurements": {
+          "conversion_seconds": 70.19292326899995,
+          "initialization_seconds": 22.165758202000006,
+          "max_rss_kib": 2363616,
+          "network_attempts": 0,
+          "network_disabled": true,
+          "output_bytes": 4616619,
+          "status": "success"
+        },
+        "pages": 3,
+        "parse_id": "8f781771-fd71-4027-b0ad-0503d82aa71d",
+        "processing_configuration_sha256": "0674ad02f980861fcbc012832345a33fa4863146f00d995d4212dbbf98022f7f",
+        "python_hash_seed": 101,
+        "sdk_configuration_sha256": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+        "tables": 15
+      }
+    ],
+    "runtime": "Non-root UID/GID10001, read-only root and pinned model mount, CPU only; same selected descriptor verified in all four processes."
+  },
+  "fixture_reports": [
+    {
+      "name": "base",
+      "report_sha256": "e90dc1d6ce96a520ed3b0376ac9f4f5a4e589bb2a32442c164b37e60035e46b2"
+    },
+    {
+      "name": "corrigendum",
+      "report_sha256": "3acd05318e9ce9576449bb7b0364fe0f1b98809a7aac3820b76d6b680f2fb803"
+    },
+    {
+      "name": "later-conflict",
+      "report_sha256": "ee67e2e75738cffc32058d27abab7b92e755e5f890a0f842cfed1ba616f323d9"
+    }
+  ],
+  "geometry_review": {
+    "fixture_rotations": [
+      0,
+      90,
+      180,
+      270
+    ],
+    "frame": "CROP_ROTATED_TOP_LEFT",
+    "limits": "Bounded calibration for this pinned backend and controlled sources; not general accuracy.",
+    "method": "Canonical box overlays rendered by Poppler from annotated copies retaining original MediaBox/CropBox/Rotate; originals unchanged. Seven pages visually inspected.",
+    "original_fixture_pages_inspected": 4,
+    "original_real_pages_inspected": 3
+  },
+  "historical_canonicalization_only": false,
+  "historical_canonicalized_configuration_sha256": {
+    "base": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+    "corrigendum": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+    "later-conflict": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412",
+    "premier": "73a44db5cdcbc3d5552d9269f0b5bce1741e28fd632f0a92a6139df1e35b5412"
+  },
+  "manual_real_snippets": {
+    "limits": [
+      "Five snippets do not measure filing-wide accuracy.",
+      "Native orig may omit visible currency glyphs; exact parsed-text support does not prove faithful financial transcription.",
+      "No authoritative financial values, semantic facts or accepted observations."
+    ],
+    "reference_method": "Manual original-render transcription checked against native extraction. Price-band rupee glyph transcribed as U+20B9; disclosed visible-glyph challenge. Prefix excludes heading quotation suffix.",
+    "results": [
+      {
+        "comparison_scope": "complete_line",
+        "from_ocr": false,
+        "observed_orig": "PREMIER ENERGIES LIMITED",
+        "page_no": 1,
+        "reference": "PREMIER ENERGIES LIMITED",
+        "score": {
+          "character_edits": 0,
+          "character_error_rate": 0.0,
+          "normalization": "NFC; collapse Unicode whitespace to one ASCII space; case/punctuation retained",
+          "normalized_exact_lines": 1,
+          "normalized_exact_match": true,
+          "observed_characters": 24,
+          "observed_lines": 1,
+          "observed_raw": "PREMIER ENERGIES LIMITED",
+          "observed_words": 3,
+          "ordered_line_edits": 0,
+          "raw_exact_lines": 1,
+          "raw_exact_match": true,
+          "reference_characters": 24,
+          "reference_lines": 1,
+          "reference_raw": "PREMIER ENERGIES LIMITED",
+          "reference_words": 3,
+          "unmatched_observed_lines": 0,
+          "unmatched_reference_lines": 0,
+          "word_edits": 0,
+          "word_error_rate": 0.0
+        },
+        "source_cell_index": 38
+      },
+      {
+        "comparison_scope": "complete_line",
+        "from_ocr": false,
+        "observed_orig": "Corporate Identity Number: U40106TG1995PLC019909",
+        "page_no": 1,
+        "reference": "Corporate Identity Number: U40106TG1995PLC019909",
+        "score": {
+          "character_edits": 0,
+          "character_error_rate": 0.0,
+          "normalization": "NFC; collapse Unicode whitespace to one ASCII space; case/punctuation retained",
+          "normalized_exact_lines": 1,
+          "normalized_exact_match": true,
+          "observed_characters": 48,
+          "observed_lines": 1,
+          "observed_raw": "Corporate Identity Number: U40106TG1995PLC019909",
+          "observed_words": 4,
+          "ordered_line_edits": 0,
+          "raw_exact_lines": 1,
+          "raw_exact_match": true,
+          "reference_characters": 48,
+          "reference_lines": 1,
+          "reference_raw": "Corporate Identity Number: U40106TG1995PLC019909",
+          "reference_words": 4,
+          "unmatched_observed_lines": 0,
+          "unmatched_reference_lines": 0,
+          "word_edits": 0,
+          "word_error_rate": 0.0
+        },
+        "source_cell_index": 7
+      },
+      {
+        "comparison_scope": "prefix",
+        "from_ocr": false,
+        "observed_orig": "ADDENDUM TO THE RED HERRING PROSPECTUS DATED AUGUST 20, 2024",
+        "page_no": 2,
+        "reference": "ADDENDUM TO THE RED HERRING PROSPECTUS DATED AUGUST 20, 2024",
+        "score": {
+          "character_edits": 0,
+          "character_error_rate": 0.0,
+          "normalization": "NFC; collapse Unicode whitespace to one ASCII space; case/punctuation retained",
+          "normalized_exact_lines": 1,
+          "normalized_exact_match": true,
+          "observed_characters": 60,
+          "observed_lines": 1,
+          "observed_raw": "ADDENDUM TO THE RED HERRING PROSPECTUS DATED AUGUST 20, 2024",
+          "observed_words": 10,
+          "ordered_line_edits": 0,
+          "raw_exact_lines": 1,
+          "raw_exact_match": true,
+          "reference_characters": 60,
+          "reference_lines": 1,
+          "reference_raw": "ADDENDUM TO THE RED HERRING PROSPECTUS DATED AUGUST 20, 2024",
+          "reference_words": 10,
+          "unmatched_observed_lines": 0,
+          "unmatched_reference_lines": 0,
+          "word_edits": 0,
+          "word_error_rate": 0.0
+        },
+        "source_cell_index": 440
+      },
+      {
+        "comparison_scope": "complete_line",
+        "from_ocr": false,
+        "observed_orig": "CORRIGENDUM",
+        "page_no": 3,
+        "reference": "CORRIGENDUM",
+        "score": {
+          "character_edits": 0,
+          "character_error_rate": 0.0,
+          "normalization": "NFC; collapse Unicode whitespace to one ASCII space; case/punctuation retained",
+          "normalized_exact_lines": 1,
+          "normalized_exact_match": true,
+          "observed_characters": 11,
+          "observed_lines": 1,
+          "observed_raw": "CORRIGENDUM",
+          "observed_words": 1,
+          "ordered_line_edits": 0,
+          "raw_exact_lines": 1,
+          "raw_exact_match": true,
+          "reference_characters": 11,
+          "reference_lines": 1,
+          "reference_raw": "CORRIGENDUM",
+          "reference_words": 1,
+          "unmatched_observed_lines": 0,
+          "unmatched_reference_lines": 0,
+          "word_edits": 0,
+          "word_error_rate": 0.0
+        },
+        "source_cell_index": 70
+      },
+      {
+        "comparison_scope": "complete_line",
+        "from_ocr": false,
+        "observed_orig": "PRICE BAND: 427 TO 450 PER EQUITY SHARE OF FACE VALUE OF 1 EACH.",
+        "page_no": 1,
+        "reference": "PRICE BAND: ₹427 TO ₹450 PER EQUITY SHARE OF FACE VALUE OF ₹1 EACH.",
+        "score": {
+          "character_edits": 3,
+          "character_error_rate": 0.04477611940298507,
+          "normalization": "NFC; collapse Unicode whitespace to one ASCII space; case/punctuation retained",
+          "normalized_exact_lines": 0,
+          "normalized_exact_match": false,
+          "observed_characters": 64,
+          "observed_lines": 1,
+          "observed_raw": "PRICE BAND: 427 TO 450 PER EQUITY SHARE OF FACE VALUE OF 1 EACH.",
+          "observed_words": 14,
+          "ordered_line_edits": 1,
+          "raw_exact_lines": 0,
+          "raw_exact_match": false,
+          "reference_characters": 67,
+          "reference_lines": 1,
+          "reference_raw": "PRICE BAND: ₹427 TO ₹450 PER EQUITY SHARE OF FACE VALUE OF ₹1 EACH.",
+          "reference_words": 14,
+          "unmatched_observed_lines": 1,
+          "unmatched_reference_lines": 1,
+          "word_edits": 3,
+          "word_error_rate": 0.21428571428571427
+        },
+        "source_cell_index": 31
+      }
+    ],
+    "selection": "Four small metadata/heading snippets plus one currency-glyph challenge; engineering checks, not random or held-out gold."
+  },
+  "measured_on": "2026-10-07",
+  "network_attempt_scope": "Intercepted Python socket.connect/create_connection calls; Docker networknone isolates the process. Native-library and DNS attempt counters are not audited.",
+  "raw_capture_sha256": "76fab45348c9d5e867f5314745aedb6ea9f3f963127dcd77f2d82ad0831eaa00",
+  "report_version": "1.0.0",
+  "reviewed_on": "2026-10-09",
+  "runtime": {
+    "conversion_seconds": 66.27344814300022,
+    "initialization_seconds": 15.691184176000206,
+    "max_rss_kib": 2287252,
+    "network_attempts": 0,
+    "network_disabled": true,
+    "output_bytes": 4616516,
+    "status": "success"
+  },
+  "source_bytes_changed": false,
+  "source_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+  "status": "M1.3 runtime freeze pending"
+}
