@@ -20,6 +20,7 @@ from regintel.auth.service import AuthService
 from regintel.config import Environment, Settings
 from regintel.contracts.http import error_response, new_response_meta, uses_json_envelope
 from regintel.contracts.models import ErrorDetail
+from regintel.entities.api import EntityService, create_entity_router
 from regintel.evidence.api import EvidenceService, create_evidence_router
 from regintel.ingestion.api import IngestionService, create_ingestion_router
 
@@ -40,6 +41,7 @@ def create_app(
     auth_service: AuthService | None = None,
     ingestion_service: IngestionService | None = None,
     evidence_service: EvidenceService | None = None,
+    entity_service: EntityService | None = None,
 ) -> FastAPI:
     """Construct isolated applications for tests and native development."""
 
@@ -127,6 +129,7 @@ def create_app(
     application.include_router(create_auth_router(auth_service))
     application.include_router(create_ingestion_router(auth_service, ingestion_service))
     application.include_router(create_evidence_router(auth_service, evidence_service))
+    application.include_router(create_entity_router(auth_service, entity_service))
 
     @application.get("/health/live", response_model=LivenessResponse, tags=["health"])
     def liveness() -> LivenessResponse:

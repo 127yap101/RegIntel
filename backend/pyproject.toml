@@ -20,6 +20,10 @@ dependencies = [
 # M1.3 parsing is confined to the approved Linux amd64 worker. Native default
 # sync and API execution omit this extra; model artifacts are acquired separately.
 [project.optional-dependencies]
+entities = [
+  "rapidfuzz==3.14.6",
+  "spacy==3.8.16",
+]
 parsing = [
   "docling-slim[format-pdf,models-local,feat-ocr-rapidocr-onnx]==2.134.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
   "docling-core==2.99.0; sys_platform == 'linux' and platform_machine == 'x86_64'",

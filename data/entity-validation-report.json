@@ -1,0 +1,64 @@
+{
+  "recorded_at_utc": "2026-10-13T13:26:25.952879+00:00",
+  "phase": "M1.5",
+  "source_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+  "parse_version_id": "38819124-f764-4f41-acef-44ac000dbc45",
+  "artifact_sha256": "f430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f",
+  "entity_id": "581d1b0d-98fd-4a23-8e15-5574dac650a2",
+  "run_id": "407bc0fa-e97a-4d81-8c9f-126b682e83a7",
+  "registration_already_existed": false,
+  "registry_revision": 1,
+  "registry_sha256": "fbd093b15a7ff812ffd82de5784e0ba4ffa16d3c489aadc7f17f463f5b1bb9d1",
+  "configuration": {
+    "version": "1.0.0",
+    "spacy_version": "3.8.16",
+    "rapidfuzz_version": "3.14.6",
+    "code_sha256": "ac502a66ca6867954642fd256b90a5debdc0ac7bd0b251542075ac651b3c6d94",
+    "fuzzy_threshold": 85.0,
+    "max_proposals": 5
+  },
+  "configuration_sha256": "1e9c0d0eb41f22e506cdf50f4cad279f5137eeb76747c5f9a78dcc9bbd9c7495",
+  "evidence_count": 878,
+  "mention_count": 40,
+  "resolution_counts": {
+    "REVIEW": 1,
+    "UNRESOLVED": 33,
+    "RESOLVED": 6
+  },
+  "registration_and_run_replay": "passed",
+  "anonymous_and_learner_denials": "passed",
+  "original_evidence_reads": "passed",
+  "source_job_and_financial_snapshot_unchanged": true,
+  "migration_applied": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6
+  ],
+  "limitations": [
+    "One controlled three-page source; not held-out research accuracy.",
+    "Exact table-cell originals remain unavailable.",
+    "Engineering operator registration; not independently human-reviewed gold data.",
+    "No candidates, accepted financial observations or corpus publication."
+  ],
+  "verification": {
+    "backend_passed": 1116,
+    "backend_windows_skipped": 6,
+    "live_database_passed": 208,
+    "frontend_passed": 212,
+    "chromium_passed": 3,
+    "lint_types_build": "passed",
+    "migration_0006_sha256": "8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249",
+    "ci_portability_commit": "cb772a8a1f904b03d623fcdde51732dfee170625",
+    "ci_portability_run": "https://github.com/127yap101/RegIntel/actions/runs/38343176243",
+    "ci_portability_conclusion": "success",
+    "entity_commit_hosted_result": "pending",
+    "entity_http_cases": 95,
+    "frozen_parser_package_selection_identical": true,
+    "frozen_parser_package_count": 109,
+    "post_dependency_isolation_replay": "passed; same run/mentions/source/job/financial identities"
+  },
+  "runtime_boundary": "Native entities extra; parser worker selects parsing only."
+}

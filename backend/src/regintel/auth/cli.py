@@ -59,6 +59,8 @@ def serve_main() -> None:
         )
     except (OSError, ValueError, AuthUnavailable):
         raise SystemExit("Authentication configuration is unavailable; secrets omitted.") from None
+    from regintel.entities.api import EntityService
+    from regintel.entities.repository import EntityRepository
     from regintel.evidence.api import EvidenceService
     from regintel.evidence.repository import EvidenceRepository
     from regintel.ingestion.api import IngestionService
@@ -81,6 +83,7 @@ def serve_main() -> None:
             evidence_service=EvidenceService(
                 EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
             ),
+            entity_service=EntityService(EntityRepository(load_database_settings(args.env_file))),
         ),
         host="127.0.0.1",
         port=args.port,

@@ -276,3 +276,6 @@ build as macOS, ARM64 or native-Linux API reproduction.
 Primary references: [Psycopg package](https://pypi.org/project/psycopg/),
 [installation and supported platforms](https://www.psycopg.org/psycopg3/docs/basic/install.html),
 [transaction behavior](https://www.psycopg.org/psycopg3/docs/basic/transactions.html).
+## M1.5 native entity setup
+
+Native development/CI installs the locked `entities` extra (`uv sync --project backend --locked --extra entities`); both bootstrap scripts select it. It supplies spaCy3.8.16/RapidFuzz3.14.6 for the administrator entity endpoints. The parser worker selects only `parsing`, preserving its separate frozen package manifest. No pretrained NER model is required. See [M1.5 contracts and real proof](../docs/M1_5_ENTITY_RESOLUTION.md).

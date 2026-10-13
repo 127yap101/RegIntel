@@ -40,7 +40,7 @@ try {
     $actualPnpm = & pnpm --version
     if ($actualPnpm -ne '11.19.0') { throw "Expected pnpm 11.19.0; found $actualPnpm. Install the documented project version explicitly." }
     Invoke-Checked $uvExecutable @('python', 'install', $pythonVersion, '--no-bin', '--no-registry')
-    Invoke-Checked $uvExecutable @('sync', '--project', 'backend', '--locked')
+    Invoke-Checked $uvExecutable @('sync', '--project', 'backend', '--locked', '--extra', 'entities')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-contracts.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/generate-fixtures.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-fixture-cases.py')
