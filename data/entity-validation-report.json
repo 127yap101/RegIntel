@@ -54,11 +54,18 @@
     "ci_portability_commit": "cb772a8a1f904b03d623fcdde51732dfee170625",
     "ci_portability_run": "https://github.com/127yap101/RegIntel/actions/runs/38343176243",
     "ci_portability_conclusion": "success",
-    "entity_commit_hosted_result": "pending",
+    "entity_commit_hosted_result": "success",
     "entity_http_cases": 95,
     "frozen_parser_package_selection_identical": true,
     "frozen_parser_package_count": 109,
-    "post_dependency_isolation_replay": "passed; same run/mentions/source/job/financial identities"
+    "post_dependency_isolation_replay": "passed; same run/mentions/source/job/financial identities",
+    "entity_code_commit": "39ec5f5eb2268a700afc84f6e38e43c5d5c9b19b",
+    "entity_ci_run": "https://github.com/127yap101/RegIntel/actions/runs/38407101262",
+    "entity_ci_jobs": [
+      "Windows foundation",
+      "Ubuntu foundation",
+      "Linux migrations and data infrastructure"
+    ]
   },
   "runtime_boundary": "Native entities extra; parser worker selects parsing only."
 }
