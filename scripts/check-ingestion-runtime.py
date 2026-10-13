@@ -344,6 +344,9 @@ def main() -> int:
         with socket.socket() as reserved:
             reserved.bind(("127.0.0.1", 0))
             port = reserved.getsockname()[1]
+        creationflags = 0
+        if sys.platform == "win32":
+            creationflags = subprocess.CREATE_NO_WINDOW
         process = subprocess.Popen(
             [
                 sys.executable,
@@ -359,7 +362,7 @@ def main() -> int:
             cwd=ROOT,
             stdout=subprocess.DEVNULL,
             stderr=subprocess.DEVNULL,
-            creationflags=subprocess.CREATE_NO_WINDOW if sys.platform == "win32" else 0,
+            creationflags=creationflags,
         )
         with httpx2.Client(base_url=f"http://127.0.0.1:{port}", timeout=15) as client:
             deadline = time.monotonic() + 20

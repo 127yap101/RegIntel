@@ -10,6 +10,7 @@ import re
 import shutil
 import ssl
 import subprocess
+import sys
 import urllib.error
 import urllib.parse
 import urllib.request
@@ -248,6 +249,9 @@ def docker(arguments: list[str], *, code: str | None = None) -> str:
     if code is not None:
         command.append("-i")
     command.extend(["--entrypoint", arguments[0], BASE_IMAGE, *arguments[1:]])
+    creationflags = 0
+    if sys.platform == "win32":
+        creationflags = subprocess.CREATE_NO_WINDOW
     result = subprocess.run(
         command,
         input=code,
@@ -255,7 +259,7 @@ def docker(arguments: list[str], *, code: str | None = None) -> str:
         text=True,
         timeout=90,
         check=False,
-        creationflags=subprocess.CREATE_NO_WINDOW if os.name == "nt" else 0,
+        creationflags=creationflags,
     )
     if result.returncode:
         raise RuntimeError(f"Offline Debian verification failed: {result.stderr[-4000:]}")

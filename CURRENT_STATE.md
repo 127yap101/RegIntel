@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-11 (Asia/Calcutta).
+Updated: 2026-10-13 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -13,6 +13,9 @@ Updated: 2026-10-11 (Asia/Calcutta).
 - Final specification files remain unchanged under `docs/`.
 
 ## Latest verified state
+
+- **13 October continuation:** the user authorized continuing implementation and committing/pushing verified checkpoints to the existing GitHub repository. M1B is now active, starting with M1.5 entity resolution. Local implementation is under verification; M1.5 is not complete, migration0006 has not been applied to the primary database, and no new real entity result is claimed. Existing M0/M1A records, sources, migrations0001-0005 and accounts are preserved. Later M1B stages remain unimplemented.
+- **Hosted CI failure diagnosed and corrected locally:** run38128290003 at commit3c6d658 completed with Windows foundation passing and Ubuntu foundation failing strict mypy on two Windows-only subprocess constants; infrastructure was skipped. `scripts/acquire-worker-libs.py` and `scripts/check-ingestion-runtime.py` now use explicit `sys.platform == 'win32'` statement guards. Scoped Ruff, strict mypy for Linux and Windows, and38 worker acquisition tests pass, with two disclosed Windows symlink-privilege skips. The prior sandbox-only filesystem failures passed on the unchanged tests outside the sandbox. A new hosted run must confirm the published fix; no hosted success is claimed yet.
 
 - **GitHub publication complete,11October:** source snapshot commit `3c0f0b8934e3e2c36e1cd670f1bcc094cff55c1c` was pushed to public repository `https://github.com/127yap101/RegIntel`, branch `main`; remote SHA matched the local commit. Existing initial README commit `e4c22bb5fe2b0d7bb84c46afd1086cb9054211a0` is preserved as parent, and `origin/main` tracking is configured. All195publishable files passed independent secret/artifact audit, staged byte checks and a separate Git checkout hash check. Git attributes now retain exact data JSON/fixture-source bytes and LF for other text; original product/specification bytes preserved. Secrets/PDFs/models/DB state/backups/caches/generated outputs remain ignored. GitHub Actions run38128174434 started; hosted CI result is pending, not claimed passing. No product implementation changed; M1B unstarted.
 - **Docker storage maintenance complete, 11 October:** user applied the supported Desktop move; both live WSL disks are verified under `D:\DockerData\DockerDesktopWSL`, and the original C: disk paths are absent. Engine29.7.2 and all four existing services are healthy. Original three volume timestamps, worker image/security/loopback-only ports and migration checksums/status `[1,2,3,4,5]/[]` are preserved. Generated admin/learner authentication, existing PARSED job/attempt1, artifact/configuration/evidence fingerprints, 878 evidence records and eight original-PDF HTTP checks pass; authoritative and legacy snapshots unchanged. C: has36.2GB free and D:43.1GB free at09:09UTC. The verified29.4GB cold backup remains in ignored `.cache/docker-storage-backups/20261011-142236-ae158942fb9e4b7680a1bb17ec0d03d9`. New proof `.cache/docker-storage-verification-bba8913f8fcc45d1a7bc2abb63442b07`; see `docs/DOCKER_STORAGE_MOVE.md`. Temporary API stopped; no new ingestion, rebuild, prune, reset or agent disk deletion. M1B remains unstarted.

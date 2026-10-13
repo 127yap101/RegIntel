@@ -2,6 +2,12 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1B continuation and CI portability — 13 October
+
+User explicitly authorized continued implementation and GitHub checkpoint publication. Remote main was confirmed at3c6d658 with no teammate changes before editing. M1.5 source-backed entity registry/resolution/review is under local verification;0006 is not primary-applied and no real entity result or milestone completion is claimed. Preserve immutable migrations0001-0005 and all earlier sources/accounts/jobs.
+
+Actual GitHub Actions run38128290003 failed: Windows foundation passed, Ubuntu strict mypy rejected two Windows-only subprocess constants, and infrastructure was skipped. Replaced conditional expressions with explicit sys.platform statement guards in scripts/acquire-worker-libs.py and scripts/check-ingestion-runtime.py. Scoped Ruff and strict mypy with --platform linux and --platform win32 pass; worker acquisition tests pass38 with two disclosed Windows privilege skips after the existing sandbox filesystem restriction was handled through approved outside-sandbox execution. No checks were disabled and Windows runtime flags are preserved. Publish these two verified script changes and this durable checkpoint while entity integration work continues; hosted rerun results remain unverified.
+
 ## GitHub publication — source push verified, 11 October
 
 User explicitly authorized copying the current project to `https://github.com/127yap101/RegIntel`. Inspected existing main: only the10-byte README in initial commit e4c22bb. Configured origin and attached local main to that commit without changing working files. Independent read-only audit covered195candidate text files/1.67MB: no detected actual secrets, oversized/binary artifacts or accidental credential URLs. Ignored secrets, original PDFs, model/runtime caches, Docker/database backups, environments/build outputs and generated contracts remain excluded.
