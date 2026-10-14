@@ -82,7 +82,7 @@
     "new_environment_variables": [],
     "full_regression": "passed",
     "final_live_validation": "passed",
-    "hosted_ci": "pending publication",
+    "hosted_ci": "success",
     "backend_passed": 1691,
     "backend_windows_skipped": 6,
     "backend_seconds": "242.99",
@@ -90,6 +90,34 @@
     "final_live_validation_seconds": "307.90",
     "frontend_passed": 212,
     "chromium_passed": 3,
-    "lint_types_build": "passed"
+    "lint_types_build": "passed",
+    "source_commit": "5de23f585d156fbb4c98564dfc3c083faeefd42d",
+    "hosted_run_url": "https://github.com/127yap101/RegIntel/actions/runs/38596123035",
+    "remote_source_sha_verified": true,
+    "hosted_jobs": [
+      "Foundation (windows-2025)",
+      "Foundation (ubuntu-24.04)",
+      "Local data infrastructure (Linux)"
+    ],
+    "hosted_windows_backend_passed": 1694,
+    "hosted_windows_skipped": 3,
+    "hosted_linux_backend_passed": 1696,
+    "hosted_linux_skipped": 1,
+    "hosted_linux_skip_reason": "Windows junction behavior",
+    "hosted_live_database_passed": 402,
+    "hosted_live_database_seconds": "224.33",
+    "hosted_fresh_migrations_applied": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8
+    ],
+    "hosted_migration_replay_newly_applied": [],
+    "hosted_auth_and_service_restart_persistence": "passed",
+    "publication_record_changes": "documentation/report metadata only; product and migration bytes unchanged"
   }
 }

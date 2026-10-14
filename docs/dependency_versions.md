@@ -14,8 +14,9 @@ platform mypy73 and Bash/PowerShell syntax checks pass. Before the final joint
 currency/unit guard, the full398live suite passed906.18s; the final expanded90case
 suite passes307.90s. Actual final-code source validation, preserved historical
 review replay, permissions and unchanged earlier snapshots pass. Financial
-acceptance/observations/corpora remain0. Hosted verification is pending publication
-until CURRENT_STATE/report records actual results. No fresh worker/macOS/ARM or
+acceptance/observations/corpora remain0. Hosted source `5de23f585d156fbb4c98564dfc3c083faeefd42d` run38596123035 is SUCCESS
+onWindows/Linux foundation andLinux infrastructure; final402database cases
+pass224.33s, migration1–8apply/replay andauth/restart persistence pass. No fresh worker/macOS/ARM or
 real-source clone claim. Next is M1.8 stage integration/recovery.
 
 ## M1.6 bounded candidates —14October2026

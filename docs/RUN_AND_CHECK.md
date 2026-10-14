@@ -90,7 +90,9 @@ running Docker/PostgreSQL and creates/removes only its own disposable database.
 Final measured results: 1,691 backend passes/six Windows skips, 90 final live
 validation cases, 212 frontend passes and three browser passes. The earlier full
 398 database cases passed before the final currency/unit repair; the final live
-validation run covers that repair. These checks have already passed;
+validation run covers that repair. Hosted source CI also passes the complete
+final 402 database cases plus Windows/Linux foundation and service-restart checks.
+These checks have already passed;
 there is no need to rerun them merely to resume the checkpoint.
 
 ## Pause before sleep or shutdown

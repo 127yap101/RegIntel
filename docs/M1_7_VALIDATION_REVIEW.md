@@ -210,3 +210,19 @@ M1.7 is complete as this bounded original-text validation/review stage. Exact
 table-cell/OCR transcription adjudication, flexible final-review correction,
 worker recovery, amendments/corpus acceptance/projections, admin UI and research
 measurements remain explicit later work. No dependency or environment change.
+
+## Published source verification
+
+Source commit `5de23f585d156fbb4c98564dfc3c083faeefd42d` is on existingmain;
+remoteSHA matched and28staged files passed secret/asset/exact-byte review. Hosted
+[run38596123035](https://github.com/127yap101/RegIntel/actions/runs/38596123035)
+completedSUCCESS forWindows/Linux foundation andLinux data infrastructure.
+Windows1694pass/3POSIX skips andLinux1696pass/1Windows-junction skip are actual
+hosted counts; native Windows1691/6skips remains the separate local result.
+
+The final complete402database cases pass224.33s on the fresh Linux CI database;
+only that generated DB is removed. Fresh migrations1–8 and no-op replay,
+authentication and service-restart persistence pass. This supplies the final full
+suite result; the earlier398local and final90local checks remain distinct records.
+The publication-record follow-up changes documentation/report metadata only;
+tested product/migration fingerprints are unchanged. No PR or worker rebuild.

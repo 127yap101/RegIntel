@@ -34,7 +34,7 @@ Use Node24.19.0 and pnpm11.19.0. From the repository root:
 .\.tools\uv\uv.exe run --project backend --locked --no-sync uvicorn regintel.main:app --host 127.0.0.1 --port 8000
 ```
 
-In another terminal: `pnpm --dir frontend dev`, then visit `http://127.0.0.1:5173`. Bootstrap installs pinned project-local dependencies/browsers; checks install nothing. The full check runner starts and stops its own servers, so leave ports8000/5173 free. Windows Playwright process cleanup requires normal local process permissions; this Codex sandbox needed an approved outside-sandbox verification run. Linux/macOS use the corresponding `.sh` scripts with the pinned uv installed first; Linux browser OS dependencies must be explicitly installed. Prior M1.6 hosted CI passed on Windows/Linux and Linux data infrastructure; the current source checkpoint requires its own hosted result, recorded in CURRENT_STATE.
+In another terminal: `pnpm --dir frontend dev`, then visit `http://127.0.0.1:5173`. Bootstrap installs pinned project-local dependencies/browsers; checks install nothing. The full check runner starts and stops its own servers, so leave ports8000/5173 free. Windows Playwright process cleanup requires normal local process permissions; this Codex sandbox needed an approved outside-sandbox verification run. Linux/macOS use the corresponding `.sh` scripts with the pinned uv installed first; Linux browser OS dependencies must be explicitly installed. M1.7 source hosted CI passed on Windows/Linux and Linux data infrastructure, including the complete final 402 database tests; exact source/run details are recorded in CURRENT_STATE.
 
 With the existing Docker Desktop Linux engine running and the already generated ignored root `.env`, infrastructure checks use:
 

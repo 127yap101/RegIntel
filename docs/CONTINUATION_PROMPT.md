@@ -1,5 +1,7 @@
 # Prompt for continuing RegIntel
 
+Publication verified14October: source commit `5de23f585d156fbb4c98564dfc3c083faeefd42d` is on main and remoteSHA matched. Hosted [run38596123035](https://github.com/127yap101/RegIntel/actions/runs/38596123035) completedSUCCESS onWindows/Linux foundation andLinux infrastructure, including the complete final402database tests (224.33s), fresh1–8migration apply/replay andauth/service-restart persistence. Final publication-record changes are metadata only; product/migration bytes remain unchanged. Next is M1.8.
+
 Continue the verified M1.7 text validation/staged-review checkpoint in
 `https://github.com/127yap101/RegIntel` on existing `main`. Read `AGENTS.md`,
 `CURRENT_STATE.md`, `docs/M1_7_VALIDATION_REVIEW.md`,
@@ -21,8 +23,8 @@ validation cases,212frontend/3Chromium/lint/types/build, Ruff141/mypy88,
 Linux-platform mypy73 and both shell syntax checks. Before the final currency/unit
 repair, the full398database suite passed906.18s. After repair, the expanded final
 90validation storage cases pass307.90s; no final full402local run is claimed.
-Current publication/hosted CI status is in CURRENT_STATE/report and must be read,
-not assumed from older CI results. These checks are not research effectiveness,
+The exact source checkpoint now has successful hosted verification, including
+the final full402database cases. Later source changes require their own checks. These checks are not research effectiveness,
 gold annotation, macOS/ARM or a real-source fresh-clone proof.
 
 Primary migrations1–8 are applied, none pending. Preserve all bytes;0008 SHA256

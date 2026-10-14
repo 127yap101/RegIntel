@@ -4,6 +4,8 @@ This is the actual execution record, not a specification or performance report. 
 
 ## M1.7 bounded validation and staged review — verified 14 October
 
+Source publication complete:28verified files committed as `5de23f585d156fbb4c98564dfc3c083faeefd42d` and pushed normally to existingmain; remoteSHA matched and the source tree was clean. Staged secret/asset/exact-byte audits pass;15fingerprinted source files match committed bytes. Hosted [run38596123035](https://github.com/127yap101/RegIntel/actions/runs/38596123035) completedSUCCESS forWindows foundation (1694pass/3POSIX skips), Linux foundation (1696pass/1Windows-junction skip) and Linux data infrastructure. Final fresh402database cases pass224.33s, only that generated DB is removed, fresh1–8migration apply/replay and authentication/service-restart persistence pass. No PR created. The final publication-record follow-up is documentation/report metadata only, preserving all tested product/migration bytes.
+
 Implemented sixteen mandatory check categories over owned sealed candidate runs,
 complete original source statements/current identities, typed directed grammar,
 explicit numeric semantics and Decimal/context witnesses. Table/transcription
@@ -50,7 +52,7 @@ No new dependency/env/SDK/model/provider call/paid usage/system install/worker
 build. The historical parser image remains historical. M1.8 checkpointed worker
 stages/recovery is next; M1.9 must freshly validate staged decisions before atomic
 corpus acceptance/publication. One final review per candidate remains a documented
-restriction. Publication/hosted result is pending until actual Git/tools confirm it.
+restriction. Source publication and successful hosted verification are recorded above.
 
 
 ## M1.6 bounded candidate baseline — verified14October
