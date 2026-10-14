@@ -1,0 +1,95 @@
+{
+  "recorded_at_utc": "2026-10-14T16:01:00.150363+00:00",
+  "phase": "M1.7",
+  "source_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+  "parse_version_id": "38819124-f764-4f41-acef-44ac000dbc45",
+  "artifact_sha256": "f430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f",
+  "candidate_run_id": "6311f8bd-d49d-4fa8-b038-817205e73fff",
+  "run_id": "97ec299b-f5e7-4043-9fec-e7c08473b6a9",
+  "input_sha256": "0bc75f10bb6785ac2ac3fcc35042574c00bdf3d8d03cdc21104fd07da94d2eb0",
+  "configuration": {
+    "version": "1.0.0",
+    "code_sha256": "2238b63e5ab38edb1da487eeba90158a9337fd7cb46a26ba3ee920c5e4b43c0a"
+  },
+  "configuration_sha256": "f01505a3ffeec4b6fdd8df78a84dc735fc370348ec539e23198545de37b2996d",
+  "evidence_count": 878,
+  "table_risk_evidence_count": 628,
+  "transcription_risk_evidence_count": 11,
+  "candidate_count": 1,
+  "state_counts": {
+    "REVIEW": 1
+  },
+  "nonpassing_check_counts": {
+    "EXTRACTIVE_REVIEW": 1
+  },
+  "reviewer_eligible_count": 1,
+  "review_id": "5c42296e-e63f-4f84-9c52-ead243b9596c",
+  "review_decision": "APPROVE_FOR_PUBLICATION",
+  "review_validation_run_id": "f93660f2-c589-4cc5-af3d-031e896a4d3b",
+  "review_configuration_sha256": "8f6fb74d99a3aacc6d865432fd8b51d5fa96f91745bcea0fcfd8225cd1029411",
+  "review_recorded_for_current_configuration": false,
+  "review_already_existed": true,
+  "validation_and_read_replay": "passed",
+  "review_replay": "passed",
+  "anonymous_and_learner_denials": "passed",
+  "original_evidence_read": "passed",
+  "earlier_snapshot_unchanged": true,
+  "authority_counts": {
+    "acceptance_audits": 0,
+    "fact_observations": 0,
+    "relation_observations": 0,
+    "corpus_versions": 0
+  },
+  "migration_applied": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8
+  ],
+  "provider_calls": 0,
+  "limitations": [
+    "One controlled narrative; not gold annotation or research effectiveness.",
+    "The candidate stays CANDIDATE; staged approval is not acceptance/publication.",
+    "Final reviews survive code updates; publication must freshly revalidate.",
+    "No real numeric/relation positive, exact table-cell proof or OCR review.",
+    "Recovery, amendment effects and publication are later stages."
+  ],
+  "verification": {
+    "baseline_before_currency_guard": {
+      "backend_passed": 1683,
+      "backend_windows_skipped": 6,
+      "backend_seconds": "237.43",
+      "full_live_database_passed": 398,
+      "full_live_database_seconds": "906.18",
+      "frontend_passed": 212,
+      "chromium_passed": 3,
+      "full_check_runner": "passed"
+    },
+    "final_currency_and_gate_cases_passed": 142,
+    "new_validation_unit_cases": 313,
+    "new_live_validation_cases": 90,
+    "migration_0008_sha256": "7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d",
+    "source_and_frozen_migrations_0001_to_0007_unchanged": true,
+    "ruff_files": 141,
+    "mypy_sources": 88,
+    "linux_platform_mypy_sources": 73,
+    "check_runner_shell_syntax": "passed",
+    "new_dependencies": [],
+    "new_environment_variables": [],
+    "full_regression": "passed",
+    "final_live_validation": "passed",
+    "hosted_ci": "pending publication",
+    "backend_passed": 1691,
+    "backend_windows_skipped": 6,
+    "backend_seconds": "242.99",
+    "final_live_validation_passed": 90,
+    "final_live_validation_seconds": "307.90",
+    "frontend_passed": 212,
+    "chromium_passed": 3,
+    "lint_types_build": "passed"
+  }
+}

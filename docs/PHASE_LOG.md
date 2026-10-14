@@ -2,6 +2,57 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.7 bounded validation and staged review — verified 14 October
+
+Implemented sixteen mandatory check categories over owned sealed candidate runs,
+complete original source statements/current identities, typed directed grammar,
+explicit numeric semantics and Decimal/context witnesses. Table/transcription
+scope is conservatively rederived from the sealed artifact. Missing original
+cells, OCR quality or financial context blocks approval. Conditional narrative
+text retains its qualifications and needs extractive confirmation. Native admin
+policies/run/read/review endpoints stage eligibility only; existing acceptance,
+observations and corpus insertion gates remain closed.
+
+Append0008 adds immutable strict policy/run/review storage, source membership,
+byte/configuration hashes, current administrator/auth-version audit, replay,
+rollback/concurrency and raw-JSON readability guards. Applied only after the
+reviewed86case live pass176.03s. SHA256 remains
+`7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d`,
+primary1–8/pending[]. Earlier migrations, source/parsing/entity/candidate bytes,
+accounts/volumes and dependencies are preserved.
+
+Root review demonstrated an individually valid but incompatible USD/rupees
+synthetic pair. Added the joint semantic gate and twelve quantity/gate/live cases
+with supported positives. The earlier full runner passes1683backend/6Windows
+skips,212frontend/3Chromium; full398database cases pass906.18s. After repair, the
+final complete runner exits0 with1691backend/6disclosed Windows skips,212frontend,
+3Chromium/lint/types/build, Ruff141/mypy88. Final fresh90validation storage cases
+pass307.90s and remove only their generated DB. Linux-platform mypy73, both runner
+syntax checks and142targeted quantity/gate cases pass. No assertions disabled.
+These are engineering results, not gold annotation or research effectiveness.
+
+Actual Premier proof first stages the complete unchanged proposed-public-issue
+narrative in run `f93660f2-c589-4cc5-af3d-031e896a4d3b`, with final review
+`5c42296e-e63f-4f84-9c52-ead243b9596c`. After the code repair, fresh run
+`97ec299b-f5e7-4043-9fec-e7c08473b6a9` still has oneREVIEW result and only
+EXTRACTIVE_REVIEW unresolved. The original review/configuration is preserved and
+replayed, not rewritten as new-code approval. Current validation/read replay,
+historical review replay, exact qualifiers, anonymous/learner denials and earlier
+source/job/entity/candidate/policy snapshots pass. All four authority counts stay0;
+original candidates remainCANDIDATE. Among878exact inputs,628table/11transcription
+risk IDs are conservative classifications, not measured error rates. No real
+numeric/relation positive is demonstrated.
+
+Final full source-containing proof stays ignored under
+`.cache/validation-runtime-5ac865911dbd4458b21640e3be538444`; initial proof remains
+intact. Metadata is `data/validation-review-report.json`; owned8011API stopped.
+No new dependency/env/SDK/model/provider call/paid usage/system install/worker
+build. The historical parser image remains historical. M1.8 checkpointed worker
+stages/recovery is next; M1.9 must freshly validate staged decisions before atomic
+corpus acceptance/publication. One final review per candidate remains a documented
+restriction. Publication/hosted result is pending until actual Git/tools confirm it.
+
+
 ## M1.6 bounded candidate baseline — verified14October
 
 Publication complete: staged29verified textfiles passed asset/secret/byte audits; sourcecommit `9ced3a079681bf9cbfae9ad5f2833a1fcf8f26c9` pushed normally to existingmain, remoteSHA matched and workingtree was clean. Hosted [run38552615755](https://github.com/127yap101/RegIntel/actions/runs/38552615755) completedSUCCESS forWindows/Linux foundation andLinux infrastructure/migrations. Thisfinal publication-record update changes metadata only; product/migration bytes unchanged. NoPR created.

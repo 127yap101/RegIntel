@@ -1,8 +1,10 @@
 # Run, inspect and pause RegIntel
 
-M0/M1A, entity resolution and the bounded candidate baseline are implemented.
+M0/M1A, entity resolution, bounded candidates and text validation/staged reviews
+are implemented.
 The frontend currently shows foundation/status and API liveness. Ingestion,
-exact evidence/PDFs, entity decisions and unaccepted candidate runs are available
+exact evidence/PDFs, entity decisions, unaccepted candidate runs and staged
+validation/review audits are available
 through the backend API. Company/graph/review screens come later.
 
 ## Inspect the saved result without starting services
@@ -11,6 +13,7 @@ through the backend API. Company/graph/review screens come later.
 - [Measured evidence verification](../data/evidence-validation-report.json)
 - [Measured entity verification](../data/entity-validation-report.json)
 - [Measured candidate verification](../data/candidate-validation-report.json)
+- [Measured validation/review verification](../data/validation-review-report.json)
 - [Source manifest](../data/manifest.json)
 - Persisted CIN highlight: `D:/RegIntel/.cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682/cin-detail.png`
 
@@ -56,14 +59,18 @@ password flow. Use **Try it out** on:
 - `GET /v1/filing-versions/{filing_version_id}/source.pdf` with `295214b3-1c7a-44d4-8201-bf97a986a950`.
 - `GET /v1/admin/entities/runs/{run_id}` with `407bc0fa-e97a-4d81-8c9f-126b682e83a7`.
 - `GET /v1/admin/candidates/runs/{run_id}` with `6311f8bd-d49d-4fa8-b038-817205e73fff`.
+- `GET /v1/admin/validation/runs/{run_id}` with `97ec299b-f5e7-4043-9fec-e7c08473b6a9` for the final-code gate.
+- The same validation read with `f93660f2-c589-4cc5-af3d-031e896a4d3b` shows the original staged review.
 
 Expected results: `PARSED`, an exact CIN quote with span/geometry/provenance, and
 the original source PDF. Admin access is required; the learner role cannot read
-these unpublished M1A sources. Keep generated credentials local.
+these unpublished M1A sources. The final gate has one `REVIEW` result needing extractive confirmation. Its
+original review is preserved on the earlier configuration; this is staging only,
+not an accepted fact or published corpus. Keep generated credentials local.
 
 ## Check implementation
 
-Read-only schema status (expected applied 1-7, nothing pending):
+Read-only schema status (expected applied 1-8, nothing pending):
 
 ```powershell
 Set-Location D:\RegIntel
@@ -80,8 +87,10 @@ To rerun verification when desired, first stop the manual API/frontend with
 
 The first runs backend/frontend/browser and static checks. The second requires
 running Docker/PostgreSQL and creates/removes only its own disposable database.
-Last measured results: 887 backend passes/six Windows skips, 138 live database
-passes, 212 frontend passes and three browser passes. These have already passed;
+Final measured results: 1,691 backend passes/six Windows skips, 90 final live
+validation cases, 212 frontend passes and three browser passes. The earlier full
+398 database cases passed before the final currency/unit repair; the final live
+validation run covers that repair. These checks have already passed;
 there is no need to rerun them merely to resume the checkpoint.
 
 ## Pause before sleep or shutdown
@@ -103,6 +112,7 @@ work while the machine is asleep.
 
 When you return, reopen this Codex chat/project and start Docker Desktop if
 needed. The checkpoint is in CURRENT_STATE.md and CONTINUATION_PROMPT.md. Say
-"Resume from the M1A checkpoint; help resolve Docker storage, then proceed to
-M1B." No deck/worker approval needs repeating. Recover adequate space on Docker's
-storage drive before a new large image build.
+"Resume M1.8 from the verified validation/review checkpoint and keep verified
+changes on GitHub." No deck/Windows/worker approval needs repeating. Docker
+storage is already relocated to D:\DockerData; check its available space before
+a large image build.

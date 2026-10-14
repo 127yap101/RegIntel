@@ -16,11 +16,13 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-M0/M1A, M1.5 entity resolution and the M1.6 bounded candidate baseline are verified on the approved Windows/native API host. The controlled Premier source retains878exact records,40entity mentions and one immutable conditional narrative proposal. Candidate replay, exact source reads, permissions and preserved earlier state pass. Migration0007 is applied;0001–0006 remain frozen. Checks pass1378backend/6Windows skips,312live database,212frontend/3Chromium andlint/types/build. These are engineering checks; no financial facts or corpus are accepted/published.
+M0/M1A and M1.5–M1.7 are verified on the approved Windows/native API host. The controlled Premier source retains 878 exact evidence records, 40 entity mentions and one immutable conditional narrative proposal. M1.7 adds mandatory source/context/semantic checks, proposed Decimal interpretation, quarantine and immutable staged decisions. Candidates remain unaccepted; no financial observation or corpus is published. Migrations 1–8 are applied, with earlier bytes preserved.
 
-Next is M1.7 context/semantic validation and review; amendment/publication, user experiences and research evaluation remain unfinished. Provider boundaries are tested with offline mocks; live Gemini SDK/transport, model choice and paid benchmarking remain pending. No dependency/env change or worker rebuild. Native setup/CI selects `entities`; the historical parser worker selects only `parsing`. Original PDFs/models/credentials/database state stay out of Git. See [current state](CURRENT_STATE.md), [candidate contracts/setup](docs/M1_6_CANDIDATE_EXTRACTION.md), [measured candidate proof](data/candidate-validation-report.json) and [continuation prompt](docs/CONTINUATION_PROMPT.md).
+Final local checks pass 1,691 backend tests with six disclosed Windows skips, 90 final live validation cases, 212 frontend tests and three Chromium tests, plus lint/types/build. The earlier full 398 database cases passed before the final currency/unit repair; the expanded final validation suite verifies that repair. These are engineering checks, not measured research effectiveness. See [validation/review scope](docs/M1_7_VALIDATION_REVIEW.md), [measured proof](data/validation-review-report.json), [current state](CURRENT_STATE.md) and [continuation prompt](docs/CONTINUATION_PROMPT.md).
 
-The plain uvicorn command below provides liveness only. For authenticated ingestion/evidence/entity/candidate APIs, complete the documented local database/auth setup and run `regintel-api --env-file .env --auth-env-file .env.auth` from the configured backend environment.
+M1.8 worker recovery is next. Amendment/publication, company/graph/review experiences and held-out evaluation remain unfinished. Provider boundaries use offline mocks; live Gemini transport/model selection and paid benchmarking remain pending. No dependency/env change or worker rebuild occurred. The historical parser image selects only `parsing`; native setup/CI selects `entities`. Original PDFs/models/credentials/database state stay out of Git.
+
+For authenticated ingestion/evidence/entity/candidate/validation APIs, complete the documented local database/auth setup and run `regintel-api --env-file .env --auth-env-file .env.auth` from the configured backend environment. The plain uvicorn command below supplies process liveness only.
 
 ## Verified foundation commands
 
@@ -32,7 +34,7 @@ Use Node24.19.0 and pnpm11.19.0. From the repository root:
 .\.tools\uv\uv.exe run --project backend --locked --no-sync uvicorn regintel.main:app --host 127.0.0.1 --port 8000
 ```
 
-In another terminal: `pnpm --dir frontend dev`, then visit `http://127.0.0.1:5173`. Bootstrap installs pinned project-local dependencies/browsers; checks install nothing. The full check runner starts and stops its own servers, so leave ports8000/5173 free. Windows Playwright process cleanup requires normal local process permissions; this Codex sandbox needed an approved outside-sandbox verification run. Linux/macOS use the corresponding `.sh` scripts with the pinned uv installed first; Linux browser OS dependencies must be explicitly installed. Hosted CI is configured but has not run.
+In another terminal: `pnpm --dir frontend dev`, then visit `http://127.0.0.1:5173`. Bootstrap installs pinned project-local dependencies/browsers; checks install nothing. The full check runner starts and stops its own servers, so leave ports8000/5173 free. Windows Playwright process cleanup requires normal local process permissions; this Codex sandbox needed an approved outside-sandbox verification run. Linux/macOS use the corresponding `.sh` scripts with the pinned uv installed first; Linux browser OS dependencies must be explicitly installed. Prior M1.6 hosted CI passed on Windows/Linux and Linux data infrastructure; the current source checkpoint requires its own hosted result, recorded in CURRENT_STATE.
 
 With the existing Docker Desktop Linux engine running and the already generated ignored root `.env`, infrastructure checks use:
 

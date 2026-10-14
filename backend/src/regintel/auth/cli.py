@@ -70,6 +70,8 @@ def serve_main() -> None:
     from regintel.ingestion.config import native_ingestion_settings
     from regintel.ingestion.repository import JobRepository
     from regintel.main import create_app
+    from regintel.validation.api import ValidationService
+    from regintel.validation.repository import ValidationRepository
 
     ingestion_settings = native_ingestion_settings(ROOT, args.env_file)
     ingestion = IngestionService(
@@ -88,6 +90,9 @@ def serve_main() -> None:
             entity_service=EntityService(EntityRepository(load_database_settings(args.env_file))),
             candidate_service=CandidateService(
                 CandidateRepository(load_database_settings(args.env_file))
+            ),
+            validation_service=ValidationService(
+                ValidationRepository(load_database_settings(args.env_file))
             ),
         ),
         host="127.0.0.1",

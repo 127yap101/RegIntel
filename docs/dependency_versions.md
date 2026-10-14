@@ -1,5 +1,23 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.7 validation/review — 14 October 2026
+
+No added dependency, SDK, environment variable, model, host installation or worker
+image build. Existing lock140/native92 and frozen parser-only109 versions remain
+unchanged. Migrations0001–0007 and existing source identities remain frozen;
+append0008 is applied at SHA256
+`7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d`.
+
+Final Windows verification passes1691backend/six platform skips,90final live
+validation cases,212frontend/3Chromium/lint/types/build, Ruff141/mypy88; Linux
+platform mypy73 and Bash/PowerShell syntax checks pass. Before the final joint
+currency/unit guard, the full398live suite passed906.18s; the final expanded90case
+suite passes307.90s. Actual final-code source validation, preserved historical
+review replay, permissions and unchanged earlier snapshots pass. Financial
+acceptance/observations/corpora remain0. Hosted verification is pending publication
+until CURRENT_STATE/report records actual results. No fresh worker/macOS/ARM or
+real-source clone claim. Next is M1.8 stage integration/recovery.
+
 ## M1.6 bounded candidates —14October2026
 
 No dependencies, environment variables, model assets, host installs or image builds added. Lock140packages/native92distributions and parser-only109package manifest remainunchanged. Candidate extraction uses the alreadyinstalled entity results and standardPython/Pydantic/psycopg; quantitative interpretations remainnull/UNKNOWN.
