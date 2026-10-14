@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-13 (Asia/Calcutta).
+Updated: 2026-10-14 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -13,6 +13,10 @@ Updated: 2026-10-13 (Asia/Calcutta).
 - Final specification files remain unchanged under `docs/`.
 
 ## Latest verified state
+
+- **M1.6 bounded candidate baseline verified, 14 October:** original-text relation/numeric/narrative proposal contracts, explicit immutable extraction metrics, reviewed entity bindings, native admin API and atomic sealed candidate runs are complete. Actual checks pass1378backend/6disclosed Windows skips,312live database (104new candidate cases),212frontend/3Chromium; lint/types/build, Ruff126/mypy80 and Linux-platform mypy67. Primary0007 is applied at SHA256 `5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e`, status1–7/pending[]; migrations0001–0006 remain frozen. Actual Premier run `6311f8bd-d49d-4fa8-b038-817205e73fff` stores/replays one exact conditional narrative proposal, preserving original evidence/earlier snapshots and zero acceptance/observations/corpora. See `docs/M1_6_CANDIDATE_EXTRACTION.md` and `data/candidate-validation-report.json`; source-containing proof remains ignored under `.cache/candidate-runtime-168fbaac68af4d2ea03713307f9c5518`. Provider boundary passes65offline mocks; no real Gemini transport/SDK/model selection/call/cost is configured. No dependency/env/image/system change. Next is M1.7 context/semantic validation and review; later recovery/amendment/publication remain unimplemented. This is engineering verification, not research effectiveness. GitHub/hosted results must be recorded after actual publication.
+
+### Earlier M1.5 checkpoint (superseded where noted)
 
 - **M1.5 GitHub publication verified:** source commit `39ec5f5eb2268a700afc84f6e38e43c5d5c9b19b` is published on main and remote SHA matched. Hosted run [38407101262](https://github.com/127yap101/RegIntel/actions/runs/38407101262) completed SUCCESS: Windows foundation, Ubuntu foundation and Linux migrations/data infrastructure. The final publication record changes documentation/report metadata only; product source and frozen migration hashes are unchanged. Teammates can pull main and continue M1.6 from the checked-in continuation instructions. Fresh real-filing reproduction on their machine still requires ignored assets/credentials/data and actual local IDs.
 
@@ -97,16 +101,15 @@ Updated: 2026-10-13 (Asia/Calcutta).
 | M1.4 Evidence | Complete | Real atomic PARSED result, 878 exact records, authenticated PDF checks, persisted highlight and consumed duplicate |
 | M1A milestone | Complete | Ingestion through exact persisted evidence verified on one controlled real filing |
 | M1.5 Entity resolution | Complete | Real source-backed issuer/CIN, immutable40mention run, replay/auth/preservation and full/live checks |
-| M1B milestone | In progress | M1.6–1.9 candidate/gate/recovery/amendment/publication work remains |
+| M1.6 Candidate extraction | Complete bounded baseline | Sealed raw proposals verified; live Gemini transport/benchmark remains pending |
+| M1B milestone | In progress | M1.7–1.9 context gates/review/recovery/amendment/publication work remains |
 | M1C–M4 and integration | Not started | Respective prerequisites and verification |
 
 ## Resume instructions
 
-Latest13October checkpoint supersedes historical resume text below: M1.5 is complete, and M1.6 is the next authorized M1B step. Read `docs/M1_5_ENTITY_RESOLUTION.md`, `data/entity-validation-report.json` and the latest continuation record. Preserve immutable registrations/runs/reviews, all original parse/evidence/jobs/accounts and frozen migrations0001-0006. Continue bounded evidence-grounded candidates and later validation/versioning without promoting fuzzy/unknown entities or processed preview cells. Commit/push verified checkpoints within the current user authorization; paid provider calls still need an explicit budget. Teammate machines must acquire their own ignored source/model/runtime assets and generated credentials, apply all verified migrations and use their own actual parse/run IDs. Local source proof paths/IDs do not automatically exist on a clone.
+Latest14October: M1.6 bounded candidate baseline is verified; next authorized step is M1.7 context/semantic gates and reviewer decisions. Read `docs/M1_6_CANDIDATE_EXTRACTION.md`, `data/candidate-validation-report.json` and the current continuation prompt. Preserve migrations0001–0007, immutable sources/parse/evidence/entities/reviews and sealed raw candidate runs. Candidates are unaccepted; all financial authority/publication gates remain closed. Do not reinterpret history, accept fuzzy identities or use processed preview cells. M1.7 must require owned sealed-run membership and source/semantic/context support; pre-existing bare0003 placeholder candidates are not eligible acceptance inputs.
 
-The authorized M1A milestone is complete. Preserve the actual source, jobs, immutable parse/evidence, generated accounts, original volumes and frozen migrations 0001-0005. M1B is the next milestone and has not started; implement it only within a subsequent authorized scope. Do not repeat the deck/worker approval, M1.3 benchmark or completed M1.4 proof merely to resume.
-
-Read `data/evidence-validation-report.json`, the latest phase log and `docs/CONTINUATION_PROMPT.md`. Original source/legacy verification and the new evidence proof are separate entries in `data/manifest.json`. Docker storage relocation is verified complete; use `docs/DOCKER_STORAGE_MOVE.md` and the11October preservation proof. Keep the verified cold backup; further deletion, relocation or system changes need an explicitly authorized action. The current source snapshot has been published to the user-specified GitHub repository; further work follows its task instruction. M1A does not authorize provider spending, accepted observations, amendment decisions, financial corpus publication or implementation of M1B.
+Commit/push verified checkpoints on existingmain within continuing user authorization, checking for teammate changes first. No repeated deck/Windows/Linux-worker approval. Live Gemini SDK/transport, model selection/common tuning-set benchmark and spending need an explicit API/model budget before any calls; continue independent deterministic gate work. No research outcome is inferred from fixture tests. Teammates must restore their own ignored assets/credentials/data and use actual local parse/entity/candidate IDs. The retained M1A parser image is historical; controlled worker stage integration/recovery is M1.8, not a new current-image claim.
 
 ## Historical resume notes (superseded)
 

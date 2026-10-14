@@ -1,5 +1,13 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.6 bounded candidates —14October2026
+
+No dependencies, environment variables, model assets, host installs or image builds added. Lock140packages/native92distributions and parser-only109package manifest remainunchanged. Candidate extraction uses the alreadyinstalled entity results and standardPython/Pydantic/psycopg; quantitative interpretations remainnull/UNKNOWN.
+
+ActualWindows fullverification:1378backend/6platform skips,312live database,212frontend/3Chromium/lint/types/build, Ruff126/mypy80; Linux-platform mypy67 and bothshell syntaxchecks pass.0007migration applied/frozen at5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e; all1–6bytes preserved. Controlledreal candidate replay/evidence/auth/preservation passes. HostedCIfor thischeckpoint still needs its own actualresult. No rebuiltworker/macOS/ARM/freshrealclone claim.
+
+Geminiadapter uses injected transport and65offline mockcases; no SDK/network/model/APIkey/call/cost is configured. RealSDK/version/model/benchmark selection requires explicitbudget and officialcompatibility verification before livecalls. OfficialstructuredJSON/instruction guidance is linked in M1_6_CANDIDATE_EXTRACTION.md; schema compliance never constitutes financial acceptance.
+
 ## M1.5 native entity runtime — 13 October 2026
 
 Hosted M1.5 source39ec5f5 verification is now complete: run38407101262 SUCCESS onWindows foundation, Ubuntu foundation and Linux data infrastructure. Actual Linux EntityRuler/RapidFuzz tests and all migration contracts pass. Parsing-only exported109package/version pairs exactly match the retained SDK manifest and contain no entity packages. Historical parser image remains unchanged; no new image/macOS/ARM/full real-filing fresh-clone result is claimed.

@@ -1,13 +1,16 @@
 # Run, inspect and pause RegIntel
 
-M0 and M1A are complete. The frontend currently shows foundation/status and API
-liveness. Ingestion, jobs, persisted exact evidence and protected original PDFs
-are available through the backend API. Company/graph/review screens come later.
+M0/M1A, entity resolution and the bounded candidate baseline are implemented.
+The frontend currently shows foundation/status and API liveness. Ingestion,
+exact evidence/PDFs, entity decisions and unaccepted candidate runs are available
+through the backend API. Company/graph/review screens come later.
 
 ## Inspect the saved result without starting services
 
 - [Current state](../CURRENT_STATE.md)
 - [Measured evidence verification](../data/evidence-validation-report.json)
+- [Measured entity verification](../data/entity-validation-report.json)
+- [Measured candidate verification](../data/candidate-validation-report.json)
 - [Source manifest](../data/manifest.json)
 - Persisted CIN highlight: `D:/RegIntel/.cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682/cin-detail.png`
 
@@ -18,14 +21,15 @@ these records do not constitute accepted financial facts or a published corpus.
 ## Run the installed app
 
 Open Docker Desktop and wait for its Linux engine to run. These commands reuse
-the installed toolchain and current worker image; no new build is needed.
+the installed toolchain and data services. Reading persisted records does not
+require a parser worker build. New parsing/recovery work must follow the frozen
+worker setup; the retained M1A image has not been rebuilt with later native code.
 
 In PowerShell terminal 1:
 
 ```powershell
 Set-Location D:\RegIntel
 .\scripts\compose.ps1 up
-.\scripts\compose.ps1 worker-up
 .\backend\.venv\Scripts\regintel-api.exe --env-file .env --auth-env-file .env.auth
 ```
 
@@ -50,6 +54,8 @@ password flow. Use **Try it out** on:
 - `GET /v1/filing-jobs/{job_id}` with `c81a8c48-2895-4c00-8d88-e45a99bd114e`.
 - `GET /v1/evidence/{evidence_id}` with `a2491199-24e3-439f-bba6-3e380db8a28d`.
 - `GET /v1/filing-versions/{filing_version_id}/source.pdf` with `295214b3-1c7a-44d4-8201-bf97a986a950`.
+- `GET /v1/admin/entities/runs/{run_id}` with `407bc0fa-e97a-4d81-8c9f-126b682e83a7`.
+- `GET /v1/admin/candidates/runs/{run_id}` with `6311f8bd-d49d-4fa8-b038-817205e73fff`.
 
 Expected results: `PARSED`, an exact CIN quote with span/geometry/provenance, and
 the original source PDF. Admin access is required; the learner role cannot read
@@ -57,7 +63,7 @@ these unpublished M1A sources. Keep generated credentials local.
 
 ## Check implementation
 
-Read-only schema status (expected applied 1-5, nothing pending):
+Read-only schema status (expected applied 1-7, nothing pending):
 
 ```powershell
 Set-Location D:\RegIntel

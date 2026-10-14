@@ -1,0 +1,85 @@
+{
+  "recorded_at_utc": "2026-10-14T10:40:43.307802+00:00",
+  "phase": "M1.6",
+  "source_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+  "parse_version_id": "38819124-f764-4f41-acef-44ac000dbc45",
+  "artifact_sha256": "f430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f",
+  "entity_run_id": "407bc0fa-e97a-4d81-8c9f-126b682e83a7",
+  "run_id": "6311f8bd-d49d-4fa8-b038-817205e73fff",
+  "input_sha256": "6ff4defe45d71bdf40084c153f6f0f435104a8d7267d10aad7395f60dc5f3155",
+  "configuration": {
+    "version": "1.0.0",
+    "code_sha256": "8675ba58e24c2a116c029a091959ba0574f9962f82bd8d63a726bda9be796a39",
+    "max_window_chars": 20000,
+    "max_candidates": 1000,
+    "max_input_chars": 2000000
+  },
+  "configuration_sha256": "bcf8fb00e559ec91eae1d5773a7543e37d9a7194f309bf99c0b88f3386b081c4",
+  "metric": {
+    "id": "157319cf-8d48-4549-9d10-6b0d35854466",
+    "key": "proposed_public_issue",
+    "label": "Proposed public issue disclosure",
+    "kind": "narrative_fact",
+    "cue_phrases": [
+      "undertake an initial public offering"
+    ]
+  },
+  "metric_already_existed": false,
+  "evidence_count": 878,
+  "candidate_count": 1,
+  "candidate_kind_counts": {
+    "narrative_fact": 1
+  },
+  "issue_counts": {},
+  "metric_and_run_replay": "passed",
+  "anonymous_and_learner_denials": "passed",
+  "original_evidence_reads": "passed",
+  "earlier_snapshot_unchanged": true,
+  "unowned_candidate_count": 0,
+  "authority_counts": {
+    "acceptance_audits": 0,
+    "fact_observations": 0,
+    "relation_observations": 0,
+    "corpus_versions": 0
+  },
+  "migration_applied": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "provider_calls": 0,
+  "limitations": [
+    "One controlled source and one explicit probe metric; not research effectiveness.",
+    "The original conditional disclosure remains an unaccepted narrative proposal.",
+    "No real numeric/relation result, table-cell extraction or context normalization demonstrated.",
+    "Provider adapter verified with offline mocks; live SDK/model selection/usage not performed.",
+    "M1.7 acceptance/review, recovery and amendment/publication remain later work."
+  ],
+  "verification": {
+    "backend_passed": 1378,
+    "backend_windows_skipped": 6,
+    "live_database_passed": 312,
+    "new_live_candidate_cases": 104,
+    "frontend_passed": 212,
+    "chromium_passed": 3,
+    "lint_types_build": "passed",
+    "ruff_files": 126,
+    "mypy_sources": 80,
+    "linux_platform_mypy_sources": 67,
+    "candidate_model_extraction_cases": 101,
+    "offline_provider_cases": 65,
+    "candidate_http_cases": 48,
+    "raw_record_cases": 18,
+    "storage_unavailability_cases": 30,
+    "migration_0007_sha256": "5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e",
+    "source_and_frozen_migrations_0001_to_0006_unchanged": true,
+    "new_dependencies": [],
+    "new_environment_variables": [],
+    "check_runner_shell_syntax": "passed",
+    "hosted_ci": "not yet run for this checkpoint"
+  }
+}
