@@ -80,6 +80,13 @@
     "new_dependencies": [],
     "new_environment_variables": [],
     "check_runner_shell_syntax": "passed",
-    "hosted_ci": "not yet run for this checkpoint"
+    "hosted_ci": "success",
+    "source_commit": "9ced3a079681bf9cbfae9ad5f2833a1fcf8f26c9",
+    "hosted_run_url": "https://github.com/127yap101/RegIntel/actions/runs/38552615755",
+    "hosted_jobs": [
+      "Foundation (windows-2025)",
+      "Foundation (ubuntu-24.04)",
+      "Local data infrastructure (Linux)"
+    ]
   }
 }

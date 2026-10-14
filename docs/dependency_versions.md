@@ -4,7 +4,7 @@
 
 No dependencies, environment variables, model assets, host installs or image builds added. Lock140packages/native92distributions and parser-only109package manifest remainunchanged. Candidate extraction uses the alreadyinstalled entity results and standardPython/Pydantic/psycopg; quantitative interpretations remainnull/UNKNOWN.
 
-ActualWindows fullverification:1378backend/6platform skips,312live database,212frontend/3Chromium/lint/types/build, Ruff126/mypy80; Linux-platform mypy67 and bothshell syntaxchecks pass.0007migration applied/frozen at5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e; all1–6bytes preserved. Controlledreal candidate replay/evidence/auth/preservation passes. HostedCIfor thischeckpoint still needs its own actualresult. No rebuiltworker/macOS/ARM/freshrealclone claim.
+ActualWindows fullverification:1378backend/6platform skips,312live database,212frontend/3Chromium/lint/types/build, Ruff126/mypy80; Linux-platform mypy67 and bothshell syntaxchecks pass.0007migration applied/frozen at5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e; all1–6bytes preserved. Controlledreal candidate replay/evidence/auth/preservation passes. Hosted sourcecommit9ced3a079681bf9cbfae9ad5f2833a1fcf8f26c9 run38552615755 completedSUCCESS onWindows/Linux foundation andLinux infrastructure/migrations. No rebuiltworker/macOS/ARM/freshrealclone claim.
 
 Geminiadapter uses injected transport and65offline mockcases; no SDK/network/model/APIkey/call/cost is configured. RealSDK/version/model/benchmark selection requires explicitbudget and officialcompatibility verification before livecalls. OfficialstructuredJSON/instruction guidance is linked in M1_6_CANDIDATE_EXTRACTION.md; schema compliance never constitutes financial acceptance.
 

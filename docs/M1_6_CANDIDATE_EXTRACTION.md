@@ -123,3 +123,5 @@ M1.7 context/semantic gates and reviewer acceptance, M1.8 worker-stage recovery,
 M1.9 amendment/publication and subsequent experiences remain unimplemented.
 
 Measured14October closure:1378backend/6Windows skips,312liveDB (104new stagecases),212frontend/3Chromium, lint/types/build, Ruff126/mypy80 and Linux-platform mypy67 pass. Primary1–7 applied, nonepending;0007SHA5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e. ActualPremier proof stores/replays one conditional narrative proposal; earlier snapshots unchanged, unownedcandidates0 and authoritycounts0. Full measured metadata is in `data/candidate-validation-report.json`. No live provider or research outcome is claimed.
+
+Source commit `9ced3a079681bf9cbfae9ad5f2833a1fcf8f26c9` is published on main; [hosted verification38552615755](https://github.com/127yap101/RegIntel/actions/runs/38552615755) passed Windows/Linux foundation and Linux data infrastructure/migrations. The publication record changes metadata only.
