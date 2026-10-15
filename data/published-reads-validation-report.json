@@ -1,7 +1,7 @@
 {
-  "recorded_at_utc": "2026-10-15T14:49:53.148312+00:00",
+  "recorded_at_utc": "2026-10-15T15:08:38.473463+00:00",
   "phase": "M1.10",
-  "status": "passed — bounded real published reads",
+  "status": "complete — bounded engineering verification",
   "corpus_version_id": "614d7861-3f8f-4d5c-a9e5-d7423c2aba58",
   "manifest_sha256": "6622925d2516aedd4c04194372c7783983b00b14271a9d7edcb7ff5b65cda58e",
   "company_id": "581d1b0d-98fd-4a23-8e15-5574dac650a2",
@@ -112,7 +112,11 @@
       "skipped": 6,
       "database_deselected": 474,
       "seconds": 444.52,
-      "log": ".cache/m1_10-verification.log"
+      "log": ".cache/m1_10-verification.log",
+      "skip_reasons": {
+        "POSIX_modes_or_FIFO": 3,
+        "Windows_unprivileged_symlink_permission": 3
+      }
     },
     "new_disposable_read_cases": {
       "passed": 5,
@@ -126,7 +130,83 @@
     "mypy_full_runner_files": 117,
     "linux_platform_scoped_mypy": 11,
     "powershell_bash_actionlint": "passed",
-    "hosted": "pending reviewed source checkpoint",
+    "hosted": {
+      "run_id": 38755455205,
+      "head_sha": "456ed418dbee791dc586803263a12bd89963404a",
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/38755455205",
+      "status": "completed",
+      "conclusion": "success",
+      "jobs": [
+        {
+          "job_id": 116492560655,
+          "name": "Foundation (ubuntu-24.04)",
+          "conclusion": "success",
+          "backend_passed": 1835,
+          "backend_skipped": 1,
+          "database_deselected": 474,
+          "backend_seconds": 63.34,
+          "frontend_passed": 225,
+          "chromium_passed": 9,
+          "chromium_seconds": 17.8,
+          "ruff_files": 179,
+          "mypy_sources": 117,
+          "lint_types_build": "passed",
+          "skip_reasons": {
+            "Windows_junction_behavior": 1
+          }
+        },
+        {
+          "job_id": 116492561138,
+          "name": "Foundation (windows-2025)",
+          "conclusion": "success",
+          "backend_passed": 1833,
+          "backend_skipped": 3,
+          "database_deselected": 474,
+          "backend_seconds": 114.85,
+          "frontend_passed": 225,
+          "chromium_passed": 9,
+          "chromium_seconds": 17.3,
+          "ruff_files": 179,
+          "mypy_sources": 117,
+          "lint_types_build": "passed",
+          "skip_reasons": {
+            "POSIX_modes_or_FIFO": 3
+          }
+        },
+        {
+          "job_id": 116494874446,
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "conclusion": "success",
+          "database_passed": 474,
+          "database_seconds": 402.46,
+          "foundation_deselected": 1836,
+          "fresh_migrations_applied": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            10,
+            11
+          ],
+          "migration_replay": "no changes",
+          "authentication": "both seeded roles passed",
+          "persistence": "verified_orderly_service_restart",
+          "postgres": "16.15",
+          "pgvector": "0.8.7",
+          "neo4j": "5.26.31",
+          "redis": "7.2.16",
+          "loopback_bindings": true
+        }
+      ],
+      "finished_at_utc": "2026-10-15T15:06:14Z",
+      "logs_inspected": true
+    },
     "frontend_release_log": ".cache/m1_10-frontend-release.log",
     "chromium_seconds": 17.0
   },
@@ -198,5 +278,7 @@
     "secret_asset_utf8_review": "passed",
     "git_diff_check": "passed",
     "remote_before_source": "a5432cc3b2238c2d2480d430dc48984d221b8a24"
-  }
+  },
+  "source_commit": "456ed418dbee791dc586803263a12bd89963404a",
+  "handoff_follow_up": "Documentation/report metadata only; all 38 measured source fingerprints remain identical to the verified source commit."
 }

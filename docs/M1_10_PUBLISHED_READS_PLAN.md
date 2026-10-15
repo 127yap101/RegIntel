@@ -117,5 +117,12 @@ still contains one conditional narrative, zero corporate relations, an absent
 parent and unknown publication date. No real numeric/amendment-pair, research,
 macOS/ARM or fresh real-source clone result is claimed.
 
-Source checkpoint and hosted Windows/Linux/infrastructure verification are
-pending. Record their exact SHA/run and measured results before phase closure.
+Source 456ed418dbee791dc586803263a12bd89963404a is pushed normally to existing main.
+Exact-source [run 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205) completed SUCCESS.
+Ubuntu passes 1835 backend/one Windows-only skip; Windows 1833/three POSIX
+skips. Both pass 225 frontend/nine Chromium, lint/types/build, Ruff 179/mypy 117.
+Infrastructure passes all 474 database cases in 402.46s, fresh migrations 1–11 apply/replay, both
+seeded-role authentication and orderly restart persistence. Hosted tests cover
+the local symlink-permission skips. All 38 source fingerprints match the verified
+commit. M1.10 is complete as a bounded engineering stage; the final handoff
+follow-up changes documentation/report metadata only. Next: M1.11 retrieval/Q&A.

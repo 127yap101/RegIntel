@@ -2,6 +2,34 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.10 completion and GitHub verification — 15 October
+
+Source `456ed418dbee791dc586803263a12bd89963404a` is pushed normally to existing main.
+Exact-source [run 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205) completed
+SUCCESS. Inspected logs confirm Ubuntu 1835 backend/one Windows-junction skip,
+Windows 1833 backend/three POSIX skips; both 225 frontend/nine Chromium,
+lint/strict types/build, Ruff 179 files/mypy 117 sources. Browser timings 17.8s Ubuntu
+and 17.3s Windows. Hosted tests cover the native unprivileged-symlink skips.
+
+Linux infrastructure passes all 474 database cases in 402.46s, fresh migrations
+1–11 apply/replay, both seeded-role authentication and orderly service-restart
+persistence. Tested PostgreSQL 16.15/pgvector 0.8.7, Neo4j 5.26.31 and Redis 7.2.16.
+Loopback bindings/named-volume checks pass. No failed/retried hosted job.
+
+All 46 source checkpoint files passed asset/secret/UTF-8/staged-byte review; all38
+source fingerprints match. Final specifications, applied migrations 1–11,
+backend lock and all 349 prior frontend package entries are unchanged. Two new
+direct frontend pins and PDF.js optional Node-canvas platform packages are
+recorded; no backend/env/service/worker/paid-call change. The final follow-up
+updates documentation/report metadata only, preserving tested product bytes.
+
+Real HTTP and browser read-only proofs, unchanged original snapshots and
+bounded one-narrative/zero-relation/unresolved-parent/unknown-date limitations
+remain as recorded below and in data/published-reads-validation-report.json.
+Owned proof servers stopped; four existing services retained healthy. M1.10
+complete; next authorized work is M1.11 retrieval/Q&A. M1.12–M4 and integration
+remain unfinished. This is engineering correctness, not research effectiveness.
+
 ## M1.10 published company reads and exact source viewer — local verification, 15 October
 
 Continued from a5432cc under existing sequential implementation/commit/push

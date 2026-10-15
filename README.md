@@ -23,21 +23,21 @@ and original PDF pages. Every read stays bound to the selected published corpus
 and active/historical/as-of view. Sign in with an existing local learner or admin
 account; see the [run/check guide](docs/RUN_AND_CHECK.md).
 
-M1.10 local checks pass 1830 backend/six Windows skips, five new disposable
-PostgreSQL cases, 225 frontend and nine Chromium tests, lint/types/build and
-Python static checks. Real HTTP and browser proofs pass on the existing Premier
-corpus without changing its persisted state. Source publication and exact-source
-hosted CI are pending; see [current state](CURRENT_STATE.md), the
-[phase record](docs/M1_10_PUBLISHED_READS_PLAN.md) and
-[measured report](data/published-reads-validation-report.json).
+M1.10 source `456ed418dbee791dc586803263a12bd89963404a` is pushed; exact-source
+[CI 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205) passes Ubuntu
+1835 backend/one skip, Windows 1833 backend/three skips, 225 frontend/nine
+Chromium on each, lint/types/build/static checks, and all 474 database cases with
+fresh migrations 1–11, auth and restart persistence. Real HTTP/browser proofs
+pass on the existing Premier corpus without changing persisted state. See
+[current state](CURRENT_STATE.md), the [phase record](docs/M1_10_PUBLISHED_READS_PLAN.md)
+and [measured report](data/published-reads-validation-report.json).
 
 The real corpus contains one complete conditional narrative, zero corporate
 relations and an unresolved parent/effects 0. Its unknown publication date returns
 explicit temporal unavailability. This is bounded engineering verification;
 real amendment-pair and held-out research effectiveness remain unmeasured.
 
-After the M1.10 checkpoint closes, next is M1.11 retrieval/Q&A, then M1.12
-admin/review UI. M2–M4/integration remain unfinished.
+Next is M1.11 retrieval/Q&A, then M1.12 admin/review UI. M2–M4/integration remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10.

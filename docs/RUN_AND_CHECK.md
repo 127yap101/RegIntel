@@ -145,13 +145,16 @@ To rerun verification when desired, first stop the manual API/frontend with
 
 The first runs backend/frontend/browser and static checks. The second requires
 running Docker/PostgreSQL and creates/removes only its own disposable database.
-Latest local results: 1,747 backend passes/six Windows skips, 212 frontend
-passes and three browser passes. The full 441-case database suite passed before
-the final recovery refinements; the final 42-case processing storage suite passes
-after them. Source [CI](https://github.com/127yap101/RegIntel/actions/runs/38686295756) passes
-Windows/Linux foundation and the full final database, migration1–10, authentication
-and service-restart checks. See CURRENT_STATE/PHASE_LOG for the exact source SHA.
-These are engineering checks, not research effectiveness.
+Latest M1.10 local results: 1,830 backend passes/six Windows skips, 225 frontend
+passes and nine Chromium passes, plus five new disposable published-read cases.
+The final frontend release checks pass after correcting the initial PDF.js
+compatibility failure. Exact-source hosted
+[CI 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205) passes both Windows/Linux
+complete runners (1833/1835 backend,225 frontend/nine Chromium each) and all474
+database tests in 402.46s, fresh migrations 1–11, auth and restart persistence. No full
+local 474-pass result is claimed. See CURRENT_STATE/PHASE_LOG and the measured
+read report for source binding and disclosed limits. These are engineering checks, not research
+effectiveness.
 
 After a worker/infrastructure interruption, recover unfinished processing jobs
 through the admin dispatch endpoint or the bounded operator command:
@@ -184,7 +187,7 @@ work while the machine is asleep.
 
 When you return, reopen this Codex chat/project and start Docker Desktop if
 needed. The checkpoint is in CURRENT_STATE.md and CONTINUATION_PROMPT.md. Say
-"Resume M1.9 from the verified processing/recovery checkpoint and keep verified
-changes on GitHub." No deck/Windows/worker approval needs repeating. Docker
+"Resume from CURRENT_STATE and keep verified changes on GitHub." No
+deck/Windows/worker approval needs repeating. Docker
 storage is already relocated to D:\DockerData; check its available space before
 a large image build.
