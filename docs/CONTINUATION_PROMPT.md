@@ -1,93 +1,99 @@
 # Prompt for continuing RegIntel
 
-Publication verified14October: source commit `5de23f585d156fbb4c98564dfc3c083faeefd42d` is on main and remoteSHA matched. Hosted [run38596123035](https://github.com/127yap101/RegIntel/actions/runs/38596123035) completedSUCCESS onWindows/Linux foundation andLinux infrastructure, including the complete final402database tests (224.33s), fresh1–8migration apply/replay andauth/service-restart persistence. Final publication-record changes are metadata only; product/migration bytes remain unchanged. Next is M1.8.
+Continue RegIntel Finance from the verified M1.8 recovery checkpoint on the
+existing `main` branch of `https://github.com/127yap101/RegIntel`. The current
+source commit and hosted CI status are recorded in CURRENT_STATE.md and the
+newest PHASE_LOG entry. Read AGENTS.md, CURRENT_STATE.md,
+docs/M1_8_RECOVERY_PLAN.md, data/processing-recovery-report.json and the newest
+execution record, then only the architecture/research/evaluation documents
+needed for M1.9. Inspect Git, remote and environment state before editing;
+preserve teammate changes.
 
-Continue the verified M1.7 text validation/staged-review checkpoint in
-`https://github.com/127yap101/RegIntel` on existing `main`. Read `AGENTS.md`,
-`CURRENT_STATE.md`, `docs/M1_7_VALIDATION_REVIEW.md`,
-`data/validation-review-report.json` and the newest `docs/PHASE_LOG.md` entry, then
-only the M1.8 dependency specifications. Inspect Git/remote state before editing
-and preserve teammate changes. Sequential implementation, verified commits and
-normal remote pushes are authorized. Do not force-push or repeat the approved
-deck waiver, Windows exception or private non-root Linux worker plan.
+Sequential implementation, relevant tests, verified commits and normal pushes
+to existing main are authorized. The deck waiver, Windows/native application
+exception and one private non-root Linux Celery/Docling worker approval persist.
+Do not repeat them. Do not force-push, reset data, discard changes, introduce
+unapproved infrastructure/public ports/paid APIs or alter the fixed stack.
 
-M0/M1A and M1.5–M1.7 are verified as bounded engineering stages. PostgreSQL is
-authoritative; no financial observations or corpus are accepted/published. Next
-is M1.8 checkpointed worker stages, duplicate protection and failure recovery.
-M1.9 amendment/publication, M1C, M2–M4 and integration remain unfinished. Preserve
-the fixed stack/endpoint ownership and approved `SUPERSEDE`, M1 search backend/M2
-profile experience, M2 quote API/M4 immutable snapshots decisions.
+M0/M1A and bounded M1.5–M1.8 are complete. Next is **M1.9 amendment-aware
+publication**: immutable accepted observations/audits, source-backed filing
+lineage and explicit effects, historical/active/as-of views, atomic corpus
+publication and rebuildable Neo4j/pgvector/BM25 projections. M1C, M2–M4 and
+integration remain unfinished. Implement the requested phase and its actual
+prerequisites; do not invent numbered subphases or broaden company coverage.
 
-Final local checks pass1691backend/six disclosed Windows skips,90final live
-validation cases,212frontend/3Chromium/lint/types/build, Ruff141/mypy88,
-Linux-platform mypy73 and both shell syntax checks. Before the final currency/unit
-repair, the full398database suite passed906.18s. After repair, the expanded final
-90validation storage cases pass307.90s; no final full402local run is claimed.
-The exact source checkpoint now has successful hosted verification, including
-the final full402database cases. Later source changes require their own checks. These checks are not research effectiveness,
-gold annotation, macOS/ARM or a real-source fresh-clone proof.
+PostgreSQL remains authoritative. All acceptance_audits, fact_observations,
+relation_observations and corpus_versions counts are zero; their insertion gates
+remain closed. A processing job marked SUCCEEDED means sealed stage results,
+including REVIEW/QUARANTINED outcomes. It does not accept facts or approve a
+review. M1.9 must freshly validate supported staged decisions and dependencies
+inside the publication transaction. Keep immutable history and conflicting
+disclosures; no latest-timestamp-wins, automatic supersession or fabricated
+lineage/effective dates. Preserve approved `SUPERSEDE`, M1 search backend/M2
+profile experience and M2 quote API/M4 immutable snapshot ownership decisions.
 
-Primary migrations1–8 are applied, none pending. Preserve all bytes;0008 SHA256
-`7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d`.
-No M1.7 dependency/env/SDK/model/system change or worker rebuild. The lock140/native92
-and frozen parser-only109 packages are preserved. The retained M1A parser image is
-historical and does not contain the later native stage implementation. Before a
-phase-required rebuild, inspect Docker/storage, retain volumes/source/models and
-plan/test the coherent stage runtime. Docker data is already on D:\DockerData;
-do not reset/prune/reinstall or repeat the storage relocation.
+Primary migrations 1–10 are applied, none pending. Never edit their bytes.
+0009 SHA256: 806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60.
+0010 SHA256: 1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83.
+0010 corrects evidence membership ordering while retaining the original failed
+probe and applied0009. Preserve all parsing/entity/candidate/validation algorithms
+and existing configuration identities unless a separately justified, versioned
+change is needed. Repository connection/completion wiring is separate from those
+frozen algorithms.
 
-The controlled original Premier PDF is ignored under
-`data/raw/premier-energies-addendum-rhp-sebi-20240826.pdf`,196270bytes,SHA256
-`a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347`.
-Existing parse `38819124-f764-4f41-acef-44ac000dbc45` retains878exact original-text
-records, artifact SHA256
-`f430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f`.
-Entity run `407bc0fa-e97a-4d81-8c9f-126b682e83a7` has40mentions and known issuer
-`581d1b0d-98fd-4a23-8e15-5574dac650a2`; candidate run
-`6311f8bd-d49d-4fa8-b038-817205e73fff` has one complete conditional narrative,
-not a real numeric/relation positive. Original table cells remain unavailable;
-processed geometry only signals risk.628table/11transcription risk IDs are
-conservative classifications, not measured error rates.
+This machine's controlled Premier source is the three-page SEBI addendum,
+196270 bytes, SHA256 a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347.
+Parse 38819124-f764-4f41-acef-44ac000dbc45 retains 878 exact evidence records.
+Entity run 407bc0fa-e97a-4d81-8c9f-126b682e83a7 has 40 mentions: 6 resolved,
+1 review and 33 unresolved. Candidate run 6311f8bd-d49d-4fa8-b038-817205e73fff
+has one conditional narrative. Final validation run 97ec299b-f5e7-4043-9fec-e7c08473b6a9
+has one REVIEW result with extractive confirmation unresolved. No real numeric
+or relation positive is claimed; table-cell/OCR limitations remain.
 
-Final-code gate run `97ec299b-f5e7-4043-9fec-e7c08473b6a9`, configuration
-`f01505a3ffeec4b6fdd8df78a84dc735fc370348ec539e23198545de37b2996d`, has one
-REVIEW result with onlyEXTRACTIVE_REVIEW unresolved. Review
-`5c42296e-e63f-4f84-9c52-ead243b9596c` stages APPROVE_FOR_PUBLICATION on earlier
-run `f93660f2-c589-4cc5-af3d-031e896a4d3b`, configuration
-`8f6fb74d99a3aacc6d865432fd8b51d5fa96f91745bcea0fcfd8225cd1029411`.
-The historical review is preserved/replayed, not relabelled as a new-code decision.
-Publication must freshly validate the candidate and recorded review. Candidates
-remainCANDIDATE and acceptance audits/fact observations/relations/corpora remain0.
+Original staged review 5c42296e-e63f-4f84-9c52-ead243b9596c is attached to earlier
+validation f93660f2-c589-4cc5-af3d-031e896a4d3b, before the final currency/unit
+repair. Do not overwrite, duplicate or relabel it as belonging to the newer
+configuration. See the M1.7 report for that distinction.
 
-M1.7 admin API: POST `/v1/admin/validation/policies`, POST
-`/v1/admin/validation/runs` with `{candidate_run_id}`, GET
-`/v1/admin/validation/runs/{run_id}`, POST `/v1/admin/validation/reviews`.
-Clients cannot submit gate checks, normalized interpretations or publications.
-Numeric policies establish explicit metric meaning; source/context gates cannot
-be waived by a reviewer. Missing cells/transcription quality/period/unit/basis or
-ownership denominator/date/basis blocks staging. Currency and unit must jointly
-agree. Decimal strings retain precision; no period start/currency/effective date
-is invented. One final decision per candidate spans all validation versions;
-exact ID+payload replay is a no-op, different decisions conflict. Historical audits
-are readable; new approval requires current configuration and audited dependencies.
-Bare0003 placeholder proposals are not eligible sealed-run inputs.
+Real workflow 95ba9ce9-5f28-4187-a35b-3364415a838c survived actual SIGKILL before
+its first checkpoint and completed at generation 2 with unchanged frozen input.
+Workflow d8e72949-811c-4fb2-a763-91fe89a78da7 recovered after a committed ENTITY
+checkpoint and preserved it. Both reuse the original three stage output IDs.
+Terminal duplicates leave history unchanged. The failed first probe remains in
+history; never delete or rewrite it. Broker delivery can repeat; no exactly-once
+execution guarantee is claimed. Inputs/configurations/actors stay frozen; stale
+or terminal failures require a new supported request, not mutation of old jobs.
 
-Implement only M1.8 next: inspect the existing ingestion/outbox/worker and sealed
-entity/candidate/validation interfaces; define durable stage ownership,
-checkpoint/configuration/input identities and failure/retry transitions, then
-implement/test duplicates, partial failures, stale source/configurations and
-crash recovery in the already approved private worker architecture. Preserve
-all immutable history and closed M1.9 acceptance/publication gates. Do not add
-infrastructure, public ports, hidden models or runtime model database/browsing
-capabilities. Runtime LLMs propose only. Gemini transport/SDK/model/budget remains
-unconfigured; continue deterministic work without paid calls.
+The final image is 5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b.
+Its parser environment remains the frozen 109-package runtime; a second exact
+77-package environment uses the already locked entities extra. Both contain 82
+matching source files. Processing configuration SHA256 is
+bacb112415f5728f813738f353f6c2765a9f0135177460e9497ab00e445b2dd6.
+One fixed child module runs stages inside the same non-root/read-only worker;
+no worker port or native Windows Celery. No new dependency pin/environment
+variable/model/provider/paid call/host software was added.
 
-Use the authenticated native API (`regintel-api --env-file .env --auth-env-file
-.env.auth`) for inspection and `docs/RUN_AND_CHECK.md` for launch/check/sleep.
-Real proof assets are ignored under `.cache/validation-runtime-5ac865911dbd4458b21640e3be538444`;
-source/credentials/models/database state are not in Git. Teammates restore their
-own approved assets/credentials/data and use their actual local IDs. Do not infer
-that this machine's primary records exist in a fresh clone. After implementation,
-run relevant checks, review the diff, update measured state and handoff notes,
-audit staged secrets/assets/fingerprints, commit/push a verified checkpoint and
-inspect its actual hosted result.
+Local verification: full runner 1747 backend passes/six disclosed Windows skips,
+212 frontend/three Chromium/lint/types/build, before the final storage refinements.
+The full 441-case database regression passed before those corrections; the final
+42-case processing suite passes after them, covering authorization, immediate
+consumer dispatch, multi-evidence order, immutable snapshots, concurrency,
+rollback and fenced recovery. Final scoped Ruff 139/mypy 83, Linux-platform mypy 82
+and both runner syntax checks pass. Exact source hosted results are recorded in
+the latest publication entry. These are engineering checks, not gold/held-out
+research effectiveness, macOS/ARM or a fresh real-source clone proof.
+
+Original PDFs, models, credentials, databases and proof caches remain ignored.
+Teammates must restore their own approved assets/configuration, apply migrations
+and use actual local IDs; do not seed fictional data to match this machine.
+Docker storage is already D:/DockerData. Start existing services with
+scripts/compose.ps1 up and the worker with worker-up; do not reset or prune data.
+Reading saved records only requires the native configured API. Unfinished
+processing jobs can be redispatched through the admin endpoint or
+`python -m regintel.processing.cli dispatch --env-file .env` after worker recovery.
+No live Gemini SDK/model/transport or paid budget is configured.
+
+Implement → meaningful tests → diff/review → verification → update CURRENT_STATE
+and measured records → commit/push a coherent checkpoint → inspect hosted CI.
+Continue independent authorized work when a genuine design conflict affects only
+part of the phase. Never bypass evidence, context, financial or publication gates.

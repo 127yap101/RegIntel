@@ -18,6 +18,7 @@ from regintel.candidates.repository import (
     checked as candidate_checked,
 )
 from regintel.db.config import DatabaseSettings
+from regintel.db.connections import CompletionHook, ConnectionFactory
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import EntityReview, canonical_bytes
 from regintel.parsing.models import ParseArtifact
@@ -84,15 +85,23 @@ def checked(value: object, expected: object, *, maximum: int = 64_000_000) -> by
 
 
 class ValidationRepository:
-    def __init__(self, database: DatabaseSettings) -> None:
+    def __init__(
+        self, database: DatabaseSettings, *, connection_factory: ConnectionFactory | None = None
+    ) -> None:
         self.database = database
-        self.candidates = CandidateRepository(database)
+        self._connection_factory = connection_factory
+        self.candidates = CandidateRepository(database, connection_factory=connection_factory)
+
+    def connect(self) -> DatabaseConnection:
+        if self._connection_factory is not None:
+            return self._connection_factory()
+        return connect_database(self.database)
 
     def register_policy(self, policy: NumericMetricPolicy, user: User) -> bool:
         policy = NumericMetricPolicy.model_validate(policy.model_dump(mode="python"))
         payload = canonical_bytes(policy)
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 authorize(connection, user)
                 connection.execute("SELECT pg_advisory_xact_lock(%s)", (POLICY_LOCK_ID,))
                 existing = connection.execute(
@@ -176,7 +185,7 @@ class ValidationRepository:
 
     def input_for_run(self, candidate_run_id: str) -> ValidationInput:
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
                 return self._input(connection, candidate_run_id)
         except UNAVAILABLE_STORAGE:
@@ -191,11 +200,17 @@ class ValidationRepository:
         connection.execute("LOCK TABLE regintel.entity_reviews IN SHARE MODE")
         connection.execute("SELECT pg_advisory_xact_lock(%s)", (POLICY_LOCK_ID,))
 
-    def validate(self, candidate_run_id: str, user: User) -> ValidationRun:
+    def validate(
+        self,
+        candidate_run_id: str,
+        user: User,
+        *,
+        on_completed: CompletionHook[ValidationRun] | None = None,
+    ) -> ValidationRun:
         from regintel.validation.gate import validate
 
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 authorize(connection, user)
                 self._snapshot_lock(connection)
                 source = self._input(connection, candidate_run_id)
@@ -208,6 +223,8 @@ class ValidationRepository:
                     stored = self._get_run(connection, run.id)
                     if stored != run:
                         raise ValidationConflict("An immutable validation run conflicts.")
+                    if on_completed is not None:
+                        on_completed(connection, stored)
                     return stored
                 source_bytes = canonical_bytes(source)
                 config_bytes = canonical_bytes(run.configuration)
@@ -235,6 +252,8 @@ class ValidationRepository:
                         user.auth_version,
                     ),
                 )
+                if on_completed is not None:
+                    on_completed(connection, run)
                 return run
         except psycopg.errors.UniqueViolation:
             raise ValidationConflict("An immutable validation identity conflicts.") from None
@@ -300,7 +319,7 @@ class ValidationRepository:
 
     def get_run(self, run_id: str) -> ValidationRun | None:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 return self._get_run(connection, run_id)
         except ValidationNotFound:
             return None
@@ -316,7 +335,7 @@ class ValidationRepository:
         decision = ReviewDecision.model_validate(decision.model_dump(mode="python"))
         payload = canonical_bytes(decision)
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 authorize(connection, user)
                 self._snapshot_lock(connection)
                 existing = connection.execute(
@@ -408,7 +427,7 @@ class ValidationRepository:
 
     def reviews(self, run_id: str) -> tuple[ReviewDecision, ...]:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 rows = connection.execute(
                     "SELECT review_bytes,review_sha256 FROM regintel.validation_reviews "
                     "WHERE validation_run_id=%s ORDER BY candidate_id,id",

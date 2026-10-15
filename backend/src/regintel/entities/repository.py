@@ -10,6 +10,7 @@ from pydantic import ValidationError
 from regintel.auth.types import User
 from regintel.contracts.models import TextEvidence
 from regintel.db.config import DatabaseSettings
+from regintel.db.connections import CompletionHook, ConnectionFactory
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import (
     EntityRegistration,
@@ -109,15 +110,23 @@ def _run(connection: DatabaseConnection, run_id: str) -> EntityRun | None:
 
 
 class EntityRepository:
-    def __init__(self, database: DatabaseSettings) -> None:
+    def __init__(
+        self, database: DatabaseSettings, *, connection_factory: ConnectionFactory | None = None
+    ) -> None:
         self.database = database
+        self._connection_factory = connection_factory
+
+    def connect(self) -> DatabaseConnection:
+        if self._connection_factory is not None:
+            return self._connection_factory()
+        return connect_database(self.database)
 
     def register(self, registration: EntityRegistration, user: User) -> bool:
         """Atomically register one reviewed identity; identical replay is a no-op."""
         registration = EntityRegistration.model_validate(registration.model_dump(mode="python"))
         payload = canonical_bytes(registration)
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 _authorize(connection, user)
                 connection.execute("SELECT pg_advisory_xact_lock(%s)", (REGISTRY_LOCK_ID,))
                 existing = connection.execute(
@@ -151,7 +160,7 @@ class EntityRepository:
 
     def snapshot(self) -> RegistrySnapshot:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 return _snapshot(connection)
         except (psycopg.OperationalError, psycopg.InterfaceError, MigrationError):
             raise EntityUnavailable("Entity storage is unavailable.") from None
@@ -161,7 +170,7 @@ class EntityRepository:
     def evidence_for_parse(self, parse_id: str) -> tuple[tuple[TextEvidence, ...], str]:
         """Verify the sealed sidecar once and return only exact text projection."""
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 row = connection.execute(
                     """SELECT a.artifact_bytes,a.configuration_bytes,p.artifact_sha256,
                     p.configuration_sha256 FROM regintel.parse_versions p
@@ -206,12 +215,14 @@ class EntityRepository:
         except (psycopg.Error, ValueError):
             raise EntitySourceError("Exact parse source or storage is invalid.") from None
 
-    def save_run(self, run: EntityRun, user: User) -> EntityRun:
+    def save_run(
+        self, run: EntityRun, user: User, *, on_completed: CompletionHook[EntityRun] | None = None
+    ) -> EntityRun:
         """Seal all mentions atomically and return the original result on replay."""
         run = EntityRun.model_validate(run.model_dump(mode="python"))
         payload = canonical_bytes(run)
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 _authorize(connection, user)
                 connection.execute("SELECT pg_advisory_xact_lock(%s)", (REGISTRY_LOCK_ID,))
                 snapshot = _snapshot(connection)
@@ -235,6 +246,8 @@ class EntityRepository:
                     stored = EntityRun.model_validate_json(_checked(existing[0], existing[1]))
                     if canonical_bytes(stored) != payload:
                         raise EntityConflict("Existing entity run conflicts.")
+                    if on_completed is not None:
+                        on_completed(connection, stored)
                     return stored
                 # Recompute from the complete authoritative source and frozen registry.
                 # Caller-authored RESOLVED outcomes or omitted evidence are never trusted.
@@ -291,6 +304,8 @@ class EntityRepository:
                             canonical_bytes(mention),
                         ),
                     )
+                if on_completed is not None:
+                    on_completed(connection, run)
                 return run
         except psycopg.errors.UniqueViolation:
             raise EntityConflict("An immutable entity run identity conflicts.") from None
@@ -301,7 +316,7 @@ class EntityRepository:
 
     def get_run(self, run_id: str) -> EntityRun | None:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 return _run(connection, run_id)
         except (psycopg.OperationalError, psycopg.InterfaceError, MigrationError):
             raise EntityUnavailable("Entity storage is unavailable.") from None
@@ -313,7 +328,7 @@ class EntityRepository:
         decision = EntityReview.model_validate(decision.model_dump(mode="python"))
         payload = canonical_bytes(decision)
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 _authorize(connection, user)
                 # Serialize decisions for the same immutable mention; no registry mutation.
                 lock_id = int.from_bytes(
@@ -366,7 +381,7 @@ class EntityRepository:
 
     def reviews(self, run_id: str) -> tuple[EntityReview, ...]:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 rows = connection.execute(
                     "SELECT review_bytes,review_sha256 FROM regintel.entity_reviews "
                     "WHERE run_id=%s ORDER BY mention_id,id",

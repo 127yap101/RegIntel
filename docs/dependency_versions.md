@@ -1,5 +1,34 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.8 checkpointed processing/recovery — 15 October 2026
+
+No new dependency pin, operator environment variable, provider/model, paid call or host
+software. The140-package lock and native 92-distribution environment are unchanged.
+The approved single Linux worker now has two exact environments: the original
+109-package parser environment and a 77-package production `entities` environment.
+The latter matches the existing locked Linux entities export exactly, including
+spaCy3.8.16/RapidFuzz3.14.6 and their previously documented licenses. One fixed
+subprocess runs stage jobs; no new service, worker port or native Windows Celery.
+Both environments contain 82identical current source files.
+
+Final image `5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b`
+uses the existing Python3.12.15/uv0.12.23 base digests and offline Debian closure.
+Unchanged parser processing/SDK/model identities pass offline with no intercepted
+Python connections; parser package manifest 31dd0ebc... and full exact inventories
+are recorded in `data/processing-recovery-report.json`. The stage package manifest
+is 61fc644e5639c1960a7bdefd45a2368788357eb130d4025bb0d2cfb45118b31c.
+Runtime remains UID 10001/read-only, drops ALL capabilities, no-new-privileges and no
+published port; source/model/configuration mounts remain read-only.
+
+Append0009 and corrective0010 are applied/frozen; earlier migration/algorithm
+bytes remain unchanged. The correction preserves a failed real probe and compares
+sorted evidence membership separately from source traversal order. Final42live
+recovery cases and two real SIGKILL recoveries pass; local full 441 database cases
+passed before the final refinements. Full runner1747backend/6Windows skips,
+212frontend/3Chromium and final scoped static checks pass. Actual source CI status
+is recorded in CURRENT_STATE/PHASE_LOG after publication. No macOS/ARM/fresh real
+clone or research-effectiveness claim. See the measured recovery report.
+
 ## M1.7 validation/review — 14 October 2026
 
 No added dependency, SDK, environment variable, model, host installation or worker
@@ -272,7 +301,7 @@ host software installation is introduced. Worker build/start/status/restart/stop
 commands are documented in `backend/README.md`.
 
 For Unix-host reproduction, the intended public-source permission contract is
-0755 for source directories and0644 for public PDF files so UID10001 can read the
+0755 for source directories and0644 for public PDF files so UID 10001 can read the
 bind mount. This contract is not yet enforced or tested; restrictive native-user
 umasks can make sources unreadable. Windows is the measured host target. The
 Linux image build does not establish macOS, ARM64 or native-Linux API reproduction.

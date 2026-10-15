@@ -70,6 +70,9 @@ def serve_main() -> None:
     from regintel.ingestion.config import native_ingestion_settings
     from regintel.ingestion.repository import JobRepository
     from regintel.main import create_app
+    from regintel.processing.api import ProcessingService
+    from regintel.processing.broker import sender as processing_sender
+    from regintel.processing.repository import ProcessingRepository
     from regintel.validation.api import ValidationService
     from regintel.validation.repository import ValidationRepository
 
@@ -93,6 +96,10 @@ def serve_main() -> None:
             ),
             validation_service=ValidationService(
                 ValidationRepository(load_database_settings(args.env_file))
+            ),
+            processing_service=ProcessingService(
+                ProcessingRepository(load_database_settings(args.env_file)),
+                processing_sender(create_celery(ingestion_settings)),
             ),
         ),
         host="127.0.0.1",

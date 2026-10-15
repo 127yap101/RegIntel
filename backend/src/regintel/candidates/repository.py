@@ -14,6 +14,7 @@ from regintel.candidates.models import (
 )
 from regintel.candidates.records import CandidateRun, drafts, materialize
 from regintel.db.config import DatabaseSettings
+from regintel.db.connections import CompletionHook, ConnectionFactory
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import EntityReview, EntityRun, canonical_bytes
 from regintel.entities.repository import (
@@ -97,16 +98,24 @@ def load_metrics(
 
 
 class CandidateRepository:
-    def __init__(self, database: DatabaseSettings) -> None:
+    def __init__(
+        self, database: DatabaseSettings, *, connection_factory: ConnectionFactory | None = None
+    ) -> None:
         self.database = database
-        self.entities = EntityRepository(database)
+        self._connection_factory = connection_factory
+        self.entities = EntityRepository(database, connection_factory=connection_factory)
+
+    def connect(self) -> DatabaseConnection:
+        if self._connection_factory is not None:
+            return self._connection_factory()
+        return connect_database(self.database)
 
     def register_metric(self, metric: MetricDefinition, user: User) -> bool:
         """Register an extraction label/cues, never a company financial observation."""
         metric = MetricDefinition.model_validate(metric.model_dump(mode="python"))
         payload = canonical_bytes(metric)
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 authorize(connection, user)
                 connection.execute("SELECT pg_advisory_xact_lock(%s)", (METRIC_LOCK_ID,))
                 existing = connection.execute(
@@ -134,7 +143,7 @@ class CandidateRepository:
 
     def metrics(self, metric_ids: tuple[str, ...]) -> tuple[MetricDefinition, ...]:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 return load_metrics(connection, metric_ids)
         except UNAVAILABLE_STORAGE:
             raise CandidateUnavailable("Proposal storage is unavailable.") from None
@@ -170,7 +179,7 @@ class CandidateRepository:
 
     def input_for_run(self, entity_run_id: str, metric_ids: tuple[str, ...]) -> ExtractionInput:
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
                 return self._input(connection, entity_run_id, metric_ids)
         except UNAVAILABLE_STORAGE:
@@ -180,12 +189,19 @@ class CandidateRepository:
         except (psycopg.Error, EntitySourceError):
             raise CandidateSourceError("Extraction input storage is invalid.") from None
 
-    def extract(self, entity_run_id: str, metric_ids: tuple[str, ...], user: User) -> CandidateRun:
+    def extract(
+        self,
+        entity_run_id: str,
+        metric_ids: tuple[str, ...],
+        user: User,
+        *,
+        on_completed: CompletionHook[CandidateRun] | None = None,
+    ) -> CandidateRun:
         """One atomic rule-baseline run; no model/provider or acceptance side effects."""
         from regintel.candidates.extraction import current_configuration, extract
 
         try:
-            with connect_database(self.database) as connection, connection.transaction():
+            with self.connect() as connection, connection.transaction():
                 authorize(connection, user)
                 # Freeze reviewed mention decisions until this proposal snapshot is sealed.
                 # A later review produces a different input hash and a separate run.
@@ -205,7 +221,10 @@ class CandidateRepository:
                         existing[2], existing[3]
                     ) != canonical_bytes(bundle):
                         raise CandidateConflict("Existing extraction run conflicts.")
-                    return self._get_run(connection, run.id)
+                    stored = self._get_run(connection, run.id)
+                    if on_completed is not None:
+                        on_completed(connection, stored)
+                    return stored
                 source_bytes = canonical_bytes(source)
                 config_bytes = canonical_bytes(configuration)
                 bundle_bytes = canonical_bytes(bundle)
@@ -239,6 +258,8 @@ class CandidateRepository:
                         (run_id,candidate_id,parse_version_id,draft_bytes) VALUES(%s,%s,%s,%s)""",
                         (run.id, record.id, run.parse_version_id, canonical_bytes(draft)),
                     )
+                if on_completed is not None:
+                    on_completed(connection, run)
                 return run
         except psycopg.errors.UniqueViolation:
             raise CandidateConflict("An immutable extraction identity conflicts.") from None
@@ -359,7 +380,7 @@ class CandidateRepository:
 
     def get_run(self, run_id: str) -> CandidateRun | None:
         try:
-            with connect_database(self.database) as connection:
+            with self.connect() as connection:
                 return self._get_run(connection, run_id)
         except CandidateNotFound:
             return None

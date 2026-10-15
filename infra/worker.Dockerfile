@@ -18,10 +18,17 @@ COPY backend/pyproject.toml backend/uv.lock ./
 RUN --mount=type=cache,id=regintel-worker-uv,target=/root/.cache/uv \
     uv sync --locked --no-dev --no-editable --extra parsing --no-install-project && \
     groupadd --gid 10001 regintel && useradd --uid 10001 --gid 10001 --no-create-home regintel
+RUN --mount=type=cache,id=regintel-worker-uv,target=/root/.cache/uv \
+    UV_PROJECT_ENVIRONMENT=/app/backend/.stages-venv \
+    uv sync --locked --no-dev --no-editable --extra entities --no-install-project
 COPY backend/src ./src
 RUN --mount=type=cache,id=regintel-worker-uv,target=/root/.cache/uv \
     uv sync --locked --no-dev --no-editable --extra parsing
+RUN --mount=type=cache,id=regintel-worker-uv,target=/root/.cache/uv \
+    UV_PROJECT_ENVIRONMENT=/app/backend/.stages-venv \
+    uv sync --locked --no-dev --no-editable --extra entities
 USER 10001:10001
 ENV PATH="/app/backend/.venv/bin:$PATH" HF_HUB_OFFLINE=1 TRANSFORMERS_OFFLINE=1
 RUN --network=none python -c "import cv2, scipy, rapidocr, torch, torchvision; from docling.document_converter import DocumentConverter; assert torch.version.cuda is None"
+RUN --network=none /app/backend/.stages-venv/bin/python -c "import spacy, rapidfuzz; from regintel.processing.processor import Processor; assert spacy.__version__ == '3.8.16'; assert rapidfuzz.__version__ == '3.14.6'"
 CMD ["celery", "--app=regintel.ingestion.worker:app", "worker", "--loglevel=WARNING", "--concurrency=1", "--hostname=ingestion@regintel", "--without-gossip", "--without-mingle"]

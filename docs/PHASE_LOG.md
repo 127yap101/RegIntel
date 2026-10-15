@@ -2,6 +2,73 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.8 checkpointed processing and recovery — verified 15 October
+
+Source publication and hosted CI are being completed; this entry records actual
+local/runtime verification. No financial acceptance or corpus publication occurs.
+
+Added PostgreSQL-owned workflow requests, frozen inputs, generation-fenced stage
+checkpoints, append-only events and replayable dispatch on the existing private
+Celery queue. ENTITY → CANDIDATE → VALIDATION consume complete typed sealed
+inputs. Domain result and checkpoint commit in one transaction, including reuse
+of existing results. Current administrator checks also cover final completion
+after all checkpoints; stale inputs/configurations/actors fail explicitly.
+Native admin endpoints submit/read/redispatch jobs; queue payloads contain only
+canonical job IDs. The operator CLI can recover unfinished sent jobs.
+
+Root review and live tests corrected SQL name ambiguity, strict JSON readability,
+revocation after the last checkpoint, and a demonstrated immediate-consumer race.
+The producer releases its short live-worker check lock before publishing while
+retaining the outbox row lock. The counterexample previously left an inline
+consumer QUEUED; the corrected test completes without manual redispatch.
+
+Append0009 passed 39 scoped live cases and was applied/frozen at
+806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60.
+The first real SIGKILL/recovery, job 46500b5e-c99a-4092-b3db-ef02c95796fc, then
+failed SOURCE_INVALID before a checkpoint: the new guard compared document
+traversal order with the resolver's sorted evidence membership. Preserve that
+failed generation 2 audit and applied migration. Corrective0010 separately sorts
+membership, retains all mandatory source/configuration/output checks and adds a
+two-record regression with deliberately different orders. Its frozen hash is
+1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83.
+Primary status is 1–10/pending[]; migrations1–8 and old algorithms are unchanged.
+
+Actual real recoveries now pass. Job d8e72949-811c-4fb2-a763-91fe89a78da7 was
+interrupted after ENTITY committed and completes at generation 2 with that exact
+checkpoint retained. Job 95ba9ce9-5f28-4187-a35b-3364415a838c is killed while
+its real resolver transaction waits on a test-owned existing registry lock,
+before any checkpoint. The lock is released and the same worker restarted;
+generation 2 reuses the generation 1 frozen input and completes all three stages.
+This is an actual OS interruption with a controlled synchronization barrier,
+not a production fault flag or mocked source/stage. The worker consumes two
+terminal duplicates; job/audit history and all earlier source/domain/review
+snapshots remain unchanged. Both successful workflows reuse the original entity,
+candidate and final-validation IDs. Authority counts remain zero. Proof caches
+remain ignored; owned loopback APIs are stopped and data services/worker healthy.
+
+The approved single worker is rebuilt as image
+5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b.
+It retains the exact 109-package parser environment and adds a separate
+77-package stage environment using existing locked extras; no new pin/env/model/
+provider/paid call/system install/service/port. Both environments match all 82
+current source files. Offline parser SDK/model/processing identity and exact
+Linux stage package export comparisons pass. UID 10001, read-only root/mounts,
+capability drop and no-new-privileges are checked. The final workflow configuration
+hash is bacb112415f5728f813738f353f6c2765a9f0135177460e9497ab00e445b2dd6.
+
+Complete local runner passes 1747 backend tests/six disclosed Windows skips,
+212 frontend tests/three Chromium tests, lint/types/build, Ruff 154/mypy 98 before
+the final storage refinements. Full 441 database regression passes 1156.05s;
+final expanded 42 processing cases pass 185.61s after the corrections. Final scoped
+Ruff 139/mypy 83, Linux-platform mypy 82, both runner syntax checks and actionlint
+pass. These are engineering results on authored fixtures and one real filing,
+not annotation/research effectiveness or macOS/ARM/fresh real-clone proof.
+
+See data/processing-recovery-report.json for exact IDs, frozen input/configuration
+hashes, inventories, unchanged snapshot hashes, measured checks and limitations.
+Next is M1.9 amendment-aware publication; original staged reviews require fresh
+validation in that future transaction. All acceptance/publication gates stay closed.
+
 ## M1.7 bounded validation and staged review — verified 14 October
 
 Source publication complete:28verified files committed as `5de23f585d156fbb4c98564dfc3c083faeefd42d` and pushed normally to existingmain; remoteSHA matched and the source tree was clean. Staged secret/asset/exact-byte audits pass;15fingerprinted source files match committed bytes. Hosted [run38596123035](https://github.com/127yap101/RegIntel/actions/runs/38596123035) completedSUCCESS forWindows foundation (1694pass/3POSIX skips), Linux foundation (1696pass/1Windows-junction skip) and Linux data infrastructure. Final fresh402database cases pass224.33s, only that generated DB is removed, fresh1–8migration apply/replay and authentication/service-restart persistence pass. No PR created. The final publication-record follow-up is documentation/report metadata only, preserving all tested product/migration bytes.
@@ -48,7 +115,7 @@ numeric/relation positive is demonstrated.
 Final full source-containing proof stays ignored under
 `.cache/validation-runtime-5ac865911dbd4458b21640e3be538444`; initial proof remains
 intact. Metadata is `data/validation-review-report.json`; owned8011API stopped.
-No new dependency/env/SDK/model/provider call/paid usage/system install/worker
+No new dependency/runtime env/SDK/model/provider call/paid usage/system install/worker
 build. The historical parser image remains historical. M1.8 checkpointed worker
 stages/recovery is next; M1.9 must freshly validate staged decisions before atomic
 corpus acceptance/publication. One final review per candidate remains a documented
@@ -65,7 +132,7 @@ Independent findings corrected numeric punctuation/date selection, unresolved in
 
 Actual complete `scripts/run-checks.ps1` exits0:1378backend/6disclosed Windows skips,212frontend/3Chromium/lint/types/build, Ruff126/mypy80. Candidate models/extraction101, offline provider65, HTTP48, raw records18 and unavailable-prerequisites30cases included. Strict Linux-platform mypy67 and Bash/PowerShell syntaxchecks pass. Scoped fresh live104candidate cases pass300.14s; full fresh312database checks pass666.70s and remove only their generated DBs. No assertions/checks disabled. New dependencies/env/paidcalls/systeminstalls/imagebuilds:zero; original parser/entity/dependency/spec/migration0001–0006bytes preserved.
 
-Reviewed0007 applied only after scopedlivepass, frozenSHA5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e, primary status1–7/pending[]. Actual controlled nativeHTTPproof registers the explicit proposed-public-issue probe metric and stores/replays run6311f8bd-d49d-4fa8-b038-817205e73fff from existingPremier parse/entityrun.878exact inputs; one conditional narrative proposal, no real numeric/relation result demonstrated. Evidence reads/auth denials/original source+job+entity+authority snapshots unchanged; unownedcandidates0 and acceptedobservations/corpora0. Fullproof ignored under.cache/candidate-runtime-168fbaac68af4d2ea03713307f9c5518; trackedmeasured metadata data/candidate-validation-report.json. Owned8011API stopped; original data volumes retained.
+Reviewed0007 applied only after scopedlivepass, frozenSHA5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e, primary status1–7/pending[]. Actual controlled nativeHTTPproof registers the explicit proposed-public-issue probe metric and stores/replays run 6311f8bd-d49d-4fa8-b038-817205e73fff from existingPremier parse/entityrun.878exact inputs; one conditional narrative proposal, no real numeric/relation result demonstrated. Evidence reads/auth denials/original source+job+entity+authority snapshots unchanged; unownedcandidates0 and acceptedobservations/corpora0. Fullproof ignored under.cache/candidate-runtime-168fbaac68af4d2ea03713307f9c5518; trackedmeasured metadata data/candidate-validation-report.json. Owned8011API stopped; original data volumes retained.
 
 Provider is an injected offline boundary only, not liveGemini/SDK/modelselection. Later paid tuning/modelfreeze needs explicitbudget. M1.6 bounded baseline complete; nextM1.7context/semantic gates/review, thenM1.8workerrecovery/M1.9amendments/publication. Pre-existing bare0003proposal inserts remainavailable under old contracts; later acceptance mustrequire ownedsealedrun membership. Researcheffectiveness, originaltablecells, macOS/ARM and freshrealclone remainunverified. GitHubpublication/hostedresult recorded only after actualtools succeed.
 
@@ -79,7 +146,7 @@ Appended0006 and preserved all0001-0005 bytes. Reviews identified wrong replay a
 
 Actual full runner passes1116backend/6disclosed Windows skips,212frontend/3Chromium, lint/types/build, Ruff111/mypy72. Scoped HTTP91, subsequently extended to95cases in the final1116backend run, and entity models/resolver134 passed independently. Final full disposable database helper passes208tests in211.81s and removes only its generated database. Strict mypy with Linux platform passes62sources. Scoped final real-helper lint/format/mypy pass. No check was disabled. Independent source/SQL pre-activation reviews and actual final tests are distinguished from failed delegated quota turns.
 
-Applied0006 only after live verification; status[1,2,3,4,5,6]/pending[], frozenSHA8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249. The controlled nativeAPI helper initially omitted OAuth password grant_type; fixed the helper, without altering auth behavior or reseeding credentials. Actual Premier proof nowpasses: run407bc0fa-e97a-4d81-8c9f-126b682e83a7,878exact records,40mentions (6resolved/1review/33unresolved), known issuer/CIN, registration/run replay, persisted reads, learner/anonymous denials and unchanged original sources/evidence/jobs/financial snapshot. Candidate/financial acceptance/corpus counts remain0. Report data/entity-validation-report.json; ignored full proof .cache/entity-runtime-c991d28c83a94f56bc0f687f24b7719d. Stopped only owned proofAPI; existing volumes/accounts retained. This is bounded engineering verification, not independent human-reviewed gold or measured research accuracy.
+Applied0006 only after live verification; status[1,2,3,4,5,6]/pending[], frozenSHA8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249. The controlled nativeAPI helper initially omitted OAuth password grant_type; fixed the helper, without altering auth behavior or reseeding credentials. Actual Premier proof nowpasses: run 407bc0fa-e97a-4d81-8c9f-126b682e83a7,878exact records,40mentions (6resolved/1review/33unresolved), known issuer/CIN, registration/run replay, persisted reads, learner/anonymous denials and unchanged original sources/evidence/jobs/financial snapshot. Candidate/financial acceptance/corpus counts remain0. Report data/entity-validation-report.json; ignored full proof .cache/entity-runtime-c991d28c83a94f56bc0f687f24b7719d. Stopped only owned proofAPI; existing volumes/accounts retained. This is bounded engineering verification, not independent human-reviewed gold or measured research accuracy.
 
 CI fixcb772a8 is already published; hosted run38343176243 completedSUCCESS onWindows/Ubuntu/Linux infrastructure. Publish the verified M1.5 source/report/handoff checkpoint next and inspect its own hosted result. M1.6–1.9 and later modules remain unimplemented; nextaction is bounded candidate extraction. Record publication status using actual Git/tool results.
 
@@ -464,7 +531,7 @@ C:36,165,128,192B free/D:43,109,076,992B free at09:09UTC, including retained29.4
   OpenCV libxcb/GL/glib shared libraries. Adding explicit Linux-only SciPy1.18.1
   expands lock to122. Container apt cannot verify its HTTPS issuer; no TLS/signature
   bypass. Minimal signed/hash-verified offline Debian acquisition is in progress.
-- Real non-root model bind smoke measuredUID10001, readable files/directories,
+- Real non-root model bind smoke measuredUID 10001, readable files/directories,
   mode0777 on the Windows-hosted read-only bind. Verification now accounts for
   kernel-proven read-only filesystem access while retaining strict POSIX acquisition
   permissions and exact hash checks. Do not infer writability from mode bits.
@@ -557,10 +624,10 @@ Recovered the existing engine and original PostgreSQL/Neo4j/Redis volumes withou
 
 Applied reviewed/live-tested0005; status1-5/pending[], all checksums frozen. NativeAPI and healthy approved worker processed real jobc81a8c48-2895-4c00-8d88-e45a99bd114e in one attempt to PARSED, parse38819124-f764-4f41-acef-44ac000dbc45; immutable artifactf430e07dca943d6b0bf2266fc839475bfe19bf1bfe78a0c225620195c6a5880f. Fresh end-to-end engineering proof120.265s includes auth/upload/jobwait/HTTP checks, not isolated conversion timing. Projection3pages982original blocks878exact text evidence; processed15tables435cells retained only in sidecar, no fabricated exact cells. Authenticated evidence Unicode/provenance/geometry and eight full/range/suffix/416/HEAD/304/401/403 source checks pass. Source196270bytes/a15329... and legacy SOURCE_VERIFIED job preserved.
 
-Actually dispatched one terminal duplicate UUID; whitelisted Celery execution counter1->2, worker/broker drained; attempts/parse/artifact/configuration/evidence and legacy snapshots unchanged. PDF skill marker ran before one ignored QA inspection PDF. Cover and selected saved HTTP source page PNGs plus300DPI CIN detail inspected; red exact evidence box aligns Corporate Identity Number U40106TG1995PLC019909. Visual report records inspection rather than claiming filing-wide accuracy. Proofs under .cache/evidence-runtime-059098edd4044c7199fcb989678e368c and .cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682. TemporaryAPI31144 stopped; loopback8000 has no listener. Data/worker healthy, workerUID10001/read-only/noports. Candidate/audit/fact/relation/corpus counts all0.
+Actually dispatched one terminal duplicate UUID; whitelisted Celery execution counter1->2, worker/broker drained; attempts/parse/artifact/configuration/evidence and legacy snapshots unchanged. PDF skill marker ran before one ignored QA inspection PDF. Cover and selected saved HTTP source page PNGs plus300DPI CIN detail inspected; red exact evidence box aligns Corporate Identity Number U40106TG1995PLC019909. Visual report records inspection rather than claiming filing-wide accuracy. Proofs under .cache/evidence-runtime-059098edd4044c7199fcb989678e368c and .cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682. TemporaryAPI31144 stopped; loopback8000 has no listener. Data/worker healthy, workerUID 10001/read-only/noports. Candidate/audit/fact/relation/corpus counts all0.
 
 Recorded data/evidence-validation-report.json and separate manifest verification.evidence_persistence, preserving original verification.ingestion. Updated current state/continuation/README/dependency/prerequisite records. Complete existing checks887backend/138live/212frontend/3Chromium plus lint/types/build/Ruff100/mypy65 and six disclosed Windows skips remain passing; no production source changed after those checks. Independent implementation/pre-activation review completed; root verified all actual runtime/visual/duplicate evidence. An optional second independent post-runtime audit could not run because its agent hit a usage-window limit; no unperformed audit is claimed.
 
 M1A1.1-1.4 complete. OCR/table/currency limitations remain; no accepted/published facts, model-provider calls, commit or push. M1B-M4/integration not started. C: about394MB free remains an environment limitation for future large builds; hostedCI/macOS/ARM/fresh-clone/crash-recovery unverified. No destructive cleanup authorized/performed.
 
-13October final packaging verification: entity requirements are isolated in the native entities extra, selected by both bootstrap scripts and CI. A parsing-only export matches all109frozen parser package/version pairs exactly, with no entity packages; existing parser descriptor/SDK/source bytes remain unchanged. Locked native sync passes; final backend1116/6skips and immutable real-source replay preserve run407bc0fa. PowerShell/Bash syntax checks pass through the existing tools; no worker rebuild or provider call.
+13October final packaging verification: entity requirements are isolated in the native entities extra, selected by both bootstrap scripts and CI. A parsing-only export matches all109frozen parser package/version pairs exactly, with no entity packages; existing parser descriptor/SDK/source bytes remain unchanged. Locked native sync passes; final backend1116/6skips and immutable real-source replay preserve run 407bc0fa. PowerShell/Bash syntax checks pass through the existing tools; no worker rebuild or provider call.
