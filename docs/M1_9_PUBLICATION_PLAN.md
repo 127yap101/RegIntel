@@ -3,7 +3,7 @@
 Started 15 October from verified M1.8 source80f4127/handoff74ab4a1. Sequential
 implementation, relevant verification, commits and normal pushes are authorized.
 The approved Windows/native API and one private Linux worker placement persist.
-This is a plan; no publication, amendment result or effectiveness is claimed.
+This records the approved implementation approach. The measured completion record below distinguishes implemented mechanics, actual publication and remaining research limits.
 
 ## Authoritative state and acceptance
 
@@ -73,7 +73,7 @@ parser/stage environments unchanged. Model weights/caches remain ignored.
 
 Chunk only approved exact support, retaining observation/evidence IDs and source
 offsets. Measure tokens with the actual frozen tokenizer, including special
-tokens/headers. Aim below450tokens and enforce512tokens with no silent truncation.
+tokens/headers. Aim below 450 tokens and enforce 512tokens with no silent truncation.
 Long exact text is split with checked Unicode offsets; retain full support in the
 observation. Store384-dimensional finite normalized vectors and lexical postings
 at the same corpus version. Retrieval ranking/Q&A remains M1.11; no effectiveness
@@ -98,7 +98,7 @@ Primary implementation references: [Neo4j managed transactions](https://neo4j.co
 [ONNX Runtime inference API](https://onnxruntime.ai/docs/api/python/api_summary.html).
 These are implementation references, not measured project outcomes.
 
-## Operating the implemented draft
+## Operating the implemented publication stage
 
 Native setup and CI select `--extra entities --extra publication`. Acquire the
 five immutable BGE files separately; bootstrap and CI do not download weights:
@@ -115,8 +115,7 @@ project `.env`. Missing assets keep publication unconfigured; invalid partial
 assets fail configured API startup with a sanitized message. No new environment
 variable, hosted service, paid call or worker rebuild is required.
 
-The draft adds migration0011; do not apply it to an existing primary database
-until the disposable regression passes. Applied0001–0010 remain frozen.
+Migration0011 is applied after successful disposable/hosted regression; primary is1–11, pending[]. Its frozen SHA256 is310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6. Applied0001–0010 remain frozen.
 Authenticated administrator endpoints are:
 
 - `POST /v1/admin/publication/builds`: immutable reviewed selection/lineage/effect request.
@@ -139,5 +138,75 @@ immutable history, acyclic lineage, projection coverage and final authority.
 Approved build data may be prepared in Neo4j; application consumers must first
 resolve the matching PostgreSQL published version and its active/as-of IDs.
 
-Final local/full database/real-source/hosted verification is in progress. No
-primary0011 application or real corpus publication is claimed at this checkpoint.
+M1.9 is complete as a bounded engineering stage. Primary0011 apply/replay and
+actual Premier publication are verified. Exact-source hosted run38717087117 is
+SUCCESS across both foundation platforms and all 469 database cases, auth and
+restart persistence. The final local full suite has 468 passes/one storage setup
+error; all 7 affected cases pass a fresh retry. No full native 469pass is claimed.
+See the measured report and completion record below.
+
+## Reader and operator contracts
+
+An approval request selects at most100 canonical candidate IDs, sorted and
+distinct, each with its owning sealed run and explicit original review ID or
+null. It supplies no accepted fact, computed gate, embedding or graph payload.
+An existing final rejection cannot be ignored by supplying a null review. A
+review from an earlier validator stays historically attached to that run;
+publication records the independently recomputed current result alongside it.
+
+The pilot bounds historical observations at10,000, active IDs at1,000 and
+filing/lineage/effect histories at1,000 each. Exceeding a bound fails explicitly;
+no data is truncated. These are bounded engineering contracts, not measured
+capacity or throughput. Date-as-of means source availability plus supported
+effect timing, independent of the disclosure's financial period. A future
+effect cannot activate its child or hide its parent early. Conflicting temporal
+effect order requires a new explicit reviewed resolution.
+
+PG BUILDING manifests may be graph/index inputs only after approval. Consumer
+code must resolve a requested PUBLISHED PG corpus first, retain its version in
+response metadata and filter graph/vector/lexical results using that corpus's
+active/as-of observation IDs. The graph's presence alone cannot establish
+publication. Ranking, query-prefix handling, B0–B3 and bounded graph expansion
+remain M1.11. A retrieval projection retains historical evidence for explicitly
+requested historical/as-of filtering; it must never be ranked without this
+application filter. Rebuilds use approved immutable stored projections, with an
+audited atomic replacement of only the selected corpus's derived rows.
+
+
+## Measured completion — 15 October
+
+Actual corpus614d7861-3f8f-4d5c-a9e5-d7423c2aba58 publishes one complete conditional
+Premier narrative, observation4745db6c-09db-4ee2-bc43-efb8a53c7b6b. Acceptance
+84061b52-c95b-4347-897f-00ccb4b20f13 binds the existing original review5c42296e
+on older validationf93660f2 and independently fresh validation97ec299b. Original
+candidates stay CANDIDATE, and all earlier source/review/workflow hashes remain
+unchanged. No review is copied or relabelled as belonging to the newer gate.
+Manifest SHA256 is6622925d2516aedd4c04194372c7783983b00b14271a9d7edcb7ff5b65cda58e;
+publication configuration SHA256 is978659d063ff827146bca5d4fd393683d5e044f4bcb080e144b61e0f3ac45bb1.
+
+The real projection has one49-token exact passage,384-dimensional normalized CPU
+BGE vector and matching lexical postings. Neo4j has4 nodes/3 provenance edges and
+zero corporate relation observations. Actual token-bound rejection, lossless
+Unicode splitting, repeatable inference, authenticated corpus/evidence reads,
+anonymous/learner write denials, two publication replays and graph/vector rebuild
+pass. The proof API was stopped after completion. Source-containing manifests
+and vectors stay in ignored.cache; metadata is data/publication-validation-report.json.
+
+The actual addendum's referenced parent remains absent. No real lineage/effect,
+numeric/relation positive, original table-cell success, OCR success or research
+improvement is claimed. Source publication date remains null; date-as-of returns
+TEMPORAL_SUPPORT_UNAVAILABLE. The authored two-filing tests prove scoped mechanics
+and historical traceability only. Held-out amendment/retrieval evaluation and
+fresh real-source clone/macOS/ARM verification remain later work.
+
+The first runtime helper attempt used an incorrect login route and stopped
+before any build/authority. It was corrected to the existing OAuth2 token/form
+contract with trust_env=False, then the full real proof passed. No product,
+validation algorithm or applied migration was changed for this helper repair.
+Exact-source21a72f1 hosted run38717087117 passes Ubuntu 1804/one skip,
+Windows 1802/three skips,212 frontend/3 Chromium on each, lint/types/build,
+Ruff/mypy 108 and 469 live database 377.56s, migrations/auth/restart persistence.
+Final 25local publication storage cases pass 128.16s,34 engine/projection and 18 HTTP.
+The long full native run records 468 passes and one storage-unavailable setup
+error; all 7 affected cases pass fresh retry 10.38s. Cause is unverified. Its full
+failure and retry are preserved in the execution log and measured report.

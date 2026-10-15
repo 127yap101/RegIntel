@@ -16,11 +16,30 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-M0/M1A and bounded M1.5–M1.8 are verified on the approved Windows/native API host and private Linux worker. The controlled Premier source retains 878 exact evidence records, 40 entity mentions and one conditional narrative proposal. Durable processing now survives actual crashes before and after a checkpoint; duplicate deliveries preserve completed history. Mandatory validation and staged reviews remain separate from acceptance. No financial observation or corpus is published. Migrations 1–10 are applied with earlier bytes preserved. See the [recovery record](docs/M1_8_RECOVERY_PLAN.md) and [measured report](data/processing-recovery-report.json).
+M0/M1A and bounded M1.5–M1.9 are verified on the approved Windows/native API
+host and private Linux worker. The controlled Premier filing retains 878 exact
+evidence records and now publishes one complete conditional narrative with its
+original review and fresh validation. Source-backed lineage/scoped effects,
+historical/active/as-of views, recoverable Neo4j/pgvector/lexical projections and
+atomic PostgreSQL corpus publication are implemented. The real parent is absent,
+so lineage stays unresolved/effects 0; its unknown publication date produces an
+explicit unavailable as-of response. See the [publication record](docs/M1_9_PUBLICATION_PLAN.md),
+[measured report](data/publication-validation-report.json) and [current state](CURRENT_STATE.md).
 
-Final local checks pass 1,691 backend tests with six disclosed Windows skips, 90 final live validation cases, 212 frontend tests and three Chromium tests, plus lint/types/build. The earlier full 398 database cases passed before the final currency/unit repair; the expanded final validation suite verifies that repair. These are engineering checks, not measured research effectiveness. See [validation/review scope](docs/M1_7_VALIDATION_REVIEW.md), [measured proof](data/validation-review-report.json), [current state](CURRENT_STATE.md) and [continuation prompt](docs/CONTINUATION_PROMPT.md).
+Exact-source hosted [CI38717087117](https://github.com/127yap101/RegIntel/actions/runs/38717087117)
+passes Windows 1802/three skips and Ubuntu 1804/one skip,212 frontend/3 Chromium on
+each, lint/types/build, and all 469 live database tests with fresh migrations 1–11,
+auth and restart persistence. The long native database run records 468 passes/one
+storage setup error; all 7 affected cases pass fresh retry. This is engineering
+verification, not real amendment-pair or held-out research effectiveness.
 
-M1.8 worker recovery is next. Amendment/publication, company/graph/review experiences and held-out evaluation remain unfinished. Provider boundaries use offline mocks; live Gemini transport/model selection and paid benchmarking remain pending. No dependency/env change or worker rebuild occurred. The historical parser image selects only `parsing`; native setup/CI selects `entities`. Original PDFs/models/credentials/database state stay out of Git.
+Next is M1.10 published company/fact/graph APIs and exact source-page experience,
+then retrieval/Q&A and admin/review UI. M2–M4/integration remain unfinished.
+Live Gemini transport/model selection and paid benchmarking are pending.
+Native setup/CI selects locked entities+publication extras. The private worker
+retains its M1.8 parser/stage environments and has not been rebuilt for M1.9.
+Original PDFs/models/credentials/database state remain out of Git. Use the
+[self-contained continuation prompt](docs/CONTINUATION_PROMPT.md) to resume.
 
 For authenticated ingestion/evidence/entity/candidate/validation APIs, complete the documented local database/auth setup and run `regintel-api --env-file .env --auth-env-file .env.auth` from the configured backend environment. The plain uvicorn command below supplies process liveness only.
 

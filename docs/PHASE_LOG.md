@@ -2,7 +2,83 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.9 completion and real corpus publication — verified15October
+
+Implementation/runtime-proof source21a72f1dc7e215d405b0023dca8f9bcbdb73a2fb is
+pushed normally to existing main. Exact-source hosted
+[run38717087117](https://github.com/127yap101/RegIntel/actions/runs/38717087117)
+completed SUCCESS. Read job logs confirm Ubuntu 1804 pass/one Windows-only skip,
+Windows 1802 pass/three POSIX skips; both 212 frontend/3 Chromium/lint/types/build,
+Ruff and mypy 108. Linux infrastructure passes469 database cases 377.56s, fresh
+migrations 1–11 apply/replay, authentication and service-restart persistence.
+Earlier54bbfa5 hosted run38714966683 also passes469cases386.82s and both
+platforms. The final follow-up changes documentation/report metadata only.
+
+After hosted full disposable success, applied primary0011 at frozen SHA256
+310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6.
+Replay applies nothing; primary1–11/pending[]; PostgreSQL16.15/pgvector0.8.7
+checks pass. All prior migrations/algorithms/source/review/workflow fingerprints
+are unchanged. No applied SQL was edited after activation.
+
+Real HTTP proof publishes corpus614d7861-3f8f-4d5c-a9e5-d7423c2aba58, manifest
+SHA6622925d2516aedd4c04194372c7783983b00b14271a9d7edcb7ff5b65cda58e.
+Observation4745db6c-09db-4ee2-bc43-efb8a53c7b6b and audit84061b52-c95b-4347-897f-00ccb4b20f13
+retain the complete conditional Premier statement and original5c42296e review
+on olderf93660f2 validation, independently binding fresh97ec299b/input0bc75f10.
+Authority counts1 audit/1 fact/0 relations/1 corpus. The candidate stays CANDIDATE;
+original review is neither overwritten nor relabelled.
+
+One49-token exact passage has a normalized384-dimensional BGE CPU embedding and
+matching lexical postings. Graph4 nodes/3 provenance edges, no real corporate
+relation observations. Actual source-owned evidence read, role denials, versioned
+learner corpus read, two publication replays, unknown-date abstention, actual
+graph/vector rebuild and unchanged original snapshots pass. Tokenizer/CPU
+preflight preserves13,200authored Unicode characters in 6 chunks at most 450 tokens,
+rejects oversized input and repeats identical vectors. The first helper login
+attempt stopped before any build because it used an incorrect route; corrected
+to existing OAuth2 token/form with trust_env=False, and the full proof passes.
+No product/validation/migration change was needed. Owned loopback API stopped
+after verifying PID/path/start-time ticks; existing four services are preserved.
+
+Source-containing proof is ignored under
+.cache/publication-runtime-693eadec62c24438b70d33928e0278c5. Metadata only is
+saved as data/publication-validation-report.json. Actual parent remains absent,
+lineage unresolved/effects 0, publication date null and as-of unavailable. No real
+parent pair/numeric/relation/table-cell/OCR success or effectiveness is claimed.
+Authored amendment fixtures prove mechanics only. M1.10 is next.
+
+Local full application runner 1797 passes/six Windows skips,212 frontend/3 Chromium,
+Ruff 168/mypy 108 and lint/types/build passes. Added final 34 engine/projection,
+18 HTTP/25 publication storage cases pass. The unusually long full native DB run
+finishes 468 passes/one EntityUnavailable setup error during entity-run persistence
+for a policy-schema case; duration 6336.32s. Its underlying cause is unverified.
+All7 affected policy-schema parameters pass on a fresh disposable retry 10.38s.
+No full native 469-pass result is claimed. Complete exact-source hosted 469tests
+pass twice. Shell syntax/actionlint and Linux-platform mypy92 pass. Original
+failed attempts and logs remain recorded; no checks disabled. Native 142lock/
+103installed and frozen 109 parser/77 stage worker environments remain as documented.
+
 ## M1.9 reviewed publication/projections — source checkpoint, 15 October
+
+Exact54bbfa5 hosted foundation logs are now readable through the GitHub connector:
+Ubuntu 1804 passed/one Windows-only skip; Windows 1802 passed/three POSIX skips.
+Both include212 frontend/3 Chromium, lint/types/build, Ruff and mypy 108. The hosted
+infrastructure/fresh full database suite is still pending; no all-jobs success
+or real-source publication is claimed at this point.
+
+Source checkpoint c233ce9a3ea35769f0a26a7cd73dad764f8b13b8 and runtime-probe
+follow-up54bbfa50ca7d4788b0858d0dd38e909b3d5a7261 are pushed normally to existing
+main; remote SHA matches. Hosted run38714966683 has both foundation jobs successful; infrastructure is in progress.
+The actual frozen tokenizer/CPU preflight preserves a13,200-character authored
+Unicode span in6exact chunks of at most 450 tokens, rejects oversized inference
+and repeats identical normalized384-dimensional vectors. The first authored
+probe exceeded the source-span20,000-character contract; its length was corrected
+before the real proof, with no product/migration change. All90current Python
+source files and11migration bytes match the committed source (101files total).
+Primary read-only preflight still records1–10/pending11, all4authority counts0,
+original snapshots saved under ignored.cache/m1_9-primary-preflight.json.
+Publication configuration SHA256 is
+978659d063ff827146bca5d4fd393683d5e044f4bcb080e144b61e0f3ac45bb1.
 
 M1.9 is implemented and undergoing final verification. Sequential work and
 normal main commits/pushes remain authorized. Primary0011 is still unapplied;
@@ -21,17 +97,17 @@ transaction. Audited rebuilds preserve authority and original decisions.
 Append0011 is tested only on disposable databases so far, SHA256
 310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6.
 All applied0001–0010 bytes remain identical. Raw candidates, reviews and frozen
-algorithms/worker runtime are unchanged. Native entities+publication uses142
-locked packages/103 installed distributions; all140 earlier pins are retained.
+algorithms/worker runtime are unchanged. Native entities+publication uses 142
+locked packages/103 installed distributions; all 140 earlier pins are retained.
 Only neo4j6.4.0/pytz2026.5 are newly locked. Five BGE assets at immutable revision
 5c38ec7c405ec4b44b94cc5a9bb96e735b38267a are hash-verified locally; native CPU
 384-dimensional normalized inference passes. No paid API, new env/service/public
 port or worker rebuild. See dependency register/model manifest and M1.9 plan.
 
-Verified full native runner:1797 backend/six disclosed Windows skips,212frontend,
-3Chromium, lint/types/build, Ruff168/mypy108. Two subsequently added cycle/source
-availability cases pass in final34 focused engine/projection cases;18HTTP cases
-pass. Final25 publication storage cases pass128.16s, including authored two-filing
+Verified full native runner:1797 backend/six disclosed Windows skips,212 frontend,
+3 Chromium, lint/types/build, Ruff 168/mypy 108. Two subsequently added cycle/source
+availability cases pass in final 34 focused engine/projection cases;18 HTTP cases
+pass. Final 25 publication storage cases pass 128.16s, including authored two-filing
 effects/history, exact Decimal preservation, mandatory-gate failures, direct SQL
 forgery, revocation, competing heads, rollback, graph outage/recovery, actual
 Neo4j damage detection/rebuild, retrieval coverage and audited reconstruction.

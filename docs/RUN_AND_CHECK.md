@@ -1,11 +1,32 @@
 # Run, inspect and pause RegIntel
 
-M0/M1A, entity resolution, bounded candidates and text validation/staged reviews
-and durable worker recovery are implemented.
+M0/M1A, entity resolution, bounded candidates, text validation/staged reviews,
+durable worker recovery and reviewed corpus publication are implemented.
 The frontend currently shows foundation/status and API liveness. Ingestion,
 exact evidence/PDFs, entity decisions, unaccepted candidate runs and staged
 validation/review audits are available
 through the backend API. Company/graph/review screens come later.
+
+## M1.9 published corpus
+
+Reviewed publication, immutable history/effects and versioned graph/vector/lexical
+projections are verified. Actual published corpus ID:
+`614d7861-3f8f-4d5c-a9e5-d7423c2aba58`. It contains one conditional Premier narrative,
+with unresolved parent/effects 0. Primary migrations 1–11 are applied. Hosted
+Windows/Ubuntu and all 469 database checks pass; the native storage setup-error
+and successful 7-case retry are disclosed in the [measured report](../data/publication-validation-report.json).
+
+The native bootstrap now selects entities+publication. On a new machine, acquire
+the pinned ignored BGE files with `python scripts/acquire-embedding-model.py`
+from the configured backend environment before running publication. No weights
+or original PDFs are stored in Git. The approved worker needs no M1.9 rebuild.
+
+Administrators can create, read, publish and rebuild a corpus under `/v1/admin/publication/builds` in the API explorer. A
+published corpus can be read at `GET /v1/corpora/{id}` with a current login;
+`historical=true` preserves accepted history, and an unsupported `as_of_date`
+returns explicit temporal unavailability. Obtain this machine's actual corpus
+ID from the measured publication report. Company/fact/graph pages, learner
+source viewing and review UI remain later work. See [publication operating contract](M1_9_PUBLICATION_PLAN.md).
 
 ## Inspect the saved result without starting services
 
@@ -15,12 +36,13 @@ through the backend API. Company/graph/review screens come later.
 - [Measured candidate verification](../data/candidate-validation-report.json)
 - [Measured validation/review verification](../data/validation-review-report.json)
 - [Measured processing/recovery verification](../data/processing-recovery-report.json)
+- [Measured publication verification](../data/publication-validation-report.json)
 - [Source manifest](../data/manifest.json)
 - Persisted CIN highlight: `D:/RegIntel/.cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682/cin-detail.png`
 
 The real Premier job is `PARSED`, with one attempt, three source pages and 878
 exact text evidence records. Known OCR/table/currency limitations are recorded;
-these records do not constitute accepted financial facts or a published corpus.
+the earlier parser records alone do not constitute financial acceptance. M1.9 now separately publishes the one reviewed conditional narrative described above.
 
 ## Run the installed app
 
@@ -62,6 +84,8 @@ password flow. Use **Try it out** on:
 - `GET /v1/filing-versions/{filing_version_id}/source.pdf` with `295214b3-1c7a-44d4-8201-bf97a986a950`.
 - `GET /v1/admin/entities/runs/{run_id}` with `407bc0fa-e97a-4d81-8c9f-126b682e83a7`.
 - `GET /v1/admin/candidates/runs/{run_id}` with `6311f8bd-d49d-4fa8-b038-817205e73fff`.
+- `GET /v1/corpora/{corpus_id}` with `614d7861-3f8f-4d5c-a9e5-d7423c2aba58` (current login).
+- `GET /v1/admin/publication/builds/{corpus_id}` with the same ID (administrator).
 - `GET /v1/admin/validation/runs/{run_id}` with `97ec299b-f5e7-4043-9fec-e7c08473b6a9` for the final-code gate.
 - `GET /v1/admin/processing/jobs/{job_id}` with `95ba9ce9-5f28-4187-a35b-3364415a838c` shows the verified recovered workflow.
 - The same validation read with `f93660f2-c589-4cc5-af3d-031e896a4d3b` shows the original staged review.
