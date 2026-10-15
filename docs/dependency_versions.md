@@ -3,13 +3,13 @@
 ## M1.8 checkpointed processing/recovery — 15 October 2026
 
 No new dependency pin, operator environment variable, provider/model, paid call or host
-software. The140-package lock and native 92-distribution environment are unchanged.
+software. The 140-package lock and native 92-distribution environment are unchanged.
 The approved single Linux worker now has two exact environments: the original
 109-package parser environment and a 77-package production `entities` environment.
 The latter matches the existing locked Linux entities export exactly, including
 spaCy3.8.16/RapidFuzz3.14.6 and their previously documented licenses. One fixed
 subprocess runs stage jobs; no new service, worker port or native Windows Celery.
-Both environments contain 82identical current source files.
+Both environments contain 82 identical current source files.
 
 Final image `5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b`
 uses the existing Python3.12.15/uv0.12.23 base digests and offline Debian closure.
@@ -22,11 +22,13 @@ published port; source/model/configuration mounts remain read-only.
 
 Append0009 and corrective0010 are applied/frozen; earlier migration/algorithm
 bytes remain unchanged. The correction preserves a failed real probe and compares
-sorted evidence membership separately from source traversal order. Final42live
+sorted evidence membership separately from source traversal order. Final 42 live
 recovery cases and two real SIGKILL recoveries pass; local full 441 database cases
-passed before the final refinements. Full runner1747backend/6Windows skips,
-212frontend/3Chromium and final scoped static checks pass. Actual source CI status
-is recorded in CURRENT_STATE/PHASE_LOG after publication. No macOS/ARM/fresh real
+passed before the final refinements. Full runner 1747 backend/6 Windows skips,
+212 frontend/3 Chromium and final scoped static checks pass. Source commit80f4127 passes hosted [run38686295756](https://github.com/127yap101/RegIntel/actions/runs/38686295756)
+on Windows and Ubuntu foundation and Linux data infrastructure, including the
+complete final database suite, fresh1–10migration apply/replay andauth/restart
+persistence. Publication-record updates change metadata only. No macOS/ARM/fresh real
 clone or research-effectiveness claim. See the measured recovery report.
 
 ## M1.7 validation/review — 14 October 2026

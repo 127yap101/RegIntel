@@ -94,7 +94,9 @@ running Docker/PostgreSQL and creates/removes only its own disposable database.
 Latest local results: 1,747 backend passes/six Windows skips, 212 frontend
 passes and three browser passes. The full 441-case database suite passed before
 the final recovery refinements; the final 42-case processing storage suite passes
-after them. Exact source CI results are recorded in CURRENT_STATE/PHASE_LOG.
+after them. Source [CI](https://github.com/127yap101/RegIntel/actions/runs/38686295756) passes
+Windows/Linux foundation and the full final database, migration1–10, authentication
+and service-restart checks. See CURRENT_STATE/PHASE_LOG for the exact source SHA.
 These are engineering checks, not research effectiveness.
 
 After a worker/infrastructure interruption, recover unfinished processing jobs

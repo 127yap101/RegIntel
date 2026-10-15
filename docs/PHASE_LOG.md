@@ -4,8 +4,7 @@ This is the actual execution record, not a specification or performance report. 
 
 ## M1.8 checkpointed processing and recovery — verified 15 October
 
-Source publication and hosted CI are being completed; this entry records actual
-local/runtime verification. No financial acceptance or corpus publication occurs.
+Source commit `80f4127c524fb968c6c076d45f2d4fc60a1bb078` is pushed normally to existing main, remote SHA matched and the source tree was clean. All 32 phase files passed secret/asset review; all 82 installed source files and 10 migrations match the staged/runtime fingerprints. Hosted [run 38686295756](https://github.com/127yap101/RegIntel/actions/runs/38686295756) completed SUCCESS for Windows and Ubuntu foundation and Linux infrastructure, including the full final database suite, fresh migrations1–10 apply/replay, authentication and service-restart persistence. This publication-record follow-up changes metadata only. No financial acceptance or corpus publication occurs.
 
 Added PostgreSQL-owned workflow requests, frozen inputs, generation-fenced stage
 checkpoints, append-only events and replayable dispatch on the existing private

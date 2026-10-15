@@ -412,7 +412,7 @@
     },
     "linux_platform_mypy_sources": 82,
     "runner_syntax": "PowerShell and Bash passed",
-    "hosted_ci": "pending source publication"
+    "hosted_ci": "Exact source80f4127 run38686295756 SUCCESS: Windows/Linux foundation, full final database/migrations1\u201310, authentication and service-restart persistence."
   },
   "primary_migrations": {
     "1": "496889943f5fda3a674b6f1a5e469267b3303f8c3293d802d4ffc48a482c68d6",
@@ -428,5 +428,42 @@
   },
   "new_dependency_pins": [],
   "proof_directory": ".cache/processing-runtime-829bc66634014031890c446a56028229",
-  "new_runtime_environment_variables": []
+  "new_runtime_environment_variables": [],
+  "publication": {
+    "source_commit": "80f4127c524fb968c6c076d45f2d4fc60a1bb078",
+    "branch": "main",
+    "remote_source_sha_verified": true,
+    "source_worktree_clean": true,
+    "phase_files_audited": 32,
+    "installed_source_files_matched": 82,
+    "migration_fingerprints_matched": 10,
+    "workflow_run_id": 38686295756,
+    "workflow_url": "https://github.com/127yap101/RegIntel/actions/runs/38686295756",
+    "workflow_status": "completed",
+    "foundation_windows": "success",
+    "foundation_linux": "success",
+    "infrastructure_linux": "success",
+    "followup_scope": "Documentation/report metadata only; verified product and migration bytes preserved.",
+    "workflow_conclusion": "success",
+    "workflow_jobs": [
+      {
+        "id": 116261793487,
+        "name": "Foundation (ubuntu-24.04)",
+        "conclusion": "success"
+      },
+      {
+        "id": 116261793803,
+        "name": "Foundation (windows-2025)",
+        "conclusion": "success"
+      },
+      {
+        "id": 116262921095,
+        "name": "Local data infrastructure (Linux)",
+        "conclusion": "success"
+      }
+    ],
+    "full_final_database_suite": "passed on exact final source",
+    "fresh_migrations_1_to_10_apply_replay": "passed",
+    "authentication_and_service_restart_persistence": "passed"
+  }
 }

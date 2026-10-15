@@ -1,5 +1,7 @@
 # Prompt for continuing RegIntel
 
+Source checkpoint `80f4127c524fb968c6c076d45f2d4fc60a1bb078` is on main; remote SHA matched. Hosted [run 38686295756](https://github.com/127yap101/RegIntel/actions/runs/38686295756) completed SUCCESS for Windows and Ubuntu foundation and Linux infrastructure, including the full final database suite, fresh migrations1–10 apply/replay, authentication and service-restart persistence. The publication-record follow-up changes metadata only; verified product and migration bytes remain unchanged.
+
 Continue RegIntel Finance from the verified M1.8 recovery checkpoint on the
 existing `main` branch of `https://github.com/127yap101/RegIntel`. The current
 source commit and hosted CI status are recorded in CURRENT_STATE.md and the
