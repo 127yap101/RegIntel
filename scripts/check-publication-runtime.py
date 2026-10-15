@@ -165,12 +165,13 @@ def prove(api_base: str) -> dict[str, object]:
     )
     directory = ROOT / ".cache" / ("publication-runtime-" + uuid4().hex)
     directory.mkdir()
-    with httpx2.Client(timeout=180) as client:
+    with httpx2.Client(timeout=180, trust_env=False) as client:
         headers = {}
         for account in load_seed_accounts(ROOT / ".env.auth"):
             response = client.post(
-                api_base + "/v1/auth/login",
-                json={
+                api_base + "/v1/auth/token",
+                data={
+                    "grant_type": "password",
                     "username": account.username,
                     "password": account.password.get_secret_value(),
                 },
