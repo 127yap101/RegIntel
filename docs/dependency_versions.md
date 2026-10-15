@@ -1,5 +1,35 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.10 published reads/viewer — 15 October 2026
+
+Native Node 24.19.0 and project-local pnpm 11.19.0 are unchanged. The environment's
+fallback pnpm is 11.25.0 and was rejected by the existing engine requirement;
+all installation/verification uses the existing pinned `.tools/pnpm/pnpm.cmd`.
+Windows bootstrap now selects that same local wrapper when present.
+
+| Component | Pinned version | License | Actual scope |
+|---|---|---|---|
+| pdfjs-dist / PDF.js | 6.4.299 | Apache-2.0 | Authenticated byte rendering with source SHA256 verification, legacy browser build and matching worker |
+| Cytoscape.js | 3.34.3 | MIT | Directed published relations, accessible text controls, responsive canvas; included TypeScript types |
+| @napi-rs/canvas | 1.0.11 optional transitive | MIT | PDF.js optional Node dependency, browser mapping disabled; no native backend use |
+
+Existing frontend pins are preserved. The redundant external Cytoscape type stub
+was removed after the installed package confirmed its own types. PDF.js's modern
+build used Map.getOrInsertComputed, unavailable in pinned Playwright Chromium;
+the package's documented legacy build provides compatibility. Actual authored
+and real Premier browser rendering pass. No custom polyfill or browser upgrade.
+Production build retains its large-chunk warning; no check is suppressed.
+
+The 142-package Python lock and native 103 distributions are unchanged. No new
+backend package, migration, environment variable, service, worker rebuild,
+system install, paid API call or original filing. See the M1.10 measured report
+and current state for final verification/source-publication status.
+
+References: installed exact-version package metadata/licenses,
+[PDF.js distribution/legacy build](https://github.com/mozilla/pdfjs-dist),
+[PDF.js viewport example](https://mozilla.github.io/pdf.js/examples/),
+[Cytoscape API and license](https://js.cytoscape.org/).
+
 ## M1.9 publication runtime — verified 15 October 2026
 
 Native Windows Python3.12.14 now selects `entities` plus `publication`. The lock

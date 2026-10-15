@@ -76,6 +76,8 @@ def serve_main() -> None:
     from regintel.publication.graph import Neo4jProjection
     from regintel.publication.repository import PublicationRepository
     from regintel.publication.service import PublicationService, current_configuration
+    from regintel.reads.repository import ReadRepository
+    from regintel.reads.service import PublishedReadService
     from regintel.validation.api import ValidationService
     from regintel.validation.repository import ValidationRepository
 
@@ -102,14 +104,15 @@ def serve_main() -> None:
         except (OSError, ValueError, ImportError):
             raise SystemExit("Publication prerequisites are invalid; secrets omitted.") from None
 
+    evidence_service = EvidenceService(
+        EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
+    )
     try:
         uvicorn.run(
             create_app(
                 auth_service=service,
                 ingestion_service=ingestion,
-                evidence_service=EvidenceService(
-                    EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
-                ),
+                evidence_service=evidence_service,
                 entity_service=EntityService(
                     EntityRepository(load_database_settings(args.env_file))
                 ),
@@ -124,6 +127,12 @@ def serve_main() -> None:
                     processing_sender(create_celery(ingestion_settings)),
                 ),
                 publication_service=publication,
+                read_service=PublishedReadService(
+                    PublicationRepository(load_database_settings(args.env_file)),
+                    ReadRepository(load_database_settings(args.env_file)),
+                    evidence_service,
+                    graph,
+                ),
             ),
             host="127.0.0.1",
             port=args.port,

@@ -36,6 +36,9 @@ artifacts/
 frontend/src/contracts/generated.ts
 frontend/src/contracts/schema.json
 frontend/src/contracts/fixtures.generated.json
+frontend/src/published/generated.ts
+frontend/src/published/schema.json
+frontend/src/published/fixtures.generated.json
 *.log
 
 # Editor and OS files

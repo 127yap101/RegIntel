@@ -2,10 +2,34 @@
 
 M0/M1A, entity resolution, bounded candidates, text validation/staged reviews,
 durable worker recovery and reviewed corpus publication are implemented.
-The frontend currently shows foundation/status and API liveness. Ingestion,
+The frontend includes a read-only published filing explorer and API liveness. Ingestion,
 exact evidence/PDFs, entity decisions, unaccepted candidate runs and staged
 validation/review audits are available
-through the backend API. Company/graph/review screens come later.
+through the backend API. Company search, reviewed disclosures, directed corporate
+relations and exact source pages can now be inspected after sign-in. Financial
+comparison/profile, retrieval/Q&A and administrator review workflows remain later work.
+
+## Inspect published filings in the browser
+
+Use the installed-app commands below, then open the frontend and sign in under
+**Published filing explorer** with an existing learner or administrator account.
+Generated credentials remain privately in the machine's ignored `.env.auth`.
+The browser keeps its bearer token in memory only; sign out when finished.
+
+The explorer pins the current published corpus on sign-in. Select **PREMIER
+ENERGIES LIMITED**, read the complete conditional proposed-IPO disclosure, then
+choose **Inspect source 1**. The real proof opens original page 3, checks its hash
+and overlays its persisted evidence region. Exact block-character support is
+listed below the scrollable page; the region is not a character-level box.
+The actual corpus has zero corporate relation observations, so the empty
+corporate graph is explicit. The missing parent and unknown date remain visible
+limitations. Applying a date returns unavailability; it does not invent a result.
+
+Use **Include accepted history** or supply an explicit published corpus ID when
+needed. **Apply view** clears the prior selection. Revoked/expired login clears
+private results. Another machine must restore its own ignored sources/data and
+use its actual corpus/company IDs; Git contains code/metadata, not this database.
+See [M1.10 measured verification](../data/published-reads-validation-report.json).
 
 ## M1.9 published corpus
 
@@ -25,8 +49,10 @@ Administrators can create, read, publish and rebuild a corpus under `/v1/admin/p
 published corpus can be read at `GET /v1/corpora/{id}` with a current login;
 `historical=true` preserves accepted history, and an unsupported `as_of_date`
 returns explicit temporal unavailability. Obtain this machine's actual corpus
-ID from the measured publication report. Company/fact/graph pages, learner
-source viewing and review UI remain later work. See [publication operating contract](M1_9_PUBLICATION_PLAN.md).
+ID from the measured publication report. The M1.10 explorer uses published
+company/fact/graph reads and corpus/observation-scoped learner source access.
+Unscoped original evidence/PDF routes remain administrator-only. Review UI is
+later work. See [publication operating contract](M1_9_PUBLICATION_PLAN.md).
 
 ## Inspect the saved result without starting services
 
@@ -37,6 +63,7 @@ source viewing and review UI remain later work. See [publication operating contr
 - [Measured validation/review verification](../data/validation-review-report.json)
 - [Measured processing/recovery verification](../data/processing-recovery-report.json)
 - [Measured publication verification](../data/publication-validation-report.json)
+- [Measured published reads/browser verification](../data/published-reads-validation-report.json)
 - [Source manifest](../data/manifest.json)
 - Persisted CIN highlight: `D:/RegIntel/.cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682/cin-detail.png`
 
@@ -85,6 +112,8 @@ password flow. Use **Try it out** on:
 - `GET /v1/admin/entities/runs/{run_id}` with `407bc0fa-e97a-4d81-8c9f-126b682e83a7`.
 - `GET /v1/admin/candidates/runs/{run_id}` with `6311f8bd-d49d-4fa8-b038-817205e73fff`.
 - `GET /v1/corpora/{corpus_id}` with `614d7861-3f8f-4d5c-a9e5-d7423c2aba58` (current login).
+- `GET /v1/published-corpus` and `GET /v1/companies` (current login).
+- `GET /v1/companies/{company_id}/facts` and `/graph` with `581d1b0d-98fd-4a23-8e15-5574dac650a2`; pin `corpus_version_id` to the corpus above.
 - `GET /v1/admin/publication/builds/{corpus_id}` with the same ID (administrator).
 - `GET /v1/admin/validation/runs/{run_id}` with `97ec299b-f5e7-4043-9fec-e7c08473b6a9` for the final-code gate.
 - `GET /v1/admin/processing/jobs/{job_id}` with `95ba9ce9-5f28-4187-a35b-3364415a838c` shows the verified recovered workflow.
@@ -93,12 +122,13 @@ password flow. Use **Try it out** on:
 Expected results: `PARSED`, an exact CIN quote with span/geometry/provenance, and
 the original source PDF. Admin access is required; the learner role cannot read
 these unpublished M1A sources. The final gate has one `REVIEW` result needing extractive confirmation. Its
-original review is preserved on the earlier configuration; this is staging only,
-not an accepted fact or published corpus. The recovered processing job is `SUCCEEDED`, generation2, with all three original output IDs. That status confirms processing only. Keep generated credentials local.
+original review is preserved on the earlier configuration. This validation read
+shows staged eligibility; M1.9 separately accepts and publishes the one reviewed
+conditional narrative described above. The recovered processing job is `SUCCEEDED`, generation2, with all three original output IDs. That status confirms processing only. Keep generated credentials local.
 
 ## Check implementation
 
-Read-only schema status (expected applied 1-10, nothing pending):
+Read-only schema status (expected applied 1–11, nothing pending):
 
 ```powershell
 Set-Location D:\RegIntel

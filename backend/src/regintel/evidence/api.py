@@ -16,14 +16,7 @@ from regintel.contracts.models import (
     TextEvidence,
 )
 from regintel.contracts.primitives import CanonicalId, Sha256Hash
-from regintel.evidence.ranges import (
-    InvalidSourceHeader,
-    UnsatisfiableRange,
-    bounded_header,
-    if_none_match,
-    if_range_matches,
-    select_range,
-)
+from regintel.evidence.http import source_response
 from regintel.evidence.source import read_verified_source
 from regintel.ingestion.models import SourceBlob
 from regintel.ingestion.storage import SourceStorage, UploadError
@@ -102,12 +95,6 @@ def create_evidence_router(auth: AuthService | None, service: EvidenceService | 
             ),
         )
 
-    def header(request: Request, name: str) -> str | None:
-        values = request.headers.getlist(name)
-        if len(values) > 1:
-            raise InvalidSourceHeader()
-        return bounded_header(values[0] if values else None)
-
     source_responses: dict[int | str, dict[str, object]] = {
         **errors,
         200: {"content": {"application/pdf": {"schema": {"type": "string", "format": "binary"}}}},
@@ -140,39 +127,6 @@ def create_evidence_router(auth: AuthService | None, service: EvidenceService | 
             data = read_verified_source(evidence_service.storage, blob)
         except (psycopg.Error, OSError, UploadError, ValueError):
             raise HTTPException(503, "Source is unavailable.") from None
-        size = len(data)
-        etag = f'"{blob.sha256}"'
-        headers = {"ETag": etag, "Accept-Ranges": "bytes", "Cache-Control": "no-store"}
-        try:
-            none_match = header(request, "if-none-match")
-            if if_none_match(none_match, etag=etag):
-                return Response(status_code=304, headers=headers)
-            if request.method == "HEAD":
-                headers["Content-Length"] = str(size)
-                return Response(content=b"", media_type="application/pdf", headers=headers)
-            requested_range = header(request, "range")
-            condition = header(request, "if-range")
-            selected = (
-                select_range(requested_range, size=size)
-                if if_range_matches(condition, etag=etag)
-                else None
-            )
-        except InvalidSourceHeader:
-            raise HTTPException(400, "Invalid source header.") from None
-        except UnsatisfiableRange:
-            raise HTTPException(
-                416,
-                "Source range is unavailable.",
-                headers={**headers, "Content-Range": f"bytes */{size}"},
-            ) from None
-        if selected is None:
-            headers["Content-Length"] = str(size)
-            return Response(content=data, media_type="application/pdf", headers=headers)
-        selected_bytes = data[selected.start : selected.end + 1]
-        headers["Content-Range"] = f"bytes {selected.start}-{selected.end}/{size}"
-        headers["Content-Length"] = str(len(selected_bytes))
-        return Response(
-            content=selected_bytes, status_code=206, media_type="application/pdf", headers=headers
-        )
+        return source_response(request, data, blob.sha256)
 
     return router

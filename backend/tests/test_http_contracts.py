@@ -41,7 +41,7 @@ def test_enveloped_errors_have_fresh_server_identity_and_preserve_http_headers()
             assert all(value is None for value in envelope.meta.versions.model_dump().values())
             assert response.headers["Cache-Control"] == "no-store"
         assert first.headers["X-Request-ID"] != second.headers["X-Request-ID"]
-        missing = client.get("/v1/companies")
+        missing = client.get("/v1/compare")
         assert missing.status_code == 404
         assert ErrorEnvelope.model_validate_json(missing.text).error.code == "NOT_FOUND"
         wrong_method = client.post("/v1/auth/me")
@@ -90,6 +90,7 @@ def test_validation_and_unhandled_errors_never_echo_values_or_dynamic_field_name
                 "Content-Range",
                 "Accept-Ranges",
                 "Content-Length",
+                "X-Corpus-Version-ID",
             }
 
 

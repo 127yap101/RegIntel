@@ -3,6 +3,7 @@ import { fetchBackendHealth, HealthCheckError } from './api/health'
 import type { BackendHealth } from './api/health'
 import { Button } from './components/Button'
 import { Card } from './components/Card'
+import { Explorer } from './published/Explorer'
 
 type HealthState =
   | { kind: 'checking' }
@@ -62,7 +63,7 @@ export default function App() {
           </a>
           <div className="flex items-center gap-5 text-sm">
             <a href="#project-status" className="rounded-md font-medium text-muted underline-offset-4 hover:text-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage">Project status</a>
-            <span className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink">Foundation only</span>
+            <a href="#filing-explorer" className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink">Explore published filings</a>
           </div>
         </header>
 
@@ -74,9 +75,9 @@ export default function App() {
               <p className="mt-6 max-w-xl text-base leading-7 text-muted sm:text-lg">RegIntel Finance is an academic capstone for source-linked corporate intelligence and financial learning.</p>
             </div>
             <aside aria-label="Current implementation scope" className="rounded-2xl bg-ink p-7 text-white sm:p-8">
-              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sage-light">M0.2 · Foundation</p>
-              <p className="mt-4 text-2xl font-medium leading-8 tracking-tight">The foundation is taking shape.</p>
-              <p className="mt-3 text-sm leading-6 text-white/80">This screen provides project status and a backend liveness check. Business modules are not implemented yet; no company facts or financial results are displayed.</p>
+              <p className="text-xs font-semibold uppercase tracking-[0.16em] text-sage-light">M1 · Published filing reads</p>
+              <p className="mt-4 text-2xl font-medium leading-8 tracking-tight">Inspect a disclosure at its source.</p>
+              <p className="mt-3 text-sm leading-6 text-white/80">Sign in to read published disclosures, directed corporate relations and exact source pages. Available content depends on the reviewed corpus on this machine.</p>
             </aside>
           </section>
 
@@ -89,7 +90,7 @@ export default function App() {
                 </div>
                 <p className="mt-3 max-w-lg text-sm leading-6 text-muted">
                   {healthState.kind === 'available'
-                    ? `Connected to the ${healthState.health.environment} API. This confirms liveness only; the four business modules remain unimplemented.`
+                    ? `Connected to the ${healthState.health.environment} API. This confirms liveness only; published data is loaded separately after sign-in.`
                     : healthState.kind === 'unavailable'
                       ? healthState.message
                       : 'Waiting for the backend health response. No company data is requested.'}
@@ -112,18 +113,19 @@ export default function App() {
           <section aria-labelledby="modules-heading" className="py-12 sm:py-16">
             <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
               <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Planned platform</p><h2 id="modules-heading" className="mt-2 text-2xl font-semibold tracking-tight text-ink">Four connected modules</h2></div>
-              <p className="text-sm text-muted">All modules: not implemented</p>
+              <p className="text-sm text-muted">M1 published reads available · M2–M4 planned</p>
             </div>
             <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {modules.map((module) => (
                 <li key={module.id} className="rounded-xl border border-line bg-white p-6">
-                  <div className="flex items-center justify-between gap-2"><span className="text-xs font-bold tracking-wider text-sage-dark">{module.id}</span><span className="rounded-full bg-paper px-2.5 py-1 text-[11px] font-medium text-muted">Not implemented</span></div>
+                  <div className="flex items-center justify-between gap-2"><span className="text-xs font-bold tracking-wider text-sage-dark">{module.id}</span><span className="rounded-full bg-paper px-2.5 py-1 text-[11px] font-medium text-muted">{module.id === 'M1' ? 'Published reads' : 'Not implemented'}</span></div>
                   <h3 className="mt-6 text-lg font-semibold tracking-tight text-ink">{module.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-muted">Planned: {module.plan}</p>
                 </li>
               ))}
             </ul>
           </section>
+          <Explorer />
         </main>
 
         <footer className="flex flex-wrap justify-between gap-3 border-t border-line py-6 text-xs leading-5 text-muted">

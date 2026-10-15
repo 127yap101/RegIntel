@@ -2,6 +2,74 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.10 published company reads and exact source viewer — local verification, 15 October
+
+Continued from a5432cc under existing sequential implementation/commit/push
+authorization. Added authenticated published company search/facts/direct
+directed graph and observation-scoped learner evidence/original-PDF reads.
+PostgreSQL PUBLISHED manifest and active/historical/as-of view control scope;
+accepted hash-checked registry/metric inputs control labels. Neo4j is verified,
+with approved observation IDs controlling the direct relation view. Unscoped
+original evidence/PDF routes retain admin authorization. Shared HTTP source
+range/conditional policy is extracted unchanged; membership/auth/hash gates
+precede responses. No migrations or frozen parsing/extraction/validation/
+publication algorithm changes.
+
+Added read-only browser explorer, in-memory login, pinned-corpus wire checks,
+Cytoscape directed relations/accessibility and PDF.js original-page rendering.
+Original SHA256 is checked in the browser; exact spans and persisted regions
+remain distinct. Financial context/Decimal strings and all support/context
+evidence links are exposed without frontend arithmetic. Auth expiry/logout
+clears private state; pending requests cannot repopulate it. Source text is inert.
+
+Measured local commands/results:
+- Full scripts/run-checks.ps1 backend: 1830 passed/six Windows skips,
+  474 database deselected,444.52s. It later failed the modern PDF.js browser case;
+  no successful combined runner exit is claimed.
+- Final pinned-pnpm frontend lint/typecheck/test/build/test:e2e all pass:
+  225 unit and nine Chromium cases17.0s, including actual authored PDF rendering,
+  tampered-hash denial, unknown-date clearing, inert HTML and pending logout.
+- scripts/check-migrations.py selection for new published reads: five disposable
+  PostgreSQL cases35.25s, including exact1234.50 context and old corpus after
+  a valid new head. No new test data is placed in the primary database.
+- Ruff179files/mypy117sources, scoped Linux-platform mypy11, both shell syntax
+  checks, actionlint and node --check scripts/check-published-browser.cjs pass.
+- Real scripts/check-published-reads-runtime.py proof
+  .cache/published-reads-runtime-2ce4efd422dd40f1b9b74ad709c2913c passes
+  authenticated exact-version reads, scope/role denials, original hash/HEAD/range/
+  conditional responses and explicit unknown-date unavailability.
+- Real scripts/check-published-browser.cjs proof
+  .cache/published-browser-4cfe3fe97cfe49109e1acaffdec14f18 passes original
+  page3 canvas/region,375px viewport, date abstention, logout, zero browser errors
+  and no token storage/credential URLs. Screenshots are ignored.
+- All original source/processing/publication/authority snapshot hashes are
+  unchanged. Owned API/Vite servers stopped; four existing services healthy.
+
+Corrections are disclosed: authored graph fixture needed a receipt namespace;
+the old-version test now uses a valid new publication selection instead of
+reaccepting an existing observation; prior unimplemented-route/CORS expectations
+reflect new endpoints/header. Windows sandbox teardown/temporary rename issues
+required authorized normal local verification. PDF.js's legacy browser/worker
+pair fixes pinned Chromium's missing Map.getOrInsertComputed. Removed temporary
+diagnostics, repaired UTF-8 text, and fixed actual narrow-screen graph overflow
+with ResizeObserver and scoped clipping. The final frontend checks include all
+repairs and source-page scrolling.
+
+New direct frontend pins only: pdfjs-dist6.4.299 Apache-2.0 and cytoscape3.34.3
+MIT (bundled types). Optional Node-only canvas1.0.11 is recorded. Backend142pins,
+all applied migrations1–11, runtime env and worker image remain unchanged.
+Updated schema/fixture export/bootstrap/check scripts and CI generation; new
+generated artifacts remain ignored. No new service/public port/paid provider
+call/host install/worker rebuild.
+
+Metadata-only measured report: data/published-reads-validation-report.json.
+The actual corpus still has one conditional narrative/zero corporate relations,
+unresolved parent/effects0 and unknown source date. Explicit limits1000direct
+relations/128MBinputs/64MBPDF/16millionpixels and the unsuppressed large JS chunk
+warning remain. No real numeric/amendment-pair, research-effectiveness,
+macOS/ARM or fresh real-clone claim. Source checkpoint/hosted checks pending;
+record exact SHA/run/results before closure. Next after closure: M1.11.
+
 ## M1.9 completion and real corpus publication — verified15October
 
 Implementation/runtime-proof source21a72f1dc7e215d405b0023dca8f9bcbdb73a2fb is

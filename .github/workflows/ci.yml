@@ -61,7 +61,10 @@ jobs:
         run: uv sync --project backend --locked --extra entities --extra publication
 
       - name: Generate shared wire contracts
-        run: uv run --project backend --locked --no-sync python scripts/export-contracts.py
+        run: |
+          uv run --project backend --locked --no-sync python scripts/export-contracts.py
+          uv run --project backend --locked --no-sync python scripts/export-published-reads.py
+          uv run --project backend --locked --no-sync python scripts/generate-read-fixtures.py
 
       - name: Generate synthetic fixture artifacts
         run: |

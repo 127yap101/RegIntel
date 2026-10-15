@@ -17,27 +17,30 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 ## Current scope
 
 M0/M1A and bounded M1.5–M1.9 are verified on the approved Windows/native API
-host and private Linux worker. The controlled Premier filing retains 878 exact
-evidence records and now publishes one complete conditional narrative with its
-original review and fresh validation. Source-backed lineage/scoped effects,
-historical/active/as-of views, recoverable Neo4j/pgvector/lexical projections and
-atomic PostgreSQL corpus publication are implemented. The real parent is absent,
-so lineage stays unresolved/effects 0; its unknown publication date produces an
-explicit unavailable as-of response. See the [publication record](docs/M1_9_PUBLICATION_PLAN.md),
-[measured report](data/publication-validation-report.json) and [current state](CURRENT_STATE.md).
+host and private Linux worker. M1.10 now adds published company search, facts,
+directed graph reads and a browser filing explorer with exact quoted support
+and original PDF pages. Every read stays bound to the selected published corpus
+and active/historical/as-of view. Sign in with an existing local learner or admin
+account; see the [run/check guide](docs/RUN_AND_CHECK.md).
 
-Exact-source hosted [CI38717087117](https://github.com/127yap101/RegIntel/actions/runs/38717087117)
-passes Windows 1802/three skips and Ubuntu 1804/one skip,212 frontend/3 Chromium on
-each, lint/types/build, and all 469 live database tests with fresh migrations 1–11,
-auth and restart persistence. The long native database run records 468 passes/one
-storage setup error; all 7 affected cases pass fresh retry. This is engineering
-verification, not real amendment-pair or held-out research effectiveness.
+M1.10 local checks pass 1830 backend/six Windows skips, five new disposable
+PostgreSQL cases, 225 frontend and nine Chromium tests, lint/types/build and
+Python static checks. Real HTTP and browser proofs pass on the existing Premier
+corpus without changing its persisted state. Source publication and exact-source
+hosted CI are pending; see [current state](CURRENT_STATE.md), the
+[phase record](docs/M1_10_PUBLISHED_READS_PLAN.md) and
+[measured report](data/published-reads-validation-report.json).
 
-Next is M1.10 published company/fact/graph APIs and exact source-page experience,
-then retrieval/Q&A and admin/review UI. M2–M4/integration remain unfinished.
+The real corpus contains one complete conditional narrative, zero corporate
+relations and an unresolved parent/effects 0. Its unknown publication date returns
+explicit temporal unavailability. This is bounded engineering verification;
+real amendment-pair and held-out research effectiveness remain unmeasured.
+
+After the M1.10 checkpoint closes, next is M1.11 retrieval/Q&A, then M1.12
+admin/review UI. M2–M4/integration remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
-retains its M1.8 parser/stage environments and has not been rebuilt for M1.9.
+retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10.
 Original PDFs/models/credentials/database state remain out of Git. Use the
 [self-contained continuation prompt](docs/CONTINUATION_PROMPT.md) to resume.
 
@@ -53,7 +56,7 @@ Use Node24.19.0 and pnpm11.19.0. From the repository root:
 .\.tools\uv\uv.exe run --project backend --locked --no-sync uvicorn regintel.main:app --host 127.0.0.1 --port 8000
 ```
 
-In another terminal: `pnpm --dir frontend dev`, then visit `http://127.0.0.1:5173`. Bootstrap installs pinned project-local dependencies/browsers; checks install nothing. The full check runner starts and stops its own servers, so leave ports8000/5173 free. Windows Playwright process cleanup requires normal local process permissions; this Codex sandbox needed an approved outside-sandbox verification run. Linux/macOS use the corresponding `.sh` scripts with the pinned uv installed first; Linux browser OS dependencies must be explicitly installed. M1.7 source hosted CI passed on Windows/Linux and Linux data infrastructure, including the complete final 402 database tests; exact source/run details are recorded in CURRENT_STATE.
+In another Windows terminal: `.\.tools\pnpm\pnpm.cmd --dir frontend dev`, then visit `http://127.0.0.1:5173`. Bootstrap installs pinned project-local dependencies/browsers; checks install nothing. The full check runner starts and stops its own servers, so leave ports8000/5173 free. Windows Playwright process cleanup requires normal local process permissions; this Codex sandbox needed an approved outside-sandbox verification run. Linux/macOS use the corresponding `.sh` scripts with the pinned uv installed first and `pnpm --dir frontend dev`; Linux browser OS dependencies must be explicitly installed. Exact-source hosted checks are recorded in CURRENT_STATE.
 
 With the existing Docker Desktop Linux engine running and the already generated ignored root `.env`, infrastructure checks use:
 
@@ -73,6 +76,11 @@ Bootstrap generates the ignored JSON Schema and TypeScript declarations from the
 ```
 
 The check runner detects artifact drift without overwriting files. [Shared-contract decisions](docs/SHARED_CONTRACTS.md) describe exact decimal strings, evidence geometry, versions, relation directions and protocol exceptions.
+
+Bootstrap also generates the M1.10 output schemas/types with
+`scripts/export-published-reads.py` and labelled authored read/browser fixtures
+with `scripts/generate-read-fixtures.py`. Both support `--check` and are included
+in the check runner; their generated output remains ignored.
 
 Bootstrap also generates three labelled synthetic PDFs/six pages and a manifest under ignored `artifacts/fixtures`, then exports the31 authored fixture cases for frontend structural parity. To verify or regenerate them:
 

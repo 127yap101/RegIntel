@@ -37,14 +37,18 @@ try {
     if ($actualUv -notmatch "^uv $([regex]::Escape($uvVersion))\b") { throw "Expected uv $uvVersion; found $actualUv" }
     $actualNode = & node --version
     if ($actualNode -ne 'v24.19.0') { throw "Expected Node 24.19.0; found $actualNode. Install the documented project version explicitly." }
-    $actualPnpm = & pnpm --version
+    $localPnpm = Join-Path $repoRoot '.tools/pnpm/pnpm.cmd'
+    $pnpmExecutable = if (Test-Path -LiteralPath $localPnpm) { $localPnpm } else { 'pnpm' }
+    $actualPnpm = & $pnpmExecutable --version
     if ($actualPnpm -ne '11.19.0') { throw "Expected pnpm 11.19.0; found $actualPnpm. Install the documented project version explicitly." }
     Invoke-Checked $uvExecutable @('python', 'install', $pythonVersion, '--no-bin', '--no-registry')
     Invoke-Checked $uvExecutable @('sync', '--project', 'backend', '--locked', '--extra', 'entities', '--extra', 'publication')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-contracts.py')
+    Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-published-reads.py')
+    Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/generate-read-fixtures.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/generate-fixtures.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-fixture-cases.py')
-    Invoke-Checked 'pnpm' @('--dir', 'frontend', 'install', '--frozen-lockfile', '--store-dir', (Join-Path $repoRoot '.cache/pnpm-store'))
+    Invoke-Checked $pnpmExecutable @('--dir', 'frontend', 'install', '--frozen-lockfile', '--store-dir', (Join-Path $repoRoot '.cache/pnpm-store'))
     Invoke-Checked 'node' @((Join-Path $repoRoot 'frontend/node_modules/@playwright/test/cli.js'), 'install', 'chromium')
     Write-Output 'Foundation dependencies installed. Run scripts/run-checks.ps1 separately.'
 } finally {

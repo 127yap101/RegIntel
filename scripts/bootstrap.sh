@@ -21,6 +21,8 @@ fi
 "$uv_bin" python install "$python_version" --no-bin
 "$uv_bin" sync --project backend --locked --extra entities --extra publication
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-contracts.py
+"$uv_bin" run --project backend --locked --no-sync python scripts/export-published-reads.py
+"$uv_bin" run --project backend --locked --no-sync python scripts/generate-read-fixtures.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/generate-fixtures.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-fixture-cases.py
 pnpm --dir frontend install --frozen-lockfile --store-dir "$repo_root/.cache/pnpm-store"
