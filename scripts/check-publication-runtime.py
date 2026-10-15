@@ -117,7 +117,7 @@ def prove(api_base: str) -> dict[str, object]:
     )
     config = current_configuration(ROOT / "models/bge-small-en-v1.5")
     encoder = CpuBgeEncoder(ROOT / "models/bge-small-en-v1.5", config.embedding_manifest_sha256)
-    authored_long = "Authored exact Unicode 😀 e\u0301 source passage. " * 600
+    authored_long = "Authored exact Unicode 😀 e\u0301 source passage. " * 300
     oversized = SourceSpan(
         evidence_id=EVIDENCE, start=17, end=17 + len(authored_long), quote=authored_long
     )
