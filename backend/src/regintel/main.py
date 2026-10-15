@@ -25,6 +25,8 @@ from regintel.entities.api import EntityService, create_entity_router
 from regintel.evidence.api import EvidenceService, create_evidence_router
 from regintel.ingestion.api import IngestionService, create_ingestion_router
 from regintel.processing.api import ProcessingService, create_processing_router
+from regintel.publication.api import create_publication_router
+from regintel.publication.service import PublicationService
 from regintel.validation.api import ValidationService, create_validation_router
 
 type ErrorLocation = Literal["body", "query", "path", "header", "cookie", "request"]
@@ -48,6 +50,7 @@ def create_app(
     candidate_service: CandidateService | None = None,
     validation_service: ValidationService | None = None,
     processing_service: ProcessingService | None = None,
+    publication_service: PublicationService | None = None,
 ) -> FastAPI:
     """Construct isolated applications for tests and native development."""
 
@@ -139,6 +142,7 @@ def create_app(
     application.include_router(create_candidate_router(auth_service, candidate_service))
     application.include_router(create_validation_router(auth_service, validation_service))
     application.include_router(create_processing_router(auth_service, processing_service))
+    application.include_router(create_publication_router(auth_service, publication_service))
 
     @application.get("/health/live", response_model=LivenessResponse, tags=["health"])
     def liveness() -> LivenessResponse:

@@ -58,7 +58,7 @@ jobs:
         run: uv python install 3.12.14
 
       - name: Install locked backend dependencies
-        run: uv sync --project backend --locked --extra entities
+        run: uv sync --project backend --locked --extra entities --extra publication
 
       - name: Generate shared wire contracts
         run: uv run --project backend --locked --no-sync python scripts/export-contracts.py
@@ -111,7 +111,7 @@ jobs:
           python-version: "3.12.14"
           enable-cache: false
       - name: Install locked backend dependencies
-        run: uv sync --project backend --locked --extra entities
+        run: uv sync --project backend --locked --extra entities --extra publication
       - name: Generate ephemeral local development secrets
         run: uv run --project backend --locked --no-sync python scripts/init-local-env.py
       - name: Start digest-pinned services

@@ -24,6 +24,11 @@ entities = [
   "rapidfuzz==3.14.6",
   "spacy==3.8.16",
 ]
+publication = [
+  "neo4j==6.4.0",
+  "onnxruntime==1.30.0",
+  "tokenizers==0.23.2",
+]
 parsing = [
   "docling-slim[format-pdf,models-local,feat-ocr-rapidocr-onnx]==2.134.0; sys_platform == 'linux' and platform_machine == 'x86_64'",
   "docling-core==2.99.0; sys_platform == 'linux' and platform_machine == 'x86_64'",

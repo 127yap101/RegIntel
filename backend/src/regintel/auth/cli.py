@@ -73,6 +73,9 @@ def serve_main() -> None:
     from regintel.processing.api import ProcessingService
     from regintel.processing.broker import sender as processing_sender
     from regintel.processing.repository import ProcessingRepository
+    from regintel.publication.graph import Neo4jProjection
+    from regintel.publication.repository import PublicationRepository
+    from regintel.publication.service import PublicationService, current_configuration
     from regintel.validation.api import ValidationService
     from regintel.validation.repository import ValidationRepository
 
@@ -83,26 +86,49 @@ def serve_main() -> None:
         sender(create_celery(ingestion_settings)),
     )
 
-    uvicorn.run(
-        create_app(
-            auth_service=service,
-            ingestion_service=ingestion,
-            evidence_service=EvidenceService(
-                EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
+    model_root = ROOT / "models/bge-small-en-v1.5"
+    publication = None
+    graph = None
+    if model_root.is_dir():
+        try:
+            configuration = current_configuration(model_root)
+            graph = Neo4jProjection.from_env(args.env_file)
+            publication = PublicationService(
+                PublicationRepository(load_database_settings(args.env_file)),
+                graph,
+                configuration,
+                model_root=model_root,
+            )
+        except (OSError, ValueError, ImportError):
+            raise SystemExit("Publication prerequisites are invalid; secrets omitted.") from None
+
+    try:
+        uvicorn.run(
+            create_app(
+                auth_service=service,
+                ingestion_service=ingestion,
+                evidence_service=EvidenceService(
+                    EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
+                ),
+                entity_service=EntityService(
+                    EntityRepository(load_database_settings(args.env_file))
+                ),
+                candidate_service=CandidateService(
+                    CandidateRepository(load_database_settings(args.env_file))
+                ),
+                validation_service=ValidationService(
+                    ValidationRepository(load_database_settings(args.env_file))
+                ),
+                processing_service=ProcessingService(
+                    ProcessingRepository(load_database_settings(args.env_file)),
+                    processing_sender(create_celery(ingestion_settings)),
+                ),
+                publication_service=publication,
             ),
-            entity_service=EntityService(EntityRepository(load_database_settings(args.env_file))),
-            candidate_service=CandidateService(
-                CandidateRepository(load_database_settings(args.env_file))
-            ),
-            validation_service=ValidationService(
-                ValidationRepository(load_database_settings(args.env_file))
-            ),
-            processing_service=ProcessingService(
-                ProcessingRepository(load_database_settings(args.env_file)),
-                processing_sender(create_celery(ingestion_settings)),
-            ),
-        ),
-        host="127.0.0.1",
-        port=args.port,
-        access_log=False,
-    )
+            host="127.0.0.1",
+            port=args.port,
+            access_log=False,
+        )
+    finally:
+        if graph is not None:
+            graph.close()

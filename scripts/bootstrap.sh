@@ -19,7 +19,7 @@ fi
 [[ "$(node --version)" == v24.19.0 ]] || { echo 'Expected Node 24.19.0' >&2; exit 1; }
 [[ "$(pnpm --version)" == 11.19.0 ]] || { echo 'Expected pnpm 11.19.0' >&2; exit 1; }
 "$uv_bin" python install "$python_version" --no-bin
-"$uv_bin" sync --project backend --locked --extra entities
+"$uv_bin" sync --project backend --locked --extra entities --extra publication
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-contracts.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/generate-fixtures.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-fixture-cases.py

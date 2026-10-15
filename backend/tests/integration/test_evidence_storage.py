@@ -37,7 +37,13 @@ def canonical(value: object) -> bytes:
     return json.dumps(value, ensure_ascii=False, sort_keys=True, separators=(",", ":")).encode()
 
 
-def context(database: DatabaseSettings, *, config_hash: str | None = None) -> Context:
+def context(
+    database: DatabaseSettings,
+    *,
+    config_hash: str | None = None,
+    document_type: str = "RHP",
+    published_on: str | None = None,
+) -> Context:
     seed_users(
         database, (SeedAccount("admin", SecretStr("Synthetic evidence password!"), "admin"),)
     )
@@ -65,9 +71,9 @@ def context(database: DatabaseSettings, *, config_hash: str | None = None) -> Co
             (artifact.filing_id,),
         )
         connection.execute(
-            """INSERT INTO regintel.filing_versions(id,filing_id,source_blob_id,document_type)
-            VALUES(%s,%s,%s,'RHP')""",
-            (artifact.filing_version_id, artifact.filing_id, blob.id),
+            """INSERT INTO regintel.filing_versions
+            (id,filing_id,source_blob_id,document_type,published_on) VALUES(%s,%s,%s,%s,%s)""",
+            (artifact.filing_version_id, artifact.filing_id, blob.id, document_type, published_on),
         )
         connection.execute(
             """INSERT INTO regintel.filing_jobs

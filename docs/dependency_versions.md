@@ -1,5 +1,40 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.9 publication runtime — 15 October 2026, verification in progress
+
+Native Windows Python3.12.14 now selects `entities` plus `publication`. The lock
+resolves142 packages, adding only neo4j6.4.0 and pytz2026.5; all140 earlier pins
+are unchanged. The native environment has103 distributions. No host software,
+GPU runtime, new database/service, public port or provider SDK is introduced.
+The existing worker image, its109 parser/77 stage packages and `models/m1a-v1`
+mount remain unchanged; this does not claim the worker contains M1.9 source.
+
+| Component | Exact version | License | Measured scope |
+|---|---|---|---|
+| Neo4j Python driver | 6.4.0 | Apache-2.0 AND Python-2.0 | Existing local5.26.31 server; scoped rebuild/verification test passes |
+| pytz | 2026.5 | MIT | Neo4j dependency; installed/locked |
+| ONNX Runtime CPU | 1.30.0 | MIT | Existing parser pin reused natively; local384-dimensional CLS inference passes |
+| Hugging Face tokenizers | 0.23.2 | Apache-2.0 | Existing parser pin reused; exact local token counting without truncation |
+| NumPy | 2.5.3 | BSD-3-Clause | Existing native pin preserved; embedding-only pooling/normalization |
+| BAAI/bge-small-en-v1.5 | revision5c38ec7c405ec4b44b94cc5a9bb96e735b38267a | MIT | Five pinned assets verified, native CPU inference; no effectiveness claim |
+
+The five ignored model files total133,805,871bytes. Their source size/SHA256 or
+Git-blob hashes are checked before installation; final SHA256 values are recorded
+in `data/embedding-model-manifest.json`. Canonical manifest SHA256 is
+`b0a7456447a70c80769c3cd64c8f92f0d3fb88bb8e55e0d8816436c88edec800`.
+The ONNX model is133,093,490bytes, SHA256
+`828e1496d7fabb79cfa4dcd84fa38625c0d3d21da474a00f08db0f559940cf35`.
+No remote Python model code or API key is used. Publication checks/real-source
+activation and hosted results must be read from CURRENT_STATE; this dependency
+installation alone does not prove phase completion, macOS/ARM execution or research quality.
+
+Primary references: [driver compatibility](https://neo4j.com/docs/python-manual/current/install/),
+[Neo4j6.4.0 metadata](https://pypi.org/project/neo4j/6.4.0/),
+[pytz2026.5](https://pypi.org/project/pytz/2026.5/),
+[ONNX Runtime1.30.0](https://pypi.org/project/onnxruntime/1.30.0/),
+[tokenizers0.23.2](https://pypi.org/project/tokenizers/0.23.2/),
+[immutable BGE model card](https://huggingface.co/BAAI/bge-small-en-v1.5/blob/5c38ec7c405ec4b44b94cc5a9bb96e735b38267a/README.md).
+
 ## M1.8 checkpointed processing/recovery — 15 October 2026
 
 No new dependency pin, operator environment variable, provider/model, paid call or host

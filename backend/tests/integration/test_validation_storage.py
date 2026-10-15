@@ -72,7 +72,11 @@ class ValidationContext:
 def validated(auth_database: DatabaseSettings, request: pytest.FixtureRequest) -> ValidationContext:
     options = getattr(request, "param", {})
     source_text = options.get("source", SOURCE)
-    fixture = context(auth_database)
+    fixture = context(
+        auth_database,
+        document_type=options.get("document_type", "RHP"),
+        published_on=options.get("published_on"),
+    )
     artifact = synthetic_artifact(
         configuration=fixture.configuration,
         blob=fixture.blob,
@@ -635,7 +639,7 @@ def test_mandatory_gate_staging_does_not_open_authority(validated):
     run = validated.repository.validate(validated.candidate_run_id, validated.user)
     validated.repository.review(decision(validated, run), validated.user)
     with connect_database(validated.database) as connection:
-        with pytest.raises(psycopg.errors.CheckViolation, match="later M1B gates"):
+        with pytest.raises(psycopg.errors.CheckViolation, match="approved publication transaction"):
             connection.execute(
                 "INSERT INTO regintel.acceptance_audits"
                 "(id,candidate_id,parse_version_id,actor_user_id,decision,"
@@ -648,7 +652,7 @@ def test_mandatory_gate_staging_does_not_open_authority(validated):
                     run.configuration.sha256,
                 ),
             )
-        with pytest.raises(psycopg.errors.CheckViolation, match="later M1B gates"):
+        with pytest.raises(psycopg.errors.CheckViolation, match="approved publication transaction"):
             connection.execute(
                 "INSERT INTO regintel.corpus_versions(id,state,configuration_sha256) "
                 "VALUES(%s,'BUILDING',%s)",

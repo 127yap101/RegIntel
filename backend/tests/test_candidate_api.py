@@ -250,4 +250,8 @@ def test_openapi_documents_typed_admin_proposals(boundary: Boundary) -> None:
         assert operation["security"]
         assert "503" in operation["responses"]
     assert "CandidateEnvelope" in schema["components"]["schemas"]
-    assert not any("accept" in path or "publish" in path for path in schema["paths"])
+    assert not any(
+        "accept" in path or "publish" in path
+        for path in schema["paths"]
+        if path.startswith(BASE + "/")
+    )

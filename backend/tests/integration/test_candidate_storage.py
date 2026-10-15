@@ -772,7 +772,7 @@ def test_candidate_stage_cannot_open_later_financial_authority(proposals):
         proposals.entity_run.id, proposals.metric_ids, proposals.user
     )
     with connect_database(proposals.database) as connection:
-        with pytest.raises(psycopg.errors.CheckViolation, match="later M1B gates"):
+        with pytest.raises(psycopg.errors.CheckViolation, match="approved publication transaction"):
             connection.execute(
                 "INSERT INTO regintel.acceptance_audits"
                 "(id,candidate_id,parse_version_id,actor_user_id,decision,"
@@ -786,7 +786,7 @@ def test_candidate_stage_cannot_open_later_financial_authority(proposals):
                     "0" * 64,
                 ),
             )
-        with pytest.raises(psycopg.errors.CheckViolation, match="later M1B gates"):
+        with pytest.raises(psycopg.errors.CheckViolation, match="approved publication transaction"):
             connection.execute(
                 "INSERT INTO regintel.corpus_versions(id,state,configuration_sha256) "
                 "VALUES(%s,'BUILDING',%s)",

@@ -2,6 +2,56 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.9 reviewed publication/projections — source checkpoint, 15 October
+
+M1.9 is implemented and undergoing final verification. Sequential work and
+normal main commits/pushes remain authorized. Primary0011 is still unapplied;
+no real observation/corpus/effect is yet published at this source checkpoint.
+
+Added immutable reviewed corpus requests/manifests, fresh mandatory-gate
+acceptance snapshots preserving older final reviews, source-backed issuer/filing
+lineage, explicit scoped ADD/CORRECT/SUPPLEMENT/SUPERSEDE/REMOVE effects and
+historical/active/as-of views. Unavailable dates abstain; new filings do not
+silently replace old observations. Prepared Neo4j/vector/lexical projections
+retain exact approved version/source IDs. PostgreSQL acceptance/observations,
+PUBLISHED state and head commit atomically after final auth/dependency/head
+checks. Cross-database preparation remains recoverable, not a distributed
+transaction. Audited rebuilds preserve authority and original decisions.
+
+Append0011 is tested only on disposable databases so far, SHA256
+310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6.
+All applied0001–0010 bytes remain identical. Raw candidates, reviews and frozen
+algorithms/worker runtime are unchanged. Native entities+publication uses142
+locked packages/103 installed distributions; all140 earlier pins are retained.
+Only neo4j6.4.0/pytz2026.5 are newly locked. Five BGE assets at immutable revision
+5c38ec7c405ec4b44b94cc5a9bb96e735b38267a are hash-verified locally; native CPU
+384-dimensional normalized inference passes. No paid API, new env/service/public
+port or worker rebuild. See dependency register/model manifest and M1.9 plan.
+
+Verified full native runner:1797 backend/six disclosed Windows skips,212frontend,
+3Chromium, lint/types/build, Ruff168/mypy108. Two subsequently added cycle/source
+availability cases pass in final34 focused engine/projection cases;18HTTP cases
+pass. Final25 publication storage cases pass128.16s, including authored two-filing
+effects/history, exact Decimal preservation, mandatory-gate failures, direct SQL
+forgery, revocation, competing heads, rollback, graph outage/recovery, actual
+Neo4j damage detection/rebuild, retrieval coverage and audited reconstruction.
+Both shell syntax checks, actionlint and Linux-platform mypy92 pass.
+
+The broader first database run stopped after144 passes on an obsolete error
+message assertion. Unauthorized authority was correctly rejected; the older
+test expected 'later M1B gates' while0011 correctly reports an approved publication
+transaction is required. The candidate/validation assertions retain their
+CheckViolation rejection checks and now expect the current guard message. A new
+full469-case regression is running in a fresh disposable DB; no final success is
+claimed yet. Logs are ignored .cache/m1_9-full-checks.log,
+.cache/m1_9-publication-checks.log and .cache/m1_9-database-final.log.
+
+Next: finish broad regression, inspect exact-source hosted CI, migrate primary
+only after disposable checks pass, run the bounded real Premier HTTP publication
+proof, retain original review/history and unresolved absent parent, then record
+measured IDs/results and stop the owned API. This checkpoint is engineering
+progress, not gold/held-out effectiveness, real amendment-pair or macOS/ARM proof.
+
 ## M1.8 checkpointed processing and recovery — verified 15 October
 
 Source commit `80f4127c524fb968c6c076d45f2d4fc60a1bb078` is pushed normally to existing main, remote SHA matched and the source tree was clean. All 32 phase files passed secret/asset review; all 82 installed source files and 10 migrations match the staged/runtime fingerprints. Hosted [run 38686295756](https://github.com/127yap101/RegIntel/actions/runs/38686295756) completed SUCCESS for Windows and Ubuntu foundation and Linux infrastructure, including the full final database suite, fresh migrations1–10 apply/replay, authentication and service-restart persistence. This publication-record follow-up changes metadata only. No financial acceptance or corpus publication occurs.

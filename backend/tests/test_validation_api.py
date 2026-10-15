@@ -286,7 +286,11 @@ def test_review_cannot_publish_or_accept_observations(boundary: Boundary) -> Non
         )
     assert not boundary.memory.calls
     schema = boundary.client.get("/openapi.json").json()
-    assert all("publish" not in path and "accept" not in path for path in schema["paths"])
+    assert all(
+        "publish" not in path and "accept" not in path
+        for path in schema["paths"]
+        if path.startswith(BASE + "/")
+    )
     for path, method in (
         (BASE + "/policies", "post"),
         (BASE + "/runs", "post"),

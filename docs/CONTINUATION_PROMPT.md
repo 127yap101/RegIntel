@@ -1,3 +1,63 @@
+# Active M1.9 continuation — 15 October 2026
+
+Continue the authorized sequential RegIntel work on existing main. M1.9 is
+implemented and undergoing final verification; it is NOT yet complete. Do not
+restart M1.8, expand the real corpus, invent a parent/effect or repeat approvals.
+Read CURRENT_STATE.md and docs/M1_9_PUBLICATION_PLAN.md first, then inspect Git
+and the actual environment. The M1.8 background below remains historical.
+
+Current draft: backend/src/regintel/publication supplies fresh gates preserving
+original final reviews, immutable manifests/acceptance snapshots, source-backed
+lineage/scoped effects, history/active/as-of views, recoverable versioned Neo4j
+and pgvector/lexical preparation and an atomic PostgreSQL head/authority commit.
+0011_publication.sql is new; primary is still 1–10. Never alter applied migration
+bytes, source/evidence, original reviews, frozen algorithms or existing worker.
+
+Verification already passed: full native runner 1797backend/six Windows skips,
+212frontend/3Chromium, lint/types/build, Ruff168/mypy108. Two added temporal/cycle
+cases pass in final34 focused engine/projection checks;18HTTP cases pass. Both
+shell runner/bootstrap syntax checks, actionlint and Linux-platform mypy92 pass.
+Final25 publication storage checks pass128.16s. First broad run stopped after144
+passes on an obsolete guard-message assertion; CheckViolation remains required
+and the message is corrected. A new full469 regression is running in a fresh
+disposable database; log .cache/m1_9-database-final.log. Full runner log .cache/m1_9-full-checks.log.
+Read actual completion/results; do not assume a quiet log is a hang. The prior
+unlogged checks were interrupted by conversation continuation and are not final
+results. No primary migration/real publication or hosted M1.9 success is claimed.
+
+Native lock142 preserves all140 previous versions, adding Neo4j6.4.0/pytz2026.5.
+Native103 distributions now include locked ONNX Runtime1.30/tokenizers0.23.2.
+Both bootstrap/CI select entities+publication. Acquire five pinned BGE CPU assets
+with scripts/acquire-embedding-model.py. They already exist in ignored
+models/bge-small-en-v1.5 here, canonical manifest SHA
+b0a7456447a70c80769c3cd64c8f92f0d3fb88bb8e55e0d8816436c88edec800.
+No new env/paid provider/public port/service or worker rebuild. The existing
+worker retains M1.8 source,109 parser/77 stage packages and its old model mount.
+
+Next: complete required disposable checks and resolve failures honestly. Review
+all changed code/diffs; record current0011 hash, then migrate primary normally
+only after the disposable regression passes. Run native API on an owned free
+loopback port (proof defaults8019), using existing project dotenv helpers without
+printing credentials. scripts/check-publication-runtime.py publishes only the
+existing conditional Premier candidate/review, replays it, verifies exact source,
+current token bounds/CPU vector dimensions, role denials, versioned reads,
+unknown-date abstention, projection rebuild and unchanged original snapshots.
+It writes source-containing proof under ignored .cache/publication-runtime-*.
+Only a metadata report belongs in data/. Preserve original f936 review identity
+and freshly revalidate under97ec; never create a replacement review. The real
+addendum's parent is absent and publication date unknown: keep lineage unresolved,
+real effects0 and as-of unavailable. Authored two-filing fixtures are engineering
+proof only. Company/fact/graph APIs and learner source viewing remain M1.10.
+
+Stop owned proof API afterward; preserve all existing services/data. Update
+CURRENT_STATE, PHASE_LOG, README/run guide and this handoff with measured results.
+Commit/push coherent reviewed checkpoints to authorized existing main, check the
+remote SHA and exact-source hosted CI. Do not claim missing held-out, research,
+macOS/ARM or fresh real-source-clone results. Continue to the next authorized
+phase only after M1.9 completion.
+
+---
+
 # Prompt for continuing RegIntel
 
 Source checkpoint `80f4127c524fb968c6c076d45f2d4fc60a1bb078` is on main; remote SHA matched. Hosted [run 38686295756](https://github.com/127yap101/RegIntel/actions/runs/38686295756) completed SUCCESS for Windows and Ubuntu foundation and Linux infrastructure, including the full final database suite, fresh migrations1–10 apply/replay, authentication and service-restart persistence. The publication-record follow-up changes metadata only; verified product and migration bytes remain unchanged.

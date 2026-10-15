@@ -278,4 +278,4 @@ Primary references: [Psycopg package](https://pypi.org/project/psycopg/),
 [transaction behavior](https://www.psycopg.org/psycopg3/docs/basic/transactions.html).
 ## M1.5 native entity setup
 
-Native development/CI installs the locked `entities` extra (`uv sync --project backend --locked --extra entities`); both bootstrap scripts select it. It supplies spaCy3.8.16/RapidFuzz3.14.6 for the administrator entity endpoints. The parser worker selects only `parsing`, preserving its separate frozen package manifest. No pretrained NER model is required. See [M1.5 contracts and real proof](../docs/M1_5_ENTITY_RESOLUTION.md).
+Native development/CI installs the locked `entities` and `publication` extras (`uv sync --project backend --locked --extra entities --extra publication`); both bootstrap scripts select them. Entity processing uses spaCy3.8.16/RapidFuzz3.14.6 without a pretrained NER model. Publication adds the Neo4j driver and native CPU BGE inference. The separate worker retains its approved parser/stage environments. See [M1.5](../docs/M1_5_ENTITY_RESOLUTION.md) and the [M1.9 plan and operating record](../docs/M1_9_PUBLICATION_PLAN.md).

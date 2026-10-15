@@ -1102,7 +1102,7 @@ def test_completed_parse_cannot_gain_new_header_context(
     "table",
     ["corpus_versions", "acceptance_audits", "fact_observations", "relation_observations"],
 )
-def test_authoritative_inserts_remain_blocked_before_m1b_gates(
+def test_authoritative_inserts_require_approved_publication_transaction(
     auth_database: DatabaseSettings, table: str
 ) -> None:
     # The prerequisite guard fires before FK checks. UUID references are deliberate
@@ -1143,6 +1143,6 @@ def test_authoritative_inserts_remain_blocked_before_m1b_gates(
     }
     with (
         connect_database(auth_database) as connection,
-        pytest.raises(psycopg.errors.CheckViolation, match="later M1B gates"),
+        pytest.raises(psycopg.errors.CheckViolation, match="approved publication transaction"),
     ):
         insert_row(connection, table, values_by_table[table])
