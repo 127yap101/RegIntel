@@ -1,24 +1,76 @@
-# Continue RegIntel from verified M1.10
+# Continue RegIntel from the M1.11 retrieval checkpoint
 
 Continue sequential authorized work on existing main in
-https://github.com/127yap101/RegIntel. Read AGENTS.md, CURRENT_STATE.md,
-docs/M1_10_PUBLISHED_READS_PLAN.md, data/published-reads-validation-report.json
-and the newest PHASE_LOG entry. Inspect Git/remote/environment before editing;
-preserve teammate changes. M1.10 source 456ed418dbee791dc586803263a12bd89963404a is pushed
-normally. Exact-source hosted run 38755455205 completed SUCCESS for Windows,
-Ubuntu and Linux infrastructure. The final follow-up changes documentation/
-report metadata only; source fingerprints remain identical. Use the actual
-latest Git log instead of inventing the follow-up SHA.
+https://github.com/127yap101/RegIntel. Inspect Git/remote/environment and read
+AGENTS.md, CURRENT_STATE.md, docs/M1_11_RETRIEVAL_PLAN.md,
+data/retrieval-validation-report.json and the newest PHASE_LOG entry first.
+M1.11 local/source proof is complete; reviewed source publication and exact-source
+hosted Windows/Linux/full483database checks are pending. Record actual SHA/run
+and passing results before phase closure. Preserve teammate changes. Normal
+commits/pushes to existing main remain authorized; use actual Git log.
 
-Continue M1.11 retrieval/Q&A, then M1.12
-admin/review UI. M2–M4 and integration remain unfinished. Read only relevant
-phase/dependency specifications. Preserve the four-arm B0/B1/B2/B3 retrieval
-ablation, same corpus/context budget/filters, exact evidence/citations and
-deterministic numeric routing. Existing published vector/lexical projection is
-preparation, not a completed retrieval/Q&A or research evaluation result.
-Do not expand the real corpus or add cosmetic work before the vertical slice.
-No real amendment pair, numeric/relation positive or research improvement is
-measured. Authored fixtures are engineering data, never real facts/gold labels.
+After closure continue M1.12 admin/review UI: filing jobs, quarantine, review,
+approval/correction and publication, using existing current-admin APIs/audits.
+Do not bypass gates or implement later M2–M4/integration early. No real amendment
+pair, numeric/relation positive or held-out effectiveness has been measured.
+Authored graph topology, numeric fixtures and retrieval tests are engineering data.
+
+M1.11 code: backend/src/regintel/retrieval and frontend/src/retrieval, mounted
+in the existing pinned-corpus published explorer. Read-only POST /v1/retrieval
+and /v1/answers resolve a PUBLISHED PG manifest and active/history/as-of view.
+The committed retrieval bytes/model identity and actual pgvector/lexical rows
+must match. B0 omits experimental metadata filters only; every arm preserves
+publication/version/active scope. B1 applies explicit company/complete period/
+basis filters. B2 BM25(k1=1.2,b=0.75)+RRF(k=60) includes exact accepted original-
+text context witnesses; B3 adds actual one/two-hop Neo4j expansion and reapplies
+all filters. Traversal may follow either endpoint but original relation direction
+is preserved. No provenance edges/unpublished neighbors become corporate facts.
+
+Query prefix is the publisher's fixed English retrieval instruction; no silent
+truncation beyond512actualtokens. Bound rank pools100perchannel, top-k1–10,
+context128–4096tokens and graph1000distinctrelations. Entire serialized accepted
+observation/citation bundles fit or are omitted with counts, never clipped.
+Exact source membership/quote/page/version/hash is validated before citation.
+Default output is labelled verbatim source excerpts with conditions intact.
+Literal topic gating is conservative/unmeasured, not a semantic support model.
+Conflicts stay separate; no generated conclusion or live provider/cost.
+
+Numeric intent without explicit context returns unavailable. Numeric API lookup
+requires metric/company/complete period/basis/unit/currency and applicable
+ownership context, preserves Decimal strings and returns missing/incompatible/
+conflict explicitly. Cross-fact formulas remain M2-owned; never use LLM math.
+The real corpus has no numeric accepted value. Frontend validates request/answer/
+citation identity, retains memory-only auth, cancels stale reads and clears
+source/claims on new requests/logout. The stable explicit textarea label is
+required for repeated question editing. Local Playwright workers2/CI1, with
+unchanged assertions/timeouts.
+
+M1.11 measurements:1902backend/six native Windows skips237.79s,482integration
+deselected at that collection; final nine new disposable storage cases29.22s
+include actual two-hop/cross-corpus/filtered-edge and exact1234.50context.
+Full final frontend238unit/14Chromium29.6s plus lint/strict types/build pass.
+Ruff192/mypy126 and PowerShell/Bash/actionlint/Node syntax pass. One combined
+runner reached two five-second PDF readiness timeouts at eight workers after
+all backend/static/unit/build checks passed; source pages rendered just after
+the deadline. Final full frontend recheck passes with two workers. Do not invent
+a successful single combined native runner or full local483database run.
+
+Real HTTP proof .cache/retrieval-runtime-dc4cdce5933b46afb44413160de38507:
+all four arms share corpus/question/top-k5/budget2048/output policy, retrieve the
+one exact conditional narrative,1059context tokens, original page3/span0..272.
+Unknown dates/numeric/unsupported topics/budget limits/no truncation pass.
+Real browser .cache/retrieval-browser-43b794e27fd5474897cd306626aba140 passes
+B3→conditional quote→PDF.js page3/region,375px, second numeric question,
+stale clearing/logout/no token storage or credential URLs/browser errors.
+Original source/processing/publication/authority snapshots are unchanged.
+Only metadata is committed; original PDFs/screenshots/generated outputs ignored.
+
+No dependency/lock/migration/env/service/model/worker/paid-call change.
+Existing stopped data services were restored from their original volumes.
+Native/API/Vite proof processes are stopped. Neo4j emits unused relation-type
+notifications in the tiny pilot; warnings are not suppressed. Large JS chunk
+warning remains. Gold/held-out accuracy, macOS/ARM and fresh real-source clone
+remain unmeasured. No live Gemini SDK/model/transport/budget is configured.
 
 Sequential implementation, relevant tests, commits and normal pushes to existing
 main are explicitly authorized. Deck waiver, Windows/native application
@@ -97,31 +149,4 @@ d8e72949-811c-4fb2-a763-91fe89a78da7 and failed probe 46500b5e-c99a-4092-b3db-ef
 No exactly-once execution claim. Existing Docker data is D:/DockerData; do not
 prune/reset/move it. Four services remain healthy; owned proof servers stopped.
 
-Local M1.10 verification: full backend 1830 pass/six Windows skips,474 database
-deselected, 444.52s; five new disposable read cases in 35.25s. Final frontend 225 unit,
-nine Chromium 17.0s, lint/strict types/build pass. Ruff 179/mypy 117, scoped
-Linux-platform mypy 11, shell syntax/actionlint and browser helper syntax pass.
-Initial combined runner failed at modern PDF.js compatibility after backend
-passed; final complete frontend checks pass with legacy PDF.js. Do not claim a
-successful single combined native runner or a full local474 database run.
-Exact-source hosted 38755455205 passes Ubuntu 1835 backend/one Windows-junction
-skip, Windows 1833 backend/three POSIX skips; both 225 frontend/nine Chromium,
-lint/types/build, Ruff 179/mypy 117. Native symlink-permission skips are covered.
-The full 474 database suite passes in 402.46s, fresh migrations 1–11 apply/replay, both seeded
-roles authenticate and orderly restart persistence passes. Inspect the measured
-report for job IDs and exact source binding.
-
-Real read-only HTTP proof
-.cache/published-reads-runtime-2ce4efd422dd40f1b9b74ad709c2913c and real browser
-proof .cache/published-browser-4cfe3fe97cfe49109e1acaffdec14f18 pass exact versions,
-hash/range/conditional/auth/scope denials, original page 3/rendered highlight,
-narrow screen, date abstention, logout and no credential storage/URLs. Original
-source/processing/publication/authority snapshots are unchanged. Checked-in
-metadata: data/published-reads-validation-report.json. Source-containing reports,
-PDFs/screenshots remain ignored. No held-out accuracy, macOS/ARM or fresh
-real-source-clone result is claimed.
-
-Implement the authorized phase → meaningful tests → review/verification →
-update CURRENT_STATE/report/handoff → normal verified commit/push → inspect
-hosted CI. Continue independent authorized work around genuine conflicts.
-Never bypass source/context/financial/acceptance/publication gates.
+Implement the authorized phase, verify meaningful behavior, review the diff, update state/report/handoff, commit/push normally and inspect exact-source CI.

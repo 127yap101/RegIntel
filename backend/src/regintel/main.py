@@ -29,6 +29,8 @@ from regintel.publication.api import create_publication_router
 from regintel.publication.service import PublicationService
 from regintel.reads.api import create_read_router
 from regintel.reads.service import PublishedReadService
+from regintel.retrieval.api import create_retrieval_router
+from regintel.retrieval.service import RetrievalService
 from regintel.validation.api import ValidationService, create_validation_router
 
 type ErrorLocation = Literal["body", "query", "path", "header", "cookie", "request"]
@@ -54,6 +56,7 @@ def create_app(
     processing_service: ProcessingService | None = None,
     publication_service: PublicationService | None = None,
     read_service: PublishedReadService | None = None,
+    retrieval_service: RetrievalService | None = None,
 ) -> FastAPI:
     """Construct isolated applications for tests and native development."""
 
@@ -154,6 +157,7 @@ def create_app(
     application.include_router(create_processing_router(auth_service, processing_service))
     application.include_router(create_publication_router(auth_service, publication_service))
     application.include_router(create_read_router(auth_service, read_service))
+    application.include_router(create_retrieval_router(auth_service, retrieval_service))
 
     @application.get("/health/live", response_model=LivenessResponse, tags=["health"])
     def liveness() -> LivenessResponse:

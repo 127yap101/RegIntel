@@ -23,21 +23,25 @@ and original PDF pages. Every read stays bound to the selected published corpus
 and active/historical/as-of view. Sign in with an existing local learner or admin
 account; see the [run/check guide](docs/RUN_AND_CHECK.md).
 
-M1.10 source `456ed418dbee791dc586803263a12bd89963404a` is pushed; exact-source
-[CI 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205) passes Ubuntu
-1835 backend/one skip, Windows 1833 backend/three skips, 225 frontend/nine
-Chromium on each, lint/types/build/static checks, and all 474 database cases with
-fresh migrations 1–11, auth and restart persistence. Real HTTP/browser proofs
-pass on the existing Premier corpus without changing persisted state. See
-[current state](CURRENT_STATE.md), the [phase record](docs/M1_10_PUBLISHED_READS_PLAN.md)
-and [measured report](data/published-reads-validation-report.json).
+M1.11 adds authenticated published retrieval and extractive source answers:
+dense, filtered dense, BM25/RRF hybrid and bounded graph expansion. Questions
+stay pinned to the applied corpus/history/date view. Source links open the exact
+original page, and numeric questions require deterministic accepted-value context.
+See the [run/check guide](docs/RUN_AND_CHECK.md) to try the Premier offering question.
+
+Local verification passes 1902 backend/six Windows skips, nine new disposable
+database/Neo4j cases, 238 frontend and14Chromium tests, lint/types/build and Python
+static checks. The real four-arm HTTP and browser proofs preserve original data.
+Source checkpoint/hosted CI are pending. See [current state](CURRENT_STATE.md),
+[retrieval plan](docs/M1_11_RETRIEVAL_PLAN.md) and
+[measured report](data/retrieval-validation-report.json).
 
 The real corpus contains one complete conditional narrative, zero corporate
 relations and an unresolved parent/effects 0. Its unknown publication date returns
 explicit temporal unavailability. This is bounded engineering verification;
 real amendment-pair and held-out research effectiveness remain unmeasured.
 
-Next is M1.11 retrieval/Q&A, then M1.12 admin/review UI. M2–M4/integration remain unfinished.
+Next after M1.11 hosted closure is M1.12 admin/review UI. M2–M4/integration remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10.

@@ -4,6 +4,9 @@ import type { ValidateFunction } from 'ajv'
 import { getApiBaseUrl } from '../api/health'
 import { parseContract } from '../contracts/runtime'
 import schema from './schema.json'
+import { answerRequest, parseAnswer } from '../retrieval/wire'
+import type { AnswerInput, AnswerResult } from '../retrieval/wire'
+import type { RetrievalRequest } from '../retrieval/generated'
 import type { CompanyGraph, CompanyPage, FactPage, PublishedEvidence, ViewInfo } from './generated'
 
 export type { CompanyGraph, CompanyPage, FactPage, PublishedEvidence, ViewInfo } from './generated'
@@ -59,14 +62,15 @@ function sourceQuery(options: ReadOptions): string {
 export class PublishedApi {
   constructor(private readonly token: string, private readonly base = getApiBaseUrl()) {}
 
-  private async request(path: string, signal: AbortSignal, body?: URLSearchParams): Promise<Response> {
+  private async request(path: string, signal: AbortSignal, body?: URLSearchParams | RetrievalRequest): Promise<Response> {
     try {
+      const login = body instanceof URLSearchParams
       const response = await fetch(this.base + path, {
         method: body ? 'POST' : 'GET', credentials: 'omit', redirect: 'error', cache: 'no-store', signal: AbortSignal.any([signal, AbortSignal.timeout(20_000)]),
-        headers: body ? { 'Content-Type': 'application/x-www-form-urlencoded' } : { Authorization: `Bearer ${this.token}` },
-        ...(body ? { body } : {}),
+        headers: login ? { 'Content-Type': 'application/x-www-form-urlencoded' } : { Authorization: `Bearer ${this.token}`, ...(body ? { 'Content-Type': 'application/json' } : {}) },
+        ...(body ? { body: login ? body : JSON.stringify(body) } : {}),
       })
-      if (response.status === 401) throw new ReadError(!body, body ? 'Sign-in failed. Check your username and password.' : 'Your session has expired. Please sign in again.')
+      if (response.status === 401) throw new ReadError(!login, login ? 'Sign-in failed. Check your username and password.' : 'Your session has expired. Please sign in again.')
       if (!response.ok) throw new ReadError(false, response.status === 404 ? 'No matching resource is published in this view.' : undefined)
       return response
     } catch (error: unknown) {
@@ -95,6 +99,14 @@ export class PublishedApi {
   }
 
   current(signal: AbortSignal): Promise<ViewInfo> { return this.read('/v1/published-corpus', 'info', signal) }
+  async answer(options: ReadOptions, input: AnswerInput, signal: AbortSignal): Promise<AnswerResult> {
+    canonical(options.corpus)
+    if (input.company) canonical(input.company)
+    const body = answerRequest(options, input)
+    const response = await this.request('/v1/answers', signal, body)
+    try { return parseAnswer(await response.json() as unknown, options, body) }
+    catch { throw new ReadError(false, 'The answer or its exact source could not be verified.') }
+  }
   companies(options: ReadOptions, text: string, offset: number, signal: AbortSignal): Promise<CompanyPage> {
     const values = query(options); values.set('q', text); values.set('offset', String(offset))
     return this.read(`/v1/companies?${values}`, 'companies', signal, options.corpus, options)

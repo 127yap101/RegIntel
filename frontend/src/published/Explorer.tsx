@@ -6,6 +6,8 @@ import type { PublishedObservation } from './generated'
 import { RelationGraph } from './RelationGraph'
 import { SourceViewer } from './SourceViewer'
 import { FinancialContext } from './FinancialContext'
+import { AnswerPanel } from '../retrieval/AnswerPanel'
+import type { AnswerInput, AnswerResult } from '../retrieval/wire'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 text-sm text-ink'
 
@@ -21,6 +23,7 @@ export function Explorer() {
   const [companies, setCompanies] = useState<CompanyPage | null>(null)
   const [facts, setFacts] = useState<FactPage | null>(null)
   const [graph, setGraph] = useState<CompanyGraph | null>(null)
+  const [answer, setAnswer] = useState<AnswerResult | null>(null)
   const [source, setSource] = useState<{ evidence: PublishedEvidence; bytes: Uint8Array<ArrayBuffer> } | null>(null)
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
@@ -28,7 +31,7 @@ export function Explorer() {
   useEffect(() => () => operation.current?.abort(), [])
 
   function clearPrivate(): void {
-    setApi(null); setCompanies(null); setFacts(null); setGraph(null); setSource(null)
+    setApi(null); setCompanies(null); setFacts(null); setGraph(null); setSource(null); setAnswer(null)
     setOptions(null); setCorpus(''); setPassword(''); setQuery(''); setAsOf(''); setHistorical(false)
   }
 
@@ -47,7 +50,16 @@ export function Explorer() {
     } finally { if (!controller.signal.aborted) setBusy(false) }
   }
 
-  function clearSelection(): void { setFacts(null); setGraph(null); setSource(null) }
+  function clearSelection(): void { setFacts(null); setGraph(null); setSource(null); setAnswer(null) }
+
+  async function ask(input: AnswerInput): Promise<void> {
+    if (!api || !options) return
+    setAnswer(null); setSource(null)
+    await execute(async (signal) => {
+      const result = await api.answer(options, { ...input, ...(facts ? { company: facts.company.id } : {}) }, signal)
+      if (!signal.aborted) setAnswer(result)
+    })
+  }
 
   async function signIn(): Promise<void> {
     const submittedPassword = password
@@ -137,6 +149,7 @@ export function Explorer() {
         <div className="mt-4 flex gap-3">{facts.offset > 0 && <Button disabled={busy} variant="secondary" onClick={() => { void chooseCompany(facts.company.id, Math.max(0, facts.offset-facts.limit)) }}>Previous disclosures</Button>}{facts.offset+facts.limit < facts.total && <Button disabled={busy} variant="secondary" onClick={() => { void chooseCompany(facts.company.id, facts.offset+facts.limit) }}>More disclosures</Button>}</div>
       </section>}
       {graph && <RelationGraph graph={graph} support={supportButtons} select={(identity) => { const edge = graph.edges.find((item) => item.id === identity); const evidence = edge?.supports[0]; if (edge && evidence) void inspect(edge.id, evidence.evidence_id) }} />}
+      {options && <AnswerPanel answer={answer} busy={busy} ask={(input) => { void ask(input) }} inspect={(observation, evidence) => { void inspect(observation, evidence) }} />}
       {source && <SourceViewer key={`${source.evidence.observation_id}:${source.evidence.evidence.record.id}`} source={source.evidence} bytes={source.bytes} />}
     </>}
     {busy && api && <p className="mt-4 text-sm text-muted">Loading the selected published view…</p>}

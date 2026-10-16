@@ -78,6 +78,9 @@ def serve_main() -> None:
     from regintel.publication.service import PublicationService, current_configuration
     from regintel.reads.repository import ReadRepository
     from regintel.reads.service import PublishedReadService
+    from regintel.retrieval.graph import Neo4jExpansion
+    from regintel.retrieval.repository import SearchRepository
+    from regintel.retrieval.service import RetrievalService
     from regintel.validation.api import ValidationService
     from regintel.validation.repository import ValidationRepository
 
@@ -107,6 +110,12 @@ def serve_main() -> None:
     evidence_service = EvidenceService(
         EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
     )
+    read_service = PublishedReadService(
+        PublicationRepository(load_database_settings(args.env_file)),
+        ReadRepository(load_database_settings(args.env_file)),
+        evidence_service,
+        graph,
+    )
     try:
         uvicorn.run(
             create_app(
@@ -127,11 +136,12 @@ def serve_main() -> None:
                     processing_sender(create_celery(ingestion_settings)),
                 ),
                 publication_service=publication,
-                read_service=PublishedReadService(
-                    PublicationRepository(load_database_settings(args.env_file)),
-                    ReadRepository(load_database_settings(args.env_file)),
-                    evidence_service,
-                    graph,
+                read_service=read_service,
+                retrieval_service=RetrievalService(
+                    read_service,
+                    SearchRepository(load_database_settings(args.env_file)),
+                    Neo4jExpansion(graph) if graph is not None else None,
+                    model_root=model_root if model_root.is_dir() else None,
                 ),
             ),
             host="127.0.0.1",

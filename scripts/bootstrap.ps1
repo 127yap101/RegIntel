@@ -45,6 +45,7 @@ try {
     Invoke-Checked $uvExecutable @('sync', '--project', 'backend', '--locked', '--extra', 'entities', '--extra', 'publication')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-contracts.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-published-reads.py')
+    Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-retrieval.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/generate-read-fixtures.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/generate-fixtures.py')
     Invoke-Checked $uvExecutable @('run', '--project', 'backend', '--locked', '--no-sync', 'python', 'scripts/export-fixture-cases.py')

@@ -1,5 +1,37 @@
 # Run, inspect and pause RegIntel
 
+## Published questions and exact source excerpts (M1.11)
+
+Start the configured native API/frontend with the commands below, sign into
+the published filing explorer and select Premier Energies. Under **Find evidence
+in filings**, ask **What does the filing disclose about an initial public
+offering?** The result preserves the complete conditional source statement.
+**Source 1 · page 3** opens its hash-verified original PDF and evidence region.
+
+The question stays pinned to the applied corpus/history/date view and selected
+company. Four search methods support the controlled retrieval comparison; the
+semantic baseline deliberately omits company/period/basis metadata filters.
+Published-corpus and active/history boundaries always remain. The default hybrid
+method includes bounded related disclosures. Errors are explicit; changing
+methods requires a new request. Results are labelled verbatim source excerpts,
+with no generated conclusion or automatic reconciliation of conflicts.
+
+The real corpus still contains one narrative and no accepted numeric values or
+corporate relations. Unsupported topics, missing numeric context, unknown date
+support and a context budget too small for complete support return unavailable.
+**Retrieval details** shows the corpus, method and actual context-token budget.
+Each question clears prior source/answer state; signing out clears private state.
+
+Authenticated `POST /v1/retrieval` and `POST /v1/answers` are available in the API
+explorer. Their schema supports explicit company/complete period/basis filters,
+one/two-hop controls, top-k/context budgets and deterministic numeric lookups
+with exact metric/unit/currency/ownership context. Lookup returns an accepted
+Decimal value with its inputs; cross-fact formulas remain M2 work. No Gemini
+provider or paid call is used. M1.12 administrative review UI remains later work.
+
+See [M1.11 implementation/verification](M1_11_RETRIEVAL_PLAN.md) and
+[current state](../CURRENT_STATE.md) for the checkpoint and measured limits.
+
 M0/M1A, entity resolution, bounded candidates, text validation/staged reviews,
 durable worker recovery and reviewed corpus publication are implemented.
 The frontend includes a read-only published filing explorer and API liveness. Ingestion,
@@ -64,6 +96,7 @@ later work. See [publication operating contract](M1_9_PUBLICATION_PLAN.md).
 - [Measured processing/recovery verification](../data/processing-recovery-report.json)
 - [Measured publication verification](../data/publication-validation-report.json)
 - [Measured published reads/browser verification](../data/published-reads-validation-report.json)
+- [Measured retrieval/source-answer verification](../data/retrieval-validation-report.json)
 - [Source manifest](../data/manifest.json)
 - Persisted CIN highlight: `D:/RegIntel/.cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682/cin-detail.png`
 
@@ -145,16 +178,20 @@ To rerun verification when desired, first stop the manual API/frontend with
 
 The first runs backend/frontend/browser and static checks. The second requires
 running Docker/PostgreSQL and creates/removes only its own disposable database.
-Latest M1.10 local results: 1,830 backend passes/six Windows skips, 225 frontend
-passes and nine Chromium passes, plus five new disposable published-read cases.
-The final frontend release checks pass after correcting the initial PDF.js
-compatibility failure. Exact-source hosted
-[CI 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205) passes both Windows/Linux
-complete runners (1833/1835 backend,225 frontend/nine Chromium each) and all474
-database tests in 402.46s, fresh migrations 1–11, auth and restart persistence. No full
-local 474-pass result is claimed. See CURRENT_STATE/PHASE_LOG and the measured
-read report for source binding and disclosed limits. These are engineering checks, not research
-effectiveness.
+Latest M1.11 local checks pass 1,902 backend tests with six disclosed Windows
+skips, nine new disposable PostgreSQL/Neo4j cases, and the final complete frontend
+release (238 unit tests, 14 Chromium tests, lint, strict types and build). The
+earlier combined runner's two browser PDF-readiness timeouts are disclosed in the
+[retrieval report](../data/retrieval-validation-report.json); the final frontend
+run passes with two local workers and unchanged assertions/timeouts. The real
+four-arm HTTP and original-PDF browser proofs pass without changing authoritative
+data. M1.11 source publication and exact-source hosted checks are pending.
+
+Previous M1.10 exact-source [CI 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205)
+passes both Windows/Linux complete runners (1833/1835 backend, 225 frontend and
+nine Chromium each), all 474 database tests, fresh migrations 1–11, authentication
+and restart persistence. These are engineering checks; research effectiveness
+remains unmeasured.
 
 After a worker/infrastructure interruption, recover unfinished processing jobs
 through the admin dispatch endpoint or the bounded operator command:

@@ -1,5 +1,25 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.11 retrieval/Q&A — 15 October 2026
+
+No dependency or lock changes. Reuses PostgreSQL 16.15/pgvector 0.8.7,
+Neo4j 5.26.31/driver 6.4.0, ONNXRuntime 1.30.0/tokenizers 0.23.2 and the existing
+hash-checked BGE-small-en-v1.5 revision/assets. Query encoding uses the publisher's
+fixed English retrieval prefix; documents retain their frozen v1 embeddings.
+BM25/RRF and source/numeric routing are explicit application code. No new
+provider SDK, hosted model, environment variable, migration, service, worker
+build or paid call. Windows/native and the existing private Linux worker remain.
+
+Separate generated retrieval schemas/authored fixtures are included in both
+bootstraps, check runners and CI. Original M0/M1.10 exports remain intact.
+Runtime, source/budget bounds and measured results are recorded in
+`docs/M1_11_RETRIEVAL_PLAN.md` and the retrieval validation report when complete.
+
+References: [BGE publisher model card](https://huggingface.co/BAAI/bge-small-en-v1.5),
+[BM25 authors' review](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf),
+[RRF authors' paper](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf),
+[pgvector query documentation](https://github.com/pgvector/pgvector).
+
 ## M1.10 published reads/viewer — 15 October 2026
 
 Native Node 24.19.0 and project-local pnpm 11.19.0 are unchanged. The environment's

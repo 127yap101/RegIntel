@@ -2,6 +2,62 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.11 published retrieval and extractive source answers — local verification, 15 October
+
+Continued from verified fba55ff under existing sequential implementation,
+commit/push and Windows/private-worker approvals. Implemented read-only
+/v1/retrieval and /v1/answers, separate generated contracts and pinned-corpus
+question/source UI. B0–B3 use existing committed BGE/pgvector/lexical data;
+company/complete period/basis filters, BM25/RRF and actual bounded Neo4j
+one/two-hop expansion never override PG publication/active/history/as-of scope.
+Complete accepted observation/citation bundles fit the tokenizer budget or
+are omitted explicitly. Claims copy exact supported source text; numeric
+questions use exact-context Decimal lookup or explicit unavailable/conflict.
+
+Local full runner passes1902backend/six Windows skips237.79s, Ruff192/mypy126,
+238frontend/lint/types/build, before two browser PDF readiness checks time out
+at five seconds under eight workers (12pass). Saved failure DOM shows pages
+rendered just afterward. No assertion/timeout is weakened. Final complete
+frontend release passes238unit/14Chromium29.6s at two local workers; CI keeps1.
+Both shell syntax checks/actionlint and Node helper syntax pass.
+
+Nine final disposable PG/Neo4j cases pass29.22s, including actual topology
+one/two-hop and filtered-edge/corpus boundaries, accepted1234.50context and
+projection commit/source gates. Extra topology is authored and not PG-accepted.
+Current full database collection is483; native full runner deselected482 before
+the last topology case was added. No full local483-pass result is claimed.
+
+Real HTTP .cache/retrieval-runtime-dc4cdce5933b46afb44413160de38507 passes all
+four arms on one shared query/corpus/top-k5/budget2048/policy. Each complete real
+bundle counts1059tokens and retains source page3/span0..272/full conditional text.
+Missing dates/numeric context/unsupported topics abstain; small budgets omit
+whole bundles and oversized encoded queries return422 without truncation.
+Actual request timings are recorded, not a benchmark distribution/improvement.
+
+Real browser .cache/retrieval-browser-43b794e27fd5474897cd306626aba140 passes
+B3→conditional quote→original PDF.js page3/region,375px, repeated question editing,
+numeric abstention/stale-source clearing/logout and no credential storage/URLs/
+browser errors. The real proof caught an implicit textarea label changing after
+input; explicit stable label/id fixes it, with a regression test. Mobile screenshot
+visually inspected. Original source/processing/publication/authority snapshots
+are unchanged. Owned proof API/Vite stopped; existing services/worker retained.
+
+Other disclosed fixes: exact ContextWitness role/span fixtures, typed canonical
+context serialization, strict integer request bounds with standard JSON Schema,
+TypeScript branded request validation and JSON-post auth expiry. A task-owned
+sandbox TestClient stall was stopped safely; normal local checks pass. Real
+browser diagnostics/helper syntax correction stays under ignored proof history.
+No disabled check, new dependency/lock/SQL/env/service/model/worker/paid call.
+Existing stopped services were restored from original volumes.
+
+Metadata report data/retrieval-validation-report.json; plan
+docs/M1_11_RETRIEVAL_PLAN.md. Unused Neo4j relationship labels emit notifications
+and the frontend retains its large chunk warning; no suppression. Real data
+still contains one narrative, zero numeric/relation positives, absent parent and
+unknown date. No real amendment-pair/gold/held-out improvement/macOS/ARM/fresh
+real-clone claim. Source checkpoint/exact-source hosted checks pending. Next
+after closure: M1.12 admin/review UI.
+
 ## M1.10 completion and GitHub verification — 15 October
 
 Source `456ed418dbee791dc586803263a12bd89963404a` is pushed normally to existing main.
