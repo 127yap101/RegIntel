@@ -1,7 +1,7 @@
 {
   "recorded_at_utc": "2026-10-16T13:32:39.967704+00:00",
   "phase": "M1.12",
-  "status": "local verification complete; source commit and exact-source hosted verification pending",
+  "status": "complete \u2014 bounded administrator workflow engineering verification",
   "base_commit": "6f8bd6b5d2dfb03cb6d48af5697e1f649c6ab931",
   "scope": [
     "bounded current-admin read-only queues and review/metric adapters",
@@ -57,9 +57,35 @@
     },
     "combined_native_runner": "Backend/static/export stages passed; runner exited at four new test lint errors. Corrected test typing, then the complete frontend lint/types/unit/build/24-browser command passed. No successful combined native runner is claimed.",
     "hosted": {
-      "status": "pending",
-      "source_commit": null,
-      "run_id": null
+      "status": "completed",
+      "conclusion": "success",
+      "source_commit": "4114407839a9a319fcf075a847c976a23dc2bfa9",
+      "run_id": 38908935402,
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/38908935402",
+      "jobs": [
+        {
+          "name": "Foundation (ubuntu-24.04)",
+          "id": 116999546361,
+          "conclusion": "success"
+        },
+        {
+          "name": "Foundation (windows-2025)",
+          "id": 116999546801,
+          "conclusion": "success"
+        },
+        {
+          "name": "Local data infrastructure (Linux)",
+          "id": 117001571481,
+          "conclusion": "success"
+        }
+      ],
+      "windows_and_linux_complete_foundation_commands": "passed",
+      "complete_database_command_and_fresh_migrations_1_to_11_apply_replay": "passed",
+      "current_seeded_role_authentication": "passed",
+      "service_restart_persistence": "passed",
+      "evidence": "Public exact-head run/job/step conclusions. Raw job logs were not accessed and no hosted per-test counts are inferred.",
+      "source_fingerprints_matching_verified_commit": 27,
+      "followup_scope": "documentation and measured-report metadata only"
     }
   },
   "real_read_only_browser": {
@@ -173,7 +199,9 @@
     "worker_rebuilt": false,
     "paid_calls": 0,
     "secrets_original_pdfs_models_generated_artifacts_in_git": false,
-    "existing_services": "Three original data containers were stopped at the live proof; restarted with unchanged volumes and all became healthy. No reason for their earlier stop is inferred."
+    "existing_services": "Three original data containers were stopped at the live proof; restarted with unchanged volumes and all became healthy. No reason for their earlier stop is inferred.",
+    "previous_m1_11_snapshot_table_count": 37,
+    "previous_m1_11_snapshots_match": true
   },
   "disclosed_repaired_attempts": [
     "Storage fixture initially expected quarantine for missing numeric policy: corrected to REVIEW and added a genuine currency-conflict quarantine case; frozen gates unchanged.",
@@ -219,5 +247,7 @@
     "scripts/export-admin.py": "53d211037972691964f556ec3416e16766882f1d13fe6782746233c735e08d9b",
     "scripts/run-checks.ps1": "a8c7f254019eb8f84f32613f86bc2e0fb2638a2b4aaef1866079680242bff085",
     "scripts/run-checks.sh": "b06856b8fc2b8a610c8ebb4302097292ea7ca1f740124b8ec9476553905a2400"
-  }
+  },
+  "source_commit": "4114407839a9a319fcf075a847c976a23dc2bfa9",
+  "recorded_hosted_at_utc": "2026-10-16T18:08:07.238578+00:00"
 }

@@ -107,3 +107,20 @@ accuracy results; the corpus still has one conditional narrative and no
 numeric/relation positive or actual amendment pair. Entity/metric/policy registry
 administration remains through existing APIs/CLI. Gold/held-out effectiveness,
 macOS/ARM and a fresh real-source clone remain unverified.
+
+
+## Source publication and hosted closure
+
+Source `4114407839a9a319fcf075a847c976a23dc2bfa9` is pushed normally to existing main.
+Exact-source [run 38908935402](https://github.com/127yap101/RegIntel/actions/runs/38908935402) completed SUCCESS:
+Windows foundation, Ubuntu foundation and Linux data infrastructure. Complete
+foundation/database commands, fresh migration 1–11 apply/replay, seeded-role
+authentication and service-restart persistence pass. Evidence is public run/job/
+step conclusions; raw job logs were not accessed and no per-test hosted counts
+are inferred. All 27 measured source fingerprints match the verified commit.
+This final follow-up changes documentation/report metadata only.
+
+M1.12 and bounded M1/M1C implementation are complete. M2 is next; M2–M4,
+integration, broader real-source coverage and held-out effectiveness remain
+unfinished. Earlier pending notes describe the local checkpoint before this
+hosted closure; limitations and repaired attempts remain disclosed.

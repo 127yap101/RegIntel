@@ -4,11 +4,16 @@ Continue sequential authorized work on existing main in
 https://github.com/127yap101/RegIntel. Inspect Git/remote/environment and read
 AGENTS.md, CURRENT_STATE.md, docs/M1_12_ADMIN_REVIEW_PLAN.md,
 data/admin-review-validation-report.json and the newest PHASE_LOG entry first.
-M1.12 local implementation and verification are complete. Reviewed source
-commit/push and exact-source hosted verification are pending. Finish that
-closure before marking M1C complete or beginning M2. Preserve teammate changes
-and inspect the actual Git log; do not assume this local database exists on
-another machine.
+M1.12 and bounded M1/M1C implementation are complete. Source
+4114407839a9a319fcf075a847c976a23dc2bfa9 is pushed normally to existing main.
+Exact-source [run 38908935402](https://github.com/127yap101/RegIntel/actions/runs/38908935402) completed SUCCESS for
+Windows foundation, Ubuntu foundation and Linux data infrastructure. Complete
+foundation/database commands, fresh migrations 1–11 apply/replay, seeded-role
+authentication and restart persistence pass. Public run/job/step conclusions are
+verified; no raw-log per-test counts are inferred. All 27 source fingerprints
+match; the final follow-up changes documentation/report metadata only. Proceed
+sequentially to M2. Preserve teammate changes and inspect the actual Git log;
+do not assume this local database exists on another machine.
 
 M1.12 adds backend/src/regintel/admin and frontend/src/admin. New adapter GETs
 are read-only/current-admin: /v1/admin/workspace/queues/{kind}, /reviews/{run_id}
@@ -82,7 +87,8 @@ Company: 581d1b0d-98fd-4a23-8e15-5574dac650a2.
 Observation: 4745db6c-09db-4ee2-bc43-efb8a53c7b6b.
 Candidate: e30af8f7-a198-41e1-a039-a748ce516aef.
 Fresh validation: 97ec299b-f5e7-4043-9fec-e7c08473b6a9.
-Original final review: 5c42296e-e63f-4f84-9c52-ead243b9596c on older f93660f2.
+Original final review: 5c42296e-e63f-4f84-9c52-ead243b9596c on older
+f93660f2-c589-4cc5-af3d-031e896a4d3b.
 Evidence: 7e340c65-8087-43cf-8d3c-2648b7c5f1b8, page_index2/span0..272.
 Source SHA a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347.
 Parse: 38819124-f764-4f41-acef-44ac000dbc45, 878 exact records.

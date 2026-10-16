@@ -38,8 +38,10 @@ See the [run/check guide](docs/RUN_AND_CHECK.md).
 Local verification passes 1932 backend/six Windows skips, six new disposable
 PostgreSQL cases, 254 frontend unit tests and all 24 Chromium tests, plus
 lint/types/build/static checks. The real administrator browser proof preserves
-original saved data. Source publication and exact-source hosted closure are
-pending. See [current state](CURRENT_STATE.md), the
+original saved data. Source `4114407` is pushed and
+[exact-source GitHub CI](https://github.com/127yap101/RegIntel/actions/runs/38908935402) passes Windows/Linux foundation and Linux data infrastructure,
+including the full database command, fresh migrations, authentication and restart
+persistence. See [current state](CURRENT_STATE.md), the
 [administrator plan](docs/M1_12_ADMIN_REVIEW_PLAN.md) and
 [measured report](data/admin-review-validation-report.json).
 
@@ -48,7 +50,8 @@ relations and an unresolved parent/effects 0. Its unknown publication date retur
 explicit temporal unavailability. This is bounded engineering verification;
 real amendment-pair and held-out research effectiveness remain unmeasured.
 
-M1.12 hosted closure is pending; M2 follows. M2–M4/integration remain unfinished.
+Bounded M1 implementation is complete. Next is M2 comparison/profile;
+M2–M4/integration and broader real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10/M1.11/M1.12.

@@ -2,6 +2,25 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.12 source publication and M1C closure — 16 October
+
+Source `4114407839a9a319fcf075a847c976a23dc2bfa9` is pushed normally to existing main.
+Exact-source [run 38908935402](https://github.com/127yap101/RegIntel/actions/runs/38908935402) completed SUCCESS for
+Windows foundation, Ubuntu foundation and Linux data infrastructure. Public
+run/job/step conclusions verify both complete foundation commands, the complete
+database command, fresh migrations 1–11 apply/replay, seeded-role authentication
+and service-restart persistence. Raw job logs were not accessed; no hosted
+per-test counts are inferred. All 27 measured source fingerprints match the
+verified source. Source/secrets/assets review passes; this final follow-up is
+documentation/report metadata only.
+
+M1.12 and bounded M1/M1C implementation are complete. Next is M2, following the
+specified company/profile, evidence, normalization, formulas, comparison and
+evaluation sequence. Real data still contains one conditional narrative with
+no numerical/relation positive or actual amendment pair; no broader research
+effectiveness is claimed. M2–M4/integration remain unfinished. Read the updated
+continuation prompt and measured report; existing authorizations persist.
+
 ## M1.12 administrator workspace — locally verified, 16 October
 
 Started from verified main `6f8bd6b` under continuing sequential implementation
