@@ -65,6 +65,7 @@ jobs:
           uv run --project backend --locked --no-sync python scripts/export-contracts.py
           uv run --project backend --locked --no-sync python scripts/export-published-reads.py
           uv run --project backend --locked --no-sync python scripts/export-retrieval.py
+          uv run --project backend --locked --no-sync python scripts/export-admin.py
           uv run --project backend --locked --no-sync python scripts/generate-read-fixtures.py
 
       - name: Generate synthetic fixture artifacts

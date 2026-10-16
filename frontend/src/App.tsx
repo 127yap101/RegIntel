@@ -4,6 +4,7 @@ import type { BackendHealth } from './api/health'
 import { Button } from './components/Button'
 import { Card } from './components/Card'
 import { Explorer } from './published/Explorer'
+import { AdminWorkspace } from './admin/Workspace'
 
 type HealthState =
   | { kind: 'checking' }
@@ -20,6 +21,7 @@ const modules = [
 export default function App() {
   const [healthState, setHealthState] = useState<HealthState>({ kind: 'checking' })
   const [requestNumber, setRequestNumber] = useState(0)
+  const [workspace, setWorkspace] = useState<'published' | 'admin'>('published')
 
   useEffect(() => {
     const controller = new AbortController()
@@ -61,9 +63,10 @@ export default function App() {
             <span aria-hidden="true" className="flex h-11 w-11 items-center justify-center rounded-xl bg-ink text-sm font-bold tracking-tight text-white">RF</span>
             <span className="text-lg font-semibold tracking-tight text-ink">RegIntel <span className="font-normal text-muted">Finance</span></span>
           </a>
-          <div className="flex items-center gap-5 text-sm">
+          <div className="flex flex-wrap items-center gap-3 text-sm">
             <a href="#project-status" className="rounded-md font-medium text-muted underline-offset-4 hover:text-ink hover:underline focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage">Project status</a>
-            <a href="#filing-explorer" className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink">Explore published filings</a>
+            <a href="#filing-explorer" onClick={() => setWorkspace('published')} className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink">Explore published filings</a>
+            <a href="#admin-workspace" onClick={() => setWorkspace('admin')} className="rounded-full border border-line bg-white px-3 py-1.5 text-xs font-semibold text-ink">Administrator workspace</a>
           </div>
         </header>
 
@@ -125,7 +128,7 @@ export default function App() {
               ))}
             </ul>
           </section>
-          <Explorer />
+          {workspace === 'published' ? <Explorer /> : <AdminWorkspace />}
         </main>
 
         <footer className="flex flex-wrap justify-between gap-3 border-t border-line py-6 text-xs leading-5 text-muted">

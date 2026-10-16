@@ -15,6 +15,8 @@ from pydantic import BaseModel
 from starlette.exceptions import HTTPException as StarletteHTTPException
 
 from regintel import __version__
+from regintel.admin.api import create_admin_router
+from regintel.admin.repository import AdminRepository
 from regintel.auth.api import create_auth_router
 from regintel.auth.service import AuthService
 from regintel.candidates.api import CandidateService, create_candidate_router
@@ -57,6 +59,7 @@ def create_app(
     publication_service: PublicationService | None = None,
     read_service: PublishedReadService | None = None,
     retrieval_service: RetrievalService | None = None,
+    admin_repository: AdminRepository | None = None,
 ) -> FastAPI:
     """Construct isolated applications for tests and native development."""
 
@@ -158,6 +161,7 @@ def create_app(
     application.include_router(create_publication_router(auth_service, publication_service))
     application.include_router(create_read_router(auth_service, read_service))
     application.include_router(create_retrieval_router(auth_service, retrieval_service))
+    application.include_router(create_admin_router(auth_service, admin_repository))
 
     @application.get("/health/live", response_model=LivenessResponse, tags=["health"])
     def liveness() -> LivenessResponse:

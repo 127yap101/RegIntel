@@ -1,5 +1,19 @@
 # RegIntel Finance — Tested Dependency Register
 
+## M1.12 administrator workspace — 16 October 2026
+
+No dependency, lock, migration or environment-variable changes. Reuses the
+existing FastAPI/Pydantic/PostgreSQL contracts, React/strict TypeScript, AJV,
+PDF.js and Playwright. The generated admin schema/types/authored fixtures have
+a separate export included in both bootstraps, check runners and CI; existing
+exports remain unchanged. No provider/model call, host install or new service.
+
+Processing configuration remains
+`bacb112415f5728f813738f353f6c2765a9f0135177460e9497ab00e445b2dd6`.
+The approved private worker retains its existing parser/stage environments;
+no rebuild is required for the read-only adapter or administrator UI. See
+`docs/M1_12_ADMIN_REVIEW_PLAN.md` and `CURRENT_STATE.md` for verification status.
+
 ## M1.11 retrieval/Q&A — 15 October 2026
 
 No dependency or lock changes. Reuses PostgreSQL 16.15/pgvector 0.8.7,

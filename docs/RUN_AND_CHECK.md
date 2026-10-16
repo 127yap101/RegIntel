@@ -1,5 +1,45 @@
 # Run, inspect and pause RegIntel
 
+## Administrator filing and review workspace (M1.12)
+
+Start the configured native API and frontend using the commands below. Choose
+**Administrator workspace** in the header and sign in with this machine's
+existing administrator account. It has a separate memory-only session and can
+operate before the first corpus is published. Learner accounts are denied.
+
+**Filing jobs** shows stored parsing state and the original source hash.
+**Upload a filing** accepts an original PDF with explicit company/type metadata;
+leave unsupported dates and parent references empty. Once parsing is complete,
+select explicitly registered extraction metrics and start extraction/validation.
+**Processing jobs** exposes durable checkpoints, events, refresh and pending-job
+dispatch. New jobs require the configured private worker to be running; reading
+existing jobs does not. No new worker build is required for this UI.
+
+**Validation and quarantine** opens stored audits with candidate direction,
+complete source text, financial context and all 16 checks. **Inspect source 1**
+opens the hash-verified original page and evidence region. Current eligible
+candidates can receive an immutable approval or rejection with a note. Approval
+only prepares a candidate for publication. Mandatory failures cannot be overridden.
+Existing final reviews remain visible across later audits, and accepted
+observations cannot be edited or selected again.
+
+Add approved candidates to **Prepare a publication**, explicitly choose the
+parent corpus, then **Check and create publication draft**. Inspect its exact
+scope before the separate **Publish this approved build** action. Corrections
+use new reviewed candidates and the optional evidence-backed amendment form:
+parent/child filing identity, exact effect support, affected historical IDs and
+any explicitly supported effective date. The backend verifies these inputs;
+earlier observations remain immutable. A newer filing never replaces all
+earlier facts automatically. Published builds offer explicit projection rebuild.
+
+Sign out to clear private queues, reviews and source pages. Credentials stay in
+the ignored local `.env.auth`, never in URLs or browser storage. Another machine
+must initialize its own accounts and restore/acquire its own ignored source/data;
+Git does not contain the current database, original PDFs or models.
+
+See [M1.12 plan and verification](M1_12_ADMIN_REVIEW_PLAN.md) and
+[current state](../CURRENT_STATE.md) for the measured release status.
+
 ## Published questions and exact source excerpts (M1.11)
 
 Start the configured native API/frontend with the commands below, sign into
@@ -27,19 +67,19 @@ explorer. Their schema supports explicit company/complete period/basis filters,
 one/two-hop controls, top-k/context budgets and deterministic numeric lookups
 with exact metric/unit/currency/ownership context. Lookup returns an accepted
 Decimal value with its inputs; cross-fact formulas remain M2 work. No Gemini
-provider or paid call is used. M1.12 administrative review UI remains later work.
+provider or paid call is used. Administrator navigation is described above.
 
 See [M1.11 implementation/verification](M1_11_RETRIEVAL_PLAN.md) and
 [current state](../CURRENT_STATE.md) for the checkpoint and measured limits.
 
 M0/M1A, entity resolution, bounded candidates, text validation/staged reviews,
 durable worker recovery and reviewed corpus publication are implemented.
-The frontend includes a read-only published filing explorer and API liveness. Ingestion,
-exact evidence/PDFs, entity decisions, unaccepted candidate runs and staged
-validation/review audits are available
-through the backend API. Company search, reviewed disclosures, directed corporate
-relations and exact source pages can now be inspected after sign-in. Financial
-comparison/profile, retrieval/Q&A and administrator review workflows remain later work.
+The frontend includes published filing exploration, source questions and an
+administrator workspace. Ingestion, exact evidence/PDFs, entity decisions,
+candidate runs and staged validation/review audits also remain available through
+the backend API. Company search, reviewed disclosures, directed corporate
+relations and exact source pages can be inspected after sign-in. Financial
+comparison/profile, financial learning and virtual portfolios remain later work.
 
 ## Inspect published filings in the browser
 
@@ -83,8 +123,8 @@ published corpus can be read at `GET /v1/corpora/{id}` with a current login;
 returns explicit temporal unavailability. Obtain this machine's actual corpus
 ID from the measured publication report. The M1.10 explorer uses published
 company/fact/graph reads and corpus/observation-scoped learner source access.
-Unscoped original evidence/PDF routes remain administrator-only. Review UI is
-later work. See [publication operating contract](M1_9_PUBLICATION_PLAN.md).
+Unscoped original evidence/PDF routes remain administrator-only. See
+[publication operating contract](M1_9_PUBLICATION_PLAN.md).
 
 ## Inspect the saved result without starting services
 
@@ -97,6 +137,7 @@ later work. See [publication operating contract](M1_9_PUBLICATION_PLAN.md).
 - [Measured publication verification](../data/publication-validation-report.json)
 - [Measured published reads/browser verification](../data/published-reads-validation-report.json)
 - [Measured retrieval/source-answer verification](../data/retrieval-validation-report.json)
+- [Measured administrator workspace verification](../data/admin-review-validation-report.json)
 - [Source manifest](../data/manifest.json)
 - Persisted CIN highlight: `D:/RegIntel/.cache/evidence-qa-7ce9c9a9d4404e6bae69c6b38385c682/cin-detail.png`
 

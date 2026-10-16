@@ -8,7 +8,7 @@ import type { Highlight } from './geometry'
 
 GlobalWorkerOptions.workerSrc = workerUrl
 
-export function SourceViewer({ source, bytes }: { source: PublishedEvidence; bytes: Uint8Array<ArrayBuffer> }) {
+export function SourceViewer({ source, bytes }: { source: Pick<PublishedEvidence, 'evidence' | 'supports' | 'context_supports'>; bytes: Uint8Array<ArrayBuffer> }) {
   const canvas = useRef<HTMLCanvasElement>(null)
   const [rendered, setRendered] = useState<{ width: number; height: number; boxes: Highlight[]; geometry: boolean } | null>(null)
   const [error, setError] = useState('')

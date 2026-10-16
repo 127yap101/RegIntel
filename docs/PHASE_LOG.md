@@ -2,6 +2,63 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.12 administrator workspace — locally verified, 16 October
+
+Started from verified main `6f8bd6b` under continuing sequential implementation
+and GitHub authorization. Added read-only bounded current-admin queues and
+checked review/metric adapters. The independent browser workspace reuses existing
+upload, workflow, validation/review, exact evidence/PDF and publication APIs.
+Mandatory gates, immutable prior reviews and accepted history remain unchanged.
+Typed amendment forms require exact identity/effect support and leave unsupported
+dates empty. Stable write identities survive retries; explicit publication is
+separate from approval and draft preparation.
+
+Thirty new API cases pass in 9.58s. Six disposable PostgreSQL cases pass in
+13.41s: current-role recheck, exact/bounded reads, prior final review in a fresh
+audit, genuine USD/rupees conflict, missing audit and published/accepted IDs.
+The first storage attempt had three passes/one wrong fixture expectation:
+missing policy means REVIEW. Corrected it and added a real currency-conflict
+fixture; frozen gates were preserved.
+
+Full native backend passes 1932/six Windows skips in 495.16s, with 489 database
+cases deselected. Exports, Ruff 199 files and mypy 131 sources pass. The combined
+runner then stopped at four test lint errors: unnecessary assertions and unsafe
+generic stringification. Corrected test types/guards. Final complete frontend
+command passes lint/strict types, 254 unit tests in 77.85s, production build and
+all 24 Chromium tests in 1.4m, including ten new administrator scenarios.
+No successful single combined native runner or complete local 489-database run
+is claimed. PowerShell/Bash syntax, actionlint and Node helper syntax pass.
+
+Initial unit sandbox execution failed before collection at a temporary-cache
+rename; normal local permissions/fresh task TEMP/TMP resolved it. First authored
+browser run had five passes/four failures: implicit labels, test CORS ETag
+exposure and wrong amendment response mode. Corrected labels/test setup without
+loosening assertions, timeouts, source hashes or gates; the final complete
+browser suite passes.
+
+Real proof `.cache/admin-browser-9daebf6d16ab4516bfb2e7550ee2feba` passes parsed filing and completed
+workflow navigation, sixteen checks, existing immutable review/accepted history,
+the original PDF.js page 3/one persisted region, 375px layout, published scope,
+logout and no credentials in storage/URLs/browser errors. It attempts zero
+authoritative writes. All original source/processing/publication/authority
+snapshots are unchanged. The first live attempt found stopped data services;
+restarted the three original containers/volumes and all became healthy. Another
+attempt selected the preserved legacy SOURCE_VERIFIED job; bound the helper to
+the actual PARSED job/accepted parse. No application assertion or data changed.
+Owned native proof API/Vite processes are stopped.
+
+All 113 protected files, including all eleven migration bytes, are unchanged.
+Processing config remains `bacb112415f5728f813738f353f6c2765a9f0135177460e9497ab00e445b2dd6`.
+No dependency/lock/env/migration/service/worker build or paid call. Current real
+data remains one conditional narrative, zero numeric/relation positives,
+unresolved parent/effects 0; no real amendment-pair or held-out effectiveness is
+measured. The large JS chunk warning remains unsuppressed. See the phase plan
+and `data/admin-review-validation-report.json`.
+
+Source review/fingerprints/secrets and assets pass. Commit/push and exact-source
+hosted verification remain pending. Close M1C only after that evidence, then
+proceed to M2; M2–M4/integration remain unfinished.
+
 ## M1.11 source publication and hosted closure — 16 October
 
 Source `f57e2113fbd485e985e5e93e144ce15ebee42a02` is pushed normally to existing main.

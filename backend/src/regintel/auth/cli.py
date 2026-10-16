@@ -59,6 +59,7 @@ def serve_main() -> None:
         )
     except (OSError, ValueError, AuthUnavailable):
         raise SystemExit("Authentication configuration is unavailable; secrets omitted.") from None
+    from regintel.admin.repository import AdminRepository
     from regintel.candidates.api import CandidateService
     from regintel.candidates.repository import CandidateRepository
     from regintel.entities.api import EntityService
@@ -120,6 +121,7 @@ def serve_main() -> None:
         uvicorn.run(
             create_app(
                 auth_service=service,
+                admin_repository=AdminRepository(load_database_settings(args.env_file)),
                 ingestion_service=ingestion,
                 evidence_service=evidence_service,
                 entity_service=EntityService(
