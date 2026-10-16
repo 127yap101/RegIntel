@@ -30,9 +30,9 @@ original page, and numeric questions require deterministic accepted-value contex
 See the [run/check guide](docs/RUN_AND_CHECK.md) to try the Premier offering question.
 
 Local verification passes 1902 backend/six Windows skips, nine new disposable
-database/Neo4j cases, 238 frontend and14Chromium tests, lint/types/build and Python
+database/Neo4j cases, 238 frontend and 14 Chromium tests, lint/types/build and Python
 static checks. The real four-arm HTTP and browser proofs preserve original data.
-Source checkpoint/hosted CI are pending. See [current state](CURRENT_STATE.md),
+Source is pushed and exact-source [GitHub CI](https://github.com/127yap101/RegIntel/actions/runs/38855802264) passes Windows/Linux foundation and Linux data infrastructure, including the complete database command, fresh migrations, authentication and restart persistence. See [current state](CURRENT_STATE.md),
 [retrieval plan](docs/M1_11_RETRIEVAL_PLAN.md) and
 [measured report](data/retrieval-validation-report.json).
 
@@ -41,10 +41,10 @@ relations and an unresolved parent/effects 0. Its unknown publication date retur
 explicit temporal unavailability. This is bounded engineering verification;
 real amendment-pair and held-out research effectiveness remain unmeasured.
 
-Next after M1.11 hosted closure is M1.12 admin/review UI. M2–M4/integration remain unfinished.
+Next is M1.12 admin/review UI. M2–M4/integration remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
-retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10.
+retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10/M1.11.
 Original PDFs/models/credentials/database state remain out of Git. Use the
 [self-contained continuation prompt](docs/CONTINUATION_PROMPT.md) to resume.
 

@@ -2,6 +2,28 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1.11 source publication and hosted closure — 16 October
+
+Source `f57e2113fbd485e985e5e93e144ce15ebee42a02` is pushed normally to existing main.
+Exact-source [run 38855802264](https://github.com/127yap101/RegIntel/actions/runs/38855802264) completed SUCCESS
+for Windows foundation, Ubuntu foundation and Linux data infrastructure. Public
+run/job/step conclusions confirm complete checks, the full database command,
+fresh migrations 1–11 apply/replay, current seeded-role authentication and
+service-restart persistence. Raw public job-log API returns HTTP 403; no
+credentials were accessed and no hosted per-test counts are invented. Current
+database collection is 483. Local measured counts and disclosed retries below
+remain unchanged.
+
+All 37 staged files passed UTF-8/secret/asset review. All 29 measured source
+fingerprints match the exact verified commit and working source; 71 frozen
+specification/domain/migration/dependency files retain prior exact bytes. No
+PDF/model/cache/generated wire/credential file was included. The final follow-up
+changes documentation/report metadata only, preserving source/configuration
+identity and the original real-source/authority snapshots. M1.11 is complete as
+bounded engineering verification. One conditional narrative and authored tests
+do not prove real amendment/numeric/relation or held-out effectiveness.
+Next authorized work is M1.12 admin/review UI.
+
 ## M1.11 published retrieval and extractive source answers — local verification, 15 October
 
 Continued from verified fba55ff under existing sequential implementation,

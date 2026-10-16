@@ -4,12 +4,17 @@ Continue sequential authorized work on existing main in
 https://github.com/127yap101/RegIntel. Inspect Git/remote/environment and read
 AGENTS.md, CURRENT_STATE.md, docs/M1_11_RETRIEVAL_PLAN.md,
 data/retrieval-validation-report.json and the newest PHASE_LOG entry first.
-M1.11 local/source proof is complete; reviewed source publication and exact-source
-hosted Windows/Linux/full483database checks are pending. Record actual SHA/run
-and passing results before phase closure. Preserve teammate changes. Normal
-commits/pushes to existing main remain authorized; use actual Git log.
+M1.11 is complete as bounded engineering verification. Verified source is
+f57e2113fbd485e985e5e93e144ce15ebee42a02, pushed normally to existing main. Exact-source
+[run 38855802264](https://github.com/127yap101/RegIntel/actions/runs/38855802264) is SUCCESS for
+Windows foundation, Ubuntu foundation and Linux data infrastructure. The complete
+database command, fresh migrations 1–11 apply/replay, authentication and restart
+persistence pass. Current database collection is 483 cases; raw hosted logs require
+authentication, so no per-test hosted counts are inferred. All 29 measured source
+fingerprints match; the final follow-up changes documentation/report metadata
+only. Preserve teammate changes and use the actual Git log.
 
-After closure continue M1.12 admin/review UI: filing jobs, quarantine, review,
+Continue M1.12 admin/review UI: filing jobs, quarantine, review,
 approval/correction and publication, using existing current-admin APIs/audits.
 Do not bypass gates or implement later M2–M4/integration early. No real amendment
 pair, numeric/relation positive or held-out effectiveness has been measured.
@@ -27,8 +32,9 @@ all filters. Traversal may follow either endpoint but original relation directio
 is preserved. No provenance edges/unpublished neighbors become corporate facts.
 
 Query prefix is the publisher's fixed English retrieval instruction; no silent
-truncation beyond512actualtokens. Bound rank pools100perchannel, top-k1–10,
-context128–4096tokens and graph1000distinctrelations. Entire serialized accepted
+truncation beyond 512 actual tokens. Bound rank pools at 100 per channel, top-k
+at 1–10, context at 128–4096 tokens and graph expansion at 1000 distinct relations.
+Entire serialized accepted
 observation/citation bundles fit or are omitted with counts, never clipped.
 Exact source membership/quote/page/version/hash is validated before citation.
 Default output is labelled verbatim source excerpts with conditions intact.
@@ -42,18 +48,20 @@ conflict explicitly. Cross-fact formulas remain M2-owned; never use LLM math.
 The real corpus has no numeric accepted value. Frontend validates request/answer/
 citation identity, retains memory-only auth, cancels stale reads and clears
 source/claims on new requests/logout. The stable explicit textarea label is
-required for repeated question editing. Local Playwright workers2/CI1, with
+required for repeated question editing. Local Playwright workers 2/CI 1, with
 unchanged assertions/timeouts.
 
-M1.11 measurements:1902backend/six native Windows skips237.79s,482integration
-deselected at that collection; final nine new disposable storage cases29.22s
-include actual two-hop/cross-corpus/filtered-edge and exact1234.50context.
-Full final frontend238unit/14Chromium29.6s plus lint/strict types/build pass.
-Ruff192/mypy126 and PowerShell/Bash/actionlint/Node syntax pass. One combined
+Local M1.11 measurements: 1,902 backend tests passed with six native Windows
+skips in 237.79s; 482 integration cases were deselected before the final topology
+case was added. The final nine new disposable storage cases passed in 29.22s,
+including actual two-hop, cross-corpus and filtered-edge boundaries and exact
+Decimal 1234.50 context. The final frontend release passes 238 unit tests and
+14 Chromium tests in 29.6s, plus lint, strict types and build. Ruff checks 192
+files and mypy checks 126 sources; PowerShell/Bash/actionlint/Node syntax pass. One combined
 runner reached two five-second PDF readiness timeouts at eight workers after
 all backend/static/unit/build checks passed; source pages rendered just after
 the deadline. Final full frontend recheck passes with two workers. Do not invent
-a successful single combined native runner or full local483database run.
+a successful single combined native runner or full local 483-case database run.
 
 Real HTTP proof .cache/retrieval-runtime-dc4cdce5933b46afb44413160de38507:
 all four arms share corpus/question/top-k5/budget2048/output policy, retrieve the
@@ -81,7 +89,7 @@ No live Gemini SDK/model/transport/budget is configured. PostgreSQL remains
 authoritative; models propose only. Preserve approved SUPERSEDE spelling, M1
 company-search backend/M2 profile UI and M2 quote API/M4 snapshot ownership.
 
-M0/M1A and bounded M1.5–M1.10 are complete. Primary migrations 1–11 are applied,
+M0/M1A and bounded M1.5–M1.11 are complete. Primary migrations 1–11 are applied,
 none pending. M1.10 adds no SQL/backend dependency/environment variable/service
 or worker rebuild. Never edit applied migrations or frozen extraction,
 validation/publication algorithms and immutable histories. Frozen 0011 SHA256:
@@ -142,7 +150,7 @@ or remote model code. Git source/metadata is not a copy of this machine's DB.
 
 Worker image 5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b
 retains verified M1.8 source/109 parser/77 stage packages, the same model mount,
-private network/non-root/read-only/no-port configuration. No M1.9/M1.10 rebuild.
+private network/non-root/read-only/no-port configuration. No M1.9/M1.10/M1.11 rebuild.
 Processing config SHA bacb112415f5728f813738f353f6c2765a9f0135177460e9497ab00e445b2dd6.
 Preserve actual recovery jobs 95ba9ce9-5f28-4187-a35b-3364415a838c and
 d8e72949-811c-4fb2-a763-91fe89a78da7 and failed probe 46500b5e-c99a-4092-b3db-ef02c95796fc.

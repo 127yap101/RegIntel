@@ -127,3 +127,20 @@ macOS/ARM or fresh real-source-clone result is claimed. Next after closure: M1.1
 Additional primary references: [BGE publisher query instruction](https://huggingface.co/BAAI/bge-small-en-v1.5),
 [BM25 authors' review](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf),
 [RRF authors' paper](https://cormack.uwaterloo.ca/cormacksigir09-rrf.pdf).
+
+## Source publication and hosted closure — 16 October
+
+Source `f57e2113fbd485e985e5e93e144ce15ebee42a02` is pushed normally to existing main.
+Exact-source [run 38855802264](https://github.com/127yap101/RegIntel/actions/runs/38855802264) completed SUCCESS
+for Windows foundation, Ubuntu foundation and Linux data infrastructure. The
+complete database command, fresh migrations 1–11 apply/replay, seeded-role
+authentication and service-restart persistence pass. Current database collection
+contains 483 cases. Public run/job/step conclusions are verified; unauthenticated
+raw job logs return HTTP 403, so no hosted per-test counts are inferred.
+
+All 37 source-checkpoint files passed UTF-8/secret/asset review; all 29 measured
+source fingerprints match the commit. Seventy-one frozen specification/domain/
+migration/dependency files retain exact prior bytes. The follow-up changes
+documentation/report metadata only. No package/SQL/environment/service/worker/
+paid-provider change. M1.11 is complete as bounded engineering verification, with
+the real-data and research limitations above retained. Continue M1.12 admin/review UI.

@@ -13,7 +13,7 @@ build or paid call. Windows/native and the existing private Linux worker remain.
 Separate generated retrieval schemas/authored fixtures are included in both
 bootstraps, check runners and CI. Original M0/M1.10 exports remain intact.
 Runtime, source/budget bounds and measured results are recorded in
-`docs/M1_11_RETRIEVAL_PLAN.md` and the retrieval validation report when complete.
+`docs/M1_11_RETRIEVAL_PLAN.md` and `data/retrieval-validation-report.json`.
 
 References: [BGE publisher model card](https://huggingface.co/BAAI/bge-small-en-v1.5),
 [BM25 authors' review](https://www.staff.city.ac.uk/~sbrp622/papers/foundations_bm25_review.pdf),

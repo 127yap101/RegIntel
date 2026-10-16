@@ -185,7 +185,11 @@ earlier combined runner's two browser PDF-readiness timeouts are disclosed in th
 [retrieval report](../data/retrieval-validation-report.json); the final frontend
 run passes with two local workers and unchanged assertions/timeouts. The real
 four-arm HTTP and original-PDF browser proofs pass without changing authoritative
-data. M1.11 source publication and exact-source hosted checks are pending.
+data. M1.11 source `f57e2113fbd485e985e5e93e144ce15ebee42a02` is pushed and
+exact-source [CI 38855802264](https://github.com/127yap101/RegIntel/actions/runs/38855802264) is SUCCESS
+for Windows/Linux foundation and Linux data infrastructure. The complete database
+command, fresh migrations 1–11 apply/replay, authentication and restart
+persistence pass; per-test hosted counts are not inferred from inaccessible logs.
 
 Previous M1.10 exact-source [CI 38755455205](https://github.com/127yap101/RegIntel/actions/runs/38755455205)
 passes both Windows/Linux complete runners (1833/1835 backend, 225 frontend and
