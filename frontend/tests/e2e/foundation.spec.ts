@@ -1,13 +1,14 @@
+import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Route } from '@playwright/test'
 
-const healthUrl = 'http://127.0.0.1:8000/health/live'
+const healthUrl = `${apiOrigin}/health/live`
 
 async function fulfillHealth(route: Route): Promise<void> {
   await route.fulfill({
     status: 200,
     contentType: 'application/json',
-    headers: { 'access-control-allow-origin': 'http://127.0.0.1:5173' },
+    headers: { 'access-control-allow-origin': webOrigin },
     body: JSON.stringify({ status: 'ok', service: 'RegIntel Finance', environment: 'test' }),
   })
 }
@@ -21,7 +22,7 @@ test('browser connects to the real local FastAPI liveness endpoint', async ({ pa
   expect(payload).toEqual({ status: 'ok', service: 'RegIntel Finance', environment: 'test' })
   await expect(page.getByRole('status')).toContainText('Backend available')
   await expect(page.getByRole('status')).toContainText('Connected to the test API')
-  await expect(page.getByText('Not implemented', { exact: true })).toHaveCount(3)
+  await expect(page.getByText('Not implemented', { exact: true })).toHaveCount(2)
 })
 
 test('welcome screen is accessible on a narrow viewport and labels all modules honestly', async ({ page }) => {
@@ -31,7 +32,7 @@ test('welcome screen is accessible on a narrow viewport and labels all modules h
   await expect(page).toHaveTitle('RegIntel Finance · Published filings')
   await expect(page.getByRole('status')).toContainText('Backend available')
   await expect(page.getByRole('link', { name: 'Explore published filings' })).toBeVisible()
-  await expect(page.getByText('Not implemented', { exact: true })).toHaveCount(3)
+  await expect(page.getByText('Not implemented', { exact: true })).toHaveCount(2)
   await expect(page.getByRole('heading', { name: 'Corporate Intelligence' })).toBeVisible()
   await page.keyboard.press('Tab')
   await expect(page.getByRole('link', { name: 'Skip to content' })).toBeFocused()
@@ -52,5 +53,5 @@ test('unavailable backend can recover through a keyboard-activated retry', async
   await page.getByRole('button', { name: 'Check backend' }).focus()
   await page.keyboard.press('Enter')
   await expect(page.getByRole('status')).toContainText('Backend available')
-  await expect(page.getByText('Not implemented', { exact: true })).toHaveCount(3)
+  await expect(page.getByText('Not implemented', { exact: true })).toHaveCount(2)
 })

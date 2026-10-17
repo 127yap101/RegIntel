@@ -1,3 +1,4 @@
+import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
 import fixtures from '../../src/admin/fixtures.generated.json' with { type: 'json' }
@@ -8,8 +9,8 @@ async function setup(page: Page, mode = 'normal'): Promise<Proof> {
   const state: Proof = { reviews: [], builds: [], published: 0, revoked: false, processing: [], uploads: [] }
   let stored: ReviewDecision | null = null
   let approved = structuredClone(fixtures.manifest)
-  const headers = { 'Access-Control-Allow-Origin': 'http://127.0.0.1:5173', 'Content-Type': 'application/json', 'Access-Control-Expose-Headers': 'ETag,Content-Length' }
-  await page.route('http://127.0.0.1:8000/v1/**', async (route) => {
+  const headers = { 'Access-Control-Allow-Origin': webOrigin, 'Content-Type': 'application/json', 'Access-Control-Expose-Headers': 'ETag,Content-Length' }
+  await page.route(`${apiOrigin}/v1/**`, async (route) => {
     const request = route.request(); const url = new URL(request.url()); const path = url.pathname
     if (request.method() === 'OPTIONS') { await route.fulfill({ status: 204, headers: { ...headers, 'Access-Control-Allow-Headers': 'authorization,content-type', 'Access-Control-Allow-Methods': 'GET,POST,OPTIONS' } }); return }
     if (path === '/v1/auth/token') { await route.fulfill({ headers, json: { access_token: 'authored-admin-token', token_type: 'bearer' } }); return }

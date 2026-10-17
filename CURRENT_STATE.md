@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-16 (Asia/Calcutta).
+Updated: 2026-10-17 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -13,6 +13,12 @@ Updated: 2026-10-16 (Asia/Calcutta).
 - Final specification files remain unchanged under `docs/`.
 
 ## Latest verified state
+
+- **M2 comparison baseline implemented in isolation, 17 October:** user explicitly requested M2. Branch `codex/m2-comparison` and checkout `D:\RegIntel\.cache\worktrees\m2-comparison` preserve the clean M1 main checkout. Authenticated POST /v1/compare consumes the selected PUBLISHED M1 active/as-of view and frozen accepted catalog. Exact Decimal scaling, explicit period/basis/unit/currency/ownership compatibility, conflict/context abstention, baseline difference and six-place ROUND_HALF_EVEN relative percentage difference retain full input observations/evidence. Percentage inputs produce differences in percentage points. Company profile and exact PDF viewer integration reuse M1 interfaces; the new browser comparison retains memory-only sessions and clears results on expiry/logout. GET /v1/quotes reports typed unavailability; no source/provider is configured.
+
+- Focused M2 checks pass **55 backend cases**, **277 complete frontend unit tests**, strict frontend types/lint and production build. Four new disposable PostgreSQL cases pass in13.18s. Final-source full regression passes1987 backend/six disclosed Windows platform skips in238.10s, with493 integration cases deselected; all30 Chromium scenarios pass on isolated ports. Exact-source GitHub CI is pending the source push. Ruff209 files/mypy139 sources, all nine artifact drift checks and shell/workflow syntax checks pass. Bootstrap scripts generate the new M2 schemas/fixtures. Test-only port/Python overrides preserve M1's ports; no application dependency, migration, required environment variable, paid call or service is added.
+
+- Real read-only proof `.cache/analysis-runtime-15dde28887ea4f95acc68a7b72161fc5` verifies the recorded manifest, the existing narrative and original source page3/hash. All37 state-table hashes remain unchanged. The corpus has one company and zero numeric facts: no real numerical comparison or research score is claimed. Protected-byte inspection passes all136 selected frozen M1 source/specification/infra/lock files, including all11 migrations. Three stopped RegIntel data containers were restored from their original volumes; the worker was not rebuilt or started. Overall M2 acceptance remains open for real numerical inputs/user testing and a quote-source decision. M3/M4/integration remain later. Read `docs/M2_IMPLEMENTATION_PLAN.md` and `data/analysis-validation-report.json`.
 
 - **M1.12 complete as bounded administrator/review UI, 16 October:** bounded current-admin filing/processing/validation/publication queues, exact paginated review context and a checked metric catalog now support a separate administrator browser workspace. It reuses existing upload, workflow, validation/review and publication write APIs. Exact original-PDF inspection, mandatory-gate blocking, immutable prior decisions, accepted-observation history, stable retry IDs, explicit drafts and supported amendment forms are implemented.
 
@@ -157,11 +163,12 @@ Updated: 2026-10-16 (Asia/Calcutta).
 | M1.11 Retrieval/Q&A | Complete bounded engineering stage | Exact-source Windows/Linux/infrastructure checks and unchanged real HTTP/browser proofs pass |
 | M1.12 Admin/review UI | Complete — bounded engineering verification | Exact-source hosted success and real read-only source proof |
 | M1C milestone | Complete — bounded engineering verification | M1.10–M1.12 verified; next M2 |
-| M2–M4 and integration | Not started | Respective prerequisites and verification |
+| M2 analysis/comparison | In progress: isolated comparison baseline implemented | Final-source verification, real numerical acceptance and quote-source decision |
+| M3/M4 and integration | Not started | Respective prerequisites and verification |
 
 ## Resume instructions
 
-Latest 16 October: M1.12 and bounded M1/M1C implementation are complete, with exact-source hosted success. Proceed sequentially to M2 using the company/profile → evidence viewer → metric normalization → formulas → comparison → evaluation sequence in `docs/07_BUILD_PHASES_FINAL.md`. Read `docs/CONTINUATION_PROMPT.md`, `docs/M1_12_ADMIN_REVIEW_PLAN.md` and `data/admin-review-validation-report.json`, then only relevant architecture/data/financial contracts. Do not invent numbered M2 subphases or modify M1 authority/gates/history. Preserve migrations 0001–0011 and the verified private M1.8 worker environments. M2–M4/integration and real-corpus research effectiveness remain unfinished; prior approvals persist.
+Latest 17 October: continue M2 on `codex/m2-comparison`, reusing the existing isolated checkout while M1 is manually tested. Read the M2 plan, measured report and continuation prompt, inspect Git and exact-source CI, then address remaining real numerical acceptance and the quote-source decision within the approved contracts. Do not mark all M2 complete or start M3 from authored-fixture success. Preserve all eleven migrations and frozen M1 authority/gates/history. Existing Windows/deck/worker/GitHub authorizations persist. Never overwrite the main M1 checkout merely to switch tasks.
 
 The original staged review predates the final currency/unit repair. M1.9 retains that historical decision and independently binds the fresh gate in its immutable acceptance audit. Consumer reads must first resolve a PUBLISHED PostgreSQL corpus and filter projections by its exact version and active/as-of observation IDs. BUILDING data is not available to consumers. Unscoped original evidence/PDF routes remain administrator-only; M1.10 learner source access requires the selected published corpus, observation and exact evidence membership. Bare 0003 placeholders are not sealed candidate inputs; table previews/OCR origin do not supply exact original context. Do not infer missing period starts, currency, ownership context, effects or entity identities.
 

@@ -1,3 +1,4 @@
+import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
 import reads from '../../src/published/fixtures.generated.json' with { type: 'json' }
@@ -5,9 +6,9 @@ import fixtures from '../../src/retrieval/fixtures.generated.json' with { type: 
 import type { RetrievalRequest } from '../../src/retrieval/generated'
 
 async function setup(page: Page, mode = 'normal'): Promise<void> {
-  await page.route('http://127.0.0.1:8000/v1/**', async (route) => {
+  await page.route(`${apiOrigin}/v1/**`, async (route) => {
     const path = new URL(route.request().url()).pathname
-    const headers = { 'Access-Control-Allow-Origin': 'http://127.0.0.1:5173', 'Access-Control-Allow-Headers': 'authorization,content-type', 'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS', 'Access-Control-Expose-Headers': 'ETag,Content-Length,X-Corpus-Version-ID' }
+    const headers = { 'Access-Control-Allow-Origin': webOrigin, 'Access-Control-Allow-Headers': 'authorization,content-type', 'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS', 'Access-Control-Expose-Headers': 'ETag,Content-Length,X-Corpus-Version-ID' }
     if (route.request().method() === 'OPTIONS') { await route.fulfill({ status: 204, headers }); return }
     if (path.endsWith('/source.pdf')) { const pdf = Buffer.from(reads.pdf_base64, 'base64'); await route.fulfill({ body: pdf, contentType: 'application/pdf', headers: { ...headers, 'Content-Length': String(pdf.length), ETag: `"${reads.evidence.data.evidence.source_sha256}"`, 'X-Corpus-Version-ID': reads.info.data.corpus_version_id } }); return }
     if (path === '/v1/answers') {

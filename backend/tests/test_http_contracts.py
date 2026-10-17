@@ -41,9 +41,16 @@ def test_enveloped_errors_have_fresh_server_identity_and_preserve_http_headers()
             assert all(value is None for value in envelope.meta.versions.model_dump().values())
             assert response.headers["Cache-Control"] == "no-store"
         assert first.headers["X-Request-ID"] != second.headers["X-Request-ID"]
-        missing = client.get("/v1/compare")
+        missing = client.get("/v1/glossary")
         assert missing.status_code == 404
         assert ErrorEnvelope.model_validate_json(missing.text).error.code == "NOT_FOUND"
+        comparison_method = client.get("/v1/compare")
+        assert comparison_method.status_code == 405
+        assert comparison_method.headers["allow"] == "POST"
+        assert (
+            ErrorEnvelope.model_validate_json(comparison_method.text).error.code
+            == "METHOD_NOT_ALLOWED"
+        )
         wrong_method = client.post("/v1/auth/me")
         assert wrong_method.status_code == 405
         assert wrong_method.headers["allow"] == "GET"

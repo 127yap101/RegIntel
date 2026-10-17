@@ -17,6 +17,7 @@ from starlette.exceptions import HTTPException as StarletteHTTPException
 from regintel import __version__
 from regintel.admin.api import create_admin_router
 from regintel.admin.repository import AdminRepository
+from regintel.analysis.api import create_analysis_router
 from regintel.auth.api import create_auth_router
 from regintel.auth.service import AuthService
 from regintel.candidates.api import CandidateService, create_candidate_router
@@ -160,6 +161,7 @@ def create_app(
     application.include_router(create_processing_router(auth_service, processing_service))
     application.include_router(create_publication_router(auth_service, publication_service))
     application.include_router(create_read_router(auth_service, read_service))
+    application.include_router(create_analysis_router(auth_service, read_service))
     application.include_router(create_retrieval_router(auth_service, retrieval_service))
     application.include_router(create_admin_router(auth_service, admin_repository))
 

@@ -8,6 +8,8 @@ import { answerRequest, parseAnswer } from '../retrieval/wire'
 import type { AnswerInput, AnswerResult } from '../retrieval/wire'
 import type { RetrievalRequest } from '../retrieval/generated'
 import type { CompanyGraph, CompanyPage, FactPage, PublishedEvidence, ViewInfo } from './generated'
+import { comparisonRequest, parseComparison, parseQuotes } from '../analysis/wire'
+import type { ComparisonInput, ComparisonRequest, ComparisonResult, QuotesResult } from '../analysis/wire'
 
 export type { CompanyGraph, CompanyPage, FactPage, PublishedEvidence, ViewInfo } from './generated'
 export interface ReadOptions { corpus: string; historical: boolean; asOf: string }
@@ -62,7 +64,7 @@ function sourceQuery(options: ReadOptions): string {
 export class PublishedApi {
   constructor(private readonly token: string, private readonly base = getApiBaseUrl()) {}
 
-  private async request(path: string, signal: AbortSignal, body?: URLSearchParams | RetrievalRequest): Promise<Response> {
+  private async request(path: string, signal: AbortSignal, body?: URLSearchParams | RetrievalRequest | ComparisonRequest): Promise<Response> {
     try {
       const login = body instanceof URLSearchParams
       const response = await fetch(this.base + path, {
@@ -99,6 +101,21 @@ export class PublishedApi {
   }
 
   current(signal: AbortSignal): Promise<ViewInfo> { return this.read('/v1/published-corpus', 'info', signal) }
+  async compare(options: ReadOptions, input: ComparisonInput, signal: AbortSignal): Promise<ComparisonResult> {
+    try {
+      const body = comparisonRequest(options, input)
+      const response = await this.request('/v1/compare', signal, body)
+      return parseComparison(await response.json() as unknown, body)
+    } catch (error: unknown) {
+      if (signal.aborted || error instanceof ReadError) throw error
+      throw new ReadError(false, 'The comparison or its exact inputs could not be verified.')
+    }
+  }
+  async quotes(signal: AbortSignal): Promise<QuotesResult> {
+    const response = await this.request('/v1/quotes', signal)
+    try { return parseQuotes(await response.json() as unknown) }
+    catch { throw new ReadError(false, 'Quote availability could not be verified.') }
+  }
   async answer(options: ReadOptions, input: AnswerInput, signal: AbortSignal): Promise<AnswerResult> {
     canonical(options.corpus)
     if (input.company) canonical(input.company)

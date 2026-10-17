@@ -45,6 +45,9 @@ frontend/src/retrieval/fixtures.generated.json
 frontend/src/admin/generated.ts
 frontend/src/admin/schema.json
 frontend/src/admin/fixtures.generated.json
+frontend/src/analysis/generated.ts
+frontend/src/analysis/schema.json
+frontend/src/analysis/fixtures.generated.json
 *.log
 
 # Editor and OS files

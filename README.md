@@ -50,8 +50,15 @@ relations and an unresolved parent/effects 0. Its unknown publication date retur
 explicit temporal unavailability. This is bounded engineering verification;
 real amendment-pair and held-out research effectiveness remain unmeasured.
 
-Bounded M1 implementation is complete. Next is M2 comparison/profile;
-M2–M4/integration and broader real-corpus research evaluation remain unfinished.
+Bounded M1 implementation is complete. This `codex/m2-comparison` branch adds
+the M2 comparison baseline: published profile/evidence integration, exact Decimal
+unit scaling, explicit period/basis compatibility, baseline differences and
+relative percentage differences with input provenance. Missing, conflicting or
+unresolved context blocks arithmetic. Quotes remain explicitly unavailable
+without a reviewed source. The original M1 main checkout stays available for
+manual testing. See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
+[current state](CURRENT_STATE.md) for verification and remaining acceptance work.
+M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10/M1.11/M1.12.

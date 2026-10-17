@@ -116,14 +116,14 @@ export default function App() {
           <section aria-labelledby="modules-heading" className="py-12 sm:py-16">
             <div className="mb-6 flex flex-wrap items-end justify-between gap-3">
               <div><p className="text-xs font-semibold uppercase tracking-[0.16em] text-muted">Planned platform</p><h2 id="modules-heading" className="mt-2 text-2xl font-semibold tracking-tight text-ink">Four connected modules</h2></div>
-              <p className="text-sm text-muted">M1 published reads available · M2–M4 planned</p>
+              <p className="text-sm text-muted">M1 published reads · M2 comparison · M3–M4 planned</p>
             </div>
             <ul className="grid gap-4 sm:grid-cols-2 xl:grid-cols-4">
               {modules.map((module) => (
                 <li key={module.id} className="rounded-xl border border-line bg-white p-6">
-                  <div className="flex items-center justify-between gap-2"><span className="text-xs font-bold tracking-wider text-sage-dark">{module.id}</span><span className="rounded-full bg-paper px-2.5 py-1 text-[11px] font-medium text-muted">{module.id === 'M1' ? 'Published reads' : 'Not implemented'}</span></div>
+                  <div className="flex items-center justify-between gap-2"><span className="text-xs font-bold tracking-wider text-sage-dark">{module.id}</span><span className="rounded-full bg-paper px-2.5 py-1 text-[11px] font-medium text-muted">{module.id === 'M1' ? 'Published reads' : module.id === 'M2' ? 'Published comparison' : 'Not implemented'}</span></div>
                   <h3 className="mt-6 text-lg font-semibold tracking-tight text-ink">{module.title}</h3>
-                  <p className="mt-3 text-sm leading-6 text-muted">Planned: {module.plan}</p>
+                  <p className="mt-3 text-sm leading-6 text-muted">{module.id === 'M3' || module.id === 'M4' ? 'Planned: ' : ''}{module.plan}</p>
                 </li>
               ))}
             </ul>

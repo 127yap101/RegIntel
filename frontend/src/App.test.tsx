@@ -19,7 +19,7 @@ describe('foundation welcome screen', () => {
     await screen.findByText('Backend available')
     expect(screen.getByRole('status')).toHaveTextContent('confirms liveness only')
     expect(screen.getByRole('heading', { name: 'Published filing explorer' })).toBeVisible()
-    expect(screen.getAllByText('Not implemented')).toHaveLength(3)
+    expect(screen.getAllByText('Not implemented')).toHaveLength(2)
     expect(screen.getByRole('button', { name: 'Sign in to inspect filings' })).toBeVisible()
   })
 
@@ -35,7 +35,7 @@ describe('foundation welcome screen', () => {
     await screen.findByText('Backend available')
     expect(screen.getByRole('status')).toHaveTextContent('Connected to the test API')
     expect(fetchMock).toHaveBeenCalledTimes(2)
-    expect(screen.getAllByText('Not implemented')).toHaveLength(3)
+    expect(screen.getAllByText('Not implemented')).toHaveLength(2)
   })
 
   it('does not present a malformed successful HTTP response as available', async () => {

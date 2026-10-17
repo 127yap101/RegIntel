@@ -1,11 +1,12 @@
+import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
 import fixtures from '../../src/published/fixtures.generated.json' with { type: 'json' }
 
 async function authoredApi(page: Page, mode: { revoked?: boolean; wrongPdf?: boolean; rawText?: string } = {}): Promise<void> {
-  await page.route('http://127.0.0.1:8000/v1/**', async (route) => {
+  await page.route(`${apiOrigin}/v1/**`, async (route) => {
     const url = new URL(route.request().url())
-    const headers = { 'Access-Control-Allow-Origin': 'http://127.0.0.1:5173', 'Access-Control-Allow-Headers': 'authorization,content-type', 'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS', 'Access-Control-Expose-Headers': 'ETag,Content-Length,X-Corpus-Version-ID' }
+    const headers = { 'Access-Control-Allow-Origin': webOrigin, 'Access-Control-Allow-Headers': 'authorization,content-type', 'Access-Control-Allow-Methods': 'GET,POST,HEAD,OPTIONS', 'Access-Control-Expose-Headers': 'ETag,Content-Length,X-Corpus-Version-ID' }
     if (route.request().method() === 'OPTIONS') { await route.fulfill({ status: 204, headers }); return }
     if (mode.revoked && url.pathname !== '/v1/auth/token') { await route.fulfill({ status: 401, headers, json: { error: 'authored revocation' } }); return }
     if (url.pathname.endsWith('/source.pdf')) {
@@ -94,7 +95,7 @@ test('logout aborts a pending read and cannot repopulate private results', async
   const pending = new Promise<void>((resolve) => { release = resolve })
   await page.route('**/v1/companies?**', async (route) => {
     await pending
-    await route.fulfill({ status: 200, json: fixtures.companies, headers: { 'Access-Control-Allow-Origin': 'http://127.0.0.1:5173' } }).catch(() => {})
+    await route.fulfill({ status: 200, json: fixtures.companies, headers: { 'Access-Control-Allow-Origin': webOrigin } }).catch(() => {})
   })
   await page.getByRole('button', { name: 'Apply view' }).click()
   await page.getByRole('button', { name: 'Sign out', exact: true }).click()

@@ -273,3 +273,38 @@ needed. The checkpoint is in CURRENT_STATE.md and CONTINUATION_PROMPT.md. Say
 deck/Windows/worker approval needs repeating. Docker
 storage is already relocated to D:\DockerData; check its available space before
 a large image build.
+
+## M2 comparison branch while M1 is being tested
+
+M2 is developed on `codex/m2-comparison`, isolated locally at
+`D:\RegIntel\.cache\worktrees\m2-comparison`. `D:\RegIntel` remains the M1 main
+checkout. In another clone, fetch and check out the M2 branch, then use the normal
+locked setup. Both bootstrap scripts now generate the M2 schemas and authored
+wire/PDF fixtures. A Git clone does not include local credentials or the corpus.
+
+In the published filing explorer, sign in, open a company profile, then select
+2–4 published companies and numeric metrics under **Analysis & comparison**.
+The first selected company is the baseline. Supply the complete financial period
+and reporting basis, then choose **Compare published values**. Expand input
+disclosures to inspect raw quantities, exact periods/bases and original PDF pages.
+Difference units for percentage inputs are percentage points; the separate
+relative percentage result discloses its six-place ROUND_HALF_EVEN policy.
+
+The current real corpus has only one company and a narrative disclosure. The
+comparison button therefore stays unavailable until the selected published view
+has sufficient reviewed numerical inputs. No prices or placeholder financial
+facts are supplied. `GET /v1/quotes` reports an unconfigured source explicitly.
+
+For repeatable authored M2 browser cases, run `pnpm --dir frontend test:e2e --grep M2`.
+For actual PostgreSQL consumer cases, run the existing helper with
+`--test-file backend/tests/integration/test_analysis_storage.py`; it creates and
+removes its own narrowly named disposable database. These are engineering tests.
+`scripts/check-analysis-runtime.py` reads the controlled real corpus and checks
+state-table hashes before/after without creating or accepting observations.
+
+Local browser verification may use optional process-only
+`REGINTEL_TEST_API_PORT=8021`, `REGINTEL_TEST_WEB_PORT=5175` and
+`REGINTEL_TEST_PYTHON` pointing at the approved Python executable. It refuses to
+reuse existing servers. With no overrides, fresh-clone/CI checks use 8000/5173;
+keep those ports free in that clone. These variables are test configuration, not
+new application prerequisites. Do not stop a teammate's manual testing servers.

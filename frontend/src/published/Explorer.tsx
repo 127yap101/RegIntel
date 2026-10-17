@@ -8,6 +8,8 @@ import { SourceViewer } from './SourceViewer'
 import { FinancialContext } from './FinancialContext'
 import { AnswerPanel } from '../retrieval/AnswerPanel'
 import type { AnswerInput, AnswerResult } from '../retrieval/wire'
+import { ComparisonPanel } from '../analysis/ComparisonPanel'
+import type { ComparisonInput, ComparisonResult, QuotesResult } from '../analysis/wire'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 text-sm text-ink'
 
@@ -24,6 +26,8 @@ export function Explorer() {
   const [facts, setFacts] = useState<FactPage | null>(null)
   const [graph, setGraph] = useState<CompanyGraph | null>(null)
   const [answer, setAnswer] = useState<AnswerResult | null>(null)
+  const [comparison, setComparison] = useState<ComparisonResult | null>(null)
+  const [quotes, setQuotes] = useState<QuotesResult | null>(null)
   const [source, setSource] = useState<{ evidence: PublishedEvidence; bytes: Uint8Array<ArrayBuffer> } | null>(null)
   const [busy, setBusy] = useState(false)
   const [message, setMessage] = useState('')
@@ -32,7 +36,7 @@ export function Explorer() {
 
   function clearPrivate(): void {
     setApi(null); setCompanies(null); setFacts(null); setGraph(null); setSource(null); setAnswer(null)
-    setOptions(null); setCorpus(''); setPassword(''); setQuery(''); setAsOf(''); setHistorical(false)
+    setOptions(null); setCorpus(''); setPassword(''); setQuery(''); setAsOf(''); setHistorical(false); setComparison(null); setQuotes(null)
   }
 
   function logout(): void { operation.current?.abort(); clearPrivate(); setBusy(false); setMessage('Signed out.') }
@@ -50,7 +54,18 @@ export function Explorer() {
     } finally { if (!controller.signal.aborted) setBusy(false) }
   }
 
-  function clearSelection(): void { setFacts(null); setGraph(null); setSource(null); setAnswer(null) }
+  function clearSelection(): void { setFacts(null); setGraph(null); setSource(null); setAnswer(null); setComparison(null) }
+
+  async function compare(input: ComparisonInput): Promise<void> {
+    if (!api || !options) return
+    setComparison(null); setSource(null); setQuotes(null)
+    await execute(async (signal) => {
+      const result = await api.compare(options, input, signal)
+      if (!signal.aborted) setComparison(result)
+      const availability = await api.quotes(signal)
+      if (!signal.aborted) setQuotes(availability)
+    })
+  }
 
   async function ask(input: AnswerInput): Promise<void> {
     if (!api || !options) return
@@ -149,6 +164,7 @@ export function Explorer() {
         <div className="mt-4 flex gap-3">{facts.offset > 0 && <Button disabled={busy} variant="secondary" onClick={() => { void chooseCompany(facts.company.id, Math.max(0, facts.offset-facts.limit)) }}>Previous disclosures</Button>}{facts.offset+facts.limit < facts.total && <Button disabled={busy} variant="secondary" onClick={() => { void chooseCompany(facts.company.id, facts.offset+facts.limit) }}>More disclosures</Button>}</div>
       </section>}
       {graph && <RelationGraph graph={graph} support={supportButtons} select={(identity) => { const edge = graph.edges.find((item) => item.id === identity); const evidence = edge?.supports[0]; if (edge && evidence) void inspect(edge.id, evidence.evidence_id) }} />}
+      {options && companies && <ComparisonPanel key={`${options.corpus}:${options.historical}:${options.asOf}`} companies={companies} facts={facts} options={options} busy={busy} result={comparison} quotes={quotes} compare={(input) => { void compare(input) }} inspect={supportButtons} />}
       {options && <AnswerPanel answer={answer} busy={busy} ask={(input) => { void ask(input) }} inspect={(observation, evidence) => { void inspect(observation, evidence) }} />}
       {source && <SourceViewer key={`${source.evidence.observation_id}:${source.evidence.evidence.record.id}`} source={source.evidence} bytes={source.bytes} />}
     </>}

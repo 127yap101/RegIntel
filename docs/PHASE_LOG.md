@@ -2,6 +2,48 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M2 comparison baseline — 17 October
+
+User explicitly requested M2. Created isolated branch `codex/m2-comparison` at
+236c03f and checkout D:/RegIntel/.cache/worktrees/m2-comparison; main source and
+manual test ports remain untouched. Read the finalized M2 boundaries/evaluation
+and shared financial contracts. The new plan follows the specified coherent
+sequence without invented numbered subphases.
+
+Implemented authenticated read-only POST /v1/compare over the published M1
+scope/frozen catalog, explicit company/metric/period/basis selection, exact
+Decimal unit scaling, compatible baseline subtraction and disclosed rounded
+relative percentage difference. Percent differences use percentage points.
+Unknown potentially applicable active context, conflicts, missing data, wrong
+period/basis/currency/units and numeric bounds abstain explicitly. Full accepted
+input/evidence IDs remain accessible through the existing source viewer.
+GET /v1/quotes honestly reports an unconfigured source; no provider/budget is
+assumed. UI integration retains source context, private-state clearing and375px
+layout. Bootstrap/check/CI generation and optional isolated test ports are wired.
+
+Focused55 M2 cases and277 complete frontend unit tests/types/lint/build pass.
+Four new actual PostgreSQL publication/consumer cases pass13.18s in an owned
+disposable database, which the existing helper removes. Final-source complete regression passes1987 backend/six disclosed Windows
+platform skips in238.10s (493 integration cases deselected) and all30 Chromium
+scenarios on separate8021/5175 ports. All209 Ruff files/139 mypy sources,
+artifact drift, shell syntax and workflow checks pass.
+
+Read-only real corpus/source proof preserves all37 state-table hashes. The
+136-file byte audit includes all eleven migrations, frozen M1 source/specs/infra
+and dependency locks. Three stopped data containers were restored using original
+volumes; the worker was not rebuilt/started. No dependency/migration/application
+prerequisite/service/paid call is added. Test-only port/Python overrides are
+recorded. The corpus still has one company/narrative and zero numeric facts;
+authored tests do not establish real numerical/research effectiveness.
+
+Repaired attempts are disclosed in the measured report: sandbox subprocess
+restrictions, a missing fresh pytest-cache parent, a test UTF-8 rewrite,
+obsolete404 assumptions for the now POST-only comparison route, and explicit
+context/percentage-point refinements found in review. Overall M2 acceptance
+remains open for real numerical/user validation and a quote-source decision;
+M3/M4/integration remain later. Exact-source CI/publication metadata follows
+only after verification.
+
 ## M1.12 source publication and M1C closure — 16 October
 
 Source `4114407839a9a319fcf075a847c976a23dc2bfa9` is pushed normally to existing main.

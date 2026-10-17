@@ -49,7 +49,7 @@ def test_unknown_environment_fails_configuration(monkeypatch: pytest.MonkeyPatch
 
 def test_unimplemented_business_route_has_no_fabricated_data() -> None:
     with TestClient(create_app(Settings(environment="test"))) as client:
-        response = client.get("/v1/compare")
+        response = client.get("/v1/glossary")
     assert response.status_code == 404
 
 
