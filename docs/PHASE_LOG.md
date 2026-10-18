@@ -2,6 +2,42 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M2 acceptance evaluation workflow — 18 October
+
+Added a bounded typed acceptance plan and read-only evaluator over the pinned
+PUBLISHED M1 consumer interface. Independent expected Decimal values/states and
+exact observation/evidence IDs are checked for all selected rows/cells/pairs.
+Actual context must justify the six categories from evaluation plan §9. Empty
+suites and missing review/coverage remain BLOCKED; wrong outcomes/scopes and
+state changes fail. CASES_PASS concerns recorded cases only. A schema command
+needs no database. Review/origin labels are operator assertions, not verified
+identities or research gold. Both check runners include the new script.
+
+Final full native verification passes2007 backend/six disclosed Windows skips
+in355.95s, with494 integration cases deselected, including20 new acceptance
+cases. All five M2 PostgreSQL cases pass29.24s; the helper removes only its owned
+disposable database. Ruff212 files, mypy141 sources and both shell syntax
+checks pass. Frontend and comparison API/formula source are unchanged, so the
+previous frontend results remain scoped to921e6a6. New source CI is pending.
+
+The real plan records the actual existing corpus/manifest and deliberately has
+zero numeric cases and no reviewer claim. Real run
+`.cache/analysis-acceptance-9ac49af5826c4dbe99f0c7ec6935a01a` returns BLOCKED/
+native exit2: one company, zero numeric facts and all37 authority hashes
+unchanged before/after and against the previous proof. All136 protected inputs,
+including eleven migrations, remain unchanged. Main remains at236c03f for manual
+M1 tests. Original private data containers were stopped and restored from their
+existing volumes; the worker was not started/rebuilt. No dependency, migration,
+application environment variable, new service or model/paid call is added.
+
+Repaired attempts are disclosed in the report: sandboxed API-test/Bash process
+restrictions, initial formatting and an unvalidated Decimal test-oracle update;
+exception paths now count each failed case once. The guide documents commands,
+independent case preparation and review requirements. Overall M2 still needs
+genuine reviewed numerical inputs and user testing; quotes remain unavailable
+as requested. See `data/analysis-acceptance-validation-report.json` and
+`docs/M2_ACCEPTANCE.md`.
+
 ## M2 source verification and quote deferral — 18 October
 
 Source `921e6a616ee27d82eb97362aa90cec3298761a95` is pushed normally to

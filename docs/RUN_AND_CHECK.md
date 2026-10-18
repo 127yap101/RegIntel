@@ -310,3 +310,12 @@ Local browser verification may use optional process-only
 reuse existing servers. With no overrides, fresh-clone/CI checks use 8000/5173;
 keep those ports free in that clone. These variables are test configuration, not
 new application prerequisites. Do not stop a teammate's manual testing servers.
+
+For reproducible M2 acceptance evaluation, use
+`scripts/evaluate-analysis.py --plan data/analysis-acceptance-plan.json` under
+the locked backend environment. It checks a pinned published corpus against
+independent expected values/states and exact input/evidence IDs, then records
+coverage and before/after authority hashes. The current real plan has no
+numerical cases and correctly exits 2 (`BLOCKED`). Read
+[M2 acceptance evaluation](M2_ACCEPTANCE.md) for commands, the case schema,
+review protocol and result meanings. `--schema` needs no database connection.

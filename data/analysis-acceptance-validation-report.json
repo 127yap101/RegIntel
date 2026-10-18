@@ -1,0 +1,174 @@
+{
+  "added_dependencies": [],
+  "added_migrations": [],
+  "added_required_application_environment_variables": [],
+  "base_commit": "138092cc5035ca29706e60cc686f586c82b89556",
+  "branch": "codex/m2-comparison",
+  "disclosed_repaired_attempts": [
+    "The sandboxed focused pytest process stalled in existing API tests; stopped only its matching task-owned pytest processes and reran with normal local process access.",
+    "One initial test used model_copy to insert a string into a Decimal field without validation; corrected the independent test oracle and ensured exception paths count a failed case once.",
+    "Initial Ruff long lines were formatted/fixed before verification.",
+    "Git Bash syntax execution was blocked by the sandbox; normal local process access passed without system changes.",
+    "The original RegIntel data containers were stopped; restored only the three named private PostgreSQL/Neo4j/Redis containers from existing volumes. The worker was not started or rebuilt."
+  ],
+  "limitations": [
+    "The controlled corpus has one company/narrative and zero numeric facts; the real plan deliberately has zero numerical cases and no reviewer claim.",
+    "All six real numerical acceptance categories and actual review/user testing remain pending.",
+    "The authored six-category unit suite and PostgreSQL positives are engineering checks, not real-corpus or research effectiveness.",
+    "Reviewer and data-origin labels are operator assertions, not independently verified identities or gold annotations; CASES_PASS does not close team acceptance.",
+    "No source PDFs, models, credentials, database state or generated local report directories are committed."
+  ],
+  "phase": "M2 acceptance evaluation workflow",
+  "preservation": {
+    "base_commit": "236c03f1af095fecced96deaf3ef80afed8b836c",
+    "fingerprints_reference": "data/analysis-validation-report.json#preservation",
+    "intentional_changes_to_previous_source_files": [
+      "backend/tests/integration/test_analysis_storage.py",
+      "scripts/run-checks.ps1",
+      "scripts/run-checks.sh"
+    ],
+    "migrations_unchanged": 11,
+    "primary_main_commit": "236c03f1af095fecced96deaf3ef80afed8b836c",
+    "protected_files_unchanged": 136,
+    "unchanged_previous_comparison_source_files": 31
+  },
+  "quote_decision": "User explicitly chose to keep quotes unavailable; no feed/provider/model calls.",
+  "real_cli_native_exit_code": 2,
+  "real_read_only": {
+    "calculation_policy_version": "m2-comparison-1",
+    "cases": [],
+    "checked_at_utc": "2026-10-18T14:36:53.136120+00:00",
+    "corpus_version_id": "614d7861-3f8f-4d5c-a9e5-d7423c2aba58",
+    "covered_categories": [],
+    "declared_data_kind": "REAL_FILINGS",
+    "executed_cases": 0,
+    "failed_cases": 0,
+    "inventory": {
+      "active_numeric_facts": 0,
+      "active_observations": 1,
+      "numeric_metric_definitions": 0,
+      "published_companies": 1
+    },
+    "limitation": "Case outcomes test recorded expectations only. Data-origin/reviewer labels are operator assertions; this report does not establish research effectiveness or team acceptance.",
+    "manifest_sha256": "6622925d2516aedd4c04194372c7783983b00b14271a9d7edcb7ff5b65cda58e",
+    "missing_categories": [
+      "same_period_compatible",
+      "different_periods",
+      "standalone_vs_consolidated",
+      "different_units",
+      "missing_metric",
+      "conflicting_observations"
+    ],
+    "passed_cases": 0,
+    "plan_sha256": "2d2e9f2430c22437888294e3883960c99c2953dfce56577fe53998f18e5d3f43",
+    "provider_calls": 0,
+    "required_categories": [
+      "same_period_compatible",
+      "different_periods",
+      "standalone_vs_consolidated",
+      "different_units",
+      "missing_metric",
+      "conflicting_observations"
+    ],
+    "review": {
+      "identity_independently_verified": false,
+      "pending": true,
+      "reviewed_by": null,
+      "reviewed_on": null
+    },
+    "state_table_hashes": {
+      "acceptance_audits": "dfb3262dcab4d31456080496bd5a726f951fece638d371042c9d256b847923f5",
+      "blocks": "177d88a2cf6bec162064106aa1c6308cec51ee56ca517b24e2bf3ca2f713d5dd",
+      "candidate_run_items": "e371bf99bcff5fa6239e589a89fd95b482f82540a1b9c4a106bb22043c0ea00b",
+      "candidate_runs": "edb57adcae03847e9207e097a6be85c3c3e5b32eaa155ca41c663bc84313521c",
+      "candidates": "64e23a5aadd27996aa2f1d6bccc4357d52b16668b895685a75b2d8a2efc6c9d6",
+      "cell_context": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cells": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "corpus_versions": "8c9360cfa1ff2365c08bae90a8876d85dd07a05382b5ae1d78e4832d21aeec19",
+      "entity_registrations": "2a113ea4e4e72c9c5bbc8088db8a99d0d7627e1fa1dd5912428c915ae4e9a37e",
+      "entity_reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "entity_runs": "f4ff4b5cc2d66938790eda43673fb3b3847414ee9c0c80197213c770c68f1e37",
+      "evidence": "6ba8fee736af41fb9d1bc52e152ab59d22db40ceddf9712bf7d39e0dc559d906",
+      "evidence_boxes": "aac98c584958008c1e6a16814294667d8a615ce566153e887981518a4711702b",
+      "fact_observations": "7a2c1494ca57ed342ab92e9715bf9add388c0d6b535ff54e12c75891b8e0ccfb",
+      "filing_jobs": "3664c59aaffb98d7e7fd0a4132b24c59111b580e0e291284cb9b3c12f0b55496",
+      "filing_versions": "9d9316a353263bbebda180bc1631cdb637322c1eae7c9e21d1d2c43ce647d3bd",
+      "filings": "1fd18693bd48b24542a4c02c9204ac035e6597577117c247950f1f21748f4645",
+      "metric_definitions": "20d0f264f706a7536a86a3b74ac193040d02472315987f2f365c1efea8802aa7",
+      "numeric_metric_policies": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "pages": "b108ac0accdf1ed9fd7d6ad5a2c1ccac461d1ffedd063b826dbce30c97962026",
+      "parse_artifacts": "b7daa39a212f1e1906aa74291acdd5c275f987b4b2120d927aec69c274f55b7d",
+      "parse_versions": "149159396f15d2346d45a3d2e58d671fba3fd83d82fba67b34571b7a8598003c",
+      "processing_checkpoints": "a77b4e07e67151584ebda373d4d10a0b917b26d3591dc18c121b84498ca49a16",
+      "processing_events": "377490f4066f18d28b219b6f6bf48dc1abaf3ca4cfb18698c78c240182decf52",
+      "processing_jobs": "d9692003b3babcf2de4faf962729fce98e20a39910e9a889fb5525169ab985d5",
+      "publication_builds": "51f1215564bc1d44b75c9a4ecd0e09e327224b163a9c7e0d96fa0d272b69ec08",
+      "publication_commits": "ab67567eb488031bd6f85b499a1990948a382cd7789cc307b47738e4400fddd2",
+      "publication_graph_receipts": "97fb2b4639717b1713142c8d0da739092695763996f375fbc8ee000d79cf7c85",
+      "publication_head": "6fe012d364a7ebfbee3c73fb595216de266f7bcb64bf3633b1b805dc7c24f1a1",
+      "publication_observations": "5fbab9455ccf4b0a52e6f23dc937b71fb0fc067ef30d56aa5d4c29b1006cc4bf",
+      "publication_retrieval": "1d69508761e59af2c9aa47a02c1ad50a6c28f4ef54240555d90a28af8eabba15",
+      "relation_observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "retrieval_chunks": "2aaf84f23ee691cfbf56a841149b9e30ae9542a6ab4afd2561f5f118d862a4e4",
+      "retrieval_rebuilds": "6912d2cb080cb50d86b521823c9088a2480f1d0b97a7df7f87924a9e3af127ad",
+      "source_blobs": "900d770d21c4c7fd91d95042cd26acdec64d72bb8f7afb89b3942c3122b69354",
+      "tables": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation_reviews": "167ff68e1c7b515dbc1c212b7ec0c51c3d59381b9e25381c2c6c4ede3d89e716"
+    },
+    "state_tables_unchanged": 37,
+    "status": "BLOCKED"
+  },
+  "real_read_only_local_report": ".cache/analysis-acceptance-9ac49af5826c4dbe99f0c7ec6935a01a/report.json",
+  "recorded_at_utc": "2026-10-18T14:39:52.037699+00:00",
+  "scope": [
+    "pinned published-corpus acceptance plan",
+    "independent expected values/states/input and evidence IDs",
+    "six context-backed acceptance categories",
+    "read-only authority preservation and explicit incomplete coverage",
+    "schema export without database access"
+  ],
+  "source_commit": null,
+  "source_sha256": {
+    "backend/src/regintel/analysis/acceptance.py": "4e8eafe6df04010725fad62ac99953564818101a7aeb0109a855eed4d3b4be70",
+    "backend/tests/integration/test_analysis_storage.py": "840ab07efd0e6de8d9badf6eae5f04419312fa23a6c2a037cfe0e73574c2b408",
+    "backend/tests/test_analysis_acceptance.py": "211399b2f0c04a70f083e9cc36cde1b6f6bd27bcf50f5da9b30c34eb1dcdf955",
+    "data/analysis-acceptance-plan.json": "2d2e9f2430c22437888294e3883960c99c2953dfce56577fe53998f18e5d3f43",
+    "scripts/evaluate-analysis.py": "61eaaa34ca32b18f40f16316c822e8c0c2db826a17fa4e82f071a238b462d3e3",
+    "scripts/run-checks.ps1": "c3c59d6317192e4f19d9092a5a4416748217c378818ad5c86530164ab1ddbac2",
+    "scripts/run-checks.sh": "f689ed2cd37e21ec982e58de0ad13f4cc38e47f1b3987f23d1a3278fa776593c"
+  },
+  "status": "workflow locally verified; exact-source CI pending; real numerical/user acceptance incomplete",
+  "updated_at_utc": "2026-10-18T14:41:18.242339+00:00",
+  "verification": {
+    "backend_native": {
+      "integration_deselected": 494,
+      "new_acceptance_tests": 20,
+      "passed": 2007,
+      "seconds": 355.95,
+      "skipped_windows_platform": 6,
+      "status": "PASS"
+    },
+    "frontend": {
+      "previous_chromium_passed": 30,
+      "previous_source": "921e6a616ee27d82eb97362aa90cec3298761a95",
+      "previous_unit_passed": 277,
+      "status": "unchanged; not rerun locally for this backend/tooling addition"
+    },
+    "hosted": {
+      "status": "pending source push; older comparison CI does not verify this new workflow"
+    },
+    "postgresql": {
+      "data": "authored inputs through actual M1 validation/publication and M2 evaluator",
+      "disposable_database_removed": true,
+      "passed": 5,
+      "seconds": 29.24,
+      "status": "PASS"
+    },
+    "static": {
+      "mypy_sources": 141,
+      "powershell_and_bash_syntax": "PASS",
+      "ruff_files": 212,
+      "status": "PASS"
+    }
+  }
+}

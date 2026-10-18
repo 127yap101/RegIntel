@@ -96,4 +96,38 @@ facts. Authored positive tests are engineering verification only. Quotes remain
 unavailable by explicit user choice. Preserve the M1 main checkout and its manual
 testing ports; do not advance to M3 from fixture success.
 
+## Acceptance evaluation workflow
+
+`scripts/evaluate-analysis.py` consumes a bounded, independently prepared
+`AcceptancePlan` and the pinned M1 published read interface. It checks every
+selected row/cell/pair against expected Decimal values, availability states and
+exact observation/evidence IDs. Actual input context must justify each of the
+six acceptance categories in evaluation plan §9. Empty suites, missing coverage
+and pending review remain blocked. Scope mismatches, wrong expectations,
+unavailable cases and changed authority snapshots fail explicitly.
+
+The runner writes ignored reports with the plan/manifest hashes, source IDs,
+case outcomes, declared review/data origin, actual numerical inventory and all
+37 before/after state-table hashes. It never generates its expected numbers or
+accepts/publishes data. Operator review/origin labels are not independently
+verified identities or research gold. `CASES_PASS` concerns only the recorded
+cases and does not automatically close team acceptance.
+
+The checked-in real plan contains the existing genuine corpus/manifest and no
+numeric cases or reviewer claim. Its real read-only run reports `BLOCKED`, one
+company and zero numeric facts, with all 37 state-table hashes unchanged. New
+numerical inputs must first pass M1's own producer workflow. The workflow,
+schema command, review preparation and result meanings are documented in
+`docs/M2_ACCEPTANCE.md`. No dependency, migration, application environment
+variable, service, public port or model/paid call is added.
+
+Final local verification passes2007 native backend tests/six disclosed Windows
+skips (494 integration cases deselected) in355.95s, all five M2 PostgreSQL cases
+in29.24s, Ruff212 files, strict mypy141 sources and both shell syntax checks.
+The twenty new acceptance cases cover independent-oracle mismatches, scope/ID
+errors, real-vs-authored declarations, missing review/coverage, schema export
+and sanitized failures. Exact-source CI is pending for this addition; the
+older baseline CI does not verify it. The measured workflow report is
+`data/analysis-acceptance-validation-report.json`.
+
 Decimal policy reference: [Python 3.12 Decimal documentation](https://docs.python.org/3.12/library/decimal.html).

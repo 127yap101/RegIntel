@@ -1,8 +1,9 @@
-# Continue RegIntel from the M2 comparison checkpoint
+# Continue RegIntel from the M2 acceptance workflow checkpoint
 
 Work on `codex/m2-comparison` in https://github.com/127yap101/RegIntel.
 Inspect Git/remote/environment and read AGENTS.md, CURRENT_STATE.md,
-docs/M2_IMPLEMENTATION_PLAN.md, data/analysis-validation-report.json and the
+docs/M2_IMPLEMENTATION_PLAN.md, docs/M2_ACCEPTANCE.md,
+data/analysis-validation-report.json, data/analysis-acceptance-validation-report.json and the
 newest PHASE_LOG entry. User explicitly authorized M2 on17October and continuing
 implementation/testing/commits/GitHub updates. Do not repeat the deck waiver,
 Windows exception or private Linux worker approval.
@@ -41,6 +42,33 @@ usage. M4 snapshots/ledger remain untouched. Overall M2 acceptance is
 not closed: real numerical inputs and user testing remain.
 Do not begin M3 merely because authored engineering fixtures pass.
 
+The M2 acceptance workflow now has scripts/evaluate-analysis.py and typed
+backend/src/regintel/analysis/acceptance.py. It reads one pinned PUBLISHED
+corpus, independently recorded expected amounts/states and exact input/evidence
+IDs. Actual input context must support all six acceptance categories. Missing
+coverage/review is BLOCKED (exit2); wrong outcomes/scope/state changes fail
+(exit1); CASES_PASS (exit0) concerns recorded cases only. --schema prints the
+complete case-plan schema without database access. Review/data-origin labels
+remain operator assertions, not verified identities or research gold.
+
+data/analysis-acceptance-plan.json deliberately has no numeric cases or reviewer
+claim. The real read-only run remains BLOCKED with one company/zero numeric
+facts and all37 authority hashes unchanged. M2 must not fabricate an oracle or
+populate missing facts directly. Next prepare genuine numerical acceptance
+inputs through M1's producer contracts while preserving the main manual-testing
+corpus, then obtain actual review and fill the independent plan. Keep missing
+real data distinct from authored engineering fixtures. See the new measured
+report for verification of this added workflow; the older source921e6a6 CI
+result below applies to the original comparison baseline.
+
+The added workflow's full native checks pass2007 backend/six Windows skips
+in355.95s (494 integration cases deselected), all five M2 PostgreSQL cases
+in29.24s, Ruff212 files, strict mypy141 sources and both shell syntax checks.
+This includes20 new acceptance cases. Verify the new source CI after its push;
+do not reuse the older CI result as proof of this new workflow. Frontend and
+comparison API/formula source remain unchanged. No new dependency, migration,
+required application environment variable, service or model/paid call is added.
+
 All eleven migrations, frozen M1 domain algorithms, final numbered specs,
 infrastructure and dependency locks remain byte-identical to the base; the
 selected preservation set contains136 files. No new dependency, migration,
@@ -57,8 +85,10 @@ types/lint/build; four disposable PostgreSQL cases in13.18s. Final-source full r
 [CI 39007655529](https://github.com/127yap101/RegIntel/actions/runs/39007655529)
 completed SUCCESS for Windows/Ubuntu foundation and Linux data infrastructure,
 including complete commands, fresh migrations, authentication and restart
-persistence. All 34 measured source fingerprints match the verified commit;
-the 18 October follow-up changes documentation/report metadata only.
+persistence. All 34 baseline source fingerprints match that verified commit;
+commit138092c recorded its CI result without changing the implementation. The
+new acceptance workflow intentionally changes the two check runners and the
+M2 PostgreSQL test file; its separate report pins the new source fingerprints.
 Do not infer hosted per-test counts from job success. Static checks cover209 Ruff
 files/139 mypy sources, all generated artifact drift checks, shell syntax and
 workflow validation. The existing large JS bundle warning remains disclosed.

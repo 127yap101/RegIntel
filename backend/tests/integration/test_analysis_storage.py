@@ -10,6 +10,7 @@ from backend.tests.integration.test_publication_storage import publication as pu
 from backend.tests.integration.test_published_reads_storage import service
 from backend.tests.integration.test_validation_storage import SOURCE
 from backend.tests.integration.test_validation_storage import validated as validated
+from regintel.analysis.acceptance import AcceptancePlan, evaluate
 from regintel.analysis.models import ComparisonRequest
 from regintel.analysis.service import ComparisonService
 from regintel.auth.types import User
@@ -31,7 +32,9 @@ AUTHORED_SOURCE = SOURCE.replace("1,234.50", "1.00").replace(
     [{"source": AUTHORED_SOURCE, "allowed_unit_labels": ("crore", "million")}],
     indirect=True,
 )
-@pytest.mark.parametrize("scenario", ["positive", "unpublished", "temporal", "different_period"])
+@pytest.mark.parametrize(
+    "scenario", ["positive", "unpublished", "temporal", "different_period", "acceptance"]
+)
 def test_comparison_over_frozen_postgresql_inputs(
     publication: tuple[PublicationRepository, User, PublicationRequest],
     tmp_path: Path,
@@ -74,7 +77,7 @@ def test_comparison_over_frozen_postgresql_inputs(
         )
     result = ComparisonService(reads).compare(request)
     row = result.rows[0]
-    if scenario == "positive":
+    if scenario in {"positive", "acceptance"}:
         assert all(cell.state == "AVAILABLE" for cell in row.cells)
         assert row.cells[0].normalized is not None and row.cells[1].normalized is not None
         assert row.cells[0].normalized.value == Decimal("10000000.00")
@@ -88,6 +91,71 @@ def test_comparison_over_frozen_postgresql_inputs(
         expected = "TEMPORAL_SUPPORT_UNAVAILABLE" if scenario == "temporal" else "INCOMPATIBLE"
         assert all(cell.state == expected and cell.normalized is None for cell in row.cells)
         assert row.differences[0].difference is None
+    if scenario == "acceptance":
+        plan = AcceptancePlan.model_validate(
+            {
+                "version": "m2-acceptance-1",
+                "corpus_version_id": manifest.id,
+                "manifest_sha256": manifest.sha256,
+                "calculation_policy_version": "m2-comparison-1",
+                "declared_data_kind": "AUTHORED",
+                "reviewed_by": None,
+                "reviewed_on": None,
+                "cases": [
+                    {
+                        "id": "Authored PostgreSQL scaling",
+                        "category": "different_units",
+                        "request": request,
+                        "expected": [
+                            {
+                                "metric_id": alpha.metric_id,
+                                "cells": [
+                                    {
+                                        "company_id": item.subject_entity_id,
+                                        "state": "AVAILABLE",
+                                        "normalized": {
+                                            "value": value,
+                                            "unit": "INR",
+                                            "currency": "INR",
+                                            "multiplier": multiplier,
+                                        },
+                                        "input_observation_ids": [item.id],
+                                        "input_evidence_ids": sorted(
+                                            {support.evidence_id for support in item.supports}
+                                            | {
+                                                witness.span.evidence_id
+                                                for witness in item.context_supports
+                                            }
+                                        ),
+                                    }
+                                    for item, value, multiplier in (
+                                        (alpha, "10000000", "10000000"),
+                                        (beta, "15000000", "1000000"),
+                                    )
+                                ],
+                                "differences": [
+                                    {
+                                        "baseline_company_id": alpha.subject_entity_id,
+                                        "company_id": beta.subject_entity_id,
+                                        "state": "AVAILABLE",
+                                        "input_observation_ids": [alpha.id, beta.id],
+                                        "unit": "INR",
+                                        "currency": "INR",
+                                        "difference": "5000000",
+                                        "percentage_state": "AVAILABLE",
+                                        "percentage_difference": "50.000000",
+                                    }
+                                ],
+                            }
+                        ],
+                    }
+                ],
+            }
+        )
+        acceptance = evaluate(plan, result.view, ComparisonService(reads).compare)
+        assert acceptance["status"] == "BLOCKED"  # Review and five categories remain pending.
+        assert acceptance["passed_cases"] == 1 and acceptance["failed_cases"] == 0
+        assert acceptance["covered_categories"] == ["different_units"]
     assert ComparisonService(reads).compare(request) == result
     assert counts(repository) == before
     assert repository.published(manifest.id).sha256 == manifest.sha256

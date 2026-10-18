@@ -60,6 +60,10 @@ user choice. M2 source `921e6a6` passes
 The original M1 main checkout stays available for manual testing.
 See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
 [current state](CURRENT_STATE.md) for verification and remaining acceptance work.
+The [M2 acceptance runner](docs/M2_ACCEPTANCE.md) checks independent expected
+values, compatibility states and exact evidence IDs against a pinned published
+corpus. Its current real-data plan reports incomplete coverage; it does not
+substitute authored test success for real numerical acceptance.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker

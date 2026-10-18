@@ -1,0 +1,10 @@
+{
+  "version": "m2-acceptance-1",
+  "corpus_version_id": "614d7861-3f8f-4d5c-a9e5-d7423c2aba58",
+  "manifest_sha256": "6622925d2516aedd4c04194372c7783983b00b14271a9d7edcb7ff5b65cda58e",
+  "calculation_policy_version": "m2-comparison-1",
+  "declared_data_kind": "REAL_FILINGS",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "cases": []
+}
