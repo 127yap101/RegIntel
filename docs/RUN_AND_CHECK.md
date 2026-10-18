@@ -79,7 +79,8 @@ administrator workspace. Ingestion, exact evidence/PDFs, entity decisions,
 candidate runs and staged validation/review audits also remain available through
 the backend API. Company search, reviewed disclosures, directed corporate
 relations and exact source pages can be inspected after sign-in. Financial
-comparison/profile, financial learning and virtual portfolios remain later work.
+comparison/profile is available on the isolated M2 branch described below;
+financial learning and virtual portfolios remain later work.
 
 ## Inspect published filings in the browser
 
@@ -293,7 +294,8 @@ relative percentage result discloses its six-place ROUND_HALF_EVEN policy.
 The current real corpus has only one company and a narrative disclosure. The
 comparison button therefore stays unavailable until the selected published view
 has sufficient reviewed numerical inputs. No prices or placeholder financial
-facts are supplied. `GET /v1/quotes` reports an unconfigured source explicitly.
+facts are supplied. `GET /v1/quotes` stays explicitly unavailable by user choice,
+reporting an unconfigured source with no prices or quote version.
 
 For repeatable authored M2 browser cases, run `pnpm --dir frontend test:e2e --grep M2`.
 For actual PostgreSQL consumer cases, run the existing helper with

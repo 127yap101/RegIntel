@@ -2,6 +2,29 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M2 source verification and quote deferral — 18 October
+
+Source `921e6a616ee27d82eb97362aa90cec3298761a95` is pushed normally to
+`codex/m2-comparison`. Exact-source
+[CI 39007655529](https://github.com/127yap101/RegIntel/actions/runs/39007655529)
+completed SUCCESS for Windows foundation, Ubuntu foundation and Linux data
+infrastructure. Public run/job/step conclusions verify both complete foundation
+commands, the complete database command, fresh migrations, seeded-role
+authentication and restart persistence. Raw logs were not accessed; hosted
+per-test counts are not inferred. All 34 measured source fingerprints match the
+verified commit. Main remains at `236c03f` for M1 manual testing.
+
+The user explicitly chose to keep quotes unavailable for now. Recorded that
+decision in the handoff and measured report; no external feed, provider or paid
+usage is required for this checkpoint. Overall M2 acceptance still needs real
+numerical inputs and user testing: the primary published corpus has only one
+company/narrative and zero numeric facts. M3/M4/integration remain later.
+
+The earlier read-only verification command did not execute because automatic
+approval review hit an account usage limit. After the user resumed, verification
+succeeded. This follow-up changes documentation/report metadata only; the
+existing implementation test results remain scoped to the verified source.
+
 ## M2 comparison baseline — 17 October
 
 User explicitly requested M2. Created isolated branch `codex/m2-comparison` at

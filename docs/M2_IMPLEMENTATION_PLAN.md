@@ -44,9 +44,11 @@ Use an isolated Decimal context with adequate precision, exact-operation traps
 and the existing 120 integer/120 fractional digit wire limits. Overflow produces
 an explicit unavailable result. No new ratios are inferred from metric labels.
 
-`GET /v1/quotes` remains M2-owned. No provider, licensing, freshness or budget
-policy is specified. Return an honest typed unavailable response with no prices;
-do not introduce an external feed or M4 ledger/snapshot behavior.
+`GET /v1/quotes` remains M2-owned. The user explicitly chose to keep quotes
+unavailable for now; this decision is recorded on 18 October. Return an honest
+typed unavailable response with no prices. No provider, licensing, freshness or
+budget policy is configured. Do not introduce an external feed or M4
+ledger/snapshot behavior.
 
 ## Verification and isolation
 
@@ -69,6 +71,29 @@ test-only overrides are `REGINTEL_TEST_API_PORT`, `REGINTEL_TEST_WEB_PORT` and
 `REGINTEL_TEST_PYTHON`; default CI ports remain 8000/5173. The isolated runtime
 proof accepts `--source-project` to read an existing approved local corpus.
 Run relevant tests, full regression checks and review before GitHub checkpoints.
-Record actual results and remaining real-corpus/quote limitations in CURRENT_STATE.
+Record actual results and remaining real-corpus limitations in CURRENT_STATE.
+
+## Verified checkpoint — 18 October
+
+Source `921e6a616ee27d82eb97362aa90cec3298761a95` is pushed to the isolated M2
+branch. Exact-source [CI 39007655529](https://github.com/127yap101/RegIntel/actions/runs/39007655529)
+passes Windows/Ubuntu foundation and Linux data infrastructure. Public run/job/
+step conclusions verify the complete commands, fresh migrations, authentication
+and restart persistence. Raw logs were not accessed; no hosted test counts are
+inferred. All 34 source fingerprints match that commit.
+
+Local final-source verification passes 1987 backend tests with six disclosed
+Windows platform skips (493 integration cases deselected), 277 frontend unit
+tests, all 30 Chromium cases, lint/types/build and static/generated checks.
+Four new disposable PostgreSQL cases pass. All 136 selected frozen M1 inputs,
+including eleven migrations, remain unchanged; the real read-only proof preserves
+all 37 state-table hashes. See `data/analysis-validation-report.json` for the
+measured results and disclosed repaired attempts.
+
+Overall M2 acceptance remains open for real numerical inputs and user testing:
+the actual published corpus contains one company/narrative and zero numeric
+facts. Authored positive tests are engineering verification only. Quotes remain
+unavailable by explicit user choice. Preserve the M1 main checkout and its manual
+testing ports; do not advance to M3 from fixture success.
 
 Decimal policy reference: [Python 3.12 Decimal documentation](https://docs.python.org/3.12/library/decimal.html).

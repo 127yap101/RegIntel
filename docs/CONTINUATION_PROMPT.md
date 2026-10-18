@@ -35,10 +35,10 @@ ratio or browser/model arithmetic. Response bounds are100 accepted inputs and
 contract. Sessions stay in memory and results clear on logout/expiry/cancellation.
 
 GET /v1/quotes is M2-owned and honestly UNAVAILABLE/NO_CONFIGURED_SOURCE with
-no prices/version. A quote-source preference question was asked; no provider,
-licensing/freshness policy or paid budget is assumed. Resolve that decision before
-feed integration. M4 snapshots/ledger remain untouched. Overall M2 acceptance is
-not closed: real numerical inputs/user testing and the quote decision remain.
+no prices/version. The user explicitly chose to keep quotes unavailable for now;
+this decision is recorded on 18 October. Do not introduce a feed, provider or paid
+usage. M4 snapshots/ledger remain untouched. Overall M2 acceptance is
+not closed: real numerical inputs and user testing remain.
 Do not begin M3 merely because authored engineering fixtures pass.
 
 All eleven migrations, frozen M1 domain algorithms, final numbered specs,
@@ -52,8 +52,13 @@ Generated files, PDFs/models, credentials, caches and database state stay ignore
 
 Focused verification:55 backend M2 cases;277 complete frontend unit tests,
 types/lint/build; four disposable PostgreSQL cases in13.18s. Final-source full regression passes1987 backend/six Windows skips in238.10s
-(493 integration cases deselected) and all30 Chromium scenarios. Exact-source
-CI conclusions are recorded in CURRENT_STATE/report when verified.
+(493 integration cases deselected) and all30 Chromium scenarios. Source
+921e6a616ee27d82eb97362aa90cec3298761a95 is pushed to the M2 branch. Exact-source
+[CI 39007655529](https://github.com/127yap101/RegIntel/actions/runs/39007655529)
+completed SUCCESS for Windows/Ubuntu foundation and Linux data infrastructure,
+including complete commands, fresh migrations, authentication and restart
+persistence. All 34 measured source fingerprints match the verified commit;
+the 18 October follow-up changes documentation/report metadata only.
 Do not infer hosted per-test counts from job success. Static checks cover209 Ruff
 files/139 mypy sources, all generated artifact drift checks, shell syntax and
 workflow validation. The existing large JS bundle warning remains disclosed.

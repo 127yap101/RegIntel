@@ -54,9 +54,11 @@ Bounded M1 implementation is complete. This `codex/m2-comparison` branch adds
 the M2 comparison baseline: published profile/evidence integration, exact Decimal
 unit scaling, explicit period/basis compatibility, baseline differences and
 relative percentage differences with input provenance. Missing, conflicting or
-unresolved context blocks arithmetic. Quotes remain explicitly unavailable
-without a reviewed source. The original M1 main checkout stays available for
-manual testing. See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
+unresolved context blocks arithmetic. Quotes remain explicitly unavailable by
+user choice. M2 source `921e6a6` passes
+[Windows/Ubuntu and infrastructure CI](https://github.com/127yap101/RegIntel/actions/runs/39007655529).
+The original M1 main checkout stays available for manual testing.
+See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
 [current state](CURRENT_STATE.md) for verification and remaining acceptance work.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
