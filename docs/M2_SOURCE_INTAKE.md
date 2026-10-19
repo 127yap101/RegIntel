@@ -56,7 +56,10 @@ for the original PDFs and verify supported period/basis links, including any
 relevant fiscal-definition evidence. Locate explicit complete date-range support
 or address a genuine producer capability gap within an authorized M1 change.
 Do not fill a missing start, fabricate cells/spans or waive mandatory checks in
-M2. These PDFs have not been tested through Docling or the M1 gates yet.
+M2. The selected table/context pages have now been sampled through the existing
+pinned Docling environment; see [original-page preparation](M1_NUMERICAL_SOURCE_PAGES.md).
+This does not establish a full-filing parse or a passing M1 numerical gate.
+Neither document is uploaded, accepted or published by the preparation tool.
 
 Resolve company identities through the verified source CINs and approve a common
 metric definition through M1. Matching labels alone do not establish semantic

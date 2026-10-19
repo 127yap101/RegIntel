@@ -2,6 +2,52 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1 numerical prerequisite - original-page preparation, 19 October
+
+The user explicitly approved the bounded M1 prerequisite extension in
+`docs/M2_NUMERICAL_PRODUCER_PLAN.md` through the in-chat question. Implementation
+remains isolated on `codex/m2-comparison`; the original M1 checkout/corpus are
+preserved. Added a versioned one-original-page preparation schema and CLI,
+retaining native word originals/quadrilaterals, original page geometry and
+source/SDK/code/raw-data hashes. Word-center and exact sequence/whitespace
+agreement propose preview-cell membership only. OCR/unknown/missing or ambiguous
+support remains unavailable. Acceptance eligibility is always false.
+
+Four original pages were sampled successfully offline. The reusable CLI then
+passes both actual Linux table-page probes in37.11s/42.64s, including initialization,
+conversion and preparation;60/60 and175/195 preview cells have proposed native
+word mappings. Twenty remain unavailable. Native replay reproduces both prepared
+files byte-for-byte. Full original-page QA checks all four selected native-word
+rectangles. These are preparation/geometry checks, not accepted financial inputs,
+whole-filing latency, gold data or research effectiveness.
+
+Full native backend command passes2034 tests, six disclosed Windows skips and494
+integration cases deselected in256.65s. Final review added a CLI-only rejection of
+incompatible coordinate-frame calibration; all27 preparation cases pass again
+in4.31s afterward. Final real native replays remain identical and the guarded CLI
+passes in the existing Linux SDK on an original context page in27.73s. Ruff216
+files/mypy144 sources and PowerShell/Bash syntax pass. Old parser/gate/contracts,
+all136 protected inputs and eleven migrations remain unchanged. All37 primary
+authority hashes match the previous proof. Three stopped original data containers
+were restored from existing volumes; the worker was not started/rebuilt. No new
+dependency, migration, required application environment variable or paid/model
+provider call is added.
+
+Initial helper UUID/import/formatting findings were repaired before verification.
+A focused sandbox run ended exit1 without a completion report; no pass is claimed.
+Normal process access produced the complete native/final focused results above.
+Git Bash's sandbox restriction was resolved with normal process access. Exact-source
+hosted CI for this addition remains pending its source push. See the measured
+`data/numerical-source-pages-validation-report.json` and
+`docs/M1_NUMERICAL_SOURCE_PAGES.md` for commands, hashes and precise test scopes.
+
+Next implement versioned exact word/cell/context persistence and supported joint
+issuer/metric/period/unit/currency/basis links, then numerical gates, actual review,
+acceptance and publication under the existing approval. Do not feed preparation
+artifacts directly to M2. M2 real acceptance remains BLOCKED and quotes remain
+unavailable by user choice. PDFs/captures/QA images/models/credentials/data stay
+ignored; main remains at236c03f for manual testing.
+
 ## M2 acceptance CI and numerical source intake - 19 October
 
 Source `1840e146ed6caff2615900c01f9eb584e85cac31` is pushed normally to

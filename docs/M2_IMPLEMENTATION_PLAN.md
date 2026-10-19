@@ -142,4 +142,12 @@ amounts. These are unaccepted intake candidates. The year-end-only duration
 labels require supported M1 period/context handling before M2 can calculate.
 No numerical fact, canonical/evidence ID, reviewer or publication is invented.
 
+The user approved the bounded M1 numerical prerequisite extension on19October.
+See `docs/M2_NUMERICAL_PRODUCER_PLAN.md` and `docs/M1_NUMERICAL_SOURCE_PAGES.md`.
+Original-page preparation retains genuine word-level geometry and proposes
+preview membership, with acceptance eligibility always false. Versioned exact
+context evidence, supported duration interpretation and actual M1 numerical
+acceptance/publication remain the next producer work. Keep M2's real acceptance
+plan blocked until the resulting genuine inputs exist.
+
 Decimal policy reference: [Python 3.12 Decimal documentation](https://docs.python.org/3.12/library/decimal.html).

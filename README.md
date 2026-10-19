@@ -69,6 +69,10 @@ workflow source `1840e14` passes
 The [numerical source-intake handoff](docs/M2_SOURCE_INTAKE.md) records inspected
 seed-company filings and outstanding M1 evidence/context requirements; its
 candidates are not accepted facts.
+The approved [numerical producer prerequisite](docs/M2_NUMERICAL_PRODUCER_PLAN.md)
+now has an [offline original-page preparation tool](docs/M1_NUMERICAL_SOURCE_PAGES.md).
+It preserves original word geometry and proposed table membership; accepted
+numerical evidence/context and publication remain later producer work.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker

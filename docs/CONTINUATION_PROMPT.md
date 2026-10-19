@@ -1,4 +1,12 @@
-# Continue RegIntel from the M2 acceptance workflow checkpoint
+# Continue RegIntel from the numerical producer preparation checkpoint
+
+The user approved the bounded M1 prerequisite extension on19October through the
+in-chat question referencing docs/M2_NUMERICAL_PRODUCER_PLAN.md. Read that plan,
+docs/M1_NUMERICAL_SOURCE_PAGES.md and the newest measured source-page report.
+Do not request the same approval again. Original-page preparation is implemented;
+next implement versioned exact support persistence and supported joint-context
+links/gates. No numerical fact is accepted or published by preparation, and the
+real M2 acceptance plan remains BLOCKED. Preserve main and the manual-test corpus.
 
 Work on `codex/m2-comparison` in https://github.com/127yap101/RegIntel.
 Inspect Git/remote/environment and read AGENTS.md, CURRENT_STATE.md,
@@ -128,5 +136,5 @@ and processing configuration
 bacb112415f5728f813738f353f6c2765a9f0135177460e9497ab00e445b2dd6.
 Use Node24.19.0, pnpm11.19.0, Python3.12.14 and locked entities/publication extras.
 Read docs/RUN_AND_CHECK.md for normal setup/manual tests. Implement only the
-remaining authorized M2 scope, verify meaningful behavior, review the diff,
+remaining M2 scope and the approved M1 numerical producer prerequisite, verify meaningful behavior, review the diff,
 record limitations and update the branch normally; never force-push/reset.
