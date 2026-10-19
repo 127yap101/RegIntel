@@ -9,7 +9,8 @@
     "One initial test used model_copy to insert a string into a Decimal field without validation; corrected the independent test oracle and ensured exception paths count a failed case once.",
     "Initial Ruff long lines were formatted/fixed before verification.",
     "Git Bash syntax execution was blocked by the sandbox; normal local process access passed without system changes.",
-    "The original RegIntel data containers were stopped; restored only the three named private PostgreSQL/Neo4j/Redis containers from existing volumes. The worker was not started or rebuilt."
+    "The original RegIntel data containers were stopped; restored only the three named private PostgreSQL/Neo4j/Redis containers from existing volumes. The worker was not started or rebuilt.",
+    "On 18 October a follow-up CI query did not execute because automatic approval review hit an account usage limit. After the user resumed on 19 October, public exact-source CI verification succeeded."
   ],
   "limitations": [
     "The controlled corpus has one company/narrative and zero numeric facts; the real plan deliberately has zero numerical cases and no reviewer claim.",
@@ -127,7 +128,19 @@
     "read-only authority preservation and explicit incomplete coverage",
     "schema export without database access"
   ],
-  "source_commit": null,
+  "source_commit": "1840e146ed6caff2615900c01f9eb584e85cac31",
+  "source_review_packet": {
+    "complete_relevant_table_context_pages_visually_inspected": 4,
+    "documents": 2,
+    "guide": "docs/M2_SOURCE_INTAKE.md",
+    "human_review_pending": true,
+    "m1_accepted_or_published": 0,
+    "path": "data/analysis-source-review.json",
+    "pending_dependency": "Exact M1 source/table/cell/header evidence and supported complete duration/context handling; no mandatory gate bypass.",
+    "sha256": "03cb6f7060ed7efbf113f8ec75f1e649e2d026a7049485ff656db48a247b99ee",
+    "source_hashes_and_raw_values_rechecked": true,
+    "unaccepted_raw_amounts": 4
+  },
   "source_sha256": {
     "backend/src/regintel/analysis/acceptance.py": "4e8eafe6df04010725fad62ac99953564818101a7aeb0109a855eed4d3b4be70",
     "backend/tests/integration/test_analysis_storage.py": "840ab07efd0e6de8d9badf6eae5f04419312fa23a6c2a037cfe0e73574c2b408",
@@ -137,8 +150,8 @@
     "scripts/run-checks.ps1": "c3c59d6317192e4f19d9092a5a4416748217c378818ad5c86530164ab1ddbac2",
     "scripts/run-checks.sh": "f689ed2cd37e21ec982e58de0ad13f4cc38e47f1b3987f23d1a3278fa776593c"
   },
-  "status": "workflow locally verified; exact-source CI pending; real numerical/user acceptance incomplete",
-  "updated_at_utc": "2026-10-18T14:41:18.242339+00:00",
+  "status": "workflow verified locally and in exact-source CI; real numerical/user acceptance incomplete",
+  "updated_at_utc": "2026-10-19T06:39:00.948484+00:00",
   "verification": {
     "backend_native": {
       "integration_deselected": 494,
@@ -155,7 +168,296 @@
       "status": "unchanged; not rerun locally for this backend/tooling addition"
     },
     "hosted": {
-      "status": "pending source push; older comparison CI does not verify this new workflow"
+      "branch": "codex/m2-comparison",
+      "checked_at_utc": "2026-10-19T06:38:16.224510+00:00",
+      "conclusion": "success",
+      "evidence": "Public GitHub Actions run/job/step metadata; raw logs not accessed; no hosted per-test counts inferred.",
+      "jobs": [
+        {
+          "conclusion": "success",
+          "name": "Foundation (windows-2025)",
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium and system dependencies on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/127yap101/RegIntel/actions/runs/39137183719/job/117703978648"
+        },
+        {
+          "conclusion": "success",
+          "name": "Foundation (ubuntu-24.04)",
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium and system dependencies on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/127yap101/RegIntel/actions/runs/39137183719/job/117703978888"
+        },
+        {
+          "conclusion": "success",
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv and Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate ephemeral local development secrets",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Start digest-pinned services",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Apply and verify migrations",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate and verify local authentication",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Verify authenticated services and restart persistence",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Stop project services",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv and Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "status": "completed"
+            }
+          ],
+          "url": "https://github.com/127yap101/RegIntel/actions/runs/39137183719/job/117705430579"
+        }
+      ],
+      "run_id": 39137183719,
+      "run_status": "completed",
+      "source_commit": "1840e146ed6caff2615900c01f9eb584e85cac31",
+      "status": "PASS",
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/39137183719"
     },
     "postgresql": {
       "data": "authored inputs through actual M1 validation/publication and M2 evaluator",

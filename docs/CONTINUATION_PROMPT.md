@@ -61,11 +61,28 @@ real data distinct from authored engineering fixtures. See the new measured
 report for verification of this added workflow; the older source921e6a6 CI
 result below applies to the original comparison baseline.
 
+Read docs/M2_SOURCE_INTAKE.md and data/analysis-source-review.json before
+preparing more data. Two official seed-company prospectuses now have verified
+download hashes and visually inspected table/context pages, with four raw annual
+revenue amounts recorded strictly as unaccepted review candidates. Original PDFs
+and PNGs are ignored cache files, and no M1 IDs or human review are invented.
+Year-end-only table headers still need M1-supported complete duration/context
+evidence; preserve the frozen gate's abstention. This is a producer prerequisite,
+not a reason to calculate with incomplete periods or write M1 facts from M2.
+The original M1 manifest and published corpus remain unchanged.
+
 The added workflow's full native checks pass2007 backend/six Windows skips
 in355.95s (494 integration cases deselected), all five M2 PostgreSQL cases
 in29.24s, Ruff212 files, strict mypy141 sources and both shell syntax checks.
-This includes20 new acceptance cases. Verify the new source CI after its push;
-do not reuse the older CI result as proof of this new workflow. Frontend and
+This includes20 new acceptance cases. Source
+1840e146ed6caff2615900c01f9eb584e85cac31 is pushed to the M2 branch. Exact-source
+[CI 39137183719](https://github.com/127yap101/RegIntel/actions/runs/39137183719)
+passes Windows foundation, Ubuntu foundation and Linux data infrastructure.
+Public run/job/step metadata verifies complete foundation/database commands,
+fresh migrations, authentication and restart persistence. Raw logs were not
+accessed and no hosted per-test counts are inferred. All seven workflow
+source/input fingerprints match that commit. This follow-up changes only
+documentation and measured/source-review metadata. Frontend and
 comparison API/formula source remain unchanged. No new dependency, migration,
 required application environment variable, service or model/paid call is added.
 

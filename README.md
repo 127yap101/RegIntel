@@ -55,7 +55,7 @@ the M2 comparison baseline: published profile/evidence integration, exact Decima
 unit scaling, explicit period/basis compatibility, baseline differences and
 relative percentage differences with input provenance. Missing, conflicting or
 unresolved context blocks arithmetic. Quotes remain explicitly unavailable by
-user choice. M2 source `921e6a6` passes
+user choice. Comparison baseline `921e6a6` passes
 [Windows/Ubuntu and infrastructure CI](https://github.com/127yap101/RegIntel/actions/runs/39007655529).
 The original M1 main checkout stays available for manual testing.
 See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
@@ -63,7 +63,12 @@ See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
 The [M2 acceptance runner](docs/M2_ACCEPTANCE.md) checks independent expected
 values, compatibility states and exact evidence IDs against a pinned published
 corpus. Its current real-data plan reports incomplete coverage; it does not
-substitute authored test success for real numerical acceptance.
+substitute authored test success for real numerical acceptance. Acceptance
+workflow source `1840e14` passes
+[exact-source Windows/Linux and infrastructure CI](https://github.com/127yap101/RegIntel/actions/runs/39137183719).
+The [numerical source-intake handoff](docs/M2_SOURCE_INTAKE.md) records inspected
+seed-company filings and outstanding M1 evidence/context requirements; its
+candidates are not accepted facts.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker

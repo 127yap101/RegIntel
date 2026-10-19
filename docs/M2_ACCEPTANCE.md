@@ -45,12 +45,22 @@ Print the complete plan schema without connecting to a database:
 uv run --project backend --locked --no-sync --offline python scripts/evaluate-analysis.py --schema
 ```
 
+The labelled authored six-category examples in
+`backend/tests/test_analysis_acceptance.py` demonstrate complete expected rows,
+source IDs and unavailable results. They are engineering oracles and should not
+be copied into the real-data plan as financial observations.
+
 ## Prepare reviewed cases
 
 Use published M1 input observations and exact source/context evidence to prepare
 the plan. Any new observations must first follow M1's own ingestion, gates,
 review and publication workflow. M2 cannot populate missing authoritative facts.
 Keep the current main corpus unchanged while it is being manually tested.
+
+The [numerical source intake](M2_SOURCE_INTAKE.md) records a small inspected
+seed-company pair and its outstanding M1 evidence/period requirements. These
+review candidates are separate from accepted inputs and the independent case
+plan; they do not make the current real plan executable.
 
 Pin `corpus_version_id`, its exact `manifest_sha256` and
 `calculation_policy_version`. Every case carries its own complete comparison

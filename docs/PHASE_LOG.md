@@ -2,6 +2,40 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M2 acceptance CI and numerical source intake - 19 October
+
+Source `1840e146ed6caff2615900c01f9eb584e85cac31` is pushed normally to
+`codex/m2-comparison`. Exact-source
+[CI 39137183719](https://github.com/127yap101/RegIntel/actions/runs/39137183719)
+completed SUCCESS for Windows foundation, Ubuntu foundation and Linux data
+infrastructure. Public run/job/step metadata verifies complete foundation and
+database commands, fresh migrations, authentication and restart persistence.
+Raw logs were not accessed; no hosted per-test counts are inferred. All seven
+workflow source/input fingerprints match that commit. Local measured results
+remain 2007 backend passes/six disclosed Windows skips, five PostgreSQL passes,
+Ruff212 files, strict mypy141 sources and shell syntax checks.
+
+The read-only source intake records two official existing-seed prospectuses,
+immutable download hashes, four visually inspected table/context pages and four
+raw annual revenue amounts. Original PDFs, text extracts and page PNGs stay in
+ignored cache. No source was rewritten or uploaded/parsed; no canonical,
+metric, evidence or observation ID, human review or publication is invented.
+M1 must first supply exact evidence and supported complete period/context data.
+The current real acceptance plan remains empty/BLOCKED, with all37 original
+authority hashes unchanged in the recorded proof. The original M1 manifest,
+main checkout at236c03f and frozen inputs remain unchanged.
+
+Read `docs/M2_SOURCE_INTAKE.md`, `data/analysis-source-review.json` and the
+updated acceptance guide/report before continuing producer preparation. Overall
+M2 still needs genuine numerical acceptance and user testing; quotes stay
+unavailable by user choice, and M3 remains later. This checkpoint changes only
+documentation and measured/source-review metadata, with no new dependencies,
+migrations, required application environment variables or services.
+
+On18October a follow-up CI query did not execute because automatic approval
+review hit an account usage limit. After the user resumed on19October, the
+public CI verification succeeded. No ongoing approval block is claimed.
+
 ## M2 acceptance evaluation workflow — 18 October
 
 Added a bounded typed acceptance plan and read-only evaluator over the pinned

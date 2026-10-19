@@ -126,8 +126,20 @@ skips (494 integration cases deselected) in355.95s, all five M2 PostgreSQL cases
 in29.24s, Ruff212 files, strict mypy141 sources and both shell syntax checks.
 The twenty new acceptance cases cover independent-oracle mismatches, scope/ID
 errors, real-vs-authored declarations, missing review/coverage, schema export
-and sanitized failures. Exact-source CI is pending for this addition; the
-older baseline CI does not verify it. The measured workflow report is
+and sanitized failures. Source `1840e146ed6caff2615900c01f9eb584e85cac31` passes
+[exact-source CI 39137183719](https://github.com/127yap101/RegIntel/actions/runs/39137183719)
+for Windows foundation, Ubuntu foundation and Linux data infrastructure.
+Public run/job/step metadata verifies the complete commands, fresh migrations,
+authentication and restart persistence; raw logs were not accessed and no hosted
+per-test counts are inferred. All seven workflow source/input fingerprints match
+that commit. The measured workflow report is
 `data/analysis-acceptance-validation-report.json`.
+
+Read-only follow-up also records `data/analysis-source-review.json` and
+`docs/M2_SOURCE_INTAKE.md`: two official existing-seed prospectuses, verified
+download hashes, inspected table/context pages and four raw annual revenue
+amounts. These are unaccepted intake candidates. The year-end-only duration
+labels require supported M1 period/context handling before M2 can calculate.
+No numerical fact, canonical/evidence ID, reviewer or publication is invented.
 
 Decimal policy reference: [Python 3.12 Decimal documentation](https://docs.python.org/3.12/library/decimal.html).

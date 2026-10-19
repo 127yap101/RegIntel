@@ -1,0 +1,135 @@
+{
+  "version": "m2-source-review-1",
+  "recorded_at_utc": "2026-10-18T14:48:37.945221+00:00",
+  "purpose": "Unaccepted source intake for the smallest two-seed-company M2 numerical slice; not an acceptance plan or research gold.",
+  "status": "SOURCE_PAGES_INSPECTED_M1_PRODUCER_GATES_PENDING",
+  "human_reviewed_by": null,
+  "human_reviewed_on": null,
+  "documents": [
+    {
+      "company_name_raw": "Premier Energies Limited",
+      "cin_raw": "U40106TG1995PLC019909",
+      "document_type": "PROSPECTUS",
+      "document_date_on_cover": "2024-08-29",
+      "source_listing_date": "2024-08-30",
+      "publication_date": null,
+      "effective_date": null,
+      "source_page_url": "https://www.sebi.gov.in/filings/public-issues/aug-2024/premier-energies-limited-prospectus_86360.html",
+      "local_path": ".cache/analysis-source-review/premier-energies-prospectus-20240830.pdf",
+      "source_url": "https://www.sebi.gov.in/sebi_data/attachdocs/aug-2024/1725012464767.pdf",
+      "sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca",
+      "byte_size": 10710612,
+      "page_count": 558,
+      "cover_page_index": 0,
+      "table_page_index": 29,
+      "table_printed_page": "26",
+      "financial_context_page_index": 19,
+      "financial_context_printed_page": "16",
+      "raw_row_label": "Revenue from operations",
+      "raw_unit": "million",
+      "raw_currency_symbol": "₹",
+      "financial_basis_context": "Restated consolidated financial information",
+      "review_only_values": [
+        {
+          "column_year_end": "2023-03-31",
+          "raw_value": "14,285.34",
+          "duration_start_date": null
+        },
+        {
+          "column_year_end": "2024-03-31",
+          "raw_value": "31,437.93",
+          "duration_start_date": null
+        }
+      ],
+      "agent_visual_inspection": {
+        "complete_relevant_pages_inspected": true,
+        "images": [
+          ".cache/analysis-source-review/premier-financial-page-30.png",
+          ".cache/analysis-source-review/premier-context-page-20.png"
+        ],
+        "method": "Bundled Poppler page rendering plus pypdf 6.19.0 text cross-check; no Docling persistence."
+      },
+      "m1_status": {
+        "uploaded": false,
+        "parsed": false,
+        "accepted": false,
+        "published": false,
+        "canonical_company_id": null,
+        "metric_id": null,
+        "filing_version_id": null,
+        "evidence_ids": [],
+        "observation_ids": []
+      }
+    },
+    {
+      "company_name_raw": "Waaree Energies Limited",
+      "cin_raw": "U29248MH1990PLC059463",
+      "document_type": "PROSPECTUS",
+      "document_date_on_cover": "2024-10-23",
+      "source_listing_date": "2024-10-23",
+      "publication_date": null,
+      "effective_date": null,
+      "source_page_url": "https://www.sebi.gov.in/filings/public-issues/oct-2024/waaree-energies-limited-prospectus_91613.html",
+      "local_path": ".cache/analysis-source-review/waaree-energies-prospectus-20241023.pdf",
+      "source_url": "https://www.sebi.gov.in/sebi_data/attachdocs/feb-2025/1738661250075.pdf",
+      "sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89",
+      "byte_size": 8749613,
+      "page_count": 626,
+      "cover_page_index": 0,
+      "table_page_index": 98,
+      "table_printed_page": "95",
+      "financial_context_page_index": 18,
+      "financial_context_printed_page": "15",
+      "raw_row_label": "Revenue from operations",
+      "raw_unit": "million",
+      "raw_currency_symbol": "₹",
+      "financial_basis_context": "Restated consolidated summary statements",
+      "review_only_values": [
+        {
+          "column_year_end": "2023-03-31",
+          "raw_value": "67,508.73",
+          "duration_start_date": null
+        },
+        {
+          "column_year_end": "2024-03-31",
+          "raw_value": "1,13,976.09",
+          "duration_start_date": null
+        }
+      ],
+      "agent_visual_inspection": {
+        "complete_relevant_pages_inspected": true,
+        "images": [
+          ".cache/analysis-source-review/waaree-financial-page-99.png",
+          ".cache/analysis-source-review/waaree-context-page-19.png"
+        ],
+        "method": "Bundled Poppler page rendering plus pypdf 6.19.0 text cross-check; no Docling persistence."
+      },
+      "m1_status": {
+        "uploaded": false,
+        "parsed": false,
+        "accepted": false,
+        "published": false,
+        "canonical_company_id": null,
+        "metric_id": null,
+        "filing_version_id": null,
+        "evidence_ids": [],
+        "observation_ids": []
+      }
+    }
+  ],
+  "requirements_before_use": [
+    "Ingest/parse original immutable source bytes through M1; retain true table/cell/header geometry and exact evidence/context IDs.",
+    "Resolve company identities from CIN and obtain an approved common numeric metric ID; do not infer metric equivalence from labels alone.",
+    "Preserve the raw year-end-only period. The explicit fiscal convention is on another source page; M1 must validate any supported complete duration mapping. No missing start date or cross-page context is inferred or bypassed here.",
+    "Apply mandatory M1 table/value/currency/period/basis gates, actual review, audited acceptance and explicit lineage/effects as relevant before publishing a new corpus.",
+    "The existing Premier addendum names an RHP dated 20 August 2024; this 29 August prospectus is not assumed to be that parent or a blanket replacement.",
+    "Populate the independent M2 acceptance plan only after actual published IDs and reviewed expected results exist. The current real plan remains empty and BLOCKED."
+  ],
+  "limitations": [
+    "Four revenue amounts were visually located; no numerical fact, accepted evidence ID, complete financial duration or comparison result is created.",
+    "Both source tables use the same unit. This packet alone cannot establish different-unit or all-six-category acceptance coverage.",
+    "Source listing date, cover date and URL storage folder are not publication/effective dates. Waaree is hosted under a February 2025 URL but its inspected cover is dated 23 October 2024.",
+    "Poppler reported missing Symbol/ArialUnicode display fonts for Premier; inspected target tables, numerals, currency/header and context pages remain legible. A raw text console inspection initially hit Windows cp1252; subsequent UTF-8 file/ASCII-safe checks preserved original source bytes.",
+    "Original PDFs, extraction text and page PNGs remain in ignored local cache. The published M1 corpus and original manifest are unchanged."
+  ]
+}
