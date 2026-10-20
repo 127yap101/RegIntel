@@ -1,11 +1,28 @@
-# Continue RegIntel from the numerical producer preparation checkpoint
+# Continue RegIntel from the numerical page/word storage checkpoint
+
+The 20 October producer extension adds regintel.numerical.models/repository and
+migration0012_numerical_preparation.sql. Read the newest measured
+data/numerical-persistence-validation-report.json, CURRENT_STATE and PHASE_LOG.
+Append-only administrator storage seals each original page/word set to an
+uploaded source version. Exact word substring references preserve the whole
+word envelope; all preparation records remain acceptance_eligible=false.
+No new API, accepted CellEvidence, review decision, numerical fact or corpus
+publication is implemented by this storage. The real proof used only an owned
+disposable database: four original pages, 2,463 words, zero accepted/publication
+records, all 37 primary authority hashes unchanged. Migration 12 must stay out of
+the original M1 manual-testing database, which remains at 1–11. Fresh M2 clones
+use the normal migration loader through 12. Do not edit old migrations.
+Local checks pass 2,042 backend tests/six disclosed Windows platform skips,
+22 storage database cases, seven migration lifecycle cases, Ruff219 and strict
+mypy146. See the measured report for exact source/CI scope and timings.
 
 The user approved the bounded M1 prerequisite extension on19October through the
 in-chat question referencing docs/M2_NUMERICAL_PRODUCER_PLAN.md. Read that plan,
 docs/M1_NUMERICAL_SOURCE_PAGES.md and the newest measured source-page report.
-Do not request the same approval again. Original-page preparation is implemented;
-next implement versioned exact support persistence and supported joint-context
-links/gates. No numerical fact is accepted or published by preparation, and the
+Do not request the same approval again. Original-page/word preparation storage
+is implemented; next implement explicit joint cell/context support and supported
+issuer/metric/period/unit/currency/basis links/gates. No numerical fact is accepted
+or published by preparation, and the
 real M2 acceptance plan remains BLOCKED. Preserve main and the manual-test corpus.
 
 Work on `codex/m2-comparison` in https://github.com/127yap101/RegIntel.

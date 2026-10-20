@@ -87,8 +87,57 @@ These samples do not measure whole-filing conversion time or table/relation
 accuracy. Unmatched previews remain in the artifact; no coverage is truncated
 or converted into accepted facts. The manual-testing corpus remains unchanged.
 
-Next implement versioned persistence of exact word/cell/context support and a
-bounded supported link for issuer, metric, period, unit, currency and basis.
+Versioned page/word preparation persistence is described below. Next implement
+exact joint cell/context support and a bounded supported link for issuer,
+metric, period, unit, currency and basis.
 Retain the existing mandatory abstention until those links pass M1 gates and
 actual review. Full duration interpretation, audited numerical acceptance,
 publication and all six real M2 acceptance categories remain unfinished.
+
+## Append-only page and word storage
+
+The 20 October extension adds `regintel.numerical.models` and
+`regintel.numerical.repository`. This is a producer library; no new API endpoint
+or browser flow is exposed. An existing uploaded filing version and its immutable
+source blob must already exist. `NumericalRepository.save` takes that version ID,
+the retained raw SDK bytes, the one-based original PDF page and a current user.
+It verifies the content-addressed source and rebuilds the preparation against the
+selected SDK configuration before storing anything. It does not dispatch a job or
+mark a full parse complete.
+
+New migration `0012_numerical_preparation.sql` creates only
+`numerical_page_captures` and `numerical_source_words`. The capture retains raw
+and canonical prepared bytes, hashes, page identity, configuration/code identity,
+submitted administrator and authentication version. Every original word is also
+stored separately with its own hash. A composite foreign key binds the uploaded
+source version; a deferred database check seals the complete matching word set
+in the same transaction. Updates, deletes and truncation are rejected. Changed
+captures obtain distinct content-derived IDs while old records remain readable.
+Repeated and concurrent saves of identical input return the original record.
+
+Both reads and writes check the current database role, active status and
+authentication version. A supplied `admin` role alone cannot grant access.
+Database insert triggers also check the administrator, source membership,
+fingerprints, metadata and permanently false acceptance eligibility. These checks
+protect preparation consistency; they do not independently prove the parser's
+text or financial interpretation.
+
+`NumericalWordRef` identifies one capture, original word index, half-open Unicode
+code-point offsets and exact quoted text. Resolution requires native transcription
+(`from_ocr=false`), the exact original substring and retained raw/canonical
+geometry. Its `ORIGINAL_WORD_ENVELOPE` is the whole original word rectangle even
+for a substring; no glyph rectangle or combined multi-word span is invented.
+The result remains `acceptance_eligible=false` and `review_required=true`.
+Historical reads check sealed database bytes; they do not reverify the current
+physical PDF. Future acceptance/source-viewer paths must verify that source again.
+
+Migration 12 has been exercised only in owned disposable databases on this host.
+The original M1 checkout and manual-testing database remain on migrations 1–11;
+do not apply 12 there during parallel M1 testing. A fresh M2 clone's normal
+migration command discovers 12. No old migration is edited. No new dependency,
+required environment variable, service, quote source or paid provider is added.
+
+This storage still does not create public `CellEvidence`, accepted observations,
+review decisions, corpus versions or M2 financial inputs. Joint row/header/issuer/
+metric/period/unit/currency/basis evidence, mandatory numerical gates, actual
+review and publication remain the next producer work.

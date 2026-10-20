@@ -99,3 +99,23 @@ This supplies a reproducible foundation for steps1-2. Complete table/context
 evidence persistence, supported period/issuer/currency/basis links, mandatory
 validation/review and real publication remain work under the approved plan.
 See `docs/M1_NUMERICAL_SOURCE_PAGES.md` for commands and explicit limits.
+
+## Page/word persistence checkpoint, 20 October
+
+The producer library now seals a page preparation and every original word in
+append-only PostgreSQL records tied to the existing uploaded source version.
+New migration 12 adds two preparation tables; migrations 1–11 and the original
+M1 database remain unchanged. Current-administrator checks, exact source/config/
+code hashes, deterministic replay identities, atomic completeness and database
+immutability protect those records. Native exact word references expose the
+original word envelope, including for a quoted substring, and remain ineligible
+for acceptance.
+
+The real disposable proof stores four original table/context pages and 2,463
+words, verifies replay and the four target word rectangles, and creates no parse,
+accepted observation or corpus version. This advances step2's persistence
+foundation. Explicit joint cell/issuer/metric/period/unit/currency/basis evidence,
+supported duration interpretation, numerical gates, actual review, publication
+and real M2 acceptance are still unfinished. The measured persistence report
+records verification separately; these results do not establish financial
+correctness or research effectiveness.

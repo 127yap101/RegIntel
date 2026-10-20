@@ -256,7 +256,7 @@
     "temporary_filesystem_mib": 768
   },
   "schema": "numerical-source-page-1",
-  "source_commit": null,
+  "source_commit": "fa47f7a4a57ed391e81f472c1378956b906e90fc",
   "source_sha256": {
     "backend/src/regintel/numerical/__init__.py": "08f41d61624b0c1d0f271b74733981062049d80fb3d0ca05835c1238db4c7753",
     "backend/src/regintel/numerical/source_pages.py": "9d9c638fc43bcd74d5c51e9c391f58050c0d66801486d20ea977b1a9ff29f05f",
@@ -312,7 +312,7 @@
       "table_index": 0
     }
   ],
-  "updated_at_utc": "2026-10-19T07:03:22.942073+00:00",
+  "updated_at_utc": "2026-10-20T06:45:35.347287+00:00",
   "verification": {
     "backend_native": {
       "integration_deselected": 494,
@@ -331,7 +331,237 @@
       "xml_seconds": 3.853
     },
     "hosted": {
-      "status": "pending source push; previous implementation CI does not verify this extension"
+      "evidence": "Public GitHub Actions run/job/step metadata; raw logs not accessed; no hosted per-test counts inferred.",
+      "jobs": [
+        {
+          "conclusion": "success",
+          "name": "Foundation (ubuntu-24.04)",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium on Windows"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium and system dependencies on Linux"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Windows"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Linux"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        },
+        {
+          "conclusion": "success",
+          "name": "Foundation (windows-2025)",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium on Windows"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium and system dependencies on Linux"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Windows"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Linux"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        },
+        {
+          "conclusion": "success",
+          "name": "Local data infrastructure (Linux)",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv and Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate ephemeral local development secrets"
+            },
+            {
+              "conclusion": "success",
+              "name": "Start digest-pinned services"
+            },
+            {
+              "conclusion": "success",
+              "name": "Apply and verify migrations"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate and verify local authentication"
+            },
+            {
+              "conclusion": "success",
+              "name": "Verify authenticated services and restart persistence"
+            },
+            {
+              "conclusion": "success",
+              "name": "Stop project services"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv and Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        }
+      ],
+      "run_id": 39213677588,
+      "scope": "Verifies the original-page preparation checkpoint only. Later page/word persistence changes require their own verification.",
+      "source_commit": "fa47f7a4a57ed391e81f472c1378956b906e90fc",
+      "source_fingerprints_verified": 6,
+      "status": "SUCCESS",
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/39213677588"
     },
     "native_linux_prepared_bytes_identical": true,
     "shell_syntax": {

@@ -2,6 +2,62 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1 numerical prerequisite - page/word persistence, 20 October
+
+Continued the user-approved bounded producer extension in the isolated M2
+checkout. Added typed stored page and exact word-reference contracts, an
+administrator-only repository and migration 0012. Only two new preparation
+tables are created. Source/version membership, raw/prepared/word fingerprints,
+current administrator state, complete same-transaction word sets and immutable
+history are checked. Replays preserve the original submission; changed captures
+obtain distinct IDs. Word resolution preserves native original text/geometry and
+marks partial-word rectangles explicitly as the entire original word envelope.
+Acceptance eligibility remains false. No parser-completion, fact/review or
+publication record is created by this library; no API/frontend flow is added.
+
+Final targeted PostgreSQL verification passes 22 cases in 49.13s, including
+concurrent replay, stale/inactive/spoofed roles, missing/OCR/incorrect support,
+original-source tampering, duplicate/deep JSON, database mutation and
+incomplete/changed-word sealing. All seven migration lifecycle cases pass
+in 6.86s, including fresh/repeated apply, drift and rollback. Owned test databases
+were removed. Full-page comparison during sealing reads the prepared page once,
+rather than reparsing it for every word.
+
+Complete native regression passes 2,042 tests, six disclosed Windows platform
+skips and 515 integration cases deselected at collection in 348.10s. One extra
+integration-only changed-word case was added after that collection and passes
+in the final 22-case database run. Ruff 219 files/strict mypy 146 sources pass;
+final changed files are rechecked. Exact-source hosted CI for persistence is
+pending its own source push, separately from the prior preparation source.
+
+The real proof retains four original table/context captures and 2,463 native
+words in an owned disposable database, verifies replay and four selected source
+word references, then removes the database. There are zero full parses,
+acceptance audits, fact/relation observations or corpus versions in that proof.
+All 37 primary authority hashes match the prior proof; original migrations 1–11
+and all 136 protected inputs remain unchanged. Primary has neither new table.
+Three stopped original private data containers were restored from their existing
+volumes; the worker was not started or rebuilt. No dependency, required
+environment variable, quote provider, paid call or additional service is added.
+
+One initial test incorrectly expected the existing shared safe-integer contract
+to reject integral JSON numbers such as 0.0; corrected the new negative case to
+a fractional offset, preserving the frozen primitive. Initial formatting was
+fixed. The first real proof completed storage/replay but failed in an unnecessary
+final lookup of an M2-only script in the M1 checkout; its database was removed.
+The corrected complete proof passes. These repaired attempts are not counted as
+successful complete runs.
+
+Previous preparation source fa47f7a passed exact-source CI 39213677588: Windows
+foundation, Ubuntu foundation and Linux infrastructure. Public run/job/step
+metadata and all six recorded fingerprints are verified; no raw logs or hosted
+per-test counts are inferred. The prior measured report now records this result.
+It does not verify this new persistence source. See
+data/numerical-persistence-validation-report.json for final verification scope.
+Joint cell/context evidence, supported durations, mandatory numerical gates,
+actual review/publication and real M2 acceptance remain next under the existing
+approval. Main remains 236c03f for manual testing; quotes stay unavailable.
+
 ## M1 numerical prerequisite - original-page preparation, 19 October
 
 The user explicitly approved the bounded M1 prerequisite extension in

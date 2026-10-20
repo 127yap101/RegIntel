@@ -1,0 +1,287 @@
+{
+  "acceptance_eligible": false,
+  "added_dependencies": [],
+  "added_migrations": [
+    "infra/migrations/0012_numerical_preparation.sql"
+  ],
+  "added_required_application_environment_variables": [],
+  "approval": "Explicit user approval of docs/M2_NUMERICAL_PRODUCER_PLAN.md on 19 October; no repeated approval required.",
+  "base_commit": "fa47f7a4a57ed391e81f472c1378956b906e90fc",
+  "branch": "codex/m2-comparison",
+  "disclosed_repaired_attempts": [
+    "Initial lint/format findings were corrected before final verification.",
+    "One new negative case initially expected the frozen shared safe-integer contract to reject an integral JSON number; changed it to a fractional offset, preserving that existing contract. Final eight model cases and complete native regression pass.",
+    "The first real proof stored/replayed all four pages but failed on an unnecessary final lookup for an M2-only script in the M1 checkout. Its disposable database was removed; the corrected complete proof passes.",
+    "Word sealing was changed before final database verification to compare all words against one page parse at deferred sealing. Final changed-word rejection, all 22 database cases and the repeated real proof pass.",
+    "Three stopped original private data containers were restored from existing volumes. The worker was not started/rebuilt; no new infrastructure was created."
+  ],
+  "limitations": [
+    "Preparation records are not accepted CellEvidence, financial facts, review decisions, complete filing parses or publication inputs.",
+    "The selected-page proof uses two real existing-seed documents and four pages only; neither those documents nor their numeric values were uploaded/accepted/published in the primary corpus.",
+    "Exact native text/word geometry and matching parser bytes do not independently prove parser transcription, issuer/metric attribution, row/header/period/unit/currency/basis applicability or human review.",
+    "Substring geometry is the original whole-word envelope, never an invented glyph rectangle or concatenated multi-word span.",
+    "Historical reads verify sealed database records but do not reverify the physical PDF; future source-viewer/acceptance gates must do that.",
+    "Original migrations 1-11 and M1 manual data remain unchanged; migration 12 was applied only in owned disposable databases on this host.",
+    "Real M2 acceptance remains blocked with no real numerical inputs or reviewer; quotes remain unavailable by explicit user choice. No research effectiveness or supported amendment pair is claimed.",
+    "Original PDFs, raw/prepared captures, QA images, models, credentials and database files remain out of Git."
+  ],
+  "new_api_endpoints": [],
+  "next_work": [
+    "Add bounded typed joint cell/header/issuer/metric/period/unit/currency/basis support against the retained original source references.",
+    "Validate explicit applicable fiscal definitions and complete financial durations without inferring dates or bypassing unresolved-context gates.",
+    "Version numerical gates/actual review/immutable acceptance/publication before M2 can consume these sources.",
+    "Obtain actual real-source review and all six independent M2 acceptance categories; preserve the original M1 checkout and manual-testing corpus."
+  ],
+  "phase": "Approved M1 numerical prerequisite for M2 - page/word preparation persistence",
+  "preparation_code_sha256_unchanged": "825afc94e952aa21276db115bc76109be90297a994ac1b848b1c1b02389ff03c",
+  "preservation": {
+    "old_migrations_unchanged": 11,
+    "primary_applied_migrations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "primary_authority_tables_unchanged": 37,
+    "primary_has_preparation_tables": false,
+    "primary_main_clean": true,
+    "primary_main_commit": "236c03f1af095fecced96deaf3ef80afed8b836c",
+    "protected_base_commit": "236c03f1af095fecced96deaf3ef80afed8b836c",
+    "protected_files_unchanged": 136,
+    "protected_fingerprint_manifest": "data/analysis-validation-report.json#preservation.sha256",
+    "protected_fingerprint_manifest_sha256": "a50f8ed85daa760933cd6473f3f54083da279cc81ddd95b0f9ceb94d196e9fcc",
+    "source_packet_sha256": "03cb6f7060ed7efbf113f8ec75f1e649e2d026a7049485ff656db48a247b99ee"
+  },
+  "real_disposable_proof": {
+    "database_counts": {
+      "acceptance_audits": 0,
+      "corpus_versions": 0,
+      "fact_observations": 0,
+      "filing_versions": 2,
+      "numerical_page_captures": 4,
+      "numerical_source_words": 2463,
+      "parse_versions": 0,
+      "relation_observations": 0,
+      "source_blobs": 2
+    },
+    "local_report": ".cache/numerical-storage-real-e638110b02d544c08acde4be6a8f71e5/report.json",
+    "machine_probe_administrator_is_human_review": false,
+    "machine_probe_user_is_human_review": false,
+    "new_migrations_tested": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12
+    ],
+    "newly_uploaded_in_primary": 0,
+    "owned_disposable_database_removed": true,
+    "primary_authority_sha256": {
+      "acceptance_audits": "dfb3262dcab4d31456080496bd5a726f951fece638d371042c9d256b847923f5",
+      "blocks": "177d88a2cf6bec162064106aa1c6308cec51ee56ca517b24e2bf3ca2f713d5dd",
+      "candidate_run_items": "e371bf99bcff5fa6239e589a89fd95b482f82540a1b9c4a106bb22043c0ea00b",
+      "candidate_runs": "edb57adcae03847e9207e097a6be85c3c3e5b32eaa155ca41c663bc84313521c",
+      "candidates": "64e23a5aadd27996aa2f1d6bccc4357d52b16668b895685a75b2d8a2efc6c9d6",
+      "cell_context": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cells": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "corpus_versions": "8c9360cfa1ff2365c08bae90a8876d85dd07a05382b5ae1d78e4832d21aeec19",
+      "entity_registrations": "2a113ea4e4e72c9c5bbc8088db8a99d0d7627e1fa1dd5912428c915ae4e9a37e",
+      "entity_reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "entity_runs": "f4ff4b5cc2d66938790eda43673fb3b3847414ee9c0c80197213c770c68f1e37",
+      "evidence": "6ba8fee736af41fb9d1bc52e152ab59d22db40ceddf9712bf7d39e0dc559d906",
+      "evidence_boxes": "aac98c584958008c1e6a16814294667d8a615ce566153e887981518a4711702b",
+      "fact_observations": "7a2c1494ca57ed342ab92e9715bf9add388c0d6b535ff54e12c75891b8e0ccfb",
+      "filing_jobs": "3664c59aaffb98d7e7fd0a4132b24c59111b580e0e291284cb9b3c12f0b55496",
+      "filing_versions": "9d9316a353263bbebda180bc1631cdb637322c1eae7c9e21d1d2c43ce647d3bd",
+      "filings": "1fd18693bd48b24542a4c02c9204ac035e6597577117c247950f1f21748f4645",
+      "metric_definitions": "20d0f264f706a7536a86a3b74ac193040d02472315987f2f365c1efea8802aa7",
+      "numeric_metric_policies": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "pages": "b108ac0accdf1ed9fd7d6ad5a2c1ccac461d1ffedd063b826dbce30c97962026",
+      "parse_artifacts": "b7daa39a212f1e1906aa74291acdd5c275f987b4b2120d927aec69c274f55b7d",
+      "parse_versions": "149159396f15d2346d45a3d2e58d671fba3fd83d82fba67b34571b7a8598003c",
+      "processing_checkpoints": "a77b4e07e67151584ebda373d4d10a0b917b26d3591dc18c121b84498ca49a16",
+      "processing_events": "377490f4066f18d28b219b6f6bf48dc1abaf3ca4cfb18698c78c240182decf52",
+      "processing_jobs": "d9692003b3babcf2de4faf962729fce98e20a39910e9a889fb5525169ab985d5",
+      "publication_builds": "51f1215564bc1d44b75c9a4ecd0e09e327224b163a9c7e0d96fa0d272b69ec08",
+      "publication_commits": "ab67567eb488031bd6f85b499a1990948a382cd7789cc307b47738e4400fddd2",
+      "publication_graph_receipts": "97fb2b4639717b1713142c8d0da739092695763996f375fbc8ee000d79cf7c85",
+      "publication_head": "6fe012d364a7ebfbee3c73fb595216de266f7bcb64bf3633b1b805dc7c24f1a1",
+      "publication_observations": "5fbab9455ccf4b0a52e6f23dc937b71fb0fc067ef30d56aa5d4c29b1006cc4bf",
+      "publication_retrieval": "1d69508761e59af2c9aa47a02c1ad50a6c28f4ef54240555d90a28af8eabba15",
+      "relation_observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "retrieval_chunks": "2aaf84f23ee691cfbf56a841149b9e30ae9542a6ab4afd2561f5f118d862a4e4",
+      "retrieval_rebuilds": "6912d2cb080cb50d86b521823c9088a2480f1d0b97a7df7f87924a9e3af127ad",
+      "source_blobs": "900d770d21c4c7fd91d95042cd26acdec64d72bb8f7afb89b3942c3122b69354",
+      "tables": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation_reviews": "167ff68e1c7b515dbc1c212b7ec0c51c3d59381b9e25381c2c6c4ede3d89e716"
+    },
+    "primary_matches_previous_proof": true,
+    "primary_unchanged_tables": 37,
+    "proof_script_sha256": "04675d331d9057ae4556a3756ff72de67b3d13f5fd28aaedf2db4cd7239f8ba2",
+    "samples": [
+      {
+        "acceptance_eligible": false,
+        "document": "premier",
+        "exact_word_references": [
+          {
+            "geometry_preserved": true,
+            "geometry_scope": "ORIGINAL_WORD_ENVELOPE",
+            "quote": "31,437.93",
+            "word_index": 113
+          },
+          {
+            "geometry_preserved": true,
+            "geometry_scope": "ORIGINAL_WORD_ENVELOPE",
+            "quote": "14,285.34",
+            "word_index": 114
+          }
+        ],
+        "first_save_seconds": 6.215403800000786,
+        "kind": "table",
+        "native_words": 563,
+        "page_index": 29,
+        "prepared_sha256": "3785ef4f09462e04f1f328e21efdcb605c2aeaea3f330978300670e9985619ac",
+        "preview_cells": 60,
+        "raw_capture_sha256": "2686356dc0c198c4ec22b497dec150d7d5d9b8d333616c55d65231f0e7922ff8",
+        "roundtrip_replay_equal": true,
+        "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca"
+      },
+      {
+        "acceptance_eligible": false,
+        "document": "premier",
+        "exact_word_references": [],
+        "first_save_seconds": 8.72892390000925,
+        "kind": "context",
+        "native_words": 737,
+        "page_index": 19,
+        "prepared_sha256": "3a3ac0d9db5a22baaabb33d43ca5f752dd7c124715348557e6161a7725e7fbe1",
+        "preview_cells": 0,
+        "raw_capture_sha256": "248e53c1df94b03225c959dbf0e32c7a8f59b6c9e536eaa7e3f9ec8299854428",
+        "roundtrip_replay_equal": true,
+        "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca"
+      },
+      {
+        "acceptance_eligible": false,
+        "document": "waaree",
+        "exact_word_references": [
+          {
+            "geometry_preserved": true,
+            "geometry_scope": "ORIGINAL_WORD_ENVELOPE",
+            "quote": "67,508.73",
+            "word_index": 47
+          },
+          {
+            "geometry_preserved": true,
+            "geometry_scope": "ORIGINAL_WORD_ENVELOPE",
+            "quote": "1,13,976.09",
+            "word_index": 48
+          }
+        ],
+        "first_save_seconds": 6.645923500007484,
+        "kind": "table",
+        "native_words": 406,
+        "page_index": 98,
+        "prepared_sha256": "50868e56333b164ac950ab537aabb55cd68e7f9d94f1476014aaa5378bd91e67",
+        "preview_cells": 195,
+        "raw_capture_sha256": "48c5a14da0b384df69267ee149d907790f6c07858fdabbaf1a7db91e13165a22",
+        "roundtrip_replay_equal": true,
+        "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89"
+      },
+      {
+        "acceptance_eligible": false,
+        "document": "waaree",
+        "exact_word_references": [],
+        "first_save_seconds": 7.703601500004879,
+        "kind": "context",
+        "native_words": 757,
+        "page_index": 18,
+        "prepared_sha256": "3354b0e81fcc4ddc0a0cf2fe759300b5c1c7ac12100d522a8697a543067a840f",
+        "preview_cells": 0,
+        "raw_capture_sha256": "ce1c55989c02f3d7b2fe8723311ae6daa2e0a0f35da45e5a05d35ca0a9394755",
+        "roundtrip_replay_equal": true,
+        "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89"
+      }
+    ],
+    "source_scope": "DISPOSABLE_PREPARATION_ONLY",
+    "status": "PASS",
+    "timing_scope": "One first-save sample per page, including original-source verification and preparation/storage; concurrent local verification was running. No latency distribution or controlled improvement is claimed.",
+    "updated_at_utc": "2026-10-20T06:45:28.469365+00:00"
+  },
+  "recorded_at_utc": "2026-10-20T06:50:19.577282+00:00",
+  "schemas": [
+    "stored-numerical-page-1",
+    "numerical-word-reference-1"
+  ],
+  "source_commit": null,
+  "source_sha256": {
+    ".github/workflows/ci.yml": "4bb4d405c6ebbf13b90f20b32fb8f203be1926d9ec8bb4571488270ad17a47aa",
+    "backend/pyproject.toml": "11f17b0d29aadbed4efc5faceb4a0f1ef3c78b7c9eed29279020417229710716",
+    "backend/src/regintel/numerical/__init__.py": "08f41d61624b0c1d0f271b74733981062049d80fb3d0ca05835c1238db4c7753",
+    "backend/src/regintel/numerical/models.py": "fc07cded74970501d6d918588a665d50b738c21bae068128da92c2457917525b",
+    "backend/src/regintel/numerical/repository.py": "a24d12b5f38cacc075a89c5fc2236fe3843bae199e2c9384fdd5b65dae684f91",
+    "backend/src/regintel/numerical/source_pages.py": "9d9c638fc43bcd74d5c51e9c391f58050c0d66801486d20ea977b1a9ff29f05f",
+    "backend/tests/integration/test_numerical_storage.py": "bf28703574f676ace0af5f2cee92e97880dd544b9da0f294573a0e2e165018f6",
+    "backend/tests/test_numerical_persistence_models.py": "d9a1ec2e0a529d2bd9cefacbb8910b0c4380b21c2f6b6af19146f68ebe4dda39",
+    "backend/uv.lock": "1dfe86463003e1d88357880b18883997224cd24893269023b1b05f654af937e8",
+    "data/parser-runtime-config.json": "fa274e70dcf9d941a95c199757c16aca90813f92b3f48d510ec0e4e3da59dbe8",
+    "infra/migrations/0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+    "scripts/run-checks.ps1": "998bec0cfa0c9844ab18bc6d4b74dfdd66d62e93a0d192bdb428677aebb9536c",
+    "scripts/run-checks.sh": "61cb23b3f49d73f4ba96ee306d1f018255164b315f1f258dd2bb0dec5c53c639"
+  },
+  "status": "PREPARATION_STORAGE_VERIFIED_REAL_NUMERICAL_ACCEPTANCE_PENDING",
+  "verification": {
+    "backend_native": {
+      "final_native_source_unchanged_after_collection": true,
+      "integration_deselected_at_collection": 515,
+      "passed": 2042,
+      "pytest_seconds": 348.1,
+      "scope": "Complete native regression. One additional integration-only changed-word case was added after collection and is covered by the final 22-case database run.",
+      "skipped_windows_platform": 6,
+      "status": "PASS",
+      "xml_seconds": 348.053
+    },
+    "focused_model_contracts": {
+      "passed": 8,
+      "pytest_seconds": 1.76,
+      "status": "PASS"
+    },
+    "frontend": {
+      "status": "unchanged; no new API/browser flow; not rerun locally for this library/database addition"
+    },
+    "hosted": {
+      "status": "pending source push; prior fa47f7a CI verifies preparation, not this storage extension"
+    },
+    "migration_lifecycle": {
+      "owned_database_removed": true,
+      "passed": 7,
+      "pytest_seconds": 6.86,
+      "status": "PASS"
+    },
+    "postgresql_storage": {
+      "owned_database_removed": true,
+      "passed": 22,
+      "pytest_seconds": 49.13,
+      "status": "PASS"
+    },
+    "static": {
+      "final_changed_files_rechecked": true,
+      "ruff_formatted_files": 219,
+      "status": "PASS",
+      "strict_mypy_sources": 146
+    }
+  }
+}
