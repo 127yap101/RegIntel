@@ -5,6 +5,11 @@ on 19 October 2026. This first checkpoint adds a separate preparation artifact
 and an offline probe. It does not upload or publish a filing, create accepted
 cell evidence, interpret financial context, or supply a numerical M2 input.
 
+The later [joint-context inspector](M1_NUMERICAL_CONTEXT.md) consumes stored
+preparations through a separate internal schema. It can propose explicit
+annual/context interpretations, but remains permanently ineligible for
+acceptance. The original preparation contract and parser are unchanged.
+
 ## What is retained
 
 `regintel.numerical.source_pages` checks one successful SDK page capture against

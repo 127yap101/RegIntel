@@ -1,4 +1,36 @@
-# Continue RegIntel from the numerical page/word storage checkpoint
+# Continue RegIntel from the joint numerical-context inspection checkpoint
+
+The latest isolated M2 extension adds internal bounded word/cell/context contracts
+and eleven deterministic source/context checks. NumericalContextRepository reads
+actual PostgreSQL approvals in a repeatable-read administrator transaction and
+re-verifies the original PDF. Exact table row/column membership, whole native
+words, source/configuration identity, monetary values/units/currency and explicit
+annual fiscal boundaries are inspected. Every result remains ineligible for
+acceptance; all cross-page applicability and separate basis clauses need review.
+Read docs/M1_NUMERICAL_CONTEXT.md and data/numerical-context-validation-report.json.
+
+Final local checks pass2,103 backend tests/six disclosed Windows skips in331.74s,
+61 focused cases, 12 PostgreSQL context cases in42.38s, Ruff226, mypy150 and nine
+contract/fixture checks. The final real-source disposable proof stores eight
+pages/5,699 words and inspects four values, all REVIEW_REQUIRED. No new registry,
+metric policy, complete parse, acceptance, observation or corpus is created. The
+only existing primary metric is narrative and there is no numerical policy;
+controlled misuse of that metric is quarantined. Do not invent approvals. All37
+primary hashes and136 protected files remain unchanged; main is clean236c03f,
+primary migrations remain1–11 and its preparation tables are absent. No new
+dependency, migration, API or required environment variable is added.
+
+Next connect preparations to genuine versioned public M1 evidence/context and
+current-parse membership, persist exact context inputs/history, and complete
+mandatory validation, actual review, immutable acceptance and publication.
+Capture IDs must never substitute for public evidence IDs. Then independently
+review the real source expectations and close all six M2 acceptance categories.
+The approved producer extension already covers this work; do not request the
+same scope approval again. Real M2 acceptance remains BLOCKED; quotes remain
+unavailable by user choice. Verify the newest Git/remote/CI source rather than
+applying older CI success to this implementation.
+
+## Earlier storage and source-intake context
 
 Storage implementation source 9967e96 is pushed and passes exact-source hosted
 run 39382876747: Windows/Ubuntu foundation and the complete Linux database job,
@@ -37,10 +69,11 @@ The user approved the bounded M1 prerequisite extension on19October through the
 in-chat question referencing docs/M2_NUMERICAL_PRODUCER_PLAN.md. Read that plan,
 docs/M1_NUMERICAL_SOURCE_PAGES.md and the newest measured source-page report.
 Do not request the same approval again. Original-page/word preparation storage
-is implemented; next implement explicit joint cell/context support and supported
-issuer/metric/period/unit/currency/basis links/gates. No numerical fact is accepted
-or published by preparation, and the
-real M2 acceptance plan remains BLOCKED. Preserve main and the manual-test corpus.
+and bounded joint-context inspection are implemented. The latest work above
+supersedes the earlier next-step instruction to start these preparation checks.
+No numerical fact is accepted or published by preparation. Complete the genuine
+M1 evidence/review/publication path; real M2 acceptance remains BLOCKED.
+Preserve main and the manual-test corpus.
 
 Work on `codex/m2-comparison` in https://github.com/127yap101/RegIntel.
 Inspect Git/remote/environment and read AGENTS.md, CURRENT_STATE.md,
@@ -58,6 +91,13 @@ server reuse. Another teammate should check out the M2 GitHub branch in their
 own clone and use the normal locked setup. Local credentials/corpus/assets are
 not in Git. All prior approved local .env/.env.auth use remains programmatic,
 localhost-only and secret-free in outputs.
+
+On this host the existing native Python environment belongs to the main checkout.
+When reusing D:/RegIntel/backend/.venv/Scripts/python.exe, explicitly set process
+PYTHONPATH to the isolated checkout's backend/src and checkout root, in that order.
+Otherwise its editable install imports main's older package. Do not reinstall or
+change main's environment to fix that. Fresh clones use their own normal locked
+environment; this local override is not a new application requirement.
 
 M1/M1C is complete as bounded engineering implementation. Source4114407 passed
 exact-source hosted run38908935402. M2 now adds backend/src/regintel/analysis,

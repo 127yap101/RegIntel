@@ -2,6 +2,62 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1 numerical prerequisite - joint-context preparation inspection, 20 October
+
+Continued the approved producer extension in codex/m2-comparison. Added bounded
+whole-word/cell/context drafts and deterministic inspections with eleven checks.
+The read-only administrator repository loads sealed pages and actual registry,
+metric and policy snapshots in a repeatable-read transaction, and verifies the
+physical original PDF. Exact words, table membership, row/period-column alignment,
+local geometry, issuer/CIN, literal metric cues, Decimal values, explicit units,
+currency definitions, financial basis and supported annual boundaries are checked.
+No April default or filing-date inference is used. Every result stays ineligible
+for acceptance; separate basis clauses and all cross-page applicability require
+review. No public evidence identity, persisted context audit, acceptance or
+publication path is added. See docs/M1_NUMERICAL_CONTEXT.md.
+
+Final native regression: `python -m pytest -c backend/pyproject.toml backend/tests
+-q --tb=short --basetemp .cache/numerical-context-regression-final-20261020
+--junitxml .cache/numerical-context-regression-final-20261020.xml` passes2,103,
+with six disclosed Windows platform skips and528 integration cases deselected,
+in331.74s. This includes61 focused context cases, separately passing in10.76s.
+Final targeted disposable PostgreSQL verification passes12 in42.38s. It uses
+actual persisted M1 engineering evidence for the registry, never the pure test's
+invented anchors. Positive proposals, missing approvals, exact replay, all-table
+unchanged snapshots, current/stale/inactive/demoted/spoofed roles, unknown captures
+and source modification/removal are covered. The helper removed its database.
+Ruff226 files, strict mypy150 sources and nine contract/fixture checks pass.
+Frontend/API sources are unchanged and were not rerun locally at this checkpoint.
+
+The corrected real-source proof uses the same two immutable originals and eight
+retained page captures: 5,699 native words and four numerical proposals. All four
+remain REVIEW_REQUIRED with no new issuer/catalog/policy approval. Explicit annual
+boundaries can be proposed from retained source words, while applicability stays
+open. A separate in-memory controlled attempt against the actual primary catalog
+quarantines its narrative metric for numerical use. No approval is copied into
+a database. Zero complete parses, acceptance audits, observations or corpus
+versions are created; the owned database is removed. All37 primary authority
+hashes remain unchanged. The primary has only its existing company/narrative
+metric and no numerical policy; actual review is not invented.
+
+Initial lint/type/format findings were corrected. The first database attempt had
+one pass and11 setup errors because two authored fixtures supplied different
+test-only seed passwords; the shared fixture seed was corrected and all12 final
+cases pass. The first real probe omitted the opening Unless from the Waaree
+basis locator; it remained reviewable. The range was corrected from word123 to122
+and the complete eight-page proof was rerun. Native raw/prepared/source bytes
+were unchanged. The final measured report retains these limitations/repairs.
+
+All136 protected old files and the original source packet are byte-identical.
+Main is clean at236c03f; its database remains at migrations1–11 with neither
+preparation table. No dependency, migration, required environment variable, new
+service/port, quote provider, model call or document/company is added. The new
+implementation requires its own pushed source/CI result; old storage CI is
+scoped to9967e96. Continue genuine versioned evidence/context persistence,
+current-parse membership, mandatory M1 validation, actual review and immutable
+acceptance/publication before closing real M2 acceptance. Quotes remain
+unavailable; M3/M4 are not started.
+
 ## Numerical storage CI and additional context intake, 20 October
 
 Implementation source 9967e96a187970cbb0045cc7684513e263ec03d3 is pushed normally

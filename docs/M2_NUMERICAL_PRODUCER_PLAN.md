@@ -119,3 +119,21 @@ supported duration interpretation, numerical gates, actual review, publication
 and real M2 acceptance are still unfinished. The measured persistence report
 records verification separately; these results do not establish financial
 correctness or research effectiveness.
+
+## Joint-context inspection checkpoint, 20 October
+
+The internal producer now links bounded whole-word references for value/row/
+period cells and issuer/caption/unit/currency/fiscal/basis context. Its read-only
+administrator repository loads actual registry/catalog/policy snapshots and
+re-verifies the original PDF. Eleven deterministic checks retain source and
+table membership, exact words, direction of row/column support and explicitly
+supported annual boundaries. Missing approvals, ambiguous geometry and all
+cross-page applicability remain reviewable; invalid support is quarantined.
+
+This advances steps2-3 as preparation only. Every result remains permanently
+ineligible for acceptance. There is no new public evidence contract, persisted
+context audit, current-parse adaptation, review, acceptance or publication flow.
+See `docs/M1_NUMERICAL_CONTEXT.md` and the separately measured context report.
+The next producer work must connect genuine versioned evidence to the mandatory
+M1 path before real M2 inputs can be accepted. Preserve the original M1 checkout,
+database and frozen specifications.
