@@ -1,5 +1,22 @@
 # Continue RegIntel from the numerical page/word storage checkpoint
 
+Storage implementation source 9967e96 is pushed and passes exact-source hosted
+run 39382876747: Windows/Ubuntu foundation and the complete Linux database job,
+including fresh/repeated migrations through 12. All 13 recorded source/input hashes
+match. This follow-up adds metadata/intake/handoff only; do not confuse prior CI
+with verification of later implementation changes.
+
+The new data/numerical-context-intake-report.json records four more unaccepted
+issuer and currency/unit original pages from the same source pair, with 3,236
+native words, exact native replays, complete-page inspection and six original-word
+geometry groups. Local raw/prepared captures and QA PNGs stay ignored. Locator
+ranges are not combined source spans or accepted context; their semantic
+applicability is unresolved. Preserve whole-number/otherwise/third-party unit
+qualifiers and the Waaree cover's disclosed SDK grid omissions/four unavailable
+mappings. No database record or human review is created by this intake. Fresh
+clones must acquire/hash/replay their own originals rather than seed from this
+metadata. The original data/analysis-source-review.json remains byte-identical.
+
 The 20 October producer extension adds regintel.numerical.models/repository and
 migration0012_numerical_preparation.sql. Read the newest measured
 data/numerical-persistence-validation-report.json, CURRENT_STATE and PHASE_LOG.

@@ -226,7 +226,7 @@
     "stored-numerical-page-1",
     "numerical-word-reference-1"
   ],
-  "source_commit": null,
+  "source_commit": "9967e96a187970cbb0045cc7684513e263ec03d3",
   "source_sha256": {
     ".github/workflows/ci.yml": "4bb4d405c6ebbf13b90f20b32fb8f203be1926d9ec8bb4571488270ad17a47aa",
     "backend/pyproject.toml": "11f17b0d29aadbed4efc5faceb4a0f1ef3c78b7c9eed29279020417229710716",
@@ -243,6 +243,7 @@
     "scripts/run-checks.sh": "61cb23b3f49d73f4ba96ee306d1f018255164b315f1f258dd2bb0dec5c53c639"
   },
   "status": "PREPARATION_STORAGE_VERIFIED_REAL_NUMERICAL_ACCEPTANCE_PENDING",
+  "updated_at_utc": "2026-10-20T07:05:12.690427+00:00",
   "verification": {
     "backend_native": {
       "final_native_source_unchanged_after_collection": true,
@@ -263,7 +264,238 @@
       "status": "unchanged; no new API/browser flow; not rerun locally for this library/database addition"
     },
     "hosted": {
-      "status": "pending source push; prior fa47f7a CI verifies preparation, not this storage extension"
+      "checked_at_utc": "2026-10-20T07:05:09.7271859Z",
+      "evidence": "Public GitHub Actions run/job/step metadata; raw logs not accessed; no hosted per-test counts inferred.",
+      "jobs": [
+        {
+          "conclusion": "success",
+          "name": "Foundation (windows-2025)",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium on Windows"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium and system dependencies on Linux"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Windows"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Linux"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        },
+        {
+          "conclusion": "success",
+          "name": "Foundation (ubuntu-24.04)",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium on Windows"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium and system dependencies on Linux"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Windows"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Linux"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        },
+        {
+          "conclusion": "success",
+          "name": "Local data infrastructure (Linux)",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv and Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate ephemeral local development secrets"
+            },
+            {
+              "conclusion": "success",
+              "name": "Start digest-pinned services"
+            },
+            {
+              "conclusion": "success",
+              "name": "Apply and verify migrations"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate and verify local authentication"
+            },
+            {
+              "conclusion": "success",
+              "name": "Verify authenticated services and restart persistence"
+            },
+            {
+              "conclusion": "success",
+              "name": "Stop project services"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv and Python"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job"
+            }
+          ]
+        }
+      ],
+      "run_id": 39382876747,
+      "scope": "Exact-source application/SQL/storage tests, full foundation commands and complete disposable database suite. This follow-up changes measured metadata/source-intake/handoff only.",
+      "source_commit": "9967e96a187970cbb0045cc7684513e263ec03d3",
+      "source_fingerprints_verified": 13,
+      "status": "SUCCESS",
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/39382876747"
     },
     "migration_lifecycle": {
       "owned_database_removed": true,

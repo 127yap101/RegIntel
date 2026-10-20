@@ -2,6 +2,48 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Numerical storage CI and additional context intake, 20 October
+
+Implementation source 9967e96a187970cbb0045cc7684513e263ec03d3 is pushed normally
+to codex/m2-comparison. Exact-source run 39382876747 completed SUCCESS for Windows
+foundation, Ubuntu foundation and Linux data infrastructure. Fresh/repeated
+migrations through 12, the complete disposable database suite, authentication
+and service-restart persistence pass. Public run/job/step metadata and all 13
+recorded implementation/input hashes match; raw job logs were not accessed and
+no hosted per-test counts are inferred. The follow-up changes measured metadata,
+source-intake and handoff only.
+
+Continued independent approved source preparation during CI. Four more original
+pages from the same two documents retain issuer/CIN and currency/unit definitions
+with 3,236 native words. Offline CLI samples pass in 65.31s/45.02s for the two
+definition pages and 51.80s/48.63s for the two covers. Each native replay produces
+byte-identical prepared data. These are four single-process samples, not a
+whole-filing benchmark or latency distribution. Complete original pages and
+all six source-word geometry groups were visually inspected. The metadata-only
+data/numerical-context-intake-report.json stores hashes/locators, with actual
+human review null and applicability unresolved. The original source packet,
+all 37 primary authority hashes and original main remain unchanged.
+
+The Waaree cover reports two PDF cells dropped from its processed table grid,
+an empty OCR result and four unavailable preview mappings. Native issuer/CIN
+words remain available separately; no grid coverage is claimed or accepted.
+Read-only telemetry identifiers stay in memory; Docker networking is disabled
+and the successful CLI checks its Python socket guard. Poppler emits two missing
+display-font diagnostics for Waaree, while the inspected issuer/definition text
+is legible. An inspection utility needed ASCII-safe console output; a metadata
+builder assumption about a nonexistent raw network metric was corrected to
+describe actual enforcement. Neither affected source/capture bytes.
+
+Raw/prepared captures, originals and QA PNGs remain ignored. These four extra
+pages were not inserted into any database; the earlier four-page storage proof
+remains separate. Unit exceptions and unrelated exchange-rate previews are
+preserved and cannot supply arbitrary financial context. Next implement bounded
+joint cell/header/issuer/metric/period/unit/currency/basis contracts and numerical
+gates, then actual review/acceptance/publication. Real M2 acceptance remains open;
+quotes remain unavailable by user choice. No dependency, migration beyond 0012,
+required environment variable, additional company/document, service or paid call
+is added by the intake.
+
 ## M1 numerical prerequisite - page/word persistence, 20 October
 
 Continued the user-approved bounded producer extension in the isolated M2

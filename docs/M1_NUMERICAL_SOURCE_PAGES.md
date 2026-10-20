@@ -141,3 +141,29 @@ This storage still does not create public `CellEvidence`, accepted observations,
 review decisions, corpus versions or M2 financial inputs. Joint row/header/issuer/
 metric/period/unit/currency/basis evidence, mandatory numerical gates, actual
 review and publication remain the next producer work.
+
+## Additional source-context intake
+
+After storage verification, four more original pages from the same existing
+document pair were captured offline: each issuer cover and each currency/unit
+definition page. All four native replays reproduce their prepared bytes exactly.
+Complete original pages and six groups of separate original-word rectangles were
+visually inspected. `data/numerical-context-intake-report.json` records source,
+configuration, code, raw/prepared hashes and unaccepted word-index locators only.
+No raw capture, source PDF or QA image is committed.
+
+These ranges locate separate native words. They are not combined exact spans,
+accepted source evidence or approved semantic links. The full unit-convention
+paragraphs retain their whole-number, otherwise and third-party exceptions.
+The currency page's exchange-rate table is outside the proposed support; no FX
+conversion is implemented. Issuer/CIN words still need an explicit link to the
+approved canonical entity and the filing's financial statements.
+
+The Waaree cover's SDK warns that two PDF cells were dropped from a processed
+table grid; four of 15 preview mappings remain unavailable. The original native
+issuer/CIN words have their own retained geometry and do not depend on those
+grid cells. The intake does not claim complete table/transcription coverage.
+The four additional captures remain files only: they were not inserted into the
+primary or disposable database. The prior four-page storage proof is a separate
+measured result. Joint context contracts, mandatory gates and actual review
+remain required before either set can support a numerical observation.
