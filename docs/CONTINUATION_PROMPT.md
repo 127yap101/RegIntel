@@ -1,5 +1,13 @@
 # Continue RegIntel from the numerical preparation history checkpoint
 
+Implementation source e33516e98b231776289202c2af684eb23d4e177f is pushed to the
+existing M2 branch and remote SHA matches. All30 recorded source/input hashes
+match the published commit. Exact-source CI39563916033 was In progress at the
+recorded check. Its public run summary verifies the exact commit link; the public
+API is rate-limited403. Check the final CI result before claiming hosted success.
+No raw logs or per-test counts were accessed/inferred. This publication follow-up
+changes only measured metadata and durable handoff records.
+
 The latest isolated M2 extension adds context_records/context_inputs/context_storage
 and migration0013_numerical_context.sql. It retains exact canonical inspection
 inputs/results, actual registry/catalog/policy snapshots and original submission.

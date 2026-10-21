@@ -4,6 +4,15 @@ This is the actual execution record, not a specification or performance report. 
 
 ## M1 numerical prerequisite - immutable preparation inspection history, 21 October
 
+Publication: implementation e33516e98b231776289202c2af684eb23d4e177f is pushed
+normally to codex/m2-comparison; remote/local SHA match and all30 implementation/
+input fingerprints match the commit. Exact-source run39563916033 is In progress
+at the recorded check. Public API403 rate limit prevented JSON metadata access;
+the public run summary's full commit link and status were verified instead.
+Raw logs/per-test counts were not accessed/inferred. Hosted success remains
+pending. The subsequent handoff update changes metadata only, preserving tested
+implementation/migration bytes.
+
 Continued the approved extension in the existing isolated codex/m2-comparison
 checkout. Added three typed history modules and migration13's two append-only
 tables. A current-administrator repeatable-read save physically verifies original

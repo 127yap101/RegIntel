@@ -109,6 +109,13 @@
     "status": "PASS"
   },
   "primary_database_writes": 0,
+  "publication": {
+    "branch": "codex/m2-comparison",
+    "remote_sha_verified": true,
+    "repository": "https://github.com/127yap101/RegIntel",
+    "source_commit": "e33516e98b231776289202c2af684eb23d4e177f",
+    "source_url": "https://github.com/127yap101/RegIntel/commit/e33516e98b231776289202c2af684eb23d4e177f"
+  },
   "real_disposable_proof": {
     "database_counts": {
       "acceptance_audits": 0,
@@ -329,7 +336,7 @@
   "schemas": [
     "stored-numerical-context-1"
   ],
-  "source_commit": null,
+  "source_commit": "e33516e98b231776289202c2af684eb23d4e177f",
   "source_sha256": {
     ".github/workflows/ci.yml": "4bb4d405c6ebbf13b90f20b32fb8f203be1926d9ec8bb4571488270ad17a47aa",
     "backend/pyproject.toml": "11f17b0d29aadbed4efc5faceb4a0f1ef3c78b7c9eed29279020417229710716",
@@ -452,8 +459,17 @@
       "status": "PASS"
     },
     "hosted": {
-      "scope": "Predecessor CI does not verify these new modules or migration13.",
-      "status": "PENDING_NEW_SOURCE_PUBLICATION"
+      "checked_at_utc": "2026-10-21T07:44:56.439483+00:00",
+      "head_sha": "e33516e98b231776289202c2af684eb23d4e177f",
+      "hosted_per_test_counts_inferred": false,
+      "html_url": "https://github.com/127yap101/RegIntel/actions/runs/39563916033",
+      "id": 39563916033,
+      "local_page_sha256": "693a6c5ab57b148fa0280a68dda3ae7351d58e61d7a59bdbd21c45f1c38c962b",
+      "public_api_reason": "rate limit exceeded",
+      "public_api_status": 403,
+      "raw_logs_accessed": false,
+      "source": "Public GitHub run summary HTML; exact commit link and overall In progress status verified.",
+      "status": "IN_PROGRESS"
     },
     "migration_lifecycle": {
       "command": [
