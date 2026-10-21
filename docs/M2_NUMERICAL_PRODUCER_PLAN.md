@@ -137,3 +137,20 @@ See `docs/M1_NUMERICAL_CONTEXT.md` and the separately measured context report.
 The next producer work must connect genuine versioned evidence to the mandatory
 M1 path before real M2 inputs can be accepted. Preserve the original M1 checkout,
 database and frozen specifications.
+
+## Preparation inspection history checkpoint, 21 October
+
+The new history repository retains exact inspection inputs/results, actual
+registry/catalog/policy snapshots and original submission in two append-only
+tables added by migration 13. Identical and concurrent saves replay the original
+record. Changed snapshots retain separate history; current administrator access,
+source verification on save, immutable page membership and byte fingerprints
+are enforced. Migrations 1–12 and the original M1 database remain unchanged.
+
+This advances step4's preparation-history foundation without accepting a fact.
+The four real source inspections still require review. No complete parse,
+public evidence identity, mandatory validation, actual review or publication
+path is supplied by these records. See [the history contract](M1_NUMERICAL_CONTEXT_HISTORY.md)
+and its separately measured report. Genuine versioned M1 evidence and current
+parse membership remain the next implementation boundary under the existing
+approval; do not fabricate a complete parse from sparse preparation pages.

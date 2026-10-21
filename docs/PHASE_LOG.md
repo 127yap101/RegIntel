@@ -2,6 +2,72 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1 numerical prerequisite - immutable preparation inspection history, 21 October
+
+Continued the approved extension in the existing isolated codex/m2-comparison
+checkout. Added three typed history modules and migration13's two append-only
+tables. A current-administrator repeatable-read save physically verifies original
+sources and retains canonical inputs/results, actual approval snapshots, source
+identity and original actor/auth version. Both deterministic unique constraints
+permit identical replay; serialization/deadlock failures retry the whole
+transaction up to three times. Changed snapshots/configurations retain separate
+history. Reads preserve historical approvals/configurations and exact sealed page
+membership. All records remain preparation-only and ineligible for acceptance.
+No public evidence, review decision or publication path is added.
+
+Final native command `python -m pytest -c backend/pyproject.toml backend/tests -q
+--tb=short --basetemp .cache/context-history-backend-final-20261021 --junitxml
+.cache/context-history-backend-final-20261021.xml` passes2,119, with six disclosed
+Windows symlink/POSIX skips and563 integration cases deselected in334.56s.
+The77 combined context/record cases pass in13.04s. The existing disposable
+migration helper runs35 history cases in116.46s and all seven migration lifecycle
+cases in5.40s, including fresh/repeated migration13. The helper removes only
+its new test database. Ruff231 files, strict mypy153 sources and all nine
+generated-contract/fixture checks pass. Frontend/API behavior is unchanged and
+its browser tests were not rerun locally for this checkpoint.
+
+The first33-case history run passed32 and failed one concurrent save. A focused
+repair still exposed a conflict and a negative fixture that ordinary ingestion
+correctly rejected before reaching the intended independent gate. The insert
+now handles both deterministic unique constraints with ON CONFLICT DO NOTHING
+and bounded whole-transaction retries. A temporary ignored diagnostic recorded
+only exception class/SQLSTATE/primary server message, revealing serialization
+failure40001. The cross-version controlled-invalid fixture now constructs its
+inconsistent authored version directly in the owned database, explicitly outside
+normal ingestion. Focused two/four-caller and cross-version cases passed; the
+final35-case run passes without the diagnostic plugin. No check was disabled.
+
+The real owned disposable proof retains eight unchanged original pages and5,699
+words, four history records and16 immutable page links. Exact save/get/replay
+and original source preservation pass. All four inspections remain REVIEW_REQUIRED.
+Registry/catalog/policy approvals, complete parses, acceptance audits, facts and
+corpus versions stay0. The real proof does not invent human review. Its database
+is removed; all37 primary authority hashes match. All136 protected files and all24
+predecessor inspector source/input hashes remain unchanged. Main stays clean236c03f,
+primary migrations1–11, with none of the four numerical preparation/history tables.
+Migrations1–12 remain frozen. No dependency/API/required environment variable,
+service/port, paid call or document/company is added.
+
+Predecessor2307d05 exact-source hosted run39449809367 passes Windows foundation,
+Ubuntu foundation and Linux data infrastructure. Its measured report now records
+verified public run/job/step conclusions and24 matching source/input hashes;
+raw logs/per-test counts are not used. This does not verify the new history
+implementation; its own publication/CI result must be checked separately.
+
+During the user's M1 testing, restored only its existing native API/frontend at
+loopback8000/5173. Both account checks, authenticated login/current-corpus/company
+reads and learner facts/graph returned200. No accounts/source/authority changed.
+The user's second API launch correctly reported10048 while the first owned the
+port. Added docs/M1_TEAM_TESTING.md for separate-computer setup, own credentials,
+empty published-corpus behavior and actual source/worker/publication prerequisites.
+No shared deployment, populated demo importer or teammate runtime is claimed.
+
+Next complete genuine versioned M1 evidence and current-parse membership,
+mandatory validation, actual review, immutable acceptance/publication and real
+M2 acceptance. Sparse pages must not be renumbered or called a complete parse;
+preparation IDs cannot become public evidence IDs. Quotes remain unavailable.
+See docs/M1_NUMERICAL_CONTEXT_HISTORY.md and its measured report for exact hashes.
+
 ## M1 numerical prerequisite - joint-context preparation inspection, 20 October
 
 Continued the approved producer extension in codex/m2-comparison. Added bounded

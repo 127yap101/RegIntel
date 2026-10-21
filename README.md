@@ -9,6 +9,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - `AGENTS.md`: operating contract, evidence rules and specification navigation.
 - `CURRENT_STATE.md`: latest implementation/verification status and exact resume direction.
 - [Run/check/sleep guide](docs/RUN_AND_CHECK.md): current app/API launch commands, saved proof, verification and safe pause/resume.
+- [M1 teammate testing guide](docs/M1_TEAM_TESTING.md): initialize another computer, verify local accounts and distinguish an empty database from a populated filing demo.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.
@@ -71,8 +72,12 @@ seed-company filings and outstanding M1 evidence/context requirements; its
 candidates are not accepted facts.
 The approved [numerical producer prerequisite](docs/M2_NUMERICAL_PRODUCER_PLAN.md)
 now has an [offline original-page preparation tool](docs/M1_NUMERICAL_SOURCE_PAGES.md).
-It preserves original word geometry and proposed table membership; accepted
-numerical evidence/context and publication remain later producer work.
+It preserves original word geometry and proposed table membership.
+[Joint context inspection](docs/M1_NUMERICAL_CONTEXT.md) and
+[immutable inspection history](docs/M1_NUMERICAL_CONTEXT_HISTORY.md) retain exact
+preparation inputs and results; all remain ineligible for acceptance. Genuine
+M1 evidence, mandatory validation/review and numerical publication remain
+later producer work.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker

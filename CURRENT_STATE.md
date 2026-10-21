@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-20 (Asia/Calcutta).
+Updated: 2026-10-21 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -14,6 +14,16 @@ Updated: 2026-10-20 (Asia/Calcutta).
 - User explicitly chose to keep M2 quotes unavailable for now; recorded on 18 October. No external quote feed, provider or paid usage is required for this checkpoint.
 
 ## Latest verified state
+
+- **Numerical preparation inspection history, 21 October:** three new internal modules retain exact inspection inputs/results, actual registry/catalog/policy snapshots and original submitting administrator under separate storage fingerprints. Migration13 adds two append-only tables with immutable atomic page membership. Identical/concurrent saves replay the original record; changed approval snapshots retain separate history. Every record remains ineligible for acceptance and mandatory M1 validation remains incomplete. See `docs/M1_NUMERICAL_CONTEXT_HISTORY.md` and `data/numerical-context-history-validation-report.json`.
+
+- Final native backend verification passes **2,119 tests**, six disclosed Windows platform skips and563 integration cases deselected in334.56s. The77 combined context/record cases pass in13.04s, all35 new PostgreSQL history cases pass in116.46s, and all seven migration lifecycle cases pass in5.40s. Ruff231 files, strict mypy153 sources and all nine generated-contract/fixture checks pass. The real disposable proof stores eight original pages/5,699 words, four history records and16 page links. All four inspections remain `REVIEW_REQUIRED`; no registry/metric/policy approval, complete parse, acceptance, fact or corpus is created. Each owned test/proof database is removed. Source publication and CI for the new history implementation require their own verified result.
+
+- All37 primary authority hashes, all136 protected files, all24 predecessor inspection source/input hashes and the original source packet remain unchanged. Main stays clean236c03f and its database remains at migrations1–11 with none of the four numerical preparation/history tables. Migrations1–12 remain frozen. No dependency, public API, required environment variable, service or port is added. The original M1 API/frontend were restored on127.0.0.1:8000/5173 for user testing without changing accounts or corpus. `docs/M1_TEAM_TESTING.md` explains independent setup, local credentials, empty-corpus behavior and the real-data prerequisites; a shared deployment/populated demo import is not supplied.
+
+- The predecessor inspector source `2307d05a48693155c00db9c083076189ace2f393` passes exact-source [CI39449809367](https://github.com/127yap101/RegIntel/actions/runs/39449809367): Windows foundation, Ubuntu foundation and Linux data infrastructure. Public run/job/step metadata and all24 recorded source/input hashes match; raw logs and hosted per-test counts are not used. This success does not verify the new history implementation. Continue genuine versioned M1 evidence and current-parse membership, mandatory validation, actual review and immutable acceptance/publication under the existing approval. Capture IDs cannot substitute for public evidence IDs, and sparse preparations cannot be relabeled/renumbered as a complete parse. Real M2 acceptance remains `BLOCKED`; quotes stay unavailable by user choice.
+
+### Earlier preparation checkpoints (superseded where noted)
 
 - **Joint numerical-context inspection, 20 October:** four new internal producer modules link bounded original-word/cell references and inspect issuer, metric, value, row/column, unit, currency, annual period, basis and applicability. The read-only current-administrator repository loads actual registry/catalog/policy snapshots in one repeatable-read transaction and re-verifies the original PDF. Every result remains `acceptance_eligible=false` and `mandatory_m1_validation_complete=false`; cross-page applicability remains reviewable. There is no public evidence adaptation, persisted context audit, acceptance or publication path in this checkpoint. See `docs/M1_NUMERICAL_CONTEXT.md` and `data/numerical-context-validation-report.json`.
 

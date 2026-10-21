@@ -85,14 +85,17 @@ value, unit, currency, period and basis.
 Every result has `acceptance_eligible=false`, `review_required=true` and
 `mandatory_m1_validation_complete=false`, including `SUPPORTED_PROPOSAL`.
 These fields cannot be promoted through the strict contracts. Hashes identify
-inputs; they are not signatures or approval. Inspection does not persist a new
-context audit or its supplied snapshots. Re-running against a changed registry
-produces a different input hash; retain actual inputs for an engineering replay.
+inputs; they are not signatures or approval. The original read-only inspector
+does not persist its inputs. The subsequent [history repository](M1_NUMERICAL_CONTEXT_HISTORY.md)
+retains exact inputs/results and original submission under separate storage
+fingerprints. Re-running against a changed registry produces a different input
+hash and separate history.
 
-No endpoint or frontend flow is added. No dependency, migration or required
-environment variable is added beyond the earlier page/word preparation
-migration 12. Do not apply migration 12 to the preserved original M1 manual-test
-database. Owned disposable tests use the normal loader through 12.
+No endpoint or frontend flow is added. The original inspection checkpoint adds
+no dependency, migration or required environment variable beyond the earlier
+page/word migration 12. The subsequent history extension adds migration 13.
+Preserve the original M1 manual-test database at 1–11; owned disposable tests
+use the current loader through 13.
 
 ## Verification and continuation
 
@@ -114,8 +117,9 @@ creates and removes only a fresh disposable integration database:
 uv run --project backend --locked --no-sync --offline python scripts/check-migrations.py --test-file backend/tests/integration/test_numerical_context_storage.py
 ```
 
-The implementation remains under `codex/m2-comparison`. Continue with explicit
-versioned M1 evidence and context persistence, current parse/evidence membership,
+The implementation remains under `codex/m2-comparison`. Preparation inspection
+history is now persisted separately. Continue with explicit versioned M1 evidence,
+current parse/evidence membership,
 mandatory validation, actual review, immutable acceptance and publication.
 Preparation capture IDs must never be inserted into public evidence fields.
 Only then can independently reviewed real numerical expectations close all six

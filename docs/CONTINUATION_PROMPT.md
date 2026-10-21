@@ -1,4 +1,45 @@
-# Continue RegIntel from the joint numerical-context inspection checkpoint
+# Continue RegIntel from the numerical preparation history checkpoint
+
+The latest isolated M2 extension adds context_records/context_inputs/context_storage
+and migration0013_numerical_context.sql. It retains exact canonical inspection
+inputs/results, actual registry/catalog/policy snapshots and original submission.
+Identical/concurrent saves replay the same record; changed approvals retain
+separate history. Current-administrator access, source verification on save,
+byte fingerprints and atomic immutable page membership are enforced. Historical
+reads retain old inputs without grafting on new approvals or reinterpreting
+different inspection configurations. Read docs/M1_NUMERICAL_CONTEXT_HISTORY.md
+and data/numerical-context-history-validation-report.json first.
+
+Final checks pass2,119 backend/six disclosed Windows skips/563 integration
+deselected in334.56s;77 focused context/record cases in13.04s;35 history database
+cases in116.46s; seven migration lifecycle cases in5.40s; Ruff231, strict mypy153
+and nine generated-contract/fixture checks. The owned real proof stores eight
+original pages/5,699 words, four history records and16 links. All four inspections
+remain REVIEW_REQUIRED. No registry/metric/policy approval, complete parse,
+acceptance, observation or corpus is created. Every owned test database is removed.
+All37 primary hashes,136 protected files,24 prior inspector inputs and the source
+packet remain unchanged. Main stays clean236c03f and its database at1–11, with
+none of the four numerical preparation/history tables. Migrations1–12 are frozen.
+The new history migration is13; no dependency/API/required environment change.
+
+The original M1 API/frontend were restored for user testing at8000/5173. Preserve
+them. Teammate setup and empty-corpus limitations are documented in
+docs/M1_TEAM_TESTING.md. Do not reset accounts or pretend Git contains data/secrets.
+
+Predecessor inspector2307d05 passes exact-source hosted run39449809367 on all
+three jobs; its24 source/input hashes match. Its updated measured report records
+only that predecessor result. Check the newest source/GitHub CI independently.
+
+Next connect genuine versioned M1 evidence and current-parse membership to
+mandatory validation, actual review, immutable acceptance and publication.
+Preparation IDs cannot stand in for public evidence IDs. Existing ParseArtifact
+requires contiguous source pages; do not renumber sparse preparations or call
+them a complete filing parse. Then independently review real numerical oracles
+and close all six M2 acceptance categories. Real acceptance remains BLOCKED;
+quotes remain unavailable. This work is already approved; do not repeat the
+19October scope question. Keep all changes in the isolated M2 checkout/database.
+
+## Earlier joint-context inspector checkpoint
 
 The latest isolated M2 extension adds internal bounded word/cell/context contracts
 and eleven deterministic source/context checks. NumericalContextRepository reads
@@ -17,11 +58,12 @@ metric policy, complete parse, acceptance, observation or corpus is created. The
 only existing primary metric is narrative and there is no numerical policy;
 controlled misuse of that metric is quarantined. Do not invent approvals. All37
 primary hashes and136 protected files remain unchanged; main is clean236c03f,
-primary migrations remain1–11 and its preparation tables are absent. No new
-dependency, migration, API or required environment variable is added.
+primary migrations remain1–11 and its preparation tables are absent. That
+inspection checkpoint added no dependency, migration, API or required environment
+variable; the subsequent history extension above adds migration13.
 
 Next connect preparations to genuine versioned public M1 evidence/context and
-current-parse membership, persist exact context inputs/history, and complete
+current-parse membership and complete
 mandatory validation, actual review, immutable acceptance and publication.
 Capture IDs must never substitute for public evidence IDs. Then independently
 review the real source expectations and close all six M2 acceptance categories.
@@ -60,7 +102,7 @@ publication is implemented by this storage. The real proof used only an owned
 disposable database: four original pages, 2,463 words, zero accepted/publication
 records, all 37 primary authority hashes unchanged. Migration 12 must stay out of
 the original M1 manual-testing database, which remains at 1–11. Fresh M2 clones
-use the normal migration loader through 12. Do not edit old migrations.
+use the current normal migration loader through13. Do not edit old migrations.
 Local checks pass 2,042 backend tests/six disclosed Windows platform skips,
 22 storage database cases, seven migration lifecycle cases, Ruff219 and strict
 mypy146. See the measured report for exact source/CI scope and timings.
