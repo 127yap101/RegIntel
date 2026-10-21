@@ -1,4 +1,60 @@
-# Continue RegIntel from the numerical preparation history checkpoint
+# Continue RegIntel from exact M1 numerical evidence binding
+
+M2 remains the active consumer phase, with the explicitly approved 19 October
+M1 numerical prerequisites. Do not request that approval again. New internal
+numerical/evidence_binding_models.py, evidence_binding.py and
+evidence_binding_repository.py link retained context to actual existing M1
+word evidence in an explicitly selected complete sealed parse. Read
+docs/M1_NUMERICAL_EVIDENCE_BINDING.md and
+data/numerical-evidence-binding-validation-report.json first.
+
+Source/page/SDK membership, exact original words/raw corners/envelopes and
+retained table grid must agree. The repository loads actual history/parse bytes,
+checks current administrator access, re-verifies the physical source and matches
+actual evidence/block/page/box rows in one transaction. Canonical artifact hashes
+must equal stored sidecar hashes. Old parse selections never switch by timestamp.
+All results remain acceptance_eligible=false, mandatory_m1_validation_complete=false
+and review_required=true. No new CellEvidence ID, acceptance or publication is
+created. Artifact grid IDs are retained sidecar identities, not public evidence IDs.
+
+Final checks pass 2,145 backend tests/six Windows platform skips/579 integration
+deselected (390.823s JUnit), 103 focused cases (24.977s),
+16 actual PostgreSQL binding cases (71.994s), Ruff237, strict mypy156
+and nine generated-contract/fixture checks. The disposable database is removed.
+Authored blank-PDF/native declarations isolate engineering contracts; they are
+not real parser accuracy, gold annotation or human review. See the measured report
+for disclosed fixture, collection, geometry and final fingerprint-integrity fixes.
+
+The real read-only proof verifies both original numerical PDFs and four retained
+context records. Primary has zero matching complete sealed parses for them.
+All four attempts against the unrelated existing three-page M1 parse correctly
+reject SOURCE_MISMATCH. All37 primary authority hashes, all136 protected files,
+all30 predecessor implementation hashes and the original source packet remain
+unchanged. Main stays clean236c03f; its database stays1–11. Migrations1–13 are
+unchanged in M2. No dependency, migration, API, frontend flow or required env added.
+
+Next produce and benchmark genuine complete parses of the original numerical
+documents in the isolated producer environment. Do not renumber sparse pages or
+pretend they are a complete parse. Exercise real word/grid binding, then complete
+the mandatory versioned numerical validation, actual review, immutable acceptance
+and atomic publication path. Independently review real expected results and close
+all six M2 acceptance categories. Actual M2 acceptance remains BLOCKED; quotes
+stay unavailable. Keep the original M1 API/frontend and manual-test corpus intact.
+
+Predecessor final handoff24be64d passes exact-source CI39564278441 on all three
+jobs, with all30 source/input hashes matching. Original e33516e CI was cancelled
+by the metadata follow-up; do not call that original run successful. Public
+run/job/step metadata only; raw logs/per-test counts were not accessed/inferred.
+The containing Git commit and41 recorded hashes identify this binding checkpoint.
+Verify its own new source/remote/CI result independently of predecessor success.
+
+Continue in D:/RegIntel/.cache/worktrees/m2-comparison on codex/m2-comparison and
+push verified checkpoints to the already-authorized repository. Reusing the
+original native Python requires process PYTHONPATH pointing to this checkout's
+backend/src and checkout root. Do not reinstall main's environment, migrate its
+database, reset accounts, start public ports or introduce model/provider usage.
+
+## Earlier preparation-history checkpoint
 
 Implementation source e33516e98b231776289202c2af684eb23d4e177f is pushed to the
 existing M2 branch and remote SHA matches. All30 recorded source/input hashes

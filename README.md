@@ -75,9 +75,10 @@ now has an [offline original-page preparation tool](docs/M1_NUMERICAL_SOURCE_PAG
 It preserves original word geometry and proposed table membership.
 [Joint context inspection](docs/M1_NUMERICAL_CONTEXT.md) and
 [immutable inspection history](docs/M1_NUMERICAL_CONTEXT_HISTORY.md) retain exact
-preparation inputs and results; all remain ineligible for acceptance. Genuine
-M1 evidence, mandatory validation/review and numerical publication remain
-later producer work.
+preparation inputs and results. [Exact M1 evidence binding](docs/M1_NUMERICAL_EVIDENCE_BINDING.md)
+links those inputs to existing word evidence in a complete sealed parse; all
+bindings remain ineligible for acceptance. Complete real numerical source
+parses, mandatory validation/review and numerical publication remain producer work.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker

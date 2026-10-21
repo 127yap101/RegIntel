@@ -1,0 +1,617 @@
+{
+  "acceptance_eligible": false,
+  "added_dependencies": [],
+  "added_migrations": [],
+  "added_required_application_environment_variables": [],
+  "approval": "Explicit 19 October approval of docs/M2_NUMERICAL_PRODUCER_PLAN.md; continuing commits and GitHub updates authorized.",
+  "base_commit": "24be64d89ea95c76651b941ef64471eecd72ba90",
+  "binding_configuration_sha256": "a9c6e68124a934cb18f5fbebae49e5961034d0db6a4d981134a80c1df524e23c",
+  "branch": "codex/m2-comparison",
+  "context_configuration_sha256_unchanged": "777702acff15ab7431bb876d8711fc718067a6cd09e57b4d67500310ab4a6fb6",
+  "disclosed_repaired_attempts": [
+    "Initial formatting/typing checks caught long lines and an incorrect preparation geometry attribute. Corrected before final checks; production source is unchanged after the passing database verification.",
+    "First disposable database attempt passed3 and failed the second-parse fixture because existing jobs correctly deduplicate a filing/configuration pair. The authored second parse now uses a distinct explicit source-limit configuration with the same SDK. The final16-case run passes under the final unique storage-test filename.",
+    "The first full backend collection found matching unit/integration file basenames. Renamed the integration file to test_numerical_binding_storage.py; no cache deletion, assertion removal or skip was used.",
+    "A strengthened combined run passed100 and failed one expected error-code assertion: the authored raw-corner edit formed a concave quadrilateral, correctly rejected by the existing projection. Replaced it with a valid cyclic corner rotation that preserves the envelope, so the exact original-corner binding check is exercised. After this fixture repair101 combined cases pass; the final integrity fix expands the suite to103 passing cases.",
+    "Final review added an explicit canonical artifact fingerprint check so rehashed noncanonical sidecar bytes cannot yield a different linked artifact hash. Two new whitespace/duplicate-key regression cases pass; final full, focused and database verification is rerun after the fix.",
+    "The ignored read-only readiness helper initially looked for the existing original PDFs under the primary checkout. Their manifest-relative files are in the isolated M2 checkout. Corrected that helper path and reran successfully; no source or database write occurred."
+  ],
+  "limitations": [
+    "Bindings only link existing M1 exact native-word evidence and retained artifact grid metadata. They do not create persisted CellEvidence, new public evidence identities, complete parses, numerical candidates/validation, actual review, accepted observations or corpus publication.",
+    "All output remains acceptance_eligible=false, review_required=true and mandatory_m1_validation_complete=false. Fingerprints are not signatures or approval, and historical approval snapshots must not be treated as current applicability decisions.",
+    "Positive database/unit cases use explicitly authored blank-PDF/native/processed declarations to test engineering contracts. They are not parser accuracy, independently transcribed gold data, human review or research effectiveness.",
+    "Both real numerical originals are hash-verified, but the preserved primary corpus contains no matching complete sealed parse. All4 controlled attempts against its unrelated existing parse reject source membership. No real positive binding or numerical comparison is claimed.",
+    "The existing primary still has one conditional narrative and zero accepted numeric facts. Real M2 acceptance remains BLOCKED; quotes remain unavailable by user choice. M3/M4 and integration are not advanced.",
+    "Original PDFs, raw captures, retained real context records, model files, credentials, database state and generated artifacts remain out of Git. The M1 checkout/runtime and primary migrations1Ã¢â‚¬â€œ11 are preserved."
+  ],
+  "mandatory_m1_validation_complete": false,
+  "new_api_endpoints": [],
+  "next_work": [
+    "Produce and benchmark genuine complete parses of the original numerical source documents in the isolated producer environment, preserving original pages/IDs and recorded configuration; never substitute sparse preparations for a complete parse.",
+    "Exercise binding on those genuine native M1 evidence IDs, complete versioned numerical table/context validation, actual review, immutable acceptance and atomic publication without waiving old gates.",
+    "Independently review real expected numerical results and close all six M2 acceptance categories. Preserve selected corpus consistency, historical conflicts and unavailable quotes."
+  ],
+  "phase": "Approved M1 numerical prerequisite for M2 - exact existing M1 evidence binding",
+  "preparation_code_sha256_unchanged": "825afc94e952aa21276db115bc76109be90297a994ac1b848b1c1b02389ff03c",
+  "preservation": {
+    "final_checked_at_utc": "2026-10-21T16:47:27.963479+00:00",
+    "local_final_report": ".cache/evidence-binding-preservation-final-20261021.json",
+    "local_final_report_sha256": "8f7a50a28d6145a040c237ba355482e03b09c3aef931b80f2f10b54edb1237cb",
+    "old_migrations_unchanged": 13,
+    "primary_applied_migrations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "primary_authority_sha256": {
+      "acceptance_audits": "dfb3262dcab4d31456080496bd5a726f951fece638d371042c9d256b847923f5",
+      "blocks": "177d88a2cf6bec162064106aa1c6308cec51ee56ca517b24e2bf3ca2f713d5dd",
+      "candidate_run_items": "e371bf99bcff5fa6239e589a89fd95b482f82540a1b9c4a106bb22043c0ea00b",
+      "candidate_runs": "edb57adcae03847e9207e097a6be85c3c3e5b32eaa155ca41c663bc84313521c",
+      "candidates": "64e23a5aadd27996aa2f1d6bccc4357d52b16668b895685a75b2d8a2efc6c9d6",
+      "cell_context": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cells": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "corpus_versions": "8c9360cfa1ff2365c08bae90a8876d85dd07a05382b5ae1d78e4832d21aeec19",
+      "entity_registrations": "2a113ea4e4e72c9c5bbc8088db8a99d0d7627e1fa1dd5912428c915ae4e9a37e",
+      "entity_reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "entity_runs": "f4ff4b5cc2d66938790eda43673fb3b3847414ee9c0c80197213c770c68f1e37",
+      "evidence": "6ba8fee736af41fb9d1bc52e152ab59d22db40ceddf9712bf7d39e0dc559d906",
+      "evidence_boxes": "aac98c584958008c1e6a16814294667d8a615ce566153e887981518a4711702b",
+      "fact_observations": "7a2c1494ca57ed342ab92e9715bf9add388c0d6b535ff54e12c75891b8e0ccfb",
+      "filing_jobs": "3664c59aaffb98d7e7fd0a4132b24c59111b580e0e291284cb9b3c12f0b55496",
+      "filing_versions": "9d9316a353263bbebda180bc1631cdb637322c1eae7c9e21d1d2c43ce647d3bd",
+      "filings": "1fd18693bd48b24542a4c02c9204ac035e6597577117c247950f1f21748f4645",
+      "metric_definitions": "20d0f264f706a7536a86a3b74ac193040d02472315987f2f365c1efea8802aa7",
+      "numeric_metric_policies": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "pages": "b108ac0accdf1ed9fd7d6ad5a2c1ccac461d1ffedd063b826dbce30c97962026",
+      "parse_artifacts": "b7daa39a212f1e1906aa74291acdd5c275f987b4b2120d927aec69c274f55b7d",
+      "parse_versions": "149159396f15d2346d45a3d2e58d671fba3fd83d82fba67b34571b7a8598003c",
+      "processing_checkpoints": "a77b4e07e67151584ebda373d4d10a0b917b26d3591dc18c121b84498ca49a16",
+      "processing_events": "377490f4066f18d28b219b6f6bf48dc1abaf3ca4cfb18698c78c240182decf52",
+      "processing_jobs": "d9692003b3babcf2de4faf962729fce98e20a39910e9a889fb5525169ab985d5",
+      "publication_builds": "51f1215564bc1d44b75c9a4ecd0e09e327224b163a9c7e0d96fa0d272b69ec08",
+      "publication_commits": "ab67567eb488031bd6f85b499a1990948a382cd7789cc307b47738e4400fddd2",
+      "publication_graph_receipts": "97fb2b4639717b1713142c8d0da739092695763996f375fbc8ee000d79cf7c85",
+      "publication_head": "6fe012d364a7ebfbee3c73fb595216de266f7bcb64bf3633b1b805dc7c24f1a1",
+      "publication_observations": "5fbab9455ccf4b0a52e6f23dc937b71fb0fc067ef30d56aa5d4c29b1006cc4bf",
+      "publication_retrieval": "1d69508761e59af2c9aa47a02c1ad50a6c28f4ef54240555d90a28af8eabba15",
+      "relation_observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "retrieval_chunks": "2aaf84f23ee691cfbf56a841149b9e30ae9542a6ab4afd2561f5f118d862a4e4",
+      "retrieval_rebuilds": "6912d2cb080cb50d86b521823c9088a2480f1d0b97a7df7f87924a9e3af127ad",
+      "source_blobs": "900d770d21c4c7fd91d95042cd26acdec64d72bb8f7afb89b3942c3122b69354",
+      "tables": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation_reviews": "167ff68e1c7b515dbc1c212b7ec0c51c3d59381b9e25381c2c6c4ede3d89e716"
+    },
+    "primary_main_clean": true,
+    "primary_main_commit": "236c03f1af095fecced96deaf3ef80afed8b836c",
+    "primary_pending_migrations": [],
+    "primary_preparation_tables_absent": {
+      "numerical_context_pages": true,
+      "numerical_context_records": true,
+      "numerical_page_captures": true,
+      "numerical_source_words": true
+    },
+    "primary_unchanged_tables": 37,
+    "prior_implementation_hashes_unchanged": 30,
+    "protected_files_unchanged": 136,
+    "protected_fingerprint_manifest": "data/analysis-validation-report.json#preservation.sha256",
+    "protected_fingerprint_manifest_sha256": "a50f8ed85daa760933cd6473f3f54083da279cc81ddd95b0f9ceb94d196e9fcc",
+    "source_packet_sha256": "03cb6f7060ed7efbf113f8ec75f1e649e2d026a7049485ff656db48a247b99ee"
+  },
+  "primary_database_writes": 0,
+  "real_readiness_and_controlled_rejection": {
+    "binding_configuration_sha256": "a9c6e68124a934cb18f5fbebae49e5961034d0db6a4d981134a80c1df524e23c",
+    "controlled_rejections": [
+      {
+        "context_record_id": "bdb61aa9-573d-4a7e-a0da-a3d41a8d2794",
+        "context_state": "REVIEW_REQUIRED",
+        "record_file_sha256": "9137bae9519bbb1885f6f951e8d0aab89a44f7ab64e76ca226b6922470576334",
+        "result": "SOURCE_MISMATCH",
+        "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca"
+      },
+      {
+        "context_record_id": "42b1e024-33fd-4142-9168-d18f4b4897da",
+        "context_state": "REVIEW_REQUIRED",
+        "record_file_sha256": "6f74af53d677714a98131bb2827d806d08bc513df58d7f7ab36eca6f35790bc3",
+        "result": "SOURCE_MISMATCH",
+        "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca"
+      },
+      {
+        "context_record_id": "a1512c1b-a5d8-4002-b13c-fd5e1623566a",
+        "context_state": "REVIEW_REQUIRED",
+        "record_file_sha256": "d3d22523709445397c9832292fba6dee7c7e369a9d6c5dde48357a5dd0e43171",
+        "result": "SOURCE_MISMATCH",
+        "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89"
+      },
+      {
+        "context_record_id": "43f1e88e-c4d9-4215-8bef-963b651e72f4",
+        "context_state": "REVIEW_REQUIRED",
+        "record_file_sha256": "c54dd572b77d89e19d3e7b1203a2cffb5429d94bd45ef7b71080bb6194ca5cc1",
+        "result": "SOURCE_MISMATCH",
+        "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89"
+      }
+    ],
+    "independently_human_reviewed": false,
+    "limitation": "The two original source documents have no matching complete sealed parse in the preserved M1 corpus. No sparse preparations, invented evidence, approval or accepted fact is substituted.",
+    "local_report": ".cache/evidence-binding-real-readiness-20261021.json",
+    "local_report_sha256": "71a9f86838a2e259d4f9d04547888d3abfa3472c9206b3d57fcc353c35271db9",
+    "matching_complete_parses_for_source_pair": 0,
+    "primary_applied_migrations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "primary_authority_sha256": {
+      "acceptance_audits": "dfb3262dcab4d31456080496bd5a726f951fece638d371042c9d256b847923f5",
+      "blocks": "177d88a2cf6bec162064106aa1c6308cec51ee56ca517b24e2bf3ca2f713d5dd",
+      "candidate_run_items": "e371bf99bcff5fa6239e589a89fd95b482f82540a1b9c4a106bb22043c0ea00b",
+      "candidate_runs": "edb57adcae03847e9207e097a6be85c3c3e5b32eaa155ca41c663bc84313521c",
+      "candidates": "64e23a5aadd27996aa2f1d6bccc4357d52b16668b895685a75b2d8a2efc6c9d6",
+      "cell_context": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cells": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "corpus_versions": "8c9360cfa1ff2365c08bae90a8876d85dd07a05382b5ae1d78e4832d21aeec19",
+      "entity_registrations": "2a113ea4e4e72c9c5bbc8088db8a99d0d7627e1fa1dd5912428c915ae4e9a37e",
+      "entity_reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "entity_runs": "f4ff4b5cc2d66938790eda43673fb3b3847414ee9c0c80197213c770c68f1e37",
+      "evidence": "6ba8fee736af41fb9d1bc52e152ab59d22db40ceddf9712bf7d39e0dc559d906",
+      "evidence_boxes": "aac98c584958008c1e6a16814294667d8a615ce566153e887981518a4711702b",
+      "fact_observations": "7a2c1494ca57ed342ab92e9715bf9add388c0d6b535ff54e12c75891b8e0ccfb",
+      "filing_jobs": "3664c59aaffb98d7e7fd0a4132b24c59111b580e0e291284cb9b3c12f0b55496",
+      "filing_versions": "9d9316a353263bbebda180bc1631cdb637322c1eae7c9e21d1d2c43ce647d3bd",
+      "filings": "1fd18693bd48b24542a4c02c9204ac035e6597577117c247950f1f21748f4645",
+      "metric_definitions": "20d0f264f706a7536a86a3b74ac193040d02472315987f2f365c1efea8802aa7",
+      "numeric_metric_policies": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "pages": "b108ac0accdf1ed9fd7d6ad5a2c1ccac461d1ffedd063b826dbce30c97962026",
+      "parse_artifacts": "b7daa39a212f1e1906aa74291acdd5c275f987b4b2120d927aec69c274f55b7d",
+      "parse_versions": "149159396f15d2346d45a3d2e58d671fba3fd83d82fba67b34571b7a8598003c",
+      "processing_checkpoints": "a77b4e07e67151584ebda373d4d10a0b917b26d3591dc18c121b84498ca49a16",
+      "processing_events": "377490f4066f18d28b219b6f6bf48dc1abaf3ca4cfb18698c78c240182decf52",
+      "processing_jobs": "d9692003b3babcf2de4faf962729fce98e20a39910e9a889fb5525169ab985d5",
+      "publication_builds": "51f1215564bc1d44b75c9a4ecd0e09e327224b163a9c7e0d96fa0d272b69ec08",
+      "publication_commits": "ab67567eb488031bd6f85b499a1990948a382cd7789cc307b47738e4400fddd2",
+      "publication_graph_receipts": "97fb2b4639717b1713142c8d0da739092695763996f375fbc8ee000d79cf7c85",
+      "publication_head": "6fe012d364a7ebfbee3c73fb595216de266f7bcb64bf3633b1b805dc7c24f1a1",
+      "publication_observations": "5fbab9455ccf4b0a52e6f23dc937b71fb0fc067ef30d56aa5d4c29b1006cc4bf",
+      "publication_retrieval": "1d69508761e59af2c9aa47a02c1ad50a6c28f4ef54240555d90a28af8eabba15",
+      "relation_observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "retrieval_chunks": "2aaf84f23ee691cfbf56a841149b9e30ae9542a6ab4afd2561f5f118d862a4e4",
+      "retrieval_rebuilds": "6912d2cb080cb50d86b521823c9088a2480f1d0b97a7df7f87924a9e3af127ad",
+      "source_blobs": "900d770d21c4c7fd91d95042cd26acdec64d72bb8f7afb89b3942c3122b69354",
+      "tables": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation_reviews": "167ff68e1c7b515dbc1c212b7ec0c51c3d59381b9e25381c2c6c4ede3d89e716"
+    },
+    "primary_database_writes": 0,
+    "primary_main_clean": true,
+    "primary_pending_migrations": [],
+    "primary_unchanged_tables": 37,
+    "prior_implementation_hashes_unchanged": 30,
+    "proof_script_sha256": "0ef3d1e7f2bda68ff13742c93c5f9453475aa3eeb020363fa0b56325ca174c44",
+    "protected_files_unchanged": 136,
+    "real_positive_binding_executed": false,
+    "recorded_at_utc": "2026-10-21T16:45:32.294174+00:00",
+    "scope": "READ_ONLY_PRIMARY_QUERY_AND_PURE_REAL_SOURCE_MISMATCH_CONTROL",
+    "source_packet_sha256": "03cb6f7060ed7efbf113f8ec75f1e649e2d026a7049485ff656db48a247b99ee",
+    "sources": [
+      {
+        "company_name_raw": "Premier Energies Limited",
+        "local_original_hash_matches": true,
+        "sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca",
+        "source_page_count": 558
+      },
+      {
+        "company_name_raw": "Waaree Energies Limited",
+        "local_original_hash_matches": true,
+        "sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89",
+        "source_page_count": 626
+      }
+    ],
+    "status": "READINESS_BLOCKED_AND_CONTROLLED_REJECTION_PASS",
+    "unrelated_existing_parse_id": "38819124-f764-4f41-acef-44ac000dbc45",
+    "unrelated_source_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347"
+  },
+  "recorded_at_utc": "2026-10-21T16:52:31.562218+00:00",
+  "schema_version": "numerical-evidence-binding-validation-report-1",
+  "schemas": [
+    "numerical-context-evidence-binding-1"
+  ],
+  "source_identity": "The containing Git commit and these41 exact source/input hashes identify this checkpoint. Hosted verification for the new implementation remains pending.",
+  "source_sha256": {
+    ".github/workflows/ci.yml": "4bb4d405c6ebbf13b90f20b32fb8f203be1926d9ec8bb4571488270ad17a47aa",
+    "backend/pyproject.toml": "11f17b0d29aadbed4efc5faceb4a0f1ef3c78b7c9eed29279020417229710716",
+    "backend/src/regintel/candidates/repository.py": "af6e82995597abe6ce7f8d094a88d9058fa18b28cae14c5f7e20fa962674d9f9",
+    "backend/src/regintel/contracts/models.py": "6774b3c8c1f80d7407260fb62d7c7eed76be4534aff65fb483ae7d5d34ec205d",
+    "backend/src/regintel/contracts/primitives.py": "44dc5eed97e3d7f046b1d953739ddbd46c781fe6a1114876065f68ca56649dc6",
+    "backend/src/regintel/entities/models.py": "e352f86558eba12426c1e91342ca88a5ea3875e422c2748edddd28ded90291b8",
+    "backend/src/regintel/entities/repository.py": "f2ea5177d0524a54d39d68a455e0182808c24139361c1d8b6e13e51fb7dc2bfe",
+    "backend/src/regintel/evidence/projection.py": "87fcd893228ec75ed19a2e8b2c0b2bfd1f513bef4359706543a0629a7bf1bb49",
+    "backend/src/regintel/ingestion/storage.py": "25e22b12919247abb368f012594c566770261bebd8496038b6aaf2b8059ca30c",
+    "backend/src/regintel/numerical/context_gate.py": "7a15858ec0566bd2132d9b04170f77cb3fe65aa49e85da8ed763a8ea2dee4e5f",
+    "backend/src/regintel/numerical/context_inputs.py": "971db11be1da9fc6d6e170f3ea4316c48dd6bd3f8ca1f8e00c3e44105f9c4d85",
+    "backend/src/regintel/numerical/context_models.py": "ea9f3d050eeadd8e3ee00a649a53c549c951159e12fa061596093dba893cd819",
+    "backend/src/regintel/numerical/context_periods.py": "7b87d847db748185b8d4794134de6bd643b9d73d24bf3e8b8abb6a20670eee71",
+    "backend/src/regintel/numerical/context_records.py": "5880664170c83ae0b5248ac1d6c52352090ede3d1fd8e1309fcaa045883772b1",
+    "backend/src/regintel/numerical/context_repository.py": "5cc3c9bc4c52dc5d6ce0cefa0edd53ddcd5fcb1523f8b1c8ea589ed6f150a03c",
+    "backend/src/regintel/numerical/context_storage.py": "89686d1713b86a648cdc74f3979573e79d46b73c90718e192f153c0c04ccbf1d",
+    "backend/src/regintel/numerical/evidence_binding.py": "71f0cbb7753a2bcc3782d983aa99a8c91200029f0fa0e8f74ebcea45e7d030c9",
+    "backend/src/regintel/numerical/evidence_binding_models.py": "9ae845deb76307acdf9c0bbddad2f67357fdb7b8845574d6308d598464a5dcf5",
+    "backend/src/regintel/numerical/evidence_binding_repository.py": "be90d7ab642f7dddf19a0f743a8d176ff7a51de901921fbf4b36d63b5d810916",
+    "backend/src/regintel/numerical/models.py": "fc07cded74970501d6d918588a665d50b738c21bae068128da92c2457917525b",
+    "backend/src/regintel/numerical/repository.py": "a24d12b5f38cacc075a89c5fc2236fe3843bae199e2c9384fdd5b65dae684f91",
+    "backend/src/regintel/numerical/source_pages.py": "9d9c638fc43bcd74d5c51e9c391f58050c0d66801486d20ea977b1a9ff29f05f",
+    "backend/src/regintel/parsing/adapter.py": "9236d4dfeed37f286e428543f3f86a2ed7030f8883c50796f0cc6eedf7578a1f",
+    "backend/src/regintel/parsing/configuration.py": "12e0fd663905817bcea3ff84b4b60e2a429e2890df034844df9f4aafceb50cb3",
+    "backend/src/regintel/parsing/geometry.py": "a5108d8a9b47939757acfab73358750096fb4d42d3baec3c1f45aa5d628b745a",
+    "backend/src/regintel/parsing/models.py": "6e37624d6b5a4f7615ab392951a230eba4788deed45933717611f3a88140ece7",
+    "backend/src/regintel/validation/models.py": "ed97863f2c866e76f803bd56144b299b402ab6900ecd2dab5733c369c99bb544",
+    "backend/src/regintel/validation/quantity.py": "1233901d8c34e55cccf8e2be97172f79332880f9f674725726fc5a00b094cf8b",
+    "backend/tests/integration/test_numerical_binding_storage.py": "66f4188be4708ee8b3d35a5b5c56d3d6870790a062ea610d69a1e2fe4ef384bc",
+    "backend/tests/integration/test_numerical_context_history.py": "da953b9fc251a14aabd92a7e2859edbde2e4f6e90b33ef46176a5c9c40bd6319",
+    "backend/tests/integration/test_numerical_context_storage.py": "f8a395eb2e702b81c0d8b68a870b790018ecf17ba1b074e617b8de5f684b66b7",
+    "backend/tests/numerical_binding_fixtures.py": "6fb426ffdabab1de8d59c8308c0b9c0115352fb3ddd97c7b2db8864466791477",
+    "backend/tests/test_numerical_context.py": "644b53fdd4ce440e0b37f56414cc870a33bace99a6d6dd99ee739cbc6deb9948",
+    "backend/tests/test_numerical_context_records.py": "db02e92fa0200cc4fc363d26f94e6211db5f8b057d7f1e6cee3b3c52071df89e",
+    "backend/tests/test_numerical_evidence_binding.py": "1ccd5832fa3cfd5ab37b9d49e080cea7f9f77a04506973d5515bffd73afa18d1",
+    "backend/uv.lock": "1dfe86463003e1d88357880b18883997224cd24893269023b1b05f654af937e8",
+    "data/parser-runtime-config.json": "fa274e70dcf9d941a95c199757c16aca90813f92b3f48d510ec0e4e3da59dbe8",
+    "infra/migrations/0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+    "infra/migrations/0013_numerical_context.sql": "721bf092164df938a369ccff4b2b4268b8b1e79a4f5b579696a3687a8c57a319",
+    "scripts/run-checks.ps1": "998bec0cfa0c9844ab18bc6d4b74dfdd66d62e93a0d192bdb428677aebb9536c",
+    "scripts/run-checks.sh": "61cb23b3f49d73f4ba96ee306d1f018255164b315f1f258dd2bb0dec5c53c639"
+  },
+  "status": "LOCAL_ENGINEERING_PASS_REAL_BINDING_INPUTS_UNAVAILABLE",
+  "storage_configuration_sha256_unchanged": "8c37e637f5e5ea53e21f29d4adb64fae37b6a2c215166953ac6170a594dd009c",
+  "verification": {
+    "backend": {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests",
+        "-q",
+        "--tb=short",
+        "--basetemp",
+        ".cache/evidence-binding-backend-final-integrity-20261021",
+        "--junitxml",
+        ".cache/evidence-binding-backend-final-integrity-20261021.xml"
+      ],
+      "console_seconds": 390.96,
+      "errors": 0,
+      "failures": 0,
+      "integration_deselected": 579,
+      "junit_suite_seconds": 390.823,
+      "local_junit": ".cache/evidence-binding-backend-final-integrity-20261021.xml",
+      "local_junit_sha256": "ad0cdce99d4bd56194c7a365698a7453ebdd3ffcebe447528eac97cdf1234ab8",
+      "passed": 2145,
+      "skipped": 6,
+      "skipped_cases": [
+        "tests.test_parse_assets.test_real_symlink_directory_cannot_escape",
+        "tests.test_parse_assets.test_restrictive_umask_still_creates_worker_readable_models",
+        "tests.test_parse_assets.test_existing_manifest_cannot_mask_wrong_worker_permissions",
+        "tests.test_verified_source.test_nonregular_fifo_is_rejected_without_waiting_for_writer",
+        "tests.test_worker_lib_acquisition.test_directory_alias_is_rejected_before_artifact_write",
+        "tests.test_worker_lib_acquisition.test_record_alias_cannot_modify_other_file"
+      ],
+      "status": "PASS"
+    },
+    "focused_context_history_binding": {
+      "command": [
+        "python",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_numerical_evidence_binding.py",
+        "backend/tests/test_numerical_context.py",
+        "backend/tests/test_numerical_context_records.py",
+        "-q"
+      ],
+      "console_seconds": 25.26,
+      "errors": 0,
+      "failures": 0,
+      "junit_suite_seconds": 24.977,
+      "local_junit": ".cache/evidence-binding-unit-final-integrity-20261021.xml",
+      "local_junit_sha256": "74b320d0231e49f0cd66e333ae30147996f5c66fd49d416542c4667a4f247cfb",
+      "passed": 103,
+      "scope": "103 combined cases, including 26 binding cases. These also run in the full backend suite.",
+      "skipped": 0,
+      "skipped_cases": [],
+      "status": "PASS"
+    },
+    "frontend": {
+      "scope": "No frontend/API change; earlier results remain scoped to their source.",
+      "status": "UNCHANGED_NOT_RERUN_LOCALLY"
+    },
+    "hosted": {
+      "scope": "The successful predecessor run does not verify these three new modules.",
+      "status": "PENDING_NEW_IMPLEMENTATION_SOURCE"
+    },
+    "postgresql": {
+      "command": [
+        "python",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_numerical_binding_storage.py"
+      ],
+      "console_seconds": 72.01,
+      "errors": 0,
+      "failures": 0,
+      "junit_suite_seconds": 71.994,
+      "local_junit": ".cache/evidence-binding-database-final-integrity-20261021.xml",
+      "local_junit_sha256": "edb72ddc0fe87a8e462bb6be4080c4ca8c075e45795d211361af485e8809c7e8",
+      "owned_disposable_database_removed": true,
+      "passed": 16,
+      "scope": "Actual sealed parse/evidence rows and all-table unchanged snapshots in a fresh owned regintel_test_ database.",
+      "skipped": 0,
+      "skipped_cases": [],
+      "status": "PASS"
+    },
+    "predecessor_hosted": {
+      "head_sha": "24be64d89ea95c76651b941ef64471eecd72ba90",
+      "html_url": "https://github.com/127yap101/RegIntel/actions/runs/39564278441",
+      "jobs": [
+        {
+          "conclusion": "success",
+          "name": "Foundation (windows-2025)"
+        },
+        {
+          "conclusion": "success",
+          "name": "Foundation (ubuntu-24.04)"
+        },
+        {
+          "conclusion": "success",
+          "name": "Local data infrastructure (Linux)"
+        }
+      ],
+      "recorded_source_hashes_match": 30,
+      "scope": "Public run/job/step metadata only; no raw logs/per-test counts. Original e33516e run was cancelled by the metadata follow-up; final24be64d run succeeded with all30 implementation/input hashes identical.",
+      "status": "PASS"
+    },
+    "static": {
+      "commands": [
+        {
+          "arguments": [
+            "python",
+            "-m",
+            "ruff",
+            "check",
+            "--config",
+            "backend/pyproject.toml",
+            "backend",
+            "scripts/init-local-env.py",
+            "scripts/init-auth-env.py",
+            "scripts/check-infra.py",
+            "scripts/check-migrations.py",
+            "scripts/check-ingestion-runtime.py",
+            "scripts/check-evidence-runtime.py",
+            "scripts/check-entity-runtime.py",
+            "scripts/check-candidate-runtime.py",
+            "scripts/check-validation-runtime.py",
+            "scripts/check-processing-runtime.py",
+            "scripts/check-publication-runtime.py",
+            "scripts/check-published-reads-runtime.py",
+            "scripts/check-retrieval-runtime.py",
+            "scripts/acquire-embedding-model.py",
+            "scripts/export-contracts.py",
+            "scripts/export-published-reads.py",
+            "scripts/export-retrieval.py",
+            "scripts/export-admin.py",
+            "scripts/export-analysis.py",
+            "scripts/generate-analysis-fixtures.py",
+            "scripts/check-analysis-runtime.py",
+            "scripts/evaluate-analysis.py",
+            "scripts/probe-numerical-page.py",
+            "scripts/generate-read-fixtures.py",
+            "scripts/generate-fixtures.py",
+            "scripts/export-fixture-cases.py",
+            "scripts/acquire-worker-libs.py",
+            "scripts/inspect-docling-source.py",
+            "scripts/render-parse-qa.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.2649999999994179,
+          "stdout": "All checks passed!\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "-m",
+            "ruff",
+            "format",
+            "--check",
+            "--config",
+            "backend/pyproject.toml",
+            "backend",
+            "scripts/init-local-env.py",
+            "scripts/init-auth-env.py",
+            "scripts/check-infra.py",
+            "scripts/check-migrations.py",
+            "scripts/check-ingestion-runtime.py",
+            "scripts/check-evidence-runtime.py",
+            "scripts/check-entity-runtime.py",
+            "scripts/check-candidate-runtime.py",
+            "scripts/check-validation-runtime.py",
+            "scripts/check-processing-runtime.py",
+            "scripts/check-publication-runtime.py",
+            "scripts/check-published-reads-runtime.py",
+            "scripts/check-retrieval-runtime.py",
+            "scripts/acquire-embedding-model.py",
+            "scripts/export-contracts.py",
+            "scripts/export-published-reads.py",
+            "scripts/export-retrieval.py",
+            "scripts/export-admin.py",
+            "scripts/export-analysis.py",
+            "scripts/generate-analysis-fixtures.py",
+            "scripts/check-analysis-runtime.py",
+            "scripts/evaluate-analysis.py",
+            "scripts/probe-numerical-page.py",
+            "scripts/generate-read-fixtures.py",
+            "scripts/generate-fixtures.py",
+            "scripts/export-fixture-cases.py",
+            "scripts/acquire-worker-libs.py",
+            "scripts/inspect-docling-source.py",
+            "scripts/render-parse-qa.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.21899999999732245,
+          "stdout": "237 files already formatted\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "-m",
+            "mypy",
+            "--config-file",
+            "backend/pyproject.toml",
+            "backend/src",
+            "scripts/init-local-env.py",
+            "scripts/init-auth-env.py",
+            "scripts/check-infra.py",
+            "scripts/check-migrations.py",
+            "scripts/check-ingestion-runtime.py",
+            "scripts/check-evidence-runtime.py",
+            "scripts/check-entity-runtime.py",
+            "scripts/check-candidate-runtime.py",
+            "scripts/check-validation-runtime.py",
+            "scripts/check-processing-runtime.py",
+            "scripts/check-publication-runtime.py",
+            "scripts/check-published-reads-runtime.py",
+            "scripts/check-retrieval-runtime.py",
+            "scripts/acquire-embedding-model.py",
+            "scripts/export-contracts.py",
+            "scripts/export-published-reads.py",
+            "scripts/export-retrieval.py",
+            "scripts/export-admin.py",
+            "scripts/export-analysis.py",
+            "scripts/generate-analysis-fixtures.py",
+            "scripts/check-analysis-runtime.py",
+            "scripts/evaluate-analysis.py",
+            "scripts/probe-numerical-page.py",
+            "scripts/generate-read-fixtures.py",
+            "scripts/generate-fixtures.py",
+            "scripts/export-fixture-cases.py",
+            "scripts/acquire-worker-libs.py",
+            "scripts/inspect-docling-source.py",
+            "scripts/render-parse-qa.py"
+          ],
+          "exit_code": 0,
+          "seconds": 3.313000000001921,
+          "stdout": "Success: no issues found in 156 source files\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/export-contracts.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 0.5149999999994179,
+          "stdout": "Shared contract artifacts match.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/export-published-reads.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.313000000001921,
+          "stdout": "Published read schemas/types match.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/export-retrieval.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.4839999999967404,
+          "stdout": "Retrieval contracts/authored fixtures match.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/export-admin.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.2340000000040163,
+          "stdout": "Administrator contracts match.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/export-analysis.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.125,
+          "stdout": "M2 schema/types match.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/generate-analysis-fixtures.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.437999999994645,
+          "stdout": "Authored M2 fixture matches.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/generate-read-fixtures.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 1.9840000000040163,
+          "stdout": "Authored browser wire/PDF fixture matches.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/generate-fixtures.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 1.110000000000582,
+          "stdout": "Synthetic fixture verification passed: 3 PDFs and one manifest.\n"
+        },
+        {
+          "arguments": [
+            "python",
+            "scripts/export-fixture-cases.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 0.5780000000013388,
+          "stdout": "Fixture case data matches.\n"
+        }
+      ],
+      "generated_contract_fixture_checks": 9,
+      "local_report": ".cache/evidence-binding-static-final-20261021.json",
+      "local_report_sha256": "6dfdabcf20ec2b4785957583a9bf4e9be5ac6154dfa9070cd4f656f931491be8",
+      "ruff_formatted_files": 237,
+      "status": "PASS",
+      "strict_mypy_sources": 156
+    }
+  }
+}

@@ -154,3 +154,22 @@ path is supplied by these records. See [the history contract](M1_NUMERICAL_CONTE
 and its separately measured report. Genuine versioned M1 evidence and current
 parse membership remain the next implementation boundary under the existing
 approval; do not fabricate a complete parse from sparse preparation pages.
+
+## Existing M1 evidence binding checkpoint, 21 October
+
+The read-only binding repository now links a retained context inspection to
+existing exact M1 word evidence in an explicitly selected sealed parse. Original
+source/page/configuration identity, native text/raw corners/word envelopes and
+retained grid membership must agree. Actual evidence rows, blocks, source-page
+geometry and box membership are checked in one current-administrator transaction.
+No public evidence identity is invented, and every binding remains ineligible
+for acceptance. Original producer algorithms and migrations1–13 are unchanged.
+
+This advances step2's link to existing public word evidence. It does not run a
+full parser or complete mandatory numerical validation/review/publication. The
+read-only real check finds no complete sealed parse for the two numerical source
+documents in the preserved primary corpus. All four attempted links to its
+unrelated existing parse correctly fail source membership. Complete original
+parsing in the isolated producer environment remains necessary for real positive
+bindings. See [the binding contract](M1_NUMERICAL_EVIDENCE_BINDING.md) and its
+measured report. Keep the original M1 corpus available for manual testing.

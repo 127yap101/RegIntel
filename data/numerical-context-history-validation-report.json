@@ -459,17 +459,292 @@
       "status": "PASS"
     },
     "hosted": {
-      "checked_at_utc": "2026-10-21T07:44:56.439483+00:00",
-      "head_sha": "e33516e98b231776289202c2af684eb23d4e177f",
-      "hosted_per_test_counts_inferred": false,
-      "html_url": "https://github.com/127yap101/RegIntel/actions/runs/39563916033",
-      "id": 39563916033,
-      "local_page_sha256": "693a6c5ab57b148fa0280a68dda3ae7351d58e61d7a59bdbd21c45f1c38c962b",
-      "public_api_reason": "rate limit exceeded",
-      "public_api_status": 403,
-      "raw_logs_accessed": false,
-      "source": "Public GitHub run summary HTML; exact commit link and overall In progress status verified.",
-      "status": "IN_PROGRESS"
+      "checked_at_utc": "2026-10-21T16:41:13.219036+00:00",
+      "conclusion": "success",
+      "head_sha": "24be64d89ea95c76651b941ef64471eecd72ba90",
+      "html_url": "https://github.com/127yap101/RegIntel/actions/runs/39564278441",
+      "id": 39564278441,
+      "jobs": [
+        {
+          "conclusion": "success",
+          "name": "Foundation (windows-2025)",
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium and system dependencies on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "status": "completed"
+            }
+          ]
+        },
+        {
+          "conclusion": "success",
+          "name": "Foundation (ubuntu-24.04)",
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install pinned Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate shared wire contracts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate synthetic fixture artifacts",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked frontend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Install Chromium on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install Chromium and system dependencies on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "skipped",
+              "name": "Run foundation checks on Windows",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Run foundation checks on Linux",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up pnpm",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up Node.js",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "status": "completed"
+            }
+          ]
+        },
+        {
+          "conclusion": "success",
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "steps": [
+            {
+              "conclusion": "success",
+              "name": "Set up job",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Set up uv and Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Install locked backend dependencies",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate ephemeral local development secrets",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Start digest-pinned services",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Apply and verify migrations",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Generate and verify local authentication",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Verify authenticated services and restart persistence",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Stop project services",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Set up uv and Python",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Post Check out source",
+              "status": "completed"
+            },
+            {
+              "conclusion": "success",
+              "name": "Complete job",
+              "status": "completed"
+            }
+          ]
+        }
+      ],
+      "recorded_source_hashes_match": 30,
+      "scope": "Exact final handoff source24be64d; all30 implementation/input fingerprints match. Predecessor implementatione33516e has identical recorded bytes; its original run was cancelled after the metadata push. Public run/job/step metadata only, no raw logs/per-test counts.",
+      "status": "PASS"
     },
     "migration_lifecycle": {
       "command": [

@@ -2,6 +2,67 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1 numerical prerequisite - exact existing M1 evidence binding, 21 October
+
+Continued the approved extension in codex/m2-comparison. Three new internal
+modules bind retained context to exact existing M1 TextEvidence IDs, source
+geometry and retained artifact grid identity. Matching requires original source,
+complete original page coverage, SDK settings, whole native text, raw corners,
+word envelope, cell text/row/column/spans/header flags and raw/canonical cell
+boxes. Ambiguous/missing support, OCR, wrong source, known partial/backend-error
+artifacts and noncanonical sidecar fingerprints fail closed. The repository uses
+one current-administrator transaction and verifies actual sealed evidence,
+block/page/geometry/box rows plus physical original source. Explicit parse
+selection preserves earlier bindings. All outputs remain ineligible for acceptance.
+
+Final `python -m pytest -c backend/pyproject.toml backend/tests -q --tb=short
+--basetemp .cache/evidence-binding-backend-final-integrity-20261021 --junitxml
+.cache/evidence-binding-backend-final-integrity-20261021.xml` passes 2,145,
+with six existing Windows symlink/POSIX mode/FIFO skips and579 integration
+deselected; JUnit suite time 390.823s. Combined focused verification
+passes 103 (24.977s), including26 binding cases. The existing migration
+helper runs16 cases from test_numerical_binding_storage.py in a new disposable
+database (71.994s), then removes only that database. Authentication,
+exact replay, concurrent reads, historical explicit parses, wrong/missing source,
+missing financial approval, quarantine and unchanged all-table snapshots pass.
+Ruff237, strict mypy156 and all nine generated-contract/fixture checks pass.
+No frontend/API behavior changed and its browser suite was not rerun locally.
+
+Initial format/attribute findings were corrected. First database attempt passed3
+and failed the second-parse fixture because existing jobs correctly deduplicate
+a filing/configuration pair. Its second authored parse now uses an explicitly
+distinct source-limit descriptor with the same SDK. Full collection initially
+found duplicate unit/integration basenames; the integration file was renamed.
+A strengthened combined run passed100 and failed one error-code expectation:
+the authored corner change was concave and correctly rejected by projection.
+A cyclic convex corner rotation now preserves the envelope and directly tests
+exact raw-corner membership. Initial full regression then passed2,143. Final
+review found canonical-versus-stored artifact fingerprint ambiguity; added its
+explicit guard and two rehashed whitespace/duplicate-key cases, then reran final
+full/focused/database/static checks above. No assertion or check was disabled.
+
+The ignored read-only readiness helper first looked for originals under main;
+the recorded manifest-relative files are in the isolated checkout. Corrected
+the helper path and reran after the final integrity fix. Both original hashes
+match. There are zero complete sealed primary parses for the source pair.
+All four retained real contexts reject SOURCE_MISMATCH against the unrelated
+existing three-page M1 parse. No real positive binding, new parse, financial
+approval, human review, accepted fact or corpus is fabricated. All37 primary
+authority hashes match. All136 protected files and all30 predecessor implementation
+hashes remain unchanged. Main is clean236c03f and primary migrations remain1–11;
+M2 migrations1–13 are unchanged. No dependency, migration, required env, endpoint,
+frontend flow, service/port, extra source/company or paid/model call is added.
+
+Predecessor final handoff24be64d passes hosted run39564278441 on Windows/Ubuntu
+foundation and Linux data infrastructure. All30 recorded source/input hashes
+match; only public run/job/step metadata is used. Its earlier e33516e run was
+cancelled by the metadata follow-up. This success does not verify the new binding
+implementation; its publication/CI must be tracked separately. Continue genuine
+complete original parsing/benchmarking, real native evidence binding, mandatory
+versioned numerical validation, actual review and immutable acceptance/publication.
+Real M2 acceptance remains BLOCKED; quotes remain unavailable. Measured details:
+data/numerical-evidence-binding-validation-report.json.
+
 ## M1 numerical prerequisite - immutable preparation inspection history, 21 October
 
 Publication: implementation e33516e98b231776289202c2af684eb23d4e177f is pushed
