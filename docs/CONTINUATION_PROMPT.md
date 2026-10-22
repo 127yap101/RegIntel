@@ -1,58 +1,77 @@
-# Continue RegIntel from exact M1 numerical evidence binding
+# Continue RegIntel from the complete-original parser benchmark
 
-M2 remains the active consumer phase, with the explicitly approved 19 October
-M1 numerical prerequisites. Do not request that approval again. New internal
-numerical/evidence_binding_models.py, evidence_binding.py and
-evidence_binding_repository.py link retained context to actual existing M1
-word evidence in an explicitly selected complete sealed parse. Read
-docs/M1_NUMERICAL_EVIDENCE_BINDING.md and
-data/numerical-evidence-binding-validation-report.json first.
+M2 is the active consumer phase. The user explicitly approved the19October M1
+numerical producer prerequisite and continuing commits/pushes. Do not ask again.
+Continue in D:/RegIntel/.cache/worktrees/m2-comparison on codex/m2-comparison.
+Read docs/M1_FULL_FILING_BENCHMARK.md, data/full-filing-validation-report.json
+and the approved docs/M2_NUMERICAL_PRODUCER_PLAN.md first.
 
-Source/page/SDK membership, exact original words/raw corners/envelopes and
-retained table grid must agree. The repository loads actual history/parse bytes,
-checks current administrator access, re-verifies the physical source and matches
-actual evidence/block/page/box rows in one transaction. Canonical artifact hashes
-must equal stored sidecar hashes. Old parse selections never switch by timestamp.
-All results remain acceptance_eligible=false, mandatory_m1_validation_complete=false
-and review_required=true. No new CellEvidence ID, acceptance or publication is
-created. Artifact grid IDs are retained sidecar identities, not public evidence IDs.
+The new parsing/full_filing.py and scripts/benchmark-full-filing.py are offline
+experiments only. They verify the existing pinned converter against the frozen
+baseline, clone PDF options, change only an explicit181..3600second timeout,
+and bind configuration/code/profile hashes. Original worker/SDK/defaults remain
+unchanged. Complete ordered original pages, native parsed-page data, no errors
+and successful SDK status are all required. Assembled page metadata alone cannot
+prove processing. An SDK capture never creates an M1 artifact/evidence/fact.
+Raw experiment JSON is bounded at512MiB; M1 upload/artifact bounds stay64MiB.
 
-Final checks pass 2,145 backend tests/six Windows platform skips/579 integration
-deselected (390.823s JUnit), 103 focused cases (24.977s),
-16 actual PostgreSQL binding cases (71.994s), Ruff237, strict mypy156
-and nine generated-contract/fixture checks. The disposable database is removed.
-Authored blank-PDF/native declarations isolate engineering contracts; they are
-not real parser accuracy, gold annotation or human review. See the measured report
-for disclosed fixture, collection, geometry and final fingerprint-integrity fixes.
+Actual21October baseline: Premier original558pages,180seconds,twoCPUs/4GiB,
+partial_success,five actual pages,554errors,235.388s conversion and30.590s
+initialization,peak3,377,892KiB. The900second/fourCPU/4GiB experiment initialized
+profile3acd9c751b47bb3ed1bbe4783727ad16cffb5a0ddd1b4c9c67713bd059fa4dc0
+but owned session70684 exited137 without raw.json/final script report. Cause is
+UNCONFIRMED. The container used--rm and is absent; historical events were not
+available after engine restart. Do not assert OOM, successful coverage or missing
+metrics. The separate external exit observation is explicitly identified in the
+measured report. Retain terminal container state before removing future owned
+experiments. Do not rerun the same monolithic conversion blindly.
 
-The real read-only proof verifies both original numerical PDFs and four retained
-context records. Primary has zero matching complete sealed parses for them.
-All four attempts against the unrelated existing three-page M1 parse correctly
-reject SOURCE_MISMATCH. All37 primary authority hashes, all136 protected files,
-all30 predecessor implementation hashes and the original source packet remain
-unchanged. Main stays clean236c03f; its database stays1–11. Migrations1–13 are
-unchanged in M2. No dependency, migration, API, frontend flow or required env added.
+Real sample diagnosis: all4 retained context inspections lack exact final-cell
+support for their native words. Per inspection, only3/120 Premier references and
+3/133 Waaree references match exact text/raw corners in final SDK cells. These
+counts repeat references and are not financial/research accuracy. Native
+parsed_page.word_cells and combined final cells are different. Preserve old
+bindings and add explicit versioned evidence support; do not assign a larger
+cell's evidence ID or rectangle to an unsupported native word. The old180second
+preparations also cannot silently acquire the new900second SDK fingerprint.
 
-Next produce and benchmark genuine complete parses of the original numerical
-documents in the isolated producer environment. Do not renumber sparse pages or
-pretend they are a complete parse. Exercise real word/grid binding, then complete
-the mandatory versioned numerical validation, actual review, immutable acceptance
-and atomic publication path. Independently review real expected results and close
-all six M2 acceptance categories. Actual M2 acceptance remains BLOCKED; quotes
-stay unavailable. Keep the original M1 API/frontend and manual-test corpus intact.
+Final verification: 2,178 backend tests pass, six existing Windows platform skips,
+579 integration deselected, JUnit577.200s. All33 focused authored controls
+pass (5.237s), included in the full total. Ruff240/mypy158 and all9
+generated-contract/fixture checks pass. PowerShell/Git Bash syntax passes.
+The new CLI is in both portable check runners. A stalled sandboxed full run was
+stopped after exact owned-process checks; the native full rerun is the verified
+result. Database/frontend implementation is unchanged, so their live suites were
+not repeated at this checkpoint. No dependency/migration/required env/API added.
 
-Predecessor final handoff24be64d passes exact-source CI39564278441 on all three
-jobs, with all30 source/input hashes matching. Original e33516e CI was cancelled
-by the metadata follow-up; do not call that original run successful. Public
-run/job/step metadata only; raw logs/per-test counts were not accessed/inferred.
-The containing Git commit and41 recorded hashes identify this binding checkpoint.
-Verify its own new source/remote/CI result independently of predecessor success.
+All136 protected files, both originals and all13 M2 migrations are unchanged.
+39/41 predecessor inputs match; only the two check runners intentionally add the
+new CLI. All37 primary authority hashes match. Main stays clean236c03f and its DB
+stays1–11 without numerical preparation/history tables. On22October the same
+three private data containers were restored from existing volumes for read-only
+verification; no worker or native API/frontend process was started or stopped.
+Never migrate/reset the original manual-testing corpus during M2 work.
 
-Continue in D:/RegIntel/.cache/worktrees/m2-comparison on codex/m2-comparison and
-push verified checkpoints to the already-authorized repository. Reusing the
-original native Python requires process PYTHONPATH pointing to this checkout's
-backend/src and checkout root. Do not reinstall main's environment, migrate its
-database, reset accounts, start public ports or introduce model/provider usage.
+Next supervise bounded complete-original processing using the measured resource
+and failure results, then version native/table/context evidence and exercise
+genuine complete-source positive bindings. Preserve original page identities,
+frozen historical configurations and all mandatory numerical gates. Actual
+review, immutable acceptance, atomic publication and independently reviewed real
+expected results remain necessary before all six M2 acceptance categories close.
+Real M2 acceptance stays BLOCKED; quotes unavailable; M3/M4/integration not advanced.
+
+Exact binding predecessor b558f1c passes public CI39638885043 on all3 jobs with
+all41 inputs matching. The containing commit and46 recorded source/input hashes
+identify this benchmark checkpoint. Verify its own remote/CI separately. Do not
+immediately publish a metadata-only follow-up that cancels the source run:
+foundation workflow concurrency uses cancel-in-progress for this branch.
+
+Use D:/RegIntel/backend/.venv/Scripts/python.exe with process PYTHONPATH set to
+D:/RegIntel/.cache/worktrees/m2-comparison/backend/src and this checkout root.
+Do not reinstall main's venv. Existing originals resolve relative to this isolated
+checkout, not primary. Models stay in D:/RegIntel/models/m1a-v1; the offline parser
+mounts them at/models. No model download/hosted call, quote feed, public port,
+credential printing, database reset or system configuration change is authorized.
 
 ## Earlier preparation-history checkpoint
 

@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-21 (Asia/Calcutta).
+Updated: 2026-10-22 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -14,6 +14,20 @@ Updated: 2026-10-21 (Asia/Calcutta).
 - User explicitly chose to keep M2 quotes unavailable for now; recorded on 18 October. No external quote feed, provider or paid usage is required for this checkpoint.
 
 ## Latest verified state
+
+- **Complete-original parser benchmark, 22 October:** the new internal `parsing/full_filing.py` and `scripts/benchmark-full-filing.py` run an intact original with explicit configuration and coverage checks. The original worker/SDK/default descriptor are unchanged. A fresh pinned converter changes only the explicitly supplied timeout and retains its own SDK, processing and extension-code identities. Exit0 means complete SDK capture only; no outcome creates M1 evidence, accepts a fact or publishes a corpus. See `docs/M1_FULL_FILING_BENCHMARK.md` and `data/full-filing-validation-report.json`.
+
+- The 21October baseline uses180seconds/twoCPUs/4GiB and returns partial success: five actual pages out of558,554 errors,235.388s conversion plus30.590s initialization,3,377,892KiB peak RSS. Assembled metadata still lists558pages and cannot prove processing. The separate900second/fourCPU/4GiB process initializes its exact profile but exits137 without raw capture or final script report. Cause is unconfirmed; no retained container/event proves OOM. Its external exit observation is distinct from a script-produced report. No completion/page/error/time/RSS values are fabricated. Do not rerun that monolithic experiment blindly; retain terminal container state in future supervision.
+
+- Final native regression passes **2,178 tests**, six existing Windows platform skips and579 integration cases deselected in577.200s JUnit. All33 authored benchmark controls pass separately in5.237s and are included in the full total. Ruff240 files, strict mypy158 sources, nine generated-contract/fixture checks and both portable-runner syntax checks pass. The new CLI is wired into both runners. A stalled sandboxed test invocation was stopped only after verifying its two owned process identities; native collection and the complete native rerun pass. Git Bash's sandbox namespace initialization failed; the same syntax command passed outside the sandbox. No assertions/checks were disabled. No dependency, migration, required application env, service, port, API or frontend implementation changed.
+
+- The real read-only diagnostic also finds missing exact final-cell support in all four retained context inspections across eight original page samples: only3 of120 referenced words per Premier inspection and3 of133 per Waaree inspection exactly match projected-style final SDK cells. Counts include repeated references and are not financial accuracy/recall measurements. Native word cells and combined final cells are distinct. No substring rectangle, new evidence ID, positive binding or complete artifact is invented. Exact native/table/context evidence still needs an explicit versioned producer path.
+
+- All136 protected files, the original source pair and migrations1–13 remain unchanged.39 of41 predecessor input hashes match; the only intentional changes are the two portable check runners adding this CLI. All37 primary authority hashes match; main stays clean236c03f with database migrations1–11 and no preparation/history tables. On22October the same three original private data containers were restored from existing volumes for read-only verification; no worker, API/frontend process, migration or reset was started. Real M2 acceptance stays `BLOCKED`; quotes stay unavailable.
+
+- **Exact predecessor CI verified:** b558f1c2be72917bef8cf16396571a2b4d8c1e01 passes [run39638885043](https://github.com/127yap101/RegIntel/actions/runs/39638885043): Windows foundation, Ubuntu foundation and Linux data infrastructure. All41 recorded input hashes match that published commit. Only public run/job/step metadata was used; raw logs and hosted per-test counts were not accessed/inferred. This result verifies the binding checkpoint, not the later benchmark code. Verify the containing commit's own remote/CI independently.
+
+### Earlier evidence-binding checkpoint
 
 - **Exact M1 evidence binding, 21 October:** three new internal modules link a stored numerical context to existing word evidence in an explicitly selected sealed M1 parse. Original source/page/SDK identity, native text/raw corners/envelopes and processed grid membership must agree. The current-administrator repository verifies the actual evidence rows, blocks, page geometry and box sets in one transaction and re-verifies the physical PDF. Canonical and retained artifact fingerprints must agree. Every binding remains ineligible for acceptance; no public evidence identity or fact is created. See `docs/M1_NUMERICAL_EVIDENCE_BINDING.md` and `data/numerical-evidence-binding-validation-report.json`.
 

@@ -173,3 +173,32 @@ unrelated existing parse correctly fail source membership. Complete original
 parsing in the isolated producer environment remains necessary for real positive
 bindings. See [the binding contract](M1_NUMERICAL_EVIDENCE_BINDING.md) and its
 measured report. Keep the original M1 corpus available for manual testing.
+
+## Whole-original benchmark checkpoint, 21 October
+
+The isolated offline benchmark now exercises the intact original filing, checks
+actual ordered/native page coverage separately from assembled page metadata,
+and retains exact configuration, code and capture fingerprints. A separate
+timeout experiment creates a fresh pinned converter and changes only its declared
+SDK timeout; the existing worker and selected descriptor are unchanged.
+
+The original 180-second Premier run processes only five of 558 pages and returns
+partial success. The reusable tool also exercises a 900-second configuration;
+its measured result is recorded separately in
+`data/full-filing-validation-report.json`. Resource caps differ between the two
+runs, so they cannot establish a timeout-only performance effect.
+The extended process exits137 without a final capture/report; its cause is
+unconfirmed and no completed parse is claimed. Record terminal container state
+before removal in future supervised experiments.
+
+Read-only inspection of the eight retained page samples also finds missing exact
+final-cell word support in all four real context records. The SDK's final cells
+can combine multiple native words. A larger cell cannot be relabelled as exact
+native word evidence. Completing conversion alone therefore cannot establish a
+real positive binding under the current narrow contract. An explicit versioned
+evidence extension remains necessary; no existing gate is waived.
+
+This advances step1's whole-original measurement and identifies concrete step2
+work. It does not create a sealed M1 parse, accepted fact, actual review or
+publication. Preserve the primary corpus and continue the approved producer path
+using the measured results. See [the benchmark contract](M1_FULL_FILING_BENCHMARK.md).

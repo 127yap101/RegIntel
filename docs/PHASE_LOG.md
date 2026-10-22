@@ -2,6 +2,59 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1 numerical prerequisite - complete-original parser benchmark, 22 October
+
+Continued the approved extension in codex/m2-comparison. New offline full_filing
+helper/CLI verify the frozen baseline and create a fresh converter whose only
+changed SDK option is the explicit document timeout. Profile/SDK/processing/code
+hashes remain separate; no worker/default descriptor changes. Complete ordered
+original/native and assembled page coverage, success and no SDK errors are
+required. Raw experiment JSON streams with a512MiB cap; M1 bounds remain64MiB.
+The CLI never writes authority, creates evidence or publishes facts.
+
+The21October original Premier baseline returns partial success,five/558 actual
+pages,554errors,235.388s conversion,30.590s initialization and3,377,892KiB peak
+RSS at twoCPUs/4GiB/180seconds. Assembled metadata still lists558pages. A separate
+900second/fourCPU/4GiB profile initializes successfully but owned session70684
+exits137 without raw capture or final report. Cause is unconfirmed; the removed
+container/historical events are unavailable after restart. The recovered22October
+observation is external, not a script result. No page/error/time/RSS or OOM claim
+is invented. The resource caps differ, precluding a timeout-only comparison.
+
+All33 authored controls pass; the complete native regression passes2,178 with
+six existing Windows skips and579 integration deselected (577.200s JUnit).
+A sandboxed full run stalled without a result; only its exact two pytest process
+IDs were stopped. Native collection completes2184 selected/579 deselected in
+11.58s and the complete native rerun passes. Git Bash's sandbox namespace startup
+fails; the same installed syntax checker passes outside the sandbox. No checks
+are disabled. Ruff240/mypy158, nine generated-artifact checks and both portable
+runner syntax checks pass. Both runners now include the new CLI. No DB/frontend
+implementation changed, so their live suites are not repeated.
+
+Read-only raw-cell analysis finds missing exact support in all4 real retained
+context inspections over8 page samples:3/120 references per Premier inspection,
+3/133 per Waaree inspection. Native word cells and combined final cells differ.
+These repeated-reference counts are engineering availability, not financial
+accuracy. No native box/evidence ID, complete artifact or positive real binding
+is fabricated. Explicit versioned evidence support and whole-source processing
+remain prerequisites to mandatory validation/review/publication.
+
+All136 protected files, both original PDFs, source packet and migrations1–13
+remain unchanged;39/41 predecessor inputs match with only the two portable
+runner changes intentional. All37 primary hashes match; main is clean236c03f,
+DB1–11, no prep/history tables. On22October restored the same three stopped
+private data containers from existing volumes for read-only checks; no worker,
+native API/frontend process, reset or migration was started. No dependency,
+required app env, service/port, extra source/company or hosted/provider call added.
+
+Predecessor b558f1c passes exact-source CI39638885043 on Windows/Ubuntu foundation
+and Linux data infrastructure, all41 input hashes verified. Public metadata
+only; no raw logs or hosted test counts inferred. This success does not verify
+the new code. See data/full-filing-validation-report.json, retain future container
+terminal diagnostics, and continue complete processing plus native/context
+evidence under existing approval. M2 real acceptance stays BLOCKED; quotes
+unavailable; M3/M4/integration unchanged.
+
 ## M1 numerical prerequisite - exact existing M1 evidence binding, 21 October
 
 Continued the approved extension in codex/m2-comparison. Three new internal

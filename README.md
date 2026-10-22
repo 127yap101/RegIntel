@@ -79,6 +79,9 @@ preparation inputs and results. [Exact M1 evidence binding](docs/M1_NUMERICAL_EV
 links those inputs to existing word evidence in a complete sealed parse; all
 bindings remain ineligible for acceptance. Complete real numerical source
 parses, mandatory validation/review and numerical publication remain producer work.
+The [complete-original benchmark](docs/M1_FULL_FILING_BENCHMARK.md) records
+whole-filing coverage, resource limits and an explicitly fingerprinted timeout
+experiment. Its SDK captures do not create accepted evidence or financial inputs.
 M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
