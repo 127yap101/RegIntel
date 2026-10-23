@@ -3,7 +3,9 @@
 Prepared on 19 October 2026 against M2 source `1840e14` and handoff `792aef1`.
 The user explicitly approved this bounded M1 prerequisite extension on
 19 October 2026. The finalized specifications remain unchanged. M2 is the active
-consumer phase; its real acceptance plan is still empty and `BLOCKED`.
+consumer phase; its real acceptance plan is still empty and `BLOCKED`. On23October
+the user confirmed completing integration while preserving M1 interfaces/existing
+data, and also authorized starting M3/M4 alongside the remaining M2 work.
 Implementation and verification are recorded separately from this approved plan.
 
 ## Verified reason the source packet cannot be accepted
@@ -197,6 +199,27 @@ can combine multiple native words. A larger cell cannot be relabelled as exact
 native word evidence. Completing conversion alone therefore cannot establish a
 real positive binding under the current narrow contract. An explicit versioned
 evidence extension remains necessary; no existing gate is waived.
+
+## Native/context evidence checkpoint, 23 October
+
+The new separately versioned native bank covers all1,184original pages and
+646,791native words with bounded page-wise decoding. The internal M1 producer
+stores that bank atomically with5,699existing-shape public word-evidence records
+from the eight explicitly selected contextual pages. Native bottom-left corners
+and actual contextual top-left corners are reconciled exactly and both retained.
+The four real context records now bind to actual sealed M1 evidence, advancing
+step2 beyond preparation-only links. Full native coverage does not claim full
+layout/OCR coverage or public cell authority.
+
+Migration14 adds append-only native sidecars with an explicit format branch.
+The original M1 persistence function is intentionally extended; legacy parser,
+projection, geometry and artifact-model algorithms and migrations1–13 are frozen.
+M1 public interfaces, original manual-test corpus and physical sources remain
+stable. All four bindings remain review-required and ineligible for acceptance.
+No registry/metric/policy approval, actual human review, fact or corpus is created.
+Runtime selection, mandatory numerical validation/review, immutable acceptance/
+publication and the six real M2 acceptance categories remain required. See
+[the producer contract](M1_NATIVE_CONTEXT_EVIDENCE.md) and its measured report.
 
 This advances step1's whole-original measurement and identifies concrete step2
 work. It does not create a sealed M1 parse, accepted fact, actual review or

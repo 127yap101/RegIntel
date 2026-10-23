@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-22 (Asia/Calcutta).
+Updated: 2026-10-23 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -12,8 +12,21 @@ Updated: 2026-10-22 (Asia/Calcutta).
 - On11October the user explicitly authorized committing and pushing the current project to `https://github.com/127yap101/RegIntel`, using its existing `main` branch and preserving repository history. Source/tests/configuration examples/locked dependencies/design and measured reports are in scope; secrets, original PDFs, models, Docker/database state, caches and generated artifacts remain ignored. Paid API/model calls and public service exposure are not authorized. Generated project-local development secrets remain part of the approved setup.
 - Final specification files remain unchanged under `docs/`.
 - User explicitly chose to keep M2 quotes unavailable for now; recorded on 18 October. No external quote feed, provider or paid usage is required for this checkpoint.
+- On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
 
 ## Latest verified state
+
+- **Real native/context M1→M2 evidence, 23 October:** complete offline native capture now covers both intact originals: Premier558pages/311,952words and Waaree626pages/334,839words. The bounded page-wise decoder takes50.621s/52.910s with336,940/322,768KiB peak RSS, respectively, under twoCPUs/2GiB, non-root/read-only/network-none; retained containers exit0 and are not OOM-killed. Native bottom-left corners and contextual SDK top-left corners remain separate, with exact explicit conversion checks. Full native coverage does not imply full layout/OCR coverage.
+
+- The versioned internal adapter/producer stores all1,184native pages and projects5,699whole-word evidence records from eight explicitly selected contextual pages through the existing M1 evidence shape. Both actual M1 jobs seal atomically in an owned disposable database; all four retained real context records bind to actual stored evidence IDs and read back identically. Eight table previews retain capture membership; public cell evidence remains zero. Migration14 adds four append-only native sidecar tables and an explicit format1.1.0 branch; the legacy format/default and frozen parser/geometry/model/projection algorithms remain readable. Existing M1 persistence is intentionally extended through a common insertion function; it is not claimed byte-unchanged. See `docs/M1_NATIVE_CONTEXT_EVIDENCE.md` and `data/native-context-evidence-validation-report.json`.
+
+- Full native backend regression passes **2,212tests**, six existing Windows platform skips and608integration deselected in261.245s JUnit. All34new native unit controls are included. Disposable PostgreSQL checks pass29new native integration cases,26existing evidence cases,16existing binding cases and seven migration lifecycle cases; owned databases are removed. Ruff248files, strict mypy162sources, all nine generated-contract/fixture checks and both portable-runner syntax checks pass. No dependency, required application env, public API or frontend change is added by this producer checkpoint.
+
+- All four real bindings remain `REVIEW_REQUIRED`, `acceptance_eligible=false` and `mandatory_m1_validation_complete=false`. The proof creates no registry/metric/policy approval, accepted fact or corpus version. Runtime profile selection in the legacy worker/UI, mandatory numerical validation, actual review, immutable acceptance/publication and independently reviewed real M2 expected calculations remain unfinished. Real M2 acceptance stays `BLOCKED`; quotes stay unavailable. M3/M4 work is now authorized and starts from their separate module boundaries rather than waiting on this real-data acceptance.
+
+- All37primary authority fingerprints and the two original source files match. Main remains clean236c03f and its database at migrations1–11 without preparation/history/native tables.135of136protected inputs remain byte-identical; only the approved existing M1 persistence extension changes. All migrations1–13 and public interfaces/frontend remain unchanged. The same three private data services were restored from existing volumes on23October after the overnight pause; no worker, native API/frontend process or primary migration was started. Exact predecessor caa652a passes [CI39805377317](https://github.com/127yap101/RegIntel/actions/runs/39805377317) on all three jobs, with all46recorded inputs matched. Only public metadata was read; no raw logs or hosted per-test counts were inferred. Verify the containing commit's own remote/CI separately.
+
+### Earlier complete-original benchmark checkpoint
 
 - **Complete-original parser benchmark, 22 October:** the new internal `parsing/full_filing.py` and `scripts/benchmark-full-filing.py` run an intact original with explicit configuration and coverage checks. The original worker/SDK/default descriptor are unchanged. A fresh pinned converter changes only the explicitly supplied timeout and retains its own SDK, processing and extension-code identities. Exit0 means complete SDK capture only; no outcome creates M1 evidence, accepts a fact or publishes a corpus. See `docs/M1_FULL_FILING_BENCHMARK.md` and `data/full-filing-validation-report.json`.
 

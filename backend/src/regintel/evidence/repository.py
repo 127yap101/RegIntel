@@ -1,6 +1,8 @@
 """Atomic sealed parse persistence and source/evidence reads from PostgreSQL."""
 
 import hashlib
+from collections.abc import Callable
+from typing import Literal
 from uuid import UUID
 
 from regintel.contracts.models import (
@@ -12,7 +14,12 @@ from regintel.contracts.models import (
 )
 from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import DatabaseConnection, connect_database
-from regintel.evidence.projection import MAX_ARTIFACT_BYTES, ProjectionError, project_parse
+from regintel.evidence.projection import (
+    MAX_ARTIFACT_BYTES,
+    ParseProjection,
+    ProjectionError,
+    project_parse,
+)
 from regintel.ingestion.models import SourceBlob
 from regintel.parsing.configuration import ParserRuntimeConfiguration
 from regintel.parsing.models import ParseArtifact, ParseProvenance
@@ -25,6 +32,20 @@ def persist_parse(
     artifact: ParseArtifact,
     configuration: ParserRuntimeConfiguration,
 ) -> None:
+    """Retain the existing legacy projection/validation behavior unchanged."""
+    if connection.info.transaction_status.name != "INTRANS":
+        raise ProjectionError("ARTIFACT_INVALID")
+    persist_projection(connection, job_id=job_id, projection=project_parse(artifact, configuration))
+
+
+def persist_projection(
+    connection: DatabaseConnection,
+    *,
+    job_id: str,
+    projection: ParseProjection,
+    sidecar_format: Literal["1.0.0", "1.1.0"] = "1.0.0",
+    before_sidecar: Callable[[], None] | None = None,
+) -> None:
     """Insert one complete tree/sidecar inside the caller's existing transaction.
 
     The caller changes the RUNNING job to PARSED before committing this same
@@ -32,7 +53,6 @@ def persist_parse(
     """
     if connection.info.transaction_status.name != "INTRANS":
         raise ProjectionError("ARTIFACT_INVALID")
-    projection = project_parse(artifact, configuration)
     version = projection.version
     connection.execute(
         """INSERT INTO regintel.parse_versions
@@ -111,11 +131,23 @@ def persist_parse(
                 (evidence_id,box_index,x0,y0,x1,y1) VALUES (%s,%s,%s,%s,%s,%s)""",
                 (item.id, index, box.x0, box.y0, box.x1, box.y1),
             )
-    connection.execute(
-        """INSERT INTO regintel.parse_artifacts
-        (parse_version_id,job_id,artifact_bytes,configuration_bytes) VALUES (%s,%s,%s,%s)""",
-        (version.id, job_id, projection.artifact_bytes, projection.configuration_bytes),
-    )
+    if before_sidecar is not None:
+        before_sidecar()
+    if sidecar_format == "1.0.0":
+        connection.execute(
+            """INSERT INTO regintel.parse_artifacts
+            (parse_version_id,job_id,artifact_bytes,configuration_bytes) VALUES (%s,%s,%s,%s)""",
+            (version.id, job_id, projection.artifact_bytes, projection.configuration_bytes),
+        )
+    elif sidecar_format == "1.1.0":
+        connection.execute(
+            """INSERT INTO regintel.parse_artifacts
+            (parse_version_id,job_id,artifact_bytes,configuration_bytes,format_version)
+            VALUES (%s,%s,%s,%s,'1.1.0')""",
+            (version.id, job_id, projection.artifact_bytes, projection.configuration_bytes),
+        )
+    else:
+        raise ProjectionError("ARTIFACT_INVALID")
 
 
 def _binary(value: object) -> bytes:

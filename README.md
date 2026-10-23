@@ -77,12 +77,19 @@ It preserves original word geometry and proposed table membership.
 [immutable inspection history](docs/M1_NUMERICAL_CONTEXT_HISTORY.md) retain exact
 preparation inputs and results. [Exact M1 evidence binding](docs/M1_NUMERICAL_EVIDENCE_BINDING.md)
 links those inputs to existing word evidence in a complete sealed parse; all
-bindings remain ineligible for acceptance. Complete real numerical source
-parses, mandatory validation/review and numerical publication remain producer work.
+bindings remain ineligible for acceptance. The new
+[native/context producer](docs/M1_NATIVE_CONTEXT_EVIDENCE.md) retains complete native
+source banks for both originals and stores5,699exact M1 word-evidence records from
+eight selected context pages in a disposable verification corpus. All four real
+context records bind to actual evidence; this does not approve or publish facts.
+Runtime selection, mandatory validation/review and numerical publication remain
+producer work.
 The [complete-original benchmark](docs/M1_FULL_FILING_BENCHMARK.md) records
 whole-filing coverage, resource limits and an explicitly fingerprinted timeout
 experiment. Its SDK captures do not create accepted evidence or financial inputs.
-M2 acceptance, M3/M4/integration and real-corpus research evaluation remain unfinished.
+M3/M4 implementation is now authorized alongside remaining M2 work; see the
+[module delivery plan](docs/M3_M4_IMPLEMENTATION_PLAN.md). M2 acceptance,
+M3/M4/integration and real-corpus research evaluation remain unfinished.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10/M1.11/M1.12.

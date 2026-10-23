@@ -2,6 +2,60 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M1→M2 native/context integration; M3/M4 scope, 23 October
+
+The user confirmed keeping M1 interfaces/existing data stable while completing
+integration, then authorized starting M3/M4 alongside remaining M2 work because
+time is short. Added `M3_M4_IMPLEMENTATION_PLAN.md`; no review/publication gate is
+waived. The approved numerical prerequisite now supplies an explicit versioned
+native/context producer through existing M1 evidence shapes.
+
+The offline pinned native decoder processes intact Premier558pages/311,952words
+and Waaree626pages/334,839words in50.621s/52.910s, with336,940/322,768KiB peakRSS
+under twoCPUs/2GiB, non-root/read-only/network-none. Both retained capture
+containers exit0/OOMKilledfalse. Native bottom-left originals remain unchanged;
+selected contextual SDK top-left originals are reconciled by an explicit exact
+transform. Complete native coverage does not claim complete layout/OCR coverage.
+
+The actual owned-database proof seals both M1 jobs atomically, retains1,184native
+page records and5,699existing-shape word-evidence records across eight selected
+pages, then binds all four real context records to actual stored evidence IDs.
+Existing M1 evidence reads and repeat bindings match. Eight preview tables retain
+source capture links; public cell evidence stays zero. The proof creates no
+entity/metric/policy approval, accepted observation or corpus, and removes its
+owned database. All four real inspections remain REVIEW_REQUIRED/ineligible.
+
+New migration14 appends four immutable sidecar tables and an explicit1.1.0format
+branch; old migrations/algorithms remain frozen. Existing M1 persistence is
+intentionally refactored to share tree insertion while retaining legacy calls.
+Public APIs/frontend and original manual-test data remain unchanged. Native
+producer selection is programmatic; the legacy worker/UI is not wired to it.
+Mandatory numerical validation, actual review, immutable acceptance/publication
+and real M2 expected calculations remain unfinished.
+
+Verification: full backend2,212pass/six existing Windows skips/608integration
+deselected,261.245sJUnit;34new native unit controls included. New native29PG
+cases pass211.146s; existing evidence26pass26.920s; existing binding16pass38.165s;
+migration lifecycle7pass6.885s. Owned databases are removed. Ruff248/mypy162,
+nine generated-contract/fixture checks and portable PowerShell/Git Bash syntax
+pass. No dependency or required env is added. The native CLI is in both runners.
+
+The initial real helper did not complete; its result is not counted. A later
+proof caught a wrong Premier expected-value order: the original grid puts FY2024
+beforeFY2023. Corrected expectations bind retained exact source references and
+independent source-packet membership; the whole proof rerun passes. Two authored
+unit cases used the wrong fixture JSON path and were corrected. An env helper
+type error and shell-quoted edit failed before their intended operation; corrected
+commands pass. After the overnight pause, the same three stopped data services
+were restored from existing volumes. No assertion/gate was disabled.
+
+All37primary table hashes, both original PDFs, main clean236c03f and its1–11DB
+remain unchanged.135/136protected files match; only the approved existing M1
+persistence extension differs. Migrations1–13 and public interfaces are frozen.
+Exact predecessor caa652a CI39805377317 succeeds on all three jobs and all46input
+hashes match that commit; only public metadata is used. The measured native report
+records56current source/input hashes; verify its containing publication separately.
+
 ## M1 numerical prerequisite - complete-original parser benchmark, 22 October
 
 Continued the approved extension in codex/m2-comparison. New offline full_filing

@@ -1,5 +1,6 @@
 """Read-only administrator binding to actual sealed M1 parse/evidence rows."""
 
+import json
 from uuid import UUID
 
 import psycopg
@@ -29,12 +30,13 @@ from regintel.numerical.repository import (
 )
 from regintel.parsing.configuration import ParserRuntimeConfiguration
 from regintel.parsing.models import ParseArtifact, artifact_sha256
+from regintel.parsing.native_context import NativeContextConfiguration
 
 
 def _sealed_parse(
     connection: DatabaseConnection,
     parse_id: str,
-) -> tuple[ParseArtifact, ParserRuntimeConfiguration]:
+) -> tuple[ParseArtifact, ParserRuntimeConfiguration | NativeContextConfiguration]:
     row = connection.execute(
         "SELECT a.artifact_bytes,a.configuration_bytes,p.artifact_sha256,p.configuration_sha256,"
         "p.filing_version_id,p.source_blob_id,p.page_count,j.page_count,v.filing_id,s.sha256 "
@@ -51,9 +53,12 @@ def _sealed_parse(
             "A complete sealed M1 parse is required for exact evidence binding."
         )
     artifact = ParseArtifact.model_validate_json(_checked(row[0], row[2], MAX_ARTIFACT_BYTES))
-    configuration = ParserRuntimeConfiguration.model_validate_json(
-        _checked(row[1], row[3], MAX_CONFIGURATION_BYTES)
-    )
+    configuration_bytes = _checked(row[1], row[3], MAX_CONFIGURATION_BYTES)
+    configuration: ParserRuntimeConfiguration | NativeContextConfiguration
+    if json.loads(configuration_bytes).get("schema_version") == "1.1.0":
+        configuration = NativeContextConfiguration.model_validate_json(configuration_bytes)
+    else:
+        configuration = ParserRuntimeConfiguration.model_validate_json(configuration_bytes)
     if (
         artifact.id != parse_id
         or artifact.filing_version_id != str(row[4])

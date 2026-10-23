@@ -21,6 +21,7 @@ from regintel.numerical.models import StoredNumericalPage
 from regintel.numerical.source_pages import CellPreview
 from regintel.parsing.configuration import ParserRuntimeConfiguration
 from regintel.parsing.models import ParseArtifact, ParsedCell, ParsedTable, ReportedRectangle
+from regintel.parsing.native_context import NativeContextConfiguration, project_native_context
 
 WordKey = tuple[int, str, PdfRectangle, ReportedRectangle]
 
@@ -52,6 +53,8 @@ def binding_configuration_sha256() -> str:
         "parsing/adapter.py",
         "parsing/geometry.py",
         "parsing/models.py",
+        "parsing/native_context.py",
+        "parsing/native_source.py",
         "contracts/models.py",
         "contracts/primitives.py",
     )
@@ -242,11 +245,15 @@ def _cells(
 def bind_context_evidence(
     record: NumericalContextRecord,
     artifact: ParseArtifact,
-    configuration: ParserRuntimeConfiguration,
+    configuration: ParserRuntimeConfiguration | NativeContextConfiguration,
 ) -> NumericalEvidenceBinding:
     """Pure trusted-input operation; the repository additionally verifies sealed database rows."""
     record = NumericalContextRecord.model_validate(record.model_dump(mode="python"))
-    projection = project_parse(artifact, configuration)
+    projection = (
+        project_native_context(artifact, configuration)
+        if isinstance(configuration, NativeContextConfiguration)
+        else project_parse(artifact, configuration)
+    )
     if (record.filing_version_id, record.source_blob_id, record.source_sha256) != (
         artifact.filing_version_id,
         artifact.source_blob_id,
