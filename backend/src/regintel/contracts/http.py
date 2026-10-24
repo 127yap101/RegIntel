@@ -62,6 +62,8 @@ def error_response(
     headers: Mapping[str, str] | None = None,
 ) -> JSONResponse:
     code, message = _ERRORS.get(status, ("HTTP_ERROR", "Request failed."))
+    if status == 409 and request.url.path.startswith(("/v1/learning/", "/v1/portfolio/")):
+        message = "Conflicting request or version."
     if status == 503 and not request.url.path.startswith("/v1/auth/"):
         message = "Service is unavailable."
     envelope = ErrorEnvelope(

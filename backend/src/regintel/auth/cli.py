@@ -117,6 +117,11 @@ def serve_main() -> None:
         evidence_service,
         graph,
     )
+    from regintel.learning.repository import LearningRepository
+    from regintel.learning.service import LearningService
+    from regintel.portfolio.repository import PortfolioRepository
+    from regintel.portfolio.service import PortfolioService
+
     try:
         uvicorn.run(
             create_app(
@@ -139,6 +144,12 @@ def serve_main() -> None:
                 ),
                 publication_service=publication,
                 read_service=read_service,
+                learning_service=LearningService(
+                    LearningRepository(load_database_settings(args.env_file)), read_service
+                ),
+                portfolio_service=PortfolioService(
+                    PortfolioRepository(load_database_settings(args.env_file)), read_service
+                ),
                 retrieval_service=RetrievalService(
                     read_service,
                     SearchRepository(load_database_settings(args.env_file)),

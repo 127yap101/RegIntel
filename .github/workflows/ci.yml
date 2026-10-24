@@ -67,6 +67,7 @@ jobs:
           uv run --project backend --locked --no-sync python scripts/export-retrieval.py
           uv run --project backend --locked --no-sync python scripts/export-admin.py
           uv run --project backend --locked --no-sync python scripts/export-analysis.py
+          uv run --project backend --locked --no-sync python scripts/export-learning-portfolio.py
           uv run --project backend --locked --no-sync python scripts/generate-analysis-fixtures.py
           uv run --project backend --locked --no-sync python scripts/generate-read-fixtures.py
 

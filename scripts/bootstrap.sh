@@ -25,6 +25,7 @@ fi
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-retrieval.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-admin.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/export-analysis.py
+"$uv_bin" run --project backend --locked --no-sync python scripts/export-learning-portfolio.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/generate-analysis-fixtures.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/generate-read-fixtures.py
 "$uv_bin" run --project backend --locked --no-sync python scripts/generate-fixtures.py

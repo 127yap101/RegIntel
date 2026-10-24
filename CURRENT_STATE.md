@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-23 (Asia/Calcutta).
+Updated: 2026-10-24 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -15,6 +15,53 @@ Updated: 2026-10-23 (Asia/Calcutta).
 - On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
 
 ## Latest verified state
+
+- **M3/M4 first implementation, 24 October:** the isolated `codex/m2-comparison`
+  branch now provides administrator-authored learning drafts, immutable reviews,
+  independently versioned glossary publication, exact Decimal educational examples
+  and extractive M1 context with exact evidence. Approved draft/review recovery
+  and stale-parent publication checks preserve history. The learner sees approved
+  published content only. No real financial glossary or human approval is seeded.
+
+- M4 adds one per-user INR100000.00 opening virtual credit, server-controlled quote
+  snapshots, atomic immutable order outcomes, ledger-derived cash/holdings and
+  whole-share/zero-fee Decimal execution/replay. Exact request keys bind the complete
+  payload; concurrent duplicates commit one outcome. The browser retains only an
+  unconfirmed request per user/tab for reload/retry. Quotes remain unavailable by
+  explicit user choice; valid runtime submissions record a rejection without
+  moving balances. Fixed-price buys/partial/final sells and failures are engineering
+  acceptance fixtures, not a configured market provider. Valuation and portfolio
+  analytics remain further work.
+
+- New migrations15/16 own learning and virtual-portfolio tables only; migrations1–14
+  are frozen. Existing M1/M2 production, read, extraction and comparison algorithms
+  remain unchanged from b2efe29; shared API construction, native service wiring,
+  module-specific409 messages and navigation are intentionally extended. There is
+  no new dependency, required application env, provider, service or public port.
+  Primary main stays clean236c03f, database1–11, with all37authority fingerprints
+  and original PDFs unchanged. No new module/preparation tables exist there.
+
+- Final verification passes **2,261 backend tests**, six existing Windows platform
+  skips and652integration deselected. All49new unit controls are included. Owned
+  PostgreSQL checks pass19learning/HTTP,25portfolio/HTTP and7migration cases;
+  databases are removed. Frontend passes283unit tests, all34Chromium scenarios,
+  lint, strict types and production build. All four M3/M4 scenarios pass again
+  after the final stored-review recovery extension. Ruff267files, mypy176sources,
+  ten generated checks, both portable-runner syntaxes and the unchanged offline
+  dependency lock pass. The measured report records48implementation/input hashes.
+
+- Exact predecessor b2efe29 passes [CI39905663551](https://github.com/127yap101/RegIntel/actions/runs/39905663551)
+  on Windows foundation, Ubuntu foundation and Linux data infrastructure. Only
+  public run/job metadata was read; no raw logs or hosted per-test counts were
+  inferred. Verification and remaining work for this module checkpoint are in
+  `data/learning-portfolio-validation-report.json` and `docs/M3_M4_RUN_AND_TEST.md`.
+  The containing commit's own remote/CI must be verified separately.
+
+- M2's four real numerical contexts remain bound to actual M1 evidence but still
+  need mandatory validation, genuine review and immutable acceptance/publication.
+  Real M2 acceptance remains BLOCKED. Continue these producer gates alongside
+  reviewed M3 content and M4 data/analytics work, preserving M1's interfaces/data.
+  No real-data/research-effectiveness or all-modules-complete claim is made.
 
 - **Real native/context M1→M2 evidence, 23 October:** complete offline native capture now covers both intact originals: Premier558pages/311,952words and Waaree626pages/334,839words. The bounded page-wise decoder takes50.621s/52.910s with336,940/322,768KiB peak RSS, respectively, under twoCPUs/2GiB, non-root/read-only/network-none; retained containers exit0 and are not OOM-killed. Native bottom-left corners and contextual SDK top-left corners remain separate, with exact explicit conversion checks. Full native coverage does not imply full layout/OCR coverage.
 

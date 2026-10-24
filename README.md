@@ -10,6 +10,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - `CURRENT_STATE.md`: latest implementation/verification status and exact resume direction.
 - [Run/check/sleep guide](docs/RUN_AND_CHECK.md): current app/API launch commands, saved proof, verification and safe pause/resume.
 - [M1 teammate testing guide](docs/M1_TEAM_TESTING.md): initialize another computer, verify local accounts and distinguish an empty database from a populated filing demo.
+- [M3/M4 run and test guide](docs/M3_M4_RUN_AND_TEST.md): use the module branch, review/publish learning content and test the deterministic virtual ledger.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.
@@ -87,9 +88,20 @@ producer work.
 The [complete-original benchmark](docs/M1_FULL_FILING_BENCHMARK.md) records
 whole-filing coverage, resource limits and an explicitly fingerprinted timeout
 experiment. Its SDK captures do not create accepted evidence or financial inputs.
-M3/M4 implementation is now authorized alongside remaining M2 work; see the
-[module delivery plan](docs/M3_M4_IMPLEMENTATION_PLAN.md). M2 acceptance,
-M3/M4/integration and real-corpus research evaluation remain unfinished.
+M3/M4 now have an implemented first slice alongside remaining M2 work. M3 adds
+private definition drafts, immutable reviews, versioned glossary publication,
+Decimal educational examples and extractive published-filing context. M4 adds
+per-user virtual accounts, immutable quote/order records, exact cash/holdings and
+safe request retries. The browser has separate learning and virtual-portfolio
+workspaces. No financial glossary is automatically approved; runtime quotes and
+market valuation remain unavailable. Successful buys/sells are verified using
+labelled fixed-price engineering providers in disposable tests. See the
+[module run/test guide](docs/M3_M4_RUN_AND_TEST.md),
+[delivery plan](docs/M3_M4_IMPLEMENTATION_PLAN.md) and
+[measured report](data/learning-portfolio-validation-report.json).
+M2 real numerical acceptance, reviewed learning content, remaining portfolio
+analytics/data integration, final integration and research evaluation remain
+unfinished. M1's original checkout and saved data stay unchanged.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10/M1.11/M1.12.

@@ -2,6 +2,50 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M3 learning and M4 virtual-ledger implementation, 24 October
+
+Implemented the authorized M3/M4 first slice in the isolated M2 branch. M3 stores
+exact authored definitions/sources and backend-calculated educational examples,
+then immutable administrator reviews and independent glossary versions. Learners
+cannot access drafts or author/publish content. Explicit metric links connect a
+reviewed definition to an existing published M1 observation and exact evidence;
+the source viewer reuses M1. No runtime model or generated paraphrase is enabled.
+Reviewed draft restoration reads the stored decision, and glossary publication
+checks its parent to prevent stale writes from discarding another publication.
+
+M4 stores one fixed virtual opening credit per owner, server-selected quote
+snapshots and atomic append-only order outcomes. Decimal arithmetic, whole shares,
+zero fees, insufficient cash/holdings, validity windows, replay, ownership and
+concurrent duplicate/conflicting requests are checked. Cash/holdings derive from
+the ledger. The runtime has no quote provider; no price is invented. Fixed-price
+engineering providers demonstrate successful buys and partial/final sells only
+in owned disposable tests. The browser retains an unconfirmed exact request per
+user/tab and clears it after confirmation; no token/balance is stored there.
+
+Added migrations15/16, generated wire export/check wiring, authenticated module
+routers and native service construction, plus learner/admin learning and virtual
+portfolio screens. Existing M1/M2 contracts, facts and algorithms retain ownership.
+Original main/data are unchanged; its database stays1–11. No dependency, required
+env, extra data service, public port, paid call or original-corpus migration is added.
+
+Final checks pass2,261backend/six existing Windows skips/652integration deselected,
+including49new unit controls. All19learning/HTTP,25portfolio/HTTP and7migration
+checks pass in owned disposable databases, which are removed. Frontend passes
+283unit tests and34Chromium scenarios; all four M3/M4 scenarios pass again with
+the final stored-review recovery flow. Lint/types/build, Ruff267/mypy176, all ten
+generated checks, both portable-runner syntaxes and offline lock validation pass.
+All48recorded implementation/input hashes identify the tested source. Main stays
+clean236c03f with1–11migrations,37matching authority hashes and both originals
+unchanged. No paid provider or fabricated financial content is used.
+
+The previous native-evidence source b2efe29 passes exact-source CI39905663551 on
+all three jobs. Module test measurements, source hashes, disclosed attempts and
+remaining acceptance are recorded in `data/learning-portfolio-validation-report.json`.
+The [run/test guide](M3_M4_RUN_AND_TEST.md) explains branch selection, fresh local
+setup, review/publication, explicit quote unavailability and disposable checks.
+M2 real numerical validation/publication, independently reviewed M3 content,
+remaining M4 analytics/data workflow and final research/integration gates remain.
+
 ## M1→M2 native/context integration; M3/M4 scope, 23 October
 
 The user confirmed keeping M1 interfaces/existing data stable while completing

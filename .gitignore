@@ -48,6 +48,8 @@ frontend/src/admin/fixtures.generated.json
 frontend/src/analysis/generated.ts
 frontend/src/analysis/schema.json
 frontend/src/analysis/fixtures.generated.json
+frontend/src/modules/generated.ts
+frontend/src/modules/schema.json
 *.log
 
 # Editor and OS files

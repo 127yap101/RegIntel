@@ -7,12 +7,40 @@ D:/RegIntel/.cache/worktrees/m2-comparison checkout on codex/m2-comparison, with
 normal authorized commits/pushes to127yap101/RegIntel. No repeated approval is
 needed for these module phases or the19October numerical prerequisite.
 
-Read CURRENT_STATE.md, docs/M3_M4_IMPLEMENTATION_PLAN.md,
-docs/M1_NATIVE_CONTEXT_EVIDENCE.md and its measured report first. Implement useful
-M3 reviewed-learning and M4 deterministic virtual-ledger flows against existing
-published M1 contracts. Keep quotes unavailable as requested; fixed prices belong
-to labelled acceptance fixtures until a reviewed provider/dataset is supplied.
-Do not wait on real numerical acceptance to implement independent M3/M4 behavior.
+Read CURRENT_STATE.md, docs/M3_M4_RUN_AND_TEST.md and
+data/learning-portfolio-validation-report.json first. M3/M4 now have implemented
+first slices: authored/reviewed/versioned learning with deterministic educational
+examples and extractive M1 context; per-user virtual accounts and an immutable
+Decimal quote/order ledger with exact-key retries. Admins can restore a saved
+draft's existing review and refresh the current glossary parent. The browser has
+learning and virtual-portfolio workspaces; no real educational approvals are
+seeded. Migrations15/16 are module-owned and are not applied to the original corpus.
+
+Continue remaining M2/M3/M4 through these boundaries. Priority M2 work is mandatory
+numerical validation, genuine reviewed acceptance/publication and independent
+real expected calculations. For M3, prepare source-backed draft educational
+content and obtain actual explicit review before publication; preserve independent
+glossary versions and exact filing context. M4 still needs a reviewed quote-data
+workflow and analytics/valuation with explicit input availability. Keep quotes
+unavailable as requested; fixed prices belong to labelled acceptance fixtures
+until a reviewed provider/dataset is supplied. Do not invent approvals/prices or
+declare complete modules from authored test success. No repeated phase approval
+is needed, and independent module work need not wait on real M2 acceptance.
+
+Final verification passes2,261backend/six Windows skips/652integration deselected,
+51owned-database cases,283frontend and34Chromium scenarios; all four module browser
+flows pass again after review recovery. Lint/types/build, Ruff267/mypy176, ten
+generated checks, both runner syntaxes and the offline dependency lock pass.
+The module report records48source/input hashes and separates engineering fixtures
+from actual reviewed data. Before claiming hosted
+success, verify the containing commit's own remote SHA/CI. The native predecessor
+b2efe29 passes CI39905663551 on all3jobs. Preserve original clean main236c03f,
+its1–11database and37authority fingerprints. New setup/runner/CI wiring regenerates
+ignored M3/M4 schemas/types. There are no new dependencies, required application
+env variables, services or public ports. Use the existing private infrastructure
+and owned disposable test databases; never migrate/reset the original M1 corpus.
+
+## Retained native/context producer checkpoint, 23 October
 
 Latest verified producer state: both intact originals have complete native banks:
 Premier558pages/311,952words and Waaree626pages/334,839words. Native decoding is
