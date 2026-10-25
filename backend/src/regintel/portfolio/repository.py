@@ -9,8 +9,10 @@ from typing import Protocol
 from uuid import UUID, uuid4
 
 import psycopg
+from pydantic import TypeAdapter
 
 from regintel.auth.types import User
+from regintel.contracts.primitives import CanonicalId
 from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import canonical_bytes
@@ -117,26 +119,49 @@ class PortfolioRepository:
             raise PortfolioNotFound("Create your virtual account before submitting an order.")
         return str(row[0])
 
-    def _state(self, connection: DatabaseConnection, identity: str) -> PortfolioAccount:
+    @staticmethod
+    def _through(connection: DatabaseConnection, identity: str, version: str | None) -> int | None:
+        if version is None:
+            return None
+        TypeAdapter(CanonicalId).validate_python(version)
+        if version == identity:
+            return 0
+        row = connection.execute(
+            "SELECT sequence FROM regintel.portfolio_orders WHERE account_id=%s AND id=%s",
+            (UUID(identity), UUID(version)),
+        ).fetchone()
+        if row is None:
+            raise PortfolioNotFound("The selected version is unavailable in your virtual account.")
+        if not isinstance(row[0], int) or not 1 <= row[0] <= 1000000:
+            raise PortfolioUnavailable("The selected virtual ledger sequence is invalid.")
+        return row[0]
+
+    def _state(
+        self, connection: DatabaseConnection, identity: str, through: int | None = None
+    ) -> PortfolioAccount:
         row = connection.execute(
             "SELECT a.opening_cash+coalesce(sum(o.cash_delta),0),count(o.id) "
             "FROM regintel.portfolio_accounts a "
             "LEFT JOIN regintel.portfolio_orders o ON o.account_id=a.id "
+            "AND (%s::bigint IS NULL OR o.sequence<=%s) "
             "WHERE a.id=%s GROUP BY a.id,a.opening_cash",
-            (UUID(identity),),
+            (through, through, UUID(identity)),
         ).fetchone()
         assert row is not None
         holdings = connection.execute(
             "SELECT company_id,sum(quantity_delta)::bigint FROM regintel.portfolio_orders "
-            "WHERE account_id=%s GROUP BY company_id "
+            "WHERE account_id=%s AND (%s::bigint IS NULL OR sequence<=%s) GROUP BY company_id "
             "HAVING sum(quantity_delta)>0 ORDER BY company_id",
-            (UUID(identity),),
+            (UUID(identity), through, through),
         ).fetchall()
         last = connection.execute(
             "SELECT id FROM regintel.portfolio_orders WHERE account_id=%s "
+            "AND (%s::bigint IS NULL OR sequence<=%s) "
             "ORDER BY sequence DESC LIMIT 1",
-            (UUID(identity),),
+            (UUID(identity), through, through),
         ).fetchone()
+        if through is not None and row[1] != through:
+            raise PortfolioUnavailable("The selected virtual ledger prefix is incomplete.")
         return PortfolioAccount.model_validate(
             {
                 "account_id": identity,
@@ -161,9 +186,10 @@ class PortfolioRepository:
             )
             return self._state(connection, self._account(connection, user))
 
-    def account(self, user: User) -> PortfolioAccount:
+    def account(self, user: User, *, version: str | None = None) -> PortfolioAccount:
         with self.transaction(user) as connection:
-            return self._state(connection, self._account(connection, user))
+            identity = self._account(connection, user)
+            return self._state(connection, identity, self._through(connection, identity, version))
 
     def submit(self, request: OrderRequest, user: User) -> OrderReceipt:
         request = OrderRequest.model_validate(request.model_dump(mode="python"))
@@ -258,7 +284,9 @@ class PortfolioRepository:
             )
             return OrderReceipt(account_id=account_id, portfolio_version_id=entry.id, entry=entry)
 
-    def ledger(self, user: User, *, offset: int = 0, limit: int = 50) -> LedgerPage:
+    def ledger(
+        self, user: User, *, offset: int = 0, limit: int = 50, version: str | None = None
+    ) -> LedgerPage:
         if (
             type(offset) is not int
             or type(limit) is not int
@@ -268,12 +296,14 @@ class PortfolioRepository:
             raise PortfolioConflict("Select a bounded ledger page.")
         with self.transaction(user) as connection:
             identity = self._account(connection, user)
-            account = self._state(connection, identity)
+            account = self._state(
+                connection, identity, self._through(connection, identity, version)
+            )
             rows = connection.execute(
                 "SELECT entry_bytes,entry_sha256 FROM regintel.portfolio_orders "
-                "WHERE account_id=%s "
+                "WHERE account_id=%s AND sequence<=%s "
                 "ORDER BY sequence OFFSET %s LIMIT %s",
-                (UUID(identity), offset, limit),
+                (UUID(identity), account.committed_orders, offset, limit),
             ).fetchall()
             return LedgerPage(
                 account_id=identity,
@@ -285,16 +315,18 @@ class PortfolioRepository:
                 offset=offset,
             )
 
-    def analytics(self, user: User) -> PortfolioAnalytics:
+    def analytics(self, user: User, *, version: str | None = None) -> PortfolioAnalytics:
         with self.transaction(user) as connection:
             identity = self._account(connection, user)
-            account = self._state(connection, identity)
+            account = self._state(
+                connection, identity, self._through(connection, identity, version)
+            )
             if account.committed_orders > MAX_ANALYTICS_ENTRIES:
                 return unavailable_analytics(account)
             size = connection.execute(
                 "SELECT coalesce(sum(octet_length(entry_bytes)),0) "
-                "FROM regintel.portfolio_orders WHERE account_id=%s",
-                (UUID(identity),),
+                "FROM regintel.portfolio_orders WHERE account_id=%s AND sequence<=%s",
+                (UUID(identity), account.committed_orders),
             ).fetchone()
             if size is None or not isinstance(size[0], int) or size[0] > MAX_ANALYTICS_BYTES:
                 return unavailable_analytics(account)
@@ -307,8 +339,8 @@ class PortfolioRepository:
                 raise PortfolioUnavailable("The opening virtual credit is unavailable.")
             rows = connection.execute(
                 "SELECT entry_bytes,entry_sha256 FROM regintel.portfolio_orders "
-                "WHERE account_id=%s ORDER BY sequence LIMIT %s",
-                (UUID(identity), MAX_ANALYTICS_ENTRIES),
+                "WHERE account_id=%s AND sequence<=%s ORDER BY sequence LIMIT %s",
+                (UUID(identity), account.committed_orders, MAX_ANALYTICS_ENTRIES),
             ).fetchall()
             entries = tuple(LedgerEntry.model_validate_json(_checked(r[0], r[1])) for r in rows)
             return ledger_analytics(account, row[0], entries)

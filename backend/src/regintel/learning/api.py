@@ -11,6 +11,7 @@ from regintel.auth.types import User
 from regintel.contracts.http import response_meta
 from regintel.contracts.models import ErrorEnvelope, SuccessEnvelope
 from regintel.contracts.primitives import CanonicalId
+from regintel.learning.draft_pack import LearningStarterPack
 from regintel.learning.models import (
     DefinitionDraft,
     DefinitionQueue,
@@ -89,6 +90,16 @@ def create_learning_router(auth: AuthService | None, service: LearningService | 
     ) -> SuccessEnvelope[GlossaryVersion]:
         data = perform(lambda: ready().repository.glossary(version_id, user))
         return envelope(data, request, data.glossary_version_id)
+
+    @router.get(
+        "/v1/learning/starter-pack",
+        response_model=SuccessEnvelope[LearningStarterPack],
+        responses=errors,
+    )
+    def starter_pack(
+        request: Request, user: Annotated[User, Depends(administrator)]
+    ) -> SuccessEnvelope[LearningStarterPack]:
+        return envelope(perform(lambda: ready().repository.starter_pack(user)), request)
 
     @router.get(
         "/v1/learning/drafts", response_model=SuccessEnvelope[DefinitionQueue], responses=errors

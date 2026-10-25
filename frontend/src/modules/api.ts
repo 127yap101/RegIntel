@@ -33,12 +33,16 @@ function object(value: unknown): Record<string, unknown> {
   return value as Record<string, unknown>
 }
 
-function checkedDefinition(value: StoredDefinition): void {
-  for (const source of value.draft.sources) {
+function checkedSources(value: DefinitionDraft): void {
+  for (const source of value.sources) {
     let url: URL
     try { url = new URL(source.url) } catch { throw new ModuleError(0, 'The learning source link is invalid.') }
     if (!['https:', 'http:'].includes(url.protocol) || url.username || url.password) throw new ModuleError(0, 'The learning source link is invalid.')
   }
+}
+
+function checkedDefinition(value: StoredDefinition): void {
+  checkedSources(value.draft)
   if ((value.calculation !== null) !== (value.draft.example !== null && value.draft.example !== undefined) || (value.calculation !== null && (value.calculation.state !== 'AVAILABLE' || value.calculation.result === null))) throw new ModuleError(0, 'The reviewed example is unavailable.')
 }
 
@@ -52,6 +56,14 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
     if ((status.state === 'AVAILABLE') !== (status.glossary_version_id !== null)) throw new ModuleError(0, 'Learning availability has no matching published version.')
   }
   if (kind === 'definition') checkedDefinition(data as ModuleWire['definition'])
+  if (kind === 'starter_pack') {
+    const pack = data as ModuleWire['starter_pack']
+    if (meta.versions.glossary_version_id !== null || new Set(pack.drafts.map((item) => item.key)).size !== pack.drafts.length || new Set(pack.drafts.map((item) => item.draft.term.toLowerCase())).size !== pack.drafts.length) throw new ModuleError(0, 'The unreviewed starter draft pack is invalid.')
+    for (const item of pack.drafts) {
+      checkedSources(item.draft)
+      if (item.draft.metric_ids?.length || item.draft.sources.length !== 1) throw new ModuleError(0, 'A starter cannot assume a reviewed metric mapping or omit its source.')
+    }
+  }
   if (kind === 'reviewed') checkedDefinition((data as ModuleWire['reviewed']).definition)
   if (kind === 'drafts') {
     const queue = data as ModuleWire['drafts']
@@ -133,5 +145,18 @@ export class ModuleApi {
     const actual = result.entry.request
     if (actual.request_id !== request.request_id || actual.company_id !== request.company_id || actual.corpus_version_id !== request.corpus_version_id || actual.quantity !== request.quantity || actual.side !== request.side) throw new ModuleError(0, 'The recorded order differs from the submitted request.')
     return result
+  }
+
+  async ledgerSnapshot(account: ModuleWire['portfolio'], signal: AbortSignal, offset = 0): Promise<ModuleWire['ledger']> {
+    const query = new URLSearchParams({ portfolio_version_id: account.portfolio_version_id, offset: String(offset), limit: '50' })
+    const history = await this.read('ledger', `/v1/portfolio/ledger?${query}`, signal)
+    const expected = Math.min(50, Math.max(0, account.committed_orders - offset))
+    if (history.account_id !== account.account_id || history.portfolio_version_id !== account.portfolio_version_id || history.total !== account.committed_orders || history.offset !== offset || history.entries.length !== expected || history.entries.some((entry, index) => entry.sequence !== offset + index + 1)) throw new ModuleError(0, 'The history differs from the selected virtual account version.')
+    return history
+  }
+
+  async portfolioSnapshot(signal: AbortSignal): Promise<{ account: ModuleWire['portfolio']; ledger: ModuleWire['ledger'] }> {
+    const account = await this.read('portfolio', '/v1/portfolio', signal)
+    return { account, ledger: await this.ledgerSnapshot(account, signal) }
   }
 }

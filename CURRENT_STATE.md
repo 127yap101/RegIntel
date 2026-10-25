@@ -16,6 +16,51 @@ Updated: 2026-10-25 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Review/history continuation, 25 October:** M2 records an immutable
+  `CONFIRM_CONTEXT` / `REJECT` decision over a bound gate. Confirmation requires
+  fourteen passing installed checks, complete exact evidence and fresh source /
+  approval snapshots. Changed inputs and unresolved checks cannot be overridden.
+  Exact retries preserve the original actor; changed decisions conflict.
+  Migration18 adds one audit table;1–17are frozen. This is staged context review,
+  not legacy M1 acceptance or corpus publication. See
+  `docs/M2_NUMERICAL_CONTEXT_REVIEWS.md`.
+
+- Read-only replay of all four retained actual numerical inputs confirms each
+  still refuses confirmation. No new real review, approval, fact or corpus is
+  created. Main stays clean236c03f/DB1–11, all37authority hashes and both original
+  PDFs match, and187existing core/script/final-spec files are unchanged from65d946d.
+
+- M3 provides seven explicitly unreviewed starter drafts through an admin-only
+  read. The agent-prepared paraphrases cite actual IFRS Foundation summary pages;
+  applicability to an Indian filing needs review. Loading fills the editor, keeps
+  source locations and clears prior metric/review choices without saving,
+  approving or publishing. Three Decimal examples use hypothetical inputs only.
+  See `docs/M3_STARTER_DRAFT_SOURCES.md`.
+
+- M4 account, ledger and analytics reads optionally select an owned portfolio
+  version. The account ID selects opening credit; an order ID selects the complete
+  prefix through that order. Unknown/foreign versions are unavailable. The browser
+  pins dependent reads to one version and validates exact page membership, so
+  later orders cannot mix into old history. Current defaults, writes and quote
+  unavailability remain stable.
+
+- Verification passes2,305backend tests/six existing Windows skips/684integration
+  deselected,72owned PostgreSQL/HTTP cases,288frontend units and36Chromium scenarios.
+  Final11module wire tests plus lint/types/build pass after the ledger-page guard;
+  eight starter tests pass after the final wording clarification. Ruff281files,
+  mypy183sources and ten generated checks pass. The measured report records93input
+  hashes and separates retained real gate blocking from authored positive reviews.
+  There is no research-accuracy, real approval or complete-module claim.
+
+- Exact predecessor65d946d passes
+  [CI40179800314](https://github.com/127yap101/RegIntel/actions/runs/40179800314)
+  on Windows, Ubuntu and Linux data infrastructure;83recorded inputs match Git.
+  Current measurements and disclosed attempts are in
+  `data/review-history-validation-report.json`. Verify this containing commit's
+  own remote/CI separately. The original stopped private data services were
+  restored from existing volumes for owned tests. No primary migration/reset,
+  dependency, required env, service, public port or paid call is added.
+
 - **Module continuation, 25 October:** M2 adds a separate versioned numerical gate
   and immutable audit over retained context, current approval snapshots and actual
   sealed M1 word bindings. Its fourteen checks preserve source/context, exact

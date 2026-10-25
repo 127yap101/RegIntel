@@ -2,10 +2,36 @@ import { afterEach, describe, expect, it, vi } from 'vitest'
 import { decode, ModuleApi, ModuleError, orderInput } from './api'
 import { confirmOrder, pendingOrder, retainOrder } from './pending'
 import { analytics, definition, envelope, glossary, ids, opening, rejection, request, reviewed, user } from './fixtures.test-support'
+import starters from '../../../data/learning-starter-drafts.json'
 
 afterEach(() => { vi.unstubAllGlobals(); sessionStorage.clear() })
 
 describe('M3/M4 wire and source versions', () => {
+  it('keeps starter content unreviewed, source-linked and independent of M1 metric IDs', () => {
+    expect(decode('starter_pack', envelope(starters)).drafts).toHaveLength(7)
+    expect(() => decode('starter_pack', envelope({ ...starters, status: 'APPROVED' }))).toThrow(ModuleError)
+    expect(() => decode('starter_pack', envelope({ ...starters, reviewed_by: 'invented reviewer' }))).toThrow(ModuleError)
+    const changed = { ...starters, drafts: starters.drafts.map((item, index) => index === 0 ? { ...item, draft: { ...item.draft, metric_ids: [ids.account] } } : item) }
+    expect(() => decode('starter_pack', envelope(changed))).toThrow('reviewed metric mapping')
+  })
+  it('pins dependent history requests to the selected account version and checks ownership', async () => {
+    const fetcher = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ access_token: 'authored-module-token', token_type: 'bearer' })))
+      .mockResolvedValueOnce(new Response(JSON.stringify(envelope(user))))
+      .mockResolvedValueOnce(new Response(JSON.stringify(envelope(opening, { portfolio_version_id: ids.account }))))
+      .mockResolvedValueOnce(new Response(JSON.stringify(envelope({ account_id: ids.account, portfolio_version_id: ids.account, entries: [], total: 0, offset: 0 }, { portfolio_version_id: ids.account }))))
+    vi.stubGlobal('fetch', fetcher)
+    const signal = new AbortController().signal
+    const session = await ModuleApi.login('authored', 'authored-password', signal)
+    const selected = (await session.portfolioSnapshot(signal)).account
+    expect(selected).toEqual(opening)
+    expect(fetcher.mock.calls[3]?.[0]).toContain(`portfolio_version_id=${ids.account}`)
+    fetcher.mockResolvedValueOnce(new Response(JSON.stringify(envelope({ account_id: ids.user, portfolio_version_id: ids.account, entries: [], total: 0, offset: 0 }, { portfolio_version_id: ids.account }))))
+    await expect(session.ledgerSnapshot(selected, signal)).rejects.toThrow('selected virtual account version')
+    const recorded = decode('portfolio', envelope({ ...opening, portfolio_version_id: ids.order, committed_orders: 1 }, { portfolio_version_id: ids.order }))
+    fetcher.mockResolvedValueOnce(new Response(JSON.stringify(envelope({ account_id: ids.account, portfolio_version_id: ids.order, entries: [{ ...rejection().entry, sequence: 2 }], total: 1, offset: 0 }, { portfolio_version_id: ids.order }))))
+    await expect(session.ledgerSnapshot(recorded, signal)).rejects.toThrow('selected virtual account version')
+  })
   it('keeps draft decisions private and tied to the selected immutable definition', () => {
     const item = { definition, state: 'APPROVED', review: reviewed }
     const queue = { items: [item], state: 'ALL', query: '', offset: 0, limit: 20, total: 1 }

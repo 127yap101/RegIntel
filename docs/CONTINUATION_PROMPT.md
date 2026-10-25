@@ -1,5 +1,49 @@
 # Continue RegIntel M2, M3 and M4
 
+Latest review/history continuation: read `data/review-history-validation-report.json`,
+`docs/M2_NUMERICAL_CONTEXT_REVIEWS.md` and `docs/M3_STARTER_DRAFT_SOURCES.md` first.
+M2 has immutable staged context decisions with current-admin, installed-gate,
+complete-evidence and fresh-source/approval checks. CONFIRM_CONTEXT needs all
+fourteen checks to pass; unresolved context cannot be overridden. Identical
+retries preserve the original actor; changed decisions conflict. Migration18
+adds one review table;1–17are frozen. Every decision is acceptance-ineligible,
+mandatory-M1-validation-incomplete and non-publishing. Complete the versioned
+acceptance adapter next; never cast this decision as legacy validation/publication.
+
+All four retained real numerical inputs replay identically and refuse confirmation.
+The new proof is read-only over retained inputs, creates no real decision and
+makes no database write. Positive/rejected decisions use labelled authored PDFs
+and actual M1 storage in disposable tests. Do not invent real issuer/metric/policy
+approval, context decisions, reviewer identity or publication.
+
+M3 has seven explicitly unreviewed agent-prepared starters. An administrator can
+load one for editing, keeping its source location while clearing previous metric /
+review selections. Loading does not save/approve/publish. The IFRS summaries do
+not establish Indian-framework applicability; real content review and mapping
+remain necessary. Runtime model generation stays disabled.
+
+M4 account/ledger/analytics optionally select an owned portfolio_version_id.
+The account ID is opening credit; an order ID selects its complete ledger prefix.
+Current defaults stay stable. The browser pins dependent reads to one version
+and checks exact page membership. Quotes, valuation and open-position P&L remain
+unavailable. Preserve clean main236c03f/DB1–11,37authority hashes, both originals,
+187existing core/script/final-spec files and migrations1–17.
+
+Predecessor65d946d passes CI40179800314 on all3jobs and83recorded inputs match Git.
+Verify the containing commit's own remote/CI separately. The original stopped
+private data services were restored from existing volumes; no primary migration /
+reset, dependency, required env, paid call, new service or public port is added.
+Continue authorized module work and push tested checkpoints on this branch.
+
+Verified checks:2,305backend/six existing Windows skips/684integration deselected;
+72owned PostgreSQL/HTTP cases,288frontend and36Chromium scenarios. After the last
+page-membership guard, all11module wire tests plus lint/types/build pass. Eight
+starter tests pass after the final copy clarification. Ruff281/mypy183 and ten
+generated checks pass;93implementation/input hashes are recorded. Read the
+measured report for initial stopped-service, fixture/import and selector attempts;
+no assertion was disabled and current owned databases are removed. These are
+engineering checks, not independent educational review or research effectiveness.
+
 Latest continuation,25October: read `docs/M2_BOUND_NUMERICAL_GATES.md` and
 `data/module-continuation-validation-report.json` with this prompt. M2 now has a
 separately versioned fourteen-check bound numerical gate and immutable exact-input

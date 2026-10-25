@@ -3,15 +3,20 @@ import type { Page } from '@playwright/test'
 import type { DefinitionDraft, OrderRequest, ReviewedDefinition, StoredDefinition } from '../../src/modules/generated'
 import { analytics, definition, envelope, glossary, ids, opening, published, rejection, reviewed, user } from '../../src/modules/fixtures.test-support'
 import { apiOrigin, webOrigin } from '../ports'
+import { readFileSync } from 'node:fs'
+import { resolve } from 'node:path'
+
+const starterPack: unknown = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../data/learning-starter-drafts.json'), 'utf8'))
 
 // Browser fixtures are authored engineering data, separate from real review/quotes.
-async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; loseResponse?: boolean; wrongVersion?: boolean } = {}) {
+async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean } = {}) {
   let stored = structuredClone(definition) as unknown as StoredDefinition
   let available = !options.empty
   let saved = !options.empty
   let storedReview = options.empty ? null : reviewed as unknown as ReviewedDefinition | null
   let accountCreated = false
   let recorded: OrderRequest | null = null
+  let appended = false
   const requests: OrderRequest[] = []
   await page.route(`${apiOrigin}/v1/**`, async (route) => {
     const path = new URL(route.request().url()).pathname
@@ -26,6 +31,7 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
     else if (path.endsWith('/facts')) data = published.facts
     else if (path === '/v1/learning/status') data = envelope({ state: available ? 'AVAILABLE' : 'NO_PUBLISHED_GLOSSARY', glossary_version_id: available ? ids.glossary : null }, { glossary_version_id: available ? ids.glossary : null })
     else if (path.startsWith('/v1/learning/glossary/')) data = envelope(glossary, { glossary_version_id: options.wrongVersion ? ids.account : ids.glossary })
+    else if (path === '/v1/learning/starter-pack') data = envelope(starterPack)
     else if (path === '/v1/learning/drafts' && method === 'GET') {
       const query = new URL(route.request().url()).searchParams
       const filter = query.get('state') ?? 'PENDING_REVIEW'
@@ -54,9 +60,19 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
       expect(route.request().postDataJSON()).toMatchObject({ glossary_version_id: ids.glossary, definition_id: ids.definition, corpus_version_id: published.info.data.corpus_version_id, observation_id: published.facts.data.facts[0]!.observation.id })
       data = envelope({ glossary_version_id: ids.glossary, definition: reviewed, view: published.facts.data.view, observation: published.facts.data.facts[0]!.observation, evidence: [published.evidence.data], generated: false }, { glossary_version_id: ids.glossary, corpus_version_id: published.info.data.corpus_version_id })
     } else if (path === '/v1/portfolio/accounts') { accountCreated = true; data = envelope(opening, { portfolio_version_id: ids.account }) }
-    else if (path === '/v1/portfolio' && accountCreated) data = envelope({ ...opening, committed_orders: recorded ? 1 : 0, portfolio_version_id: recorded ? ids.order : ids.account }, { portfolio_version_id: recorded ? ids.order : ids.account })
-    else if (path === '/v1/portfolio/ledger' && accountCreated) data = envelope({ account_id: ids.account, portfolio_version_id: recorded ? ids.order : ids.account, entries: recorded ? [rejection(recorded).entry] : [], total: recorded ? 1 : 0, offset: 0 }, { portfolio_version_id: recorded ? ids.order : ids.account })
-    else if (path === '/v1/portfolio/analytics' && accountCreated) data = envelope(analytics(recorded !== null), { portfolio_version_id: recorded ? ids.order : ids.account })
+    else if (path === '/v1/portfolio' && accountCreated) {
+      data = envelope({ ...opening, committed_orders: recorded ? 1 : 0, portfolio_version_id: recorded ? ids.order : ids.account }, { portfolio_version_id: recorded ? ids.order : ids.account })
+      if (options.appendDuringRead && !appended) {
+        appended = true
+        recorded = rejection().entry.request as OrderRequest
+      }
+    } else if ((path === '/v1/portfolio/ledger' || path === '/v1/portfolio/analytics') && accountCreated) {
+      const selected = new URL(route.request().url()).searchParams.get('portfolio_version_id')
+      expect(selected).not.toBeNull()
+      const included = selected === ids.order && recorded !== null
+      const version = included ? ids.order : ids.account
+      data = path.endsWith('/analytics') ? envelope(analytics(included), { portfolio_version_id: version }) : envelope({ account_id: ids.account, portfolio_version_id: version, entries: included && recorded ? [rejection(recorded).entry] : [], total: included ? 1 : 0, offset: 0 }, { portfolio_version_id: version })
+    }
     else if (path === '/v1/portfolio/orders') {
       const input = route.request().postDataJSON() as OrderRequest
       requests.push(input)
@@ -118,6 +134,7 @@ test('M3 learner sees reviewed source context and no authoring controls on a nar
   await authoredModules(page); await signIn(page, 'learning')
   await expect(page.getByRole('heading', { name: definition.draft.term })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Save definition draft' })).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'Unreviewed learning starters' })).toHaveCount(0)
   await page.getByRole('combobox', { name: 'Definition', exact: true }).selectOption(ids.definition)
   await page.getByRole('combobox', { name: 'Company', exact: true }).selectOption(published.companies.data.companies[0]!.id)
   await expect(page.getByRole('combobox', { name: 'Disclosure', exact: true }).locator('option')).toHaveCount(2)
@@ -126,6 +143,33 @@ test('M3 learner sees reviewed source context and no authoring controls on a nar
   await expect(page.getByText(published.facts.data.facts[0]!.observation.raw_text, { exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: /View source page/ })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})
+
+test('M3 starter loading requires explicit save and review and retains its source location', async ({ page }) => {
+  let writes = 0
+  page.on('request', (request) => { if (request.method() === 'POST' && request.url().includes('/v1/learning/')) writes += 1 })
+  await authoredModules(page, { admin: true, empty: true }); await signIn(page, 'learning')
+  await page.getByRole('combobox', { name: 'Unreviewed starter term', exact: true }).selectOption('profit_or_loss')
+  await page.getByRole('button', { name: 'Load starter for editing' }).click()
+  await expect(page.getByLabel('Term', { exact: true })).toHaveValue('Statement of profit or loss')
+  await expect(page.getByLabel('Left decimal input', { exact: true })).toHaveValue('1200.00')
+  await expect(page.getByLabel('Source URL', { exact: true })).toHaveValue('https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/')
+  await expect(page.getByLabel('Source location (optional)', { exact: true })).toHaveValue('About: profit or loss and other comprehensive income')
+  await expect(page.getByRole('button', { name: 'Approve definition', exact: true })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Publish approved definition' })).toHaveCount(0)
+  await expect(page.getByRole('combobox', { name: /^Matching published metric \(optional\)/ })).toHaveValue('')
+  expect(writes).toBe(0)
+})
+
+test('M4 keeps a selected prefix consistent when another order commits during loading', async ({ page }) => {
+  await authoredModules(page, { appendDuringRead: true }); await signIn(page, 'portfolio')
+  await page.getByRole('button', { name: 'Create virtual account with INR 100000.00' }).click()
+  await expect(page.getByText('0 recorded orders · whole shares · zero fees', { exact: true })).toBeVisible()
+  await expect(page.getByText('Based on 0 committed entries', { exact: false })).toBeVisible()
+  await page.getByRole('button', { name: 'Refresh portfolio', exact: true }).click()
+  await expect(page.getByText('1 recorded orders · whole shares · zero fees', { exact: true })).toBeVisible()
+  await expect(page.getByText('Based on 1 committed entries', { exact: false })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Virtual cash: INR 100000.00' })).toBeVisible()
 })
 
 test('M3 rejects a glossary envelope with another version', async ({ page }) => {

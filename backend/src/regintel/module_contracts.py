@@ -1,6 +1,7 @@
 """M3/M4 wire export root; existing M1 and M2 endpoint contracts retain ownership."""
 
 from regintel.contracts.models import ContractModel
+from regintel.learning.draft_pack import LearningStarterPack
 from regintel.learning.models import (
     DefinitionDraft,
     DefinitionQueue,
@@ -20,6 +21,7 @@ class ModuleWire(ContractModel):
     definition_input: DefinitionDraft
     definition: StoredDefinition
     drafts: DefinitionQueue
+    starter_pack: LearningStarterPack
     review_input: LearningReview
     reviewed: ReviewedDefinition
     publication_input: PublishLearning

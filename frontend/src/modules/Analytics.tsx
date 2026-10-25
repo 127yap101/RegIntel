@@ -7,7 +7,7 @@ export function Analytics({ api, account, version, companyName }: { api: ModuleA
   const [error, setError] = useState('')
   useEffect(() => {
     const controller = new AbortController()
-    void api.read('analytics', '/v1/portfolio/analytics', controller.signal).then((value) => {
+    void api.read('analytics', `/v1/portfolio/analytics?portfolio_version_id=${encodeURIComponent(version)}`, controller.signal).then((value) => {
       if (value.account_id !== account || value.portfolio_version_id !== version) throw new Error('The ledger changed while loading analytics. Refresh the portfolio to synchronize.')
       if (!controller.signal.aborted) { setResult(value); setError('') }
     }).catch((failure: unknown) => { if (!controller.signal.aborted) { setResult(null); setError(failure instanceof Error ? failure.message : 'Ledger analytics are unavailable.') } })

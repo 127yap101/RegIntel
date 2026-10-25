@@ -2,6 +2,63 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Staged numerical review, unreviewed starters and selected portfolio history, 25 October
+
+Continued the authorized M2–M4 work from65d946d. Added immutable numerical-context
+CONFIRM_CONTEXT/REJECT decisions retaining complete gate evidence, original actor
+and configuration. New confirmations require installed gates and fresh physical
+source / approval snapshots; approval tables remain locked until commit. Failed
+or unresolved checks cannot be overridden. Exact retries preserve history; changed
+final decisions conflict. Migration18 adds one audit table and freezes1–17.
+Decisions remain acceptance-ineligible, mandatory-M1-validation-incomplete and
+non-publishing. The complete numerical acceptance adapter remains work.
+
+Read-only replay of all four retained actual numerical inputs confirms every one
+still refuses confirmation. No new real decision or database write occurs. Actual
+positive/rejected decisions, stale snapshots/configuration, source tampering,
+role checks, concurrent retries, conflicting decisions and database publication-
+flag rejection are tested on labelled authored PDFs with real M1 storage.
+
+M3 adds seven agent-prepared, source-linked but unreviewed starters from three
+actual IFRS summary pages. They require applicability/content review for Indian
+filings. Admin-only loading fills the editor and source location while clearing
+old metric/review selection; it saves/approves/publishes nothing. Three hypothetical
+Decimal examples have independent arithmetic expectations. No real glossary is
+seeded or human-reviewed. Unretrieved SEBI/MCA lookup attempts are not used as
+verified pack sources. Runtime model generation remains disabled.
+
+M4 account/ledger/analytics optionally select one owned immutable version. Opening
+credit and each order prefix retain exact cash/holdings, complete history and
+analytics after later orders. Unknown/foreign versions return unavailable. Browser
+dependent reads are pinned and check page cardinality, sequence and ownership.
+Current write/quote behavior remains stable; no price or valuation is invented.
+
+Final backend2,305pass/six existing Windows skips/684integration deselected.
+Owned PostgreSQL/HTTP checks pass14numerical review,6selected history,20learning,
+25current portfolio and7migration cases; databases are removed. Frontend288units
+and all36Chromium scenarios pass. After the final page guard, all11module wire
+tests and lint/types/build pass;8starter checks pass after a copy clarification.
+Ruff281/mypy183 and ten generated checks pass.93recorded hashes identify the
+tested implementation/inputs. The unchanged lock passes exact predecessor CI.
+
+Initial database checks found the existing private services stopped; restored
+only the original PostgreSQL/Redis/Neo4j containers from their volumes, with no
+primary migration/reset. New fixture ID branding and Node/browser import issues
+were corrected; no production import/check was weakened. A focused browser run
+passed5cases and failed a selector whose exact label included helper text; its
+correct role/name-prefix selector still checks empty metric selection, and all36
+final scenarios pass without retries or disabled assertions. Existing bundle-size
+warnings remain disclosed. These results are engineering controls, not research
+scores, real approvals or independent educational validation.
+
+The original main stays clean236c03f/DB1–11, all37authority fingerprints and both
+originals match.187existing core/script/final-spec files and migrations1–17 are
+unchanged from65d946d. Its83recorded inputs and exact-source CI40179800314 pass
+all3jobs; only public metadata is read. Current measured outcomes, sources,
+preservation and remaining acceptance are in`data/review-history-validation-report.json`.
+No dependency, required env, service, public port or paid call is added. Verify
+the containing commit's own remote/CI separately before claiming hosted success.
+
 ## M2 bound gates, M3 draft queue and M4 cash-flow analytics, 25 October
 
 Continued all authorized modules in the isolated `codex/m2-comparison` branch.

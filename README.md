@@ -87,6 +87,9 @@ The [bound numerical gate](docs/M2_BOUND_NUMERICAL_GATES.md) now records separat
 versioned source/context checks and immutable history over those exact words.
 Legacy acceptance integration, runtime selection, genuine review and numerical
 publication remain producer work.
+The [staged context-review contract](docs/M2_NUMERICAL_CONTEXT_REVIEWS.md) records
+explicit decisions only after fresh source/approval and complete-evidence checks.
+Unresolved gates cannot be overridden; these decisions do not accept/publish facts.
 The [complete-original benchmark](docs/M1_FULL_FILING_BENCHMARK.md) records
 whole-filing coverage, resource limits and an explicitly fingerprinted timeout
 experiment. Its SDK captures do not create accepted evidence or financial inputs.
@@ -103,7 +106,10 @@ market valuation remain unavailable. Successful buys/sells are verified using
 labelled fixed-price engineering providers in disposable tests. See the
 [module run/test guide](docs/M3_M4_RUN_AND_TEST.md),
 [delivery plan](docs/M3_M4_IMPLEMENTATION_PLAN.md) and
-[continuation report](data/module-continuation-validation-report.json).
+[latest measured report](data/review-history-validation-report.json).
+Administrators can also load [seven unreviewed starters](docs/M3_STARTER_DRAFT_SOURCES.md)
+for explicit editing/review. Portfolio account/history/analytics can select one
+owned immutable version, keeping dependent reads consistent when later orders arrive.
 M2 real numerical acceptance, reviewed learning content, remaining portfolio
 valuation/data integration, final integration and research evaluation remain
 unfinished. M1's original checkout and saved data stay unchanged.

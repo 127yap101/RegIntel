@@ -254,6 +254,16 @@ def test_learning_http_requires_review_and_echoes_independent_version(learning):
         admin_headers = {"Authorization": "Bearer " + issue_token(admin, settings)}
         learner_headers = {"Authorization": "Bearer " + issue_token(learner, settings)}
         assert client.get("/v1/learning/status").status_code == 401
+        before_starters = snapshot(repository.database)
+        assert client.get("/v1/learning/starter-pack").status_code == 401
+        assert client.get("/v1/learning/starter-pack", headers=learner_headers).status_code == 403
+        starters = client.get("/v1/learning/starter-pack", headers=admin_headers)
+        assert (
+            starters.status_code == 200 and starters.json()["data"]["status"] == "DRAFT_UNREVIEWED"
+        )
+        assert len(starters.json()["data"]["drafts"]) == 7
+        assert starters.json()["data"]["reviewed_by"] is None
+        assert snapshot(repository.database) == before_starters
         assert client.get("/v1/learning/drafts", headers=learner_headers).status_code == 403
         assert client.get("/v1/learning/drafts?limit=21", headers=admin_headers).status_code == 422
         assert (

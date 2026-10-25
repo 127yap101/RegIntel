@@ -10,6 +10,7 @@ from regintel.auth.service import AuthService
 from regintel.auth.types import User
 from regintel.contracts.http import response_meta
 from regintel.contracts.models import ContractModel, ErrorEnvelope, SuccessEnvelope
+from regintel.contracts.primitives import CanonicalId
 from regintel.portfolio.analytics import PortfolioAnalytics
 from regintel.portfolio.models import LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount
 from regintel.portfolio.repository import (
@@ -83,9 +84,11 @@ def create_portfolio_router(
 
     @router.get("/v1/portfolio", response_model=SuccessEnvelope[PortfolioAccount], responses=errors)
     def account(
-        request: Request, user: Annotated[User, Depends(reader)]
+        request: Request,
+        user: Annotated[User, Depends(reader)],
+        portfolio_version_id: CanonicalId | None = None,
     ) -> SuccessEnvelope[PortfolioAccount]:
-        data = perform(lambda: ready().repository.account(user))
+        data = perform(lambda: ready().repository.account(user, version=portfolio_version_id))
         return envelope(data, request, data.portfolio_version_id)
 
     @router.post(
@@ -111,8 +114,13 @@ def create_portfolio_router(
         user: Annotated[User, Depends(reader)],
         offset: Annotated[int, Query(ge=0, le=1000000)] = 0,
         limit: Annotated[int, Query(ge=1, le=100)] = 50,
+        portfolio_version_id: CanonicalId | None = None,
     ) -> SuccessEnvelope[LedgerPage]:
-        data = perform(lambda: ready().repository.ledger(user, offset=offset, limit=limit))
+        data = perform(
+            lambda: ready().repository.ledger(
+                user, offset=offset, limit=limit, version=portfolio_version_id
+            )
+        )
         return envelope(data, request, data.portfolio_version_id)
 
     @router.get(
@@ -121,9 +129,11 @@ def create_portfolio_router(
         responses=errors,
     )
     def analytics(
-        request: Request, user: Annotated[User, Depends(reader)]
+        request: Request,
+        user: Annotated[User, Depends(reader)],
+        portfolio_version_id: CanonicalId | None = None,
     ) -> SuccessEnvelope[PortfolioAnalytics]:
-        data = perform(lambda: ready().repository.analytics(user))
+        data = perform(lambda: ready().repository.analytics(user, version=portfolio_version_id))
         return envelope(data, request, data.portfolio_version_id)
 
     return router

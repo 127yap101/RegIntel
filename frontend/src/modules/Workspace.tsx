@@ -6,6 +6,7 @@ import { definitionInput, ModuleApi, ModuleError, orderInput } from './api'
 import { confirmOrder, pendingOrder, retainOrder } from './pending'
 import { DraftQueue } from './DraftQueue'
 import { Analytics } from './Analytics'
+import { StarterDrafts } from './StarterDrafts'
 import type { ExampleInput, GlossaryVersion, LearningExplanation, LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount, PublishedEvidence, ReviewedDefinition, StoredDefinition } from './generated'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink'
@@ -71,6 +72,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
   const [definition, setDefinition] = useState('')
   const [sourceTitle, setSourceTitle] = useState('')
   const [sourceUrl, setSourceUrl] = useState('')
+  const [sourceLocation, setSourceLocation] = useState('')
   const [hasExample, setHasExample] = useState(false)
   const [exampleOperation, setExampleOperation] = useState<ExampleInput['operation']>('ADD')
   const [exampleLeft, setExampleLeft] = useState('')
@@ -150,12 +152,19 @@ function LearningPanel({ api }: { api: ModuleApi }) {
     {api.user.role === 'admin' && <section className="rounded-xl border border-line bg-paper p-5" aria-labelledby="definition-authoring-heading">
       <h3 id="definition-authoring-heading" className="text-lg font-semibold">Review and publish definitions</h3>
       <p className="mt-2 text-sm text-muted">Drafts stay private until an explicit review and publication. Review the definition, its sources and any metric link before approval.</p>
+      <div className="mt-5"><StarterDrafts api={api} busy={busy} onUse={(value) => {
+        const source = value.sources[0]; if (!source) return
+        setTerm(value.term); setDefinition(value.definition); setSourceTitle(source.title); setSourceUrl(source.url); setSourceLocation(source.location ?? '')
+        const example = value.example
+        setHasExample(Boolean(example)); setExampleOperation(example?.operation ?? 'ADD'); setExampleLeft(example?.left ?? ''); setExampleRight(example?.right ?? ''); setExampleUnit(example?.unit ?? ''); setExampleExplanation(example?.explanation ?? '')
+        setDraft(null); setReviewed(null); setSavedId(''); setNote(''); setMetric(''); setError('')
+      }} /></div>
       <div className="mt-5"><DraftQueue api={api} onOpen={(identity) => run((signal) => loadDraft(identity, signal))} /></div>
       <form className="mt-4 grid gap-4 sm:grid-cols-2" onSubmit={(event) => {
         event.preventDefault()
         run(async (signal) => {
           const selectedMetric = facts?.facts.find((item) => item.metric.id === metric)?.metric.id
-          const input = definitionInput({ term, definition, sources: [{ title: sourceTitle, url: sourceUrl, location: null }], metric_ids: selectedMetric ? [selectedMetric] : [], example: hasExample ? { kind: 'AUTHORED_EDUCATIONAL_EXAMPLE', operation: exampleOperation, left: exampleLeft, right: exampleRight, unit: exampleUnit, explanation: exampleExplanation } : null })
+          const input = definitionInput({ term, definition, sources: [{ title: sourceTitle, url: sourceUrl, location: sourceLocation.trim() || null }], metric_ids: selectedMetric ? [selectedMetric] : [], example: hasExample ? { kind: 'AUTHORED_EDUCATIONAL_EXAMPLE', operation: exampleOperation, left: exampleLeft, right: exampleRight, unit: exampleUnit, explanation: exampleExplanation } : null })
           const value = await api.read('definition', '/v1/learning/drafts', signal, input)
           setDraft(value); setSavedId(value.id); setReviewed(null); setNote('')
         })
@@ -164,6 +173,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
         <label className="text-sm">Source title<input className={inputClass} value={sourceTitle} onChange={(event) => setSourceTitle(event.target.value)} maxLength={200} required /></label>
         <label className="text-sm sm:col-span-2">Definition<textarea className={inputClass} value={definition} onChange={(event) => setDefinition(event.target.value)} rows={4} maxLength={4000} required /></label>
         <label className="text-sm sm:col-span-2">Source URL<input type="url" className={inputClass} value={sourceUrl} onChange={(event) => setSourceUrl(event.target.value)} maxLength={2048} required /></label>
+        <label className="text-sm sm:col-span-2">Source location (optional)<input className={inputClass} value={sourceLocation} onChange={(event) => setSourceLocation(event.target.value)} maxLength={200} /></label>
         <label className="flex items-center gap-2 text-sm sm:col-span-2"><input type="checkbox" checked={hasExample} onChange={(event) => setHasExample(event.target.checked)} />Include an authored educational example</label>
         {hasExample && <fieldset className="grid gap-4 rounded-lg border border-line p-4 sm:col-span-2 sm:grid-cols-2"><legend className="px-2 text-sm font-semibold">Educational example inputs</legend>
           <label className="text-sm">Operation<select className={inputClass} value={exampleOperation} onChange={(event) => setExampleOperation(exampleOperations.find((operation) => operation === event.target.value) ?? 'ADD')}>{exampleOperations.map((operation) => <option key={operation} value={operation}>{operation.replaceAll('_', ' ')}</option>)}</select></label>
@@ -205,8 +215,7 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
   const active = useRef<AbortController | null>(null)
   useEffect(() => {
     const controller = new AbortController()
-    void Promise.all([api.read('portfolio', '/v1/portfolio', controller.signal), api.read('ledger', '/v1/portfolio/ledger', controller.signal)]).then(([current, history]) => {
-      if (current.portfolio_version_id !== history.portfolio_version_id) throw new ModuleError(0, 'The portfolio changed while loading. Refresh its history.')
+    void api.portfolioSnapshot(controller.signal).then(({ account: current, ledger: history }) => {
       if (!controller.signal.aborted) { setAccount(current); setLedger(history); setLoaded(true) }
     }).catch((failure: unknown) => { if (!controller.signal.aborted) { if (!(failure instanceof ModuleError && failure.status === 404)) setError(message(failure)); setLoaded(true) } })
     return () => { controller.abort(); active.current?.abort() }
@@ -216,8 +225,7 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
     void action(controller.signal).catch((failure: unknown) => { if (!controller.signal.aborted) setError(message(failure)) }).finally(() => { if (!controller.signal.aborted) setBusy(false) })
   }
   async function refresh(signal: AbortSignal): Promise<void> {
-    const [current, history] = await Promise.all([api.read('portfolio', '/v1/portfolio', signal), api.read('ledger', '/v1/portfolio/ledger', signal)])
-    if (current.portfolio_version_id !== history.portfolio_version_id) throw new ModuleError(0, 'The portfolio changed while loading. Refresh its history.')
+    const { account: current, ledger: history } = await api.portfolioSnapshot(signal)
     setAccount(current); setLedger(history)
   }
   function submit(request: OrderRequest): void {
@@ -252,7 +260,7 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
       {receipt && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Recorded order #{receipt.entry.sequence}: {receipt.entry.evaluation.state} · {receipt.entry.evaluation.reason.replaceAll('_', ' ')}</p>}
       <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Holdings</h3>{account.state.holdings.length ? <ul className="mt-3 space-y-2 text-sm">{account.state.holdings.map((item) => <li key={item.company_id}>{name(item.company_id)} · {item.quantity} shares</li>)}</ul> : <p className="mt-3 text-sm text-muted">No virtual holdings.</p>}</section>
       <Analytics key={account.portfolio_version_id} api={api} account={account.account_id} version={account.portfolio_version_id} companyName={name} />
-      <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Immutable virtual history</h3>{ledger?.entries.length ? <ol className="mt-3 space-y-3 text-sm">{ledger.entries.map((entry) => <li key={entry.id} className="border-b border-line pb-3">#{entry.sequence} · {entry.request.side} {entry.request.quantity} {name(entry.request.company_id)} · {entry.evaluation.state} · {entry.evaluation.reason.replaceAll('_', ' ')}<span className="mt-1 block text-xs text-muted">Cash after outcome: INR {entry.evaluation.after.cash}</span></li>)}</ol> : <p className="mt-3 text-sm text-muted">No virtual orders recorded.</p>}{ledger && ledger.offset + ledger.entries.length < ledger.total && <Button variant="secondary" className="mt-3" disabled={busy} onClick={() => run(async (signal) => { setLedger(await api.read('ledger', `/v1/portfolio/ledger?offset=${ledger.offset + ledger.entries.length}&limit=50`, signal)) })}>Next history page</Button>}</section>
+      <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Immutable virtual history</h3>{ledger?.entries.length ? <ol className="mt-3 space-y-3 text-sm">{ledger.entries.map((entry) => <li key={entry.id} className="border-b border-line pb-3">#{entry.sequence} · {entry.request.side} {entry.request.quantity} {name(entry.request.company_id)} · {entry.evaluation.state} · {entry.evaluation.reason.replaceAll('_', ' ')}<span className="mt-1 block text-xs text-muted">Cash after outcome: INR {entry.evaluation.after.cash}</span></li>)}</ol> : <p className="mt-3 text-sm text-muted">No virtual orders recorded.</p>}{ledger && ledger.offset + ledger.entries.length < ledger.total && <Button variant="secondary" className="mt-3" disabled={busy} onClick={() => run(async (signal) => { setLedger(await api.ledgerSnapshot(account, signal, ledger.offset + ledger.entries.length)) })}>Next history page</Button>}</section>
     </>}
     {error && <p role="alert" className="rounded-lg border border-line bg-white p-4 text-sm">{error}</p>}
   </div>

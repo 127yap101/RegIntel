@@ -1,0 +1,82 @@
+{
+  "version": "learning-starter-drafts-1",
+  "status": "DRAFT_UNREVIEWED",
+  "prepared_by": "CODEX_DRAFT",
+  "prepared_on": "2026-10-25",
+  "source_checked_on": "2026-10-25",
+  "reviewed_by": null,
+  "reviewed_on": null,
+  "applicability": "General financial-statement learning drafts based on IFRS Foundation summaries. Review each definition, source and example against the applicable Indian filing framework before publication. No M1 metric mapping or compliance conclusion is supplied. All example amounts are hypothetical.",
+  "drafts": [
+    {
+      "key": "financial_position",
+      "draft": {
+        "term": "Statement of financial position",
+        "definition": "A financial statement describing an entity's financial position at a specified date. Read its date separately from the periods covered by performance and cash-flow statements.",
+        "sources": [{"title": "IFRS Foundation — IAS 1 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/", "location": "About: complete set of financial statements"}],
+        "metric_ids": [],
+        "example": null
+      }
+    },
+    {
+      "key": "profit_or_loss",
+      "draft": {
+        "term": "Statement of profit or loss",
+        "definition": "A period-based statement of income and expenses recognised in profit or loss. Other comprehensive income is separately identified; a balance-sheet date alone does not describe this reporting period.",
+        "sources": [{"title": "IFRS Foundation — IAS 1 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/", "location": "About: profit or loss and other comprehensive income"}],
+        "metric_ids": [],
+        "example": {"kind": "AUTHORED_EDUCATIONAL_EXAMPLE", "operation": "SUBTRACT", "left": "1200.00", "right": "1000.00", "unit": "illustrative INR", "explanation": "Hypothetical arithmetic only: subtract 1000.00 of expenses from 1200.00 of income assumed to be recognised in profit or loss. This is not a complete financial statement or a filing claim."}
+      }
+    },
+    {
+      "key": "financial_statement_notes",
+      "draft": {
+        "term": "Notes to financial statements",
+        "definition": "Explanatory information accompanying the financial statements, including accounting policies. Notes supply context needed to interpret the amounts and presentations in the statements.",
+        "sources": [{"title": "IFRS Foundation — IAS 1 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/", "location": "About: notes and explanatory information"}],
+        "metric_ids": [],
+        "example": null
+      }
+    },
+    {
+      "key": "comparative_information",
+      "draft": {
+        "term": "Comparative financial information",
+        "definition": "Amounts from a preceding reporting period presented alongside current-period information. Interpret each amount with its stated period and accompanying notes before comparing it.",
+        "sources": [{"title": "IFRS Foundation — IAS 1 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-1-presentation-of-financial-statements/", "location": "About: annual statements and preceding-year comparative amounts"}],
+        "metric_ids": [],
+        "example": {"kind": "AUTHORED_EDUCATIONAL_EXAMPLE", "operation": "PERCENT_CHANGE", "left": "100.00", "right": "125.00", "unit": "illustrative units", "explanation": "Hypothetical compatible amounts only: compare a positive baseline of 100.00 with a later amount of 125.00. The backend computes the percentage change; these are not company disclosures."}
+      }
+    },
+    {
+      "key": "cash_flow_statement",
+      "draft": {
+        "term": "Statement of cash flows",
+        "definition": "A statement explaining changes in cash and cash equivalents during a reporting period, grouped into operating, investing and financing activities. Non-cash transactions need separate interpretation.",
+        "sources": [{"title": "IFRS Foundation — IAS 7 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/", "location": "About: cash-flow presentation and activity classifications"}],
+        "metric_ids": [],
+        "example": {"kind": "AUTHORED_EDUCATIONAL_EXAMPLE", "operation": "ADD", "left": "50.00", "right": "-20.00", "unit": "illustrative INR", "explanation": "Hypothetical cash-flow arithmetic only: add a cash inflow of 50.00 and a cash outflow represented by -20.00. No company, investment return or market price is represented."}
+      }
+    },
+    {
+      "key": "cash_equivalents",
+      "draft": {
+        "term": "Cash equivalents",
+        "definition": "Short-term, highly liquid investments readily convertible into a known cash amount with insignificant value-change risk. An investment is not a cash equivalent merely because it can be sold.",
+        "sources": [{"title": "IFRS Foundation — IAS 7 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ias-7-statement-of-cash-flows/", "location": "About: cash and cash-equivalent definitions"}],
+        "metric_ids": [],
+        "example": null
+      }
+    },
+    {
+      "key": "consolidated_statements",
+      "draft": {
+        "term": "Consolidated financial statements",
+        "definition": "Financial statements presenting a parent and its subsidiaries together as one economic entity. Preserve that reporting basis when comparing figures; do not silently substitute a parent's separate amounts.",
+        "sources": [{"title": "IFRS Foundation — IFRS 10 overview", "url": "https://www.ifrs.org/issued-standards/list-of-standards/ifrs-10-consolidated-financial-statements/", "location": "About: consolidated statements and the control principle"}],
+        "metric_ids": [],
+        "example": null
+      }
+    }
+  ]
+}

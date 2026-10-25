@@ -12,6 +12,7 @@ from regintel.auth.types import User
 from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import canonical_bytes
+from regintel.learning.draft_pack import LearningStarterPack, load_starter_pack
 from regintel.learning.examples import calculate_example
 from regintel.learning.models import (
     DefinitionDraft,
@@ -147,6 +148,15 @@ class LearningRepository:
     def draft(self, identity: str, user: User) -> StoredDefinition:
         with self.transaction(user, admin=True) as connection:
             return self._definition(connection, identity)
+
+    def starter_pack(self, user: User) -> LearningStarterPack:
+        with self.transaction(user, admin=True):
+            try:
+                return load_starter_pack()
+            except (OSError, ValueError):
+                raise LearningUnavailable(
+                    "Unreviewed learning starter drafts are unavailable."
+                ) from None
 
     def queue(
         self,
