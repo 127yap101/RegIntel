@@ -6,7 +6,17 @@ from urllib.parse import urlsplit
 from pydantic import AfterValidator, Field, model_validator
 
 from regintel.contracts.models import ContractModel
-from regintel.contracts.primitives import CanonicalId, DecimalValue, Label, RawText, Sha256Hash
+from regintel.contracts.primitives import (
+    CanonicalId,
+    DecimalValue,
+    Label,
+    RawText,
+    SafeInteger,
+    Sha256Hash,
+)
+
+DraftState = Literal["PENDING_REVIEW", "APPROVED", "REJECTED"]
+DraftFilter = Literal["ALL", "PENDING_REVIEW", "APPROVED", "REJECTED"]
 
 
 def _source_url(value: str) -> str:
@@ -140,3 +150,35 @@ class LearningOverview(ContractModel):
         if (self.glossary_version_id is not None) != (self.state == "AVAILABLE"):
             raise ValueError("Learning availability requires its independent published version.")
         return self
+
+
+class DefinitionQueueItem(ContractModel):
+    definition: StoredDefinition
+    state: DraftState
+    review: ReviewedDefinition | None
+
+    @model_validator(mode="after")
+    def exact_review(self) -> Self:
+        expected = (
+            "PENDING_REVIEW"
+            if self.review is None
+            else "APPROVED"
+            if self.review.review.decision == "APPROVE"
+            else "REJECTED"
+        )
+        if self.state != expected or (
+            self.review is not None and self.review.definition != self.definition
+        ):
+            raise ValueError(
+                "A queue item must retain the selected draft's actual immutable review."
+            )
+        return self
+
+
+class DefinitionQueue(ContractModel):
+    items: Annotated[tuple[DefinitionQueueItem, ...], Field(strict=False, max_length=20)]
+    state: DraftFilter
+    query: Annotated[str, Field(strict=True, max_length=120)]
+    offset: SafeInteger
+    limit: Annotated[int, Field(strict=True, ge=1, le=20)]
+    total: SafeInteger

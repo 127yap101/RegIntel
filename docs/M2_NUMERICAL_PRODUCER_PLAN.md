@@ -200,6 +200,12 @@ native word evidence. Completing conversion alone therefore cannot establish a
 real positive binding under the current narrow contract. An explicit versioned
 evidence extension remains necessary; no existing gate is waived.
 
+The whole-original benchmark advances step1's measurement and identifies concrete
+step2 work. That benchmark alone does not create a sealed M1 parse, accepted fact,
+actual review or publication. Preserve the primary corpus and continue the
+approved producer path using the measured results. See
+[the benchmark contract](M1_FULL_FILING_BENCHMARK.md).
+
 ## Native/context evidence checkpoint, 23 October
 
 The new separately versioned native bank covers all1,184original pages and
@@ -221,7 +227,25 @@ Runtime selection, mandatory numerical validation/review, immutable acceptance/
 publication and the six real M2 acceptance categories remain required. See
 [the producer contract](M1_NATIVE_CONTEXT_EVIDENCE.md) and its measured report.
 
-This advances step1's whole-original measurement and identifies concrete step2
-work. It does not create a sealed M1 parse, accepted fact, actual review or
-publication. Preserve the primary corpus and continue the approved producer path
-using the measured results. See [the benchmark contract](M1_FULL_FILING_BENCHMARK.md).
+## Bound numerical gate checkpoint, 25 October
+
+The separate `bound-numerical-gate-1` contract rechecks retained context, current
+registry/metric/policy snapshots and actual sealed M1 word bindings. Fourteen
+ordered outcomes cover source, exact support, table context, issuer, metric,
+value/unit/currency/period/basis, applicability, freshness, bound evidence and
+unsafe/qualified language. Migration17 retains immutable exact inputs/results,
+configuration and the current administrator snapshot; migrations1–16 are frozen.
+
+This advances the producer's numerical gate work without changing legacy M1
+acceptance. Even an all-pass result is only ready for review, always ineligible
+for acceptance and explicitly incomplete for mandatory M1 validation. Actual
+approval, supported review decisions, the complete acceptance adapter and
+publication remain necessary. See [the gate contract](M2_BOUND_NUMERICAL_GATES.md)
+and [measured continuation](../data/module-continuation-validation-report.json).
+
+The real owned-corpus run seals both existing originals and records all four
+bound numerical gates. Each replays identically and remains REVIEW_REQUIRED;
+issuer/metric approval, unit/context applicability and source qualifiers remain
+unresolved, with basis review also required for Waaree. It creates no approval,
+accepted observation or corpus and removes its disposable database. The preserved
+primary corpus, interfaces and all37authority hashes remain unchanged.

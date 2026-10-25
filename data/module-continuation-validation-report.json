@@ -1,0 +1,980 @@
+{
+  "version": "1.0.0",
+  "recorded_at_utc": "2026-10-25T09:12:00.246473+00:00",
+  "base_commit": "63682de6bc3228f20d38f67b5d7847ec9516869f",
+  "branch": "codex/m2-comparison",
+  "scope": "Authorized continuation across M2/M3/M4 with stable M1 interfaces and original corpus",
+  "status": "VERIFIED_ENGINEERING_CONTINUATION",
+  "all_modules_complete": false,
+  "real_m2_acceptance": "BLOCKED",
+  "runtime_quotes": "UNAVAILABLE_BY_USER_DECISION",
+  "real_glossary_definitions_or_human_approvals_seeded": 0,
+  "environment": {
+    "host": "Windows x64 native Python/API/frontend; existing private Linux data services",
+    "python": "3.12.14",
+    "node": "24.19.0",
+    "pnpm": "11.19.0",
+    "browser": "Chromium through Playwright 1.56.1",
+    "browser_test_loopback_ports": [
+      8012,
+      5185
+    ]
+  },
+  "implemented": {
+    "M2": [
+      "Separately versioned 14-check bound numerical gate",
+      "Current approval/source context and actual sealed M1 word membership",
+      "Immutable exact inputs/results/configuration/current-admin audit and concurrent replay",
+      "Explicit ineligibility for legacy acceptance; no publication bypass"
+    ],
+    "M3": [
+      "Private administrator draft/review queue",
+      "Bounded literal term search, review-state filters, pagination and stored-review restoration"
+    ],
+    "M4": [
+      "Read-only Decimal ledger cash-flow analytics with exact complete replay",
+      "Company closed-position cash result only when no shares remain",
+      "Exact entry and portfolio/corpus/quote version membership",
+      "Explicit budget failure without truncated financial totals"
+    ]
+  },
+  "verification": {
+    "backend_full": {
+      "passed": 2288,
+      "skipped": 6,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 480.297,
+      "local_artifact": ".cache/backend-unit-20261025.xml",
+      "artifact_sha256": "a911443c0b9f0c0ae5946bb1fb77f7249088ed5610b588b5b1c159e0f59e299d"
+    },
+    "integration_deselected_in_backend": 664,
+    "new_bound_gate_unit_controls_in_full_total": {
+      "passed": 17,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 9.813,
+      "local_artifact": ".cache/bound-gate-unit-fixed-20261025.xml",
+      "artifact_sha256": "9d992d59219bcb6f64106ef2b7ec2845058bef819195ac54bab70c14fb15afea"
+    },
+    "portfolio_analytics_and_existing_engine_units_in_full_total": {
+      "passed": 33,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 1.294,
+      "local_artifact": ".cache/module-analytics-unit-20261025.xml",
+      "artifact_sha256": "fe58ed74e2e7dba8be2542d2d4fe05cff5b7c60cd9cd1a4f33f5eacf3b362ff0"
+    },
+    "bound_gate_postgresql": {
+      "passed": 11,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 65.975,
+      "local_artifact": ".cache/bound-gate-storage-20261025.xml",
+      "artifact_sha256": "e9c07d536940918dc984abdcf27963a751ee6fc84e1c5595c8f7aea8934392fd"
+    },
+    "learning_queue_postgresql_http": {
+      "passed": 20,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 87.001,
+      "local_artifact": ".cache/learning-queue-storage-20261025.xml",
+      "artifact_sha256": "db4020adb403c02cf129eaebc7278179803fc7b74965ce972c56ff35da573499"
+    },
+    "portfolio_analytics_postgresql_http": {
+      "passed": 25,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 100.908,
+      "local_artifact": ".cache/portfolio-analytics-storage-20261025.xml",
+      "artifact_sha256": "5959c804277d0b20e05b4d5d529017d9f23e7c3432cee2c046adad1441a89b4d"
+    },
+    "migration_lifecycle": {
+      "passed": 7,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 15.982,
+      "local_artifact": ".cache/migrations-20261025.xml",
+      "artifact_sha256": "76f7845d88e8b8006e45adaa39ffa31a776a5d7035fdf4d9b2d9a163438fb725"
+    },
+    "frontend_full": {
+      "passed": 286,
+      "skipped": 0,
+      "failures": 0,
+      "errors": 0,
+      "junit_seconds": 3.9222748,
+      "local_artifact": ".cache/frontend-unit-20261025.xml",
+      "artifact_sha256": "8d008c639c982c3bc2cbda6429ec3efdea7d56a13352d42a1a609797448567c4"
+    },
+    "frontend_typecheck_lint_build": "PASS",
+    "frontend_build_limitation": "Existing bundled PDF/graph/schema assets trigger the Vite chunk-size warning.",
+    "chromium_full": {
+      "passed": 34,
+      "skipped": 0,
+      "failures": 0,
+      "flaky": 0,
+      "seconds": 159.76864600000002,
+      "local_artifact": ".cache/browser-all-20261025.json",
+      "artifact_sha256": "35606916bc0a7e39c5b1601a0f8f0981fc30f25df89f8d5567cffa6eeb11896d"
+    },
+    "ruff_files": 274,
+    "strict_mypy_sources": 180,
+    "generated_checks": 10,
+    "static_checks": {
+      "commands": 13,
+      "failed": 0,
+      "local_artifact": ".cache/module-static-20261025.json",
+      "artifact_sha256": "7c706618851bbb600e269a66611bfaf3eb41dc6e13e1f86bb397b15f7d3e9988"
+    },
+    "offline_lock": "PASS; existing CPython 3.12.14; 142 resolved packages; lock unchanged"
+  },
+  "real_bound_gate_proof": {
+    "status": "PASS",
+    "scope": "REAL_ORIGINALS_IN_OWNED_DISPOSABLE_CORPUS; NOT_HUMAN_ACCEPTED_OR_PUBLISHED",
+    "documents": [
+      {
+        "document": "premier",
+        "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca",
+        "source_pages": 558,
+        "native_words": 311952,
+        "context_pages": [
+          0,
+          19,
+          21,
+          29
+        ],
+        "public_word_evidence": 3034,
+        "preview_tables": 5,
+        "public_cell_evidence": 0,
+        "processing_configuration_sha256": "e2ab7a458677e02bb4487c7d8294cc1c1d7b5febe1baf89a35826777fe4d7ed2",
+        "native_manifest_sha256": "723eb90a904062e285717ec5ac7bfb0ecdd76ad7df7a33e889d459df050355c9",
+        "parse_version_id": "8f2b5d9c-58f1-481d-a34b-818acd8d860d",
+        "job_id": "4685a5f3-b5d4-4c9d-b962-82b0c7b27234",
+        "build_seconds": 62.273925699992105,
+        "seal_seconds": 104.19401720000315,
+        "terminal_replay_equal": true
+      },
+      {
+        "document": "waaree",
+        "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89",
+        "source_pages": 626,
+        "native_words": 334839,
+        "context_pages": [
+          0,
+          18,
+          20,
+          98
+        ],
+        "public_word_evidence": 2665,
+        "preview_tables": 3,
+        "public_cell_evidence": 0,
+        "processing_configuration_sha256": "7cfc4b605a1a4a2af9c6cccd042afebf441e48147d06bf59b60b1bb9f8588a15",
+        "native_manifest_sha256": "97517097dc08f21702d050dee52d57bc3884c65fa72a5f6c398b5640bfadcf50",
+        "parse_version_id": "a27e8cce-f149-414a-960c-08b4c4988f3e",
+        "job_id": "6c5d3063-49af-4bb1-8085-e2b150e7d1bc",
+        "build_seconds": 42.77993969999079,
+        "seal_seconds": 99.0707773000031,
+        "terminal_replay_equal": true
+      }
+    ],
+    "bindings": [
+      {
+        "document": "premier",
+        "context_record_id": "81617e3d-7a5a-4cd8-8fd6-5aa2daa8594e",
+        "binding_id": "5833b0ee-8be7-4c24-99d1-19343b67ca6f",
+        "native_word_references": 120,
+        "value_quote": "31,437.93",
+        "evidence_id": "03955823-e818-4b35-b590-2bac815e0dd8",
+        "parse_version_id": "8f2b5d9c-58f1-481d-a34b-818acd8d860d",
+        "inspection_state": "REVIEW_REQUIRED",
+        "actual_existing_evidence_read_equal": true,
+        "read_only_replay_equal": true,
+        "seconds": 9.751106199997594,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "review_required": true
+      },
+      {
+        "document": "premier",
+        "context_record_id": "63034d66-8a48-41cd-aff1-fbfb47e0c7e1",
+        "binding_id": "f25a0d55-b53e-439e-a27b-780ad6d73656",
+        "native_word_references": 120,
+        "value_quote": "14,285.34",
+        "evidence_id": "55ca9fd5-d1a4-46f1-a37e-a3acd6d28287",
+        "parse_version_id": "8f2b5d9c-58f1-481d-a34b-818acd8d860d",
+        "inspection_state": "REVIEW_REQUIRED",
+        "actual_existing_evidence_read_equal": true,
+        "read_only_replay_equal": true,
+        "seconds": 13.353379799998947,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "review_required": true
+      },
+      {
+        "document": "waaree",
+        "context_record_id": "306e4185-4dc4-46e9-9d90-41f258a6447f",
+        "binding_id": "00149cce-d7c2-482a-a9cf-8f139245e0b5",
+        "native_word_references": 133,
+        "value_quote": "67,508.73",
+        "evidence_id": "b59afbc3-c06e-4312-92f1-b4750c7f3288",
+        "parse_version_id": "a27e8cce-f149-414a-960c-08b4c4988f3e",
+        "inspection_state": "REVIEW_REQUIRED",
+        "actual_existing_evidence_read_equal": true,
+        "read_only_replay_equal": true,
+        "seconds": 8.534554600002593,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "review_required": true
+      },
+      {
+        "document": "waaree",
+        "context_record_id": "ea7275cb-1f0c-448b-90b5-7bae66b3ba45",
+        "binding_id": "e70e0f7c-f967-4a53-89e3-84c453a0ae3b",
+        "native_word_references": 133,
+        "value_quote": "1,13,976.09",
+        "evidence_id": "ca1a68c5-b969-402e-b710-0088de9f60f4",
+        "parse_version_id": "a27e8cce-f149-414a-960c-08b4c4988f3e",
+        "inspection_state": "REVIEW_REQUIRED",
+        "actual_existing_evidence_read_equal": true,
+        "read_only_replay_equal": true,
+        "seconds": 8.812359900010051,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "review_required": true
+      }
+    ],
+    "gate_runs": [
+      {
+        "document": "premier",
+        "source_value_cell": 21,
+        "gate_run_id": "c9ffe89e-6241-449f-9fbd-1d0915d27eed",
+        "state": "REVIEW_REQUIRED",
+        "checks": [
+          {
+            "code": "SOURCE",
+            "state": "PASS",
+            "message": "Retained source/version and selected preparation/configuration membership agree."
+          },
+          {
+            "code": "EXACT_WORDS",
+            "state": "PASS",
+            "message": "Every supplied reference retains its exact native word and word envelope."
+          },
+          {
+            "code": "TABLE",
+            "state": "PASS",
+            "message": "Original word mappings retain one aligned value, row label and period column."
+          },
+          {
+            "code": "ISSUER",
+            "state": "REVIEW",
+            "message": "The original CIN needs one unambiguous approved registry binding."
+          },
+          {
+            "code": "METRIC",
+            "state": "REVIEW",
+            "message": "A registered metric and numerical policy are required."
+          },
+          {
+            "code": "VALUE",
+            "state": "PASS",
+            "message": "The original value has an exact unscaled Decimal interpretation."
+          },
+          {
+            "code": "UNIT",
+            "state": "REVIEW",
+            "message": "Local source unit requires the matching registered metric policy."
+          },
+          {
+            "code": "CURRENCY",
+            "state": "PASS",
+            "message": "The local label has explicit retained currency support."
+          },
+          {
+            "code": "PERIOD",
+            "state": "PASS",
+            "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+          },
+          {
+            "code": "BASIS",
+            "state": "PASS",
+            "message": "One local restated statement caption supplies the proposed basis."
+          },
+          {
+            "code": "CONTEXT_SCOPE",
+            "state": "REVIEW",
+            "message": "Cross-page links require explicit applicability review."
+          },
+          {
+            "code": "FRESH_CONTEXT",
+            "state": "PASS",
+            "message": "Current registry, metric, policy and source snapshots match retained context."
+          },
+          {
+            "code": "BOUND_EVIDENCE",
+            "state": "PASS",
+            "message": "Existing M1 words retain exact original context membership."
+          },
+          {
+            "code": "SOURCE_LANGUAGE",
+            "state": "REVIEW",
+            "message": "Instructions fail; illustrative or qualified context needs review."
+          }
+        ],
+        "input_sha256": "01ffc099a29779a5ba116d2dc53a88bc1f007ddf523651d68a98fbedfc9f56bd",
+        "configuration_sha256": "9b0257b3135d8a9fe7dd63ebf816f7adb6473830c6f3c0afbc7a59a577a9e8eb",
+        "context_record_id": "81617e3d-7a5a-4cd8-8fd6-5aa2daa8594e",
+        "parse_version_id": "8f2b5d9c-58f1-481d-a34b-818acd8d860d",
+        "evidence_binding_id": "5833b0ee-8be7-4c24-99d1-19343b67ca6f",
+        "quantity_proposal": {
+          "raw_value": "31,437.93",
+          "normalized_value": "31437.93",
+          "normalized_unit": "million",
+          "currency": "INR",
+          "period": {
+            "kind": "DURATION",
+            "start_date": "2023-04-01",
+            "end_date": "2024-03-31",
+            "instant_date": null,
+            "raw_label": "As at and for the year ended March 31, 2024"
+          },
+          "basis": "CONSOLIDATED"
+        },
+        "review_required": true,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "replay_equal": true,
+        "distinct_word_evidence_ids": 120,
+        "evidence_id_membership_sha256": "4fcf173e16dd0f24b7cab8e2c34b480eae54f149a2175ad9951e57b4085e4e84"
+      },
+      {
+        "document": "premier",
+        "source_value_cell": 22,
+        "gate_run_id": "3d4cbb7c-d4fc-496f-849a-6418ec007246",
+        "state": "REVIEW_REQUIRED",
+        "checks": [
+          {
+            "code": "SOURCE",
+            "state": "PASS",
+            "message": "Retained source/version and selected preparation/configuration membership agree."
+          },
+          {
+            "code": "EXACT_WORDS",
+            "state": "PASS",
+            "message": "Every supplied reference retains its exact native word and word envelope."
+          },
+          {
+            "code": "TABLE",
+            "state": "PASS",
+            "message": "Original word mappings retain one aligned value, row label and period column."
+          },
+          {
+            "code": "ISSUER",
+            "state": "REVIEW",
+            "message": "The original CIN needs one unambiguous approved registry binding."
+          },
+          {
+            "code": "METRIC",
+            "state": "REVIEW",
+            "message": "A registered metric and numerical policy are required."
+          },
+          {
+            "code": "VALUE",
+            "state": "PASS",
+            "message": "The original value has an exact unscaled Decimal interpretation."
+          },
+          {
+            "code": "UNIT",
+            "state": "REVIEW",
+            "message": "Local source unit requires the matching registered metric policy."
+          },
+          {
+            "code": "CURRENCY",
+            "state": "PASS",
+            "message": "The local label has explicit retained currency support."
+          },
+          {
+            "code": "PERIOD",
+            "state": "PASS",
+            "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+          },
+          {
+            "code": "BASIS",
+            "state": "PASS",
+            "message": "One local restated statement caption supplies the proposed basis."
+          },
+          {
+            "code": "CONTEXT_SCOPE",
+            "state": "REVIEW",
+            "message": "Cross-page links require explicit applicability review."
+          },
+          {
+            "code": "FRESH_CONTEXT",
+            "state": "PASS",
+            "message": "Current registry, metric, policy and source snapshots match retained context."
+          },
+          {
+            "code": "BOUND_EVIDENCE",
+            "state": "PASS",
+            "message": "Existing M1 words retain exact original context membership."
+          },
+          {
+            "code": "SOURCE_LANGUAGE",
+            "state": "REVIEW",
+            "message": "Instructions fail; illustrative or qualified context needs review."
+          }
+        ],
+        "input_sha256": "3c6ec404be39dfd877bb2a1693153ae9e88f62a88f54d921ca162d3109894da6",
+        "configuration_sha256": "9b0257b3135d8a9fe7dd63ebf816f7adb6473830c6f3c0afbc7a59a577a9e8eb",
+        "context_record_id": "63034d66-8a48-41cd-aff1-fbfb47e0c7e1",
+        "parse_version_id": "8f2b5d9c-58f1-481d-a34b-818acd8d860d",
+        "evidence_binding_id": "f25a0d55-b53e-439e-a27b-780ad6d73656",
+        "quantity_proposal": {
+          "raw_value": "14,285.34",
+          "normalized_value": "14285.34",
+          "normalized_unit": "million",
+          "currency": "INR",
+          "period": {
+            "kind": "DURATION",
+            "start_date": "2022-04-01",
+            "end_date": "2023-03-31",
+            "instant_date": null,
+            "raw_label": "As at and for the year ended March 31, 2023"
+          },
+          "basis": "CONSOLIDATED"
+        },
+        "review_required": true,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "replay_equal": true,
+        "distinct_word_evidence_ids": 120,
+        "evidence_id_membership_sha256": "1d217b54548a48d2ace8abf9e080c033d1b33965c118b0621595db1f5f2098d2"
+      },
+      {
+        "document": "waaree",
+        "source_value_cell": 9,
+        "gate_run_id": "3586d22a-0569-4581-b59b-c96d8d16ce13",
+        "state": "REVIEW_REQUIRED",
+        "checks": [
+          {
+            "code": "SOURCE",
+            "state": "PASS",
+            "message": "Retained source/version and selected preparation/configuration membership agree."
+          },
+          {
+            "code": "EXACT_WORDS",
+            "state": "PASS",
+            "message": "Every supplied reference retains its exact native word and word envelope."
+          },
+          {
+            "code": "TABLE",
+            "state": "PASS",
+            "message": "Original word mappings retain one aligned value, row label and period column."
+          },
+          {
+            "code": "ISSUER",
+            "state": "REVIEW",
+            "message": "The original CIN needs one unambiguous approved registry binding."
+          },
+          {
+            "code": "METRIC",
+            "state": "REVIEW",
+            "message": "A registered metric and numerical policy are required."
+          },
+          {
+            "code": "VALUE",
+            "state": "PASS",
+            "message": "The original value has an exact unscaled Decimal interpretation."
+          },
+          {
+            "code": "UNIT",
+            "state": "REVIEW",
+            "message": "Local source unit requires the matching registered metric policy."
+          },
+          {
+            "code": "CURRENCY",
+            "state": "PASS",
+            "message": "The local label has explicit retained currency support."
+          },
+          {
+            "code": "PERIOD",
+            "state": "PASS",
+            "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+          },
+          {
+            "code": "BASIS",
+            "state": "REVIEW",
+            "message": "The separate basis clause needs statement applicability review."
+          },
+          {
+            "code": "CONTEXT_SCOPE",
+            "state": "REVIEW",
+            "message": "Cross-page links require explicit applicability review."
+          },
+          {
+            "code": "FRESH_CONTEXT",
+            "state": "PASS",
+            "message": "Current registry, metric, policy and source snapshots match retained context."
+          },
+          {
+            "code": "BOUND_EVIDENCE",
+            "state": "PASS",
+            "message": "Existing M1 words retain exact original context membership."
+          },
+          {
+            "code": "SOURCE_LANGUAGE",
+            "state": "REVIEW",
+            "message": "Instructions fail; illustrative or qualified context needs review."
+          }
+        ],
+        "input_sha256": "542ab4143dcee5ca82031922876e4adf78c4a8093cb06f90a184e3c8a40223a1",
+        "configuration_sha256": "9b0257b3135d8a9fe7dd63ebf816f7adb6473830c6f3c0afbc7a59a577a9e8eb",
+        "context_record_id": "306e4185-4dc4-46e9-9d90-41f258a6447f",
+        "parse_version_id": "a27e8cce-f149-414a-960c-08b4c4988f3e",
+        "evidence_binding_id": "00149cce-d7c2-482a-a9cf-8f139245e0b5",
+        "quantity_proposal": {
+          "raw_value": "67,508.73",
+          "normalized_value": "67508.73",
+          "normalized_unit": "million",
+          "currency": "INR",
+          "period": {
+            "kind": "DURATION",
+            "start_date": "2022-04-01",
+            "end_date": "2023-03-31",
+            "instant_date": null,
+            "raw_label": "Year ended March 31, 2023"
+          },
+          "basis": "CONSOLIDATED"
+        },
+        "review_required": true,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "replay_equal": true,
+        "distinct_word_evidence_ids": 133,
+        "evidence_id_membership_sha256": "3237da59c3276862573be386e8238996ea9f4389cd3fb4285697cfe3b46021f7"
+      },
+      {
+        "document": "waaree",
+        "source_value_cell": 10,
+        "gate_run_id": "4ed77956-205f-4c79-903d-ce286f28e42f",
+        "state": "REVIEW_REQUIRED",
+        "checks": [
+          {
+            "code": "SOURCE",
+            "state": "PASS",
+            "message": "Retained source/version and selected preparation/configuration membership agree."
+          },
+          {
+            "code": "EXACT_WORDS",
+            "state": "PASS",
+            "message": "Every supplied reference retains its exact native word and word envelope."
+          },
+          {
+            "code": "TABLE",
+            "state": "PASS",
+            "message": "Original word mappings retain one aligned value, row label and period column."
+          },
+          {
+            "code": "ISSUER",
+            "state": "REVIEW",
+            "message": "The original CIN needs one unambiguous approved registry binding."
+          },
+          {
+            "code": "METRIC",
+            "state": "REVIEW",
+            "message": "A registered metric and numerical policy are required."
+          },
+          {
+            "code": "VALUE",
+            "state": "PASS",
+            "message": "The original value has an exact unscaled Decimal interpretation."
+          },
+          {
+            "code": "UNIT",
+            "state": "REVIEW",
+            "message": "Local source unit requires the matching registered metric policy."
+          },
+          {
+            "code": "CURRENCY",
+            "state": "PASS",
+            "message": "The local label has explicit retained currency support."
+          },
+          {
+            "code": "PERIOD",
+            "state": "PASS",
+            "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+          },
+          {
+            "code": "BASIS",
+            "state": "REVIEW",
+            "message": "The separate basis clause needs statement applicability review."
+          },
+          {
+            "code": "CONTEXT_SCOPE",
+            "state": "REVIEW",
+            "message": "Cross-page links require explicit applicability review."
+          },
+          {
+            "code": "FRESH_CONTEXT",
+            "state": "PASS",
+            "message": "Current registry, metric, policy and source snapshots match retained context."
+          },
+          {
+            "code": "BOUND_EVIDENCE",
+            "state": "PASS",
+            "message": "Existing M1 words retain exact original context membership."
+          },
+          {
+            "code": "SOURCE_LANGUAGE",
+            "state": "REVIEW",
+            "message": "Instructions fail; illustrative or qualified context needs review."
+          }
+        ],
+        "input_sha256": "1dbbc7396b828c7f496125e4771d6a398cb81c892158e61e6d50f7f2acd97bf9",
+        "configuration_sha256": "9b0257b3135d8a9fe7dd63ebf816f7adb6473830c6f3c0afbc7a59a577a9e8eb",
+        "context_record_id": "ea7275cb-1f0c-448b-90b5-7bae66b3ba45",
+        "parse_version_id": "a27e8cce-f149-414a-960c-08b4c4988f3e",
+        "evidence_binding_id": "e70e0f7c-f967-4a53-89e3-84c453a0ae3b",
+        "quantity_proposal": {
+          "raw_value": "1,13,976.09",
+          "normalized_value": "113976.09",
+          "normalized_unit": "million",
+          "currency": "INR",
+          "period": {
+            "kind": "DURATION",
+            "start_date": "2023-04-01",
+            "end_date": "2024-03-31",
+            "instant_date": null,
+            "raw_label": "Year ended March 31, 2024"
+          },
+          "basis": "CONSOLIDATED"
+        },
+        "review_required": true,
+        "acceptance_eligible": false,
+        "mandatory_m1_validation_complete": false,
+        "replay_equal": true,
+        "distinct_word_evidence_ids": 133,
+        "evidence_id_membership_sha256": "0c2a3c20b6942186b869752c43e552a478046a27fe46c9455d599bcdf9454062"
+      }
+    ],
+    "database_counts": {
+      "source_blobs": 2,
+      "filing_versions": 2,
+      "numerical_page_captures": 8,
+      "numerical_source_words": 5699,
+      "numerical_context_records": 4,
+      "numerical_context_pages": 16,
+      "parse_versions": 2,
+      "pages": 1184,
+      "blocks": 5699,
+      "evidence": 5699,
+      "native_parse_manifests": 2,
+      "native_parse_source_pages": 1184,
+      "native_parse_context_captures": 8,
+      "native_parse_table_sources": 8,
+      "bound_numerical_gate_runs": 4,
+      "entity_registrations": 0,
+      "metric_definitions": 0,
+      "numeric_metric_policies": 0,
+      "acceptance_audits": 0,
+      "fact_observations": 0,
+      "corpus_versions": 0
+    },
+    "primary_authority_sha256": {
+      "source_blobs": "900d770d21c4c7fd91d95042cd26acdec64d72bb8f7afb89b3942c3122b69354",
+      "filings": "1fd18693bd48b24542a4c02c9204ac035e6597577117c247950f1f21748f4645",
+      "filing_versions": "9d9316a353263bbebda180bc1631cdb637322c1eae7c9e21d1d2c43ce647d3bd",
+      "parse_versions": "149159396f15d2346d45a3d2e58d671fba3fd83d82fba67b34571b7a8598003c",
+      "parse_artifacts": "b7daa39a212f1e1906aa74291acdd5c275f987b4b2120d927aec69c274f55b7d",
+      "pages": "b108ac0accdf1ed9fd7d6ad5a2c1ccac461d1ffedd063b826dbce30c97962026",
+      "blocks": "177d88a2cf6bec162064106aa1c6308cec51ee56ca517b24e2bf3ca2f713d5dd",
+      "tables": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cells": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cell_context": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidence": "6ba8fee736af41fb9d1bc52e152ab59d22db40ceddf9712bf7d39e0dc559d906",
+      "evidence_boxes": "aac98c584958008c1e6a16814294667d8a615ce566153e887981518a4711702b",
+      "entity_registrations": "2a113ea4e4e72c9c5bbc8088db8a99d0d7627e1fa1dd5912428c915ae4e9a37e",
+      "entity_runs": "f4ff4b5cc2d66938790eda43673fb3b3847414ee9c0c80197213c770c68f1e37",
+      "entity_reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "metric_definitions": "20d0f264f706a7536a86a3b74ac193040d02472315987f2f365c1efea8802aa7",
+      "candidates": "64e23a5aadd27996aa2f1d6bccc4357d52b16668b895685a75b2d8a2efc6c9d6",
+      "candidate_runs": "edb57adcae03847e9207e097a6be85c3c3e5b32eaa155ca41c663bc84313521c",
+      "candidate_run_items": "e371bf99bcff5fa6239e589a89fd95b482f82540a1b9c4a106bb22043c0ea00b",
+      "numeric_metric_policies": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation_reviews": "167ff68e1c7b515dbc1c212b7ec0c51c3d59381b9e25381c2c6c4ede3d89e716",
+      "filing_jobs": "3664c59aaffb98d7e7fd0a4132b24c59111b580e0e291284cb9b3c12f0b55496",
+      "processing_jobs": "d9692003b3babcf2de4faf962729fce98e20a39910e9a889fb5525169ab985d5",
+      "processing_events": "377490f4066f18d28b219b6f6bf48dc1abaf3ca4cfb18698c78c240182decf52",
+      "processing_checkpoints": "a77b4e07e67151584ebda373d4d10a0b917b26d3591dc18c121b84498ca49a16",
+      "publication_builds": "51f1215564bc1d44b75c9a4ecd0e09e327224b163a9c7e0d96fa0d272b69ec08",
+      "publication_retrieval": "1d69508761e59af2c9aa47a02c1ad50a6c28f4ef54240555d90a28af8eabba15",
+      "retrieval_chunks": "2aaf84f23ee691cfbf56a841149b9e30ae9542a6ab4afd2561f5f118d862a4e4",
+      "publication_graph_receipts": "97fb2b4639717b1713142c8d0da739092695763996f375fbc8ee000d79cf7c85",
+      "publication_commits": "ab67567eb488031bd6f85b499a1990948a382cd7789cc307b47738e4400fddd2",
+      "publication_observations": "5fbab9455ccf4b0a52e6f23dc937b71fb0fc067ef30d56aa5d4c29b1006cc4bf",
+      "publication_head": "6fe012d364a7ebfbee3c73fb595216de266f7bcb64bf3633b1b805dc7c24f1a1",
+      "retrieval_rebuilds": "6912d2cb080cb50d86b521823c9088a2480f1d0b97a7df7f87924a9e3af127ad",
+      "acceptance_audits": "dfb3262dcab4d31456080496bd5a726f951fece638d371042c9d256b847923f5",
+      "fact_observations": "7a2c1494ca57ed342ab92e9715bf9add388c0d6b535ff54e12c75891b8e0ccfb",
+      "relation_observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "corpus_versions": "8c9360cfa1ff2365c08bae90a8876d85dd07a05382b5ae1d78e4832d21aeec19"
+    },
+    "primary_unchanged_tables": 37,
+    "owned_disposable_database_removed": true,
+    "recorded_at_utc": "2026-10-25T09:11:24.919409+00:00",
+    "proof_script_sha256": "6e3a4283c1fb2df3dcdbf4331e383dd89fdf2bd3666d78423340e44f4beb913b",
+    "local_artifact": ".cache/bound-gate-real-4c6fccc589794128a1f98bc48060a1d2/report.json",
+    "artifact_sha256": "58862abe20b592c56d1add5e461b0671ae08e9bf043046f1dbc06db465268de4"
+  },
+  "preservation": {
+    "status": "PASS",
+    "checked_at_utc": "2026-10-25T09:03:36.533961+00:00",
+    "base_commit": "63682de6bc3228f20d38f67b5d7847ec9516869f",
+    "primary_main_clean": true,
+    "primary_main_commit": "236c03f1af095fecced96deaf3ef80afed8b836c",
+    "primary_authority_sha256": {
+      "source_blobs": "900d770d21c4c7fd91d95042cd26acdec64d72bb8f7afb89b3942c3122b69354",
+      "filings": "1fd18693bd48b24542a4c02c9204ac035e6597577117c247950f1f21748f4645",
+      "filing_versions": "9d9316a353263bbebda180bc1631cdb637322c1eae7c9e21d1d2c43ce647d3bd",
+      "parse_versions": "149159396f15d2346d45a3d2e58d671fba3fd83d82fba67b34571b7a8598003c",
+      "parse_artifacts": "b7daa39a212f1e1906aa74291acdd5c275f987b4b2120d927aec69c274f55b7d",
+      "pages": "b108ac0accdf1ed9fd7d6ad5a2c1ccac461d1ffedd063b826dbce30c97962026",
+      "blocks": "177d88a2cf6bec162064106aa1c6308cec51ee56ca517b24e2bf3ca2f713d5dd",
+      "tables": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cells": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "cell_context": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "evidence": "6ba8fee736af41fb9d1bc52e152ab59d22db40ceddf9712bf7d39e0dc559d906",
+      "evidence_boxes": "aac98c584958008c1e6a16814294667d8a615ce566153e887981518a4711702b",
+      "entity_registrations": "2a113ea4e4e72c9c5bbc8088db8a99d0d7627e1fa1dd5912428c915ae4e9a37e",
+      "entity_runs": "f4ff4b5cc2d66938790eda43673fb3b3847414ee9c0c80197213c770c68f1e37",
+      "entity_reviews": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "metric_definitions": "20d0f264f706a7536a86a3b74ac193040d02472315987f2f365c1efea8802aa7",
+      "candidates": "64e23a5aadd27996aa2f1d6bccc4357d52b16668b895685a75b2d8a2efc6c9d6",
+      "candidate_runs": "edb57adcae03847e9207e097a6be85c3c3e5b32eaa155ca41c663bc84313521c",
+      "candidate_run_items": "e371bf99bcff5fa6239e589a89fd95b482f82540a1b9c4a106bb22043c0ea00b",
+      "numeric_metric_policies": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "validation_reviews": "167ff68e1c7b515dbc1c212b7ec0c51c3d59381b9e25381c2c6c4ede3d89e716",
+      "filing_jobs": "3664c59aaffb98d7e7fd0a4132b24c59111b580e0e291284cb9b3c12f0b55496",
+      "processing_jobs": "d9692003b3babcf2de4faf962729fce98e20a39910e9a889fb5525169ab985d5",
+      "processing_events": "377490f4066f18d28b219b6f6bf48dc1abaf3ca4cfb18698c78c240182decf52",
+      "processing_checkpoints": "a77b4e07e67151584ebda373d4d10a0b917b26d3591dc18c121b84498ca49a16",
+      "publication_builds": "51f1215564bc1d44b75c9a4ecd0e09e327224b163a9c7e0d96fa0d272b69ec08",
+      "publication_retrieval": "1d69508761e59af2c9aa47a02c1ad50a6c28f4ef54240555d90a28af8eabba15",
+      "retrieval_chunks": "2aaf84f23ee691cfbf56a841149b9e30ae9542a6ab4afd2561f5f118d862a4e4",
+      "publication_graph_receipts": "97fb2b4639717b1713142c8d0da739092695763996f375fbc8ee000d79cf7c85",
+      "publication_commits": "ab67567eb488031bd6f85b499a1990948a382cd7789cc307b47738e4400fddd2",
+      "publication_observations": "5fbab9455ccf4b0a52e6f23dc937b71fb0fc067ef30d56aa5d4c29b1006cc4bf",
+      "publication_head": "6fe012d364a7ebfbee3c73fb595216de266f7bcb64bf3633b1b805dc7c24f1a1",
+      "retrieval_rebuilds": "6912d2cb080cb50d86b521823c9088a2480f1d0b97a7df7f87924a9e3af127ad",
+      "acceptance_audits": "dfb3262dcab4d31456080496bd5a726f951fece638d371042c9d256b847923f5",
+      "fact_observations": "7a2c1494ca57ed342ab92e9715bf9add388c0d6b535ff54e12c75891b8e0ccfb",
+      "relation_observations": "4f53cda18c2baa0c0354bb5f9a3ecbe5ed12ab4d8e11ba873c2f11161202b945",
+      "corpus_versions": "8c9360cfa1ff2365c08bae90a8876d85dd07a05382b5ae1d78e4832d21aeec19"
+    },
+    "primary_applied_migrations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "primary_pending_migrations": [],
+    "primary_new_module_tables": [],
+    "primary_database_writes": 0,
+    "migrations_1_through_16_unchanged": {
+      "0001_foundation.sql": "496889943f5fda3a674b6f1a5e469267b3303f8c3293d802d4ffc48a482c68d6",
+      "0002_auth.sql": "c4b6a5f95f313e527182804ff2c0263f0661a41a3fd648038795930420f05291",
+      "0003_ingestion.sql": "aa67358f920784a50ddb7b39fef9e1f9061f3753b0034c2c02f3e338d26a89f6",
+      "0004_jobs.sql": "e2be2e54071e776ff5155086333bdff524510f654138ccc0a0aef82e0894b534",
+      "0005_evidence.sql": "89369f5d29628fba557094d51754e6b7151cdc5910aed64ec837576e35db9f0d",
+      "0006_entities.sql": "8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249",
+      "0007_candidates.sql": "5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e",
+      "0008_validation.sql": "7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d",
+      "0009_processing.sql": "806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60",
+      "0010_processing_evidence_order.sql": "1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83",
+      "0011_publication.sql": "310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6",
+      "0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+      "0013_numerical_context.sql": "721bf092164df938a369ccff4b2b4268b8b1e79a4f5b579696a3687a8c57a319",
+      "0014_native_context_evidence.sql": "2ed81a33a55a38105a820aab69550c1e1ce5846fecf0d9f5d50023d3018fe3d3",
+      "0015_learning.sql": "c6091c96d844abf503ec995816b937a76ee9b1703136bae4c013b5f4cd447c9c",
+      "0016_virtual_portfolio.sql": "4121ccccfddd82b2ab5a322bed65e48b3eedd2ee79eeac49101faec34942461a"
+    },
+    "existing_m1_m2_core_scripts_finalized_specs_unchanged": 184,
+    "predecessor_recorded_inputs_verified_against_git": 48,
+    "physical_originals": [
+      {
+        "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca",
+        "physical_hash_matches": true
+      },
+      {
+        "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89",
+        "physical_hash_matches": true
+      }
+    ]
+  },
+  "predecessor_ci": {
+    "checked_at_utc": "2026-10-25T08:34:30.404585+00:00",
+    "source_commit": "63682de6bc3228f20d38f67b5d7847ec9516869f",
+    "id": 40065304795,
+    "status": "completed",
+    "conclusion": "success",
+    "html_url": "https://github.com/127yap101/RegIntel/actions/runs/40065304795",
+    "jobs": [
+      {
+        "name": "Foundation (ubuntu-24.04)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Foundation (windows-2025)",
+        "status": "completed",
+        "conclusion": "success"
+      },
+      {
+        "name": "Local data infrastructure (Linux)",
+        "status": "completed",
+        "conclusion": "success"
+      }
+    ],
+    "raw_logs_accessed": false,
+    "recorded_source_inputs_verified": 48,
+    "hosted_per_test_counts_inferred": false
+  },
+  "containing_commit_ci": "VERIFY_SEPARATELY_AFTER_PUBLICATION",
+  "source_sha256": {
+    ".github/workflows/ci.yml": "d33b6b6dac61a6d7b88a61056f684a6fda7f90dc43bee7715eec9412ad2ee2e9",
+    ".gitignore": "8521e7c7b3df02cce33ee206d132aa492e5485a964fda3a7853bc19cf4830509",
+    "backend/pyproject.toml": "d3ff97c8c4662671299ac505c308804587cf6234cb246d1b471781bec6e0c6ec",
+    "backend/src/regintel/analysis/api.py": "173cd5f6b3f38d06e6a3a55f2be3b3b746f81ee0a5c5d3d086b02ca711ea2ec0",
+    "backend/src/regintel/auth/cli.py": "5734ecba349f126fba4d1419a8c8604ebfe92617b29dddcd40bb6b5f11816e92",
+    "backend/src/regintel/contracts/http.py": "5774706778efed9eb58d25d66923a499db0c8683b167f5b9ad713bf0b21b92f4",
+    "backend/src/regintel/contracts/models.py": "6774b3c8c1f80d7407260fb62d7c7eed76be4534aff65fb483ae7d5d34ec205d",
+    "backend/src/regintel/contracts/primitives.py": "44dc5eed97e3d7f046b1d953739ddbd46c781fe6a1114876065f68ca56649dc6",
+    "backend/src/regintel/evidence/repository.py": "195061e26e7d29a3949c180505f203ac7e95100dc2565eba2d2b1c5a3205fddb",
+    "backend/src/regintel/learning/__init__.py": "a0769fb76517ad473a451753583829dd18cb344d2abe77efec52ff543525cff3",
+    "backend/src/regintel/learning/api.py": "bf1453a8516fec0c138dfd33c37682520b690b2925b1081fc4cd08b54c69e37b",
+    "backend/src/regintel/learning/examples.py": "b091c8cc5698932c886a773ad611ce0e2a8dc4367ac97a1100818fb52077cad2",
+    "backend/src/regintel/learning/models.py": "599faa18eedcdad172e7e24c322c6f0ac3d52823d631bf07ea2e7934b61ad1dd",
+    "backend/src/regintel/learning/repository.py": "46b00a81d0f9f45f16e1cb42f9e3d9bbb4f9f6ecaf7d9d78a3d4aa9dc90ed674",
+    "backend/src/regintel/learning/service.py": "32ff455ce77d9547f280a5cbe7036d35ece711f752b1794266f36baf552502e5",
+    "backend/src/regintel/main.py": "8be65525032c195063534af496ad793a0d095d952d3a3066eca01674d3a432e3",
+    "backend/src/regintel/module_contracts.py": "51e719a85d11f7b0306468d0455fe16563bbd494450d079d09276efd48b37bb5",
+    "backend/src/regintel/numerical/bound_gate.py": "fe8ad28b42275cd8c832e8551ef75a3e0a908be026478a8faac672300ff6b80f",
+    "backend/src/regintel/numerical/context_gate.py": "7a15858ec0566bd2132d9b04170f77cb3fe65aa49e85da8ed763a8ea2dee4e5f",
+    "backend/src/regintel/numerical/context_inputs.py": "971db11be1da9fc6d6e170f3ea4316c48dd6bd3f8ca1f8e00c3e44105f9c4d85",
+    "backend/src/regintel/numerical/context_models.py": "ea9f3d050eeadd8e3ee00a649a53c549c951159e12fa061596093dba893cd819",
+    "backend/src/regintel/numerical/context_periods.py": "7b87d847db748185b8d4794134de6bd643b9d73d24bf3e8b8abb6a20670eee71",
+    "backend/src/regintel/numerical/context_records.py": "5880664170c83ae0b5248ac1d6c52352090ede3d1fd8e1309fcaa045883772b1",
+    "backend/src/regintel/numerical/context_storage.py": "89686d1713b86a648cdc74f3979573e79d46b73c90718e192f153c0c04ccbf1d",
+    "backend/src/regintel/numerical/evidence_binding.py": "6e102258ee7545101fc1ff95bf9d040cb83dd6ae29d70c49085e1d3816346d07",
+    "backend/src/regintel/numerical/evidence_binding_models.py": "9ae845deb76307acdf9c0bbddad2f67357fdb7b8845574d6308d598464a5dcf5",
+    "backend/src/regintel/numerical/evidence_binding_repository.py": "9271a12795a14e20cffbb06d778933abf4f79640f5fd16b1f7f8b95bb2c8e631",
+    "backend/src/regintel/numerical/gate_models.py": "8320157e04775b333aacf79331b15647f693324df490a1c4e8e9a2218526e3ff",
+    "backend/src/regintel/numerical/gate_repository.py": "085424fba42dd32248f0d1284373961f5785af628389510528be326a39482eb5",
+    "backend/src/regintel/portfolio/__init__.py": "0a840350beb949324f6f7aeb7884a7cc47ee24040f3a36450698e17414ccc27d",
+    "backend/src/regintel/portfolio/analytics.py": "f21b9da4aa068f6f165f2b3443d8aae175b910bcb4717706dff604ff6937f43b",
+    "backend/src/regintel/portfolio/api.py": "177ca9b41ce79f54245d42cdea01ca18bb80af263f90bf90db3a2624bcc04d89",
+    "backend/src/regintel/portfolio/engine.py": "252a879a5d3ad1c725826a211dfc4d4af644a1109142a23ff09870ce016e74df",
+    "backend/src/regintel/portfolio/models.py": "8a71d8a78751ce4ba1dfe877d34c5ad76c5e7c39c2598b6e80150bd544163e59",
+    "backend/src/regintel/portfolio/repository.py": "bea488c5ab1bae15b43ced5147376a8b096f3b601e135fa5fee3e30d2c240a0b",
+    "backend/src/regintel/portfolio/service.py": "73fb1d9b7378ebba5bdac5dda403f292da37d260b8e974429a1939014b09eb55",
+    "backend/src/regintel/reads/models.py": "79082dde75994c0157c4842a9fda972b7433ba16e42377f1dcb47c55fe01d25d",
+    "backend/src/regintel/reads/service.py": "2f8edfb04aa04c85e139fd09da5414ec5ad1018bbed529905299dde65020b143",
+    "backend/src/regintel/validation/gate.py": "12ed02863041d94f3e175476af51ac40d918ca126afc522d3438077ce5f94553",
+    "backend/src/regintel/validation/quantity.py": "1233901d8c34e55cccf8e2be97172f79332880f9f674725726fc5a00b094cf8b",
+    "backend/tests/integration/test_bound_numerical_gate_storage.py": "38e7942784e522f82b87632eec3b7acd9c4b48c2e971c3042eb3d46820f98f35",
+    "backend/tests/integration/test_learning_storage.py": "c4ac25fd9d10213e049378add909f42ead848a9c7447ab348984b329e804faac",
+    "backend/tests/integration/test_portfolio_storage.py": "11500ba8978202735d154ee42a5935cb4c1e3f7a7a238ba5ddaba3fbff002fd1",
+    "backend/tests/test_bound_numerical_gate.py": "5aa960c7059eaad0cc11694c1c1fd44e80e77927a3c8bdf8cd5f2f107a0f2083",
+    "backend/tests/test_learning_context.py": "1d97d566007c1186d80148d3a180a227f74e4a3ef30aa361561fd5bec721765a",
+    "backend/tests/test_learning_examples.py": "03907c9df68a010b406cf870d10f888dae127b10bb1bffe33bd98071543856c0",
+    "backend/tests/test_portfolio_analytics.py": "65d0535dbe2e48f1386fc72aea99efa7c78e157f3f637f0bebb021bac567a950",
+    "backend/tests/test_portfolio_engine.py": "1d4619a98b45436a8c94e9ad27e72be85347a0a1d392893e5fe881257230e76f",
+    "backend/uv.lock": "1dfe86463003e1d88357880b18883997224cd24893269023b1b05f654af937e8",
+    "frontend/pnpm-lock.yaml": "7c31d99cff64ab27b3fad673082d08ff9aecebafde1b415c78ba6ef9543a686a",
+    "frontend/src/App.test.tsx": "fa3d4e801c0a858e5390ce80cc92de61456f8354bf5bc00c79197cd711ab945e",
+    "frontend/src/App.tsx": "2d1f416ed0c3d695b6d5475df19572b1a57ca6383e44cafe91856b5bf9e33436",
+    "frontend/src/modules/Analytics.tsx": "ce02545a4415b9aa528b4570432f7eb4d53b92029deb49bf007783b9d7c21472",
+    "frontend/src/modules/DraftQueue.tsx": "2d510b8233c5b8a3895813c643cb8bd8d5f3a56e33d9135d992d2fdbb348be33",
+    "frontend/src/modules/Workspace.tsx": "07eae25cb4027044cb4efeb9edc079fe968515adba8804d495d07939cdb441d7",
+    "frontend/src/modules/api.test.ts": "47a0f6bfb80a724d8d52b89dbdbf9e8686af66f65436397ad856f590bd2d2285",
+    "frontend/src/modules/api.ts": "fbeef6d1693df3fe956ad2a6334ff0a02ee932923ed7866f7aa52dd630ccbe10",
+    "frontend/src/modules/fixtures.test-support.ts": "013458b3e5a071a0d540032dd2449a4a25a2811655f68b9627a728462148e0af",
+    "frontend/src/modules/pending.ts": "6ec87c19df5d0088fd61abe30d503242f75febb787dbc9c224fbdc35440c1e62",
+    "frontend/tests/e2e/foundation.spec.ts": "f3f0e459545af996bad62117a0146b549a283c9d970c35bae5ce5ab85b263156",
+    "frontend/tests/e2e/learning-portfolio.spec.ts": "145890b7c16458335b463d80618339289b873585f1dc00f7cb15e22931e3027c",
+    "infra/migrations/0001_foundation.sql": "496889943f5fda3a674b6f1a5e469267b3303f8c3293d802d4ffc48a482c68d6",
+    "infra/migrations/0002_auth.sql": "c4b6a5f95f313e527182804ff2c0263f0661a41a3fd648038795930420f05291",
+    "infra/migrations/0003_ingestion.sql": "aa67358f920784a50ddb7b39fef9e1f9061f3753b0034c2c02f3e338d26a89f6",
+    "infra/migrations/0004_jobs.sql": "e2be2e54071e776ff5155086333bdff524510f654138ccc0a0aef82e0894b534",
+    "infra/migrations/0005_evidence.sql": "89369f5d29628fba557094d51754e6b7151cdc5910aed64ec837576e35db9f0d",
+    "infra/migrations/0006_entities.sql": "8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249",
+    "infra/migrations/0007_candidates.sql": "5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e",
+    "infra/migrations/0008_validation.sql": "7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d",
+    "infra/migrations/0009_processing.sql": "806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60",
+    "infra/migrations/0010_processing_evidence_order.sql": "1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83",
+    "infra/migrations/0011_publication.sql": "310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6",
+    "infra/migrations/0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+    "infra/migrations/0013_numerical_context.sql": "721bf092164df938a369ccff4b2b4268b8b1e79a4f5b579696a3687a8c57a319",
+    "infra/migrations/0014_native_context_evidence.sql": "2ed81a33a55a38105a820aab69550c1e1ce5846fecf0d9f5d50023d3018fe3d3",
+    "infra/migrations/0015_learning.sql": "c6091c96d844abf503ec995816b937a76ee9b1703136bae4c013b5f4cd447c9c",
+    "infra/migrations/0016_virtual_portfolio.sql": "4121ccccfddd82b2ab5a322bed65e48b3eedd2ee79eeac49101faec34942461a",
+    "infra/migrations/0017_bound_numerical_gates.sql": "59afcf5759eab4ef874f25fe84f8975ee2da720c40dbb8cd7c6ecc55c14a0288",
+    "scripts/bootstrap.ps1": "20bdb2abef961833e993a19363c12f4c69b18e6459c9e2bb6ec14417d3ad9943",
+    "scripts/bootstrap.sh": "64f86b0fd7a03b2bbeded79f3dff0fb037b06bef632598830b630a98fe47263d",
+    "scripts/export-learning-portfolio.py": "dacc5efa27bb7453af5647f3881047a86d4f93226d6e738e19dfa17c2df9b7eb",
+    "scripts/run-checks.ps1": "0aa7bac71f3c95802deace6c83b8f7b441cf98b43df3eda627657cbc9dc36bcf",
+    "scripts/run-checks.sh": "70cc1b2b27ec6397becaecfa1aaa2083d4e677efb70e0c23bc2847c4ad8dbbbc"
+  },
+  "generated_ignored_module_artifact_sha256": {
+    "frontend/src/modules/schema.json": "e8ad170cf5cbbb423eca0646b3de050d4195d25ac35bb3ed953be70cbeb975c9",
+    "frontend/src/modules/generated.ts": "0b48f787665bb74c42db21674315de9dd6c9140f41f824fbd6352280b0cfea8d"
+  },
+  "authored_fixed_price_analytics_oracle": {
+    "scope": "ENGINEERING_FIXTURE_ONLY; NOT_A_QUOTE_DATASET",
+    "opening_cash": "100000.00",
+    "currency": "INR",
+    "orders": [
+      "BUY 3 @ 10.00",
+      "SELL 1 @ 12.00",
+      "SELL 2 @ 15.00"
+    ],
+    "expected_buy_spend": "30.00",
+    "expected_sale_proceeds": "42.00",
+    "expected_closed_position_result": "12.00",
+    "expected_cash": "100012.00",
+    "partial_sale_and_reopened_position_result": "UNAVAILABLE_WHILE_SHARES_REMAIN"
+  },
+  "new_dependencies": [],
+  "new_required_application_environment_variables": [],
+  "new_services_or_public_ports": [],
+  "new_migrations": [
+    "0017_bound_numerical_gates.sql"
+  ],
+  "attempts_and_limitations": [
+    "An initial injected-row fixture failed the existing table/preparation membership before reaching source-language checks. A bindable currency-definition instruction isolates the intended check without weakening earlier gates; all 17 final unit cases pass.",
+    "An initial four-scenario Chromium attempt passed three and timed out scrolling to sign-in on the narrow screen. The unchanged complete 34-scenario run passes with no retries or disabled assertions; no product fix or confirmed root cause is claimed.",
+    "A migration test invocation selected an incorrect non-existing filename and exited during argument validation without creating a database. The correct lifecycle file passes seven cases.",
+    "Six existing Windows symlink/POSIX/FIFO cases are skipped in the full backend run. Current Linux/macOS results must not be inferred from those skips.",
+    "Authored positive/invalid fixtures and fixed prices are engineering controls, not research effectiveness, gold annotations or a configured price provider."
+  ],
+  "remaining": [
+    "M2: complete the mandatory versioned acceptance/review adapter, genuine issuer/metric/policy approval and supported context decisions; then immutable acceptance/publication and independently reviewed real expected calculations.",
+    "M1 producer: explicit runtime profile selection and full documented real-filing/evaluation acceptance remain separate from native coverage and bounded context evidence.",
+    "M3: source-backed educational content requires actual explicit review before publication; no real glossary approval is seeded.",
+    "M4: reviewed quote inputs remain unavailable by user choice; market valuation, returns, open-position cost-basis/P&L and allocation remain unavailable/unimplemented.",
+    "Final integration, held-out evaluation, feature/corpus freeze and fresh-clone handoff acceptance remain unfinished."
+  ]
+}

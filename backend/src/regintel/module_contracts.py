@@ -3,6 +3,7 @@
 from regintel.contracts.models import ContractModel
 from regintel.learning.models import (
     DefinitionDraft,
+    DefinitionQueue,
     GlossaryVersion,
     LearningOverview,
     LearningReview,
@@ -11,12 +12,14 @@ from regintel.learning.models import (
     StoredDefinition,
 )
 from regintel.learning.service import LearningContextRequest, LearningExplanation
+from regintel.portfolio.analytics import PortfolioAnalytics
 from regintel.portfolio.models import LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount
 
 
 class ModuleWire(ContractModel):
     definition_input: DefinitionDraft
     definition: StoredDefinition
+    drafts: DefinitionQueue
     review_input: LearningReview
     reviewed: ReviewedDefinition
     publication_input: PublishLearning
@@ -28,3 +31,4 @@ class ModuleWire(ContractModel):
     order_input: OrderRequest
     order: OrderReceipt
     ledger: LedgerPage
+    analytics: PortfolioAnalytics

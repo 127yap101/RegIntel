@@ -53,6 +53,15 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
   }
   if (kind === 'definition') checkedDefinition(data as ModuleWire['definition'])
   if (kind === 'reviewed') checkedDefinition((data as ModuleWire['reviewed']).definition)
+  if (kind === 'drafts') {
+    const queue = data as ModuleWire['drafts']
+    if (queue.items.length > queue.limit || queue.items.length > queue.total || meta.versions.glossary_version_id !== null) throw new ModuleError(0, 'The private draft queue is invalid.')
+    for (const item of queue.items) {
+      checkedDefinition(item.definition)
+      const expected = item.review === null ? 'PENDING_REVIEW' : item.review.review.decision === 'APPROVE' ? 'APPROVED' : 'REJECTED'
+      if (item.state !== expected || (item.review !== null && item.review.definition.id !== item.definition.id) || (queue.state !== 'ALL' && queue.state !== item.state)) throw new ModuleError(0, 'The draft queue differs from its recorded reviews.')
+    }
+  }
   if (kind === 'glossary' || kind === 'context') {
     const definitions = kind === 'glossary' ? (data as ModuleWire['glossary']).definitions : [(data as ModuleWire['context']).definition]
     const terms = new Set<string>()
@@ -65,9 +74,17 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
     const selected = data as ModuleWire['glossary'] | ModuleWire['learning_status'] | ModuleWire['context']
     if (meta.versions.glossary_version_id !== selected.glossary_version_id) throw new ModuleError(0, 'The returned glossary version changed.')
   }
-  if (kind === 'portfolio' || kind === 'order' || kind === 'ledger') {
-    const selected = data as ModuleWire['portfolio'] | ModuleWire['order'] | ModuleWire['ledger']
+  if (kind === 'portfolio' || kind === 'order' || kind === 'ledger' || kind === 'analytics') {
+    const selected = data as ModuleWire['portfolio'] | ModuleWire['order'] | ModuleWire['ledger'] | ModuleWire['analytics']
     if (meta.versions.portfolio_version_id !== selected.portfolio_version_id) throw new ModuleError(0, 'The returned portfolio version changed.')
+  }
+  if (kind === 'analytics') {
+    const analytics = data as ModuleWire['analytics']
+    if (meta.versions.corpus_version_id !== null || meta.versions.quote_version_id !== null) throw new ModuleError(0, 'Ledger analytics require explicit source-version membership.')
+    if (analytics.state === 'AVAILABLE') {
+      if (!analytics.summary || analytics.input_entry_ids.length !== analytics.committed_orders || new Set(analytics.input_entry_ids).size !== analytics.input_entry_ids.length || (analytics.input_entry_ids.at(-1) ?? analytics.account_id) !== analytics.portfolio_version_id || analytics.summary.executed_orders + analytics.summary.rejected_orders !== analytics.committed_orders) throw new ModuleError(0, 'The analytics ledger is incomplete or mixed.')
+      for (const item of analytics.companies) if ((item.quantity === 0) !== (item.position_state === 'CLOSED') || (item.closed_position_result !== null) !== (item.position_state === 'CLOSED')) throw new ModuleError(0, 'An open position cannot have a closed-position result.')
+    } else if (analytics.summary !== null || analytics.input_entry_ids.length || analytics.companies.length || analytics.corpus_version_ids.length || analytics.quote_version_ids.length) throw new ModuleError(0, 'Budget-limited analytics cannot contain partial totals.')
   }
   if (kind === 'order') {
     const order = data as ModuleWire['order']

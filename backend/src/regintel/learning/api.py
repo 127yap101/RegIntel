@@ -3,7 +3,7 @@
 from collections.abc import Callable
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 
 from regintel.auth.dependencies import user_dependency
 from regintel.auth.service import AuthService
@@ -13,6 +13,8 @@ from regintel.contracts.models import ErrorEnvelope, SuccessEnvelope
 from regintel.contracts.primitives import CanonicalId
 from regintel.learning.models import (
     DefinitionDraft,
+    DefinitionQueue,
+    DraftFilter,
     GlossaryVersion,
     LearningOverview,
     LearningReview,
@@ -87,6 +89,26 @@ def create_learning_router(auth: AuthService | None, service: LearningService | 
     ) -> SuccessEnvelope[GlossaryVersion]:
         data = perform(lambda: ready().repository.glossary(version_id, user))
         return envelope(data, request, data.glossary_version_id)
+
+    @router.get(
+        "/v1/learning/drafts", response_model=SuccessEnvelope[DefinitionQueue], responses=errors
+    )
+    def queue(
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+        state: DraftFilter = "PENDING_REVIEW",
+        q: Annotated[str, Query(max_length=120)] = "",
+        offset: Annotated[int, Query(ge=0, le=1000000)] = 0,
+        limit: Annotated[int, Query(ge=1, le=20)] = 20,
+    ) -> SuccessEnvelope[DefinitionQueue]:
+        return envelope(
+            perform(
+                lambda: ready().repository.queue(
+                    user, state=state, query=q, offset=offset, limit=limit
+                )
+            ),
+            request,
+        )
 
     @router.post(
         "/v1/learning/drafts", response_model=SuccessEnvelope[StoredDefinition], responses=errors

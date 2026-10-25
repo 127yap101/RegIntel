@@ -122,6 +122,13 @@ def test_buy_partial_sell_final_sell_replay_and_decimal_json(portfolio):
     assert ledger.portfolio_version_id == receipts[-1].entry.id
     assert receipts[0].model_dump(mode="json")["entry"]["evaluation"]["cash_delta"] == "-30.30"
     assert repository.ledger(user, offset=1, limit=1).entries == (ledger.entries[1],)
+    before = snapshot(repository.database)
+    analytics = repository.analytics(user)
+    assert analytics.portfolio_version_id == ledger.portfolio_version_id
+    assert analytics.summary.buy_spend == analytics.summary.sale_proceeds == Decimal("30.30")
+    assert analytics.companies[0].closed_position_result == Decimal("0.00")
+    assert analytics.input_entry_ids == tuple(entry.id for entry in ledger.entries)
+    assert snapshot(repository.database) == before
 
 
 @pytest.mark.parametrize(
@@ -337,6 +344,23 @@ def test_virtual_http_uses_published_company_and_rejects_client_financial_fields
         assert client.post("/v1/portfolio/orders", json=bad, headers=headers).status_code == 404
         assert client.get("/v1/quotes", headers=headers).json()["data"]["state"] == "UNAVAILABLE"
         assert client.get("/v1/portfolio/ledger", headers=headers).json()["data"]["total"] == 1
+        before = snapshot(database)
+        analytics = client.get("/v1/portfolio/analytics", headers=headers)
+        assert analytics.status_code == 200
+        assert analytics.json()["data"]["summary"]["rejected_orders"] == 1
+        assert (
+            analytics.json()["meta"]["versions"]["portfolio_version_id"]
+            == receipt.json()["data"]["entry"]["id"]
+        )
+        assert client.get("/v1/portfolio/analytics").status_code == 401
+        assert (
+            client.get(
+                "/v1/portfolio/analytics",
+                headers={"Authorization": "Bearer " + issue_token(peer, settings)},
+            ).status_code
+            == 404
+        )
+        assert snapshot(database) == before
         assert (
             client.get(
                 "/v1/portfolio", headers={"Authorization": "Bearer " + issue_token(peer, settings)}

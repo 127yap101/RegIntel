@@ -28,3 +28,15 @@ export const request = { request_id: ids.request, corpus_version_id: published.i
 export function rejection(input: unknown = request) {
   return { account_id: ids.account, portfolio_version_id: ids.order, entry: { id: ids.order, sequence: 1, request: input, quote: null, committed_at: '2026-10-24T06:00:00Z', evaluation: { state: 'REJECTED', reason: 'QUOTES_UNAVAILABLE', before: opening.state, after: opening.state, cash_delta: '0.00', quantity_delta: 0 } } }
 }
+
+export function analytics(recorded = false) {
+  return {
+    account_id: ids.account, portfolio_version_id: recorded ? ids.order : ids.account,
+    state: 'AVAILABLE', committed_orders: recorded ? 1 : 0,
+    entry_budget: 10000, company_budget: 1000, byte_budget: 33554432,
+    input_entry_ids: recorded ? [ids.order] : [],
+    corpus_version_ids: recorded ? [request.corpus_version_id] : [], quote_version_ids: [],
+    summary: { opening_cash: '100000.00', cash: '100000.00', executed_orders: 0, rejected_orders: recorded ? 1 : 0, buy_spend: '0.00', sale_proceeds: '0.00', net_cash_flow: '0.00' },
+    companies: [], valuation_state: 'UNAVAILABLE', market_value: null, total_value: null,
+  }
+}

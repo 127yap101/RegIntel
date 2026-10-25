@@ -4,6 +4,7 @@ import hashlib
 from collections.abc import Callable, Iterator
 from contextlib import contextmanager
 from datetime import UTC, datetime
+from decimal import Decimal
 from typing import Protocol
 from uuid import UUID, uuid4
 
@@ -13,6 +14,13 @@ from regintel.auth.types import User
 from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import canonical_bytes
+from regintel.portfolio.analytics import (
+    MAX_ANALYTICS_BYTES,
+    MAX_ANALYTICS_ENTRIES,
+    PortfolioAnalytics,
+    ledger_analytics,
+    unavailable_analytics,
+)
 from regintel.portfolio.engine import evaluate_order
 from regintel.portfolio.models import (
     Holding,
@@ -276,3 +284,31 @@ class PortfolioRepository:
                 total=account.committed_orders,
                 offset=offset,
             )
+
+    def analytics(self, user: User) -> PortfolioAnalytics:
+        with self.transaction(user) as connection:
+            identity = self._account(connection, user)
+            account = self._state(connection, identity)
+            if account.committed_orders > MAX_ANALYTICS_ENTRIES:
+                return unavailable_analytics(account)
+            size = connection.execute(
+                "SELECT coalesce(sum(octet_length(entry_bytes)),0) "
+                "FROM regintel.portfolio_orders WHERE account_id=%s",
+                (UUID(identity),),
+            ).fetchone()
+            if size is None or not isinstance(size[0], int) or size[0] > MAX_ANALYTICS_BYTES:
+                return unavailable_analytics(account)
+            row = connection.execute(
+                "SELECT opening_cash FROM regintel.portfolio_accounts WHERE id=%s",
+                (UUID(identity),),
+            ).fetchone()
+            assert row is not None
+            if not isinstance(row[0], Decimal):
+                raise PortfolioUnavailable("The opening virtual credit is unavailable.")
+            rows = connection.execute(
+                "SELECT entry_bytes,entry_sha256 FROM regintel.portfolio_orders "
+                "WHERE account_id=%s ORDER BY sequence LIMIT %s",
+                (UUID(identity), MAX_ANALYTICS_ENTRIES),
+            ).fetchall()
+            entries = tuple(LedgerEntry.model_validate_json(_checked(r[0], r[1])) for r in rows)
+            return ledger_analytics(account, row[0], entries)

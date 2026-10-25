@@ -83,8 +83,10 @@ bindings remain ineligible for acceptance. The new
 source banks for both originals and stores5,699exact M1 word-evidence records from
 eight selected context pages in a disposable verification corpus. All four real
 context records bind to actual evidence; this does not approve or publish facts.
-Runtime selection, mandatory validation/review and numerical publication remain
-producer work.
+The [bound numerical gate](docs/M2_BOUND_NUMERICAL_GATES.md) now records separately
+versioned source/context checks and immutable history over those exact words.
+Legacy acceptance integration, runtime selection, genuine review and numerical
+publication remain producer work.
 The [complete-original benchmark](docs/M1_FULL_FILING_BENCHMARK.md) records
 whole-filing coverage, resource limits and an explicitly fingerprinted timeout
 experiment. Its SDK captures do not create accepted evidence or financial inputs.
@@ -92,15 +94,18 @@ M3/M4 now have an implemented first slice alongside remaining M2 work. M3 adds
 private definition drafts, immutable reviews, versioned glossary publication,
 Decimal educational examples and extractive published-filing context. M4 adds
 per-user virtual accounts, immutable quote/order records, exact cash/holdings and
-safe request retries. The browser has separate learning and virtual-portfolio
-workspaces. No financial glossary is automatically approved; runtime quotes and
+safe request retries. Administrators can find saved learning drafts by review
+state and term. Replay-verified portfolio cash-flow analytics expose spend,
+proceeds and closed-position results with exact ledger/version membership;
+open-position profit stays unavailable. The browser has separate learning and
+virtual-portfolio workspaces. No financial glossary is automatically approved; runtime quotes and
 market valuation remain unavailable. Successful buys/sells are verified using
 labelled fixed-price engineering providers in disposable tests. See the
 [module run/test guide](docs/M3_M4_RUN_AND_TEST.md),
 [delivery plan](docs/M3_M4_IMPLEMENTATION_PLAN.md) and
-[measured report](data/learning-portfolio-validation-report.json).
+[continuation report](data/module-continuation-validation-report.json).
 M2 real numerical acceptance, reviewed learning content, remaining portfolio
-analytics/data integration, final integration and research evaluation remain
+valuation/data integration, final integration and research evaluation remain
 unfinished. M1's original checkout and saved data stay unchanged.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker

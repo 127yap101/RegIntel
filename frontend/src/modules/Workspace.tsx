@@ -4,6 +4,8 @@ import { SourceViewer } from '../published/SourceViewer'
 import type { CompanyPage, FactPage } from '../published/api'
 import { definitionInput, ModuleApi, ModuleError, orderInput } from './api'
 import { confirmOrder, pendingOrder, retainOrder } from './pending'
+import { DraftQueue } from './DraftQueue'
+import { Analytics } from './Analytics'
 import type { ExampleInput, GlossaryVersion, LearningExplanation, LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount, PublishedEvidence, ReviewedDefinition, StoredDefinition } from './generated'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink'
@@ -107,6 +109,12 @@ function LearningPanel({ api }: { api: ModuleApi }) {
     active.current?.abort(); const controller = new AbortController(); active.current = controller; setBusy(true); setError('')
     void action(controller.signal).catch((failure: unknown) => { if (!controller.signal.aborted) setError(message(failure)) }).finally(() => { if (!controller.signal.aborted) setBusy(false) })
   }
+  async function loadDraft(identity: string, signal: AbortSignal): Promise<void> {
+    const value = await api.read('definition', `/v1/learning/drafts/${encodeURIComponent(identity)}`, signal)
+    let recorded: ReviewedDefinition | null = null
+    try { recorded = await api.read('reviewed', `/v1/learning/drafts/${value.id}/review`, signal) } catch (failure: unknown) { if (!(failure instanceof ModuleError && failure.status === 404)) throw failure }
+    setSavedId(value.id); setDraft(value); setReviewed(recorded); setNote(recorded?.review.note ?? '')
+  }
   const selected = glossary?.definitions.find((item) => item.definition.id === selectedTerm)
   const choices = facts?.facts.filter((item) => item.observation.metric_id !== null && selected?.definition.draft.metric_ids?.includes(item.observation.metric_id)) ?? []
   return <div className="mt-6 space-y-7">
@@ -142,6 +150,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
     {api.user.role === 'admin' && <section className="rounded-xl border border-line bg-paper p-5" aria-labelledby="definition-authoring-heading">
       <h3 id="definition-authoring-heading" className="text-lg font-semibold">Review and publish definitions</h3>
       <p className="mt-2 text-sm text-muted">Drafts stay private until an explicit review and publication. Review the definition, its sources and any metric link before approval.</p>
+      <div className="mt-5"><DraftQueue api={api} onOpen={(identity) => run((signal) => loadDraft(identity, signal))} /></div>
       <form className="mt-4 grid gap-4 sm:grid-cols-2" onSubmit={(event) => {
         event.preventDefault()
         run(async (signal) => {
@@ -168,10 +177,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
         <Button type="submit" disabled={busy} className="sm:col-span-2">Save definition draft</Button>
       </form>
       <div className="mt-6 flex flex-wrap items-end gap-3"><label className="min-w-0 grow text-sm">Saved draft ID<input className={inputClass} value={savedId} onChange={(event) => setSavedId(event.target.value)} /></label><Button variant="secondary" disabled={busy || !savedId} onClick={() => run(async (signal) => {
-        const value = await api.read('definition', `/v1/learning/drafts/${encodeURIComponent(savedId)}`, signal)
-        let recorded: ReviewedDefinition | null = null
-        try { recorded = await api.read('reviewed', `/v1/learning/drafts/${value.id}/review`, signal) } catch (failure: unknown) { if (!(failure instanceof ModuleError && failure.status === 404)) throw failure }
-        setDraft(value); setReviewed(recorded); setNote(recorded?.review.note ?? '')
+        await loadDraft(savedId, signal)
       })}>Load saved draft</Button></div>
       {draft && <div className="mt-5 rounded-lg border border-line bg-white p-4"><Definition item={draft} /><label className="mt-5 block text-sm">Review note<textarea className={inputClass} value={note} onChange={(event) => setNote(event.target.value)} rows={2} maxLength={1000} /></label><div className="mt-3 flex flex-wrap gap-3">{(['APPROVE', 'REJECT'] as const).map((decision) => <Button key={decision} variant={decision === 'APPROVE' ? 'primary' : 'secondary'} disabled={busy || !note.trim() || reviewed !== null} onClick={() => run(async (signal) => { setReviewed(await api.read('reviewed', `/v1/learning/drafts/${draft.id}/review`, signal, { decision, note })) })}>{decision === 'APPROVE' ? 'Approve definition' : 'Reject definition'}</Button>)}</div>{reviewed && <p role="status" className="mt-3 text-sm">Review recorded: {reviewed.review.decision}</p>}<Button className="mt-4" disabled={busy || reviewed?.review.decision !== 'APPROVE'} onClick={() => run(async (signal) => {
         const retained = glossary?.definitions.filter((item) => item.definition.draft.term.toLowerCase() !== draft.draft.term.toLowerCase()).map((item) => item.definition.id) ?? []
@@ -245,6 +251,7 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
       {pending && <div className="rounded-lg border border-line bg-white p-4"><p className="text-sm">This order has no confirmed response. Retry with the same request key to avoid duplicate execution. The request is retained for this browser tab when you sign in again.</p><p className="mt-2 break-all text-xs text-muted">Request key: {pending.request_id}</p><Button className="mt-3" disabled={busy} onClick={() => submit(pending)}>Retry same virtual order</Button>{notCommitted && <Button className="ml-3 mt-3" variant="secondary" disabled={busy} onClick={() => { confirmOrder(api.user.id); setPending(null); setNotCommitted(false) }}>Clear declined request</Button>}</div>}
       {receipt && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Recorded order #{receipt.entry.sequence}: {receipt.entry.evaluation.state} · {receipt.entry.evaluation.reason.replaceAll('_', ' ')}</p>}
       <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Holdings</h3>{account.state.holdings.length ? <ul className="mt-3 space-y-2 text-sm">{account.state.holdings.map((item) => <li key={item.company_id}>{name(item.company_id)} · {item.quantity} shares</li>)}</ul> : <p className="mt-3 text-sm text-muted">No virtual holdings.</p>}</section>
+      <Analytics key={account.portfolio_version_id} api={api} account={account.account_id} version={account.portfolio_version_id} companyName={name} />
       <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Immutable virtual history</h3>{ledger?.entries.length ? <ol className="mt-3 space-y-3 text-sm">{ledger.entries.map((entry) => <li key={entry.id} className="border-b border-line pb-3">#{entry.sequence} · {entry.request.side} {entry.request.quantity} {name(entry.request.company_id)} · {entry.evaluation.state} · {entry.evaluation.reason.replaceAll('_', ' ')}<span className="mt-1 block text-xs text-muted">Cash after outcome: INR {entry.evaluation.after.cash}</span></li>)}</ol> : <p className="mt-3 text-sm text-muted">No virtual orders recorded.</p>}{ledger && ledger.offset + ledger.entries.length < ledger.total && <Button variant="secondary" className="mt-3" disabled={busy} onClick={() => run(async (signal) => { setLedger(await api.read('ledger', `/v1/portfolio/ledger?offset=${ledger.offset + ledger.entries.length}&limit=50`, signal)) })}>Next history page</Button>}</section>
     </>}
     {error && <p role="alert" className="rounded-lg border border-line bg-white p-4 text-sm">{error}</p>}

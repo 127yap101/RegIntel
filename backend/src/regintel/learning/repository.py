@@ -15,6 +15,9 @@ from regintel.entities.models import canonical_bytes
 from regintel.learning.examples import calculate_example
 from regintel.learning.models import (
     DefinitionDraft,
+    DefinitionQueue,
+    DefinitionQueueItem,
+    DraftFilter,
     GlossaryVersion,
     LearningOverview,
     LearningReview,
@@ -58,9 +61,13 @@ class LearningRepository:
         self.database = database
 
     @contextmanager
-    def transaction(self, user: User, *, admin: bool = False) -> Iterator[DatabaseConnection]:
+    def transaction(
+        self, user: User, *, admin: bool = False, consistent: bool = False
+    ) -> Iterator[DatabaseConnection]:
         try:
             with connect_database(self.database) as connection, connection.transaction():
+                if consistent:
+                    connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
                 row = connection.execute(
                     "SELECT role,is_active,auth_version FROM regintel.users WHERE id=%s FOR SHARE",
                     (user.id,),
@@ -140,6 +147,73 @@ class LearningRepository:
     def draft(self, identity: str, user: User) -> StoredDefinition:
         with self.transaction(user, admin=True) as connection:
             return self._definition(connection, identity)
+
+    def queue(
+        self,
+        user: User,
+        *,
+        state: DraftFilter = "PENDING_REVIEW",
+        query: str = "",
+        offset: int = 0,
+        limit: int = 20,
+    ) -> DefinitionQueue:
+        if (
+            state not in {"ALL", "PENDING_REVIEW", "APPROVED", "REJECTED"}
+            or not isinstance(query, str)
+            or len(query) > 120
+            or "\x00" in query
+            or type(offset) is not int
+            or not 0 <= offset <= 1000000
+            or type(limit) is not int
+            or not 1 <= limit <= 20
+        ):
+            raise LearningConflict("Select a bounded draft queue and literal term search.")
+        with self.transaction(user, admin=True, consistent=True) as connection:
+            condition = (
+                "FROM regintel.learning_definitions d LEFT JOIN regintel.learning_reviews r "
+                "ON r.definition_id=d.id WHERE "
+                "(%s='ALL' OR (%s='PENDING_REVIEW' AND r.id IS NULL) OR "
+                "(%s='APPROVED' AND "
+                "convert_from(r.review_bytes,'UTF8')::jsonb->>'decision'='APPROVE') OR "
+                "(%s='REJECTED' AND "
+                "convert_from(r.review_bytes,'UTF8')::jsonb->>'decision'='REJECT')) "
+                "AND position(lower(%s) in "
+                "lower(convert_from(d.payload,'UTF8')::jsonb#>>'{draft,term}'))>0"
+            )
+            parameters = (state, state, state, state, query)
+            count = connection.execute("SELECT count(*) " + condition, parameters).fetchone()
+            assert count is not None
+            rows = connection.execute(
+                "SELECT d.id,r.id " + condition + " ORDER BY d.created_at,d.id OFFSET %s LIMIT %s",
+                (*parameters, offset, limit),
+            ).fetchall()
+            items = []
+            for identity, review_id in rows:
+                reviewed = self._reviewed(connection, str(identity)) if review_id else None
+                definition = (
+                    reviewed.definition if reviewed else self._definition(connection, str(identity))
+                )
+                items.append(
+                    DefinitionQueueItem(
+                        definition=definition,
+                        state="PENDING_REVIEW"
+                        if reviewed is None
+                        else "APPROVED"
+                        if reviewed.review.decision == "APPROVE"
+                        else "REJECTED",
+                        review=reviewed,
+                    )
+                )
+            return DefinitionQueue.model_validate(
+                {
+                    "items": tuple(items),
+                    "state": state,
+                    "query": query,
+                    "offset": offset,
+                    "limit": limit,
+                    "total": count[0],
+                }
+            )
 
     def _reviewed(self, connection: DatabaseConnection, identity: str) -> ReviewedDefinition:
         definition = self._definition(connection, identity)

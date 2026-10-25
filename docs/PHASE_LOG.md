@@ -2,6 +2,58 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## M2 bound gates, M3 draft queue and M4 cash-flow analytics, 25 October
+
+Continued all authorized modules in the isolated `codex/m2-comparison` branch.
+M2 adds a separately versioned fourteen-check gate over retained numerical context,
+current approval snapshots and exact actual sealed M1 words. Migration17 retains
+immutable inputs/results/configuration/current-admin history with bounded bytes
+and idempotent concurrent replay. Legacy acceptance remains separate: every result
+is explicitly review-required, acceptance-ineligible and incomplete for mandatory
+M1 validation. No existing acceptance, fact or publication gate is relaxed.
+
+The real owned-corpus proof seals both intact originals, stores1,184native pages
+and5,699exact M1 word-evidence records across eight selected context pages, then
+records four immutable bound numerical gates. All replay identically and remain
+REVIEW_REQUIRED. Issuer/metric approval, unit/context applicability and source
+qualifiers remain review checks; Waaree also needs basis review. No registry,
+metric/policy approval, acceptance audit, fact or corpus is created. The owned
+database is removed and all37primary hashes match before/after. The measured
+report records83implementation/input hashes. Native coverage is distinct from
+complete layout/OCR or financial gold accuracy.
+
+M3 adds a private administrator queue with bounded literal term search, review-state
+filters, pagination and exact saved-draft/review recovery. M4 adds read-only Decimal
+cash-flow analytics verified against complete immutable ledger replay. Company
+results require a fully closed position; partial sales or reopened positions
+cannot present open-position cash flow as profit. Input entry IDs and original
+portfolio/corpus/quote versions remain explicit. Bounds fail without partial totals.
+Quotes and market valuation remain unavailable. No real glossary or approval is
+seeded, and authored fixed prices remain confined to engineering tests.
+
+Final checks pass2,288backend/six existing Windows skips/664integration deselected;
+the27new bound-gate/analytics unit controls are included. Owned PostgreSQL/HTTP
+checks pass11gate,20learning,25portfolio and7migration cases; databases are removed.
+Frontend passes286unit tests and all34Chromium scenarios, lint/types/build.
+Ruff274files, mypy180sources, ten generated checks and offline lock validation pass.
+An initial mobile sign-in click timed out during smooth scrolling; the unchanged
+complete browser run passes without retries or disabled assertions. An initial
+instruction fixture was stopped by an earlier mandatory preparation check; a
+bindable instruction fixture isolates the language check with earlier gates intact.
+A wrong migration-test filename exited at argument validation before database
+creation; the correctly selected lifecycle suite passes. These attempts remain
+disclosed in the measured report.
+
+All16previous migrations and184existing core/script/final-spec files match63682de.
+The primary checkout remains clean236c03f, its database1–11, all37authority hashes
+and both originals unchanged. The previous checkpoint63682de passes exact-source
+CI40065304795 on all3jobs; all48recorded inputs match its Git objects. No dependency,
+required application env, service, public port, paid call or primary migration is
+added. Read `data/module-continuation-validation-report.json` for the real proof,
+input fingerprints and remaining acceptance; verify this containing commit's own
+remote/CI separately. Reviewed content, the complete numerical acceptance adapter,
+quote-data decisions, valuation and final research/integration gates remain work.
+
 ## M3 learning and M4 virtual-ledger implementation, 24 October
 
 Implemented the authorized M3/M4 first slice in the isolated M2 branch. M3 stores

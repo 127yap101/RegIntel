@@ -1,11 +1,32 @@
 import { afterEach, describe, expect, it, vi } from 'vitest'
 import { decode, ModuleApi, ModuleError, orderInput } from './api'
 import { confirmOrder, pendingOrder, retainOrder } from './pending'
-import { definition, envelope, glossary, ids, opening, rejection, request, user } from './fixtures.test-support'
+import { analytics, definition, envelope, glossary, ids, opening, rejection, request, reviewed, user } from './fixtures.test-support'
 
 afterEach(() => { vi.unstubAllGlobals(); sessionStorage.clear() })
 
 describe('M3/M4 wire and source versions', () => {
+  it('keeps draft decisions private and tied to the selected immutable definition', () => {
+    const item = { definition, state: 'APPROVED', review: reviewed }
+    const queue = { items: [item], state: 'ALL', query: '', offset: 0, limit: 20, total: 1 }
+    expect(decode('drafts', envelope(queue)).items[0]?.review?.review_id).toBe(ids.review)
+    expect(() => decode('drafts', envelope({ ...queue, state: 'PENDING_REVIEW' }))).toThrow('recorded reviews')
+    expect(() => decode('drafts', envelope(queue, { glossary_version_id: ids.glossary }))).toThrow(ModuleError)
+    expect(() => decode('drafts', envelope({ ...queue, items: [{ ...item, review: null }] }))).toThrow(ModuleError)
+  })
+  it('requires complete analytics membership and explicit unavailable valuation', () => {
+    const data = analytics(true)
+    expect(decode('analytics', envelope(data, { portfolio_version_id: ids.order })).summary?.cash).toBe('100000.00')
+    expect(() => decode('analytics', envelope({ ...data, input_entry_ids: [] }, { portfolio_version_id: ids.order }))).toThrow('incomplete or mixed')
+    expect(() => decode('analytics', envelope(data, { portfolio_version_id: ids.account }))).toThrow(ModuleError)
+    expect(() => decode('analytics', envelope(data, { portfolio_version_id: ids.order, corpus_version_id: request.corpus_version_id }))).toThrow('source-version membership')
+    expect(() => decode('analytics', envelope({ ...data, state: 'LEDGER_BUDGET_EXCEEDED' }, { portfolio_version_id: ids.order }))).toThrow('partial totals')
+  })
+  it('rejects an open-position result rather than presenting its cash flow as profit', () => {
+    const data = analytics(true)
+    const company = { company_id: request.company_id, bought_quantity: 3, sold_quantity: 1, quantity: 2, buy_spend: '30.00', sale_proceeds: '12.00', net_cash_flow: '-18.00', position_state: 'OPEN', closed_position_result: '-18.00' }
+    expect(() => decode('analytics', envelope({ ...data, companies: [company] }, { portfolio_version_id: ids.order }))).toThrow('closed-position result')
+  })
   it('reads independently versioned approved glossary and exact educational decimals', () => {
     const result = decode('glossary', envelope(glossary, { glossary_version_id: ids.glossary }))
     expect(result.definitions[0]?.definition.calculation?.result).toBe('0.30')

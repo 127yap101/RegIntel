@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-24 (Asia/Calcutta).
+Updated: 2026-10-25 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -15,6 +15,53 @@ Updated: 2026-10-24 (Asia/Calcutta).
 - On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
 
 ## Latest verified state
+
+- **Module continuation, 25 October:** M2 adds a separate versioned numerical gate
+  and immutable audit over retained context, current approval snapshots and actual
+  sealed M1 word bindings. Its fourteen checks preserve source/context, exact
+  financial support, freshness and unsafe/qualified language. All-pass means only
+  ready for review; every result remains ineligible for legacy M1 acceptance and
+  explicitly incomplete for its mandatory validation. Migration17 adds one audit
+  table; migrations1–16 and all existing M1/M2 core implementations remain frozen.
+  See `docs/M2_BOUND_NUMERICAL_GATES.md`.
+
+- The owned real-filing proof seals both original native parses, retaining1,184
+  native pages and5,699exact word-evidence records from eight selected context
+  pages. All four numerical gate runs replay identically and remain
+  `REVIEW_REQUIRED`: issuer/metric approval, conditional unit/context applicability
+  and source qualifiers need review, with reporting basis also unresolved for
+  Waaree. It creates zero approvals, acceptance audits, facts or corpus versions
+  and removes its owned database. Complete native coverage does not establish
+  full layout/OCR coverage or financial gold accuracy. The measured report records
+  83implementation/input hashes and exact gate outcomes.
+
+- M3 now has an administrator-only, paginated saved-draft queue with review-state
+  and literal term filters. Opening a result restores its original definition and
+  immutable review. M4 adds read-only, replay-verified cash-flow analytics over the
+  complete selected ledger: buy spend, sale proceeds, counts and company positions.
+  A closed-position cash result requires zero remaining shares; open-position
+  profit and market valuation stay unavailable. Source entry IDs and all original
+  portfolio/corpus/quote versions remain explicit. Exceeding the bounded ledger
+  budget returns no partial totals. Quotes remain unavailable by user decision.
+
+- Final local regression passes **2,288backend tests**, six existing Windows
+  platform skips and664integration cases deselected. Owned PostgreSQL/HTTP checks
+  pass11bound-gate,20learning,25portfolio and7migration cases; those test databases
+  are removed. Frontend passes286unit tests and all34Chromium scenarios, lint,
+  strict types and production build. Ruff274files, mypy180sources, ten generated
+  checks and the unchanged offline dependency lock pass. One earlier narrow-screen
+  browser click timed out while scrolling; the unchanged complete run passes
+  without retries. This establishes engineering behavior, not research accuracy.
+
+- The previous module source63682de passes
+  [CI40065304795](https://github.com/127yap101/RegIntel/actions/runs/40065304795)
+  on Windows foundation, Ubuntu foundation and Linux data infrastructure. All48
+  recorded input hashes match that exact Git commit. Only public run/job/step
+  metadata was read; hosted per-test counts and raw logs were not inferred/read.
+  Current continuation measurements, preservation and disclosed attempts are in
+  `data/module-continuation-validation-report.json`; verify this containing
+  commit's own remote/CI separately. The original clean main236c03f, migrations1–11,
+  all37authority fingerprints and both original PDFs are preserved.
 
 - **M3/M4 first implementation, 24 October:** the isolated `codex/m2-comparison`
   branch now provides administrator-authored learning drafts, immutable reviews,

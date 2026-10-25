@@ -1,13 +1,15 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
-import type { DefinitionDraft, OrderRequest, StoredDefinition } from '../../src/modules/generated'
-import { definition, envelope, glossary, ids, opening, published, rejection, reviewed, user } from '../../src/modules/fixtures.test-support'
+import type { DefinitionDraft, OrderRequest, ReviewedDefinition, StoredDefinition } from '../../src/modules/generated'
+import { analytics, definition, envelope, glossary, ids, opening, published, rejection, reviewed, user } from '../../src/modules/fixtures.test-support'
 import { apiOrigin, webOrigin } from '../ports'
 
 // Browser fixtures are authored engineering data, separate from real review/quotes.
 async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; loseResponse?: boolean; wrongVersion?: boolean } = {}) {
   let stored = structuredClone(definition) as unknown as StoredDefinition
   let available = !options.empty
+  let saved = !options.empty
+  let storedReview = options.empty ? null : reviewed as unknown as ReviewedDefinition | null
   let accountCreated = false
   let recorded: OrderRequest | null = null
   const requests: OrderRequest[] = []
@@ -24,16 +26,26 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
     else if (path.endsWith('/facts')) data = published.facts
     else if (path === '/v1/learning/status') data = envelope({ state: available ? 'AVAILABLE' : 'NO_PUBLISHED_GLOSSARY', glossary_version_id: available ? ids.glossary : null }, { glossary_version_id: available ? ids.glossary : null })
     else if (path.startsWith('/v1/learning/glossary/')) data = envelope(glossary, { glossary_version_id: options.wrongVersion ? ids.account : ids.glossary })
-    else if (path === '/v1/learning/drafts') {
+    else if (path === '/v1/learning/drafts' && method === 'GET') {
+      const query = new URL(route.request().url()).searchParams
+      const filter = query.get('state') ?? 'PENDING_REVIEW'
+      const term = query.get('q') ?? ''
+      const state = storedReview === null ? 'PENDING_REVIEW' : storedReview.review.decision === 'APPROVE' ? 'APPROVED' : 'REJECTED'
+      const items = saved && (filter === 'ALL' || filter === state) && stored.draft.term.toLowerCase().includes(term.toLowerCase()) ? [{ definition: stored, state, review: storedReview }] : []
+      const offset = Number(query.get('offset') ?? '0')
+      data = envelope({ items: items.slice(offset, offset + 20), state: filter, query: term, offset, limit: 20, total: items.length })
+    } else if (path === '/v1/learning/drafts') {
       const input = route.request().postDataJSON() as DefinitionDraft
       expect(input.example).toEqual(definition.draft.example)
       stored = { ...stored, draft: { ...input, metric_ids: [] } }
+      saved = true; storedReview = null
       data = envelope(stored)
     } else if (path === `/v1/learning/drafts/${ids.definition}` && method === 'GET') data = envelope(stored)
     else if (path.endsWith('/review')) {
-      if (method === 'GET') { await route.fulfill({ status: 200, headers, json: envelope({ ...reviewed, definition: stored }) }); return }
+      if (method === 'GET') { await route.fulfill(storedReview ? { status: 200, headers, json: envelope(storedReview) } : { status: 404, headers }); return }
       expect(route.request().postDataJSON()).toEqual({ decision: 'APPROVE', note: 'Authored engineering review only.' })
-      data = envelope({ ...reviewed, definition: stored })
+      storedReview = { ...reviewed, definition: stored } as unknown as ReviewedDefinition
+      data = envelope(storedReview)
     } else if (path === '/v1/learning/versions') {
       expect(route.request().postDataJSON()).toEqual({ definition_ids: [ids.definition], parent_glossary_version_id: null })
       available = true
@@ -44,6 +56,7 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
     } else if (path === '/v1/portfolio/accounts') { accountCreated = true; data = envelope(opening, { portfolio_version_id: ids.account }) }
     else if (path === '/v1/portfolio' && accountCreated) data = envelope({ ...opening, committed_orders: recorded ? 1 : 0, portfolio_version_id: recorded ? ids.order : ids.account }, { portfolio_version_id: recorded ? ids.order : ids.account })
     else if (path === '/v1/portfolio/ledger' && accountCreated) data = envelope({ account_id: ids.account, portfolio_version_id: recorded ? ids.order : ids.account, entries: recorded ? [rejection(recorded).entry] : [], total: recorded ? 1 : 0, offset: 0 }, { portfolio_version_id: recorded ? ids.order : ids.account })
+    else if (path === '/v1/portfolio/analytics' && accountCreated) data = envelope(analytics(recorded !== null), { portfolio_version_id: recorded ? ids.order : ids.account })
     else if (path === '/v1/portfolio/orders') {
       const input = route.request().postDataJSON() as OrderRequest
       requests.push(input)
@@ -86,6 +99,12 @@ test('M3 administrator drafts an example, reviews and publishes without renderin
   await page.getByRole('button', { name: 'Load saved draft' }).click()
   await expect(page.getByRole('button', { name: 'Approve definition', exact: true })).toBeDisabled()
   await expect(page.getByRole('button', { name: 'Publish approved definition' })).toBeEnabled()
+  await page.getByLabel('Saved draft ID', { exact: true }).fill('')
+  await page.getByRole('combobox', { name: 'Draft review state', exact: true }).selectOption('APPROVED')
+  await page.getByLabel('Search draft term', { exact: true }).fill('Authored learning')
+  await page.getByRole('button', { name: 'Apply draft filters' }).click()
+  await page.getByRole('button', { name: 'Open Authored learning term', exact: true }).click()
+  await expect(page.getByLabel('Saved draft ID', { exact: true })).toHaveValue(ids.definition)
   await page.getByRole('button', { name: 'Publish approved definition' }).click()
   const article = page.locator('article').filter({ has: page.getByRole('heading', { name: definition.draft.term }) })
   await expect(article).toContainText(definition.draft.definition)
@@ -128,6 +147,8 @@ test('M4 keeps the exact request across a lost response and reload, then records
   await page.getByRole('button', { name: 'Retry same virtual order' }).click()
   await expect(page.getByText('Recorded order #1: REJECTED · QUOTES UNAVAILABLE', { exact: true })).toBeVisible()
   await expect(page.getByRole('heading', { name: 'Virtual cash: INR 100000.00' })).toBeVisible()
+  await expect(page.getByRole('heading', { name: 'Ledger cash-flow analytics' })).toBeVisible()
+  await expect(page.getByText('Based on 1 committed entries', { exact: false })).toBeVisible()
   await expect(page.getByText('1 recorded orders · whole shares · zero fees', { exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: 'Retry same virtual order' })).toHaveCount(0)
   expect(requests).toHaveLength(2)

@@ -1,6 +1,6 @@
 # Run and test the learning and virtual-portfolio baseline
 
-Updated 24 October 2026. These modules are on `codex/m2-comparison` in
+Updated 25 October 2026. These modules are on `codex/m2-comparison` in
 127yap101/RegIntel. Pull that branch to work on M2–M4. The original `main` checkout
 and its saved M1 test corpus have not been migrated or replaced.
 
@@ -24,7 +24,7 @@ already populated Docker volume without following the existing setup guide.
 
 After the documented local `.env` and `.env.auth` initialization, run these from
 the new clone. These commands intentionally migrate **that clone's configured
-database**, through migration 16. On Yash's current laptop, preserve the original
+database**, through migration 17. On Yash's current laptop, preserve the original
 `D:\RegIntel` database and use the disposable checks below instead.
 
 ```powershell
@@ -58,7 +58,12 @@ and native executables; no new module dependency or mandatory env variable is ad
    educational example. Inputs remain decimal strings and the backend calculates
    its result before review. Percentage change uses the left input as a positive
    baseline and the right input as the later value.
-3. Save the draft and retain its displayed draft ID. Inspect the exact definition,
+3. Save the draft. **Saved definition drafts** lists private drafts with pending,
+   approved or rejected reviews. Filter by state and a literal part of the term,
+   then **Open** the selected term to restore its exact draft and recorded review.
+   Use **Refresh draft queue** after saving or reviewing; each page holds at most
+   20 drafts. The saved draft ID remains available for a direct lookup.
+   Inspect the exact definition,
    source, optional metric link and calculated example. Add a review note and
    explicitly approve or reject. A rejected draft needs a new corrected draft;
    the existing decision cannot be edited.
@@ -97,14 +102,27 @@ publication and evidence prerequisites remain mandatory.
    stored. After reload, sign in again and retry. A confirmed result clears the
    saved request. Closing the tab clears browser session storage; saved server
    history remains authoritative.
-5. Refresh the portfolio and inspect its immutable history. Successful fixed-price
+5. Refresh the portfolio and inspect its immutable history and **Ledger cash-flow
+   analytics**. Analytics replay the complete selected ledger and show executed /
+   rejected counts, buy spend, sale proceeds and net virtual cash flow. A company's
+   closed-position result is shown only when no shares remain. Selling part of a
+   position, or reopening it, keeps that result unavailable. Net cash flow while
+   shares remain is not profit. Missing quotes still produce zero cash movement.
+6. Successful fixed-price
    buys, partial/final sells, insufficient cash, oversells and concurrent retries
    are tested through an explicitly labelled engineering provider in disposable
    tests. That provider is not configured in the runtime API. A reviewed dataset
    or provider is still needed for a successful interactive trade demonstration.
 
-Market valuation/total value are explicitly unavailable. Returns, P&L, allocation
-analytics and a reviewed quote-data workflow remain further M4 work. No real
+Analytics retain every input entry ID and the portfolio, corpus and quote-version
+membership. Their complete-ledger budget is 10,000 entries, 1,000 companies and
+32 MiB of recorded entry bytes. Exceeding a bound returns an explicit unavailable
+result with no partial totals. Cash and paginated history remain readable. If an
+order commits while the browser loads analytics, refresh the portfolio to select
+the same current version throughout.
+
+Market valuation/total value are explicitly unavailable. Returns, open-position
+P&L, allocation and a reviewed quote-data workflow remain further M4 work. No real
 money, recommendation, live execution or model-controlled balance change is added.
 
 ## Automated checks
@@ -118,6 +136,7 @@ With the existing data services running and this clone's `.env` configured:
 ```powershell
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_learning_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_storage.py
+.\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_bound_numerical_gate_storage.py
 pnpm --dir frontend exec playwright test tests/e2e/learning-portfolio.spec.ts --workers=1
 ```
 
@@ -129,7 +148,10 @@ servers occupy the default ports; verification here used 8012 and 5185 on loopba
 On this shared laptop, use the documented isolated-checkout Python path rather
 than reinstalling the main editable environment.
 
-See [the measured report](../data/learning-portfolio-validation-report.json) and
+See [the continuation report](../data/module-continuation-validation-report.json),
+[the first implementation report](../data/learning-portfolio-validation-report.json) and
 [current state](../CURRENT_STATE.md) for actual results and remaining acceptance.
-M2 real numerical acceptance still needs mandatory validation, genuine review and
-publication of the four bound numerical records; M3/M4 do not bypass those gates.
+The [versioned numerical gate](M2_BOUND_NUMERICAL_GATES.md) checks the four real
+bound records separately from legacy M1 acceptance. Real numerical acceptance
+still needs its complete acceptance adapter, genuine review and publication;
+M3/M4 do not bypass those gates.

@@ -10,6 +10,7 @@ from regintel.auth.service import AuthService
 from regintel.auth.types import User
 from regintel.contracts.http import response_meta
 from regintel.contracts.models import ContractModel, ErrorEnvelope, SuccessEnvelope
+from regintel.portfolio.analytics import PortfolioAnalytics
 from regintel.portfolio.models import LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount
 from regintel.portfolio.repository import (
     PortfolioConflict,
@@ -112,6 +113,17 @@ def create_portfolio_router(
         limit: Annotated[int, Query(ge=1, le=100)] = 50,
     ) -> SuccessEnvelope[LedgerPage]:
         data = perform(lambda: ready().repository.ledger(user, offset=offset, limit=limit))
+        return envelope(data, request, data.portfolio_version_id)
+
+    @router.get(
+        "/v1/portfolio/analytics",
+        response_model=SuccessEnvelope[PortfolioAnalytics],
+        responses=errors,
+    )
+    def analytics(
+        request: Request, user: Annotated[User, Depends(reader)]
+    ) -> SuccessEnvelope[PortfolioAnalytics]:
+        data = perform(lambda: ready().repository.analytics(user))
         return envelope(data, request, data.portfolio_version_id)
 
     return router

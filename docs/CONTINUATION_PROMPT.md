@@ -1,5 +1,41 @@
 # Continue RegIntel M2, M3 and M4
 
+Latest continuation,25October: read `docs/M2_BOUND_NUMERICAL_GATES.md` and
+`data/module-continuation-validation-report.json` with this prompt. M2 now has a
+separately versioned fourteen-check bound numerical gate and immutable exact-input
+history over actual sealed M1 words. Its result is always review-required and
+ineligible for legacy M1 acceptance, even when all checks pass. Complete the
+mandatory versioned acceptance/review adapter next; never relabel this audit as a
+legacy `ValidationRun` or mark mandatory validation complete. Genuine entity,
+metric/policy and context decisions and real publication remain unfinished.
+
+The real owned-corpus proof passes for both intact originals:1,184native pages,
+5,699exact M1 words across eight selected context pages and four immutable gate
+runs. Each replays identically and remains REVIEW_REQUIRED/ineligible. Review
+checks concern issuer/metric approval, unit/context applicability and source
+qualifiers; Waaree also needs basis review. No approval, accepted fact or corpus
+is created, and the owned database is removed. The report records83source/input
+hashes. Native coverage is not full layout/OCR coverage or a gold accuracy score.
+
+M3 adds the private administrator draft/review queue with term/state filters and
+stored-review restoration. M4 adds read-only complete-ledger cash-flow analytics,
+including spend/proceeds/counts and company closed-position cash results only
+when no shares remain. Open-position profit and market valuation stay unavailable.
+Analytics expose exact entry/version membership and fail without partial totals
+above10,000entries/1,000companies/32MiB. New migration17 owns one numerical audit
+table;1–16are frozen. No dependency, required env, provider/service or public port
+is added. Existing M1/M2 core,184protected inputs/scripts/specs,37primary hashes,
+both originals and clean main236c03f/DB1–11remain unchanged.
+
+Local final checks pass2,288backend/six existing Windows skips/664integration
+deselected,63owned-database cases,286frontend and34Chromium scenarios. Lint/types/
+build, Ruff274/mypy180, ten generated checks and offline lock validation pass.
+An earlier narrow-screen scrolling timeout is disclosed; the unchanged full
+browser run passes without retries. Exact predecessor63682de passes
+[CI40065304795](https://github.com/127yap101/RegIntel/actions/runs/40065304795)
+on all3jobs, and48recorded inputs match Git objects. Verify this containing commit's
+own remote/CI separately; avoid metadata-only pushes that cancel its source run.
+
 The user explicitly authorized starting M3/M4 alongside remaining M2 on23October
 because time is short. They also confirmed preserving M1 interfaces and existing
 data while completing integration. Continue in the isolated
@@ -15,19 +51,21 @@ Decimal quote/order ledger with exact-key retries. Admins can restore a saved
 draft's existing review and refresh the current glossary parent. The browser has
 learning and virtual-portfolio workspaces; no real educational approvals are
 seeded. Migrations15/16 are module-owned and are not applied to the original corpus.
+The25October extension above adds migration17 to the isolated branch only.
 
 Continue remaining M2/M3/M4 through these boundaries. Priority M2 work is mandatory
 numerical validation, genuine reviewed acceptance/publication and independent
 real expected calculations. For M3, prepare source-backed draft educational
 content and obtain actual explicit review before publication; preserve independent
 glossary versions and exact filing context. M4 still needs a reviewed quote-data
-workflow and analytics/valuation with explicit input availability. Keep quotes
+workflow and market valuation/returns with explicit input availability. Cash-flow
+analytics are implemented in the25October extension. Keep quotes
 unavailable as requested; fixed prices belong to labelled acceptance fixtures
 until a reviewed provider/dataset is supplied. Do not invent approvals/prices or
 declare complete modules from authored test success. No repeated phase approval
 is needed, and independent module work need not wait on real M2 acceptance.
 
-Final verification passes2,261backend/six Windows skips/652integration deselected,
+The24October baseline verification passes2,261backend/six Windows skips/652integration deselected,
 51owned-database cases,283frontend and34Chromium scenarios; all four module browser
 flows pass again after review recovery. Lint/types/build, Ruff267/mypy176, ten
 generated checks, both runner syntaxes and the offline dependency lock pass.

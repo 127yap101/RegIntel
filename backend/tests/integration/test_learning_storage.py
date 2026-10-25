@@ -182,6 +182,31 @@ def test_stale_glossary_parent_cannot_discard_a_concurrent_publication(learning)
     assert repository.glossary(version.glossary_version_id, learner) == version
 
 
+def test_private_draft_queue_filters_pages_and_retains_actual_reviews(learning):
+    database, repository, admin, learner, draft = learning
+    pending = repository.propose(draft.model_copy(update={"term": "Revenue % literal"}), admin)
+    accepted, review = approved(repository, admin, draft.model_copy(update={"term": "EPS"}))
+    rejected = repository.propose(draft.model_copy(update={"term": "Rejected term"}), admin)
+    repository.review(
+        rejected.id, LearningReview(decision="REJECT", note="Authored rejection."), admin
+    )
+    before = snapshot(database)
+    with pytest.raises(LearningForbidden):
+        repository.queue(learner)
+    page = repository.queue(admin, state="ALL", limit=2)
+    assert page.total == 3 and [item.definition.id for item in page.items] == [
+        pending.id,
+        accepted.id,
+    ]
+    assert page.items[1].review == review and page.items[1].state == "APPROVED"
+    assert repository.queue(admin, state="ALL", offset=2).items[0].definition == rejected
+    assert repository.queue(admin, query="% literal").items[0].definition == pending
+    assert repository.queue(admin, query="nonexistent").total == 0
+    assert repository.queue(admin, state="APPROVED", query="eps").items[0].review == review
+    assert repository.queue(admin, state="REJECTED").items[0].state == "REJECTED"
+    assert snapshot(database) == before
+
+
 @pytest.mark.parametrize("table", ["learning_definitions", "learning_reviews", "learning_versions"])
 @pytest.mark.parametrize("action", ["UPDATE", "DELETE", "TRUNCATE"])
 def test_learning_history_is_append_only(learning, table, action):
@@ -229,6 +254,8 @@ def test_learning_http_requires_review_and_echoes_independent_version(learning):
         admin_headers = {"Authorization": "Bearer " + issue_token(admin, settings)}
         learner_headers = {"Authorization": "Bearer " + issue_token(learner, settings)}
         assert client.get("/v1/learning/status").status_code == 401
+        assert client.get("/v1/learning/drafts", headers=learner_headers).status_code == 403
+        assert client.get("/v1/learning/drafts?limit=21", headers=admin_headers).status_code == 422
         assert (
             client.post(
                 "/v1/learning/drafts", json=draft.model_dump(mode="json"), headers=learner_headers
@@ -240,6 +267,11 @@ def test_learning_http_requires_review_and_echoes_independent_version(learning):
         )
         assert proposal.status_code == 200
         identity = proposal.json()["data"]["id"]
+        queue = client.get("/v1/learning/drafts", headers=admin_headers)
+        assert (
+            queue.status_code == 200
+            and queue.json()["data"]["items"][0]["definition"]["id"] == identity
+        )
         assert (
             client.get(f"/v1/learning/drafts/{identity}/review", headers=admin_headers).status_code
             == 404
