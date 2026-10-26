@@ -108,6 +108,13 @@ class NumericalContextReviewRepository:
                 "regintel.numeric_metric_policies IN SHARE MODE"
             )
             _authorize(connection, user)
+            # Both the immutable ID and gate are unique. Serialize this gate's
+            # lookup/insert so a concurrent identical request reads the original
+            # decision instead of racing on the other unique constraint.
+            connection.execute(
+                "SELECT pg_advisory_xact_lock(hashtextextended(%s,0))",
+                ("numerical-context-review:" + request.gate_run_id,),
+            )
             gate = read_gate(connection, request.gate_run_id)
             require_reviewable(gate, request)
             existing = connection.execute(

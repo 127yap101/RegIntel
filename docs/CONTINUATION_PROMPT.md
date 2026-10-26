@@ -1,5 +1,20 @@
 # Continue RegIntel M2, M3 and M4
 
+Latest follow-up, 26 October: read `docs/NUMERICAL_REVIEW_CONCURRENCY_FIX.md` and
+`data/review-concurrency-validation-report.json` first. Checkpoint `987cd8c` passed
+both foundation jobs, but Linux CI40290171823 named the simultaneous-identical-
+review storage test. A controlled baseline reproduces SQLSTATE23505 on the review
+primary key. A transaction lock per gate now serializes its lookup/fresh check /
+insert; exact retries retain the original actor and configuration, and conflicting
+decisions fail. No mandatory acceptance gate is relaxed. Native checks pass 16
+storage cases, one separately added historical-configuration case and nine unit
+cases, plus configured Ruff/mypy/generated checks. Read the measured report for
+the frozen Linux storage/HTTP run's actual status; verify this containing commit's
+own CI. Original M1 data, all18migrations and375other module source/test/script /
+specification files remain unchanged. Continue the genuine numerical acceptance /
+publication adapter, reviewed M3 content and M4 acceptance/evaluation work through
+existing contracts; quotes remain unavailable by user decision.
+
 Latest continuation,26October: read `docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md` and
 the current CURRENT_STATE.md entries before earlier checkpoints. M2 has an admin
 HTTP boundary for exact gate/binding inspection and the existing immutable staged

@@ -2,16 +2,20 @@
 
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import replace
+from threading import Barrier
 from uuid import uuid4
 
 import psycopg
 import pytest
+from pydantic import SecretStr
 
 from backend.tests.integration import test_numerical_context_storage as contexts
 from backend.tests.integration.test_numerical_binding_storage import binding as binding
 from backend.tests.integration.test_numerical_context_storage import inspection as inspection
 from backend.tests.integration.test_numerical_context_storage import snapshot
 from backend.tests.test_numerical_context import Options
+from regintel.auth.repository import PostgreSQLAuthRepository, seed_users
+from regintel.auth.types import SeedAccount
 from regintel.db.migrations import connect_database
 from regintel.entities.models import EntityRegistration
 from regintel.entities.repository import EntityRepository
@@ -97,6 +101,78 @@ def test_concurrent_identical_reviews_retain_one_exact_original_decision(reviewe
         ).fetchone() == (1,)
     with pytest.raises(NumericalReviewConflict):
         repository.save(proposal.model_copy(update={"decision": "REJECT"}), binding.source.user)
+
+
+def test_concurrent_admin_retries_preserve_one_original_actor(reviewed_case):
+    binding, value, proposal, repository = reviewed_case
+    database = binding.source.database
+    seed_users(
+        database,
+        (SeedAccount("other-review-admin", SecretStr("Authored review administrator!"), "admin"),),
+    )
+    other = PostgreSQLAuthRepository(database).get_by_username("other-review-admin")
+    assert other is not None
+    barrier = Barrier(2)
+
+    def submit(user):
+        barrier.wait(timeout=30)
+        return repository.save(proposal, user)
+
+    before = snapshot(database)
+    with ThreadPoolExecutor(max_workers=2) as workers:
+        calls = [workers.submit(submit, user) for user in (binding.source.user, other)]
+        results = [call.result(timeout=60) for call in calls]
+    assert results[0] == results[1] == repository.get(value.result.id, other)
+    assert results[0].reviewed_by in {str(binding.source.user.id), str(other.id)}
+    assert not results[0].publishes_fact and not results[0].acceptance_eligible
+    after = snapshot(database)
+    for table in ("fact_observations", "acceptance_audits", "corpus_versions"):
+        assert after[table] == before[table]
+    with connect_database(database) as connection:
+        assert connection.execute(
+            "SELECT count(*) FROM regintel.numerical_context_reviews"
+        ).fetchone() == (1,)
+
+
+def test_concurrent_conflicting_reviews_commit_only_one_decision(reviewed_case):
+    binding, value, proposal, repository = reviewed_case
+    barrier = Barrier(2)
+    changed = proposal.model_copy(update={"decision": "REJECT"})
+
+    def submit(request):
+        barrier.wait(timeout=30)
+        try:
+            return repository.save(request, binding.source.user)
+        except NumericalReviewConflict:
+            return None
+
+    before = snapshot(binding.source.database)
+    with ThreadPoolExecutor(max_workers=2) as workers:
+        calls = [workers.submit(submit, request) for request in (proposal, changed)]
+        results = [call.result(timeout=60) for call in calls]
+    retained = [result for result in results if result is not None]
+    assert len(retained) == 1
+    assert repository.get(value.result.id, binding.source.user) == retained[0]
+    assert retained[0].request in (proposal, changed)
+    assert repository.save(retained[0].request, binding.source.user) == retained[0]
+    after = snapshot(binding.source.database)
+    for table in ("fact_observations", "acceptance_audits", "corpus_versions"):
+        assert after[table] == before[table]
+    with connect_database(binding.source.database) as connection:
+        assert connection.execute(
+            "SELECT count(*) FROM regintel.numerical_context_reviews"
+        ).fetchone() == (1,)
+
+
+def test_historical_review_replays_its_original_configuration(reviewed_case, monkeypatch):
+    binding, value, proposal, repository = reviewed_case
+    original = repository.save(proposal, binding.source.user)
+    before = snapshot(binding.source.database)
+    changed_configuration = "f" * 64 if original.configuration_sha256 != "f" * 64 else "e" * 64
+    monkeypatch.setattr(review_module, "review_configuration_sha256", lambda: changed_configuration)
+    assert repository.get(value.result.id, binding.source.user) == original
+    assert repository.save(proposal, binding.source.user) == original
+    assert snapshot(binding.source.database) == before
 
 
 @pytest.mark.parametrize("actor", ["learner", "forged", "stale", "inactive"])

@@ -2,6 +2,36 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Serialize immutable numerical context reviews, 26 October
+
+Continued all four modules from `987cd8c`. Its public CI40290171823 passes both
+foundation jobs and names the simultaneous-identical-review case in the failed
+Linux database job. A controlled baseline probe aligns two requests after fresh
+checks and reproduces SQLSTATE23505 on `numerical_context_reviews_pkey`. A plain
+Linux baseline run passed once; the raw CI exception remains unavailable. This
+supports a scheduling-dependent overlapping-insert diagnosis without claiming a
+retrieved CI traceback.
+
+Added a transaction advisory lock per selected gate before lookup/fresh validation
+and insert. Existing mandatory checks, approval locks, immutable insert guards
+and bounded retries remain. New tests cover concurrent different administrators,
+conflicting decisions and historical configuration replay. New decisions retain
+the changed implementation fingerprint; stored historical IDs/actors remain.
+
+Native checks pass 16 storage cases plus the separately added historical case,
+nine numerical-review units, configured Ruff286files, mypy184sources and ten
+generated checks. The frozen Linux storage/HTTP run and containing commit's CI
+must be read from their actual outcome; any pending status is explicit in
+`data/review-concurrency-validation-report.json`. Repeated or baseline diagnostic
+attempts are not added to the successful distinct-case count.
+
+Read-only proof checks 375 other source/test/script/final-spec files, all18
+migrations, all37original authority hashes, both PDFs and clean main236c03f/DB1–11.
+All four retained real gates still refuse confirmation. No primary write, real
+review, accepted fact, corpus, project dependency, required setting or public port
+is added. Continue the real numerical acceptance/publication and reviewed-content
+prerequisites under the existing module plans.
+
 ## Numerical review access and selected module histories, 26 October
 
 Continued authorized M2–M4 work from2e2bc34. M2 adds an authenticated current-admin

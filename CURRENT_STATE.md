@@ -16,6 +16,30 @@ Updated: 2026-10-26 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Numerical review concurrency fix, 26 October:** exact checkpoint `987cd8c`
+  passes Windows/Ubuntu foundation checks, but Linux CI40290171823 identifies the
+  simultaneous-identical-review test as failing. A controlled baseline reproduces
+  SQLSTATE `23505` on `numerical_context_reviews_pkey`; an ordinary Linux baseline
+  invocation passed once, so scheduling matters. The repository now locks the
+  selected gate's transaction before lookup/fresh validation/insert. Identical
+  requests retain one original decision/actor; conflicting requests fail. All
+  existing evidence, authorization, freshness and database guards remain active.
+  See `docs/NUMERICAL_REVIEW_CONCURRENCY_FIX.md`.
+
+- Native verification passes 16 storage cases, one separately added historical
+  configuration case and nine unit cases. Ruff (286 files), strict mypy (184
+  sources) and ten generated checks pass. The frozen Linux storage/HTTP run is
+  recorded separately, including any pending status at checkpoint creation; do
+  not infer its completion from native results. Verify the containing commit's
+  own CI. See `data/review-concurrency-validation-report.json`.
+
+- Read-only preservation confirms all 37 original authority-table hashes, both
+  PDFs, clean main `236c03f` / DB1–11, all 18 migrations and 375 other module
+  source/test/script/specification files. The staged-review implementation hash
+  changes for new decisions; historical review IDs/configurations remain intact.
+  All four retained real gates still refuse confirmation. No accepted numerical
+  fact, real approval, corpus, dependency, migration or required setting is added.
+
 - **Review access/history continuation, 26 October:** M2 exposes private GET of
   a selected numerical gate, exact M1 binding and stored context review, plus
   explicit POST of the existing context decision. Current-admin, complete exact
