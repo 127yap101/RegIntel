@@ -5,6 +5,7 @@ from regintel.learning.draft_pack import LearningStarterPack
 from regintel.learning.models import (
     DefinitionDraft,
     DefinitionQueue,
+    GlossaryHistory,
     GlossaryVersion,
     LearningOverview,
     LearningReview,
@@ -26,6 +27,7 @@ class ModuleWire(ContractModel):
     reviewed: ReviewedDefinition
     publication_input: PublishLearning
     glossary: GlossaryVersion
+    glossary_history: GlossaryHistory
     learning_status: LearningOverview
     context_input: LearningContextRequest
     context: LearningExplanation

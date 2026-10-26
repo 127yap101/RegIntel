@@ -49,6 +49,11 @@ def main() -> None:
 def serve_main() -> None:
     parser = _parser("Run the configured native API on loopback.")
     parser.add_argument("--port", type=int, default=8000)
+    parser.add_argument(
+        "--numerical-runtime-file",
+        type=Path,
+        help="Selected native numerical parser descriptor; omitted disables numerical review HTTP.",
+    )
     args = parser.parse_args()
     if not 1 <= args.port <= 65535:
         parser.error("The port must be between 1 and 65535.")
@@ -119,6 +124,9 @@ def serve_main() -> None:
     )
     from regintel.learning.repository import LearningRepository
     from regintel.learning.service import LearningService
+    from regintel.numerical.repository import NumericalRepository
+    from regintel.numerical.review_repository import NumericalContextReviewRepository
+    from regintel.parsing.configuration import load_runtime_configuration
     from regintel.portfolio.repository import PortfolioRepository
     from regintel.portfolio.service import PortfolioService
 
@@ -150,6 +158,15 @@ def serve_main() -> None:
                 portfolio_service=PortfolioService(
                     PortfolioRepository(load_database_settings(args.env_file)), read_service
                 ),
+                numerical_review_repository=NumericalContextReviewRepository(
+                    NumericalRepository(
+                        load_database_settings(args.env_file),
+                        ingestion.storage,
+                        load_runtime_configuration(args.numerical_runtime_file),
+                    )
+                )
+                if args.numerical_runtime_file is not None
+                else None,
                 retrieval_service=RetrievalService(
                     read_service,
                     SearchRepository(load_database_settings(args.env_file)),

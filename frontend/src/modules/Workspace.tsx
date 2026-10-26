@@ -7,6 +7,8 @@ import { confirmOrder, pendingOrder, retainOrder } from './pending'
 import { DraftQueue } from './DraftQueue'
 import { Analytics } from './Analytics'
 import { StarterDrafts } from './StarterDrafts'
+import { GlossaryHistory } from './GlossaryHistory'
+import { PortfolioHistory } from './PortfolioHistory'
 import type { ExampleInput, GlossaryVersion, LearningExplanation, LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount, PublishedEvidence, ReviewedDefinition, StoredDefinition } from './generated'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink'
@@ -65,6 +67,7 @@ function Definition({ item }: { item: StoredDefinition }) {
 
 function LearningPanel({ api }: { api: ModuleApi }) {
   const [glossary, setGlossary] = useState<GlossaryVersion | null>(null)
+  const [historical, setHistorical] = useState(false)
   const [loaded, setLoaded] = useState(false)
   const [error, setError] = useState('')
   const [busy, setBusy] = useState(false)
@@ -123,8 +126,14 @@ function LearningPanel({ api }: { api: ModuleApi }) {
     <Button variant="secondary" disabled={busy} onClick={() => run(async (signal) => {
       const status = await api.read('learning_status', '/v1/learning/status', signal)
       const version = status.glossary_version_id ? await api.read('glossary', `/v1/learning/glossary/${status.glossary_version_id}`, signal) : null
-      setGlossary(version); setLoaded(true); setContext(null); setSource(null)
+      setGlossary(version); setHistorical(false); setLoaded(true); setContext(null); setSource(null); setSelectedTerm(''); setObservation('')
     })}>Refresh reviewed glossary</Button>
+    {loaded && <GlossaryHistory key={glossary?.glossary_version_id ?? 'empty'} api={api} selected={glossary?.glossary_version_id ?? null} busy={busy} onSelect={(identity) => run(async (signal) => {
+      const version = await api.read('glossary', `/v1/learning/glossary/${encodeURIComponent(identity)}`, signal)
+      if (version.glossary_version_id !== identity) throw new ModuleError(0, 'The glossary differs from the selected published version.')
+      if (!signal.aborted) { setGlossary(version); setHistorical(true); setContext(null); setSource(null); setSelectedTerm(''); setObservation('') }
+    })} />}
+    {historical && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Viewing a selected published glossary version. Refresh the reviewed glossary before publishing another version.</p>}
     {!loaded && !error && <p role="status">Loading reviewed glossary…</p>}
     {loaded && !glossary && <p role="status" className="rounded-lg bg-paper p-4 text-sm">No glossary has been published. An administrator must draft, review and publish definitions first.</p>}
     {glossary && <div className="grid gap-4 md:grid-cols-2">{glossary.definitions.map((item) => <article key={item.definition.id} className="rounded-xl border border-line bg-white p-5"><Definition item={item.definition} /><p className="mt-4 text-xs text-muted">Approved definition · glossary version {glossary.glossary_version_id}</p></article>)}</div>}
@@ -189,10 +198,10 @@ function LearningPanel({ api }: { api: ModuleApi }) {
       <div className="mt-6 flex flex-wrap items-end gap-3"><label className="min-w-0 grow text-sm">Saved draft ID<input className={inputClass} value={savedId} onChange={(event) => setSavedId(event.target.value)} /></label><Button variant="secondary" disabled={busy || !savedId} onClick={() => run(async (signal) => {
         await loadDraft(savedId, signal)
       })}>Load saved draft</Button></div>
-      {draft && <div className="mt-5 rounded-lg border border-line bg-white p-4"><Definition item={draft} /><label className="mt-5 block text-sm">Review note<textarea className={inputClass} value={note} onChange={(event) => setNote(event.target.value)} rows={2} maxLength={1000} /></label><div className="mt-3 flex flex-wrap gap-3">{(['APPROVE', 'REJECT'] as const).map((decision) => <Button key={decision} variant={decision === 'APPROVE' ? 'primary' : 'secondary'} disabled={busy || !note.trim() || reviewed !== null} onClick={() => run(async (signal) => { setReviewed(await api.read('reviewed', `/v1/learning/drafts/${draft.id}/review`, signal, { decision, note })) })}>{decision === 'APPROVE' ? 'Approve definition' : 'Reject definition'}</Button>)}</div>{reviewed && <p role="status" className="mt-3 text-sm">Review recorded: {reviewed.review.decision}</p>}<Button className="mt-4" disabled={busy || reviewed?.review.decision !== 'APPROVE'} onClick={() => run(async (signal) => {
+      {draft && <div className="mt-5 rounded-lg border border-line bg-white p-4"><Definition item={draft} /><label className="mt-5 block text-sm">Review note<textarea className={inputClass} value={note} onChange={(event) => setNote(event.target.value)} rows={2} maxLength={1000} /></label><div className="mt-3 flex flex-wrap gap-3">{(['APPROVE', 'REJECT'] as const).map((decision) => <Button key={decision} variant={decision === 'APPROVE' ? 'primary' : 'secondary'} disabled={busy || !note.trim() || reviewed !== null} onClick={() => run(async (signal) => { setReviewed(await api.read('reviewed', `/v1/learning/drafts/${draft.id}/review`, signal, { decision, note })) })}>{decision === 'APPROVE' ? 'Approve definition' : 'Reject definition'}</Button>)}</div>{reviewed && <p role="status" className="mt-3 text-sm">Review recorded: {reviewed.review.decision}</p>}<Button className="mt-4" disabled={busy || historical || reviewed?.review.decision !== 'APPROVE'} onClick={() => run(async (signal) => {
         const retained = glossary?.definitions.filter((item) => item.definition.draft.term.toLowerCase() !== draft.draft.term.toLowerCase()).map((item) => item.definition.id) ?? []
         const version = await api.read('glossary', '/v1/learning/versions', signal, { definition_ids: [...retained, draft.id], parent_glossary_version_id: glossary?.glossary_version_id ?? null })
-        setGlossary(version); setLoaded(true); setDraft(null); setReviewed(null); setContext(null); setSource(null)
+        setGlossary(version); setHistorical(false); setLoaded(true); setDraft(null); setReviewed(null); setContext(null); setSource(null)
       })}>Publish approved definition</Button></div>}
     </section>}
     {error && <p role="alert" className="rounded-lg border border-line bg-white p-4 text-sm">{error}</p>}
@@ -201,6 +210,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
 
 function PortfolioPanel({ api }: { api: ModuleApi }) {
   const [account, setAccount] = useState<PortfolioAccount | null>(null)
+  const [historical, setHistorical] = useState(false)
   const [ledger, setLedger] = useState<LedgerPage | null>(null)
   const [loaded, setLoaded] = useState(false)
   const [busy, setBusy] = useState(false)
@@ -226,9 +236,19 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
   }
   async function refresh(signal: AbortSignal): Promise<void> {
     const { account: current, ledger: history } = await api.portfolioSnapshot(signal)
-    setAccount(current); setLedger(history)
+    setAccount(current); setLedger(history); setHistorical(false)
+  }
+  function inspect(version: string): void {
+    if (!account || pending) return
+    const identity = account.account_id
+    run(async (signal) => {
+      const selected = await api.portfolioSnapshot(signal, version)
+      if (selected.account.account_id !== identity) throw new ModuleError(0, 'The selected history differs from this virtual account.')
+      if (!signal.aborted) { setAccount(selected.account); setLedger(selected.ledger); setHistorical(true); setReceipt(null) }
+    })
   }
   function submit(request: OrderRequest): void {
+    if (historical) { setError('Refresh the current portfolio before submitting an order.'); return }
     try { retainOrder(api.user.id, request) } catch (failure: unknown) { setError(message(failure)); return }
     setPending(request)
     setNotCommitted(false)
@@ -249,18 +269,20 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
     {loaded && !account && <Button disabled={busy} onClick={() => run(async (signal) => { setAccount(await api.read('portfolio', '/v1/portfolio/accounts', signal, {})); await refresh(signal) })}>Create virtual account with INR 100000.00</Button>}
     {account && <>
       <div className="flex flex-wrap items-center justify-between gap-4 rounded-xl border border-line bg-white p-5"><div><h3 className="text-lg font-semibold">Virtual cash: INR {account.state.cash}</h3><p className="mt-2 text-sm text-muted">{account.committed_orders} recorded orders · whole shares · zero fees</p></div><Button variant="secondary" disabled={busy || pending !== null} onClick={() => run(refresh)}>Refresh portfolio</Button></div>
-      <form className="grid gap-4 rounded-xl border border-line bg-white p-5 sm:grid-cols-3" onSubmit={(event) => { event.preventDefault(); if (!companies || pending) return; try { submit(orderInput({ request_id: crypto.randomUUID(), corpus_version_id: companies.view.corpus_version_id, company_id: company, side, quantity: Number(quantity) })) } catch (failure: unknown) { setError(message(failure)) } }}>
+      {historical && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Viewing a selected portfolio version. Refresh the portfolio to return to current balances and submit an order.</p>}
+      <Button variant="secondary" disabled={busy || pending !== null || account.committed_orders === 0} onClick={() => inspect(account.account_id)}>View opening balance</Button>
+      <form className="grid gap-4 rounded-xl border border-line bg-white p-5 sm:grid-cols-3" onSubmit={(event) => { event.preventDefault(); if (!companies || pending || historical) return; try { submit(orderInput({ request_id: crypto.randomUUID(), corpus_version_id: companies.view.corpus_version_id, company_id: company, side, quantity: Number(quantity) })) } catch (failure: unknown) { setError(message(failure)) } }}>
         <label className="text-sm">Published company<select className={inputClass} value={company} onChange={(event) => setCompany(event.target.value)} disabled={pending !== null} required><option value="">Select a company</option>{companies?.companies.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
         <label className="text-sm">Virtual action<select className={inputClass} value={side} onChange={(event) => setSide(event.target.value === 'SELL' ? 'SELL' : 'BUY')} disabled={pending !== null}><option value="BUY">Buy</option><option value="SELL">Sell</option></select></label>
         <label className="text-sm">Whole shares<input type="number" min="1" max="1000000" step="1" className={inputClass} value={quantity} onChange={(event) => setQuantity(event.target.value)} disabled={pending !== null} required /></label>
-        <Button type="submit" disabled={busy || pending !== null || !company || !companies} className="sm:col-span-3">Submit virtual order</Button>
+        <Button type="submit" disabled={busy || historical || pending !== null || !company || !companies} className="sm:col-span-3">Submit virtual order</Button>
         {companyError && <p className="text-sm sm:col-span-3">{companyError}</p>}
       </form>
       {pending && <div className="rounded-lg border border-line bg-white p-4"><p className="text-sm">This order has no confirmed response. Retry with the same request key to avoid duplicate execution. The request is retained for this browser tab when you sign in again.</p><p className="mt-2 break-all text-xs text-muted">Request key: {pending.request_id}</p><Button className="mt-3" disabled={busy} onClick={() => submit(pending)}>Retry same virtual order</Button>{notCommitted && <Button className="ml-3 mt-3" variant="secondary" disabled={busy} onClick={() => { confirmOrder(api.user.id); setPending(null); setNotCommitted(false) }}>Clear declined request</Button>}</div>}
       {receipt && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Recorded order #{receipt.entry.sequence}: {receipt.entry.evaluation.state} · {receipt.entry.evaluation.reason.replaceAll('_', ' ')}</p>}
       <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Holdings</h3>{account.state.holdings.length ? <ul className="mt-3 space-y-2 text-sm">{account.state.holdings.map((item) => <li key={item.company_id}>{name(item.company_id)} · {item.quantity} shares</li>)}</ul> : <p className="mt-3 text-sm text-muted">No virtual holdings.</p>}</section>
       <Analytics key={account.portfolio_version_id} api={api} account={account.account_id} version={account.portfolio_version_id} companyName={name} />
-      <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Immutable virtual history</h3>{ledger?.entries.length ? <ol className="mt-3 space-y-3 text-sm">{ledger.entries.map((entry) => <li key={entry.id} className="border-b border-line pb-3">#{entry.sequence} · {entry.request.side} {entry.request.quantity} {name(entry.request.company_id)} · {entry.evaluation.state} · {entry.evaluation.reason.replaceAll('_', ' ')}<span className="mt-1 block text-xs text-muted">Cash after outcome: INR {entry.evaluation.after.cash}</span></li>)}</ol> : <p className="mt-3 text-sm text-muted">No virtual orders recorded.</p>}{ledger && ledger.offset + ledger.entries.length < ledger.total && <Button variant="secondary" className="mt-3" disabled={busy} onClick={() => run(async (signal) => { setLedger(await api.ledgerSnapshot(account, signal, ledger.offset + ledger.entries.length)) })}>Next history page</Button>}</section>
+      <PortfolioHistory ledger={ledger} busy={busy || pending !== null} companyName={name} onVersion={inspect} onPage={(offset) => run(async (signal) => { setLedger(await api.ledgerSnapshot(account, signal, offset)) })} />
     </>}
     {error && <p role="alert" className="rounded-lg border border-line bg-white p-4 text-sm">{error}</p>}
   </div>

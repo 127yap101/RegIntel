@@ -1,5 +1,40 @@
 # Continue RegIntel M2, M3 and M4
 
+Latest continuation,26October: read `docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md` and
+the current CURRENT_STATE.md entries before earlier checkpoints. M2 has an admin
+HTTP boundary for exact gate/binding inspection and the existing immutable staged
+context decision. Native API setup needs an optional explicitly selected native
+parser descriptor via `--numerical-runtime-file`; omission preserves ordinary
+startup and leaves this private boundary unavailable. No descriptor or real
+approval is invented. Every decision stays acceptance-ineligible and non-publishing.
+Complete the actual versioned numerical acceptance/publication adapter next.
+
+M3 adds bounded published-version history and explicit glossary selection. Version
+changes clear context/source selection. Publishing is disabled in a selected
+historical view until current-head refresh. M4 adds opening-credit and order-prefix
+inspection in the browser, keeping account/ledger/analytics on one owned version;
+refresh current balances before another order. Existing quote unavailability and
+the independent reviewed-content requirements remain unchanged.
+
+Read-only preservation confirms37primary hashes, both original PDFs, clean
+main236c03f/DB1–11,186protected source/script/final-spec files and migrations1–18.
+Only native API setup/router wiring and the CI runner are changed connectors.
+All four retained real gates remain unresolved. Predecessor2e2bc34's Windows and
+Ubuntu foundation jobs passed, but its Linux database job failed in40217385972.
+Do not claim all-green CI. The optional cache-scoped JUnit runner now emits only
+sanitized test class/function names as CI error annotations, without copying
+parameter values, assertion text or captured output. Verify the next containing
+commit's own CI and resolve any reported failing test.
+
+Focused checks:2,310backend cases/six existing Windows skips; sixteen new owned
+PostgreSQL/HTTP cases;290frontend units;38Chromium scenarios; nine final history /
+CI-diagnostic units; Ruff286files, mypy184sources and ten generated checks. The
+final eight-case glossary database suite covers parent-lineage ordering when
+timestamps tie. All684preexisting integration cases pass in the native diagnostic,
+which started before the additions and is not a frozen current700-case or Linux
+run. Read `data/review-access-validation-report.json` for source fingerprints,
+sequencing and disclosed attempts. Confirm the containing commit's remote and CI.
+
 Latest review/history continuation: read `data/review-history-validation-report.json`,
 `docs/M2_NUMERICAL_CONTEXT_REVIEWS.md` and `docs/M3_STARTER_DRAFT_SOURCES.md` first.
 M2 has immutable staged context decisions with current-admin, installed-gate,

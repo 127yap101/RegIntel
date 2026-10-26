@@ -7,6 +7,30 @@ import starters from '../../../data/learning-starter-drafts.json'
 afterEach(() => { vi.unstubAllGlobals(); sessionStorage.clear() })
 
 describe('M3/M4 wire and source versions', () => {
+  it('retains complete published glossary pages with distinct version IDs', () => {
+    const item = { glossary_version_id: ids.glossary, parent_glossary_version_id: null, definition_count: 1 }
+    const history = { items: [item], head_glossary_version_id: ids.glossary, offset: 0, limit: 20, total: 1 }
+    expect(decode('glossary_history', envelope(history)).items).toHaveLength(1)
+    expect(() => decode('glossary_history', envelope({ ...history, items: [] }))).toThrow('history is invalid')
+    expect(() => decode('glossary_history', envelope({ ...history, head_glossary_version_id: null }))).toThrow('history is invalid')
+    expect(() => decode('glossary_history', envelope({ ...history, items: [item, item], total: 2 }))).toThrow('history is invalid')
+    expect(() => decode('glossary_history', envelope(history, { glossary_version_id: ids.glossary }))).toThrow(ModuleError)
+  })
+  it('checks an explicitly selected account version before loading dependent history', async () => {
+    const fetcher = vi.fn<typeof fetch>()
+      .mockResolvedValueOnce(new Response(JSON.stringify({ access_token: 'authored-module-token', token_type: 'bearer' })))
+      .mockResolvedValueOnce(new Response(JSON.stringify(envelope(user))))
+      .mockResolvedValueOnce(new Response(JSON.stringify(envelope(opening, { portfolio_version_id: ids.account }))))
+      .mockResolvedValueOnce(new Response(JSON.stringify(envelope({ account_id: ids.account, portfolio_version_id: ids.account, entries: [], total: 0, offset: 0 }, { portfolio_version_id: ids.account }))))
+    vi.stubGlobal('fetch', fetcher)
+    const signal = new AbortController().signal
+    const session = await ModuleApi.login('authored', 'authored-password', signal)
+    await session.portfolioSnapshot(signal, ids.account)
+    expect(fetcher.mock.calls[2]?.[0]).toContain(`portfolio_version_id=${ids.account}`)
+    fetcher.mockResolvedValueOnce(new Response(JSON.stringify(envelope(opening, { portfolio_version_id: ids.account }))))
+    await expect(session.portfolioSnapshot(signal, ids.order)).rejects.toThrow('selected portfolio version')
+    expect(fetcher).toHaveBeenCalledTimes(5)
+  })
   it('keeps starter content unreviewed, source-linked and independent of M1 metric IDs', () => {
     expect(decode('starter_pack', envelope(starters)).drafts).toHaveLength(7)
     expect(() => decode('starter_pack', envelope({ ...starters, status: 'APPROVED' }))).toThrow(ModuleError)

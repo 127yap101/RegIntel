@@ -152,6 +152,36 @@ class LearningOverview(ContractModel):
         return self
 
 
+class GlossaryHistoryItem(ContractModel):
+    glossary_version_id: CanonicalId
+    parent_glossary_version_id: CanonicalId | None
+    definition_count: Annotated[int, Field(strict=True, ge=1, le=100)]
+
+
+class GlossaryHistory(ContractModel):
+    items: Annotated[tuple[GlossaryHistoryItem, ...], Field(strict=False, max_length=20)]
+    head_glossary_version_id: CanonicalId | None
+    offset: Annotated[int, Field(strict=True, ge=0, le=1000000)]
+    limit: Annotated[int, Field(strict=True, ge=1, le=20)]
+    total: SafeInteger
+
+    @model_validator(mode="after")
+    def complete_page(self) -> Self:
+        if len(self.items) != min(self.limit, max(0, self.total - self.offset)):
+            raise ValueError("Glossary history must retain the complete selected page.")
+        if (self.head_glossary_version_id is not None) != (self.total > 0):
+            raise ValueError("Published history requires its current head.")
+        if len({item.glossary_version_id for item in self.items}) != len(self.items):
+            raise ValueError("A history page must retain distinct published versions.")
+        if (
+            self.items
+            and self.offset == 0
+            and self.items[0].glossary_version_id != self.head_glossary_version_id
+        ):
+            raise ValueError("The first published history page must begin at its current head.")
+        return self
+
+
 class DefinitionQueueItem(ContractModel):
     definition: StoredDefinition
     state: DraftState

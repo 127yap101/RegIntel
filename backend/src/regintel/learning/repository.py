@@ -19,6 +19,8 @@ from regintel.learning.models import (
     DefinitionQueue,
     DefinitionQueueItem,
     DraftFilter,
+    GlossaryHistory,
+    GlossaryHistoryItem,
     GlossaryVersion,
     LearningOverview,
     LearningReview,
@@ -348,3 +350,57 @@ class LearningRepository:
             if result.glossary_version_id != identity or canonical_bytes(result) != body:
                 raise LearningUnavailable("Learning history differs from its selected version.")
             return result
+
+    def history(self, user: User, *, offset: int = 0, limit: int = 20) -> GlossaryHistory:
+        if (
+            type(offset) is not int
+            or type(limit) is not int
+            or not 0 <= offset <= 1000000
+            or not 1 <= limit <= 20
+        ):
+            raise LearningConflict("Select a bounded glossary history page.")
+        with self.transaction(user) as connection:
+            # Writers hold the same lock until version/head commit. One page therefore
+            # describes a single published history rather than mixing concurrent heads.
+            connection.execute("SELECT pg_advisory_xact_lock_shared(%s)", (0x4C4541524E494E47,))
+            head = connection.execute(
+                "SELECT version_id FROM regintel.learning_head WHERE singleton"
+            ).fetchone()
+            count = connection.execute("SELECT count(*) FROM regintel.learning_versions").fetchone()
+            if count is None or not isinstance(count[0], int):
+                raise LearningUnavailable("Published glossary history count is invalid.")
+            # Tied timestamps and random IDs do not establish publication
+            # order. Walk the recorded parents from the locked current head.
+            rows = connection.execute(
+                "WITH RECURSIVE lineage(id,ordinal) AS ("
+                "SELECT version_id::uuid,0 FROM regintel.learning_head WHERE singleton "
+                "UNION ALL "
+                "SELECT (convert_from(v.manifest,'UTF8')::jsonb "
+                "->>'parent_glossary_version_id')::uuid,l.ordinal+1 "
+                "FROM lineage l JOIN regintel.learning_versions v ON v.id=l.id "
+                "WHERE l.ordinal < %s) "
+                "SELECT v.id,v.manifest,v.manifest_sha256 FROM lineage l "
+                "JOIN regintel.learning_versions v ON v.id=l.id "
+                "WHERE l.ordinal >= %s ORDER BY l.ordinal LIMIT %s",
+                (min(count[0], offset + limit) - 1, offset, limit),
+            ).fetchall()
+            items = []
+            for identity, manifest, sha in rows:
+                body = _bytes(manifest, sha)
+                version = GlossaryVersion.model_validate_json(body)
+                if version.glossary_version_id != str(identity) or canonical_bytes(version) != body:
+                    raise LearningUnavailable("Published glossary history cannot be verified.")
+                items.append(
+                    GlossaryHistoryItem(
+                        glossary_version_id=version.glossary_version_id,
+                        parent_glossary_version_id=version.parent_glossary_version_id,
+                        definition_count=len(version.definitions),
+                    )
+                )
+            return GlossaryHistory(
+                items=tuple(items),
+                head_glossary_version_id=str(head[0]) if head else None,
+                offset=offset,
+                limit=limit,
+                total=count[0],
+            )

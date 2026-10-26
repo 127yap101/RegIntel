@@ -2,8 +2,10 @@
 
 import argparse
 import os
+import re
 import subprocess
 import sys
+import xml.etree.ElementTree as ET
 from pathlib import Path
 from urllib.parse import urlsplit, urlunsplit
 from uuid import uuid4
@@ -13,6 +15,34 @@ from psycopg import sql
 
 from regintel.db.config import load_database_settings
 from regintel.db.migrations import MigrationError, connect_database
+
+
+def report_test_failures(path: Path) -> None:
+    """Expose bounded test identities in CI annotations, never failure payloads/secrets."""
+    try:
+        with path.open("rb") as stream:
+            payload = stream.read(16 * 1024 * 1024 + 1)
+        if len(payload) > 16 * 1024 * 1024:
+            return
+        root = ET.fromstring(payload)
+    except (OSError, ET.ParseError):
+        return
+    failures = [
+        case
+        for case in root.iter("testcase")
+        if case.find("failure") is not None or case.find("error") is not None
+    ]
+    for case in failures[:20]:
+        # Parameter values, tracebacks, assertion text and captured output stay in
+        # the local report. Only source-authored test identities enter annotations.
+        identity = re.sub(
+            r"[^A-Za-z0-9_.:\[\]-]",
+            "?",
+            case.get("classname", "") + "::" + case.get("name", "").split("[", 1)[0],
+        )[:300]
+        print("Integration test failure: " + identity, flush=True)
+        if os.environ.get("GITHUB_ACTIONS") == "true":
+            print("::error title=Integration test failed::" + identity, flush=True)
 
 
 def main() -> int:
@@ -25,7 +55,20 @@ def main() -> int:
         type=Path,
         help="Explicitly select one integration test file; default runs all tests.",
     )
+    parser.add_argument(
+        "--junit-report",
+        type=Path,
+        help="XML report inside the project cache; expose failed test names to CI.",
+    )
     options = parser.parse_args()
+    junit_report = None
+    if options.junit_report is not None:
+        junit_report = (root / options.junit_report).resolve()
+        if (
+            not junit_report.is_relative_to((root / ".cache").resolve())
+            or junit_report.suffix != ".xml"
+        ):
+            parser.error("The JUnit report must be an XML file inside the project cache.")
     selected = root / "backend/tests"
     if options.test_file is not None:
         candidate = (root / options.test_file).resolve()
@@ -69,12 +112,15 @@ def main() -> int:
                 str(test_temp),
                 "-o",
                 f"cache_dir={test_cache}",
+                *(["--junitxml", str(junit_report)] if junit_report is not None else []),
             ],
             env=test_environment,
             cwd=root,
             check=False,
         )
         exit_code = result.returncode
+        if exit_code and junit_report is not None:
+            report_test_failures(junit_report)
     except (OSError, ValueError, psycopg.Error, MigrationError):
         print(
             "Live migration checks failed; connection secrets are omitted.",

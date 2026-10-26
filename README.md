@@ -11,6 +11,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Run/check/sleep guide](docs/RUN_AND_CHECK.md): current app/API launch commands, saved proof, verification and safe pause/resume.
 - [M1 teammate testing guide](docs/M1_TEAM_TESTING.md): initialize another computer, verify local accounts and distinguish an empty database from a populated filing demo.
 - [M3/M4 run and test guide](docs/M3_M4_RUN_AND_TEST.md): use the module branch, review/publish learning content and test the deterministic virtual ledger.
+- [Numerical review access and module history](docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md): inspect staged numerical gates, select reviewed glossary versions and view exact portfolio prefixes.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.

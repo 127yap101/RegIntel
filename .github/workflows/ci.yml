@@ -129,7 +129,7 @@ jobs:
           uv run --project backend --locked --no-sync regintel-db migrate --env-file .env
           uv run --project backend --locked --no-sync regintel-db migrate --env-file .env
           uv run --project backend --locked --no-sync regintel-db check --env-file .env
-          uv run --project backend --locked --no-sync python scripts/check-migrations.py
+          uv run --project backend --locked --no-sync python scripts/check-migrations.py --junit-report .cache/ci-integration.xml
       - name: Generate and verify local authentication
         run: |
           uv run --project backend --locked --no-sync python scripts/init-auth-env.py

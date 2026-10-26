@@ -16,6 +16,7 @@ from regintel.learning.models import (
     DefinitionDraft,
     DefinitionQueue,
     DraftFilter,
+    GlossaryHistory,
     GlossaryVersion,
     LearningOverview,
     LearningReview,
@@ -100,6 +101,19 @@ def create_learning_router(auth: AuthService | None, service: LearningService | 
         request: Request, user: Annotated[User, Depends(administrator)]
     ) -> SuccessEnvelope[LearningStarterPack]:
         return envelope(perform(lambda: ready().repository.starter_pack(user)), request)
+
+    @router.get(
+        "/v1/learning/versions", response_model=SuccessEnvelope[GlossaryHistory], responses=errors
+    )
+    def history(
+        request: Request,
+        user: Annotated[User, Depends(reader)],
+        offset: Annotated[int, Query(ge=0, le=1000000)] = 0,
+        limit: Annotated[int, Query(ge=1, le=20)] = 20,
+    ) -> SuccessEnvelope[GlossaryHistory]:
+        return envelope(
+            perform(lambda: ready().repository.history(user, offset=offset, limit=limit)), request
+        )
 
     @router.get(
         "/v1/learning/drafts", response_model=SuccessEnvelope[DefinitionQueue], responses=errors

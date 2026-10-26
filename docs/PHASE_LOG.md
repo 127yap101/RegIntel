@@ -2,6 +2,48 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Numerical review access and selected module histories, 26 October
+
+Continued authorized M2–M4 work from2e2bc34. M2 adds an authenticated current-admin
+HTTP boundary for selected gate/binding inspection and the existing immutable
+context decision. Optional `--numerical-runtime-file` explicitly selects an
+existing calibrated native descriptor; ordinary startup leaves this boundary
+unavailable. No numerical acceptance/publication adapter or real review is added.
+
+M3 adds bounded published glossary history and browser version selection, clearing
+previous context/source and disabling historical publication until current-head
+refresh. Final review corrected timestamp ordering to follow the recorded parent
+lineage under the existing publication lock. An authored shared-timestamp / reverse
+ID-order PostgreSQL case verifies the correction. M4 adds browser opening-credit
+and committed-order prefix inspection, pinned dependent reads and read-only history
+until current-account refresh. Quotes remain unavailable by user decision.
+
+Verification passes2,310backend cases/six existing Windows skips, sixteen new owned
+PostgreSQL/HTTP cases,290frontend units and38Chromium scenarios. Nine final history /
+CI-diagnostic units, Ruff286files, mypy184sources, ten generated checks and frontend
+lint/types/build pass. The sixteen new database cases comprise eight numerical
+HTTP and eight final glossary-history cases; repeated attempts are not added.
+The separate native diagnostic passes all684preexisting integration cases in
+3,268.88seconds and removes its own database. It started before the additions and
+does not establish a frozen700-case run or Linux correctness.
+
+Exact predecessor2e2bc34 has passing Windows/Ubuntu foundation jobs but failed its
+Linux database stage in CI40217385972. Anonymous raw logs are unavailable; no root
+cause or fix is claimed. The optional cache-scoped `--junit-report` runner now emits
+only sanitized failing test class/function identities as public CI annotations,
+without copying parameters, assertion text or captured output, and preserves test
+selection, assertions and exit status. Verify this containing commit separately.
+An auxiliary Linux worker-image diagnostic was stopped before reproducing the
+failure; only its exact owned container/database was removed.
+
+Read-only preservation confirms clean main236c03f/DB1–11, all37authority hashes,
+both original PDFs,186protected core/script/final-spec files and all18migrations.
+Only explicit native setup/router and CI runner connectors change. Four retained
+real gates still refuse confirmation. Zero real approvals, accepted facts, corpus
+versions, primary writes, paid calls, dependencies, migrations or required settings
+are added. See `data/review-access-validation-report.json` and
+`docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md` for measurements and remaining work.
+
 ## Staged numerical review, unreviewed starters and selected portfolio history, 25 October
 
 Continued the authorized M2–M4 work from65d946d. Added immutable numerical-context

@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-25 (Asia/Calcutta).
+Updated: 2026-10-26 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -15,6 +15,46 @@ Updated: 2026-10-25 (Asia/Calcutta).
 - On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
 
 ## Latest verified state
+
+- **Review access/history continuation, 26 October:** M2 exposes private GET of
+  a selected numerical gate, exact M1 binding and stored context review, plus
+  explicit POST of the existing context decision. Current-admin, complete exact
+  evidence, fresh source/configuration/approval and immutable retry restrictions
+  remain authoritative. Native startup accepts an optional explicit
+  `--numerical-runtime-file`; omission leaves this boundary unavailable. This is
+  not numerical acceptance/publication. See
+  `docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md`.
+
+- M3 lists validated published glossary history in recorded parent order and lets a reader select an
+  independent glossary version. Switching clears earlier context/source selection;
+  refresh returns to the current head before another publication. M4 lets an
+  owner inspect opening credit or balances/history/analytics after an order, with
+  dependent reads pinned to that version. Orders are disabled in a historical
+  view until refresh. Quotes remain unavailable.
+
+- Read-only preservation passes: clean main236c03f/DB1–11, all37authority hashes,
+  both original PDFs,186protected implementation/script/final-spec files and all
+  eighteen migrations unchanged. The explicitly changed connectors are native
+  API setup, router wiring and CI test diagnostics. All four retained real gates
+  still refuse confirmation; no new real approval, fact or corpus is created.
+
+- Exact predecessor2e2bc34 passes Windows/Ubuntu foundation jobs but its Linux
+  database job failed in CI40217385972. Public metadata identifies the stage;
+  anonymous raw logs are unavailable. It must not be described as all-green CI.
+  The runner can now emit sanitized failing test identities as check annotations
+  from an optional project-cache JUnit report, preserving assertions/exit status.
+  The native diagnostic passes all684preexisting integration cases; it started
+  before these additions, so it is neither the frozen current700-case suite nor
+  proof of Linux correctness. Resolve the next containing commit's own CI outcome.
+
+- Focused verification passes2,310backend cases/six existing Windows skips,
+  sixteen new owned PostgreSQL/HTTP cases,290frontend units and38Chromium scenarios.
+  A final nine-case history/CI-diagnostic unit run passes after the diagnostic
+  additions; the final eight-case PostgreSQL history run covers parent ordering
+  when timestamps tie. Ruff286files, mypy184sources, ten generated checks and
+  frontend lint/types/build pass. The measured report separates these runs and
+  the preexisting684-case native diagnostic; no real approvals or research scores
+  are inferred. See `data/review-access-validation-report.json`.
 
 - **Review/history continuation, 25 October:** M2 records an immutable
   `CONFIRM_CONTEXT` / `REJECT` decision over a bound gate. Confirmation requires

@@ -56,6 +56,11 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
     if ((status.state === 'AVAILABLE') !== (status.glossary_version_id !== null)) throw new ModuleError(0, 'Learning availability has no matching published version.')
   }
   if (kind === 'definition') checkedDefinition(data as ModuleWire['definition'])
+  if (kind === 'glossary_history') {
+    const history = data as ModuleWire['glossary_history']
+    if (meta.versions.glossary_version_id !== null || history.items.length !== Math.min(history.limit, Math.max(0, history.total - history.offset)) || (history.head_glossary_version_id !== null) !== (history.total > 0) || new Set(history.items.map((item) => item.glossary_version_id)).size !== history.items.length) throw new ModuleError(0, 'The published glossary history is invalid.')
+    if (history.offset === 0 && history.items.length > 0 && history.items[0]?.glossary_version_id !== history.head_glossary_version_id) throw new ModuleError(0, 'The published glossary history differs from its current head.')
+  }
   if (kind === 'starter_pack') {
     const pack = data as ModuleWire['starter_pack']
     if (meta.versions.glossary_version_id !== null || new Set(pack.drafts.map((item) => item.key)).size !== pack.drafts.length || new Set(pack.drafts.map((item) => item.draft.term.toLowerCase())).size !== pack.drafts.length) throw new ModuleError(0, 'The unreviewed starter draft pack is invalid.')
@@ -155,8 +160,9 @@ export class ModuleApi {
     return history
   }
 
-  async portfolioSnapshot(signal: AbortSignal): Promise<{ account: ModuleWire['portfolio']; ledger: ModuleWire['ledger'] }> {
-    const account = await this.read('portfolio', '/v1/portfolio', signal)
+  async portfolioSnapshot(signal: AbortSignal, version?: string): Promise<{ account: ModuleWire['portfolio']; ledger: ModuleWire['ledger'] }> {
+    const account = await this.read('portfolio', `/v1/portfolio${version ? `?${new URLSearchParams({ portfolio_version_id: version })}` : ''}`, signal)
+    if (version && account.portfolio_version_id !== version) throw new ModuleError(0, 'The account differs from the selected portfolio version.')
     return { account, ledger: await this.ledgerSnapshot(account, signal) }
   }
 }

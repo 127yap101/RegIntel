@@ -9,7 +9,7 @@ import { resolve } from 'node:path'
 const starterPack: unknown = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../data/learning-starter-drafts.json'), 'utf8'))
 
 // Browser fixtures are authored engineering data, separate from real review/quotes.
-async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean } = {}) {
+async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean; history?: boolean } = {}) {
   let stored = structuredClone(definition) as unknown as StoredDefinition
   let available = !options.empty
   let saved = !options.empty
@@ -18,6 +18,8 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
   let recorded: OrderRequest | null = null
   let appended = false
   const requests: OrderRequest[] = []
+  const laterGlossary = { ...glossary, glossary_version_id: ids.review, parent_glossary_version_id: ids.glossary, definitions: [{ ...reviewed, definition: { ...definition, draft: { ...definition.draft, definition: 'Later authored glossary definition, separate from the earlier version.' } } }] }
+  const head = options.history ? ids.review : ids.glossary
   await page.route(`${apiOrigin}/v1/**`, async (route) => {
     const path = new URL(route.request().url()).pathname
     const method = route.request().method()
@@ -29,8 +31,15 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
     else if (path === '/v1/published-corpus') data = published.info
     else if (path === '/v1/companies') data = published.companies
     else if (path.endsWith('/facts')) data = published.facts
-    else if (path === '/v1/learning/status') data = envelope({ state: available ? 'AVAILABLE' : 'NO_PUBLISHED_GLOSSARY', glossary_version_id: available ? ids.glossary : null }, { glossary_version_id: available ? ids.glossary : null })
-    else if (path.startsWith('/v1/learning/glossary/')) data = envelope(glossary, { glossary_version_id: options.wrongVersion ? ids.account : ids.glossary })
+    else if (path === '/v1/learning/status') data = envelope({ state: available ? 'AVAILABLE' : 'NO_PUBLISHED_GLOSSARY', glossary_version_id: available ? head : null }, { glossary_version_id: available ? head : null })
+    else if (path.startsWith('/v1/learning/glossary/')) {
+      const selected = path.endsWith(ids.review) && options.history ? laterGlossary : glossary
+      data = envelope(selected, { glossary_version_id: options.wrongVersion ? ids.account : selected.glossary_version_id })
+    }
+    else if (path === '/v1/learning/versions' && method === 'GET') {
+      const versions = available ? (options.history ? [laterGlossary, glossary] : [glossary]) : []
+      data = envelope({ items: versions.map((version) => ({ glossary_version_id: version.glossary_version_id, parent_glossary_version_id: version.parent_glossary_version_id, definition_count: 1 })), head_glossary_version_id: available ? head : null, offset: 0, limit: 20, total: versions.length })
+    }
     else if (path === '/v1/learning/starter-pack') data = envelope(starterPack)
     else if (path === '/v1/learning/drafts' && method === 'GET') {
       const query = new URL(route.request().url()).searchParams
@@ -61,7 +70,10 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
       data = envelope({ glossary_version_id: ids.glossary, definition: reviewed, view: published.facts.data.view, observation: published.facts.data.facts[0]!.observation, evidence: [published.evidence.data], generated: false }, { glossary_version_id: ids.glossary, corpus_version_id: published.info.data.corpus_version_id })
     } else if (path === '/v1/portfolio/accounts') { accountCreated = true; data = envelope(opening, { portfolio_version_id: ids.account }) }
     else if (path === '/v1/portfolio' && accountCreated) {
-      data = envelope({ ...opening, committed_orders: recorded ? 1 : 0, portfolio_version_id: recorded ? ids.order : ids.account }, { portfolio_version_id: recorded ? ids.order : ids.account })
+      const selected = new URL(route.request().url()).searchParams.get('portfolio_version_id')
+      const included = recorded !== null && selected !== ids.account
+      const version = included ? ids.order : ids.account
+      data = envelope({ ...opening, committed_orders: included ? 1 : 0, portfolio_version_id: version }, { portfolio_version_id: version })
       if (options.appendDuringRead && !appended) {
         appended = true
         recorded = rejection().entry.request as OrderRequest
@@ -143,6 +155,45 @@ test('M3 learner sees reviewed source context and no authoring controls on a nar
   await expect(page.getByText(published.facts.data.facts[0]!.observation.raw_text, { exact: true })).toBeVisible()
   await expect(page.getByRole('button', { name: /View source page/ })).toBeVisible()
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})
+
+test('M3 selects an earlier reviewed glossary and clears context when returning to the current version', async ({ page }) => {
+  await authoredModules(page, { admin: true, history: true }); await signIn(page, 'learning')
+  await expect(page.getByText('Later authored glossary definition, separate from the earlier version.', { exact: true })).toBeVisible()
+  await page.getByLabel('Saved draft ID', { exact: true }).fill(ids.definition)
+  await page.getByRole('button', { name: 'Load saved draft' }).click()
+  await expect(page.getByRole('button', { name: 'Publish approved definition' })).toBeEnabled()
+  await page.getByRole('button', { name: `View glossary version ${ids.glossary}`, exact: true }).click()
+  await expect(page.getByText(/Viewing a selected published glossary version/)).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Publish approved definition' })).toBeDisabled()
+  await page.getByRole('combobox', { name: 'Definition', exact: true }).selectOption(ids.definition)
+  await page.getByRole('combobox', { name: 'Company', exact: true }).selectOption(published.companies.data.companies[0]!.id)
+  await page.getByRole('combobox', { name: 'Disclosure', exact: true }).selectOption(published.facts.data.facts[0]!.observation.id)
+  await page.getByRole('button', { name: 'Show reviewed context' }).click()
+  await expect(page.getByRole('button', { name: /View source page/ })).toBeVisible()
+  await page.getByRole('button', { name: 'Refresh reviewed glossary', exact: true }).click()
+  await expect(page.getByText('Later authored glossary definition, separate from the earlier version.', { exact: true })).toBeVisible()
+  await expect(page.getByRole('combobox', { name: 'Definition', exact: true })).toHaveValue('')
+  await expect(page.getByRole('button', { name: /View source page/ })).toHaveCount(0)
+  await expect(page.getByRole('button', { name: 'Publish approved definition' })).toBeEnabled()
+})
+
+test('M4 inspects an owned order prefix and opening balance before returning to current state', async ({ page }) => {
+  const requests = await authoredModules(page); await signIn(page, 'portfolio')
+  await page.getByRole('button', { name: 'Create virtual account with INR 100000.00' }).click()
+  await page.getByRole('combobox', { name: 'Published company', exact: true }).selectOption(published.companies.data.companies[0]!.id)
+  await page.getByRole('button', { name: 'Submit virtual order', exact: true }).click()
+  await page.getByRole('button', { name: 'View balances after order #1', exact: true }).click()
+  await expect(page.getByText(/Viewing a selected portfolio version/)).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Submit virtual order', exact: true })).toBeDisabled()
+  await page.getByRole('button', { name: 'View opening balance', exact: true }).click()
+  await expect(page.getByText('No virtual orders recorded.', { exact: true })).toBeVisible()
+  await expect(page.getByText('0 recorded orders · whole shares · zero fees', { exact: true })).toBeVisible()
+  await expect(page.getByText('0 / 0', { exact: true })).toBeVisible()
+  await page.getByRole('button', { name: 'Refresh portfolio', exact: true }).click()
+  await expect(page.getByRole('button', { name: 'View balances after order #1', exact: true })).toBeVisible()
+  await expect(page.getByRole('button', { name: 'Submit virtual order', exact: true })).toBeEnabled()
+  expect(requests).toHaveLength(1)
 })
 
 test('M3 starter loading requires explicit save and review and retains its source location', async ({ page }) => {
