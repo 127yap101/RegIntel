@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-27 (Asia/Calcutta).
+Updated: 2026-10-28 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -13,8 +13,38 @@ Updated: 2026-10-27 (Asia/Calcutta).
 - Final specification files remain unchanged under `docs/`.
 - User explicitly chose to keep M2 quotes unavailable for now; recorded on 18 October. No external quote feed, provider or paid usage is required for this checkpoint.
 - On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
+- On27October the user reported an approximate 7–10 day deadline and requested continued work. Prioritize the real numerical acceptance/publication path, module acceptance and final evaluation/handoff. Existing scope and evidence/review requirements remain active.
 
 ## Latest verified state
+
+- **Numerical publication input, 27–28 October:** the separate adapter now prepares
+  an explicit `numerical-publication-input-1` from reproduced gates, fresh original
+  bytes/parse/evidence/approval snapshots and the exact immutable context review.
+  It evaluates sixteen categories for supported monetary-duration inputs and
+  retains the full word/cell proof without legacy sixteen-span truncation.
+  One private administrator GET exposes `READY_FOR_ADAPTER` or `BLOCKED`; neither
+  creates a fact, review, audit or corpus. All acceptance/M1-validation/publication
+  flags remain false. See `docs/NUMERICAL_PUBLICATION_INPUT.md` and its plan.
+
+- Final local verification passes 2,335 backend cases with six existing Windows
+  skips and 715 integration cases deselected; the 21 new unit cases are included.
+  Nine final owned PostgreSQL/HTTP cases pass, including stale approvals, source
+  tampering, roles, rejection and missing/invalid/unconfigured resources. All
+  thirteen static/generated checks pass (Ruff 292 files, mypy 187 sources, ten
+  generated checks). No current full Linux/database-suite result is inferred.
+  The measured report is `data/numerical-publication-input-validation-report.json`.
+
+- Read-only preservation passes all 37 original authority hashes, both PDFs,
+  original main `236c03f` / DB1–11, all 18 migrations and 381 other files.
+  All four retained real inputs remain blocked by the new preparation too.
+  The versioned immutable acceptance/atomic-publication writer and public
+  evidence-consumer adaptation remain the next critical implementation work.
+  M3 actual content review, remaining M4 analytics/quote-data work and final
+  research evaluation/handoff remain required; quotes stay unavailable.
+
+- Exact predecessor `693dca8` passes all three GitHub CI jobs in run 40439616601:
+  Windows/Ubuntu foundation and Linux data infrastructure. Its own source/remote
+  verification is separate from the next containing commit's CI.
 
 - **Shared filing-corpus selection across M1–M4, 27 October:** the page retains
   one verified publication ID across the explorer/comparison, learning context

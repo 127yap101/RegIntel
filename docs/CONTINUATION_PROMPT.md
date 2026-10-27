@@ -1,5 +1,25 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest continuation, 28 October: on27October the user reported roughly 7–10 days
+until submission. Read `docs/NUMERICAL_PUBLICATION_ADAPTER_PLAN.md`,
+`docs/NUMERICAL_PUBLICATION_INPUT.md`,
+`data/numerical-publication-input-validation-report.json` and the newest
+CURRENT_STATE.md entry first. The adapter's first executable preparation returns
+a separately versioned input with fresh source/parse/approval checks, complete
+word/cell proof and the actual immutable context decision. Its sixteen category
+results do not become a legacy ValidationRun or accepted observation. Every
+acceptance/publication flag remains false, and the private GET performs no state
+write. All four real retained inputs still block preparation. Do not truncate
+their words or create combined source spans to fit the old contract. Finish
+versioned immutable acceptance persistence, atomic publication and public
+evidence-consumer adaptation before real M2 values. Preserve original M1 data /
+interfaces, all eighteen migrations, quote unavailability and actual M3 content
+review requirements. Current local checks pass 2,335 backend/six existing Windows
+skips, nine owned database/HTTP cases and thirteen static/generated commands.
+The 21 new units are included in that backend count. Exact predecessor `693dca8`
+passes all three CI jobs in run 40439616601; verify this containing checkpoint's own
+remote SHA/CI. Do not infer research effectiveness or all-module completion.
+
 Latest continuation, 27 October: read `docs/SHARED_CORPUS_SESSION.md`, its plan,
 `data/shared-corpus-validation-report.json` and the newest CURRENT_STATE.md entry
 before older snapshots. The page now shares only a verified filing-corpus ID

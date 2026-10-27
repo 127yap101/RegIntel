@@ -2,6 +2,47 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Versioned numerical publication input, 27–28 October
+
+The user reports approximately 7–10 days until submission and requests continued
+work on all four modules. Prioritize the real numerical M1→M2 path and final
+acceptance/evaluation. Exact predecessor `693dca8` passes Windows, Ubuntu and
+Linux infrastructure CI in run 40439616601; its sources remain the measured baseline.
+
+Implemented a separate `numerical-publication-input-1` preparation, with a private
+administrator GET. It replays the installed gate and checks original bytes,
+sealed parse/evidence, current registry/metric/policy and exact immutable review
+in one repeatable-read transaction. Sixteen ordered category results retain the
+complete monetary-duration quantity and native word/cell proof. Unsupported
+families cannot acquire ownership/direction exemptions. Missing/rejected review,
+qualified/injected source, changed snapshots and tampering block preparation.
+`READY_FOR_ADAPTER` still has acceptance/M1-validation/publication flags false;
+this is neither a legacy validation nor the remaining atomic acceptance writer.
+
+Final local checks pass 2,335 backend cases/six existing Windows skips/715
+integration cases deselected, with all 21 new unit cases included; nine owned
+PostgreSQL/HTTP cases; Ruff 292 files, mypy 187 sources and ten generated checks.
+The runner removed its owned databases. Frontend and public contract source is
+unchanged; the predecessor's 297 frontend/44 Chromium results are historical
+measurements, not newly rerun counts. Four retained real inputs remain blocked.
+Read-only preservation passes 37 original authority hashes, both PDFs, all 18
+migrations, original main `236c03f` / DB1–11 and 381 other source/test/script/spec files.
+
+Disclosed attempts: the first 19-unit invocation could not access the system
+pytest temporary directory; a new project-local scratch path passes. The first
+broader collection exposed a new unit/integration basename collision; the
+integration test now has a unique name. A tightened tampering test incorrectly
+expected 503; the established conflict contract returns 409 and the final test
+asserts that exact result. No product guard/assertion/timeout was relaxed. An
+account usage-limit failure in automatic approval review interrupted only the
+final documentation update; work resumed after ordinary access recovered.
+See `data/numerical-publication-input-validation-report.json` for actual runs.
+
+No dependency, migration, required setting, service, quote feed, real approval,
+accepted fact or corpus is added. Continue versioned acceptance persistence,
+atomic publication and public evidence-consumer adaptation next, then actual
+source/content review, module acceptance, research evaluation and handoff.
+
 ## Share a verified filing corpus across M1–M4, 27 October
 
 Continued from `4bad30a` in the isolated `codex/m2-comparison` worktree. That exact

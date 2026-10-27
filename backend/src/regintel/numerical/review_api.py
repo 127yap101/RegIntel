@@ -17,6 +17,8 @@ from regintel.entities.models import canonical_bytes
 from regintel.numerical.evidence_binding_models import NumericalEvidenceBinding
 from regintel.numerical.gate_models import BoundNumericalGateRun
 from regintel.numerical.gate_repository import BoundNumericalGateRepository
+from regintel.numerical.publication_input_repository import NumericalPublicationInputRepository
+from regintel.numerical.publication_models import NumericalPublicationPreparation
 from regintel.numerical.repository import (
     NumericalAuthorizationError,
     NumericalNotFound,
@@ -128,6 +130,21 @@ def create_numerical_review_router(
             raise HTTPException(409, "The submitted review differs from the selected gate.")
         return SuccessEnvelope(
             data=perform(lambda: ready().save(body, user)), meta=response_meta(request)
+        )
+
+    @router.get(
+        "/{gate_id}/publication-input",
+        response_model=SuccessEnvelope[NumericalPublicationPreparation],
+        responses=errors,
+    )
+    def publication_input(
+        gate_id: CanonicalId, request: Request, user: Annotated[User, Depends(administrator)]
+    ) -> SuccessEnvelope[NumericalPublicationPreparation]:
+        return SuccessEnvelope(
+            data=perform(
+                lambda: NumericalPublicationInputRepository(ready().source).prepare(gate_id, user)
+            ),
+            meta=response_meta(request),
         )
 
     return router
