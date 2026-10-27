@@ -1,4 +1,21 @@
-# Continue RegIntel M2, M3 and M4
+# Continue RegIntel M1, M2, M3 and M4
+
+Latest continuation, 27 October: read `docs/SHARED_CORPUS_SESSION.md`, its plan,
+`data/shared-corpus-validation-report.json` and the newest CURRENT_STATE.md entry
+before older snapshots. The page now shares only a verified filing-corpus ID
+across all four modules. M1/M2 history/date views stay local; M3/M4 consume active
+disclosures from that corpus with independent glossary/portfolio versions.
+Selected-corpus failures never fall back to another head. Explicit latest choice
+clears old explorer results; sign-out/reload clears the memory-only selection.
+An uncertain order retry retains its original key and corpus after a new session.
+
+Prior checkpoint `4bad30a` passes all three exact-source CI jobs in run 40341137291;
+its focused frozen Linux 25-case run completed too. Verify this containing
+checkpoint's own remote SHA and CI. Continue the actual versioned numerical
+acceptance/publication adapter, real M3 review and M4 acceptance/evaluation work.
+Do not promote a staged context decision into mandatory M1 validation, approve
+real content on a fixture's authority, invent quotes or change original M1 data.
+Original main `236c03f` / DB1–11 and all 18 branch migrations remain preserved.
 
 Latest follow-up, 26 October: read `docs/NUMERICAL_REVIEW_CONCURRENCY_FIX.md` and
 `data/review-concurrency-validation-report.json` first. Checkpoint `987cd8c` passed

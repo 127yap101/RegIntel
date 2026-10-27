@@ -23,6 +23,7 @@ export default function App() {
   const [healthState, setHealthState] = useState<HealthState>({ kind: 'checking' })
   const [requestNumber, setRequestNumber] = useState(0)
   const [workspace, setWorkspace] = useState<'published' | 'admin' | 'learning' | 'portfolio'>('published')
+  const [selectedCorpus, setSelectedCorpus] = useState<string | null>(null)
 
   useEffect(() => {
     const controller = new AbortController()
@@ -131,7 +132,7 @@ export default function App() {
               ))}
             </ul>
           </section>
-          {workspace === 'published' ? <Explorer /> : workspace === 'admin' ? <AdminWorkspace /> : <ModuleWorkspace mode={workspace} />}
+          {workspace === 'published' ? <Explorer selectedCorpus={selectedCorpus} onSelectCorpus={setSelectedCorpus} /> : workspace === 'admin' ? <AdminWorkspace /> : <ModuleWorkspace mode={workspace} selectedCorpus={selectedCorpus} onSelectCorpus={setSelectedCorpus} />}
         </main>
 
         <footer className="flex flex-wrap justify-between gap-3 border-t border-line py-6 text-xs leading-5 text-muted">

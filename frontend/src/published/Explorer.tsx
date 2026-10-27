@@ -10,14 +10,15 @@ import { AnswerPanel } from '../retrieval/AnswerPanel'
 import type { AnswerInput, AnswerResult } from '../retrieval/wire'
 import { ComparisonPanel } from '../analysis/ComparisonPanel'
 import type { ComparisonInput, ComparisonResult, QuotesResult } from '../analysis/wire'
+import type { CorpusSelectionProps } from './selection'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 text-sm text-ink'
 
-export function Explorer() {
+export function Explorer({ selectedCorpus = null, onSelectCorpus }: CorpusSelectionProps = {}) {
   const [api, setApi] = useState<PublishedApi | null>(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
-  const [corpus, setCorpus] = useState('')
+  const [corpus, setCorpus] = useState(selectedCorpus ?? '')
   const [historical, setHistorical] = useState(false)
   const [asOf, setAsOf] = useState('')
   const [query, setQuery] = useState('')
@@ -37,6 +38,7 @@ export function Explorer() {
   function clearPrivate(): void {
     setApi(null); setCompanies(null); setFacts(null); setGraph(null); setSource(null); setAnswer(null)
     setOptions(null); setCorpus(''); setPassword(''); setQuery(''); setAsOf(''); setHistorical(false); setComparison(null); setQuotes(null)
+    onSelectCorpus?.(null)
   }
 
   function logout(): void { operation.current?.abort(); clearPrivate(); setBusy(false); setMessage('Signed out.') }
@@ -81,11 +83,12 @@ export function Explorer() {
     setPassword('')
     await execute(async (signal) => {
       const client = await PublishedApi.login(username, submittedPassword, signal)
-      const current = await client.current(signal)
-      const selected = { corpus: current.corpus_version_id, historical: false, asOf: '' }
+      const identity = selectedCorpus ?? (await client.current(signal)).corpus_version_id
+      const selected = { corpus: identity, historical: false, asOf: '' }
       const results = await client.companies(selected, '', 0, signal)
       if (signal.aborted) return
       setApi(client); setOptions(selected); setCorpus(selected.corpus); setCompanies(results)
+      onSelectCorpus?.(results.view.corpus_version_id)
     })
   }
 
@@ -95,7 +98,20 @@ export function Explorer() {
     const selected = { corpus, historical, asOf }
     await execute(async (signal) => {
       const results = await api.companies(selected, query, offset, signal)
-      if (!signal.aborted) { setOptions(selected); setCompanies(results) }
+      if (!signal.aborted) { setOptions(selected); setCompanies(results); onSelectCorpus?.(results.view.corpus_version_id) }
+    })
+  }
+
+  async function latest(): Promise<void> {
+    if (!api) return
+    clearSelection(); setCompanies(null); setQuotes(null)
+    await execute(async (signal) => {
+      const current = await api.current(signal)
+      const selected = { corpus: current.corpus_version_id, historical: false, asOf: '' }
+      const result = await api.companies(selected, '', 0, signal)
+      if (signal.aborted) return
+      setOptions(selected); setCorpus(selected.corpus); setHistorical(false); setAsOf(''); setQuery(''); setCompanies(result)
+      onSelectCorpus?.(result.view.corpus_version_id)
     })
   }
 
@@ -136,8 +152,11 @@ export function Explorer() {
       <label className="text-sm font-medium">Username<input className={inputClass} autoComplete="username" name="username" value={username} maxLength={64} required onChange={(event) => setUsername(event.target.value)} /></label>
       <label className="text-sm font-medium">Password<input className={inputClass} autoComplete="current-password" name="password" type="password" value={password} maxLength={1024} required onChange={(event) => setPassword(event.target.value)} /></label>
       <Button type="submit" disabled={busy} className="sm:col-span-2">{busy ? 'Signing in…' : 'Sign in to inspect filings'}</Button>
+      {selectedCorpus && <Button type="button" variant="secondary" disabled={busy} className="sm:col-span-2" onClick={() => { setCorpus(''); onSelectCorpus?.(null); setMessage('The next sign-in will verify the latest published corpus.') }}>Use latest corpus at next sign-in</Button>}
     </form> : <>
       <div className="mt-6 flex flex-wrap items-center justify-between gap-3"><p className="max-w-full break-all text-xs text-muted">Viewing corpus: {options?.corpus}</p><Button variant="secondary" onClick={logout}>Sign out</Button></div>
+      <p className="mt-3 text-sm text-muted">This corpus is shared with comparison, learning and portfolio for this page session. History and date filters apply to this explorer; learning and portfolio use active disclosures from the selected corpus.</p>
+      <Button variant="secondary" className="mt-3" disabled={busy} onClick={() => { void latest() }}>Use latest published corpus</Button>
       <form className="mt-5 grid gap-4 sm:grid-cols-2 lg:grid-cols-4" onSubmit={(event) => { event.preventDefault(); void search() }}>
         <label className="text-sm font-medium">Company name or identifier<input className={inputClass} value={query} maxLength={120} onChange={(event) => setQuery(event.target.value)} /></label>
         <label className="text-sm font-medium">Published corpus version<input className={inputClass} value={corpus} required onChange={(event) => setCorpus(event.target.value)} /></label>

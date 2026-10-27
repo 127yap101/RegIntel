@@ -2,6 +2,50 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Share a verified filing corpus across M1–M4, 27 October
+
+Continued from `4bad30a` in the isolated `codex/m2-comparison` worktree. That exact
+predecessor passes all three CI jobs in run 40341137291. Its separately frozen
+Linux 17-storage/eight-HTTP run completed; the committed pending snapshot is
+preserved. No full-suite result is inferred from either local focused run.
+
+The page now retains a verified corpus ID across the published explorer and
+comparison, learning context and virtual-order company inputs. Initial selection
+is promoted after company-page verification. Latest selection is explicit;
+unavailable/mixed responses cannot fall back. History/date filters remain local
+to M1/M2, and independent glossary/portfolio versions remain explicit. Sign-out
+or reload clears the memory-only pin. Pending order retries retain their original
+key and corpus even when a new session selects another publication.
+
+The initial new browser run passed two of six scenarios. Four failures identified
+dropdown label selectors and React development effect duplication of the initial
+head read. Corrected role selectors and a cancellable microtask before starting
+the first request; added a StrictMode unit regression. All seven focused units
+and all six focused browser scenarios now pass. No timeout or retry policy was
+changed. Full regression results are recorded in
+`data/shared-corpus-validation-report.json`.
+
+The final full frontend invocation passes all 297 cases. Lint and strict types
+pass, as do thirteen backend/static/generated commands (Ruff 287 files, mypy 184
+sources and ten generated checks). The first full Chromium run passes 43 of 44;
+the unchanged M1 PDF assertion reaches its five-second deadline, with the rendered
+page visible in the failure snapshot. Its complete repeat passes all 44 cases,
+with no retry, skip or changed assertion, after competing checks finish. The
+production build passes with the existing bundle-size advisory. The resumed
+read-only preservation proof initially timed out
+because the three existing RegIntel data containers were stopped. Restarting only
+those same containers restores health; the repeated proof passes 37 authority
+hashes, both PDFs, all 18 migrations and 374 protected source/test/script/spec files.
+
+Three actual owned PostgreSQL/HTTP cases pass over authored M1 publications,
+covering a moved head, unpublished inputs and private portfolio/review access.
+The existing runner removed its newly created database. Authored reviews,
+vectors and graph receipts remain engineering fixtures, not real approvals or
+research results. No backend runtime, public API, dependency, migration, required
+setting or service changes. Original M1 data, PDFs, main checkout and all 18
+migrations remain preserved; real numerical acceptance/publication and actual M3
+content review remain unfinished. Quotes remain unavailable by user decision.
+
 ## Serialize immutable numerical context reviews, 26 October
 
 Continued all four modules from `987cd8c`. Its public CI40290171823 passes both

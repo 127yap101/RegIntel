@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from 'react'
 import { Button } from '../components/Button'
 import { SourceViewer } from '../published/SourceViewer'
-import type { CompanyPage, FactPage } from '../published/api'
+import type { FactPage } from '../published/api'
+import type { CorpusSelectionProps } from '../published/selection'
 import { definitionInput, ModuleApi, ModuleError, orderInput } from './api'
 import { confirmOrder, pendingOrder, retainOrder } from './pending'
 import { DraftQueue } from './DraftQueue'
@@ -9,27 +10,14 @@ import { Analytics } from './Analytics'
 import { StarterDrafts } from './StarterDrafts'
 import { GlossaryHistory } from './GlossaryHistory'
 import { PortfolioHistory } from './PortfolioHistory'
+import { usePublishedCompanies } from './usePublishedCompanies'
 import type { ExampleInput, GlossaryVersion, LearningExplanation, LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount, PublishedEvidence, ReviewedDefinition, StoredDefinition } from './generated'
 
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm text-ink'
 const exampleOperations = ['ADD', 'SUBTRACT', 'MULTIPLY', 'DIVIDE', 'PERCENT_CHANGE'] as const
 function message(error: unknown): string { return error instanceof Error ? error.message : 'The operation could not be completed.' }
 
-function useCompanies(api: ModuleApi) {
-  const [companies, setCompanies] = useState<CompanyPage | null>(null)
-  const [error, setError] = useState('')
-  useEffect(() => {
-    const controller = new AbortController()
-    void api.published.current(controller.signal).then(async (view) => {
-      const result = await api.published.companies({ corpus: view.corpus_version_id, historical: false, asOf: '' }, '', 0, controller.signal)
-      if (!controller.signal.aborted) setCompanies(result)
-    }).catch(() => { if (!controller.signal.aborted) setError('Published company context is unavailable. The glossary and virtual account can still be used.') })
-    return () => controller.abort()
-  }, [api])
-  return { companies, error }
-}
-
-export function ModuleWorkspace({ mode }: { mode: 'learning' | 'portfolio' }) {
+export function ModuleWorkspace({ mode, selectedCorpus = null, onSelectCorpus }: { mode: 'learning' | 'portfolio' } & CorpusSelectionProps) {
   const [api, setApi] = useState<ModuleApi | null>(null)
   const [username, setUsername] = useState('')
   const [password, setPassword] = useState('')
@@ -49,8 +37,9 @@ export function ModuleWorkspace({ mode }: { mode: 'learning' | 'portfolio' }) {
       <label className="text-sm font-semibold">Password<input type="password" autoComplete="current-password" className={inputClass} value={password} onChange={(event) => setPassword(event.target.value)} required /></label>
       <Button type="submit" disabled={busy} className="sm:col-span-2">{busy ? 'Signing in…' : `Sign in to ${mode === 'learning' ? 'financial learning' : 'virtual portfolio'}`}</Button>
     </form> : <>
-      <div className="mt-5 flex items-center justify-between gap-3 text-sm"><p>Signed in as {api.user.username}</p><Button variant="secondary" onClick={() => { controller.current?.abort(); setApi(null); setPassword(''); setError('') }}>Sign out of learning and portfolio</Button></div>
-      {mode === 'learning' ? <LearningPanel key={`learning-${api.user.id}`} api={api} /> : <PortfolioPanel key={`portfolio-${api.user.id}`} api={api} />}
+      <div className="mt-5 flex items-center justify-between gap-3 text-sm"><p>Signed in as {api.user.username}</p><Button variant="secondary" onClick={() => { controller.current?.abort(); setApi(null); setPassword(''); setError(''); onSelectCorpus?.(null) }}>Sign out of learning and portfolio</Button></div>
+      {selectedCorpus && <p className="mt-3 break-all text-sm text-muted">Selected filing corpus: {selectedCorpus}. Company context uses active disclosures from this corpus. Change it in the published filing explorer; glossary and portfolio versions remain separate.</p>}
+      {mode === 'learning' ? <LearningPanel key={`learning-${api.user.id}`} api={api} selectedCorpus={selectedCorpus} onSelectCorpus={onSelectCorpus} /> : <PortfolioPanel key={`portfolio-${api.user.id}`} api={api} selectedCorpus={selectedCorpus} onSelectCorpus={onSelectCorpus} />}
     </>}
     {error && <p role="alert" className="mt-4 rounded-lg border border-line bg-white p-4 text-sm">{error}</p>}
   </section>
@@ -65,7 +54,7 @@ function Definition({ item }: { item: StoredDefinition }) {
   </div>
 }
 
-function LearningPanel({ api }: { api: ModuleApi }) {
+function LearningPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: ModuleApi } & CorpusSelectionProps) {
   const [glossary, setGlossary] = useState<GlossaryVersion | null>(null)
   const [historical, setHistorical] = useState(false)
   const [loaded, setLoaded] = useState(false)
@@ -94,7 +83,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
   const [context, setContext] = useState<LearningExplanation | null>(null)
   const [source, setSource] = useState<{ record: PublishedEvidence; bytes: Uint8Array<ArrayBuffer> } | null>(null)
   const active = useRef<AbortController | null>(null)
-  const { companies, error: companyError } = useCompanies(api)
+  const { companies, error: companyError } = usePublishedCompanies(api.published, selectedCorpus, onSelectCorpus)
   useEffect(() => {
     const controller = new AbortController()
     void api.read('learning_status', '/v1/learning/status', controller.signal).then(async (status) => {
@@ -208,7 +197,7 @@ function LearningPanel({ api }: { api: ModuleApi }) {
   </div>
 }
 
-function PortfolioPanel({ api }: { api: ModuleApi }) {
+function PortfolioPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: ModuleApi } & CorpusSelectionProps) {
   const [account, setAccount] = useState<PortfolioAccount | null>(null)
   const [historical, setHistorical] = useState(false)
   const [ledger, setLedger] = useState<LedgerPage | null>(null)
@@ -221,7 +210,7 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
   const [pending, setPending] = useState<OrderRequest | null>(() => pendingOrder(api.user.id))
   const [notCommitted, setNotCommitted] = useState(false)
   const [receipt, setReceipt] = useState<OrderReceipt | null>(null)
-  const { companies, error: companyError } = useCompanies(api)
+  const { companies, error: companyError } = usePublishedCompanies(api.published, selectedCorpus, onSelectCorpus)
   const active = useRef<AbortController | null>(null)
   useEffect(() => {
     const controller = new AbortController()
@@ -278,7 +267,7 @@ function PortfolioPanel({ api }: { api: ModuleApi }) {
         <Button type="submit" disabled={busy || historical || pending !== null || !company || !companies} className="sm:col-span-3">Submit virtual order</Button>
         {companyError && <p className="text-sm sm:col-span-3">{companyError}</p>}
       </form>
-      {pending && <div className="rounded-lg border border-line bg-white p-4"><p className="text-sm">This order has no confirmed response. Retry with the same request key to avoid duplicate execution. The request is retained for this browser tab when you sign in again.</p><p className="mt-2 break-all text-xs text-muted">Request key: {pending.request_id}</p><Button className="mt-3" disabled={busy} onClick={() => submit(pending)}>Retry same virtual order</Button>{notCommitted && <Button className="ml-3 mt-3" variant="secondary" disabled={busy} onClick={() => { confirmOrder(api.user.id); setPending(null); setNotCommitted(false) }}>Clear declined request</Button>}</div>}
+      {pending && <div className="rounded-lg border border-line bg-white p-4"><p className="text-sm">This order has no confirmed response. Retry with the same request key to avoid duplicate execution. The request is retained for this browser tab when you sign in again.</p><p className="mt-2 break-all text-xs text-muted">Request key: {pending.request_id}</p>{companies && pending.corpus_version_id !== companies.view.corpus_version_id && <p className="mt-2 break-all text-sm">This pending request retains its original filing corpus {pending.corpus_version_id}. Retry preserves those inputs. New orders use the selected filing corpus after this request is resolved.</p>}<Button className="mt-3" disabled={busy} onClick={() => submit(pending)}>Retry same virtual order</Button>{notCommitted && <Button className="ml-3 mt-3" variant="secondary" disabled={busy} onClick={() => { confirmOrder(api.user.id); setPending(null); setNotCommitted(false) }}>Clear declined request</Button>}</div>}
       {receipt && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Recorded order #{receipt.entry.sequence}: {receipt.entry.evaluation.state} · {receipt.entry.evaluation.reason.replaceAll('_', ' ')}</p>}
       <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Holdings</h3>{account.state.holdings.length ? <ul className="mt-3 space-y-2 text-sm">{account.state.holdings.map((item) => <li key={item.company_id}>{name(item.company_id)} · {item.quantity} shares</li>)}</ul> : <p className="mt-3 text-sm text-muted">No virtual holdings.</p>}</section>
       <Analytics key={account.portfolio_version_id} api={api} account={account.account_id} version={account.portfolio_version_id} companyName={name} />

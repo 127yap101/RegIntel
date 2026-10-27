@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-26 (Asia/Calcutta).
+Updated: 2026-10-27 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -15,6 +15,32 @@ Updated: 2026-10-26 (Asia/Calcutta).
 - On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
 
 ## Latest verified state
+
+- **Shared filing-corpus selection across M1–M4, 27 October:** the page retains
+  one verified publication ID across the explorer/comparison, learning context
+  and virtual-order company inputs. Initial head resolution, explicit latest
+  selection, unavailable/mixed responses, sign-out and pending-order retry keep
+  their version boundaries explicit. M1/M2 history/date filters stay local;
+  glossary and portfolio versions stay independent. No public API or backend
+  implementation is changed. See `docs/SHARED_CORPUS_SESSION.md` and its plan.
+
+- The prior concurrency fix `4bad30a` passes all three exact-source GitHub CI
+  jobs in run 40341137291: Windows/Ubuntu foundation and Linux data infrastructure.
+  Its separately frozen 25-case Linux storage/HTTP check also completed. Earlier
+  entries describing that fix's pending status are historical snapshots.
+  Verify the new containing commit's own CI separately.
+
+- Current local checks pass 297 frontend unit cases, three new owned
+  PostgreSQL/HTTP cross-module cases, all 44 Chromium scenarios, lint/types/build
+  and all thirteen static/generated commands. The browser repeat resolves one
+  earlier existing PDF-render assertion timeout without changing its time limit.
+  Actual runs and disclosed attempts are recorded in
+  `data/shared-corpus-validation-report.json`.
+  Preservation confirms all 37 original authority-table hashes, both PDFs,
+  clean main `236c03f` / DB1–11, all 18 migrations and 374 other protected files.
+  No real review, publication or primary-database write occurs. All four retained
+  real numerical gates remain blocked; the genuine acceptance/publication adapter
+  and actual M3 content review remain unfinished. Quotes remain unavailable.
 
 - **Numerical review concurrency fix, 26 October:** exact checkpoint `987cd8c`
   passes Windows/Ubuntu foundation checks, but Linux CI40290171823 identifies the
