@@ -2,6 +2,21 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Team review and acceptance handoff, 28 October
+
+Prepared `docs/TEAM_ACCEPTANCE_CHECKLIST.md` for Parth/M1, Yash/M2, Shreya/M3 and
+Artham/M4. Its four raw numerical values/year ends/gate IDs/table pages come from
+the existing source-intake and retained gate reports, with explicit unaccepted
+status and unresolved checks. Its M3/M4 tasks use the existing starter/workflow
+and deterministic acceptance documentation. This is a source-checked review
+worksheet, not a new approval, gold annotation or product acceptance result.
+
+Runtime source, tests, generated contracts, original M1 data and the preceding
+publication-input measured report remain unchanged from `1a54c05`. Source/relative
+links and the four table entries are verified directly against the retained
+reports. No dependency, migration, setting, provider, service or real decision is
+added. This documentation-only follow-up does not claim another test-suite run.
+
 ## Versioned numerical publication input, 27–28 October
 
 The user reports approximately 7–10 days until submission and requests continued

@@ -1,5 +1,12 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+For team review/testing under the deadline, use
+`docs/TEAM_ACCEPTANCE_CHECKLIST.md`. Its four real source candidates remain
+unaccepted, all seven learning starters remain unreviewed and runtime quotes
+remain unavailable. The checklist is not an approval or an acceptance plan.
+Continue the actual publication adapter while the team checks source accuracy
+and manual behavior; do not wait for routine coding permission already granted.
+
 Latest continuation, 28 October: on27October the user reported roughly 7–10 days
 until submission. Read `docs/NUMERICAL_PUBLICATION_ADAPTER_PLAN.md`,
 `docs/NUMERICAL_PUBLICATION_INPUT.md`,

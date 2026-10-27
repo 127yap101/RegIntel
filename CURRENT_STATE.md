@@ -17,6 +17,12 @@ Updated: 2026-10-28 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Team acceptance handoff, 28 October:** `docs/TEAM_ACCEPTANCE_CHECKLIST.md`
+  gives all four module owners concrete source-review/manual-test tasks, with
+  four explicitly unaccepted numerical candidates and the seven unreviewed M3
+  starters. It creates no review decision, accepted fact, corpus or research
+  result. The remaining publication adapter is still implementation work.
+
 - **Numerical publication input, 27–28 October:** the separate adapter now prepares
   an explicit `numerical-publication-input-1` from reproduced gates, fresh original
   bytes/parse/evidence/approval snapshots and the exact immutable context review.
