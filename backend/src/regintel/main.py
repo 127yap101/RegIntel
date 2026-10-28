@@ -29,6 +29,7 @@ from regintel.evidence.api import EvidenceService, create_evidence_router
 from regintel.ingestion.api import IngestionService, create_ingestion_router
 from regintel.learning.api import create_learning_router
 from regintel.learning.service import LearningService
+from regintel.numerical.draft_api import create_numerical_draft_router
 from regintel.numerical.review_api import create_numerical_review_router
 from regintel.numerical.review_repository import NumericalContextReviewRepository
 from regintel.portfolio.api import create_portfolio_router
@@ -175,6 +176,12 @@ def create_app(
     application.include_router(create_portfolio_router(auth_service, portfolio_service))
     application.include_router(
         create_numerical_review_router(auth_service, numerical_review_repository)
+    )
+    application.include_router(
+        create_numerical_draft_router(
+            auth_service,
+            numerical_review_repository.source if numerical_review_repository else None,
+        )
     )
     application.include_router(create_retrieval_router(auth_service, retrieval_service))
     application.include_router(create_admin_router(auth_service, admin_repository))

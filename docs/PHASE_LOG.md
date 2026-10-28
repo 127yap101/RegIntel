@@ -2,6 +2,58 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Numerical publication draft and projection preparation, 28 October
+
+Continued the authorized M1–M4 work from `0721cf1`, whose exact Windows/Ubuntu
+foundation and Linux infrastructure CI passes in run 40657449993. Added a separate
+versioned unpublished draft over accepted numerical candidates and an explicitly
+selected published legacy parent. The locked read transaction freshly checks
+current administrator, head, original source/parse/word/cell evidence, approvals,
+context confirmation and candidate/acceptance configuration. Complete Decimal
+context and parent historical/active/lineage/effect state remain intact.
+
+A private POST computes this draft without persisting a build or publishing any
+fact/corpus. Its identity binds request, actor/authentication and configuration;
+the request key is not durably reserved. New native numerical amendments and
+declared parents block pending the versioned effect adapter. The original legacy
+parent stays a distinct approved version rather than being relabeled.
+
+Pure graph preparation preserves that original parent graph, links it to the
+unpublished draft and retains every native word/role/geometry and accepted decision.
+Pure retrieval preparation uses separate exact supports, role/cell/page metadata,
+explicitly reconstructed text, actual encoder token checks and exact Unicode
+splits. Full ordered native proof and nonblank legacy source coverage are mandatory.
+Inherited chunks require the parent's same embedding manifest. Invalid membership,
+coverage, vectors, lexical postings and typed graph-node collisions fail. No
+Neo4j/pgvector, public-reader or portfolio authority changes occur.
+
+Final verification passes 150 numerical/legacy publication units, including 34
+new cases and ADD/CORRECT/SUPPLEMENT/SUPERSEDE/REMOVE inheritance; 15 draft storage
+cases, eight draft HTTP cases, nine existing acceptance HTTP cases and three
+shared M1–M4 cases (35 distinct owned database/HTTP cases). All four owned databases
+are removed. Successful maxfail=1 runs execute all collected cases without early
+termination/filtering. Thirteen static/generated checks pass: Ruff 309 files,
+strict mypy 195 sources and ten generated checks. No current full backend /
+integration/browser or real-model/Neo4j performance result is claimed.
+
+Read-only preservation confirms 37 original authority hashes, both PDFs, clean
+main `236c03f` / DB1–11, all twenty migrations and 398 other core/test/script/spec
+files. No migration, dependency, required setting or paid call is added. Four
+retained real inputs still block context/preparation and create no actual candidate,
+acceptance or draft. Real context/approval resolution, durable builds, atomic
+publication, native amendment effects/numerical-parent chaining, public evidence
+adaptation, M3 content review, M4 acceptance/evaluation and final research /
+fresh-clone handoff remain required. Quotes stay unavailable.
+
+Initial lint/format feedback corrected imports/long new lines. An initial strict
+type check found sixteen errors from reused legacy/native chunk variable names
+and a missing list annotation; distinct typed variables/lists resolve them.
+The initial 29 unit cases passed, then added collision/amendment-history coverage
+passes within the final 150-case run (34 new cases). No test, guard or timeout is
+disabled. Measured details/source hashes are in
+`data/numerical-draft-validation-report.json`. Verify the containing checkpoint's
+own remote SHA/CI independently of predecessor success.
+
 ## Audited numerical acceptance decisions, 28 October
 
 Continued the approved M1–M4 work from `88415ee`, whose Windows/Ubuntu foundation

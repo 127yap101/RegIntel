@@ -1,5 +1,30 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest publication-draft continuation, 28 October: read
+`docs/NUMERICAL_PUBLICATION_DRAFT_PLAN.md`, `docs/NUMERICAL_PUBLICATION_DRAFT.md`,
+`data/numerical-draft-validation-report.json` and the newest CURRENT_STATE.md entry
+before older snapshots. The private POST computes a locked read-only draft from
+actual accepted candidates and an explicitly selected current legacy parent.
+It retains all word/cell/Decimal proof and historical parent observations/active
+status/lineage/effects. Pure graph/retrieval functions preserve exact source
+membership and complete token-bounded phrase coverage; reconstructed retrieval
+text is not an original contiguous quotation. Parent graph data remains its own
+versioned snapshot. Nothing creates a durable build, observation, corpus, graph /
+retrieval storage or ledger entry, and current public readers do not consume it.
+Implement durable versioned builds, atomic publication, native amendment effects /
+numerical-parent chaining and public evidence adaptation next. New native
+addenda/corrigenda or declared-parent filings block explicitly here. All four real
+inputs remain unresolved; create no real approval on authored fixture authority.
+Original main `236c03f` / DB1–11, all twenty migrations and existing producer /
+candidate/acceptance/public contracts stay unchanged. The only old runtime
+connector changed is private router registration in main. Final focused checks
+pass 150 units (including 34 new cases), 35 selected PostgreSQL/HTTP cases and
+thirteen static/generated commands; no full current backend/integration/browser
+or real-model benchmark is claimed. M3 content review, M4 acceptance/evaluation,
+research/fresh-clone handoff and quote unavailability remain explicit. Exact
+predecessor `0721cf1` passes all three CI jobs in run 40657449993; verify the new
+containing checkpoint's own remote SHA and CI separately.
+
 Latest acceptance continuation, 28 October: read `docs/NUMERICAL_ACCEPTANCE_PLAN.md`,
 `docs/NUMERICAL_ACCEPTANCE.md`, `data/numerical-acceptance-validation-report.json`
 and the newest CURRENT_STATE.md entry before older snapshots. Migration 20 adds

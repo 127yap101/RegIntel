@@ -17,6 +17,43 @@ Updated: 2026-10-28 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Numerical publication draft/projections, 28 October:** a private administrator
+  POST computes a separately versioned UNPUBLISHED_DRAFT over explicitly accepted
+  numerical candidates and the selected current published legacy parent. A locked
+  read transaction freshly verifies source/parse/evidence/approvals/context /
+  acceptance/configuration membership. Full native word/cell/Decimal proof and
+  the legacy parent's history/active set/lineage/effects remain intact. New native
+  numerical amendments or declared parents block pending their versioned adapter.
+  See `docs/NUMERICAL_PUBLICATION_DRAFT.md` and its implementation plan.
+
+- Pure graph preparation retains original parent-version graph data and full
+  numerical word/role/geometry links. Retrieval preparation retains separate exact
+  supports, table/cell roles, complete ordered coverage and actual tokenizer
+  bounds, with reconstructed text explicitly distinguished from source quotations.
+  Inherited legacy chunks require the same embedding manifest. These functions
+  perform no Neo4j/pgvector writes and supply no current public module reader.
+  There is no new durable build, observation, corpus, audit or ledger entry.
+
+- Final checks pass 150 focused numerical/legacy publication units, including 34
+  new draft/projection cases and all five inherited amendment operations; 35
+  distinct owned PostgreSQL/HTTP cases (15 draft storage, eight draft HTTP, nine
+  existing acceptance HTTP and three shared M1–M4 cases); and thirteen static /
+  generated commands (Ruff 309 files, strict mypy 195 sources, ten generated
+  checks). All four owned databases are removed. No current full backend /
+  integration/browser run or real model/Neo4j benchmark is claimed. The measured
+  report is `data/numerical-draft-validation-report.json`.
+
+- Preservation confirms all 37 original authority hashes, both PDFs, clean main
+  `236c03f` / DB1–11, twenty frozen migrations and 398 other implementation/test /
+  script/specification files. No migration, dependency or required setting is
+  added. All four retained real inputs remain blocked, with no actual candidate,
+  acceptance or draft attempted. Real context/approval resolution, durable builds,
+  atomic publication, native amendment effects and public evidence adaptation
+  remain required before real numerical M2 use. M3 content review, remaining M4
+  acceptance/evaluation and research/fresh-clone handoff remain incomplete. Quotes
+  stay unavailable. Exact predecessor `0721cf1` passes all three CI jobs in run
+  40657449993; verify the containing checkpoint's own remote SHA/CI separately.
+
 - **Audited numerical acceptance, 28 October:** migration 20 adds one append-only
   administrator ACCEPT/REJECT decision table over immutable numerical candidates.
   ACCEPT freshly verifies original source/parse/evidence/approval/context state
