@@ -5,7 +5,7 @@ from pydantic import TypeAdapter
 
 from regintel.auth.types import User
 from regintel.contracts.primitives import CanonicalId
-from regintel.db.migrations import MigrationError
+from regintel.db.migrations import DatabaseConnection, MigrationError
 from regintel.evidence.projection import ProjectionError
 from regintel.ingestion.storage import UploadError
 from regintel.numerical.gate_repository import _read as read_gate
@@ -28,6 +28,20 @@ from regintel.numerical.review_repository import (
 )
 
 
+def prepare_in_transaction(
+    connection: DatabaseConnection, source: NumericalRepository, gate_id: str, user: User
+) -> NumericalPublicationPreparation:
+    """Use the caller's consistent/locked transaction; never persist a preparation."""
+    _authorize(connection, user)
+    gate = read_gate(connection, gate_id)
+    _fresh(connection, source, gate)
+    try:
+        review = read_review(connection, gate_id)
+    except NumericalNotFound:
+        review = None
+    return prepare_numerical_publication(gate, review)
+
+
 class NumericalPublicationInputRepository:
     def __init__(self, source: NumericalRepository) -> None:
         self.source = source
@@ -39,14 +53,7 @@ class NumericalPublicationInputRepository:
                 # The existing current-admin check holds a user-row share lock;
                 # all application statements here read and no state is persisted.
                 connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
-                _authorize(connection, user)
-                gate = read_gate(connection, gate_id)
-                _fresh(connection, self.source, gate)
-                try:
-                    review = read_review(connection, gate_id)
-                except NumericalNotFound:
-                    review = None
-                return prepare_numerical_publication(gate, review)
+                return prepare_in_transaction(connection, self.source, gate_id, user)
         except (
             NumericalAuthorizationError,
             NumericalNotFound,

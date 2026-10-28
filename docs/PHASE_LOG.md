@@ -2,6 +2,51 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Immutable numerical candidates, 28 October
+
+Continued all four modules from `6943817`, whose Windows, Ubuntu and Linux
+infrastructure CI passes in run 40561874583. Migration 19 adds one append-only M1
+numerical proposal table; 1–18 remain byte-frozen. The private creation request
+selects only actual gate and backend prepared-input IDs. New writes check the
+current administrator and original source/parse/evidence/approval state in the
+committing transaction, with approval-table share locks. Concurrent identical
+requests return one original candidate/actor. Exact retries/GET are historical
+reads after source/configuration changes; they do not authorize acceptance.
+
+Canonical preparation and a separate small record/hash retain every word/cell,
+Decimal and original review. SQL verifies exact input/gate/review/quantity/proof /
+actor/check membership, current approvals and non-authoritative flags; UPDATE /
+DELETE/TRUNCATE fail. Only CANDIDATE state is stored. No accepted fact, acceptance
+audit, corpus, projection or ledger row is written. The preparation helper now
+supports a caller-owned transaction; its configuration/IDs change explicitly.
+The bound-gate and staged-review configurations remain unchanged.
+
+Verification passes 2,349 backend cases/six existing Windows skips/749 integration
+cases deselected, including the 14 new units; 25 candidate-storage cases, nine new
+candidate HTTP cases, nine existing preparation HTTP cases and three shared
+M1–M4 publication/consumer cases (46 distinct owned integration cases). The storage
+invocation used --maxfail=1 for prompt diagnostics; all 25 collected cases passed,
+so it did not skip or terminate early. Ruff 297 files, mypy 189 sources and all ten
+generated checks pass. All four owned databases are removed by the runner.
+Frontend source is unchanged; no new local browser run is claimed.
+
+Read-only preservation passes all 37 original authority hashes, both PDFs,
+original main `236c03f` / DB1–11, migrations 1–18 and 385 other source/test/script/spec files.
+The branch has 19 ordered migrations; 19 is not applied to the original database.
+All four retained real inputs replay but remain blocked without a prepared-input
+ID; no real candidate creation is attempted. Source applicability/qualifier /
+basis/approval resolution, versioned acceptance/atomic publication, public
+evidence adaptation, M3 content review, remaining M4 work and final evaluation /
+handoff remain required. Quotes stay unavailable.
+
+Initial lint feedback corrected import order and long test SQL lines before
+execution. An optional progress diagnostic used a string instead of Path and
+executed no SQL; the actual suite subsequently passed all 25 cases. No guard,
+assertion or timeout is relaxed. Details/source hashes are in
+`data/numerical-candidate-validation-report.json`. No dependency, required setting,
+provider, service, real approval, accepted fact or corpus is added. Verify the
+containing commit's own remote and CI separately.
+
 ## Team review and acceptance handoff, 28 October
 
 Prepared `docs/TEAM_ACCEPTANCE_CHECKLIST.md` for Parth/M1, Yash/M2, Shreya/M3 and

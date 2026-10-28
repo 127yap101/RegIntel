@@ -17,6 +17,35 @@ Updated: 2026-10-28 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Immutable numerical candidates, 28 October:** migration 19 adds one append-only
+  M1 proposal table. New private create/read endpoints retain complete reviewed
+  preparation, exact original words/cells, Decimal context, code/configuration
+  and the actual submitting administrator. New writes freshly recheck source /
+  parse/evidence/approval state in the committing transaction. Identical concurrent
+  requests retain one original candidate/actor; exact retries and GET preserve
+  historical snapshots. Acceptance/M1-validation/publication flags remain false.
+  See `docs/NUMERICAL_CANDIDATE_STORAGE.md` and its implementation plan.
+
+- All 46 selected owned PostgreSQL/HTTP cases pass: 25 candidate storage/guard /
+  concurrency cases, nine candidate HTTP cases, nine existing preparation cases
+  and three shared M1–M4 publication/consumer cases. Fourteen new candidate units
+  pass, as do thirteen static/generated commands (Ruff 297 files, mypy 189
+  sources, ten generated checks). The full backend regression passes 2,349 cases
+  with six existing Windows skips and 749 integration cases deselected; those
+  fourteen new unit cases are included, not an additional count.
+  The measured report is `data/numerical-candidate-validation-report.json`.
+
+- Original M1 preservation passes: all 37 authority hashes, both PDFs, main
+  `236c03f` / DB1–11, migrations 1–18 and 385 other files remain unchanged.
+  Migration 19 is tested only in owned databases; it is not applied to the
+  original database. All four retained real inputs remain blocked, with no
+  ready prepared input or real candidate creation. Actual source applicability /
+  qualifier/basis/approval resolution, versioned acceptance/atomic publication
+  and public evidence-consumer adaptation remain necessary before real M2 use.
+  M3 actual content review, remaining M4 work and final evaluation/handoff remain
+  required. Quotes stay unavailable. Exact predecessor `6943817` passes all three
+  CI jobs in run 40561874583; verify this containing commit separately.
+
 - **Team acceptance handoff, 28 October:** `docs/TEAM_ACCEPTANCE_CHECKLIST.md`
   gives all four module owners concrete source-review/manual-test tasks, with
   four explicitly unaccepted numerical candidates and the seven unreviewed M3

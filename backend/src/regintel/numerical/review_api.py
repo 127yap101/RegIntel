@@ -14,6 +14,8 @@ from regintel.contracts.http import response_meta
 from regintel.contracts.models import ContractModel, ErrorEnvelope, SuccessEnvelope
 from regintel.contracts.primitives import CanonicalId
 from regintel.entities.models import canonical_bytes
+from regintel.numerical.candidate_models import NumericalCandidateRequest, StoredNumericalCandidate
+from regintel.numerical.candidate_repository import NumericalCandidateRepository
 from regintel.numerical.evidence_binding_models import NumericalEvidenceBinding
 from regintel.numerical.gate_models import BoundNumericalGateRun
 from regintel.numerical.gate_repository import BoundNumericalGateRepository
@@ -146,5 +148,42 @@ def create_numerical_review_router(
             ),
             meta=response_meta(request),
         )
+
+    @router.post(
+        "/{gate_id}/candidates",
+        response_model=SuccessEnvelope[StoredNumericalCandidate],
+        responses=errors,
+    )
+    def create_candidate(
+        gate_id: CanonicalId,
+        body: NumericalCandidateRequest,
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+    ) -> SuccessEnvelope[StoredNumericalCandidate]:
+        if body.gate_run_id != gate_id:
+            raise HTTPException(409, "The selected gate differs from the candidate request.")
+        return SuccessEnvelope(
+            data=perform(lambda: NumericalCandidateRepository(ready().source).save(body, user)),
+            meta=response_meta(request),
+        )
+
+    @router.get(
+        "/{gate_id}/candidates/{candidate_id}",
+        response_model=SuccessEnvelope[StoredNumericalCandidate],
+        responses=errors,
+    )
+    def read_candidate(
+        gate_id: CanonicalId,
+        candidate_id: CanonicalId,
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+    ) -> SuccessEnvelope[StoredNumericalCandidate]:
+        def selected() -> StoredNumericalCandidate:
+            candidate = NumericalCandidateRepository(ready().source).get(candidate_id, user)
+            if candidate.record.request.gate_run_id != gate_id:
+                raise NumericalNotFound("The candidate does not belong to the selected gate.")
+            return candidate
+
+        return SuccessEnvelope(data=perform(selected), meta=response_meta(request))
 
     return router

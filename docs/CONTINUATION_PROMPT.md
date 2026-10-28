@@ -1,5 +1,26 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest candidate-storage continuation, 28 October: read
+`docs/NUMERICAL_CANDIDATE_STORAGE_PLAN.md`, `docs/NUMERICAL_CANDIDATE_STORAGE.md`,
+`data/numerical-candidate-validation-report.json` and the newest CURRENT_STATE.md
+entry before older snapshots. Migration 19 adds one append-only numerical
+proposal table; migrations 1–18 and original main `236c03f` / DB1–11 remain frozen.
+The private create request supplies only actual gate/prepared-input IDs. New
+writes use fresh source/approval checks in the committing transaction; exact
+retries preserve the original actor/snapshot, including after source/configuration
+changes. Those are historical reads, not fresh acceptance authorization. The
+candidate is still acceptance-ineligible, M1-validation-incomplete and
+non-publishing. All four real inputs remain blocked; no real candidate, review,
+accepted fact or corpus is created. Complete actual source/context applicability
+and qualifier/basis/approval resolution, then the versioned acceptance/atomic
+publication writer and public evidence-consumer adaptation. Keep M3 content
+review, M4 limitations and quote unavailability explicit. Verify this containing
+checkpoint's own remote SHA/CI rather than inheriting predecessor success.
+Final local checks pass 2,349 backend cases/six existing Windows skips, with
+749 integration cases deselected; all 14 new unit cases are included. Forty-six
+selected PostgreSQL/HTTP cases and thirteen static/generated commands pass.
+No full current 749-case native or Linux integration pass is inferred.
+
 For team review/testing under the deadline, use
 `docs/TEAM_ACCEPTANCE_CHECKLIST.md`. Its four real source candidates remain
 unaccepted, all seven learning starters remain unreviewed and runtime quotes
