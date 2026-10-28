@@ -1,5 +1,27 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest acceptance continuation, 28 October: read `docs/NUMERICAL_ACCEPTANCE_PLAN.md`,
+`docs/NUMERICAL_ACCEPTANCE.md`, `data/numerical-acceptance-validation-report.json`
+and the newest CURRENT_STATE.md entry before older snapshots. Migration 20 adds
+one append-only explicit ACCEPT/REJECT decision table. Original main `236c03f` /
+DB1–11 and migrations 1–19 remain unchanged. ACCEPT requires the actual complete
+candidate, fresh source/parse/approval/context checks and sixteen passing
+monetary-duration categories in the committing transaction. It is explicitly
+ACCEPTED_UNPUBLISHED, not a public observation or legacy ValidationRun. REJECTED
+claims no fresh validation. Current-admin checks, full native proof, SQL guards,
+serialized identical/conflicting requests and historical retries preserve actor /
+configuration. Publication must freshly validate again and atomically establish
+observation/corpus/effect/projection membership; implement that versioned writer
+and public evidence adaptation next. All four actual filing inputs still block
+confirmation/preparation; create no real approval on an authored fixture's
+authority. M3 actual content review, M4 acceptance/evaluation and final research /
+fresh-clone handoff remain required; quotes remain unavailable. Current focused
+checks pass 64 numerical units (including 20 new cases), 50 distinct selected
+PostgreSQL/HTTP cases and thirteen static/generated commands. No current full
+backend/integration/browser run is claimed. Exact predecessor `88415ee` passes
+all three CI jobs in run 40637839300; verify the containing checkpoint's own
+remote SHA/CI independently.
+
 Latest candidate-storage continuation, 28 October: read
 `docs/NUMERICAL_CANDIDATE_STORAGE_PLAN.md`, `docs/NUMERICAL_CANDIDATE_STORAGE.md`,
 `data/numerical-candidate-validation-report.json` and the newest CURRENT_STATE.md

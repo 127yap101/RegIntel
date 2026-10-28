@@ -2,6 +2,56 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Audited numerical acceptance decisions, 28 October
+
+Continued the approved M1–M4 work from `88415ee`, whose Windows/Ubuntu foundation
+and Linux infrastructure CI passes in run 40637839300. Migration 20 adds one
+append-only numerical ACCEPT/REJECT decision table; migrations 1–19 remain
+byte-frozen. The private request supplies only candidate ID, decision, complete
+exact evidence IDs and explanation. Current-admin checks and a per-candidate
+transaction lock serialize identical/conflicting decisions; exact retries/GET
+retain the original actor and configuration as historical reads.
+
+New ACCEPT freshly checks the original source, sealed parse, complete native
+words/cells, approvals and actual context confirmation in the committing
+transaction; approval tables stay share-locked. Sixteen passing monetary-duration
+categories, exact preparation and current candidate configuration are required.
+The record is ACCEPTED_UNPUBLISHED and validates only this versioned adapter.
+REJECTED claims no fresh checks. Both preserve the original candidate and create
+no public observation, corpus, amendment effect, projection or ledger entry.
+SQL independently verifies membership/hashes/checks/current approvals and rejects
+UPDATE/DELETE/TRUNCATE. No native proof is truncated or cast to legacy spans.
+
+Final checks pass 64 focused numerical units including 20 new acceptance cases;
+29 acceptance storage cases, nine new HTTP cases, nine candidate HTTP regressions
+and three shared M1–M4 publication/consumer cases (50 distinct owned integration
+cases). All four final owned databases are removed. Their maxfail=1 diagnostics
+do not filter or stop these successful final runs early. Thirteen static/generated
+checks pass: Ruff 302 files, strict mypy 191 sources and ten generated checks.
+No new full backend/integration/frontend/browser run is claimed.
+
+Read-only preservation confirms all 37 original authority hashes, both PDFs,
+clean main `236c03f` / DB1–11, migrations 1–19 and 392 other files. Migration 20
+is not applied to the primary database. Four real inputs still block context
+confirmation and preparation; no actual review, candidate or acceptance is
+created. Real applicability/qualifier/basis/approval resolution, atomic numerical
+publication and public evidence adaptation remain required before real M2 use.
+M3 content review, remaining M4 acceptance/evaluation and research/fresh-clone
+handoff remain required. Quotes stay unavailable.
+
+Initial lint/format feedback corrected imports/long SQL lines. An initial focused
+unit run passed seven cases but had 13 temporary-directory errors under Windows;
+the fresh project-cache basetemp rerun passes all 20. The first storage run passed
+14 cases before a changed-approval fixture reused an existing unique identifier.
+The distinct additional registration now has no identifiers, preserving the
+uniqueness guard and assertions; all 29 pass in the corrected full run.
+A usage-limit failure prevented one helper/static tool call. After the user
+continued, the normal approval path recovered; one later database-check approval
+timed out before execution, and its permitted normal-path retry succeeded.
+No approval or assertion is bypassed. Details/source hashes are recorded in
+`data/numerical-acceptance-validation-report.json`. Verify this containing commit's
+own remote and CI separately. No dependency, required setting or paid call is added.
+
 ## Immutable numerical candidates, 28 October
 
 Continued all four modules from `6943817`, whose Windows, Ubuntu and Linux

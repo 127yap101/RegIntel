@@ -17,6 +17,40 @@ Updated: 2026-10-28 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Audited numerical acceptance, 28 October:** migration 20 adds one append-only
+  administrator ACCEPT/REJECT decision table over immutable numerical candidates.
+  ACCEPT freshly verifies original source/parse/evidence/approval/context state
+  and all sixteen monetary-duration categories in the committing transaction.
+  Its exact preparation and current candidate configuration must still match.
+  The decision is explicitly ACCEPTED_UNPUBLISHED; REJECTED claims no fresh
+  validation. Neither creates a public observation, corpus, effect, projection
+  or ledger row. See `docs/NUMERICAL_ACCEPTANCE.md` and its implementation plan.
+
+- Concurrent identical decisions retain one original actor; conflicting decisions
+  fail. Current administrator checks protect writes and history. Exact retries /
+  GET retain old configuration and source snapshots without claiming freshness.
+  SQL guards verify candidate/evidence/check/hash/actor/current approval membership
+  and reject UPDATE/DELETE/TRUNCATE. The original candidate remains unchanged.
+
+- Final focused verification passes 64 numerical units (including 20 new acceptance
+  cases) and 50 distinct owned PostgreSQL/HTTP cases: 29 acceptance storage, nine
+  acceptance HTTP, nine candidate HTTP regressions and three shared M1–M4 cases.
+  All four owned databases are removed. Thirteen static/generated checks pass:
+  Ruff 302 files, strict mypy 191 sources and ten generated checks. This is not a
+  new full backend/integration/browser run. The measured report is
+  `data/numerical-acceptance-validation-report.json`.
+
+- Read-only preservation passes 37 original authority hashes, both PDFs, clean
+  main `236c03f` / DB1–11, migrations 1–19 and 392 other files. Migration 20 is
+  tested only in owned databases and is not applied to original M1. All four real
+  inputs remain blocked; no actual review, candidate or acceptance is created.
+  Actual applicability/qualifier/basis/approval resolution, versioned atomic
+  publication and public evidence adaptation remain required for real M2 use.
+  M3 content review, remaining M4 acceptance/evaluation, research and fresh-clone
+  handoff remain incomplete. Quotes stay unavailable. Exact predecessor `88415ee`
+  passes all three CI jobs in run 40637839300; verify this containing commit's
+  own remote SHA/CI separately.
+
 - **Immutable numerical candidates, 28 October:** migration 19 adds one append-only
   M1 proposal table. New private create/read endpoints retain complete reviewed
   preparation, exact original words/cells, Decimal context, code/configuration

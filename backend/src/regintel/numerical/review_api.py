@@ -1,4 +1,4 @@
-"""Private HTTP access to staged reviews; no acceptance or publication endpoint."""
+"""Private numerical proposals and audited decisions; no corpus publication endpoint."""
 
 import hashlib
 from collections.abc import Callable
@@ -14,6 +14,11 @@ from regintel.contracts.http import response_meta
 from regintel.contracts.models import ContractModel, ErrorEnvelope, SuccessEnvelope
 from regintel.contracts.primitives import CanonicalId
 from regintel.entities.models import canonical_bytes
+from regintel.numerical.acceptance_models import (
+    NumericalAcceptanceRequest,
+    StoredNumericalAcceptance,
+)
+from regintel.numerical.acceptance_repository import NumericalAcceptanceRepository
 from regintel.numerical.candidate_models import NumericalCandidateRequest, StoredNumericalCandidate
 from regintel.numerical.candidate_repository import NumericalCandidateRepository
 from regintel.numerical.evidence_binding_models import NumericalEvidenceBinding
@@ -185,5 +190,48 @@ def create_numerical_review_router(
             return candidate
 
         return SuccessEnvelope(data=perform(selected), meta=response_meta(request))
+
+    @router.post(
+        "/{gate_id}/candidates/{candidate_id}/acceptance",
+        response_model=SuccessEnvelope[StoredNumericalAcceptance],
+        responses=errors,
+    )
+    def decide_candidate(
+        gate_id: CanonicalId,
+        candidate_id: CanonicalId,
+        body: NumericalAcceptanceRequest,
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+    ) -> SuccessEnvelope[StoredNumericalAcceptance]:
+        if body.candidate_id != candidate_id:
+            raise HTTPException(409, "The decision differs from the selected candidate.")
+
+        def decide() -> StoredNumericalAcceptance:
+            source = ready().source
+            candidate = NumericalCandidateRepository(source).get(candidate_id, user)
+            if candidate.record.request.gate_run_id != gate_id:
+                raise NumericalNotFound("The candidate does not belong to the selected gate.")
+            return NumericalAcceptanceRepository(source).save(body, user)
+
+        return SuccessEnvelope(data=perform(decide), meta=response_meta(request))
+
+    @router.get(
+        "/{gate_id}/candidates/{candidate_id}/acceptance",
+        response_model=SuccessEnvelope[StoredNumericalAcceptance],
+        responses=errors,
+    )
+    def read_acceptance(
+        gate_id: CanonicalId,
+        candidate_id: CanonicalId,
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+    ) -> SuccessEnvelope[StoredNumericalAcceptance]:
+        def selected_acceptance() -> StoredNumericalAcceptance:
+            stored = NumericalAcceptanceRepository(ready().source).get(candidate_id, user)
+            if stored.candidate.record.request.gate_run_id != gate_id:
+                raise NumericalNotFound("The acceptance does not belong to the selected gate.")
+            return stored
+
+        return SuccessEnvelope(data=perform(selected_acceptance), meta=response_meta(request))
 
     return router
