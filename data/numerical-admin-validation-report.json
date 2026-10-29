@@ -1,0 +1,608 @@
+{
+  "version": "1.0.0",
+  "recorded_at_utc": "2026-10-29T10:54:11.030025+00:00",
+  "client_date": "2026-10-29",
+  "client_timezone": "Asia/Calcutta",
+  "base_commit": "b4a683666a6d1f1edce167f2535b65e8de7cd6d2",
+  "branch": "codex/m2-comparison",
+  "status": "VERIFIED_LOCAL_NUMERICAL_ADMIN_WORKFLOW; VERIFY_CONTAINING_COMMIT_CI",
+  "all_modules_complete": false,
+  "real_numerical_publication_verified": false,
+  "change": [
+    "Existing private numerical APIs exposed as distinct administrator context review, fresh preparation, candidate, acceptance and common publication-selection actions",
+    "Exact separate original words/cells, PDF bytes, evidence identity and parse configuration verified before source rendering",
+    "Generated native administrator contracts; shared complete proof verifier; exact candidate, decision and publication-snapshot membership checks",
+    "Unknown write outcomes retain the submitted body for exact retries; explicit 409/422 unlock inspection; 404 acceptance is distinct from unavailable storage",
+    "Saved gate/candidate history restored without new approval; private state cleared on logout or current-admin revocation"
+  ],
+  "verification": {
+    "backend_focused": {
+      "tests": 112,
+      "passed": 112,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 25.658,
+      "local_artifact": ".cache/numerical-admin-backend-final-20261029.xml",
+      "sha256": "aa670e4cb907c7332e282c243bba640443da34ace8fc145a53da7f0b2fd75f92"
+    },
+    "frontend_all_units": {
+      "tests": 357,
+      "passed": 357,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 2.335,
+      "local_artifact": ".cache/numerical-admin-frontend-final-20261029.xml",
+      "sha256": "5a6d7da8f5e4ee5fb44e9471be3775795d1b5012b88f621d6660ca2876152ad7"
+    },
+    "chromium_all_scenarios": {
+      "tests": 61,
+      "passed": 61,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 219.66,
+      "local_artifact": ".cache/numerical-admin-browser-final-20261029.xml",
+      "sha256": "081bb0c0deaa6e770eca9570a2d14eb8171f2c9e82a87415ddce52d0e91377ed"
+    },
+    "owned_postgresql_http": {
+      "administrator_workflow": {
+        "tests": 1,
+        "passed": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 12.522,
+        "local_artifact": ".cache/numerical-admin-http-20261029.xml",
+        "sha256": "d3d73237883e4fcf1215d2cc53fa13d6d6aea395cf0bb0f7cdd9c41484870f9d"
+      },
+      "shared_native_publication_all_modules": {
+        "tests": 23,
+        "passed": 23,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 259.0,
+        "local_artifact": ".cache/numerical-admin-shared-http-20261029.xml",
+        "sha256": "edacfd9b7c1787e4373ea4542f207477e5f12b336b9537d4d7698da96cad6478"
+      },
+      "legacy_publication": {
+        "tests": 25,
+        "passed": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 104.17,
+        "local_artifact": ".cache/numerical-admin-legacy-http-20261029.xml",
+        "sha256": "fc32003500fbfe2da5a37c232090ca46fc4b1345bb5b8eb5a4c68a5ec6f70ae9"
+      },
+      "distinct_passed": 49
+    }
+  },
+  "static_generated": {
+    "commands": 13,
+    "ruff_formatted_files": 315,
+    "mypy_sources": 196,
+    "all_passed": true
+  },
+  "commands": {
+    "static_0": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.197,
+      "log": ".cache/numerical-admin-static_0-20261029.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "recorded_at_utc": "2026-10-29T10:42:55.383856+00:00"
+    },
+    "static_1": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.136,
+      "log": ".cache/numerical-admin-static_1-20261029.log",
+      "log_sha256": "70d3ff92ce8ddf8c6fd12ad6d369451e8817a052d1c7b683deb80620519bf9eb",
+      "recorded_at_utc": "2026-10-29T10:42:55.521257+00:00"
+    },
+    "static_2": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--config-file",
+        "backend/pyproject.toml",
+        "backend/src",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.223,
+      "log": ".cache/numerical-admin-static_2-20261029.log",
+      "log_sha256": "200e1c1f307f8c59f14b6e80a0061909a35a6be31a479ec4725e5319c3f44845",
+      "recorded_at_utc": "2026-10-29T10:42:57.745224+00:00"
+    },
+    "static_3": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-contracts.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.314,
+      "log": ".cache/numerical-admin-static_3-20261029.log",
+      "log_sha256": "4c48f1ed0cfe28fe85affc012a9a15fde654403fb8f9c0ea24327fa0954eeee1",
+      "recorded_at_utc": "2026-10-29T10:42:58.055914+00:00"
+    },
+    "static_4": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-published-reads.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.735,
+      "log": ".cache/numerical-admin-static_4-20261029.log",
+      "log_sha256": "4b9ebaa5166fc23d7c968b1bfe1b3f4de26619ac97c0be257c518c7a8b8c4f44",
+      "recorded_at_utc": "2026-10-29T10:42:59.791699+00:00"
+    },
+    "static_5": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-retrieval.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.771,
+      "log": ".cache/numerical-admin-static_5-20261029.log",
+      "log_sha256": "5d6fa2a210abb531deebe2e7c4d1df740a7c0ff1d8db1187b212ced75da52f4c",
+      "recorded_at_utc": "2026-10-29T10:43:01.564055+00:00"
+    },
+    "static_6": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-admin.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.674,
+      "log": ".cache/numerical-admin-static_6-20261029.log",
+      "log_sha256": "f22c928cf8f580d9994b48f966a0336c554aa7095fda6cc57770d4a6c1c457c8",
+      "recorded_at_utc": "2026-10-29T10:43:03.241187+00:00"
+    },
+    "static_7": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-analysis.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.515,
+      "log": ".cache/numerical-admin-static_7-20261029.log",
+      "log_sha256": "d34a012e3605c81bdea776ddcc48062aadfc82adc4917b0123390cc2004e9b93",
+      "recorded_at_utc": "2026-10-29T10:43:04.755241+00:00"
+    },
+    "static_8": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-analysis-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.519,
+      "log": ".cache/numerical-admin-static_8-20261029.log",
+      "log_sha256": "86533c03e493eef5f8c354522f8a25e6a720ec229fe06dfc3c860012237ed200",
+      "recorded_at_utc": "2026-10-29T10:43:06.276498+00:00"
+    },
+    "static_9": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-read-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.304,
+      "log": ".cache/numerical-admin-static_9-20261029.log",
+      "log_sha256": "1a57edf09a3aa4d37116754537be9abbe767101080ce7448c45f5b005a2ca9c7",
+      "recorded_at_utc": "2026-10-29T10:43:07.571021+00:00"
+    },
+    "static_10": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.908,
+      "log": ".cache/numerical-admin-static_10-20261029.log",
+      "log_sha256": "4d098cce736812169e67303e960b5b6b6af18a0da43a3fdca1b39d7186348818",
+      "recorded_at_utc": "2026-10-29T10:43:08.488803+00:00"
+    },
+    "static_11": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-fixture-cases.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.5,
+      "log": ".cache/numerical-admin-static_11-20261029.log",
+      "log_sha256": "3e0f67c9c99b69ebf389d2644fce3c200c2fd8cfdefe3ad8997adc08e8f44119",
+      "recorded_at_utc": "2026-10-29T10:43:08.990669+00:00"
+    },
+    "static_12": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-learning-portfolio.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.551,
+      "log": ".cache/numerical-admin-static_12-20261029.log",
+      "log_sha256": "ecdc0510240c2e5b25edaca942a3decf3746e439659780f35204413fc02dd4f0",
+      "recorded_at_utc": "2026-10-29T10:43:10.541394+00:00"
+    },
+    "frontend_lint": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "lint"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 17.506,
+      "log": ".cache/numerical-admin-frontend_lint-20261029.log",
+      "log_sha256": "960f1eb37ac4d28430af9bef2c98f32333254854ffde619330f53d373ce0f632",
+      "recorded_at_utc": "2026-10-29T10:43:28.050171+00:00"
+    },
+    "frontend_typecheck": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "typecheck"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 3.985,
+      "log": ".cache/numerical-admin-frontend_typecheck-20261029.log",
+      "log_sha256": "faeaa94bcf7012d86f91ca647580449f56a263fb7eaf572c54789764f60a9b8f",
+      "recorded_at_utc": "2026-10-29T10:43:32.036299+00:00"
+    },
+    "frontend_units": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=../.cache/numerical-admin-frontend-final-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 8.794,
+      "log": ".cache/numerical-admin-frontend_units-20261029.log",
+      "log_sha256": "8775b41ae150bbb0e759d2a013ac111ac0a9d05ecee78ded65ee1d3ec013464a",
+      "recorded_at_utc": "2026-10-29T10:43:40.830856+00:00"
+    },
+    "frontend_build": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "build"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 17.872,
+      "log": ".cache/numerical-admin-frontend_build-20261029.log",
+      "log_sha256": "64271655397e0778b847d50b4f87b61ba67b2a16e1361e093d749e5d41fd1601",
+      "recorded_at_utc": "2026-10-29T10:43:58.697817+00:00"
+    },
+    "chromium": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "playwright",
+        "test",
+        "--reporter=list,junit"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 122.458,
+      "log": ".cache/numerical-admin-chromium-20261029.log",
+      "log_sha256": "a54c9c014bc8d26dfe2565e348ec35f604216b122ec0eda83d938699d5fbaedf",
+      "recorded_at_utc": "2026-10-29T10:46:01.163027+00:00"
+    },
+    "backend_units": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_admin_numerical_contract.py",
+        "backend/tests/test_admin_api.py",
+        "backend/tests/test_unified_native_contract.py",
+        "backend/tests/test_numerical_context_reviews.py",
+        "backend/tests/test_numerical_candidate_models.py",
+        "backend/tests/test_numerical_acceptance_models.py",
+        "backend/tests/test_numerical_publication_input.py",
+        "--basetemp",
+        ".cache/numerical-admin-backend-final-tmp-20261029",
+        "-o",
+        "cache_dir=.cache/numerical-admin-backend-final-cache",
+        "--junitxml",
+        ".cache/numerical-admin-backend-final-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 29.159,
+      "log": ".cache/numerical-admin-backend_units-20261029.log",
+      "log_sha256": "1f57794d468b9d3f43e3ef9f178e813fd5892a14215f7fe11e6735da25cb6fc8",
+      "recorded_at_utc": "2026-10-29T10:46:30.323015+00:00"
+    },
+    "shared_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_unified_numerical_publication.py",
+        "--junit-report",
+        ".cache/numerical-admin-shared-http-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 264.052,
+      "log": ".cache/numerical-admin-shared_http-20261029.log",
+      "log_sha256": "7716d87228d1688012af75df93b947a7f0d5eed755c4073c6b6423a546a184c2",
+      "recorded_at_utc": "2026-10-29T10:50:54.375037+00:00"
+    },
+    "legacy_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_publication_storage.py",
+        "--junit-report",
+        ".cache/numerical-admin-legacy-http-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 110.623,
+      "log": ".cache/numerical-admin-legacy_http-20261029.log",
+      "log_sha256": "19d3a1c151923951ba25a17c6906b05723fc2e524d59703be5d47f923773f172",
+      "recorded_at_utc": "2026-10-29T10:52:44.999901+00:00"
+    }
+  },
+  "runtime": {
+    "host": "Windows x64",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "pnpm": "11.19.0",
+    "test_browser": "Chromium",
+    "test_ports": [
+      18073,
+      5187
+    ]
+  },
+  "attempts": [
+    {
+      "stage": "local_database_setup",
+      "outcome": "RegIntel data services were stopped; no test database was created by the failed attempts. Started only the three existing approved containers, then the actual workflow passed."
+    },
+    {
+      "stage": "browser_collection",
+      "outcome": "Node required JSON import attributes; corrected the new test imports before running scenarios."
+    },
+    {
+      "stage": "new_browser_scenarios_initial",
+      "passed": 7,
+      "failed": 10,
+      "cause": "Ambiguous implicit decision labels and matching section labels; corrected explicit selector labels.",
+      "local_artifact": ".cache/numerical-admin-browser-label-attempt-20261029.xml"
+    },
+    {
+      "stage": "new_browser_scenarios_after_select_labels",
+      "passed": 14,
+      "failed": 3,
+      "cause": "Nested note labels included controlled textarea text; a Windows locale round-trip changed the expected dash. Corrected explicit sibling note labels and UTF-8.",
+      "local_artifact": ".cache/numerical-admin-browser-notes-attempt-20261029.xml"
+    },
+    {
+      "stage": "repaired_browser_cases",
+      "passed": 3,
+      "failed": 0,
+      "local_artifact": ".cache/numerical-admin-browser-repaired-20261029.xml"
+    }
+  ],
+  "authored_fixture": {
+    "path": "frontend/src/admin/numerical.fixture.json",
+    "bytes": 235727,
+    "sha256": "e9f862addf20c6cf336736eee9cb212d7269d31039812500f87168c43270bef7",
+    "retained_distinct_words": 51,
+    "python_contract_round_trips": 10,
+    "source": "Actual owned PostgreSQL/HTTP/build test output; blank authored two-page PDF and declared word geometry. No real filing approval, transcription truth, financial gold or prices."
+  },
+  "operational_effects": {
+    "new_migrations": 0,
+    "new_dependencies": [],
+    "new_required_environment_variables": [],
+    "new_http_endpoints": [],
+    "original_database_migrated": false,
+    "paid_model_or_provider_calls": 0,
+    "quotes": "UNAVAILABLE_BY_USER_CHOICE",
+    "public_ports_added": [],
+    "existing_regintel_containers_started": [
+      "postgres",
+      "redis",
+      "neo4j"
+    ],
+    "other_docker_applications_modified": false
+  },
+  "base_ci": {
+    "head_revision": "b4a683666a6d1f1edce167f2535b65e8de7cd6d2",
+    "run_id": 40807699526,
+    "url": "https://github.com/127yap101/RegIntel/actions/runs/40807699526",
+    "conclusion": "success",
+    "jobs": [
+      "Foundation (ubuntu-24.04)",
+      "Foundation (windows-2025)",
+      "Local data infrastructure (Linux)"
+    ],
+    "containing_commit_ci": "Verify independently after push."
+  },
+  "limits": [
+    "All four retained real numerical inputs remain unresolved; no new real approval/candidate/acceptance/publication was recorded.",
+    "Seven M3 starter drafts remain unreviewed.",
+    "Source capture, binding and gate creation remain source-intake prerequisites; the screen starts from stored IDs.",
+    "A complete supported native amendment pair and real M2/M3/M4 acceptance/evaluation remain required.",
+    "Held-out research evaluation and fresh-clone handoff remain incomplete.",
+    "Full backend and full infrastructure suites were not rerun at this checkpoint; focused current counts and prior base CI are distinguished.",
+    "Production build retains the existing large-chunk advisory; no rendering or bundle-size improvement is claimed."
+  ],
+  "source_sha256": {
+    "backend/src/regintel/admin/models.py": "743c3f6d650e5b9fb0d7aed6b5a484d91764ad89db15522b65217aba28d6292d",
+    "backend/tests/integration/test_numerical_admin_workflow.py": "ed9d719c379fbf312447c9c20cab0225050c2000e88dc5ccb3fce5fdfcec71f2",
+    "backend/tests/test_admin_numerical_contract.py": "bde7f98d5c17db7bbb6fd529a989a103d453cc592b490b94b54e31fe6d188669",
+    "frontend/src/admin/Workspace.tsx": "c6cabc0f433efffe3b512e39b8dd93eff93c93cd58715662d29fafbefbce01a7",
+    "frontend/src/admin/NumericalPanel.tsx": "cbc7a874cc95403d4c8e09fd307c72cff1928c31839526b8a2a820f01d00fd76",
+    "frontend/src/admin/api.ts": "a97518186333d7f9c93b1af54760c3bc31bf97c93d8cc594c6252cdd1b7597d6",
+    "frontend/src/admin/wire.ts": "36144356ef40b63b9a9f32941cebbd16c50d6c206dc0aec142c0e7511fdf0be0",
+    "frontend/src/admin/numerical.ts": "7be9d8ee5baa1d27a1253c7ab11407369411401d026665b8dcdc06be04ee58c7",
+    "frontend/src/admin/numerical.test.ts": "b4b27ec8ae61716d45f906062144b2b7424fb349553f7e430012e8a646b134ba",
+    "frontend/src/admin/numerical.fixture.json": "e9f862addf20c6cf336736eee9cb212d7269d31039812500f87168c43270bef7",
+    "frontend/src/contracts/equality.ts": "f29148d76927511095aceadf9ebbc496beffe101e1a9444c270cc2126a9374e5",
+    "frontend/src/published/native.ts": "ae4927263ae897237c0bfef212ebf7acfe5b977212bc42e64cb30b87f86e5711",
+    "frontend/tests/e2e/numerical-admin.spec.ts": "0f65d4589896f20c524bbacb4012fdfae94b3e7e3396d3f22f6a39d4c3916aaf",
+    "scripts/export-admin.py": "53e08065461ef05ae01b45e50753df8e2eb71fc7aba12dcdfddb07a63243c388"
+  },
+  "owned_database_cleanup": {
+    "owned_databases": [
+      "regintel_test_m0_3_44a2a921d6614da5a29bebbf627ea5c8",
+      "regintel_test_m0_3_53f58483f167426caf2cd65a7d0576e4",
+      "regintel_test_m0_3_377ae096ca5a4d3d8285f47e8c161aae"
+    ],
+    "removed": 3,
+    "remaining": [],
+    "operation": "Read-only pg_database verification of these exact owned names; no unrelated database changed."
+  }
+}

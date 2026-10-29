@@ -18,6 +18,49 @@ Updated: 2026-10-29 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Numerical administrator workflow, 29 October:** the private workspace now
+  loads an explicit stored native gate and optional candidate ID. It exposes
+  all fourteen source/context gates, separate ordered original words and table
+  membership, proposed Decimal context, explicit context confirmation/rejection,
+  fresh sixteen-category preparation, candidate creation and a separate audited
+  ACCEPT/REJECT decision. Only recorded accepted candidates can enter the
+  existing checked publication draft; final publication remains separate.
+  See `docs/NUMERICAL_ADMIN_WORKFLOW.md` and its bounded implementation plan.
+
+- Generated administrator contracts include the existing native API shapes.
+  A shared proof verifier checks complete source/word/page/table membership for
+  private review and M1–M3 public consumers. Source rendering verifies the exact
+  selected evidence record, PDF hash and parse configuration. Historical reads
+  do not become current validation. Unknown write outcomes freeze the exact body
+  for retries; explicit 409/422 responses unlock inspection. Missing acceptance
+  and unavailable storage remain distinct. Logout/revocation clears private
+  state, and cancelled requests cannot restore it.
+
+- Current verification passes 112 focused backend cases, all 357 frontend units,
+  all 61 Chromium scenarios, lint, strict typing, production build and thirteen
+  static/generated commands (Ruff 315 files, strict mypy 196 sources). The new
+  actual administrator HTTP/database workflow and 48 native/legacy publication
+  cases pass: 49 distinct owned PostgreSQL/HTTP cases in three removed databases.
+  The frozen browser fixture retains all 51 separate words and round-trips all
+  ten corresponding Python contracts. Its blank PDF/authored word declarations
+  test engineering contracts and geometry, not real transcription or financial
+  correctness. See `data/numerical-admin-validation-report.json` for measured
+  counts, attempts, source hashes and verification limits.
+
+- No migration, dependency, required environment setting, provider, quote source
+  or public port is added. The original database is not migrated by this work.
+  Docker was running with RegIntel's services stopped; only the existing three
+  approved data containers were started. Other Docker applications are untouched.
+  Exact predecessor `b4a6836` passes all three GitHub jobs in run 40807699526;
+  verify this containing checkpoint's remote SHA and CI independently.
+
+- The screen starts from a stored gate; source capture and gate creation remain
+  the source-intake workflow. All four real numerical inputs remain unresolved,
+  seven M3 starter drafts remain unreviewed, and a supported native amendment
+  pair, actual M2/M3/M4 acceptance, research evaluation and fresh-clone handoff
+  remain required. Runtime quotes stay unavailable by user choice. These checks
+  do not establish completion of all four modules or research effectiveness.
+
 - **Unified numerical publication across M1–M4, 28–29 October:** explicitly
   accepted native numerical candidates now use M1's existing build/projection /
   final-commit/publication-head path. New native observation and acceptance

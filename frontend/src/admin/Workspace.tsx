@@ -6,6 +6,8 @@ import { checked, PendingWrites, sameValue } from './wire'
 import { UploadForm, FilingPanel, ProcessingPanel } from './JobsPanel'
 import { ReviewPanel } from './ReviewPanel'
 import { BuildPanel, PublicationForm } from './PublicationPanel'
+import { NumericalPanel } from './NumericalPanel'
+import { checkNumericalAcceptance } from './numerical'
 import type * as T from './generated'
 
 const queues: readonly { kind: T.QueueKind; label: string }[] = [{ kind: 'filings', label: 'Filing jobs' }, { kind: 'processing', label: 'Processing jobs' }, { kind: 'validations', label: 'Validation and quarantine' }, { kind: 'publications', label: 'Publication builds' }]
@@ -19,6 +21,7 @@ export function AdminWorkspace() {
   const [reviews, setReviews] = useState<T.ReviewPage | null>(null); const [metrics, setMetrics] = useState<readonly T.MetricDefinition[] | null>(null)
   const [manifest, setManifest] = useState<T.CorpusManifest | null>(null); const [published, setPublished] = useState(false)
   const [selections, setSelections] = useState<readonly T.CandidateSelection[]>([])
+  const [numericalMode, setNumericalMode] = useState(false); const [numericalPending, setNumericalPending] = useState(false)
   const [source, setSource] = useState<SourceSelection | null>(null)
   const [head, setHead] = useState<string | null>(null); const [draftNumber, setDraftNumber] = useState(0)
   const [busy, setBusy] = useState(false); const [message, setMessage] = useState('')
@@ -26,7 +29,7 @@ export function AdminWorkspace() {
   const pending = useRef(new PendingWrites())
   useEffect(() => () => { operation.current?.abort(); pending.current.clear() }, [])
 
-  function clearSelection(): void { setFiling(null); setProcessing(null); setReviews(null); setManifest(null); setPublished(false); setSource(null); setMetrics(null) }
+  function clearSelection(): void { setFiling(null); setProcessing(null); setReviews(null); setManifest(null); setPublished(false); setSource(null); setMetrics(null); setNumericalMode(false); setNumericalPending(false) }
   function clearPrivate(): void { setApi(null); setQueue(null); clearSelection(); setSelections([]); setHead(null); setUsername(''); setPassword(''); setDraftNumber((previous) => previous + 1); pending.current.clear() }
   function logout(): void { operation.current?.abort(); clearPrivate(); setBusy(false); setMessage('Administrator signed out.') }
   async function execute(action: (signal: AbortSignal) => Promise<void>): Promise<void> {
@@ -61,6 +64,15 @@ export function AdminWorkspace() {
   async function inspect(span: T.SourceSpan, parse: string, contexts: readonly T.ContextWitness[], supports: readonly T.SourceSpan[]): Promise<void> {
     if (!api) return; setSource(null)
     await execute(async (signal) => { const result = await api.source(span, parse, signal); if (!signal.aborted) setSource({ ...result, supports: supports.filter((value) => value.evidence_id === span.evidence_id), context_supports: contexts.filter((value) => value.span.evidence_id === span.evidence_id) }) })
+  }
+  async function inspectNumerical(proof: T.NumericalEvidenceBinding, word: T.BoundNumericalWord): Promise<void> {
+    if (!api) return; setSource(null)
+    await execute(async (signal) => {
+      const span = { evidence_id: word.evidence.id, ...word.evidence.span }
+      const result = await api.source(span, proof.parse_version_id, signal)
+      if (!sameValue(result.evidence.record, word.evidence) || result.evidence.source_sha256 !== proof.source_sha256 || result.evidence.processing_configuration_sha256 !== proof.processing_configuration_sha256) throw new AdminError(false, 'The selected original word, PDF or parse configuration differs.')
+      if (!signal.aborted) setSource({ ...result, supports: [span], context_supports: [] })
+    })
   }
   async function saveReview(item: T.ReviewItem, decision: T.ReviewDecision['decision'], note: string): Promise<void> {
     if (!api || !reviews || item.review || (decision === 'APPROVE_FOR_PUBLICATION' && (!reviews.approval_current || !item.result.reviewer_eligible))) return
@@ -99,17 +111,25 @@ export function AdminWorkspace() {
     if (!selections.some((selection) => selection.candidate_id === item.candidate.id)) setSelections([...selections, { candidate_id: item.candidate.id, candidate_run_id: reviews.candidate_run_id, review_id: item.review.id }])
     setManifest(null); setSource(null); setMessage('Reviewed candidate added to the publication draft below.')
   }
+  function addNumericalSelection(accepted: T.StoredNumericalAcceptance): void {
+    checkNumericalAcceptance(accepted)
+    if (accepted.record.state !== 'ACCEPTED_UNPUBLISHED') return
+    const candidate = accepted.candidate.record
+    if (!selections.some((selection) => selection.candidate_id === candidate.id)) setSelections([...selections, { candidate_id: candidate.id, candidate_run_id: candidate.request.gate_run_id, review_id: accepted.record.id }])
+    setManifest(null); setPublished(false); setSource(null); setMessage('Accepted numerical candidate added to the publication draft below. Publication rechecks its current source and acceptance.')
+  }
   return <section id="admin-workspace" aria-label="Administrator workspace" className="scroll-mt-6 pb-12">
     <div className="flex flex-wrap items-center justify-between gap-3"><div><h2 className="text-2xl font-semibold">Administrator workspace</h2><p className="mt-2 text-sm text-muted">Filing jobs, exact evidence, audited decisions and explicit publication.</p></div>{api && <Button variant="secondary" onClick={logout}>Sign out of administrator workspace</Button>}</div>
     {!api ? <form className="mt-5 grid gap-4 rounded-xl border border-line bg-white p-5 sm:grid-cols-[1fr_1fr_auto]" onSubmit={(event) => { event.preventDefault(); void signIn() }}><label className="text-sm font-medium">Administrator username<input required autoComplete="username" value={username} onChange={(event) => setUsername(event.target.value)} className="admin-input" /></label><label className="text-sm font-medium">Administrator password<input required type="password" autoComplete="current-password" value={password} onChange={(event) => setPassword(event.target.value)} className="admin-input" /></label><Button className="self-end" type="submit" disabled={busy}>Sign in as administrator</Button></form> : <>
-      <nav aria-label="Administrator work queues" className="mt-5 flex flex-wrap gap-2">{queues.map(({ kind, label }) => <Button key={kind} variant={queue?.kind === kind ? 'primary' : 'secondary'} disabled={busy} onClick={() => { void loadQueue(kind) }}>{label}</Button>)}</nav>
+      <nav aria-label="Administrator work queues" className="mt-5 flex flex-wrap gap-2">{queues.map(({ kind, label }) => <Button key={kind} variant={queue?.kind === kind ? 'primary' : 'secondary'} disabled={busy || numericalPending} onClick={() => { void loadQueue(kind) }}>{label}</Button>)}<Button variant={numericalMode ? 'primary' : 'secondary'} disabled={busy || numericalPending} onClick={() => { operation.current?.abort(); clearSelection(); setQueue(null); setNumericalMode(true); setBusy(false); setMessage('') }}>Numerical filings</Button></nav>
       {queue && <section aria-label="Selected work queue" className="mt-5 rounded-xl border border-line bg-white p-4"><div className="flex flex-wrap items-center justify-between gap-3"><h3 className="font-semibold">{queues.find((item) => item.kind === queue.kind)?.label}</h3><Button variant="secondary" disabled={busy} onClick={() => { void loadQueue(queue.kind, queue.offset) }}>Refresh queue</Button></div><p className="mt-2 text-xs text-muted">Ordered by stable identifier. Select an item to inspect its stored state.</p><ul className="mt-4 space-y-3">{queue.items.map((item) => <li key={item.id}><button type="button" disabled={busy} onClick={() => { void choose(item) }} className="w-full rounded-lg border border-line p-3 text-left focus-visible:outline-2 focus-visible:outline-sage"><span className="text-sm font-semibold">{item.label} · {item.state}</span><span className="mt-1 block break-all text-xs text-muted">{item.id}</span></button></li>)}</ul>{!queue.items.length && <p role="status" className="mt-3 text-sm">No items on this queue page. No published corpus is required to upload and review filings.</p>}<div className="mt-4 flex flex-wrap gap-3"><Button variant="secondary" disabled={busy || queue.offset === 0} onClick={() => { void loadQueue(queue.kind, Math.max(0, queue.offset - queue.limit)) }}>Previous queue page</Button><Button variant="secondary" disabled={busy || !queue.has_more} onClick={() => { void loadQueue(queue.kind, queue.offset + queue.limit) }}>More queue items</Button></div></section>}
-      <UploadForm busy={busy} upload={(file, metadata) => { void upload(file, metadata) }} />
+      {numericalMode && <NumericalPanel api={api} busy={busy} run={execute} pendingChanged={setNumericalPending} clearSource={() => setSource(null)} inspect={(proof, word) => { void inspectNumerical(proof, word) }} select={addNumericalSelection} />}
+      <UploadForm busy={busy || numericalPending} upload={(file, metadata) => { void upload(file, metadata) }} />
       {filing && <FilingPanel key={filing.id} job={filing} metrics={metrics} busy={busy} refresh={() => { if (api) void execute(async (signal) => { const job = await api.filing(filing.id, signal); const catalog = await api.read('metrics', '/v1/admin/workspace/metrics', signal); if (!signal.aborted) { setFiling(job); setMetrics(catalog.items) } }) }} start={(ids) => { void startProcessing(ids) }} />}
       {processing && <ProcessingPanel job={processing} busy={busy} refresh={() => { if (api) void execute(async (signal) => { const job = await api.processing(processing.id, signal); if (!signal.aborted) setProcessing(job) }) }} dispatch={() => { if (api) void execute(async (signal) => { const receipt = await api.read('dispatch', `/v1/admin/processing/jobs/${processing.id}/dispatch`, signal, {}); if (!signal.aborted) setMessage(receipt.dispatched ? 'Pending workflow dispatched.' : 'No dispatch was necessary; refresh the stored workflow.') }) }} review={(id) => { void reviewRun(id) }} validate={(id) => { void validateCandidates(id) }} />}
       {reviews && <ReviewPanel page={reviews} busy={busy} load={(filter, offset) => { void reviewRun(reviews.run_id, filter, offset) }} inspect={(item, span) => { void inspect(span, reviews.parse_version_id, item.result.context_supports, item.draft.supports) }} decide={(item, decision, note) => { void saveReview(item, decision, note) }} select={addSelection} revalidate={() => { void validateCandidates(reviews.candidate_run_id) }} />}
-      <PublicationForm key={draftNumber} head={head} selections={selections} busy={busy} invalidate={() => { setManifest(null); setPublished(false); setSource(null) }} remove={(id) => { setSelections(selections.filter((item) => item.candidate_id !== id)); setManifest(null); setSource(null) }} create={(payload) => { void createDraft(payload) }} />
-      <Button className="mt-3" variant="secondary" disabled={busy} onClick={() => { setSelections([]); setManifest(null); setSource(null); setPublished(false); setDraftNumber(draftNumber + 1); pending.current.clear() }}>Start a new publication draft</Button>
+      <PublicationForm key={draftNumber} head={head} selections={selections} busy={busy || numericalPending} invalidate={() => { setManifest(null); setPublished(false); setSource(null) }} remove={(id) => { setSelections(selections.filter((item) => item.candidate_id !== id)); setManifest(null); setSource(null) }} create={(payload) => { void createDraft(payload) }} />
+      <Button className="mt-3" variant="secondary" disabled={busy || numericalPending} onClick={() => { setSelections([]); setManifest(null); setSource(null); setPublished(false); setDraftNumber(draftNumber + 1); pending.current.clear() }}>Start a new publication draft</Button>
       {manifest && <BuildPanel key={manifest.id} manifest={manifest} published={published} busy={busy} publish={() => { void publishBuild('publish') }} rebuild={() => { void publishBuild('rebuild') }} inspect={(span, parse, contexts, supports) => { void inspect(span, parse, contexts, supports) }} />}
       {source && <SourceViewer key={`${source.evidence.record.id}:${source.evidence.source_sha256}`} source={source} bytes={source.bytes} />}
     </>}

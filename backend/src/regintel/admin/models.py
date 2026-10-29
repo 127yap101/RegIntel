@@ -10,6 +10,14 @@ from regintel.contracts.primitives import CanonicalId, SafeInteger, Sha256Hash
 from regintel.evidence.api import EvidenceData
 from regintel.ingestion.jobs import FilingJob, UploadMetadata
 from regintel.ingestion.models import CandidateRecord, StoredLabel
+from regintel.numerical.acceptance_models import (
+    NumericalAcceptanceRequest,
+    StoredNumericalAcceptance,
+)
+from regintel.numerical.candidate_models import NumericalCandidateRequest, StoredNumericalCandidate
+from regintel.numerical.publication_models import NumericalPublicationPreparation
+from regintel.numerical.review_api import NumericalReviewPacket
+from regintel.numerical.review_models import NumericalContextReviewRequest, ReviewedNumericalContext
 from regintel.processing.api import DispatchReceipt
 from regintel.processing.models import ProcessingJob, ProcessingRequest
 from regintel.publication.models import CorpusManifest, PublicationRequest
@@ -79,3 +87,11 @@ class AdminWire(ContractModel):
     manifest: CorpusManifest
     publication_request: PublicationRequest
     evidence: EvidenceData
+    numerical_packet: NumericalReviewPacket
+    numerical_review_request: NumericalContextReviewRequest
+    numerical_review: ReviewedNumericalContext
+    numerical_preparation: NumericalPublicationPreparation
+    numerical_candidate_request: NumericalCandidateRequest
+    numerical_candidate: StoredNumericalCandidate
+    numerical_acceptance_request: NumericalAcceptanceRequest
+    numerical_acceptance: StoredNumericalAcceptance

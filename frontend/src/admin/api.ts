@@ -1,23 +1,25 @@
 import { getApiBaseUrl } from '../api/health'
 import { parseContract } from '../contracts/runtime'
-import { canonical, checked, decode } from './wire'
+import { canonical, checked, decode, sameValue } from './wire'
+import { checkNumericalAcceptance, checkNumericalCandidate, checkNumericalPreparation, checkNumericalReview } from './numerical'
 import type { Wire } from './wire'
 import type * as T from './generated'
 
 export class AdminError extends Error {
-  constructor(public readonly auth: boolean, message = 'The administrator request could not be completed. Refresh the stored state before retrying.') { super(message); this.name = 'AdminError' }
+  constructor(public readonly auth: boolean, message = 'The administrator request could not be completed. Refresh the stored state before retrying.', public readonly status?: number) { super(message); this.name = 'AdminError' }
 }
 
 export class AdminApi {
   constructor(private readonly token: string, private readonly base = getApiBaseUrl()) {}
 
-  private async request(path: string, signal: AbortSignal, body?: object | File, login = false): Promise<Response> {
+  private async request(path: string, signal: AbortSignal, body?: object | File, login = false, allowMissing = false): Promise<Response> {
     try {
       const response = await fetch(this.base + path, { method: body ? 'POST' : 'GET', credentials: 'omit', redirect: 'error', cache: 'no-store', signal: AbortSignal.any([signal, AbortSignal.timeout(120_000)]),
         headers: login ? { 'Content-Type': 'application/x-www-form-urlencoded' } : { Authorization: `Bearer ${this.token}`, ...(body ? { 'Content-Type': body instanceof File ? 'application/pdf' : 'application/json' } : {}) },
         ...(body ? { body: login || body instanceof File ? body as URLSearchParams | File : JSON.stringify(body) } : {}) })
       if (response.status === 401 || response.status === 403) throw new AdminError(!login, response.status === 403 ? 'Current administrator access is required. Please sign in with an administrator account.' : login ? 'Sign-in failed. Check your username and password.' : 'Your administrator session has expired. Please sign in again.')
-      if (!response.ok) throw new AdminError(false, response.status === 409 ? 'This decision conflicts with stored history or the current corpus. Refresh before retrying; existing records were preserved.' : response.status === 422 ? 'The source or decision is invalid. Check its exact evidence and required context.' : response.status === 413 ? 'The PDF exceeds the upload limit.' : undefined)
+      if (response.status === 404 && allowMissing) return response
+      if (!response.ok) throw new AdminError(false, response.status === 409 ? 'This decision conflicts with stored history or the current corpus. Refresh before retrying; existing records were preserved.' : response.status === 422 ? 'The source or decision is invalid. Check its exact evidence and required context.' : response.status === 413 ? 'The PDF exceeds the upload limit.' : undefined, response.status)
       return response
     } catch (error: unknown) {
       if (signal.aborted) throw new DOMException('Request cancelled.', 'AbortError')
@@ -70,6 +72,56 @@ export class AdminApi {
     const manifest = await this.read('manifest', `/v1/admin/publication/builds/${canonical(id)}${operation ? `/${operation}` : ''}`, signal, operation ? {} : undefined)
     if (manifest.id !== id) throw new AdminError(false)
     return manifest
+  }
+  async numericalPacket(id: string, signal: AbortSignal): Promise<T.NumericalReviewPacket> {
+    const value = await this.read('numerical_packet', `/v1/admin/numerical/gates/${canonical(id)}`, signal)
+    if (value.gate.id !== id) throw new AdminError(false)
+    return value
+  }
+  async reviewNumerical(packet: T.NumericalReviewPacket, body: T.NumericalContextReviewRequest, signal: AbortSignal): Promise<T.ReviewedNumericalContext> {
+    checked('numerical_review_request', body)
+    if (body.gate_run_id !== packet.gate.id || !sameValue(body.evidence_ids, packet.gate.evidence_ids) || !body.note.trim() || body.note.includes('\0') || body.decision === 'CONFIRM_CONTEXT' && packet.gate.state !== 'READY_FOR_REVIEW') throw new AdminError(false)
+    const value = await this.read('numerical_review', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/review`, signal, body)
+    checkNumericalReview(value, packet.gate)
+    if (!sameValue(value.request, body)) throw new AdminError(false)
+    return value
+  }
+  async numericalPreparation(packet: T.NumericalReviewPacket, signal: AbortSignal): Promise<T.NumericalPublicationPreparation> {
+    const value = await this.read('numerical_preparation', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/publication-input`, signal)
+    checkNumericalPreparation(value, packet)
+    return value
+  }
+  async numericalCandidate(packet: T.NumericalReviewPacket, id: string, signal: AbortSignal): Promise<T.StoredNumericalCandidate> {
+    const value = await this.read('numerical_candidate', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/candidates/${canonical(id)}`, signal)
+    checkNumericalCandidate(value, packet)
+    if (value.record.id !== id) throw new AdminError(false)
+    return value
+  }
+  async createNumericalCandidate(packet: T.NumericalReviewPacket, preparation: T.NumericalPublicationPreparation, body: T.NumericalCandidateRequest, signal: AbortSignal): Promise<T.StoredNumericalCandidate> {
+    checked('numerical_candidate_request', body); checkNumericalPreparation(preparation, packet)
+    if (!preparation.proposed_input || body.gate_run_id !== packet.gate.id || body.prepared_input_id !== preparation.proposed_input.id) throw new AdminError(false)
+    const value = await this.read('numerical_candidate', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/candidates`, signal, body)
+    checkNumericalCandidate(value, packet)
+    if (!sameValue(value.record.request, body) || !sameValue(value.preparation, preparation)) throw new AdminError(false)
+    return value
+  }
+  private numericalAcceptancePath(candidate: T.StoredNumericalCandidate): string {
+    return `/v1/admin/numerical/gates/${canonical(candidate.record.request.gate_run_id)}/candidates/${canonical(candidate.record.id)}/acceptance`
+  }
+  async numericalAcceptance(candidate: T.StoredNumericalCandidate, signal: AbortSignal): Promise<T.StoredNumericalAcceptance | null> {
+    const response = await this.request(this.numericalAcceptancePath(candidate), signal, undefined, false, true)
+    if (response.status === 404) return null
+    const value = decode('numerical_acceptance', await response.json() as unknown)
+    checkNumericalAcceptance(value, candidate)
+    return value
+  }
+  async decideNumerical(candidate: T.StoredNumericalCandidate, body: T.NumericalAcceptanceRequest, signal: AbortSignal): Promise<T.StoredNumericalAcceptance> {
+    checked('numerical_acceptance_request', body)
+    if (body.candidate_id !== candidate.record.id || !sameValue(body.evidence_ids, candidate.preparation.proposed_input?.gate.evidence_ids) || !body.note.trim() || body.note.includes('\0')) throw new AdminError(false)
+    const value = await this.read('numerical_acceptance', this.numericalAcceptancePath(candidate), signal, body)
+    checkNumericalAcceptance(value, candidate)
+    if (!sameValue(value.record.request, body)) throw new AdminError(false)
+    return value
   }
   async upload(file: File, metadata: unknown, signal: AbortSignal): Promise<T.FilingJob> {
     const values = checked('upload', metadata)

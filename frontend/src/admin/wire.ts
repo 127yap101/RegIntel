@@ -2,6 +2,10 @@ import Ajv2020 from 'ajv/dist/2020'
 import addFormats from 'ajv-formats'
 import type { ValidateFunction } from 'ajv'
 import { parseContract } from '../contracts/runtime'
+import { sameValue } from '../contracts/equality'
+import { checkNumericalObservation } from '../published/native'
+import { checkNumericalAcceptance, checkNumericalCandidate, checkNumericalPacket, checkNumericalPreparation, checkNumericalSnapshot } from './numerical'
+export { sameValue } from '../contracts/equality'
 import type * as T from './generated'
 import schema from './schema.json'
 
@@ -12,6 +16,10 @@ export interface Wire {
   validation: T.ValidationData; validation_request: T.ValidationRequest
   review_request: T.ReviewDecision; review_receipt: T.ReviewReceipt
   manifest: T.CorpusManifest; publication_request: T.PublicationRequest; evidence: T.EvidenceData
+  numerical_packet: T.NumericalReviewPacket; numerical_review_request: T.NumericalContextReviewRequest
+  numerical_review: T.ReviewedNumericalContext; numerical_preparation: T.NumericalPublicationPreparation
+  numerical_candidate_request: T.NumericalCandidateRequest; numerical_candidate: T.StoredNumericalCandidate
+  numerical_acceptance_request: T.NumericalAcceptanceRequest; numerical_acceptance: T.StoredNumericalAcceptance
 }
 const ajv = new Ajv2020({ strict: true, coerceTypes: false, removeAdditional: false })
 addFormats(ajv, { mode: 'full' }); ajv.addSchema(schema)
@@ -37,7 +45,8 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
     const manifest = data as T.CorpusManifest
     const ids = manifest.observations.map((item) => item.id)
     if (new Set(ids).size !== ids.length || manifest.active_observation_ids.some((id) => !ids.includes(id)) || manifest.new_acceptances.some((item) => !manifest.observations.some((stored) => sameValue(stored, item.observation)))) throw new Error('Build scope differs')
-    for (const item of manifest.observations) if (item.quantity) parseContract('QuantitativeValue', item.quantity)
+    for (const item of manifest.observations) { if (item.quantity) parseContract('QuantitativeValue', item.quantity); checkNumericalObservation(item) }
+    for (const item of manifest.new_acceptances) if ('accepted' in item) checkNumericalSnapshot(item)
   }
   if (kind === 'review_page') {
     const page = data as T.ReviewPage
@@ -60,21 +69,16 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
     parseContract('TextEvidence', evidence.record)
     if (meta.versions.parse_version_id !== evidence.record.source.parse_version_id || meta.versions.filing_version_id !== evidence.record.source.filing_version_id) throw new Error('Evidence source version differs')
   }
+  if (kind === 'numerical_packet') checkNumericalPacket(data as T.NumericalReviewPacket)
+  if (kind === 'numerical_preparation') checkNumericalPreparation(data as T.NumericalPublicationPreparation)
+  if (kind === 'numerical_candidate') checkNumericalCandidate(data as T.StoredNumericalCandidate)
+  if (kind === 'numerical_acceptance') checkNumericalAcceptance(data as T.StoredNumericalAcceptance)
   return data
 }
 
 export function canonical(value: string): string {
   if (!/^[0-9a-f]{8}-[0-9a-f]{4}-4[0-9a-f]{3}-[89ab][0-9a-f]{3}-[0-9a-f]{12}$/u.test(value)) throw new Error('A canonical identifier is required')
   return value
-}
-
-export function sameValue(left: unknown, right: unknown): boolean {
-  if (left === right) return true
-  if (Array.isArray(left) && Array.isArray(right)) return left.length === right.length && left.every((value, index) => sameValue(value, right[index]))
-  if (typeof left !== 'object' || left === null || Array.isArray(left) || typeof right !== 'object' || right === null || Array.isArray(right)) return false
-  const a = left as Record<string, unknown>; const b = right as Record<string, unknown>
-  const keys = Object.keys(a).sort()
-  return keys.join(',') === Object.keys(b).sort().join(',') && keys.every((key) => sameValue(a[key], b[key]))
 }
 
 export class PendingWrites {

@@ -14,6 +14,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Numerical review access and module history](docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md): inspect staged numerical gates, select reviewed glossary versions and view exact portfolio prefixes.
 - [Shared filing corpus across M1–M4](docs/SHARED_CORPUS_SESSION.md): retain a verified publication across workspaces, explicitly select latest, and preserve pending-order inputs.
 - [Unified numerical publication](docs/UNIFIED_NUMERICAL_PUBLICATION.md): publish explicitly accepted native numerical evidence through the shared M1 corpus used by all four modules.
+- [Numerical administrator workflow](docs/NUMERICAL_ADMIN_WORKFLOW.md): inspect saved native gates, record context and acceptance decisions, and select candidates for the existing publication draft.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.
@@ -91,9 +92,10 @@ versioned source/context checks and immutable history over those exact words.
 Native numerical acceptance and the common atomic publication path now retain
 complete word/cell proof across M1 facts, M2 comparison and M3 learning context;
 M4 selects companies from that same corpus. Migration 21 supplies the native
-publication audit and producer-specific guards. Genuine real-source approvals,
-the remaining numerical administration workflow and supported native amendment
-lineage still require work. See the [unified publication guide](docs/UNIFIED_NUMERICAL_PUBLICATION.md)
+publication audit and producer-specific guards. The administrator now reviews
+stored numerical gates through separate context, candidate, acceptance and
+publication actions. Source intake, genuine real-source approvals and supported
+native amendment lineage still require work. See the [unified publication guide](docs/UNIFIED_NUMERICAL_PUBLICATION.md)
 and its [measured report](data/unified-publication-validation-report.json).
 The [staged context-review contract](docs/M2_NUMERICAL_CONTEXT_REVIEWS.md) records
 explicit decisions only after fresh source/approval and complete-evidence checks.

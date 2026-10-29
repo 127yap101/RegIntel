@@ -119,7 +119,13 @@ behavior. A complete native amendment pair with multiword identity/effect eviden
 still needs a supported source representation and dedicated acceptance coverage;
 sharing the effect engine alone does not establish that capability.
 
-Real filing applicability/qualifier/basis/approval resolution, remaining native
-administration workflow, M3 actual content review, M4 acceptance/evaluation and
+The [numerical administrator workflow](NUMERICAL_ADMIN_WORKFLOW.md) now connects
+saved gates to explicit context review, fresh preparation, candidates, acceptance
+and the common publication draft. Source capture and gate creation remain intake
+prerequisites. The exact unified-publication commit `b4a6836` passed all three
+[GitHub jobs](https://github.com/127yap101/RegIntel/actions/runs/40807699526).
+
+Real filing applicability/qualifier/basis/approval resolution, supported native
+amendment evidence, M3 actual content review, M4 acceptance/evaluation and
 research/fresh-clone handoff still require work. Runtime quotes remain unavailable
 as requested. Do not infer full-project or research completion from these checks.

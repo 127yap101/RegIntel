@@ -1,5 +1,35 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest numerical-administration continuation, 29 October: read
+`docs/NUMERICAL_ADMIN_WORKFLOW_PLAN.md`, `docs/NUMERICAL_ADMIN_WORKFLOW.md`,
+`data/numerical-admin-validation-report.json` and the newest CURRENT_STATE.md
+entry before older snapshots. The user still authorizes work across all four
+modules, adapting M1 as needed, and committing/pushing verified checkpoints to
+`codex/m2-comparison`. Mandatory source/review/amendment history remains intact.
+
+The administrator screen now starts from a saved gate and optional candidate ID,
+inspects exact original words/cells/context, records a context decision, obtains
+fresh preparation, saves a candidate, records acceptance/rejection and selects
+only accepted candidates for the common publication form. It reuses the existing
+HTTP APIs and introduces no migration, dependency or required setting. Original
+source/PDF/configuration checks, complete proof membership and exact uncertain
+write retries remain mandatory; missing acceptance is not unavailable storage.
+An immutable accepted-stage record does not prove current publication membership.
+Credentials, notes, proposals and pending writes remain in memory and clear on
+sign-out/revocation. The original database has not been migrated by this work.
+
+Current frontend checks pass 357 units and all 61 Chromium cases; focused Python
+checks pass 112 cases, 49 distinct owned PostgreSQL/HTTP cases and thirteen
+static/generated checks pass. The three owned databases are removed. The
+measured report records coverage, source hashes and disclosed earlier attempts.
+All engineering fixtures remain labelled fictional; they cannot approve the four
+unresolved real numerical inputs or seven M3 starter drafts. Source intake and
+gate creation still precede this UI. Continue supported native amendment identity /
+effect evidence, real M2 acceptance, M3 content review, remaining M4 acceptance /
+evaluation and frozen research/fresh-clone handoff. Quotes remain unavailable.
+Exact base `b4a6836` passes all three GitHub jobs in run 40807699526; verify the
+containing checkpoint's own remote SHA and CI independently.
+
 Latest unified-publication continuation, 29 October: read
 `docs/UNIFIED_NUMERICAL_PUBLICATION_PLAN.md`,
 `docs/UNIFIED_NUMERICAL_PUBLICATION.md`,
