@@ -4,6 +4,7 @@ import { parseContract } from '../contracts/runtime'
 import type { ReadOptions } from '../published/api'
 import type { ComparisonRequest, ComparisonResult, QuotesResult } from './generated'
 import schema from './schema.json'
+import { checkNumericalObservation } from '../published/native'
 
 export type { ComparisonRequest, ComparisonResult, QuotesResult } from './generated'
 export interface ComparisonInput {
@@ -46,6 +47,7 @@ export function parseComparison(value: unknown, request: ComparisonRequest): Com
       const ids = new Set<string>()
       for (const input of cell.inputs) {
         const observation = input.observation
+        checkNumericalObservation(observation)
         if (ids.has(observation.id) || input.metric.id !== row.metric.id || observation.metric_id !== row.metric.id || observation.subject_entity_id !== cell.company_id || observation.kind !== 'numeric_fact' || !observation.quantity) throw new Error('Comparison input identity differs')
         ids.add(observation.id)
         parseContract('QuantitativeValue', observation.quantity)

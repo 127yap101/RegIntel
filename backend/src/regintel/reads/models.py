@@ -7,7 +7,7 @@ from regintel.contracts.models import ContractModel
 from regintel.contracts.primitives import CanonicalId, DateString, SafeInteger, Sha256Hash
 from regintel.entities.models import EntityKind, EntityName
 from regintel.evidence.api import EvidenceData
-from regintel.publication.models import PublishedObservation
+from regintel.publication.models import Observation
 from regintel.validation.models import ContextWitness
 
 
@@ -35,7 +35,7 @@ class CompanyPage(ContractModel):
 
 
 class PublishedFact(ContractModel):
-    observation: PublishedObservation
+    observation: Observation
     metric: MetricDefinition
 
 
@@ -52,7 +52,7 @@ class CompanyGraph(ContractModel):
     view: ViewInfo
     company: EntityLabel
     nodes: tuple[EntityLabel, ...]
-    edges: tuple[PublishedObservation, ...]
+    edges: tuple[Observation, ...]
 
 
 class PublishedEvidence(ContractModel):

@@ -1,5 +1,6 @@
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
+import { expectRenderedSource } from './pdf'
 import { apiOrigin, webOrigin } from '../ports'
 import fixtures from '../../src/analysis/fixtures.generated.json' with { type: 'json' }
 
@@ -65,7 +66,7 @@ test('M2 exact comparison retains raw inputs and opens the corresponding second 
   const details = page.locator('details').filter({ hasText: 'Input disclosures: Beta Solar Limited (1)' })
   await expect(details).toContainText('150 million INR')
   await details.getByRole('button', { name: 'Inspect source 1', exact: true }).click()
-  await expect(page.getByText('Source verified · page rendered')).toBeVisible()
+  await expectRenderedSource(page)
   await expect(page.locator('canvas[aria-label="Original filing page 2"]')).toBeVisible()
   await expect(page.getByTestId('evidence-region')).toHaveCount(1)
   expect(await page.evaluate(() => localStorage.length + sessionStorage.length)).toBe(0)

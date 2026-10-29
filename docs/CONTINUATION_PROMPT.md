@@ -1,5 +1,40 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest unified-publication continuation, 29 October: read
+`docs/UNIFIED_NUMERICAL_PUBLICATION_PLAN.md`,
+`docs/UNIFIED_NUMERICAL_PUBLICATION.md`,
+`data/unified-publication-validation-report.json` and the newest CURRENT_STATE.md
+entry before older snapshots. The user explicitly permits adapting M1 data
+structures and module interfaces as needed; earlier preservation requirements
+below are historical. Immutable source/review/amendment history still applies.
+
+Migration 21 and explicit native schemas integrate accepted numerical candidates
+into the existing M1 build/projection/finalize/head transaction. Complete original
+word/cell proof and Decimal context flow through M1 facts/evidence, M2 comparison,
+M3 source context and M4 company selection. Native and legacy observations share
+one published corpus; old observation bytes remain readable. Frozen native
+labels/metrics come from audited gate inputs, not current global approvals.
+Raw currency aliases remain distinct from normalized ISO currency. No legacy
+ValidationRun or combined exact quotation is invented. Missing/rejected/stale
+source/context/approval dependencies fail before publication.
+
+51 distinct selected PostgreSQL/HTTP cases and an additional actual local BGE /
+Neo4j publication smoke pass; the four final owned databases and generated graph
+namespace are removed. The full verification record is in the measured report.
+Migration 21 is not applied to the original database by this checkpoint. No new
+dependency, required setting, quote provider, paid call or public port is added.
+Use the explicitly selected numerical runtime descriptor for native publication.
+
+Continue the remaining native administrator workflow and source-backed native
+amendment representation/acceptance, then actual real M2 acceptance, reviewed M3
+content, remaining M4 acceptance/evaluation and frozen research/fresh-clone
+handoff. All four real numerical inputs and seven M3 starters remain unresolved /
+unreviewed; authored engineering positives cannot supply their approval. Runtime
+quotes remain unavailable by user choice. Do not claim all modules or research
+complete. Exact base `5e9f613` has passing foundation but cancelled Linux
+infrastructure in run 40662411616. The infrastructure budget is now 60 minutes
+with all checks retained. Verify the containing commit's own remote SHA and CI.
+
 Latest publication-draft continuation, 28 October: read
 `docs/NUMERICAL_PUBLICATION_DRAFT_PLAN.md`, `docs/NUMERICAL_PUBLICATION_DRAFT.md`,
 `data/numerical-draft-validation-report.json` and the newest CURRENT_STATE.md entry

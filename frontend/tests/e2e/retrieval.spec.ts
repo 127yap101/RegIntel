@@ -1,6 +1,7 @@
 import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
+import { expectRenderedSource } from './pdf'
 import reads from '../../src/published/fixtures.generated.json' with { type: 'json' }
 import fixtures from '../../src/retrieval/fixtures.generated.json' with { type: 'json' }
 import type { RetrievalRequest } from '../../src/retrieval/generated'
@@ -43,7 +44,7 @@ test('question returns a conditional source excerpt and opens its real PDF.js pa
   await expect(panel.getByText('Verbatim source excerpt', { exact: true })).toBeVisible()
   await expect(panel.locator('blockquote')).toContainText('subject to approvals')
   await panel.getByRole('button', { name: 'Source 1 · page 1', exact: true }).click()
-  await expect(page.getByText('Source verified · page rendered', { exact: true })).toBeVisible()
+  await expectRenderedSource(page)
   await expect(page.getByTestId('evidence-region')).toHaveCount(1)
   await page.setViewportSize({ width: 375, height: 812 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth > innerWidth)).toBe(false)

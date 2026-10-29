@@ -101,7 +101,9 @@ jobs:
     name: Local data infrastructure (Linux)
     needs: foundation
     runs-on: ubuntu-24.04
-    timeout-minutes: 20
+    # The complete owned-database suite has grown beyond the old 20-minute budget.
+    # Keep every integration check and allow bounded time for schema setup per case.
+    timeout-minutes: 60
     env:
       UV_CACHE_DIR: ${{ github.workspace }}/.cache/uv
       UV_PYTHON_INSTALL_DIR: ${{ github.workspace }}/.tools/python

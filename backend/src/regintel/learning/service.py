@@ -7,7 +7,7 @@ from regintel.contracts.models import ContractModel
 from regintel.contracts.primitives import CanonicalId, DateString
 from regintel.learning.models import ReviewedDefinition
 from regintel.learning.repository import LearningConflict, LearningNotFound, LearningRepository
-from regintel.publication.models import PublishedObservation
+from regintel.publication.models import Observation
 from regintel.reads.models import PublishedEvidence, ViewInfo
 from regintel.reads.repository import ReadUnavailable
 from regintel.reads.service import PublishedReadService
@@ -25,7 +25,7 @@ class LearningExplanation(ContractModel):
     glossary_version_id: CanonicalId
     definition: ReviewedDefinition
     view: ViewInfo
-    observation: PublishedObservation
+    observation: Observation
     evidence: tuple[PublishedEvidence, ...]
     generated: Literal[False] = False
 

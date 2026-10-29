@@ -42,8 +42,10 @@ unresolved; this worksheet cannot authorize an override or publication.
 
 The current private [publication-input preparation](NUMERICAL_PUBLICATION_INPUT.md)
 returns `BLOCKED` for all four. Retained IDs identify saved engineering inputs;
-they do not create records in a teammate's fresh database. The atomic acceptance /
-publication adapter remains implementation work before real M2 use.
+they do not create records in a teammate's fresh database. The
+[unified publication path](UNIFIED_NUMERICAL_PUBLICATION.md) now supports explicitly
+accepted numerical candidates. These four unresolved inputs still need actual
+source/context approval before they can use it.
 
 ## M2 / Yash: check the real comparison acceptance cases
 
@@ -101,5 +103,6 @@ The team must also check reviewed real-filing labels and expected calculations
 for the [evaluation plan](04_EVALUATION_PLAN_FINAL.md), then reproduce setup/demo
 from a fresh clone. Current engineering test counts do not establish research
 accuracy, amendment effectiveness or full project completion. The remaining
-acceptance/publication code is the agent's implementation work; the team's
-source review and manual testing can proceed alongside it.
+numerical administration, native amendment support and acceptance integration
+are the agent's implementation work; the team's source review and manual testing
+can proceed alongside it.

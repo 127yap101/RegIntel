@@ -13,6 +13,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [M3/M4 run and test guide](docs/M3_M4_RUN_AND_TEST.md): use the module branch, review/publish learning content and test the deterministic virtual ledger.
 - [Numerical review access and module history](docs/MODULE_HISTORY_AND_REVIEW_ACCESS.md): inspect staged numerical gates, select reviewed glossary versions and view exact portfolio prefixes.
 - [Shared filing corpus across M1–M4](docs/SHARED_CORPUS_SESSION.md): retain a verified publication across workspaces, explicitly select latest, and preserve pending-order inputs.
+- [Unified numerical publication](docs/UNIFIED_NUMERICAL_PUBLICATION.md): publish explicitly accepted native numerical evidence through the shared M1 corpus used by all four modules.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.
@@ -87,8 +88,13 @@ eight selected context pages in a disposable verification corpus. All four real
 context records bind to actual evidence; this does not approve or publish facts.
 The [bound numerical gate](docs/M2_BOUND_NUMERICAL_GATES.md) now records separately
 versioned source/context checks and immutable history over those exact words.
-Legacy acceptance integration, runtime selection, genuine review and numerical
-publication remain producer work.
+Native numerical acceptance and the common atomic publication path now retain
+complete word/cell proof across M1 facts, M2 comparison and M3 learning context;
+M4 selects companies from that same corpus. Migration 21 supplies the native
+publication audit and producer-specific guards. Genuine real-source approvals,
+the remaining numerical administration workflow and supported native amendment
+lineage still require work. See the [unified publication guide](docs/UNIFIED_NUMERICAL_PUBLICATION.md)
+and its [measured report](data/unified-publication-validation-report.json).
 The [staged context-review contract](docs/M2_NUMERICAL_CONTEXT_REVIEWS.md) records
 explicit decisions only after fresh source/approval and complete-evidence checks.
 Unresolved gates cannot be overridden; these decisions do not accept/publish facts.
@@ -114,7 +120,8 @@ for explicit editing/review. Portfolio account/history/analytics can select one
 owned immutable version, keeping dependent reads consistent when later orders arrive.
 M2 real numerical acceptance, reviewed learning content, remaining portfolio
 valuation/data integration, final integration and research evaluation remain
-unfinished. M1's original checkout and saved data stay unchanged.
+unfinished. On 28 October the user authorized adapting M1 data structures and
+module interfaces as needed; evidence and review history remain immutable.
 Live Gemini transport/model selection and paid benchmarking are pending.
 Native setup/CI selects locked entities+publication extras. The private worker
 retains its M1.8 parser/stage environments and has not been rebuilt for M1.9/M1.10/M1.11/M1.12.

@@ -25,6 +25,7 @@ from regintel.evidence.api import EvidenceEnvelope
 from regintel.publication.embeddings import CpuBgeEncoder, split_support
 from regintel.publication.graph import Neo4jProjection
 from regintel.publication.models import (
+    AcceptanceSnapshot,
     CandidateSelection,
     CorpusManifest,
     CorpusView,
@@ -306,6 +307,8 @@ def prove(api_base: str) -> dict[str, object]:
         projection.model_dump_json(indent=2) + "\n", encoding="utf-8"
     )
     acceptance = manifest.new_acceptances[0]
+    if not isinstance(acceptance, AcceptanceSnapshot):
+        raise ValueError("The controlled narrative requires its legacy review snapshot.")
     report: dict[str, object] = {
         "recorded_at_utc": datetime.now(UTC).isoformat(),
         "phase": "M1.9",

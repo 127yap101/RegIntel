@@ -17,7 +17,7 @@ from regintel.contracts.primitives import (
 )
 from regintel.entities.models import canonical_bytes
 from regintel.ingestion.models import StoredText
-from regintel.publication.models import PublishedObservation
+from regintel.publication.models import Observation
 from regintel.reads.models import ViewInfo
 
 type Arm = Literal["B0", "B1", "B2", "B3"]
@@ -100,7 +100,7 @@ class Citation(ContractModel):
 
 class RetrievalHit(ContractModel):
     chunk_id: CanonicalId
-    observation: PublishedObservation
+    observation: Observation
     dense_rank: SafeInteger | None
     lexical_rank: SafeInteger | None
     graph_hop: Literal[1, 2] | None
@@ -109,7 +109,7 @@ class RetrievalHit(ContractModel):
 
 
 class ContextBundle(ContractModel):
-    observation: PublishedObservation
+    observation: Observation
     citations: tuple[Citation, ...]
 
 

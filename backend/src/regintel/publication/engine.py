@@ -10,6 +10,7 @@ from regintel.candidates.records import drafts, stable_id
 from regintel.contracts.models import TextEvidence
 from regintel.entities.models import RegistrySnapshot, canonical_bytes
 from regintel.publication.models import (
+    Acceptance,
     AcceptanceSnapshot,
     AuditedEffect,
     AuditedLineage,
@@ -314,7 +315,7 @@ def build_manifest(
     request: PublicationRequest,
     configuration: PublicationConfiguration,
     user: User,
-    acceptances: tuple[AcceptanceSnapshot, ...],
+    acceptances: tuple[Acceptance, ...],
     filings: tuple[FilingSnapshot, ...],
     evidence: tuple[TextEvidence, ...],
     registry: RegistrySnapshot,

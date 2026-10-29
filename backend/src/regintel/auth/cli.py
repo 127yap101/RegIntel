@@ -96,6 +96,19 @@ def serve_main() -> None:
         JobRepository(load_database_settings(args.env_file)),
         sender(create_celery(ingestion_settings)),
     )
+    from regintel.numerical.repository import NumericalRepository
+    from regintel.numerical.review_repository import NumericalContextReviewRepository
+    from regintel.parsing.configuration import load_runtime_configuration
+
+    numerical_source = (
+        NumericalRepository(
+            load_database_settings(args.env_file),
+            ingestion.storage,
+            load_runtime_configuration(args.numerical_runtime_file),
+        )
+        if args.numerical_runtime_file is not None
+        else None
+    )
 
     model_root = ROOT / "models/bge-small-en-v1.5"
     publication = None
@@ -105,7 +118,7 @@ def serve_main() -> None:
             configuration = current_configuration(model_root)
             graph = Neo4jProjection.from_env(args.env_file)
             publication = PublicationService(
-                PublicationRepository(load_database_settings(args.env_file)),
+                PublicationRepository(load_database_settings(args.env_file), numerical_source),
                 graph,
                 configuration,
                 model_root=model_root,
@@ -124,9 +137,6 @@ def serve_main() -> None:
     )
     from regintel.learning.repository import LearningRepository
     from regintel.learning.service import LearningService
-    from regintel.numerical.repository import NumericalRepository
-    from regintel.numerical.review_repository import NumericalContextReviewRepository
-    from regintel.parsing.configuration import load_runtime_configuration
     from regintel.portfolio.repository import PortfolioRepository
     from regintel.portfolio.service import PortfolioService
 
@@ -158,14 +168,8 @@ def serve_main() -> None:
                 portfolio_service=PortfolioService(
                     PortfolioRepository(load_database_settings(args.env_file)), read_service
                 ),
-                numerical_review_repository=NumericalContextReviewRepository(
-                    NumericalRepository(
-                        load_database_settings(args.env_file),
-                        ingestion.storage,
-                        load_runtime_configuration(args.numerical_runtime_file),
-                    )
-                )
-                if args.numerical_runtime_file is not None
+                numerical_review_repository=NumericalContextReviewRepository(numerical_source)
+                if numerical_source is not None
                 else None,
                 retrieval_service=RetrievalService(
                     read_service,

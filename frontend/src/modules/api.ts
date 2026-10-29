@@ -6,6 +6,7 @@ import type { UserIdentity } from '../contracts/generated'
 import { PublishedApi } from '../published/api'
 import type { DefinitionDraft, ModuleWire, OrderRequest, StoredDefinition } from './generated'
 import schema from './schema.json'
+import { checkNumericalObservation } from '../published/native'
 
 export type { ModuleWire } from './generated'
 
@@ -109,6 +110,12 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
   }
   if (kind === 'context') {
     const context = data as ModuleWire['context']
+    checkNumericalObservation(context.observation)
+    if ('schema_version' in context.observation) {
+      const wanted = context.observation.quantity.evidence_ids
+      const actual = [...new Set(context.evidence.map((item) => item.evidence.record.id))].sort()
+      if (wanted.length !== actual.length || wanted.some((id, index) => id !== actual[index])) throw new ModuleError(0, 'The numerical learning context omits part of its source proof.')
+    }
     if (context.generated !== false || context.view.historical || meta.versions.corpus_version_id !== context.view.corpus_version_id || context.evidence.some((item) => item.observation_id !== context.observation.id || item.view.corpus_version_id !== context.view.corpus_version_id)) throw new ModuleError(0, 'The learning context differs from its selected source.')
   }
   return data

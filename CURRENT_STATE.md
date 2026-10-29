@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-28 (Asia/Calcutta).
+Updated: 2026-10-29 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -14,8 +14,66 @@ Updated: 2026-10-28 (Asia/Calcutta).
 - User explicitly chose to keep M2 quotes unavailable for now; recorded on 18 October. No external quote feed, provider or paid usage is required for this checkpoint.
 - On23October the user confirmed preserving M1 interfaces and existing data while completing M1→M2 integration, then explicitly requested starting M3 and M4 alongside remaining M2 work. The approved producer prerequisite remains in scope; M3/M4 now also have implementation authorization through existing published contracts. See `docs/M3_M4_IMPLEMENTATION_PLAN.md`. No evidence/review/publication gate is waived.
 - On27October the user reported an approximate 7–10 day deadline and requested continued work. Prioritize the real numerical acceptance/publication path, module acceptance and final evaluation/handoff. Existing scope and evidence/review requirements remain active.
+- On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Unified numerical publication across M1–M4, 28–29 October:** explicitly
+  accepted native numerical candidates now use M1's existing build/projection /
+  final-commit/publication-head path. New native observation and acceptance
+  schemas retain every original word/cell/geometry, Decimal quantity and actual
+  decision. Migration 21 adds append-only native publication audits and strict
+  producer-specific common observation guards. Audits, observations, published
+  state and head commit together or roll back together. No legacy ValidationRun
+  or combined source quotation is fabricated. Raw `₹`/`Rs.` labels remain
+  separate from normalized ISO currency.
+
+- Frozen native entity/metric labels come from the audited source input. M1
+  facts/evidence, M2 deterministic comparison, M3 complete filing context and M4
+  company selection now consume the same committed numerical corpus. Native
+  history can advance with legacy content without rewriting earlier observations.
+  Strict browser schemas/types and complete proof checks cover the new shape.
+  See `docs/UNIFIED_NUMERICAL_PUBLICATION.md` and its implementation plan.
+
+- The shared PDF viewer now avoids starting workers for cancelled React setups,
+  including development StrictMode replay. New source bytes clear earlier render
+  state/errors; unmount still destroys the surviving task. Three lifetime tests
+  cover these behaviors. Hash, original-page, canvas and geometry assertions remain.
+
+- Final database verification passes 51 distinct PostgreSQL/HTTP cases: 23 native,
+  25 legacy publication and three shared-module cases. An additional smoke passes
+  actual pinned local BGE inference, Neo4j projection verification, PostgreSQL
+  publication and public native reads. The four final disposable databases and
+  generated graph namespace are removed. Engineering fixtures do not constitute
+  actual filing/content review or research effectiveness.
+
+- The full backend regression passes 2,412 cases with six existing Windows
+  filesystem skips; 833 integration cases are separately selected. Final frontend
+  verification passes 304 units and all 44 Chromium scenarios, plus lint, strict
+  typing and production build. Thirteen static/generated commands pass: Ruff
+  313 files, strict mypy 196 sources and ten generated checks. The measured report
+  is `data/unified-publication-validation-report.json`. Browser PDF readiness has
+  a bounded 15-second wait after traces showed the earlier five-second default
+  expiring around worker load/decoding; original hash/page/canvas/highlight checks
+  remain. The production build retains its existing large-chunk advisory.
+
+- Migration 21 is tested in owned databases; the original database has not been
+  migrated by this checkpoint. Migrations 1–20 retain their original bytes. No
+  dependency, required environment setting, quote feed, paid model call or public
+  port is added. The agreed Node 24.19.0 was restored in ignored project tools
+  after detecting a newer system runtime; system configuration is unchanged.
+  Linux infrastructure CI retains every check with a 60-minute budget. Exact
+  predecessor `5e9f613` has successful Windows/Ubuntu foundation but cancelled
+  infrastructure in run 40662411616; verify this containing commit independently.
+
+- All four retained real numerical inputs remain unresolved, and seven M3 starter
+  drafts remain unreviewed. Remaining work includes actual source applicability /
+  qualifier/basis/approval resolution, native administrator workflow, a complete
+  native amendment pair with supported multiword identity/effect evidence, real
+  M2 acceptance, M3 content review, remaining M4 acceptance/evaluation and research /
+  fresh-clone handoff. Quotes remain unavailable by user choice. The 28 October
+  waiver supersedes earlier interface/data preservation constraints in historical
+  entries below; evidence, review and amendment history remain mandatory.
 
 - **Numerical publication draft/projections, 28 October:** a private administrator
   POST computes a separately versioned UNPUBLISHED_DRAFT over explicitly accepted

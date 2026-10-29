@@ -10,6 +10,9 @@ from regintel.contracts.models import ContractModel, QuantitativeValue, Relation
 from regintel.contracts.primitives import CanonicalId, DateString, SafeInteger, Sha256Hash
 from regintel.entities.models import canonical_bytes
 from regintel.ingestion.models import CandidateKind, DocumentType, StoredText
+from regintel.numerical.acceptance_models import StoredNumericalAcceptance
+from regintel.numerical.evidence_binding_models import NumericalEvidenceBinding
+from regintel.numerical.publication_models import NumericalPublicationPreparation
 from regintel.validation.models import ContextWitness, ReviewDecision, ValidationRun
 
 type EffectType = Literal["ADD", "CORRECT", "SUPPLEMENT", "SUPERSEDE", "REMOVE"]
@@ -184,6 +187,104 @@ class AcceptanceSnapshot(ContractModel):
     original_review: ReviewedApproval | None
 
 
+def native_spans(proof: NumericalEvidenceBinding) -> tuple[SourceSpan, ...]:
+    spans = {
+        word.evidence.id: SourceSpan(
+            evidence_id=word.evidence.id,
+            start=0,
+            end=word.evidence.span.end,
+            quote=word.evidence.span.quote,
+        )
+        for phrase in proof.phrases
+        for word in phrase.words
+    }
+    return tuple(spans[key] for key in sorted(spans))
+
+
+class PublishedNumericalObservation(PublishedObservation):
+    """Native producer provenance is explicit; no legacy ValidationRun is fabricated."""
+
+    schema_version: Literal["native-numerical-observation-1"] = "native-numerical-observation-1"
+    kind: Literal["numeric_fact"]
+    quantity: QuantitativeValue
+    metric_id: CanonicalId
+    object_entity_id: None
+    relation_type: None
+    native_acceptance_id: CanonicalId
+    proof: NumericalEvidenceBinding
+    supports: Annotated[tuple[SourceSpan, ...], Field(strict=False, min_length=1, max_length=1024)]
+    context_supports: Annotated[tuple[ContextWitness, ...], Field(strict=False, max_length=0)]
+
+    @model_validator(mode="after")
+    def exact_native_support(self) -> Self:
+        if (
+            self.kind != "numeric_fact"
+            or self.quantity is None
+            or self.context_supports
+            or self.supports != native_spans(self.proof)
+            or self.quantity.evidence_ids != tuple(span.evidence_id for span in self.supports)
+            or self.parse_version_id != self.proof.parse_version_id
+            or self.filing_version_id != self.proof.filing_version_id
+            or self.validation_run_id != self.native_acceptance_id
+            or self.review_id != self.native_acceptance_id
+        ):
+            raise ValueError(
+                "Native observations retain complete proof and their own acceptance run."
+            )
+        return self
+
+
+class NumericalAcceptanceSnapshot(ContractModel):
+    kind: Literal["NATIVE_NUMERICAL"] = "NATIVE_NUMERICAL"
+    observation: PublishedNumericalObservation
+    accepted: StoredNumericalAcceptance
+    fresh_preparation: NumericalPublicationPreparation
+
+    @model_validator(mode="after")
+    def exact_native_acceptance(self) -> Self:
+        source = self.accepted.candidate.preparation.proposed_input
+        assert source is not None
+        observed, decision = self.observation, self.accepted.record
+        quantity = observed.quantity
+        assert quantity is not None
+        if (
+            decision.state != "ACCEPTED_UNPUBLISHED"
+            or self.fresh_preparation != self.accepted.candidate.preparation
+            or observed.candidate_id != self.accepted.candidate.record.id
+            or observed.candidate_run_id != source.gate_run_id
+            or observed.native_acceptance_id != decision.id
+            or observed.validator_configuration_sha256 != decision.configuration_sha256
+            or observed.validation_input_sha256 != source.gate_input_sha256
+            or observed.proof != source.proof
+            or observed.subject_entity_id != source.subject_entity_id
+            or observed.metric_id != source.metric.id
+            or (
+                quantity.raw_value,
+                quantity.normalized_value,
+                quantity.normalized_unit,
+                quantity.currency,
+                quantity.period,
+                quantity.basis,
+            )
+            != (
+                source.quantity.raw_value,
+                source.quantity.normalized_value,
+                source.quantity.normalized_unit,
+                source.quantity.currency,
+                source.quantity.period,
+                source.quantity.basis,
+            )
+        ):
+            raise ValueError(
+                "Published numerical context must match its exact fresh accepted proposal."
+            )
+        return self
+
+
+type Observation = PublishedNumericalObservation | PublishedObservation
+type Acceptance = NumericalAcceptanceSnapshot | AcceptanceSnapshot
+
+
 class AuditedLineage(ContractModel):
     proposal: LineageProposal
     approved_in_corpus_version_id: CanonicalId
@@ -207,8 +308,8 @@ class CorpusManifest(ContractModel):
     approved_by: CanonicalId
     approved_auth_version: Annotated[SafeInteger, Field(ge=1)]
     filings: Annotated[tuple[FilingSnapshot, ...], Field(strict=False, max_length=1000)]
-    observations: Annotated[tuple[PublishedObservation, ...], Field(strict=False, max_length=10000)]
-    new_acceptances: Annotated[tuple[AcceptanceSnapshot, ...], Field(strict=False, max_length=100)]
+    observations: Annotated[tuple[Observation, ...], Field(strict=False, max_length=10000)]
+    new_acceptances: Annotated[tuple[Acceptance, ...], Field(strict=False, max_length=100)]
     lineages: Annotated[tuple[AuditedLineage, ...], Field(strict=False, max_length=1000)]
     effects: Annotated[tuple[AuditedEffect, ...], Field(strict=False, max_length=1000)]
     active_observation_ids: Ids
@@ -234,5 +335,5 @@ class CorpusView(ContractModel):
     corpus_version_id: CanonicalId
     as_of_date: DateString | None
     state: Literal["AVAILABLE", "TEMPORAL_SUPPORT_UNAVAILABLE"]
-    observations: tuple[PublishedObservation, ...]
+    observations: tuple[Observation, ...]
     unresolved_parent_filing_version_ids: Ids

@@ -2,6 +2,81 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Unified numerical publication for all four modules, 28–29 October
+
+Continued from `5e9f613` after the user explicitly removed the M1 data/interface
+preservation constraint. The earlier draft is now complemented by explicit native
+observation/acceptance schemas in the existing M1 publication build/projection /
+finalize/head transaction. Native and legacy selections share one manifest and
+producer-specific acceptance guards. Complete distinct source words/cells,
+geometry, Decimal context and actual acceptance decisions remain intact; no
+legacy ValidationRun or stitched source quotation is fabricated.
+
+Migration 21 adds immutable native audit snapshots, adapts common observation
+membership and requires native audit/observation/state/head atomicity. Build and
+final commit reproduce source/parse/evidence/approval/context/acceptance checks.
+Raw currency labels preserve `₹`/`Rs.` separately from normalized INR. Historical
+native observations remain readable when legacy content advances the corpus.
+Frozen native labels/metrics come from audited gate input. M1 reads, M2 comparison,
+M3 complete evidence context and M4 company selection consume the same corpus.
+Strict schemas/types/browser membership checks cover complete native proof.
+
+Final selected database checks pass 23 native cases, 25 legacy publication cases
+and three shared-module cases. Actual pinned local BGE/Neo4j publication smoke
+also passes over explicitly authored sources. All four final databases and the
+generated graph namespace are removed. The earlier interrupted owned database
+was removed only after confirming it had no active connections. Docker restarts
+had stopped existing data services; resumed the same approved containers/volumes.
+
+The full backend regression passes 2,412 cases with six existing Windows
+filesystem skips and 833 integration cases deselected. Final frontend checks
+pass 304 units and all 44 Chromium scenarios. Full frontend lint and production
+build pass after the viewer change; final changed test/helper files are linted
+again and strict typing passes after adding the bounded PDF-ready helper.
+Thirteen static/generated commands pass: Ruff 313 files, mypy 196 sources and
+ten generated checks. Final explicit-config Ruff only reorders imports in the new
+integration test; all 23 cases still collect. No production Python behavior
+changes after its passing functional runs. Measured counts, scope, attempts and
+reviewed source hashes are in `data/unified-publication-validation-report.json`.
+
+Initial attempts exposed an ambiguous SQL decision variable, a NUMERIC/text test
+comparison, a source error needing PublicationConflict mapping, and wire fixtures
+incorrectly using strict Python container validation instead of JSON transport.
+TypeScript narrowing now uses the required legacy original_review field. Strict
+AJV exposed nested Pydantic ge/le annotations; export translates them to standard
+minimum/maximum while preserving stricter bounds. An initially normalized raw
+currency label was corrected with positive alias and negative SQL coverage.
+The optional runtime harness needed the new native_header fixture import.
+The first full browser run passed 41 of 44 cases; three original-PDF checks
+exceeded their existing five-second render assertion. Traces showed duplicate
+worker requests during React StrictMode setup/cleanup. The viewer now waits for
+setup to survive cancellation before creating its worker and clears previous
+render state/errors when source bytes change. Three focused lifetime cases pass.
+The next full browser attempt also passed 41 of 44, with remaining PDF assertions
+still reaching the five-second default despite one worker and eventual verified
+rendering. A trace records about four seconds loading that worker alone. The
+four PDF-ready assertions now share a bounded 15-second wait for worker loading /
+decoding. Original hash, page, canvas-pixel and highlight checks remain intact;
+other timeouts are unchanged. This is not a measured rendering-performance claim.
+No guard/test is disabled. Restored the agreed official hash-verified Node 24.19.0
+in ignored project tools and used existing pnpm 11.19 after detecting runtime
+drift; no system setting changed.
+
+Migrations 1–20 retain their bytes; migration 21 is tested only in owned databases
+here. No dependency, required variable, paid provider or public port is added.
+Linux CI budget increases from 20 to 60 minutes while retaining every check.
+Predecessor foundation jobs pass, but its infrastructure job was cancelled after
+20m25s in run 40662411616; that timing is consistent with timeout, not proof of
+cause. The containing checkpoint requires independent remote/CI verification.
+
+Real numerical context/approval resolution, native administration, a complete
+native amendment pair with supported multiword identity/effect evidence, actual
+M2 acceptance, M3 content review, remaining M4 acceptance/evaluation and final
+research/fresh-clone handoff remain incomplete. All four real numerical inputs
+are unresolved; seven M3 starters are unreviewed. Quotes remain unavailable.
+Engineering fixtures, successful runtime mechanics and tests are not real gold /
+financial/content approval or research-effectiveness results.
+
 ## Numerical publication draft and projection preparation, 28 October
 
 Continued the authorized M1–M4 work from `0721cf1`, whose exact Windows/Ubuntu

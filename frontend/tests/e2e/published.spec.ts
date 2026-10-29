@@ -1,6 +1,7 @@
 import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
+import { expectRenderedSource } from './pdf'
 import fixtures from '../../src/published/fixtures.generated.json' with { type: 'json' }
 
 async function authoredApi(page: Page, mode: { revoked?: boolean; wrongPdf?: boolean; rawText?: string } = {}): Promise<void> {
@@ -43,7 +44,7 @@ test('authored published slice renders a real PDF.js canvas and the retained reg
   await authoredApi(page); await signIn(page)
   await expect(page.getByText('No corporate relations are published in this view.')).toBeVisible()
   await page.getByRole('button', { name: 'Inspect source 1' }).click()
-  await expect(page.getByText('Source verified · page rendered')).toBeVisible()
+  await expectRenderedSource(page)
   await expect(page.getByTestId('evidence-region')).toHaveCount(1)
   // Canvas has an accessible label but no implicit role; inspect its pixels directly.
   const drawn = await page.locator('canvas[aria-label="Original filing page 1"]').evaluate((element) => {

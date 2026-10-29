@@ -1,6 +1,7 @@
 import { apiOrigin, webOrigin } from '../ports'
 import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
+import { expectRenderedSource } from './pdf'
 import fixtures from '../../src/admin/fixtures.generated.json' with { type: 'json' }
 import type { ProcessingRequest, PublicationRequest, ReviewDecision } from '../../src/admin/generated'
 
@@ -103,7 +104,7 @@ test('review keeps conditional support, renders the original and publishes separ
   await panel.getByText('All 16 validation checks', { exact: true }).click()
   await expect(panel.getByText('SOURCE · PASS', { exact: false })).toBeVisible()
   await panel.getByRole('button', { name: 'Inspect source 1', exact: true }).click()
-  await expect(page.getByText('Source verified · page rendered', { exact: true })).toBeVisible()
+  await expectRenderedSource(page)
   await expect(page.getByTestId('evidence-region')).toHaveCount(1)
   await note(page); await page.getByRole('button', { name: 'Record decision', exact: true }).click()
   await page.getByRole('button', { name: 'Add reviewed candidate to draft', exact: true }).click()

@@ -1,0 +1,350 @@
+{
+  "version": "1.0.0",
+  "recorded_at_utc": "2026-10-29T02:39:09.340682+00:00",
+  "client_date": "2026-10-29",
+  "client_timezone": "Asia/Calcutta",
+  "base_commit": "5e9f61398cb71a8b26faac08d5307eb131cde185",
+  "branch": "codex/m2-comparison",
+  "status": "VERIFIED_LOCAL_UNIFIED_NUMERICAL_PUBLICATION; VERIFY_CONTAINING_COMMIT_CI",
+  "all_modules_complete": false,
+  "engineering_native_atomic_publication_verified": true,
+  "real_numerical_publication_verified": false,
+  "change": [
+    "Explicit native observation and acceptance snapshot retain all distinct original words, cells, geometry, Decimal context and actual decisions",
+    "Native and legacy selections use the existing build/projection/finalize/commit/head path, with fresh source/approval/context checks at build and final commit",
+    "Migration21 guards native publication audits and common observation authority; late failures roll back audit/observation/state/head together",
+    "Published native data feeds M1 evidence/facts, deterministic M2 comparison, complete M3 source context and M4 company selection at one corpus version",
+    "Frozen entity and metric labels come from audited native gate inputs; historical observations remain readable",
+    "Original rupee/currency aliases remain distinct from normalized ISO currency",
+    "Strict JSON Schema export preserves nested integer constraints under standard bounds",
+    "Cancelled React source-viewer setups do not create PDF workers; source changes clear earlier render state/errors",
+    "Linux infrastructure CI retains all tests with a bounded60-minute budget"
+  ],
+  "verification": {
+    "backend": {
+      "tests": 2418,
+      "passed": 2412,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6,
+      "local_artifact": ".cache/unified-backend-verified-20261028.xml",
+      "sha256": "50c22f3da648f856dc60b63f9f0f7ff7f3cda545313ea3ac71dd92d4ab3fa3ea",
+      "case_seconds": 844.644
+    },
+    "frontend": {
+      "tests": 304,
+      "passed": 304,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_artifact": ".cache/unified-frontend-final-20261029.xml",
+      "sha256": "e3316d5eac39cfccfb2192e8d034a12ce5aecec4ff605638c015f2ee89f05a17",
+      "case_seconds": 15.716
+    },
+    "chromium": {
+      "tests": 44,
+      "passed": 44,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_artifact": ".cache/unified-browser-20261028.xml",
+      "sha256": "bb64ed139d0909306b72ec13f51b6dd21c7cc9ca08c8a16a26b0bf0049b99687",
+      "case_seconds": 178.432
+    },
+    "owned_postgresql_http": {
+      "native": {
+        "tests": 23,
+        "passed": 23,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "local_artifact": ".cache/unified-native-verified-20261028.xml",
+        "sha256": "b9e3ad30c45c9f9abec79cb877d19cb83c9217fecaec8ac276dc27750f77b2f3",
+        "case_seconds": 611.653,
+        "owned_database_removed": "regintel_test_m0_3_986cc99b4772497f938611d84e0fcc0f"
+      },
+      "legacy": {
+        "tests": 25,
+        "passed": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "local_artifact": ".cache/unified-legacy-verified-20261028.xml",
+        "sha256": "22774bf864872fe3f2f70453d4ad66aa80acc5284761756f32be39aeb89149ac",
+        "case_seconds": 134.528,
+        "owned_database_removed": "regintel_test_m0_3_5df38c9b09174078852e32c334b167f9"
+      },
+      "shared": {
+        "tests": 3,
+        "passed": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "local_artifact": ".cache/unified-shared-verified-20261028.xml",
+        "sha256": "9d29023362f74c859cbf782d58dd8d41f9e7711f30b761ba87bc4bdfe62b453b",
+        "case_seconds": 29.306,
+        "owned_database_removed": "regintel_test_m0_3_3523de815e654e6cb7b4dfdf4c00ff1b"
+      }
+    },
+    "actual_local_bge_neo4j_smoke": {
+      "tests": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "local_artifact": ".cache/unified-native-runtime-20261028.xml",
+      "sha256": "d645cf241da0be4751dd7520b5414f3361d97ce3cf5d9c26b7833842a60a095a",
+      "case_seconds": 44.321,
+      "owned_database_removed": "regintel_test_m0_3_2b0c0ac0c6544a23a7f4111697e01f14"
+    },
+    "static": {
+      "status": "PASS",
+      "commands": 13,
+      "ruff_files": 313,
+      "strict_mypy_sources": 196,
+      "generated_checks": 10,
+      "local_artifact": ".cache/unified-static-20261028.json",
+      "sha256": "4bf294d79c0d977bc38d5af0abcf3d108e5584cbe279e1941ddd1cf229493fe0"
+    },
+    "frontend_lint_typecheck_build": "PASS",
+    "final_command_records": [
+      {
+        "label": "backend",
+        "exit_code": 0,
+        "seconds": 874.952,
+        "command": [
+          "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+          "-m",
+          "pytest",
+          "backend/tests",
+          "-m",
+          "not integration",
+          "--basetemp",
+          ".cache/unified-final-backend-310facef980646439d8796a877917c15",
+          "-o",
+          "cache_dir=.cache/unified-final-pytest",
+          "--junitxml",
+          ".cache/unified-backend-verified-20261028.xml"
+        ],
+        "log": ".cache\\unified-backend-final-20261028.log"
+      },
+      {
+        "label": "build",
+        "exit_code": 0,
+        "seconds": 32.942,
+        "command": [
+          "cmd.exe",
+          "/d",
+          "/c",
+          "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+          "-C",
+          "frontend",
+          "run",
+          "build"
+        ],
+        "log": ".cache/unified-build-final-20261029.log"
+      },
+      {
+        "label": "frontend",
+        "exit_code": 0,
+        "seconds": 34.217,
+        "command": [
+          "cmd.exe",
+          "/d",
+          "/c",
+          "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+          "-C",
+          "frontend",
+          "exec",
+          "vitest",
+          "run",
+          "--reporter=default",
+          "--reporter=junit",
+          "--outputFile=D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\.cache\\unified-frontend-final-20261029.xml"
+        ],
+        "log": ".cache/unified-frontend-final-20261029.log"
+      },
+      {
+        "label": "lint",
+        "exit_code": 0,
+        "seconds": 5.036,
+        "command": [
+          "cmd.exe",
+          "/d",
+          "/c",
+          "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+          "-C",
+          "frontend",
+          "exec",
+          "eslint",
+          "tests/e2e/pdf.ts",
+          "tests/e2e/admin.spec.ts",
+          "tests/e2e/analysis.spec.ts",
+          "tests/e2e/published.spec.ts",
+          "tests/e2e/retrieval.spec.ts",
+          "src/published/SourceViewer.test.tsx",
+          "--max-warnings",
+          "0"
+        ],
+        "log": ".cache/unified-lint-final-20261029.log"
+      },
+      {
+        "label": "typecheck",
+        "exit_code": 0,
+        "seconds": 3.665,
+        "command": [
+          "cmd.exe",
+          "/d",
+          "/c",
+          "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+          "-C",
+          "frontend",
+          "run",
+          "typecheck"
+        ],
+        "log": ".cache/unified-typecheck-final-20261029.log"
+      },
+      {
+        "label": "browser",
+        "exit_code": 0,
+        "seconds": 101.073,
+        "command": [
+          "cmd.exe",
+          "/d",
+          "/c",
+          "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+          "-C",
+          "frontend",
+          "exec",
+          "playwright",
+          "test",
+          "--reporter=list,junit"
+        ],
+        "log": ".cache/unified-browser-final-20261029.log"
+      },
+      {
+        "label": "static",
+        "exit_code": 0,
+        "commands": 13,
+        "sum_command_seconds": 13.63,
+        "command": [
+          "D:/RegIntel/backend/.venv/Scripts/python.exe",
+          ".cache/check-unified-static-20261028.py"
+        ],
+        "log": ".cache/unified-static-final-20261029.log",
+        "configured_test_import_sort_verified": true
+      }
+    ]
+  },
+  "verification_scope": [
+    "51 distinct owned PostgreSQL/HTTP cases plus one actual BGE/Neo4j smoke; all four final databases removed and only the generated graph namespace cleaned",
+    "23 native cases cover accepted publication, full evidence/PDF reads, raw currency aliases, replay, rollback, altered SQL snapshots, immutable audits, permissions, native-parent legacy continuation, duplicate rejection and all-module HTTP consumers",
+    "25 existing publication cases retain legacy amendment, projection/recovery and atomicity behavior; three shared-module cases retain consumer/ledger behavior",
+    "2412 backend unit cases pass with six disclosed Windows filesystem skips; integration cases are separately selected, not counted in the unit total",
+    "304 frontend units including three viewer lifetime cases,44 Chromium scenarios, lint, strict typing, production build and13 static/generated commands pass",
+    "Full frontend lint/build passed after the production viewer change; final changed test/helper files were linted again after adding the bounded PDF-ready wait. The application source did not change after the passing production build",
+    "The final static pass reordered only imports in the new integration test using the explicit backend Ruff configuration. No production Python behavior changed after the passing functional runs",
+    "Actual local BGE/Neo4j smoke proves engineering publication/projection mechanics over labelled authored sources, not real-filing accuracy or research effectiveness",
+    "Two authored wire fixtures captured from owned PostgreSQL/HTTP are fictional test sources/decisions, not real financial approvals",
+    "The earlier interrupted owned legacy database was removed only after verifying no active connections; no original application database was migrated or erased"
+  ],
+  "disclosed_attempts": [
+    "Initial native SQL variable decision was ambiguous; qualified the stored decision column",
+    "NUMERIC test initially compared formatted text with Decimal; query NUMERIC directly",
+    "Changed original source surfaced UploadError; normalize source failures to PublicationConflict",
+    "Initial native contract fixture used strict Python tuple validation on wire lists; exercise actual JSON transport for positive and negative cases",
+    "New system Node24.22/pnpm11.25 did not satisfy project pins; restored official hash-verified Node24.19 project-locally and used existing pnpm11.19",
+    "TypeScript optional native kind did not narrow the legacy union; narrow using the required original_review property",
+    "Strict AJV found Pydantic nested ge/le extensions; preserve stricter values as standard minimum/maximum, with dedicated regression coverage",
+    "Native raw_currency initially reused normalized ISO; preserve the exact source token and add two positive alias cases plus a SQL negative",
+    "Docker restarts stopped existing data containers; resumed the same approved containers/volumes and reran final integration checks",
+    "First optional runtime harness omitted the new native_header fixture; import the fixture explicitly and rerun",
+    "The shared PDF test helper initially sat outside the existing TypeScript node-project include set; move it into the already included e2e directory without relaxing lint or changing compiler configuration",
+    "Final static checking with the explicit backend Ruff configuration required a different integration-test import grouping than the earlier auto-discovered configuration; apply the configured order and rerun all13 static/generated commands",
+    "Two full browser attempts each passed41/44; PDF checks exceeded the5-second default. Remove cancelled StrictMode worker startups and reset stale state, with three lifetime regressions. A later trace shows one worker taking about4 seconds to load and eventual verified rendering after the default. Four PDF-ready waits now use a bounded15 seconds; hash, original page, canvas-pixel, highlight and other timeout checks remain intact. No rendering-performance SLA is claimed",
+    "Predecessor CI Linux job was cancelled after20m25s under a20-minute budget, consistent with timeout but not proof; raised only its bounded budget to60 minutes"
+  ],
+  "predecessor_ci": {
+    "commit": "5e9f61398cb71a8b26faac08d5307eb131cde185",
+    "run_id": 40662411616,
+    "windows_foundation": "success",
+    "ubuntu_foundation": "success",
+    "linux_infrastructure": "cancelled"
+  },
+  "dependencies_added": [],
+  "migrations_added": [
+    "infra/migrations/0021_unified_numerical_publication.sql"
+  ],
+  "required_environment_variables_added": [],
+  "new_public_endpoints": [],
+  "existing_optional_runtime_argument": "--numerical-runtime-file",
+  "existing_migration_hashes_unchanged": 20,
+  "source_sha256": {
+    ".github/workflows/ci.yml": "270ff44e846901755df45ff526aa51665aef9f9f08e9899dc050e1458a23da77",
+    "backend/pyproject.toml": "d3ff97c8c4662671299ac505c308804587cf6234cb246d1b471781bec6e0c6ec",
+    "backend/src/regintel/analysis/service.py": "ddab80d0abf60f0b0b78ea5efff8986a419b9a7df8e35072a356e72f6d24eb44",
+    "backend/src/regintel/auth/cli.py": "9dc71d3c1dea156e32fb1b3226862ca08605d4f9a7cabfac0a50c9251da64af7",
+    "backend/src/regintel/entities/repository.py": "6c581890f65ca10ae5a0dd03314d0320a239e1ff5c84f264bbd90d802743c531",
+    "backend/src/regintel/learning/service.py": "71251b86f15425d2055aa117d415ef32212b247464955f1c5a6f8f6871c5cd29",
+    "backend/src/regintel/publication/embeddings.py": "93e1826649904dd7f66947198b963673eb218d7b6eba661c47c51bb52170377e",
+    "backend/src/regintel/publication/engine.py": "eecab785f4b916d23d27d175dcc36222bfe08df52f17d2ff47ab0de0ec3888eb",
+    "backend/src/regintel/publication/graph.py": "413bd7100e5f4401b22a83db55710f9c6e2d788e0fe93d840304086211dff7de",
+    "backend/src/regintel/publication/models.py": "0c357f70f2bbb50bc131c51be725f066256f2a4f5cde1adbf059fe5921cdbe4c",
+    "backend/src/regintel/publication/native.py": "87d9a6e075ddee126a8a3287e26c938bbb4ea0e48c629d84fa999dcb70ba515a",
+    "backend/src/regintel/publication/repository.py": "2b73e07bff85a34f75f10b5c30a6051f9f94d90926e6ede27f1f796431997032",
+    "backend/src/regintel/publication/service.py": "61914c8dc13bfe62c26631896cc5b6b14f8a796b434ebbf97a8f365b880f515d",
+    "backend/src/regintel/reads/models.py": "2db9bf4fddea8d6f71c13725906ef1c7db1eefc96c4e4378c87782d1c5ecada4",
+    "backend/src/regintel/reads/repository.py": "1693e57f910918ecee8f01d54be8d2677ad4c7cebb184fcfcd51d57f876bc67e",
+    "backend/src/regintel/reads/service.py": "2f8edfb04aa04c85e139fd09da5414ec5ad1018bbed529905299dde65020b143",
+    "backend/src/regintel/retrieval/models.py": "08303b3e9f720a706d78de95e228ee5d944518e096bda32c9e1873d8935467bc",
+    "backend/tests/integration/test_unified_numerical_publication.py": "878ca42abe5d00e95d20ecef29e0e137624560fed2140ed5ec97ff34a72a3382",
+    "backend/tests/test_native_schema_export.py": "da83b536b29dfb89dd568c3a928a274a3ed4e176bcf48380955797702745796c",
+    "backend/tests/test_unified_native_contract.py": "4a9628b7070e0706aba951213b2b6052d2ad39002e3006467780032e27e76b72",
+    "backend/uv.lock": "1dfe86463003e1d88357880b18883997224cd24893269023b1b05f654af937e8",
+    "frontend/package.json": "2499b05bd79887ac76cf6a58a7f71a9ff256f813b68d555b53930c0ca30afede",
+    "frontend/pnpm-lock.yaml": "7c31d99cff64ab27b3fad673082d08ff9aecebafde1b415c78ba6ef9543a686a",
+    "frontend/src/admin/Workspace.tsx": "b0de0e9efc9db5aaa15221686f20043d46c27c3cb68320d6ef0a04d9e90a3139",
+    "frontend/src/analysis/wire.ts": "8269466f38f057396ac0769ed1384d2d6e34586a645bda4183de8432a151a770",
+    "frontend/src/modules/api.ts": "ebb0526d8e533ec3397ae5a804679404defe142fb43d4bf9a0e049140a48fbe5",
+    "frontend/src/modules/native-context.fixture.json": "451fde45a551f500e933e8774080440e7a7d156044e7f730e0791672409cc317",
+    "frontend/src/published/SourceViewer.test.tsx": "ff790dabc6118cdb2568af8d87c23be23e7a236399aadd4ac51e407274f0b6f6",
+    "frontend/src/published/SourceViewer.tsx": "6ce69d6360ab10c58d8d0e5b3ab757b9be1f604189d67ca3d9c0b71c4677c0a9",
+    "frontend/src/published/api.ts": "87e32f87cc41163fd26e62a596e9cbf3ee13585058799cd72239cd513248d519",
+    "frontend/src/published/native.fixture.json": "5dbf7ab2f54584466adbe239235c22e03ff87d76c710773fd2ba417c38b9e08d",
+    "frontend/src/published/native.test.ts": "247dcff3f33a33237340467adaf1a73661cb2b823735257ddbfe2b5bdc1bbea2",
+    "frontend/src/published/native.ts": "823166d4bde00337021d7eaacb3d33ee68227f7eacff42227096ad62a2b7743d",
+    "frontend/tests/e2e/admin.spec.ts": "31ee491b435f6de1c235c3a321933171aaf8d410f63a015fa5982886e8ae0414",
+    "frontend/tests/e2e/analysis.spec.ts": "a579ee49437cc79fa8270f5b786abd685393f78a1ecef4aafe7ba3b2f3008990",
+    "frontend/tests/e2e/pdf.ts": "a0982228cb220ecc2bf2f09f8d813b54b21888d3f6c7c03c7123909aeceacc10",
+    "frontend/tests/e2e/published.spec.ts": "89d781ba5cbc8c383a6e08e96101db1fb60f1c311fec498f4d5ce64b0d2710d7",
+    "frontend/tests/e2e/retrieval.spec.ts": "79ff88f4dd291bd46d7890841293dc3e89ae50a10a840dfca5a4033c04615c1c",
+    "infra/migrations/0021_unified_numerical_publication.sql": "db3313975d5d02632d7acabfabbf390a8dcb2e230fc32d9a2195fe6c1dac4c66",
+    "scripts/check-publication-runtime.py": "6ac81a8765f2c5ae14ee42b967440b4c959ac8f886ca15576218b523637de5ed",
+    "scripts/export-contracts.py": "fa7dcdfa7cd0f415bc1881120c8496caa674c9c060ce3c4aa08f10ef43cc139e"
+  },
+  "node_runtime": {
+    "version": "24.19.0",
+    "official_source": "https://nodejs.org/dist/v24.19.0/node-v24.19.0-win-x64.zip",
+    "sha256": "57f71ab3652e797d84acddc79c81cc9ff1c6ddb2a1974cdb83f00fee9bff4c73",
+    "scope": "project-local only",
+    "node_path": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\.tools\\node-v24.19.0-win-x64\\node.exe",
+    "global_configuration_changed": false
+  },
+  "primary_database_migrated": false,
+  "new_real_reviews": 0,
+  "new_real_candidates": 0,
+  "new_real_acceptances": 0,
+  "new_real_published_facts": 0,
+  "paid_model_calls": 0,
+  "limitations": [
+    "All four retained real numerical inputs remain unresolved; no actual filing approval or numerical publication is fabricated",
+    "A complete native amendment pair with multiword identity/effect evidence still needs a supported representation and dedicated acceptance coverage",
+    "Remaining native administrator workflow and real M2 acceptance must be completed",
+    "Seven M3 starter drafts remain unreviewed; remaining M4 acceptance/evaluation and market-data limitations stay explicit",
+    "Runtime quotes remain unavailable by user choice; successful trades use labelled fixed-price engineering fixtures",
+    "Held-out research evaluation, feature/corpus freeze and fresh-clone reproduction/handoff are incomplete",
+    "Production build retains its existing large-chunk advisory",
+    "Verify the containing commit remote SHA and its own CI; predecessor foundation success does not imply infrastructure success"
+  ],
+  "report_script_sha256": "f588e38edac2b9385f00d8635d088aad13c66d86d2b0f24312303e866c4456af"
+}

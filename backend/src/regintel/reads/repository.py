@@ -7,8 +7,13 @@ from regintel.candidates.models import MetricDefinition
 from regintel.contracts.models import ContractModel
 from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import connect_database
-from regintel.entities.models import EntityRegistration, RegistrySnapshot
-from regintel.publication.models import CorpusManifest
+from regintel.entities.models import EntityRegistration, RegistrySnapshot, canonical_bytes
+from regintel.numerical.gate_repository import _read as read_native_gate
+from regintel.publication.models import (
+    CorpusManifest,
+    NumericalAcceptanceSnapshot,
+    PublishedNumericalObservation,
+)
 from regintel.publication.repository import body
 from regintel.validation.models import ValidationInput
 
@@ -38,8 +43,12 @@ class ReadRepository:
     def __init__(self, database: DatabaseSettings) -> None:
         self.database = database
 
-    def catalog(self, manifest: CorpusManifest) -> Catalog:
-        validations = {item.validation_run_id for item in manifest.observations}
+    def _legacy_catalog(self, manifest: CorpusManifest) -> Catalog:
+        validations = {
+            item.validation_run_id
+            for item in manifest.observations
+            if not isinstance(item, PublishedNumericalObservation)
+        }
         if not validations:
             return Catalog(entities=(), metrics=())
         keys = [UUID(identity) for identity in sorted(validations)]
@@ -80,7 +89,10 @@ class ReadRepository:
                 }
             )
             observations = [
-                item for item in manifest.observations if item.validation_run_id == str(row[0])
+                item
+                for item in manifest.observations
+                if not isinstance(item, PublishedNumericalObservation)
+                and item.validation_run_id == str(row[0])
             ]
             if (
                 source.source.entity_run.id != str(row[6])
@@ -115,4 +127,58 @@ class ReadRepository:
         return Catalog(
             entities=tuple(entities[key] for key in sorted(entities)),
             metrics=tuple(metrics[key] for key in sorted(metrics)),
+        )
+
+    def catalog(self, manifest: CorpusManifest) -> Catalog:
+        legacy = self._legacy_catalog(manifest)
+        entities = {item.id: item for item in legacy.entities}
+        metrics = {item.id: item for item in legacy.metrics}
+        with connect_database(self.database) as connection, connection.transaction():
+            connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ READ ONLY")
+            for observation in manifest.observations:
+                if not isinstance(observation, PublishedNumericalObservation):
+                    continue
+                row = connection.execute(
+                    "SELECT snapshot_bytes,snapshot_sha256 FROM regintel.native_publication_audits "
+                    "WHERE observation_id=%s",
+                    (UUID(observation.id),),
+                ).fetchone()
+                if row is None:
+                    raise ReadUnavailable("Published native acceptance audit is unavailable.")
+                payload = body(row[0], row[1], maximum=32_000_000)
+                accepted = NumericalAcceptanceSnapshot.model_validate_json(payload)
+                if canonical_bytes(accepted) != payload or accepted.observation != observation:
+                    raise ReadUnavailable(
+                        "Published native observation differs from its immutable audit."
+                    )
+                gate = read_native_gate(connection, observation.candidate_run_id)
+                if (
+                    gate.result.input_sha256 != observation.validation_input_sha256
+                    or gate.source_input.binding != observation.proof
+                ):
+                    raise ReadUnavailable("Published native source membership differs.")
+                retained = gate.source_input.context.source_input
+                entity = next(
+                    (
+                        e
+                        for e in retained.registry.entities
+                        if e.id == observation.subject_entity_id
+                    ),
+                    None,
+                )
+                metric = retained.metric
+                if entity is None or metric is None or metric.id != observation.metric_id:
+                    raise ReadUnavailable("Published native catalog membership is unavailable.")
+                if (
+                    entity.id in entities
+                    and entities[entity.id] != entity
+                    or metric.id in metrics
+                    and metrics[metric.id] != metric
+                ):
+                    raise ReadUnavailable("Frozen native and legacy catalog labels conflict.")
+                entities[entity.id] = entity
+                metrics[metric.id] = metric
+        return Catalog(
+            entities=tuple(entities[k] for k in sorted(entities)),
+            metrics=tuple(metrics[k] for k in sorted(metrics)),
         )

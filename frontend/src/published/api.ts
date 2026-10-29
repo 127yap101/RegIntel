@@ -4,6 +4,7 @@ import type { ValidateFunction } from 'ajv'
 import { getApiBaseUrl } from '../api/health'
 import { parseContract } from '../contracts/runtime'
 import schema from './schema.json'
+import { checkNumericalObservation } from './native'
 import { answerRequest, parseAnswer } from '../retrieval/wire'
 import type { AnswerInput, AnswerResult } from '../retrieval/wire'
 import type { RetrievalRequest } from '../retrieval/generated'
@@ -34,6 +35,7 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown, corpus?: s
   if (Object.keys(envelope).sort().join(',') !== 'data,meta' || !validators[kind](envelope.data)) throw new ReadError(false, 'The API returned an invalid published-data response.')
   const meta = parseContract('ResponseMeta', envelope.meta)
   const data = envelope.data as Wire[K]
+  if (kind === 'facts') for (const fact of (data as FactPage).facts) checkNumericalObservation(fact.observation)
   const view: ViewInfo = kind === 'info' ? data as ViewInfo : (data as CompanyPage | FactPage | CompanyGraph | PublishedEvidence).view
   if (meta.versions.corpus_version_id !== view.corpus_version_id || (corpus !== undefined && corpus !== view.corpus_version_id)) throw new ReadError(false, 'The returned corpus version does not match this view.')
   if (kind === 'evidence') {

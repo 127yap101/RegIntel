@@ -12,6 +12,8 @@ from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import DatabaseConnection, connect_database
 from regintel.entities.models import canonical_bytes
 from regintel.entities.repository import REGISTRY_LOCK_ID, EntityRepository, _snapshot
+from regintel.numerical.gate_repository import _read as read_native_gate
+from regintel.numerical.repository import NumericalRepository
 from regintel.publication.embeddings import RetrievalProjection
 from regintel.publication.engine import (
     approve_candidate,
@@ -20,13 +22,17 @@ from regintel.publication.engine import (
 )
 from regintel.publication.graph import GraphReceipt
 from regintel.publication.models import (
+    Acceptance,
     CorpusManifest,
     FilingSnapshot,
+    NumericalAcceptanceSnapshot,
     PublicationConfiguration,
     PublicationRequest,
+    PublishedNumericalObservation,
     PublishedObservation,
     ReviewedApproval,
 )
+from regintel.publication.native import approve_numerical, persist_native
 from regintel.validation.models import ReviewDecision, ValidationInput, ValidationRun
 from regintel.validation.repository import ValidationRepository, authorize, checked
 
@@ -73,9 +79,12 @@ def persist_validation(
 
 
 class PublicationRepository:
-    def __init__(self, database: DatabaseSettings) -> None:
+    def __init__(
+        self, database: DatabaseSettings, numerical_source: NumericalRepository | None = None
+    ) -> None:
         self.database = database
         self.validator = ValidationRepository(database)
+        self.numerical_source = numerical_source
 
     @staticmethod
     def locks(connection: DatabaseConnection, user: User) -> None:
@@ -84,6 +93,10 @@ class PublicationRepository:
         connection.execute("SELECT pg_advisory_xact_lock(%s)", (REGISTRY_LOCK_ID,))
         ValidationRepository._snapshot_lock(connection)
         connection.execute("LOCK TABLE regintel.validation_reviews IN SHARE MODE")
+        connection.execute(
+            "LOCK TABLE regintel.numerical_context_reviews,regintel.numerical_candidates,"
+            "regintel.numerical_acceptances IN SHARE MODE"
+        )
 
     @staticmethod
     def _head(connection: DatabaseConnection) -> str | None:
@@ -219,7 +232,7 @@ class PublicationRepository:
         )
         filings: dict[str, FilingSnapshot] = {}
         evidence: dict[str, TextEvidence] = {}
-        acceptances = []
+        acceptances: list[Acceptance] = []
         dependencies: dict[str, object] = {
             "registry_sha256": registry.sha256,
             "sources": {},
@@ -228,6 +241,43 @@ class PublicationRepository:
         source_dependencies: dict[str, str] = {}
         review_dependencies: dict[str, object] = {}
         for selection in request.selections:
+            native = connection.execute(
+                "SELECT gate_run_id FROM regintel.numerical_candidates WHERE id=%s",
+                (UUID(selection.candidate_id),),
+            ).fetchone()
+            if native is not None:
+                require(
+                    self.numerical_source is not None,
+                    "Configure the native numerical source before publishing it.",
+                )
+                assert self.numerical_source is not None
+                require(
+                    connection.execute(
+                        "SELECT 1 FROM regintel.candidates WHERE id=%s",
+                        (UUID(selection.candidate_id),),
+                    ).fetchone()
+                    is None,
+                    "A candidate identity cannot belong to two producer families.",
+                )
+                gate = read_native_gate(connection, str(native[0]))
+                filing = self._filing(connection, parse_id=gate.result.parse_version_id)
+                filings[filing.filing_version_id] = filing
+                evidence.update(
+                    (w.evidence.id, w.evidence)
+                    for p in gate.source_input.binding.phrases
+                    for w in p.words
+                )
+                native_acceptance = approve_numerical(
+                    connection, self.numerical_source, corpus_id, selection, filing, user
+                )
+                acceptances.append(native_acceptance)
+                source_dependencies[selection.candidate_run_id] = (
+                    native_acceptance.observation.validation_input_sha256
+                )
+                review_dependencies[selection.candidate_id] = (
+                    native_acceptance.accepted.record.model_dump(mode="json")
+                )
+                continue
             source = self.validator._input(connection, selection.candidate_run_id)
             filing = self._filing(connection, parse_id=source.candidate_run.parse_version_id)
             filings[filing.filing_version_id] = filing
@@ -573,6 +623,33 @@ class PublicationRepository:
         observation: "PublishedObservation",
         user: User,
     ) -> None:
+        if isinstance(observation, PublishedNumericalObservation):
+            snapshot = next(
+                item for item in manifest.new_acceptances if item.observation.id == observation.id
+            )
+            require(
+                isinstance(snapshot, NumericalAcceptanceSnapshot),
+                "Native observation needs its own audit snapshot.",
+            )
+            assert isinstance(snapshot, NumericalAcceptanceSnapshot)
+            persist_native(connection, snapshot, user)
+            payload = canonical_bytes(observation)
+            assert observation.quantity is not None
+            connection.execute(
+                "INSERT INTO regintel.publication_observations "
+                "(id,candidate_id,first_corpus_version_id,observation_bytes,"
+                "observation_sha256,normalized_value) "
+                "VALUES(%s,%s,%s,%s,%s,%s)",
+                (
+                    observation.id,
+                    observation.candidate_id,
+                    manifest.id,
+                    payload,
+                    digest(payload),
+                    observation.quantity.normalized_value,
+                ),
+            )
+            return
         value = observation.quantity
         context_id = stable_id("accepted-quantity:" + observation.id) if value is not None else None
         if value is not None:

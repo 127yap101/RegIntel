@@ -22,6 +22,7 @@ from regintel.entities.models import (
 from regintel.evidence.projection import MAX_ARTIFACT_BYTES, project_parse
 from regintel.parsing.configuration import ParserRuntimeConfiguration
 from regintel.parsing.models import ParseArtifact
+from regintel.parsing.native_context import NativeContextConfiguration, project_native_context
 
 REGISTRY_LOCK_ID = 5928237198818004551
 
@@ -182,12 +183,23 @@ class EntityRepository:
                 if row is None:
                     raise EntityNotFound("A sealed parsed filing is required.")
                 artifact = ParseArtifact.model_validate_json(_checked(row[0], row[2]))
-                configuration = ParserRuntimeConfiguration.model_validate_json(
-                    _checked(row[1], row[3])
-                )
+                configuration_bytes = _checked(row[1], row[3])
+                configuration: ParserRuntimeConfiguration | NativeContextConfiguration
+                if json.loads(configuration_bytes).get("schema_version") == "1.1.0":
+                    configuration = NativeContextConfiguration.model_validate_json(
+                        configuration_bytes
+                    )
+                else:
+                    configuration = ParserRuntimeConfiguration.model_validate_json(
+                        configuration_bytes
+                    )
                 if artifact.id != parse_id:
                     raise EntitySourceError("Parse source identity is invalid.")
-                projection = project_parse(artifact, configuration)
+                projection = (
+                    project_native_context(artifact, configuration)
+                    if isinstance(configuration, NativeContextConfiguration)
+                    else project_parse(artifact, configuration)
+                )
                 actual = connection.execute(
                     "SELECT id,block_id,start_offset,end_offset,quote,page_id "
                     "FROM regintel.evidence WHERE parse_version_id=%s AND kind='text'",

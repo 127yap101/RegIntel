@@ -83,6 +83,23 @@ def remove_openapi_annotations(value: JsonValue) -> None:
     """oneOf/kind consts validate unions; discriminator is an OpenAPI annotation."""
     if isinstance(value, dict):
         value.pop("discriminator", None)
+        # Nested constraints on BeforeValidator-wrapped integer aliases can be
+        # emitted under Pydantic's ge/le names. Preserve the stricter bound in
+        # standard JSON Schema so strict browser validators enforce it too.
+        for annotation, keyword in (("ge", "minimum"), ("le", "maximum")):
+            if annotation in value and value.get("type") in ("integer", "number"):
+                bound = value.pop(annotation)
+                existing = value.get(keyword, bound)
+                if (
+                    isinstance(bound, bool)
+                    or not isinstance(bound, (int, float))
+                    or isinstance(existing, bool)
+                    or not isinstance(existing, (int, float))
+                ):
+                    raise ValueError("An exported integer constraint requires numeric bounds.")
+                value[keyword] = (
+                    max(bound, existing) if annotation == "ge" else min(bound, existing)
+                )
         for child in value.values():
             remove_openapi_annotations(child)
     elif isinstance(value, list):

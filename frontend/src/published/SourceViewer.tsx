@@ -16,8 +16,16 @@ export function SourceViewer({ source, bytes }: { source: Pick<PublishedEvidence
   useEffect(() => {
     let active = true
     let rendering: RenderTask | undefined
-    const loading = getDocument({ data: bytes.slice(), useWorkerFetch: false, useWasm: false, enableXfa: false, disableAutoFetch: true, disableRange: true, disableStream: true, stopAtErrors: true })
-    void loading.promise.then(async (pdf) => {
+    let loading: ReturnType<typeof getDocument> | undefined
+    // A cancelled setup must not create a worker, including StrictMode's replay.
+    void Promise.resolve().then(async () => {
+      if (!active) return
+      setError('')
+      setRendered(null)
+      if (canvas.current) { canvas.current.width = 0; canvas.current.height = 0 }
+      loading = getDocument({ data: bytes.slice(), useWorkerFetch: false, useWasm: false, enableXfa: false, disableAutoFetch: true, disableRange: true, disableStream: true, stopAtErrors: true })
+      const pdf = await loading.promise
+      if (!active) return
       const page = await pdf.getPage(record.source.page_index + 1)
       if (!active || !canvas.current) return
       const viewport = page.getViewport({ scale: 1.1 })
@@ -34,7 +42,7 @@ export function SourceViewer({ source, bytes }: { source: Pick<PublishedEvidence
       const boxes = geometry ? record.boxes.map((box) => highlightBox(box, viewport)).filter((box): box is Highlight => box !== null) : []
       setRendered({ width: viewport.width, height: viewport.height, boxes, geometry })
     }).catch(() => { if (active) setError('This source page could not be rendered. Exact support and source details remain below.') })
-    return () => { active = false; rendering?.cancel(); void loading.destroy() }
+    return () => { active = false; rendering?.cancel(); void loading?.destroy() }
   }, [bytes, record])
 
   return <section aria-label="Exact source page" className="mt-6 rounded-xl border border-line bg-white p-5">
