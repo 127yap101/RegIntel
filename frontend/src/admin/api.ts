@@ -123,6 +123,14 @@ export class AdminApi {
     if (!sameValue(value.record.request, body)) throw new AdminError(false)
     return value
   }
+  async amendmentWords(ids: readonly string[], signal: AbortSignal): Promise<T.NativeAmendmentWords> {
+    if (!ids.length || ids.length > 128 || new Set(ids).size !== ids.length) throw new AdminError(false, 'Select 1–128 distinct original word IDs in source order.')
+    const loaded: T.EvidenceData[] = []
+    for (let start = 0; start < ids.length; start += 8) loaded.push(...await Promise.all(ids.slice(start, start + 8).map((id) => this.read('evidence', `/v1/evidence/${canonical(id)}`, signal))))
+    const first = loaded[0]
+    if (!first || loaded.some((value, index) => value.record.id !== ids[index] || !sameValue(value.record.source, first.record.source) || value.source_sha256 !== first.source_sha256 || value.processing_configuration_sha256 !== first.processing_configuration_sha256 || value.record.span.start !== 0 || value.record.span.end !== [...value.record.span.quote].length)) throw new AdminError(false, 'Original words must retain one verified source page and parse.')
+    return checked('native_amendment_words', { schema_version: 'native-amendment-words-1', parse_version_id: first.record.source.parse_version_id, spans: loaded.map(({ record }) => ({ evidence_id: record.id, start: record.span.start, end: record.span.end, quote: record.span.quote })) })
+  }
   async upload(file: File, metadata: unknown, signal: AbortSignal): Promise<T.FilingJob> {
     const values = checked('upload', metadata)
     if (!file.size || file.size > 64 * 1024 * 1024) throw new AdminError(false, 'Select a nonempty PDF no larger than 64 MiB.')

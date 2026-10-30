@@ -21,6 +21,7 @@ from regintel.numerical.review_models import NumericalContextReviewRequest, Revi
 from regintel.processing.api import DispatchReceipt
 from regintel.processing.models import ProcessingJob, ProcessingRequest
 from regintel.publication.models import CorpusManifest, PublicationRequest
+from regintel.publication.support_models import NativeAmendmentWords
 from regintel.validation.api import ReviewReceipt, ValidationData, ValidationRequest
 from regintel.validation.models import ReviewDecision, ValidationResult
 
@@ -95,3 +96,4 @@ class AdminWire(ContractModel):
     numerical_candidate: StoredNumericalCandidate
     numerical_acceptance_request: NumericalAcceptanceRequest
     numerical_acceptance: StoredNumericalAcceptance
+    native_amendment_words: NativeAmendmentWords

@@ -13,6 +13,7 @@ from regintel.ingestion.models import CandidateKind, DocumentType, StoredText
 from regintel.numerical.acceptance_models import StoredNumericalAcceptance
 from regintel.numerical.evidence_binding_models import NumericalEvidenceBinding
 from regintel.numerical.publication_models import NumericalPublicationPreparation
+from regintel.publication.support_models import AmendmentSupport
 from regintel.validation.models import ContextWitness, ReviewDecision, ValidationRun
 
 type EffectType = Literal["ADD", "CORRECT", "SUPPLEMENT", "SUPERSEDE", "REMOVE"]
@@ -49,9 +50,9 @@ class LineageProposal(ContractModel):
     child_filing_version_id: CanonicalId
     lineage_type: LineageType
     issuer_entity_id: CanonicalId
-    parent_identity: SourceSpan
-    child_identity: SourceSpan
-    parent_reference: SourceSpan
+    parent_identity: AmendmentSupport
+    child_identity: AmendmentSupport
+    parent_reference: AmendmentSupport
     review_note: Note
 
     @model_validator(mode="after")
@@ -69,9 +70,11 @@ class EffectProposal(ContractModel):
     effect_type: EffectType
     affected_observation_ids: Ids
     new_candidate_ids: Ids
-    supports: Spans
+    supports: Annotated[
+        tuple[AmendmentSupport, ...], Field(strict=False, min_length=1, max_length=16)
+    ]
     effective_date: DateString | None
-    effective_date_support: SourceSpan | None
+    effective_date_support: AmendmentSupport | None
     review_note: Note
 
     @model_validator(mode="after")

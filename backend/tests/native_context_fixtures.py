@@ -10,7 +10,7 @@ from uuid import uuid4
 from pypdf import PdfReader
 
 from backend.tests.test_native_source import configuration as native_configuration
-from backend.tests.test_numerical_context import authored
+from backend.tests.test_numerical_context import Options, authored
 from regintel.entities.models import canonical_bytes as entity_bytes
 from regintel.numerical.context_gate import inspect_context
 from regintel.numerical.context_models import NumericalContextInput, WordPhrase
@@ -175,8 +175,8 @@ class NativeCase:
     record: NumericalContextRecord
 
 
-def native_case(tmp_path: Path) -> NativeCase:
-    case = authored(tmp_path)
+def native_case(tmp_path: Path, options: Options | None = None) -> NativeCase:
+    case = authored(tmp_path, options)
     old = case.input.pages[0]
     raw = complete_raw(case.raw)
     body = json.dumps(raw, sort_keys=True, separators=(",", ":"), ensure_ascii=False).encode()

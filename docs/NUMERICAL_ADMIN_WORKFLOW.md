@@ -98,7 +98,10 @@ Python contracts. It is explicitly fictional: a blank two-page PDF and authored
 word/geometry declarations test contracts and source handling, not transcription
 truth, real filing accuracy, content approval or financial prices.
 
+The [native amendment workflow](NATIVE_AMENDMENT_SUPPORT.md) now extends the common
+publication form with separate original-word identity/reference/effect/date
+support. Its authored correction scenarios do not approve actual source material.
 The four retained real numerical inputs still need source-backed context and
 approval resolution. The seven M3 starter drafts still need real content review.
-A supported native amendment pair, actual module acceptance, held-out evaluation
+Real amendment-pair acceptance, actual module acceptance, held-out evaluation
 and fresh-clone handoff remain required. Quotes remain unavailable by user choice.

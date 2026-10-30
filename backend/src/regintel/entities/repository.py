@@ -2,6 +2,7 @@
 
 import hashlib
 import json
+from dataclasses import dataclass
 from uuid import UUID
 
 import psycopg
@@ -25,6 +26,13 @@ from regintel.parsing.models import ParseArtifact
 from regintel.parsing.native_context import NativeContextConfiguration, project_native_context
 
 REGISTRY_LOCK_ID = 5928237198818004551
+
+
+@dataclass(frozen=True)
+class SealedParseEvidence:
+    artifact: ParseArtifact
+    evidence: tuple[TextEvidence, ...]
+    artifact_sha256: str
 
 
 class EntityConflict(ValueError):
@@ -170,6 +178,11 @@ class EntityRepository:
 
     def evidence_for_parse(self, parse_id: str) -> tuple[tuple[TextEvidence, ...], str]:
         """Verify the sealed sidecar once and return only exact text projection."""
+        sealed = self.sealed_evidence_for_parse(parse_id)
+        return sealed.evidence, sealed.artifact_sha256
+
+    def sealed_evidence_for_parse(self, parse_id: str) -> SealedParseEvidence:
+        """Expose the same verified sealed tree for source-order checks; no new authority."""
         try:
             with self.connect() as connection:
                 row = connection.execute(
@@ -219,7 +232,9 @@ class EntityRepository:
                 if set(actual) != expected:
                     raise EntitySourceError("Exact evidence differs from the sealed artifact.")
             # Projection order is source page/block/span order, rather than database row order.
-            return projection.evidence, projection.version.artifact_sha256
+            return SealedParseEvidence(
+                artifact, projection.evidence, projection.version.artifact_sha256
+            )
         except EntityNotFound:
             raise
         except (psycopg.OperationalError, psycopg.InterfaceError, MigrationError):

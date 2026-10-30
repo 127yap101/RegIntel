@@ -1,5 +1,52 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest native-amendment continuation, 30 October: read
+`docs/NATIVE_AMENDMENT_SUPPORT_PLAN.md`, `docs/NATIVE_AMENDMENT_SUPPORT.md`,
+`data/native-amendment-validation-report.json` and the newest CURRENT_STATE.md
+entry before older snapshots. Work across all four modules, adapt M1 as needed,
+and commit/push verified checkpoints to `codex/m2-comparison` remain authorized.
+Immutable source/review/amendment history and publication gates remain mandatory.
+
+Native amendment identities, parent references, effect statements and dates now
+retain separate whole original-word spans in `native-amendment-words-1`. Trusted
+consecutive positions come from the complete sealed parse. Python/PostgreSQL
+reject gaps, unknown boundaries, omitted negation, conditional wording, partial
+native projections and dates outside the exact effect statement. Missing dates
+remain unavailable; no combined original quotation or synthetic evidence is
+created. The private administrator loads/inspects separate words, then explicitly
+creates the checked draft and publishes through the common atomic workflow.
+
+An authored accepted numerical correction now preserves history and supplies
+current M1 facts, M2 Decimal comparison, M3 current/historical context and M4
+company selection from the same published corpus. Source tampering before final
+commit rolls back without advancing the head. Migration 22 is checked only in
+owned databases; the original database is not migrated by this checkpoint, and
+migrations 1–21 retain their bytes. No dependency or required setting is added.
+
+Current checks pass 2,456 full non-integration backend cases, six existing Windows
+filesystem skips, 384 frontend units, 65 Chromium scenarios, 55 selected owned
+PostgreSQL/HTTP cases and thirteen static/generated checks. Exact owned databases
+are removed. The measured report discloses interrupted/setup attempts and a fixed
+legacy-adapter classification defect. Relevant backend/native/legacy checks were
+repeated after that fix. The producer fixture now uses actual native-context 1.1
+sealing; 65 focused backend/wire cases and all frontend/browser checks passed
+after its recapture. The 23 non-amendment shared-publication cases retain their
+earlier passing run. All 841
+integration cases were not rerun locally. The exact predecessor `5c93fe3` passes
+all three GitHub jobs in run 40861376508. Verify the containing checkpoint's own
+remote SHA and CI independently.
+
+Continue real source/context approval and native amendment-pair acceptance, real
+M2 acceptance, M3 content review, M4 acceptance/evaluation and frozen research /
+fresh-clone handoff. Four actual numerical inputs and seven M3 starter drafts
+remain unresolved/unreviewed. Authored blank-PDF/word fixtures cannot approve
+them. Source intake and gate creation still precede the administrator workflow.
+Runtime quotes remain unavailable by user choice. Do not claim all modules or
+research complete. Use `docs/TEAM_ACCEPTANCE_CHECKLIST.md` and the actual
+`data/analysis-acceptance-plan.json` / `data/learning-starter-drafts.json` for
+the next acceptance work; never populate them with authored fixture IDs or values.
+Earlier checkpoint records below are historical.
+
 Latest numerical-administration continuation, 29 October: read
 `docs/NUMERICAL_ADMIN_WORKFLOW_PLAN.md`, `docs/NUMERICAL_ADMIN_WORKFLOW.md`,
 `data/numerical-admin-validation-report.json` and the newest CURRENT_STATE.md

@@ -62,3 +62,25 @@ def test_authored_numerical_browser_wire_uses_backend_contracts(kind):
         hashlib.sha256(base64.b64decode(fixture["pdf_base64"])).hexdigest()
         == source["proof"]["source_sha256"]
     )
+
+
+@pytest.mark.parametrize("kind", ["native_amendment_words", "publication_request", "manifest"])
+def test_authored_amendment_browser_wire_uses_complete_backend_contracts(kind):
+    fixture = json.loads((ROOT / "frontend/src/admin/amendment.fixture.json").read_bytes())
+    values = {
+        "native_amendment_words": fixture["request"]["effects"][0]["supports"][0],
+        "publication_request": fixture["request"],
+        "manifest": fixture["manifest"],
+    }
+    value = TypeAdapter(AdminWire.model_fields[kind].annotation).validate_python(values[kind])
+    assert value.model_dump(mode="json") == values[kind]
+    for identity, envelope in fixture["evidence"].items():
+        evidence = TypeAdapter(AdminWire.model_fields["evidence"].annotation).validate_python(
+            envelope["data"]
+        )
+        assert evidence.record.id == identity
+    for version, encoded in fixture["pdfs"].items():
+        filing = next(
+            item for item in fixture["manifest"]["filings"] if item["filing_version_id"] == version
+        )
+        assert hashlib.sha256(base64.b64decode(encoded)).hexdigest() == filing["source_sha256"]

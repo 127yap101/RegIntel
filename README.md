@@ -15,12 +15,21 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Shared filing corpus across M1–M4](docs/SHARED_CORPUS_SESSION.md): retain a verified publication across workspaces, explicitly select latest, and preserve pending-order inputs.
 - [Unified numerical publication](docs/UNIFIED_NUMERICAL_PUBLICATION.md): publish explicitly accepted native numerical evidence through the shared M1 corpus used by all four modules.
 - [Numerical administrator workflow](docs/NUMERICAL_ADMIN_WORKFLOW.md): inspect saved native gates, record context and acceptance decisions, and select candidates for the existing publication draft.
+- [Native amendment evidence](docs/NATIVE_AMENDMENT_SUPPORT.md): retain separate original words for reviewed parent/child identity, references, effects and dates.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.
 - `docs/PREREQUISITES.md`: environment/setup requirements and approved decisions.
 
 ## Current scope
+
+The latest verified engineering checkpoint adds
+[native amendment support](docs/NATIVE_AMENDMENT_SUPPORT.md) through the common
+publication path used by M1–M4. See its
+[measured report](data/native-amendment-validation-report.json) and
+[current state](CURRENT_STATE.md) for current checks and remaining real-data /
+content acceptance. Earlier implementation snapshots below retain their original
+checkpoint counts; they do not establish full-project completion.
 
 M0/M1A and bounded M1.5–M1.9 are verified on the approved Windows/native API
 host and private Linux worker. M1.10 now adds published company search, facts,
@@ -94,9 +103,12 @@ complete word/cell proof across M1 facts, M2 comparison and M3 learning context;
 M4 selects companies from that same corpus. Migration 21 supplies the native
 publication audit and producer-specific guards. The administrator now reviews
 stored numerical gates through separate context, candidate, acceptance and
-publication actions. Source intake, genuine real-source approvals and supported
-native amendment lineage still require work. See the [unified publication guide](docs/UNIFIED_NUMERICAL_PUBLICATION.md)
-and its [measured report](data/unified-publication-validation-report.json).
+publication actions. Migration 22 adds separate original-word support for reviewed
+native amendment identities, references, statements and dates. A complete authored
+correction follows the common publication path across all four modules; source
+intake, actual real-source approvals and real amendment-pair acceptance remain.
+See the [native amendment guide](docs/NATIVE_AMENDMENT_SUPPORT.md) and its
+[measured report](data/native-amendment-validation-report.json).
 The [staged context-review contract](docs/M2_NUMERICAL_CONTEXT_REVIEWS.md) records
 explicit decisions only after fresh source/approval and complete-evidence checks.
 Unresolved gates cannot be overridden; these decisions do not accept/publish facts.

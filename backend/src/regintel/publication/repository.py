@@ -33,6 +33,7 @@ from regintel.publication.models import (
     ReviewedApproval,
 )
 from regintel.publication.native import approve_numerical, persist_native
+from regintel.publication.support import NativeWordIndex, native_word_index
 from regintel.validation.models import ReviewDecision, ValidationInput, ValidationRun
 from regintel.validation.repository import ValidationRepository, authorize, checked
 
@@ -331,11 +332,14 @@ class PublicationRepository:
                 if version_id not in filings:
                     filings[version_id] = self._filing(connection, version_id=version_id)
         entities = EntityRepository(self.database)
+        native_words: NativeWordIndex = {}
         # Existing helper verifies original job/artifact/configuration/projection bytes;
         # those immutable records can safely be read through its separate connection.
         for filing in filings.values():
-            records, _ = entities.evidence_for_parse(filing.parse_version_id)
-            evidence.update((item.id, item) for item in records)
+            sealed = entities.sealed_evidence_for_parse(filing.parse_version_id)
+            evidence.update((item.id, item) for item in sealed.evidence)
+            if request.lineages or request.effects:
+                native_words.update(native_word_index(sealed.artifact, sealed.evidence))
         dependencies["sources"] = source_dependencies
         dependencies["reviews"] = review_dependencies
         manifest = build_manifest(
@@ -347,6 +351,7 @@ class PublicationRepository:
             tuple(evidence.values()),
             registry,
             parent,
+            native_words=native_words,
         )
         return manifest, digest(json_bytes(dependencies))
 

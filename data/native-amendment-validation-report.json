@@ -1,0 +1,766 @@
+{
+  "version": "1.0.0",
+  "recorded_at_utc": "2026-10-30T08:05:14.819255+00:00",
+  "client_date": "2026-10-30",
+  "client_timezone": "Asia/Calcutta",
+  "base_commit": "5c93fe3fabbc60b6837d69b4b0dc19491fe74941",
+  "branch": "codex/m2-comparison",
+  "status": "VERIFIED_LOCAL_NATIVE_AMENDMENT_SUPPORT; VERIFY_CONTAINING_COMMIT_CI",
+  "all_modules_complete": false,
+  "real_amendment_pair_accepted": false,
+  "change": [
+    "Explicit versioned ordered original-word amendment support for issuer identities, parent references, effect statements and effective-date evidence",
+    "Trusted consecutive word positions derived from the complete verified sealed parse; complete source/parse/page/span checks in application and PostgreSQL",
+    "Bounded whole-statement context rejects omitted negation, proposals, conditional wording, unknown boundaries, gaps and incomplete native projections",
+    "Effective-date words must occur contiguously within the effect statement; unsupported dates remain explicitly unavailable",
+    "Existing common build/finalize/head path preserves immutable history and scoped correction semantics across M1 facts, M2 comparison, M3 context and M4 company selection",
+    "Administrator loads and inspects separate original words with verified original-PDF source actions; loading failures/logout cannot retain verified private support"
+  ],
+  "verification": {
+    "backend_full_non_integration": {
+      "tests": 2462,
+      "passed": 2456,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6,
+      "case_seconds": 531.042,
+      "local_artifact": ".cache/native-amendment-backend-final-20261029.xml",
+      "sha256": "a279f494f6da758337a8a5b3606279af18ff96a176b64b8ad0f90e09ba2522bb",
+      "skip_reasons": [
+        "Host cannot create an unprivileged symlink: [WinError 1314] A required privilege is not held by the client: 'D:\\\\RegIntel\\\\.cache\\\\worktrees\\\\m2-comparison\\\\.cache\\\\native-amendment-backend-final-tmp-20261029\\\\test_real_symlink_directory_ca0\\\\outside' -> 'D:\\\\RegIntel\\\\.cache\\\\worktrees\\\\m2-comparison\\\\.cache\\\\native-amendment-backend-final-tmp-20261029\\\\test_real_symlink_directory_ca0\\\\models\\\\engine'",
+        "POSIX umask and mode contract",
+        "POSIX mode contract",
+        "Named FIFO boundary requires a POSIX filesystem.",
+        "Windows does not permit symbolic-link creation in this test account",
+        "Windows does not permit symbolic-link creation in this test account"
+      ]
+    },
+    "backend_compatibility_focused": {
+      "tests": 65,
+      "passed": 65,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 25.804,
+      "local_artifact": ".cache/native-amendment-compatibility-units-20261030.xml",
+      "sha256": "95ceb3a9c944a3046a456e2ed2e58532b4579264a772467680fde8b0421583fc"
+    },
+    "frontend_all_units": {
+      "tests": 384,
+      "passed": 384,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 21.35,
+      "local_artifact": ".cache/native-amendment-frontend-final-20261029.xml",
+      "sha256": "21a1e043a18389277372ae42167fd4bf4c3835e2531164ec584bc65021719a23"
+    },
+    "chromium_all_scenarios": {
+      "tests": 65,
+      "passed": 65,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 763.301,
+      "local_artifact": ".cache/native-amendment-browser-final-20261029.xml",
+      "sha256": "d66fe195e420f8ce2e30648d6bfb5e65705df47eea01355ba24ed61ef426ad81"
+    },
+    "owned_postgresql_http": {
+      "native_word_support": {
+        "tests": 1,
+        "passed": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 5.134,
+        "local_artifact": ".cache/native-amendment-word-http-20261029.xml",
+        "sha256": "a74b1a11577a55c706b0bc16a5bcb4240466afb3bc0ad8d01e33b9d87fc3a8b5"
+      },
+      "native_correction_all_modules": {
+        "tests": 6,
+        "passed": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 362.467,
+        "local_artifact": ".cache/native-amendment-correction-http-20261029.xml",
+        "sha256": "a3829e8f34a15e81e7dcb6399e10e0366461f598e909ee5cfa36566d1d1c11f6"
+      },
+      "shared_native_publication": {
+        "tests": 23,
+        "passed": 23,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 654.74,
+        "local_artifact": ".cache/native-amendment-shared-http-20261029.xml",
+        "sha256": "5a64eb4d4f2f759dd60e113663e8a49c61335d96634b67c8199291d4afb3f6f4"
+      },
+      "legacy_publication": {
+        "tests": 25,
+        "passed": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 97.28,
+        "local_artifact": ".cache/native-amendment-legacy-http-20261029.xml",
+        "sha256": "c4cb3ec791ba81d664f91339e3ae8a2353ca0a1e0265ae0e398e287f5493d071"
+      },
+      "distinct_passed": 55
+    },
+    "native_producer_smoke_repeat": {
+      "tests": 1,
+      "passed": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 47.791,
+      "local_artifact": ".cache/native-amendment-native-producer-smoke-20261030.xml",
+      "sha256": "1cf6ef6382776b538f775ec7d8f000626410be36bd290f581cae6fa23480f2a3"
+    }
+  },
+  "static_generated": {
+    "commands": 13,
+    "ruff_formatted_files": 321,
+    "mypy_sources": 198,
+    "all_passed": true
+  },
+  "commands": {
+    "static_0": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.432,
+      "log": ".cache/native-amendment-static_0-20261029.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "recorded_at_utc": "2026-10-30T03:23:21.352280+00:00"
+    },
+    "static_1": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.404,
+      "log": ".cache/native-amendment-static_1-20261029.log",
+      "log_sha256": "39ba2fefd1f4b6dc8bdffa1fb1509f7cc0859f36cc9bc3ec791e7103301593fb",
+      "recorded_at_utc": "2026-10-30T03:23:21.760338+00:00"
+    },
+    "static_2": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--config-file",
+        "backend/pyproject.toml",
+        "backend/src",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.44,
+      "log": ".cache/native-amendment-static_2-20261029.log",
+      "log_sha256": "27c250ae7c9e6771427286d564ec208db72e63f98e4335f2f2dbca01dd9bbd8f",
+      "recorded_at_utc": "2026-10-30T03:23:26.195474+00:00"
+    },
+    "static_3": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-contracts.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.049,
+      "log": ".cache/native-amendment-static_3-20261029.log",
+      "log_sha256": "4c48f1ed0cfe28fe85affc012a9a15fde654403fb8f9c0ea24327fa0954eeee1",
+      "recorded_at_utc": "2026-10-30T03:23:27.256883+00:00"
+    },
+    "static_4": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-published-reads.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.161,
+      "log": ".cache/native-amendment-static_4-20261029.log",
+      "log_sha256": "4b9ebaa5166fc23d7c968b1bfe1b3f4de26619ac97c0be257c518c7a8b8c4f44",
+      "recorded_at_utc": "2026-10-30T03:23:31.419620+00:00"
+    },
+    "static_5": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-retrieval.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.814,
+      "log": ".cache/native-amendment-static_5-20261029.log",
+      "log_sha256": "5d6fa2a210abb531deebe2e7c4d1df740a7c0ff1d8db1187b212ced75da52f4c",
+      "recorded_at_utc": "2026-10-30T03:23:36.239631+00:00"
+    },
+    "static_6": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-admin.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.692,
+      "log": ".cache/native-amendment-static_6-20261029.log",
+      "log_sha256": "f22c928cf8f580d9994b48f966a0336c554aa7095fda6cc57770d4a6c1c457c8",
+      "recorded_at_utc": "2026-10-30T03:23:40.951256+00:00"
+    },
+    "static_7": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-analysis.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.575,
+      "log": ".cache/native-amendment-static_7-20261029.log",
+      "log_sha256": "d34a012e3605c81bdea776ddcc48062aadfc82adc4917b0123390cc2004e9b93",
+      "recorded_at_utc": "2026-10-30T03:23:45.532946+00:00"
+    },
+    "static_8": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-analysis-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.28,
+      "log": ".cache/native-amendment-static_8-20261029.log",
+      "log_sha256": "86533c03e493eef5f8c354522f8a25e6a720ec229fe06dfc3c860012237ed200",
+      "recorded_at_utc": "2026-10-30T03:23:49.831086+00:00"
+    },
+    "static_9": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-read-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.19,
+      "log": ".cache/native-amendment-static_9-20261029.log",
+      "log_sha256": "1a57edf09a3aa4d37116754537be9abbe767101080ce7448c45f5b005a2ca9c7",
+      "recorded_at_utc": "2026-10-30T03:23:54.044310+00:00"
+    },
+    "static_10": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.84,
+      "log": ".cache/native-amendment-static_10-20261029.log",
+      "log_sha256": "4d098cce736812169e67303e960b5b6b6af18a0da43a3fdca1b39d7186348818",
+      "recorded_at_utc": "2026-10-30T03:23:55.898243+00:00"
+    },
+    "static_11": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-fixture-cases.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.19,
+      "log": ".cache/native-amendment-static_11-20261029.log",
+      "log_sha256": "3e0f67c9c99b69ebf389d2644fce3c200c2fd8cfdefe3ad8997adc08e8f44119",
+      "recorded_at_utc": "2026-10-30T03:23:57.098094+00:00"
+    },
+    "static_12": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-learning-portfolio.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 4.534,
+      "log": ".cache/native-amendment-static_12-20261029.log",
+      "log_sha256": "ecdc0510240c2e5b25edaca942a3decf3746e439659780f35204413fc02dd4f0",
+      "recorded_at_utc": "2026-10-30T03:24:01.636886+00:00"
+    },
+    "frontend_lint": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "lint"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 148.396,
+      "log": ".cache/native-amendment-frontend_lint-20261029.log",
+      "log_sha256": "960f1eb37ac4d28430af9bef2c98f32333254854ffde619330f53d373ce0f632",
+      "recorded_at_utc": "2026-10-30T03:26:30.475161+00:00"
+    },
+    "frontend_typecheck": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "typecheck"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 21.372,
+      "log": ".cache/native-amendment-frontend_typecheck-20261029.log",
+      "log_sha256": "faeaa94bcf7012d86f91ca647580449f56a263fb7eaf572c54789764f60a9b8f",
+      "recorded_at_utc": "2026-10-30T03:26:51.842598+00:00"
+    },
+    "frontend_units": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=../.cache/native-amendment-frontend-final-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 110.27,
+      "log": ".cache/native-amendment-frontend_units-20261029.log",
+      "log_sha256": "5e14d13535342a44f4f8ce74c9b87592085e2e8f3332cb0d81646dea421f1c90",
+      "recorded_at_utc": "2026-10-30T03:28:42.122041+00:00"
+    },
+    "frontend_build": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "build"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 55.55,
+      "log": ".cache/native-amendment-frontend_build-20261029.log",
+      "log_sha256": "219e9bab6e4004daa0be4ab5d1211351935faf45533b70f565b159609ecd5f83",
+      "recorded_at_utc": "2026-10-30T03:29:37.679551+00:00"
+    },
+    "chromium": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "playwright",
+        "test",
+        "--reporter=list,junit"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 450.617,
+      "log": ".cache/native-amendment-chromium-20261029.log",
+      "log_sha256": "79239c0f23f0c4f70c403ccb814a60a62f4785ac76cd69fce98ab48f3d4da197",
+      "recorded_at_utc": "2026-10-30T03:37:08.315965+00:00"
+    },
+    "backend_units": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests",
+        "-m",
+        "not integration",
+        "--basetemp",
+        ".cache/native-amendment-backend-final-tmp-20261029",
+        "-o",
+        "cache_dir=.cache/native-amendment-backend-final-cache",
+        "--junitxml",
+        ".cache/native-amendment-backend-final-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 552.842,
+      "log": ".cache/native-amendment-backend_units-20261029.log",
+      "log_sha256": "7c95760d7d32a89268ea1fc399d0bb100afec2e7d9fa1332e7144a52ae9b1c2a",
+      "recorded_at_utc": "2026-10-30T03:08:21.552472+00:00"
+    },
+    "word_support_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_native_amendment_storage.py",
+        "--junit-report",
+        ".cache/native-amendment-word-http-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 8.722,
+      "log": ".cache/native-amendment-word_support_http-20261029.log",
+      "log_sha256": "341640c85a99d059d5f4660620f13e0089ae651481e8114dc02e6c0b35b858a7",
+      "recorded_at_utc": "2026-10-30T03:16:35.193235+00:00"
+    },
+    "correction_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_native_numerical_amendments.py",
+        "--junit-report",
+        ".cache/native-amendment-correction-http-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 370.787,
+      "log": ".cache/native-amendment-correction_http-20261029.log",
+      "log_sha256": "9d5e312d4de0edd44bbdff2d35afcb5dbd60c189b7ac808f613e2cad5471b210",
+      "recorded_at_utc": "2026-10-30T03:22:45.982731+00:00"
+    },
+    "shared_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_unified_numerical_publication.py",
+        "--junit-report",
+        ".cache/native-amendment-shared-http-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 678.328,
+      "log": ".cache/native-amendment-shared_http-20261029.log",
+      "log_sha256": "b05285842c4faa6e52d31ed26093ed4debda7ed400644cb2271b25853e72d19b",
+      "recorded_at_utc": "2026-10-30T02:40:55.839923+00:00"
+    },
+    "legacy_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_publication_storage.py",
+        "--junit-report",
+        ".cache/native-amendment-legacy-http-20261029.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 102.519,
+      "log": ".cache/native-amendment-legacy_http-20261029.log",
+      "log_sha256": "55b5c1d60c059054948c970c60052a1ad89b5a6a45f5f3e8400e0953622debde",
+      "recorded_at_utc": "2026-10-30T02:58:49.071062+00:00"
+    }
+  },
+  "postfix_verification": {
+    "pid": 27848,
+    "started_at_utc": "2026-10-30T03:16:26.206698+00:00",
+    "status": "passed",
+    "phase": "complete",
+    "updated_at_utc": "2026-10-30T03:37:08.349458+00:00",
+    "last_exit_code": 0
+  },
+  "runtime": {
+    "host": "Windows x64",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "pnpm": "11.19.0",
+    "test_browser": "Chromium",
+    "test_ports": [
+      18073,
+      5187
+    ]
+  },
+  "attempts": [
+    {
+      "stage": "initial_migration_22",
+      "outcome": "Duplicate trigger DDL copied from migration 11 caused PostgreSQL 42710. Removed the duplicate creation statement; the original trigger remains unchanged. Fresh migration and all selected database checks pass.",
+      "local_artifact": ".cache/native-amendment-storage-initial-20261029.xml"
+    },
+    {
+      "stage": "static_and_type_development",
+      "outcome": "Corrected Ruff import/line formatting, typed parameterized frontend rows and explicit Promise-based mocks. Final full lint/typing/generated checks pass."
+    },
+    {
+      "stage": "new_browser_scenarios_initial",
+      "passed": 3,
+      "failed": 1,
+      "outcome": "The full scenario exceeded its 30-second total test budget after publication completed; the trace showed a cold page start around ten seconds. Set this scenario budget to 60 seconds, retaining every source/hash/geometry/publication assertion. Focused four and all 65 final scenarios pass.",
+      "local_artifact": ".cache/native-amendment-browser-total-budget-attempt-20261029.xml"
+    },
+    {
+      "stage": "shared_http_interruption",
+      "exit_code": 1073807364,
+      "outcome": "The earlier process terminated before producing a complete result for 23 selected shared publication tests. No failure cause or successful completion is inferred. Repeated only this incomplete stage and the pending legacy stage on 30 October; both pass. The exact abandoned owned database was inspected for zero active sessions and removed.",
+      "local_artifact": ".cache/native-amendment-shared-http-interrupted-20261029.log"
+    },
+    {
+      "stage": "resume_database_setup",
+      "outcome": "The initial 30 October retry could not connect and created no database. Docker was running with the three RegIntel data containers stopped. Restarted only those existing containers, then verification proceeded; other Docker applications were untouched."
+    },
+    {
+      "stage": "legacy_http_interruption",
+      "exit_code": 1073807364,
+      "outcome": "A further legacy verification process terminated after starting nine cases, without a completed current result. No successful completion or cause is inferred. Resumed the post-fix verification in a hidden local helper with durable logs, and inspected/removed only the exact abandoned owned database.",
+      "local_artifact": ".cache/native-amendment-legacy-interrupted-20261030.log"
+    }
+  ],
+  "legacy_compatibility_attempt": {
+    "passed": 22,
+    "failed": 3,
+    "local_artifact": ".cache/native-amendment-legacy-initial-20261030.xml",
+    "outcome": "Legacy SUPERSEDE/SUPPLEMENT/REMOVE cases exposed that old multiline Docling text cells share the native-looking source_ref shape. Restricted trusted native-word positions to the verified native-context adapter/configuration in Python/PostgreSQL; complete legacy block spans keep their sentence-context checks. Added a positive multiline-block regression and rejection of its use as native-word proof. The 65 focused regressions and final legacy/native database runs pass."
+  },
+  "legacy_sql_context_attempt": {
+    "passed": 22,
+    "failed": 3,
+    "local_artifact": ".cache/native-amendment-legacy-sql-attempt-20261030.xml",
+    "outcome": "After adapter classification was fixed, the same three complete multiline sources exposed PostgreSQL rtrim handling spaces only, while Python rstrip handles newlines. Matched SQL trailing/context whitespace handling to the existing Python behavior without relaxing complete-statement or native-word requirements. The final 25 legacy database cases pass."
+  },
+  "native_producer_fixture_attempt": {
+    "failures": 1,
+    "setup_errors": 5,
+    "local_artifact": ".cache/native-amendment-correction-postfix-attempt-20261030.xml",
+    "outcome": "The stricter adapter requirement exposed that the earlier correction fixture used legacy 1.0 word-level records. Rebuilt both parent and child through the actual native-context producer and asserted stored format 1.1.0; retained context/candidate/acceptance/publication gates. A complete producer correction smoke passed, then all six cases and the recaptured browser fixture passed without relaxing runtime checks."
+  },
+  "verification_timing": {
+    "frontend": "All 384 frontend units and 65 browser scenarios were repeated after recapturing the actual native-context 1.1 fixture.",
+    "shared_native_publication": "The 23 shared publication cases passed before the final adapter-classification fix. Their requests contain no amendment lineage/effect proposals, so the corrected native-word inspection branch is not exercised by these cases; they were not repeated.",
+    "backend_and_amendment_database": "Full backend and legacy cases passed after both production compatibility fixes. The final changes were confined to integration fixture setup and captured test data; the 65 relevant backend/wire cases, native support/correction database cases and static/generated checks were repeated afterward."
+  },
+  "authored_fixture": {
+    "path": "frontend/src/admin/amendment.fixture.json",
+    "bytes": 400556,
+    "sha256": "bb5510d6d9d8389a0b64cc5e214bc85c9c82f95045402e653a8d643a97ba9f86",
+    "source": "Captured actual owned PostgreSQL/HTTP numerical-correction output; fictional issuer/content, blank authored PDFs and declared word geometry. Not real filing approval, transcription truth, financial gold or market prices.",
+    "retained_evidence_records": 18
+  },
+  "operational_effects": {
+    "new_migrations": [
+      "0022_native_amendment_support.sql"
+    ],
+    "earlier_migrations_1_to_21_unchanged": true,
+    "new_dependencies": [],
+    "new_required_environment_variables": [],
+    "new_http_endpoints": [],
+    "original_database_migrated": false,
+    "paid_model_or_provider_calls": 0,
+    "quotes": "UNAVAILABLE_BY_USER_CHOICE",
+    "public_ports_added": [],
+    "existing_regintel_containers_started": [
+      "postgres",
+      "redis",
+      "neo4j"
+    ],
+    "other_docker_applications_modified": false
+  },
+  "owned_database_cleanup": {
+    "exact_owned_databases_checked": [
+      "regintel_test_m0_3_03a6ab580772436bad4b408786b130df",
+      "regintel_test_m0_3_29f3ca9a9cc246c3af56b1265d962ca4",
+      "regintel_test_m0_3_2c3e49a2370d4b31bd077f42b21998ef",
+      "regintel_test_m0_3_2c761527a99747ebb08e692f23ad93bc",
+      "regintel_test_m0_3_4f16eac19ac542acad323efd77b8f032",
+      "regintel_test_m0_3_7c6cd39f39904ddc8d17b55d939e5bc8",
+      "regintel_test_m0_3_7cf1aef9c4cb458d857935822921ccde",
+      "regintel_test_m0_3_7efe4b59723c4b9787ff51eeb0cdad00",
+      "regintel_test_m0_3_7f2bdf59631c48188bc290824018328d",
+      "regintel_test_m0_3_a23e788255164e2e833d77cac264a79a",
+      "regintel_test_m0_3_a9f6cec6c9944eb39fd1ad96737005e2",
+      "regintel_test_m0_3_aa7d916c646046b5a40c18db39bf4455",
+      "regintel_test_m0_3_b97d960344cd4f4aa143e3320568d1c0",
+      "regintel_test_m0_3_d94dcf40b98548448b787ca2244bf9d0",
+      "regintel_test_m0_3_e152592aa0b847039d8128b569e977cc",
+      "regintel_test_m0_3_ec69fd06462641d7a9df3c1637a85219"
+    ],
+    "interrupted_database_removed": [
+      "regintel_test_m0_3_29f3ca9a9cc246c3af56b1265d962ca4",
+      "regintel_test_m0_3_7cf1aef9c4cb458d857935822921ccde"
+    ],
+    "removed_this_check": [],
+    "remaining_owned_databases": [],
+    "main_database_migrated": false
+  },
+  "base_ci": {
+    "head_revision": "5c93fe3fabbc60b6837d69b4b0dc19491fe74941",
+    "run_id": 40861376508,
+    "url": "https://github.com/127yap101/RegIntel/actions/runs/40861376508",
+    "conclusion": "success",
+    "jobs": [
+      "Foundation (ubuntu-24.04)",
+      "Foundation (windows-2025)",
+      "Local data infrastructure (Linux)"
+    ],
+    "containing_commit_ci": "Verify independently after push."
+  },
+  "limits": [
+    "All four real numerical inputs remain unresolved and seven M3 starter drafts remain unreviewed; no fixture authorizes real approval or acceptance.",
+    "No real native amendment pair is accepted by this checkpoint; actual source/content review, M2/M3/M4 acceptance and research effectiveness remain incomplete.",
+    "Word support conservatively requires a single source page, complete contiguous native positions and supported statement boundaries; it is not general language understanding or OCR accuracy.",
+    "Source intake and gate creation still precede the private administrator workflow.",
+    "The full 841-case integration selection was not rerun locally; this checkpoint ran 55 selected owned PostgreSQL/HTTP cases. The containing commit CI must be verified separately.",
+    "Quotes remain unavailable, so fixed-price authored portfolio tests do not establish a priced runtime demonstration.",
+    "Held-out evaluation, feature/corpus freeze and fresh-clone handoff remain incomplete.",
+    "The final migration formatting edit removed only an extra trailing blank line; SQL statements were unchanged and heavy tests were not repeated for whitespace.",
+    "Production build retains its existing large-chunk advisory."
+  ],
+  "source_sha256": {
+    "backend/src/regintel/admin/models.py": "df215929932312dd13ee594cfd42c6882e1e6c90f0d59258961186d5fcc64fc0",
+    "backend/src/regintel/entities/repository.py": "4261d21f831a1efcd0c77a7fe8f93cae634aac937c3d641047da97b89a25895a",
+    "backend/src/regintel/publication/models.py": "c9200beee4cdc7bf3d71e73ca606239279df79d82cebe6c0c661eb0a7e3d7c3e",
+    "backend/src/regintel/publication/engine.py": "b35f437cff6d3bebf70f572efc5fa97bb2299588ae3341cd65ddc75332c91efa",
+    "backend/src/regintel/publication/repository.py": "e81f42274dd22d318d7cf123ce99e675ed6b8a0f68d84bff67a02256c61fd36b",
+    "backend/src/regintel/publication/support.py": "9923b49c4207d75b5c154c4aab263b7fd9eb28570ddbd1b937d29e2ff1df20fe",
+    "backend/src/regintel/publication/support_models.py": "e698c0c49c51019ba52a2d660770ad6bb825c831b7b2d80f45c7ec2155f91103",
+    "infra/migrations/0022_native_amendment_support.sql": "cf87439845c72db64063db2971c66f9294ff11fac077a98313bec514f8106ab2",
+    "backend/tests/test_native_amendment_support.py": "e184ae00aeb8faf1d3b95bdf698c9d8689f1c864ae7077934f1e485ce7d78126",
+    "backend/tests/native_amendment_fixtures.py": "00d84f003e3f63a759839577604e96391d7db65d1effc61e0f1250dd57841373",
+    "backend/tests/integration/test_native_amendment_storage.py": "b795798afdd87e30feda1e26b532c15a13ab8aeff5272ee18f7d10fd646ba42f",
+    "backend/tests/integration/test_native_numerical_amendments.py": "418e495deccaee9aa60b4ede8d581367559ee178e2092a01efcf86e0fd6b351f",
+    "backend/tests/integration/test_native_context_storage.py": "09e9912de136f0d5352e2e89a890a965a8c1970fd3dcb8e0d0d7cc994db08be4",
+    "backend/tests/integration/test_numerical_context_storage.py": "ea27096d4902e6931bca70ca787485e1e50502de87f1b16763b3dd91b66c53de",
+    "backend/tests/native_context_fixtures.py": "dd001712e8c9877823b12141fe98e3ec678125bdb634ce81ba50397bf37ba24c",
+    "backend/tests/test_admin_numerical_contract.py": "68c93dbc1fd97beda77068a16c97d2b0eb9ac4375c5066401377c7b2c40fb9bb",
+    "backend/tests/test_numerical_context.py": "9dff9c95d500679b5df6b93aeee0688f7e1ac636ed0afc4550c30a1f92f96a9e",
+    "frontend/src/admin/PublicationPanel.tsx": "0d8b1f92b654e41c3d854622e7288181710e0805f033b7fe85d3f39d1576e71c",
+    "frontend/src/admin/Workspace.tsx": "5c3d29480f13430e140c8bfeadd8e15016dd922eadf96dab260d886292ef2ffe",
+    "frontend/src/admin/api.ts": "e84824ddb093fa397fa56daff5b7416ac47ba4e630e8f86b70adb16a30312ef5",
+    "frontend/src/admin/wire.ts": "5a76d58808b36eeb6cefc966beef1c8371ca909540ea44e77b2d7b9ddcf33eb5",
+    "frontend/src/admin/amendments.ts": "6df3b85f764461beb9497039808015324ebaa86bd6b63809580a26573cd60970",
+    "frontend/src/admin/amendments.test.ts": "1c7711f86998910b5f82564a7ddb546c84faab87ac2e1d9bc64d580fe9bf08aa",
+    "frontend/src/admin/amendment.fixture.json": "bb5510d6d9d8389a0b64cc5e214bc85c9c82f95045402e653a8d643a97ba9f86",
+    "frontend/tests/e2e/native-amendment.spec.ts": "349067afb54f567fbe13d6511b0b84bbd3d8bb22425eb001f311b0dcd79db281"
+  },
+  "migration_sha256": {
+    "infra/migrations/0001_foundation.sql": "496889943f5fda3a674b6f1a5e469267b3303f8c3293d802d4ffc48a482c68d6",
+    "infra/migrations/0002_auth.sql": "c4b6a5f95f313e527182804ff2c0263f0661a41a3fd648038795930420f05291",
+    "infra/migrations/0003_ingestion.sql": "aa67358f920784a50ddb7b39fef9e1f9061f3753b0034c2c02f3e338d26a89f6",
+    "infra/migrations/0004_jobs.sql": "e2be2e54071e776ff5155086333bdff524510f654138ccc0a0aef82e0894b534",
+    "infra/migrations/0005_evidence.sql": "89369f5d29628fba557094d51754e6b7151cdc5910aed64ec837576e35db9f0d",
+    "infra/migrations/0006_entities.sql": "8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249",
+    "infra/migrations/0007_candidates.sql": "5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e",
+    "infra/migrations/0008_validation.sql": "7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d",
+    "infra/migrations/0009_processing.sql": "806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60",
+    "infra/migrations/0010_processing_evidence_order.sql": "1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83",
+    "infra/migrations/0011_publication.sql": "310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6",
+    "infra/migrations/0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+    "infra/migrations/0013_numerical_context.sql": "721bf092164df938a369ccff4b2b4268b8b1e79a4f5b579696a3687a8c57a319",
+    "infra/migrations/0014_native_context_evidence.sql": "2ed81a33a55a38105a820aab69550c1e1ce5846fecf0d9f5d50023d3018fe3d3",
+    "infra/migrations/0015_learning.sql": "c6091c96d844abf503ec995816b937a76ee9b1703136bae4c013b5f4cd447c9c",
+    "infra/migrations/0016_virtual_portfolio.sql": "4121ccccfddd82b2ab5a322bed65e48b3eedd2ee79eeac49101faec34942461a",
+    "infra/migrations/0017_bound_numerical_gates.sql": "59afcf5759eab4ef874f25fe84f8975ee2da720c40dbb8cd7c6ecc55c14a0288",
+    "infra/migrations/0018_numerical_context_reviews.sql": "b51fafe9ae307ccc7b0bfa3c9b8869fea9f8df79b2c401916fae48a4e7786ac7",
+    "infra/migrations/0019_numerical_candidates.sql": "2dc243090780b51f90f7f5bec8b5d477212a08b90ff9d547771418531c088179",
+    "infra/migrations/0020_numerical_acceptances.sql": "38e58b549d7519c1fe81fec0bc275c5bc6d66f004fb47bfe92819197721c4522",
+    "infra/migrations/0021_unified_numerical_publication.sql": "db3313975d5d02632d7acabfabbf390a8dcb2e230fc32d9a2195fe6c1dac4c66",
+    "infra/migrations/0022_native_amendment_support.sql": "cf87439845c72db64063db2971c66f9294ff11fac077a98313bec514f8106ab2"
+  }
+}

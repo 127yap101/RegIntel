@@ -25,6 +25,14 @@ from regintel.publication.models import (
     PublishedObservation,
     ReviewedApproval,
 )
+from regintel.publication.support import (
+    AmendmentSupportError,
+    NativeWordIndex,
+    support_contains,
+    support_text,
+    uncertain_effect_wording,
+)
+from regintel.publication.support_models import AmendmentSupport
 from regintel.validation.gate import validate
 from regintel.validation.models import ValidationInput
 
@@ -143,6 +151,7 @@ def validate_lineage(
     filings: dict[str, FilingSnapshot],
     evidence: dict[str, TextEvidence],
     registry: RegistrySnapshot,
+    native_words: NativeWordIndex | None = None,
 ) -> None:
     parent = filings.get(proposal.parent_filing_version_id)
     child = filings.get(proposal.child_filing_version_id)
@@ -171,17 +180,15 @@ def validate_lineage(
         *(alias.name.casefold() for alias in entity.aliases),
         *(identifier.value.casefold() for identifier in entity.identifiers),
     }
-    for span, version in (
-        (proposal.parent_identity, parent.filing_version_id),
-        (proposal.child_identity, child.filing_version_id),
+    for support, filing in (
+        (proposal.parent_identity, parent),
+        (proposal.child_identity, child),
     ):
-        exact_source(span, version, evidence)
         require(
-            span.quote.casefold() in names,
+            amendment_text(support, filing, evidence, native_words).casefold() in names,
             "Both filing identities require an approved issuer name/identifier.",
         )
-    exact_source(proposal.parent_reference, child.filing_version_id, evidence)
-    reference = proposal.parent_reference.quote.casefold()
+    reference = amendment_text(proposal.parent_reference, child, evidence, native_words).casefold()
     parent_labels = {
         "DRHP": ("draft red herring prospectus", "drhp"),
         "RHP": ("red herring prospectus", "rhp"),
@@ -195,12 +202,35 @@ def validate_lineage(
     )
 
 
-def source_date(span: SourceSpan) -> str | None:
+def amendment_text(
+    support: AmendmentSupport,
+    filing: FilingSnapshot,
+    evidence: dict[str, TextEvidence],
+    native_words: NativeWordIndex | None,
+    *,
+    statement: bool = False,
+) -> str:
+    try:
+        return support_text(
+            support,
+            filing.filing_version_id,
+            filing.parse_version_id,
+            evidence,
+            native_words or {},
+            statement=statement,
+        )
+    except AmendmentSupportError as error:
+        raise PublicationConflict(str(error)) from None
+
+
+def source_date(span: SourceSpan | str) -> str | None:
+    text = span if isinstance(span, str) else span.quote
     for format_string in ("%Y-%m-%d", "%d %B %Y", "%B %d, %Y", "%B %d %Y", "%d %b %Y"):
-        try:
-            return datetime.strptime(span.quote.strip(), format_string).date().isoformat()
-        except ValueError:
-            continue
+        for pattern in (format_string, format_string + "."):
+            try:
+                return datetime.strptime(text.strip(), pattern).date().isoformat()
+            except ValueError:
+                continue
     return None
 
 
@@ -211,6 +241,8 @@ def validate_effect(
     new: dict[str, PublishedObservation],
     active: set[str],
     evidence: dict[str, TextEvidence],
+    child_filing: FilingSnapshot,
+    native_words: NativeWordIndex | None = None,
 ) -> None:
     require(
         set(effect.affected_observation_ids).issubset(active),
@@ -231,9 +263,10 @@ def validate_effect(
         ),
         "New observations must belong to the explicit child filing.",
     )
-    for span in effect.supports:
-        exact_source(span, lineage.child_filing_version_id, evidence)
-    wording = " ".join(span.quote.casefold() for span in effect.supports)
+    wording = " ".join(
+        amendment_text(support, child_filing, evidence, native_words, statement=True).casefold()
+        for support in effect.supports
+    )
     cues = {
         "ADD": r"\b(add(?:ed|ition|itional)?|include[ds]?)\b",
         "CORRECT": r"\b(correct(?:ed|ion)?|amend(?:ed|ment)?|revis(?:ed|ion))\b",
@@ -246,20 +279,16 @@ def validate_effect(
         "The source must explicitly support the reviewed amendment operation.",
     )
     require(
-        not re.search(r"\b(not|never|propos(?:e[ds]?|ing)|may|might)\b", wording),
+        not uncertain_effect_wording(wording),
         "Negated, proposed or uncertain effect wording requires further review.",
     )
     if effect.effective_date is not None:
         support = effect.effective_date_support
         assert support is not None
-        exact_source(support, lineage.child_filing_version_id, evidence)
         require(
-            source_date(support) == effect.effective_date
-            and any(
-                span.evidence_id == support.evidence_id
-                and span.start <= support.start < support.end <= span.end
-                for span in effect.supports
-            ),
+            source_date(amendment_text(support, child_filing, evidence, native_words))
+            == effect.effective_date
+            and any(support_contains(span, support) for span in effect.supports),
             "Effective dates require exact support inside the amendment statement.",
         )
     if effect.effect_type in {"CORRECT", "SUPERSEDE"}:
@@ -320,6 +349,8 @@ def build_manifest(
     evidence: tuple[TextEvidence, ...],
     registry: RegistrySnapshot,
     parent: CorpusManifest | None = None,
+    *,
+    native_words: NativeWordIndex | None = None,
 ) -> CorpusManifest:
     require(
         user.role == "admin" and user.is_active, "Publication requires a current administrator."
@@ -370,7 +401,7 @@ def build_manifest(
             ),
             "A filing pair already has a final lineage decision.",
         )
-        validate_lineage(link, all_filings, records, registry)
+        validate_lineage(link, all_filings, records, registry, native_words)
         lineages.append(
             AuditedLineage(
                 proposal=link,
@@ -398,7 +429,16 @@ def build_manifest(
             not touched.intersection(effect.affected_observation_ids),
             "Competing effects on the same observation require a separate reviewed resolution.",
         )
-        validate_effect(effect, effect_lineage, previous, new, active, records)
+        validate_effect(
+            effect,
+            effect_lineage,
+            previous,
+            new,
+            active,
+            records,
+            all_filings[effect_lineage.child_filing_version_id],
+            native_words,
+        )
         for prior in effects:
             require(
                 not (

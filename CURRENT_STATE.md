@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-29 (Asia/Calcutta).
+Updated: 2026-10-30 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,59 @@ Updated: 2026-10-29 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Native amendment evidence and shared correction, 30 October:** the existing
+  publication workflow now accepts explicit `native-amendment-words-1` support for
+  parent/child issuer identity, parent references, effect statements and effective
+  dates. It preserves every separate original span. Verified sealed artifacts
+  supply consecutive word positions; the request cannot supply trusted order.
+  Whole-word/source/page/context and date-containment checks run in Python and
+  PostgreSQL. Missing boundaries, gaps, partial native projections, negation and
+  conditional operations fail without advancing the publication head. A legacy
+  single-span shape cannot hide omitted native sentence context.
+
+- An authored accepted numerical parent/child pair now commits its explicit
+  correction through the common build/projection/finalize/head path. It retains
+  immutable observations and earlier corpus versions, serves the corrected M1
+  fact and M2 Decimal result, exposes corrected and historical M3 context, and
+  supports M4 company selection from the same corpus. Missing effect dates remain
+  temporally unavailable. Finalization rechecks original bytes; a changed source
+  rolls back. The administrator loads separate original words and inspects their
+  verified PDF pages before the distinct draft and final publication actions.
+  See `docs/NATIVE_AMENDMENT_SUPPORT.md` and its bounded implementation plan.
+
+- Current verification passes **2,456 full non-integration backend tests**, with
+  six existing Windows filesystem skips, **384 frontend units**, **65 Chromium
+  scenarios**, and **55 selected owned PostgreSQL/HTTP cases**. Lint, strict typing,
+  production build and thirteen static/generated commands pass (Ruff 321 files;
+  mypy 198 sources). Interrupted/setup attempts, legacy adapter/SQL whitespace
+  fixes and the corrected producer fixture are disclosed. Full backend/legacy
+  checks passed after the production fixes. The 65 focused backend/wire cases,
+  native database cases and all frontend/browser checks passed with the final
+  native-context 1.1 fixture. The 23 non-amendment shared-publication cases retain
+  their earlier passing run. The
+  exact owned databases are removed. See
+  `data/native-amendment-validation-report.json` for measured counts, source
+  hashes, cleanup, attempts and coverage limits. The full 841-case integration
+  selection was not rerun locally at this checkpoint.
+
+- Migration **22** is tested only in disposable databases. Migrations 1–21 retain
+  their bytes; the general candidate-span contract and unrelated publication
+  guards remain intact. No dependency, required environment setting, provider,
+  quote feed or public port is added. The original database is not migrated by
+  this checkpoint. Only the three existing RegIntel data containers were started;
+  other Docker applications remain untouched. Exact predecessor `5c93fe3` passes
+  all three GitHub jobs in run 40861376508; verify the containing checkpoint's
+  remote SHA and CI independently.
+
+- The captured wire/browser material uses fictional content, blank authored PDFs
+  and declared word geometry through the actual native-context 1.1 producer.
+  It proves engineering behavior, not real filing approval or research
+  effectiveness. All four real numerical inputs remain
+  unresolved and seven M3 starter drafts remain unreviewed. Continue actual
+  source/context approval and real amendment-pair acceptance, M2/M3/M4 acceptance,
+  held-out evaluation, feature/corpus freeze and fresh-clone handoff. Runtime
+  quotes remain unavailable by user choice; all four modules are not complete.
 
 - **Numerical administrator workflow, 29 October:** the private workspace now
   loads an explicit stored native gate and optional candidate ID. It exposes

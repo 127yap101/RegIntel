@@ -74,6 +74,10 @@ export function AdminWorkspace() {
       if (!signal.aborted) setSource({ ...result, supports: [span], context_supports: [] })
     })
   }
+  async function loadAmendmentWords(ids: readonly string[], loaded: (value: T.NativeAmendmentWords) => void): Promise<void> {
+    if (!api) return; setManifest(null); setPublished(false); setSource(null)
+    await execute(async (signal) => { const words = await api.amendmentWords(ids, signal); if (!signal.aborted) loaded(words) })
+  }
   async function saveReview(item: T.ReviewItem, decision: T.ReviewDecision['decision'], note: string): Promise<void> {
     if (!api || !reviews || item.review || (decision === 'APPROVE_FOR_PUBLICATION' && (!reviews.approval_current || !item.result.reviewer_eligible))) return
     const selected = reviews; setSource(null)
@@ -128,7 +132,7 @@ export function AdminWorkspace() {
       {filing && <FilingPanel key={filing.id} job={filing} metrics={metrics} busy={busy} refresh={() => { if (api) void execute(async (signal) => { const job = await api.filing(filing.id, signal); const catalog = await api.read('metrics', '/v1/admin/workspace/metrics', signal); if (!signal.aborted) { setFiling(job); setMetrics(catalog.items) } }) }} start={(ids) => { void startProcessing(ids) }} />}
       {processing && <ProcessingPanel job={processing} busy={busy} refresh={() => { if (api) void execute(async (signal) => { const job = await api.processing(processing.id, signal); if (!signal.aborted) setProcessing(job) }) }} dispatch={() => { if (api) void execute(async (signal) => { const receipt = await api.read('dispatch', `/v1/admin/processing/jobs/${processing.id}/dispatch`, signal, {}); if (!signal.aborted) setMessage(receipt.dispatched ? 'Pending workflow dispatched.' : 'No dispatch was necessary; refresh the stored workflow.') }) }} review={(id) => { void reviewRun(id) }} validate={(id) => { void validateCandidates(id) }} />}
       {reviews && <ReviewPanel page={reviews} busy={busy} load={(filter, offset) => { void reviewRun(reviews.run_id, filter, offset) }} inspect={(item, span) => { void inspect(span, reviews.parse_version_id, item.result.context_supports, item.draft.supports) }} decide={(item, decision, note) => { void saveReview(item, decision, note) }} select={addSelection} revalidate={() => { void validateCandidates(reviews.candidate_run_id) }} />}
-      <PublicationForm key={draftNumber} head={head} selections={selections} busy={busy || numericalPending} invalidate={() => { setManifest(null); setPublished(false); setSource(null) }} remove={(id) => { setSelections(selections.filter((item) => item.candidate_id !== id)); setManifest(null); setSource(null) }} create={(payload) => { void createDraft(payload) }} />
+      <PublicationForm key={draftNumber} head={head} selections={selections} busy={busy || numericalPending} invalidate={() => { setManifest(null); setPublished(false); setSource(null) }} remove={(id) => { setSelections(selections.filter((item) => item.candidate_id !== id)); setManifest(null); setSource(null) }} create={(payload) => { void createDraft(payload) }} loadWords={(ids, loaded) => { void loadAmendmentWords(ids, loaded) }} inspect={(span, parse) => { void inspect(span, parse, [], [span]) }} />
       <Button className="mt-3" variant="secondary" disabled={busy || numericalPending} onClick={() => { setSelections([]); setManifest(null); setSource(null); setPublished(false); setDraftNumber(draftNumber + 1); pending.current.clear() }}>Start a new publication draft</Button>
       {manifest && <BuildPanel key={manifest.id} manifest={manifest} published={published} busy={busy} publish={() => { void publishBuild('publish') }} rebuild={() => { void publishBuild('rebuild') }} inspect={(span, parse, contexts, supports) => { void inspect(span, parse, contexts, supports) }} />}
       {source && <SourceViewer key={`${source.evidence.record.id}:${source.evidence.source_sha256}`} source={source} bytes={source.bytes} />}

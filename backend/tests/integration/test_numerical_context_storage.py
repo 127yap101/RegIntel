@@ -107,11 +107,13 @@ def register_issuer(database: DatabaseSettings, user: User, identity: str) -> No
     )
 
 
-@pytest.fixture
-def inspection(
-    auth_database: DatabaseSettings, tmp_path: Path, request: pytest.FixtureRequest
+def prepare_inspection(
+    auth_database: DatabaseSettings,
+    tmp_path: Path,
+    *,
+    approvals: str = "all",
+    metadata: UploadMetadata | None = None,
 ) -> InspectionContext:
-    approvals = getattr(request, "param", "all")
     case = authored(tmp_path)
     seed_users(
         auth_database,
@@ -133,7 +135,7 @@ def inspection(
     stored = stage.finish()
     job = JobRepository(auth_database).submit(
         stored,
-        UploadMetadata(company_name_raw=ISSUER, document_type="RHP"),
+        metadata or UploadMetadata(company_name_raw=ISSUER, document_type="RHP"),
         settings.configuration_sha256,
         user.id,
         user.auth_version,
@@ -194,6 +196,13 @@ def inspection(
         learner,
         storage.root / stored.blob.storage_key,
     )
+
+
+@pytest.fixture
+def inspection(
+    auth_database: DatabaseSettings, tmp_path: Path, request: pytest.FixtureRequest
+) -> InspectionContext:
+    return prepare_inspection(auth_database, tmp_path, approvals=getattr(request, "param", "all"))
 
 
 def test_inspection_uses_current_approved_snapshots_and_never_writes(inspection: InspectionContext):

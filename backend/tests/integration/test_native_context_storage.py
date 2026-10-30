@@ -3,6 +3,7 @@
 import json
 from concurrent.futures import ThreadPoolExecutor
 from dataclasses import dataclass, replace
+from pathlib import Path
 from uuid import UUID, uuid4
 
 import psycopg
@@ -45,8 +46,9 @@ class NativeStoredFixture:
     record: NumericalContextRecord
 
 
-@pytest.fixture
-def unsealed(inspection: InspectionContext, tmp_path) -> NativeStoredFixture:
+def prepare_native_context(
+    inspection: InspectionContext, tmp_path: Path, metadata: UploadMetadata | None = None
+) -> NativeStoredFixture:
     source = inspection.source
     with source.connect() as connection:
         row = connection.execute(
@@ -82,12 +84,17 @@ def unsealed(inspection: InspectionContext, tmp_path) -> NativeStoredFixture:
     stage.write(inspection.source_path.read_bytes())
     job = JobRepository(inspection.database).submit(
         stage.finish(),
-        UploadMetadata(company_name_raw=ISSUER, document_type="RHP"),
+        metadata or UploadMetadata(company_name_raw=ISSUER, document_type="RHP"),
         result.configuration.processing_configuration_sha256,
         inspection.user.id,
         inspection.user.auth_version,
     )
     return NativeStoredFixture(inspection, result, job, record)
+
+
+@pytest.fixture
+def unsealed(inspection: InspectionContext, tmp_path) -> NativeStoredFixture:
+    return prepare_native_context(inspection, tmp_path)
 
 
 @pytest.fixture

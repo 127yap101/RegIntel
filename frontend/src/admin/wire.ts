@@ -5,6 +5,7 @@ import { parseContract } from '../contracts/runtime'
 import { sameValue } from '../contracts/equality'
 import { checkNumericalObservation } from '../published/native'
 import { checkNumericalAcceptance, checkNumericalCandidate, checkNumericalPacket, checkNumericalPreparation, checkNumericalSnapshot } from './numerical'
+import { checkAmendmentSupport, checkManifestAmendments } from './amendments'
 export { sameValue } from '../contracts/equality'
 import type * as T from './generated'
 import schema from './schema.json'
@@ -20,6 +21,7 @@ export interface Wire {
   numerical_review: T.ReviewedNumericalContext; numerical_preparation: T.NumericalPublicationPreparation
   numerical_candidate_request: T.NumericalCandidateRequest; numerical_candidate: T.StoredNumericalCandidate
   numerical_acceptance_request: T.NumericalAcceptanceRequest; numerical_acceptance: T.StoredNumericalAcceptance
+  native_amendment_words: T.NativeAmendmentWords
 }
 const ajv = new Ajv2020({ strict: true, coerceTypes: false, removeAdditional: false })
 addFormats(ajv, { mode: 'full' }); ajv.addSchema(schema)
@@ -27,6 +29,7 @@ const validators = Object.fromEntries(Object.entries(schema.properties).map(([ke
 
 export function checked<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
   if (!validators[kind](value)) throw new Error('Administrator contract is invalid')
+  if (kind === 'native_amendment_words') checkAmendmentSupport(value as T.NativeAmendmentWords)
   return value as Wire[K]
 }
 
@@ -43,6 +46,7 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
   if (kind === 'validation' && meta.versions.parse_version_id !== (data as T.ValidationData).run.parse_version_id) throw new Error('Validation parse differs')
   if (kind === 'manifest') {
     const manifest = data as T.CorpusManifest
+    checkManifestAmendments(manifest)
     const ids = manifest.observations.map((item) => item.id)
     if (new Set(ids).size !== ids.length || manifest.active_observation_ids.some((id) => !ids.includes(id)) || manifest.new_acceptances.some((item) => !manifest.observations.some((stored) => sameValue(stored, item.observation)))) throw new Error('Build scope differs')
     for (const item of manifest.observations) { if (item.quantity) parseContract('QuantitativeValue', item.quantity); checkNumericalObservation(item) }

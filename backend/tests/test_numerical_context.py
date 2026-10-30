@@ -58,6 +58,9 @@ class Options:
     currency: tuple[str, ...] = (CURRENCY,)
     basis: str | None = None
     from_ocr: bool = False
+    document_title: str | None = None
+    amendment_reference: str | None = None
+    amendment_statement: str | None = None
 
 
 @dataclass(frozen=True)
@@ -76,6 +79,8 @@ def authored(tmp_path: Path, options: Options | None = None) -> AuthoredContext:
     pdf = PdfWriter()
     pdf.add_blank_page(width=600, height=800)
     pdf.add_blank_page(width=600, height=800)
+    if options.document_title:
+        pdf.add_metadata({"/Title": options.document_title})
     pdf.write(source)
     source_sha = hashlib.sha256(source.read_bytes()).hexdigest()
     config: dict[str, object] = {"authored": "No SDK, model or transcription claim"}
@@ -159,6 +164,10 @@ def authored(tmp_path: Path, options: Options | None = None) -> AuthoredContext:
         phrase(f"currency-{index}", text, 30, 240 - 50 * index)
     if options.basis:
         phrase("basis", options.basis, 30, 290)
+    if options.amendment_reference:
+        phrase("amendment-reference", options.amendment_reference, 30, 180)
+    if options.amendment_statement:
+        phrase("amendment-statement", options.amendment_statement, 30, 140)
     raw: dict[str, object] = {
         "status": "success",
         "errors": [],
