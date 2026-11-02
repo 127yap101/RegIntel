@@ -1,0 +1,803 @@
+{
+  "version": "1.0.0",
+  "recorded_at_utc": "2026-11-02T08:04:20.983943+00:00",
+  "client_date": "2026-11-02",
+  "client_timezone": "Asia/Calcutta",
+  "base_commit": "cbcd5b7f17bfeacc7cc9417aca8d75f56ef63048",
+  "branch": "codex/m2-comparison",
+  "status": "VERIFIED_LOCAL_FIFO_ANALYTICS; VERIFY_CONTAINING_COMMIT_CI",
+  "all_modules_complete": false,
+  "calculation_policy": {
+    "name": "FIFO",
+    "scope": "Read-only virtual simulator analytics; not a tax/compliance policy",
+    "order": "Immutable ledger sequence, oldest executed purchases first, separately per company",
+    "allocated_cost": "Sum of consumed share quantities times their original committed purchase prices",
+    "remaining_cost": "Original purchase cost of the unsold FIFO lots",
+    "realized_result": "Committed sale proceeds minus allocated purchase cost",
+    "net_cash_flow": "Committed sale proceeds minus all executed purchase spending",
+    "arithmetic": "Python Decimal; local precision 512; whole shares; exact INR cents; zero fees; no division/averaging/rounding",
+    "rejected_orders": "No lot or financial movement",
+    "client_validation": "Exact integer cents using BigInt; no authoritative floating-point arithmetic"
+  },
+  "change": [
+    "Require complete replay-verified selected ledger before deriving cost allocation",
+    "Expose explicit FIFO method, realized_cost_basis, remaining_cost_basis and realized_result per company and summary",
+    "Validate purchase-cost conservation, realized results, cash flow, canonical company membership and complete company totals",
+    "Match analytics to selected account identity, version, order count, cash and holdings before display",
+    "Show cumulative realized/remaining amounts without labelling remaining purchase cost as market value",
+    "Expose original committed unit price and expandable quote/source/version inputs in immutable history",
+    "Keep historical prefixes, idempotent retries, ownership, missing quotes and complete-ledger limits intact"
+  ],
+  "verification": {
+    "backend_full_non_integration": {
+      "tests": 2495,
+      "passed": 2489,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 6,
+      "case_seconds": 485.49,
+      "local_artifact": ".cache/fifo-backend-final-20261102.xml",
+      "sha256": "fd55cef87d0e1013125654b812123e91ce3e88d9c0ea78a7a9ab36d1fef774e3",
+      "skip_reasons": [
+        "Host cannot create an unprivileged symlink: [WinError 1314] A required privilege is not held by the client: 'D:\\\\RegIntel\\\\.cache\\\\worktrees\\\\m2-comparison\\\\.cache\\\\fifo-backend-final-tmp-20261102\\\\test_real_symlink_directory_ca0\\\\outside' -> 'D:\\\\RegIntel\\\\.cache\\\\worktrees\\\\m2-comparison\\\\.cache\\\\fifo-backend-final-tmp-20261102\\\\test_real_symlink_directory_ca0\\\\models\\\\engine'",
+        "POSIX umask and mode contract",
+        "POSIX mode contract",
+        "Named FIFO boundary requires a POSIX filesystem.",
+        "Windows does not permit symbolic-link creation in this test account",
+        "Windows does not permit symbolic-link creation in this test account"
+      ]
+    },
+    "frontend_all_units": {
+      "tests": 403,
+      "passed": 403,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 12.026,
+      "local_artifact": ".cache/fifo-frontend-final-20261102.xml",
+      "sha256": "69aefd61aad2b27fd29826a5005e6b80d460e279e07583be717088f6ca2b66c9"
+    },
+    "chromium_all_modules": {
+      "tests": 67,
+      "passed": 67,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 423.325,
+      "local_artifact": ".cache/fifo-browser-final-20261102.xml",
+      "sha256": "b744ac140503ec4871cd08caf280effca9343f5229fedf46a22f578f0c55b07f"
+    },
+    "owned_postgresql_http": {
+      "fifo_owned_prefixes_and_http": {
+        "tests": 4,
+        "passed": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 12.379,
+        "local_artifact": ".cache/fifo-owned-final-20261102.xml",
+        "sha256": "e65cab6cefaf0aab1c180ccd79fda47ec889e75db3bb435722321269339b8368"
+      },
+      "existing_portfolio_execution": {
+        "tests": 25,
+        "passed": 25,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 46.115,
+        "local_artifact": ".cache/fifo-portfolio-final-20261102.xml",
+        "sha256": "8e98424defb3157d73774c679a7217a1450947da7fd61020db54f1a019df80dc"
+      },
+      "existing_portfolio_history": {
+        "tests": 6,
+        "passed": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 13.876,
+        "local_artifact": ".cache/fifo-history-final-20261102.xml",
+        "sha256": "0899b41f9106620cf2395e03696d978f370dfbc326aa63af4b3f929c4eff3a1a"
+      }
+    },
+    "distinct_owned_postgresql_http_passed": 35
+  },
+  "static_generated": {
+    "commands": 13,
+    "all_passed": true,
+    "ruff_formatted_files": 324,
+    "mypy_sources": 199
+  },
+  "commands": {
+    "static_0": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.224,
+      "log": ".cache/fifo-static_0-20261102.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "recorded_at_utc": "2026-11-02T07:37:09.581532+00:00"
+    },
+    "static_1": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.203,
+      "log": ".cache/fifo-static_1-20261102.log",
+      "log_sha256": "7cf4416cd5618b99fe15b65dec4e7d3214399c518ed6b150878913795050db34",
+      "recorded_at_utc": "2026-11-02T07:37:09.786996+00:00"
+    },
+    "static_2": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--config-file",
+        "backend/pyproject.toml",
+        "backend/src",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 3.801,
+      "log": ".cache/fifo-static_2-20261102.log",
+      "log_sha256": "ee86d723db89564ec6a1e9b09b8eaa06912a7e52ee8980ce72b91ddb441b2a1c",
+      "recorded_at_utc": "2026-11-02T07:37:13.589690+00:00"
+    },
+    "static_3": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-contracts.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.551,
+      "log": ".cache/fifo-static_3-20261102.log",
+      "log_sha256": "4c48f1ed0cfe28fe85affc012a9a15fde654403fb8f9c0ea24327fa0954eeee1",
+      "recorded_at_utc": "2026-11-02T07:37:14.143741+00:00"
+    },
+    "static_4": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-published-reads.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.191,
+      "log": ".cache/fifo-static_4-20261102.log",
+      "log_sha256": "4b9ebaa5166fc23d7c968b1bfe1b3f4de26619ac97c0be257c518c7a8b8c4f44",
+      "recorded_at_utc": "2026-11-02T07:37:16.338136+00:00"
+    },
+    "static_5": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-retrieval.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.287,
+      "log": ".cache/fifo-static_5-20261102.log",
+      "log_sha256": "5d6fa2a210abb531deebe2e7c4d1df740a7c0ff1d8db1187b212ced75da52f4c",
+      "recorded_at_utc": "2026-11-02T07:37:18.627611+00:00"
+    },
+    "static_6": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-admin.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.448,
+      "log": ".cache/fifo-static_6-20261102.log",
+      "log_sha256": "f22c928cf8f580d9994b48f966a0336c554aa7095fda6cc57770d4a6c1c457c8",
+      "recorded_at_utc": "2026-11-02T07:37:21.079615+00:00"
+    },
+    "static_7": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-analysis.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.112,
+      "log": ".cache/fifo-static_7-20261102.log",
+      "log_sha256": "d34a012e3605c81bdea776ddcc48062aadfc82adc4917b0123390cc2004e9b93",
+      "recorded_at_utc": "2026-11-02T07:37:23.194213+00:00"
+    },
+    "static_8": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-analysis-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.021,
+      "log": ".cache/fifo-static_8-20261102.log",
+      "log_sha256": "86533c03e493eef5f8c354522f8a25e6a720ec229fe06dfc3c860012237ed200",
+      "recorded_at_utc": "2026-11-02T07:37:25.217875+00:00"
+    },
+    "static_9": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-read-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.746,
+      "log": ".cache/fifo-static_9-20261102.log",
+      "log_sha256": "1a57edf09a3aa4d37116754537be9abbe767101080ce7448c45f5b005a2ca9c7",
+      "recorded_at_utc": "2026-11-02T07:37:26.966824+00:00"
+    },
+    "static_10": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.503,
+      "log": ".cache/fifo-static_10-20261102.log",
+      "log_sha256": "4d098cce736812169e67303e960b5b6b6af18a0da43a3fdca1b39d7186348818",
+      "recorded_at_utc": "2026-11-02T07:37:28.473007+00:00"
+    },
+    "static_11": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-fixture-cases.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.521,
+      "log": ".cache/fifo-static_11-20261102.log",
+      "log_sha256": "3e0f67c9c99b69ebf389d2644fce3c200c2fd8cfdefe3ad8997adc08e8f44119",
+      "recorded_at_utc": "2026-11-02T07:37:28.997208+00:00"
+    },
+    "static_12": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-learning-portfolio.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.863,
+      "log": ".cache/fifo-static_12-20261102.log",
+      "log_sha256": "ecdc0510240c2e5b25edaca942a3decf3746e439659780f35204413fc02dd4f0",
+      "recorded_at_utc": "2026-11-02T07:37:30.862183+00:00"
+    },
+    "frontend_lint": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "lint"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 21.43,
+      "log": ".cache/fifo-frontend_lint-20261102.log",
+      "log_sha256": "960f1eb37ac4d28430af9bef2c98f32333254854ffde619330f53d373ce0f632",
+      "recorded_at_utc": "2026-11-02T08:02:49.575237+00:00"
+    },
+    "frontend_typecheck": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "typecheck"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 9.269,
+      "log": ".cache/fifo-frontend_typecheck-20261102.log",
+      "log_sha256": "faeaa94bcf7012d86f91ca647580449f56a263fb7eaf572c54789764f60a9b8f",
+      "recorded_at_utc": "2026-11-02T08:02:58.848836+00:00"
+    },
+    "backend_units": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests",
+        "-m",
+        "not integration",
+        "--basetemp",
+        ".cache/fifo-backend-final-tmp-20261102",
+        "-o",
+        "cache_dir=.cache/fifo-backend-final-cache-20261102",
+        "--junitxml",
+        ".cache/fifo-backend-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 516.464,
+      "log": ".cache/fifo-backend_units-20261102.log",
+      "log_sha256": "9097f0696788c19332ab9cb87e717f518b7d4bc59225254b8003a8bfc42e1608",
+      "recorded_at_utc": "2026-11-02T07:53:03.437226+00:00"
+    },
+    "fifo_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_portfolio_fifo_storage.py",
+        "--junit-report",
+        ".cache/fifo-owned-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 17.099,
+      "log": ".cache/fifo-fifo_http-20261102.log",
+      "log_sha256": "3c839c3868040146bdc9b57fd1ded61b6a0eae3f8cad470d29c8704d54b77da1",
+      "recorded_at_utc": "2026-11-02T07:53:20.543983+00:00"
+    },
+    "portfolio_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_portfolio_storage.py",
+        "--junit-report",
+        ".cache/fifo-portfolio-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 50.899,
+      "log": ".cache/fifo-portfolio_http-20261102.log",
+      "log_sha256": "ecde6af5578e0f0e9306832c87139c798e390fb1762c20cc0ba983a5783263ec",
+      "recorded_at_utc": "2026-11-02T07:54:11.446014+00:00"
+    },
+    "history_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_portfolio_history_storage.py",
+        "--junit-report",
+        ".cache/fifo-history-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 18.749,
+      "log": ".cache/fifo-history_http-20261102.log",
+      "log_sha256": "878236bdd5ee447e6310a3df7c9e3c802c1f71e1a7fb952ac78d5c5670ca4a0d",
+      "recorded_at_utc": "2026-11-02T07:54:30.194280+00:00"
+    },
+    "frontend_units": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=../.cache/fifo-frontend-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 74.895,
+      "log": ".cache/fifo-frontend_units-20261102.log",
+      "log_sha256": "8cab02ce0ec5458db2d425fb316820a16905cd59abe106398e176774ec75f10e",
+      "recorded_at_utc": "2026-11-02T07:55:45.094525+00:00"
+    },
+    "frontend_build": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "build"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 30.572,
+      "log": ".cache/fifo-frontend_build-20261102.log",
+      "log_sha256": "314522fc49dab253aa67fb5200cb008ed71b43063100d6168bcecbb0786a1bd4",
+      "recorded_at_utc": "2026-11-02T07:56:15.670426+00:00"
+    },
+    "chromium": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "playwright",
+        "test",
+        "--reporter=list,junit"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 264.592,
+      "log": ".cache/fifo-chromium-20261102.log",
+      "log_sha256": "125a2221ccecb9e291c2798599b6a17967a39f637630f97b1426ff5b32f5d87b",
+      "recorded_at_utc": "2026-11-02T08:00:40.265322+00:00"
+    }
+  },
+  "authored_fixture": {
+    "path": "frontend/src/modules/fifo.fixture.json",
+    "bytes": 29516,
+    "sha256": "1c5ab6768eb548c0a5853c364d3cfe517c6ac145a798d3fcc66fa336682a49df",
+    "source": "Actual owned authenticated PostgreSQL/HTTP capture with fixed engineering prices; not market data or runtime provider configuration",
+    "snapshots": [
+      "buy",
+      "closed",
+      "opening",
+      "partial",
+      "purchases",
+      "reopened"
+    ],
+    "complete_json_round_trips": 18,
+    "original_capture_identity": {
+      "original_capture_path": ".cache/migration-tmp-9ce3767874ed480bb40411eef20470e1/test_fifo_http_retains_exact_d0/portfolio-fifo-wire.json",
+      "original_capture_bytes": 29516,
+      "captured_fixture_sha256": "1c5ab6768eb548c0a5853c364d3cfe517c6ac145a798d3fcc66fa336682a49df",
+      "capture_and_checked_in_fixture_identical": true,
+      "produced_by": "test_portfolio_fifo_storage.py::test_fifo_http_retains_exact_decimal_costs_source_membership_and_owner_boundaries",
+      "capture_run": ".cache/fifo-owned-20261030.xml"
+    }
+  },
+  "independent_oracles": {
+    "partial_sale": {
+      "purchases": [
+        "2 at 10.00",
+        "3 at 20.00"
+      ],
+      "sale": "4 at 30.00",
+      "allocated_cost": "60.00",
+      "remaining_cost": "20.00",
+      "realized_result": "60.00",
+      "net_cash_flow": "40.00",
+      "cash": "100040.00"
+    },
+    "closed": {
+      "allocated_cost": "80.00",
+      "remaining_cost": "0.00",
+      "realized_result": "55.00",
+      "net_cash_flow": "55.00",
+      "cash": "100055.00"
+    },
+    "reopened": {
+      "allocated_cost": "80.00",
+      "remaining_cost": "14.00",
+      "realized_result": "55.00",
+      "net_cash_flow": "41.00",
+      "cash": "100041.00"
+    },
+    "high_range_cent": {
+      "buy_price": "90071992547409.93",
+      "sale_price": "90071992547409.94",
+      "realized_result": "0.01"
+    },
+    "other_coverage": [
+      "losses",
+      "interleaved companies",
+      "rejected buys/sales",
+      "low ambient Decimal precision",
+      "foreign/unknown portfolio versions",
+      "read-only database/quote calls",
+      "stable historical prefixes",
+      "retry without duplicate lots",
+      "disabled quotes after successful engineering executions",
+      "self-consistent but different account cash",
+      "remaining-holdings mismatch",
+      "narrow-screen overflow",
+      "stale totals cleared during prefix loading"
+    ]
+  },
+  "attempts": [
+    {
+      "stage": "wire_json_mode",
+      "tests": 66,
+      "passed": 61,
+      "failures": 5,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 0.49,
+      "local_artifact": ".cache/fifo-wire-python-mode-attempt-20261030.xml",
+      "sha256": "0616b12e9e32c909d96c1efdb295a109cbc7febd860070c263f8ef14cc9ac8e3",
+      "outcome": "Five test-only failures used strict Python validation for ISO JSON timestamps. Switched the fixture round-trip to TypeAdapter.validate_json; runtime strict contracts were not relaxed. Final full backend checks include all 18 wire cases."
+    },
+    {
+      "stage": "initial_browser_display_count",
+      "tests": 2,
+      "passed": 1,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 34.45,
+      "local_artifact": ".cache/fifo-browser-focused-20261102.xml",
+      "sha256": "e3b1ecf0d421d5637d06d1fad2602f59ad1aeaa2d899ed0473279d9cf11cf3df",
+      "outcome": "The test expected two matching 60.00 labels, but allocated cost and realized result legitimately share that value, producing three labels. Corrected the assertion; financial values were already correct. The final complete browser suite must pass."
+    },
+    {
+      "stage": "frontend_lint",
+      "issues": 5,
+      "local_artifact": ".cache/fifo-frontend-lint-initial-20261102.log",
+      "outcome": "Removed redundant non-null assertions on statically known authored fixture objects without disabling checks."
+    },
+    {
+      "stage": "frontend_typecheck",
+      "issues": 7,
+      "local_artifact": ".cache/fifo-frontend-typecheck-initial-20261102.log",
+      "outcome": "Negative tests now corrupt mutable raw wire fixture JSON and decode it before comparing snapshots; decoded readonly contracts remain readonly."
+    },
+    {
+      "stage": "earlier_browser_launch",
+      "outcome": "No completed 30 October browser report was found on resume. No result is claimed for that launch; final verification is recorded separately."
+    }
+  ],
+  "runtime": {
+    "host": "Windows x64",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "pnpm": "11.19.0",
+    "browser": "Chromium",
+    "test_ports": [
+      18073,
+      5187
+    ]
+  },
+  "operational_effects": {
+    "new_migrations": [],
+    "migrations_1_to_22_unchanged": true,
+    "new_dependencies": [],
+    "new_required_environment_variables": [],
+    "new_http_endpoints": [],
+    "original_database_migrated": false,
+    "ledger_or_quote_rows_rewritten": false,
+    "paid_model_calls": 0,
+    "external_quote_provider_calls": 0,
+    "fixed_engineering_test_provider_used": true,
+    "quotes": "UNAVAILABLE_BY_USER_CHOICE",
+    "public_ports_added": [],
+    "existing_regintel_containers_started": [
+      "postgres",
+      "redis",
+      "neo4j"
+    ],
+    "other_docker_applications_modified": false
+  },
+  "owned_database_cleanup": {
+    "checked_at_utc": "2026-11-02T07:55:59.912764+00:00",
+    "exact_owned_database_names": [
+      "regintel_test_m0_3_215a03b12158497eaed8c6e0fab09684",
+      "regintel_test_m0_3_a19fbec80e324f4793b7719b33530cba",
+      "regintel_test_m0_3_bbfc6e4dd681490aa353239b068506a0",
+      "regintel_test_m0_3_c63afa06f8bf4f5099c73362e00b5688"
+    ],
+    "remaining_owned_databases": [],
+    "read_only_cleanup_verification": true,
+    "original_migration_history": {
+      "before": {
+        "versions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "history_sha256": "9e3bf4762b2e0563326f7b64bb7ee9d48d8a11e4888c169c27856c107e056aae",
+        "checked_at_utc": "2026-11-02T07:46:00.124655+00:00"
+      },
+      "after": {
+        "versions": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "history_sha256": "9e3bf4762b2e0563326f7b64bb7ee9d48d8a11e4888c169c27856c107e056aae",
+        "checked_at_utc": "2026-11-02T07:55:58.914417+00:00"
+      },
+      "unchanged": true
+    }
+  },
+  "base_ci": {
+    "checked_at_utc": "2026-10-30T10:48:03.304898+00:00",
+    "head_revision": "cbcd5b7f17bfeacc7cc9417aca8d75f56ef63048",
+    "remote_head_revision": "cbcd5b7f17bfeacc7cc9417aca8d75f56ef63048",
+    "branch": "codex/m2-comparison",
+    "run": {
+      "id": 41024128636,
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/41024128636",
+      "status": "completed",
+      "conclusion": "success",
+      "head_revision": "cbcd5b7f17bfeacc7cc9417aca8d75f56ef63048",
+      "jobs": [
+        {
+          "name": "Foundation (windows-2025)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Foundation (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "containing_commit_ci": "Verify independently after the authorized push."
+  },
+  "limits": [
+    "All four real numerical inputs remain unresolved and seven M3 starter drafts remain unreviewed. Engineering fixtures cannot approve or publish real content.",
+    "M1 real amendment-pair acceptance, M2 real comparison acceptance, M3 content review and M4 acceptance/evaluation remain outstanding.",
+    "The local database selection covers portfolio/FIFO/history, not the full integration suite; exact containing-commit CI must be checked separately.",
+    "Quotes remain unavailable, so a fresh interactive account cannot perform a successful priced trade without a reviewed runtime dataset/provider.",
+    "Remaining purchase cost is not current market value. Unrealized results, market-based allocation and returns remain unavailable.",
+    "This simulator uses whole shares, INR and zero fees. It does not model corporate actions, fractional shares or tax rules.",
+    "Feature/corpus freeze, held-out research evaluation and fresh-clone handoff remain incomplete.",
+    "Production build retains its existing large-chunk advisory."
+  ],
+  "source_sha256": {
+    "backend/src/regintel/portfolio/analytics.py": "e11ae3b68db66b360e63f0ef8012c668062309f3362d6b5ccb4e7ba7f54770cf",
+    "backend/src/regintel/portfolio/cost_basis.py": "b341311a96bf1a2feadacddf2fa75a03636ecbc020010ed0d29fda9784f606a8",
+    "backend/tests/test_portfolio_analytics.py": "48d7b5f9b633f7c7afced8b57f10ffd5a0b4b56fd7efc0b02852eb1ffdd94214",
+    "backend/tests/test_portfolio_fifo_wire.py": "8dfb69389e73df3bb66d2aa5cc39d043854656948dd0cf08cded43a56f16de11",
+    "backend/tests/integration/test_portfolio_fifo_storage.py": "6c1ad6f4782af82861c7d7d8eee7cfab76ace32a1fccd1679d4a7836f9b37a23",
+    "frontend/src/modules/Analytics.tsx": "428b10f151a7442b6a4be1e679860e294bdde1c53d1f89de18b5efbb50e2211f",
+    "frontend/src/modules/PortfolioHistory.tsx": "c4d1d98414484e959fcb0c8c53b6f3085ee886262295aacb975c8c6f9be5f00c",
+    "frontend/src/modules/Workspace.tsx": "a612751299f4295254cdab4e591b9b7e5a791c0ef8b9de8ef5c5a8470a2765fa",
+    "frontend/src/modules/api.test.ts": "e1ddd0bcf5be5f70f525e292c8f774e06511bc71f01fdd78884f000749076da6",
+    "frontend/src/modules/api.ts": "d1c4b3c9f43886bf92172894d9126011423b3accebdfa18f8dd8e43eb0343bee",
+    "frontend/src/modules/fixtures.test-support.ts": "2a5cf5f085bd2ca71c902caaf67a9e5107369346ba751e2b43335ababd868954",
+    "frontend/src/modules/analyticsAmounts.test.ts": "2a32b3b7387245946f46672e6ee3fdbf1b28f5894723c4209ae34d4dcbdb9a53",
+    "frontend/src/modules/analyticsAmounts.ts": "735a6fc39063bdc2658cc48205312466265ddeccb6fe4d1d8c44ca5c50ef50ff",
+    "frontend/src/modules/fifo.fixture.json": "1c5ab6768eb548c0a5853c364d3cfe517c6ac145a798d3fcc66fa336682a49df",
+    "frontend/tests/e2e/learning-portfolio.spec.ts": "b626dc163d83227ed56248751c5ca2f6e7f084dc3b841f1aeb2ff01afc7917e8"
+  },
+  "migration_sha256": {
+    "infra/migrations/0001_foundation.sql": "496889943f5fda3a674b6f1a5e469267b3303f8c3293d802d4ffc48a482c68d6",
+    "infra/migrations/0002_auth.sql": "c4b6a5f95f313e527182804ff2c0263f0661a41a3fd648038795930420f05291",
+    "infra/migrations/0003_ingestion.sql": "aa67358f920784a50ddb7b39fef9e1f9061f3753b0034c2c02f3e338d26a89f6",
+    "infra/migrations/0004_jobs.sql": "e2be2e54071e776ff5155086333bdff524510f654138ccc0a0aef82e0894b534",
+    "infra/migrations/0005_evidence.sql": "89369f5d29628fba557094d51754e6b7151cdc5910aed64ec837576e35db9f0d",
+    "infra/migrations/0006_entities.sql": "8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249",
+    "infra/migrations/0007_candidates.sql": "5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e",
+    "infra/migrations/0008_validation.sql": "7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d",
+    "infra/migrations/0009_processing.sql": "806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60",
+    "infra/migrations/0010_processing_evidence_order.sql": "1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83",
+    "infra/migrations/0011_publication.sql": "310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6",
+    "infra/migrations/0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+    "infra/migrations/0013_numerical_context.sql": "721bf092164df938a369ccff4b2b4268b8b1e79a4f5b579696a3687a8c57a319",
+    "infra/migrations/0014_native_context_evidence.sql": "2ed81a33a55a38105a820aab69550c1e1ce5846fecf0d9f5d50023d3018fe3d3",
+    "infra/migrations/0015_learning.sql": "c6091c96d844abf503ec995816b937a76ee9b1703136bae4c013b5f4cd447c9c",
+    "infra/migrations/0016_virtual_portfolio.sql": "4121ccccfddd82b2ab5a322bed65e48b3eedd2ee79eeac49101faec34942461a",
+    "infra/migrations/0017_bound_numerical_gates.sql": "59afcf5759eab4ef874f25fe84f8975ee2da720c40dbb8cd7c6ecc55c14a0288",
+    "infra/migrations/0018_numerical_context_reviews.sql": "b51fafe9ae307ccc7b0bfa3c9b8869fea9f8df79b2c401916fae48a4e7786ac7",
+    "infra/migrations/0019_numerical_candidates.sql": "2dc243090780b51f90f7f5bec8b5d477212a08b90ff9d547771418531c088179",
+    "infra/migrations/0020_numerical_acceptances.sql": "38e58b549d7519c1fe81fec0bc275c5bc6d66f004fb47bfe92819197721c4522",
+    "infra/migrations/0021_unified_numerical_publication.sql": "db3313975d5d02632d7acabfabbf390a8dcb2e230fc32d9a2195fe6c1dac4c66",
+    "infra/migrations/0022_native_amendment_support.sql": "cf87439845c72db64063db2971c66f9294ff11fac077a98313bec514f8106ab2"
+  }
+}

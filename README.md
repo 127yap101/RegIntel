@@ -16,6 +16,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Unified numerical publication](docs/UNIFIED_NUMERICAL_PUBLICATION.md): publish explicitly accepted native numerical evidence through the shared M1 corpus used by all four modules.
 - [Numerical administrator workflow](docs/NUMERICAL_ADMIN_WORKFLOW.md): inspect saved native gates, record context and acceptance decisions, and select candidates for the existing publication draft.
 - [Native amendment evidence](docs/NATIVE_AMENDMENT_SUPPORT.md): retain separate original words for reviewed parent/child identity, references, effects and dates.
+- [Virtual portfolio FIFO analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md): inspect exact realized results and remaining purchase costs through a selected immutable ledger version.
 - `docs/README.md`: finalized specification index.
 - `docs/IMPLEMENTATION_PLAN.md`: authorized phase sequence and acceptance gates.
 - `docs/PHASE_LOG.md`: actual execution history and unresolved work.
@@ -23,10 +24,12 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-The latest verified engineering checkpoint adds
-[native amendment support](docs/NATIVE_AMENDMENT_SUPPORT.md) through the common
-publication path used by M1–M4. See its
-[measured report](data/native-amendment-validation-report.json) and
+The latest engineering checkpoint adds
+[FIFO portfolio analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md), with exact realized
+sold-share results and remaining purchase costs. It builds on the shared
+[native amendment publication path](docs/NATIVE_AMENDMENT_SUPPORT.md) used by
+M1–M4. See the
+[FIFO measured report](data/portfolio-fifo-validation-report.json) and
 [current state](CURRENT_STATE.md) for current checks and remaining real-data /
 content acceptance. Earlier implementation snapshots below retain their original
 checkpoint counts; they do not establish full-project completion.
@@ -121,14 +124,15 @@ Decimal educational examples and extractive published-filing context. M4 adds
 per-user virtual accounts, immutable quote/order records, exact cash/holdings and
 safe request retries. Administrators can find saved learning drafts by review
 state and term. Replay-verified portfolio cash-flow analytics expose spend,
-proceeds and closed-position results with exact ledger/version membership;
-open-position profit stays unavailable. The browser has separate learning and
+proceeds, FIFO realized results, remaining purchase costs and closed-position
+results with exact ledger/version membership. Unrealized results stay unavailable.
+The browser has separate learning and
 virtual-portfolio workspaces. No financial glossary is automatically approved; runtime quotes and
 market valuation remain unavailable. Successful buys/sells are verified using
 labelled fixed-price engineering providers in disposable tests. See the
 [module run/test guide](docs/M3_M4_RUN_AND_TEST.md),
 [delivery plan](docs/M3_M4_IMPLEMENTATION_PLAN.md) and
-[latest measured report](data/review-history-validation-report.json).
+[FIFO measured report](data/portfolio-fifo-validation-report.json).
 Administrators can also load [seven unreviewed starters](docs/M3_STARTER_DRAFT_SOURCES.md)
 for explicit editing/review. Portfolio account/history/analytics can select one
 owned immutable version, keeping dependent reads consistent when later orders arrive.

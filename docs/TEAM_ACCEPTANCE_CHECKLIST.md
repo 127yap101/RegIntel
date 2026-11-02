@@ -1,7 +1,7 @@
 # Team acceptance checklist for M1–M4
 
-Prepared 28 October 2026 for the user's approximate 7–10 day submission window
-reported on 27 October. Use `codex/m2-comparison`; `main` retains the earlier M1
+Prepared 28 October 2026; updated 2 November 2026. The user reported an approximate
+7–10 day submission window on 27 October. Use `codex/m2-comparison`; `main` retains the earlier M1
 manual-testing checkout. This checklist records work to do, not completed review
 or module acceptance. No reviewer, approval or gold label is assigned by this file.
 
@@ -93,6 +93,15 @@ still needed before a successful interactive trading demonstration; none is
 enabled by this checklist. Market valuation and remaining analytics limitations
 must stay visible.
 
+The [FIFO analytics guide](PORTFOLIO_FIFO_ANALYTICS.md) adds an independently
+specified fixed-price acceptance example. Check partial sales, losses, final
+closure and reopening against its allocated cost, remaining cost and realized
+result. Realized sold-share results differ from cash flow while shares remain;
+remaining purchase cost is not market value. Selected history versions must
+retain their exact amounts after later orders, and a response with inconsistent
+cash/holdings must not display financial totals. Quote/source details must show
+the original committed inputs. These tests do not configure a runtime provider.
+
 ## Report findings and finish evaluation
 
 For a bug, send the branch/commit, module, steps, expected versus actual behavior,
@@ -102,7 +111,9 @@ when relevant; do not share passwords, tokens or `.env` files.
 The team must also check reviewed real-filing labels and expected calculations
 for the [evaluation plan](04_EVALUATION_PLAN_FINAL.md), then reproduce setup/demo
 from a fresh clone. Current engineering test counts do not establish research
-accuracy, amendment effectiveness or full project completion. The remaining
-numerical administration, native amendment support and acceptance integration
-are the agent's implementation work; the team's source review and manual testing
-can proceed alongside it.
+accuracy, amendment effectiveness or full project completion. Numerical
+administration, native amendment support and the common publication path
+now have engineering implementations. Genuine numerical source/context approval,
+real amendment-pair acceptance, reviewed learning content and real-data evaluation
+remain outstanding. The agent can continue acceptance/handoff implementation
+while the team inspects sources and tests the existing workflows.

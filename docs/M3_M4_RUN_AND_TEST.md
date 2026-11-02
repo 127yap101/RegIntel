@@ -1,6 +1,6 @@
 # Run and test the learning and virtual-portfolio baseline
 
-Updated 25 October 2026. These modules are on `codex/m2-comparison` in
+Updated 2 November 2026. These modules are on `codex/m2-comparison` in
 127yap101/RegIntel. Pull that branch to work on M2–M4. The original `main` checkout
 and its saved M1 test corpus have not been migrated or replaced.
 
@@ -24,7 +24,7 @@ already populated Docker volume without following the existing setup guide.
 
 After the documented local `.env` and `.env.auth` initialization, run these from
 the new clone. These commands intentionally migrate **that clone's configured
-database**, through migration 18. On Yash's current laptop, preserve the original
+database**, through migration 22. On Yash's current laptop, preserve the original
 `D:\RegIntel` database and use the disposable checks below instead.
 
 ```powershell
@@ -111,9 +111,14 @@ publication and evidence prerequisites remain mandatory.
 5. Refresh the portfolio and inspect its immutable history and **Ledger cash-flow
    analytics**. Analytics replay the complete selected ledger and show executed /
    rejected counts, buy spend, sale proceeds and net virtual cash flow. A company's
-   closed-position result is shown only when no shares remain. Selling part of a
-   position, or reopening it, keeps that result unavailable. Net cash flow while
-   shares remain is not profit. Missing quotes still produce zero cash movement.
+   closed-position result is shown only when no shares remain. Realized results
+   for sold shares now use their oldest purchase costs first (FIFO), with allocated
+   and remaining purchase costs shown separately. Partial sales and reopened
+   positions retain their realized results; net cash flow remains a different
+   amount. Expand **Quote and source versions** in history to inspect committed
+   prices and their source/version IDs. See the [FIFO guide](PORTFOLIO_FIFO_ANALYTICS.md)
+   for the exact fixed-price example and contract checks. Missing runtime quotes
+   still produce zero cash movement.
 6. Successful fixed-price
    buys, partial/final sells, insufficient cash, oversells and concurrent retries
    are tested through an explicitly labelled engineering provider in disposable
@@ -134,8 +139,8 @@ return404. The browser first loads the account and pins its dependent reads to
 that version, so later orders do not mix into an earlier view. Refresh selects the
 latest version. This changes neither old ledger entries nor quote availability.
 
-Market valuation/total value are explicitly unavailable. Returns, open-position
-P&L, allocation and a reviewed quote-data workflow remain further M4 work. No real
+Market valuation/total value are explicitly unavailable. Returns, unrealized
+P&L, market-value allocation and a reviewed quote-data workflow remain further M4 work. No real
 money, recommendation, live execution or model-controlled balance change is added.
 
 ## Automated checks
@@ -152,6 +157,7 @@ With the existing data services running and this clone's `.env` configured:
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_bound_numerical_gate_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_numerical_context_review_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_history_storage.py
+.\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_fifo_storage.py
 pnpm --dir frontend exec playwright test tests/e2e/learning-portfolio.spec.ts --workers=1
 ```
 
@@ -159,15 +165,17 @@ Each database command creates and removes only its own `regintel_test_…` datab
 on the existing local PostgreSQL service. The browser scenarios use authored
 responses and are separate from real HTTP/PostgreSQL checks. Configure
 `REGINTEL_TEST_API_PORT` and `REGINTEL_TEST_WEB_PORT` when existing manual-test
-servers occupy the default ports; verification here used 8012 and 5185 on loopback.
+servers occupy the default ports; the FIFO checkpoint uses 18073 and 5187 on loopback.
 On this shared laptop, use the documented isolated-checkout Python path rather
 than reinstalling the main editable environment.
 
-See [the review/history report](../data/review-history-validation-report.json),
+See [the FIFO report](../data/portfolio-fifo-validation-report.json),
+[the review/history report](../data/review-history-validation-report.json),
 [the previous continuation report](../data/module-continuation-validation-report.json),
 [the first implementation report](../data/learning-portfolio-validation-report.json) and
 [current state](../CURRENT_STATE.md) for actual results and remaining acceptance.
 The [versioned numerical gate](M2_BOUND_NUMERICAL_GATES.md) checks the four real
 bound records separately from legacy M1 acceptance. Real numerical acceptance
-still needs its complete acceptance adapter, genuine review and publication;
-M3/M4 do not bypass those gates.
+uses the implemented native acceptance adapter and shared publication workflow.
+The four saved real inputs still need genuine source/context review and
+acceptance/publication; M3/M4 do not bypass those gates.

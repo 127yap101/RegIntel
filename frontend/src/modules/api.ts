@@ -7,6 +7,7 @@ import { PublishedApi } from '../published/api'
 import type { DefinitionDraft, ModuleWire, OrderRequest, StoredDefinition } from './generated'
 import schema from './schema.json'
 import { checkNumericalObservation } from '../published/native'
+import { checkAnalyticsAmounts } from './analyticsAmounts'
 
 export type { ModuleWire } from './generated'
 
@@ -102,6 +103,7 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
     if (analytics.state === 'AVAILABLE') {
       if (!analytics.summary || analytics.input_entry_ids.length !== analytics.committed_orders || new Set(analytics.input_entry_ids).size !== analytics.input_entry_ids.length || (analytics.input_entry_ids.at(-1) ?? analytics.account_id) !== analytics.portfolio_version_id || analytics.summary.executed_orders + analytics.summary.rejected_orders !== analytics.committed_orders) throw new ModuleError(0, 'The analytics ledger is incomplete or mixed.')
       for (const item of analytics.companies) if ((item.quantity === 0) !== (item.position_state === 'CLOSED') || (item.closed_position_result !== null) !== (item.position_state === 'CLOSED')) throw new ModuleError(0, 'An open position cannot have a closed-position result.')
+      try { checkAnalyticsAmounts(analytics) } catch (failure: unknown) { throw new ModuleError(0, failure instanceof Error ? failure.message : 'Portfolio analytics do not reconcile.') }
     } else if (analytics.summary !== null || analytics.input_entry_ids.length || analytics.companies.length || analytics.corpus_version_ids.length || analytics.quote_version_ids.length) throw new ModuleError(0, 'Budget-limited analytics cannot contain partial totals.')
   }
   if (kind === 'order') {

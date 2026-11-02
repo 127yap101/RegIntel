@@ -1,5 +1,44 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest FIFO continuation, 2 November: read
+`docs/PORTFOLIO_FIFO_ANALYTICS_PLAN.md`, `docs/PORTFOLIO_FIFO_ANALYTICS.md`,
+`data/portfolio-fifo-validation-report.json` and the newest CURRENT_STATE.md entry
+before older snapshots. Work across all four modules, adapt M1 as needed and
+commit/push verified checkpoints to `codex/m2-comparison` remain authorized.
+Immutable evidence/review/amendment/ledger history and acceptance gates remain.
+
+M4 now derives exact cumulative FIFO realized results, allocated sold-share costs
+and remaining purchase costs from the complete replay-verified selected ledger.
+Rejected orders never affect lots; closed/reopened positions retain prior realized
+results. Cost/proceeds/cash/company totals reconcile, and the browser checks the
+selected account's identity, version, count, cash and holdings before displaying
+analytics. Switching prefixes clears old results. History shows committed unit
+prices and expandable source/quote/corpus versions. Remaining cost is not market
+value; runtime quotes, market valuation, unrealized results and returns remain
+unavailable. No provider or runtime price dataset was configured.
+
+Current checks pass 2,489 full non-integration backend cases, 6 existing
+Windows filesystem skips, 403 frontend units, 67 Chromium scenarios
+across all modules, 35 selected owned PostgreSQL/HTTP cases and thirteen
+static/generated checks. Exact owned databases are removed. All 22 migrations
+retain their bytes; the original database remains at migrations 1–11 with an
+identical migration-history hash. No dependency, required setting, migration,
+endpoint or public port is added. The report discloses corrected test-only
+attempts and limits. Full local integration was not rerun. Exact predecessor
+`cbcd5b7` passes all three jobs in GitHub run 41024128636; independently verify the
+containing checkpoint's remote SHA and CI.
+
+Continue real M1 numerical source/context approval and real amendment-pair
+acceptance, then real M2 comparison acceptance and M3 content review. Source intake
+and gate creation still precede the administrator workflow. Four numerical inputs
+remain unresolved, the real comparison acceptance plan remains empty, and seven
+learning starters remain unreviewed. Use `docs/TEAM_ACCEPTANCE_CHECKLIST.md` and
+the genuine saved source records; do not fill acceptance plans with authored
+fixture values, IDs or invented review decisions. Continue M4 acceptance/evaluation,
+feature/corpus freeze, held-out evaluation and fresh-clone handoff. Quotes remain
+unavailable by the user's choice. Do not claim all modules/research complete.
+Earlier checkpoint records below are historical.
+
 Latest native-amendment continuation, 30 October: read
 `docs/NATIVE_AMENDMENT_SUPPORT_PLAN.md`, `docs/NATIVE_AMENDMENT_SUPPORT.md`,
 `data/native-amendment-validation-report.json` and the newest CURRENT_STATE.md

@@ -74,7 +74,7 @@ describe('M3/M4 wire and source versions', () => {
   })
   it('rejects an open-position result rather than presenting its cash flow as profit', () => {
     const data = analytics(true)
-    const company = { company_id: request.company_id, bought_quantity: 3, sold_quantity: 1, quantity: 2, buy_spend: '30.00', sale_proceeds: '12.00', net_cash_flow: '-18.00', position_state: 'OPEN', closed_position_result: '-18.00' }
+    const company = { company_id: request.company_id, bought_quantity: 3, sold_quantity: 1, quantity: 2, buy_spend: '30.00', sale_proceeds: '12.00', net_cash_flow: '-18.00', position_state: 'OPEN', closed_position_result: '-18.00', realized_cost_basis: '10.00', remaining_cost_basis: '20.00', realized_result: '2.00' }
     expect(() => decode('analytics', envelope({ ...data, companies: [company] }, { portfolio_version_id: ids.order }))).toThrow('closed-position result')
   })
   it('reads independently versioned approved glossary and exact educational decimals', () => {

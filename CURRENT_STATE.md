@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-10-30 (Asia/Calcutta).
+Updated: 2026-11-02 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,55 @@ Updated: 2026-10-30 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **FIFO portfolio analytics, 2 November:** M4 now derives cumulative realized
+  sold-share results and allocated/remaining purchase costs from the complete
+  replay-verified selected ledger. Oldest executed purchase lots are consumed
+  first, separately per company, using exact committed prices and Decimal
+  arithmetic. Partial sales, losses, closed/reopened positions and rejected orders
+  retain their exact outcomes. Remaining purchase cost is not current market value.
+  The explicit FIFO simulator policy is not a tax/compliance determination.
+
+- Backend and frontend contracts require `cost_basis_method=FIFO` and the three
+  new amount fields. Purchase costs, proceeds, cash flow and company/summary
+  totals must reconcile. Before display, analytics must also match the selected
+  account ID, version, order count, cash and every remaining holding. Selecting
+  another prefix clears previous analytics while the pinned response loads.
+  History exposes the original committed unit price and expandable quote/source
+  versions. See `docs/PORTFOLIO_FIFO_ANALYTICS.md` and its bounded plan.
+
+- Current verification passes **2,489 full non-integration backend tests**,
+  with 6 existing Windows filesystem skips, **403 frontend units**,
+  **67 Chromium scenarios across all modules**, and **35 selected owned
+  PostgreSQL/HTTP cases** for FIFO, existing execution and history. Lint, strict
+  typing, production build and thirteen static/generated commands pass (Ruff
+  324 files; mypy 199 sources). The report discloses test-only JSON-mode, display-count,
+  lint and readonly-contract corrections. Its six-prefix browser fixture is
+  byte-identical to an actual authored owned HTTP capture and round-trips all 18
+  account/ledger/analytics JSON contracts. See
+  `data/portfolio-fifo-validation-report.json` for measured checks and hashes.
+
+- All 22 migrations retain their bytes. No migration, dependency, required
+  environment setting, new endpoint, runtime provider or public port is added.
+  The original database remains at migrations 1–11 with identical before/after
+  migration-history hashes. Exact owned test databases are removed. Only the
+  existing three RegIntel data containers were restarted; other Docker apps are
+  untouched. Exact predecessor `cbcd5b7` passes all three GitHub jobs in run
+  41024128636. Verify the containing checkpoint's remote SHA and CI independently.
+
+- M1 source/review/amendment/publication rules and M2/M3 consumers remain intact.
+  Runtime quotes remain unavailable by user choice: ordinary interactive orders
+  still record `QUOTES_UNAVAILABLE` without moving cash or holdings. Successful
+  authored price scenarios do not establish a priced runtime demonstration or
+  market performance. Unrealized results, market valuation and returns remain
+  unavailable. The complete integration suite was not rerun locally here.
+
+- Continue the real source/context and acceptance path: all four actual numerical
+  inputs remain unresolved, the real M2 acceptance plan is empty, and seven M3
+  starter drafts remain unreviewed. Real amendment-pair acceptance, remaining
+  module acceptance/evaluation, corpus/feature freeze and fresh-clone handoff
+  remain outstanding. Fixtures cannot approve them; all four modules and research
+  are not complete. Earlier checkpoint counts below are historical.
 
 - **Native amendment evidence and shared correction, 30 October:** the existing
   publication workflow now accepts explicit `native-amendment-words-1` support for

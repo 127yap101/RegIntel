@@ -5,6 +5,7 @@ import { analytics, definition, envelope, glossary, ids, opening, published, rej
 import { apiOrigin, webOrigin } from '../ports'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
+import fifo from '../../src/modules/fifo.fixture.json' with { type: 'json' }
 
 const starterPack: unknown = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../data/learning-starter-drafts.json'), 'utf8'))
 
@@ -105,6 +106,63 @@ async function signIn(page: Page, mode: 'learning' | 'portfolio', reload = false
   await page.getByLabel('Password', { exact: true }).fill('authored-password')
   await page.getByRole('button', { name: `Sign in to ${mode === 'learning' ? 'financial learning' : 'virtual portfolio'}` }).click()
 }
+
+async function fifoReads(page: Page, corruptCash = false) {
+  const control: { blockPartial: boolean; release?: () => void } = { blockPartial: false }
+  await page.route(`${apiOrigin}/v1/portfolio**`, async (route) => {
+    const url = new URL(route.request().url())
+    if (route.request().method() !== 'GET') { await route.fallback(); return }
+    const selected = url.searchParams.get('portfolio_version_id')
+    const snapshot = Object.values(fifo.snapshots).find((item) => item.portfolio.data.portfolio_version_id === selected) ?? (selected === null ? fifo.snapshots.reopened : null)
+    const headers = { 'Access-Control-Allow-Origin': webOrigin }
+    if (!snapshot) { await route.fulfill({ status: 404, headers }); return }
+    if (url.pathname === '/v1/portfolio') { await route.fulfill({ headers, json: snapshot.portfolio }); return }
+    if (url.pathname === '/v1/portfolio/ledger') { await route.fulfill({ headers, json: snapshot.ledger }); return }
+    if (url.pathname === '/v1/portfolio/analytics') {
+      if (control.blockPartial && selected === fifo.snapshots.partial.portfolio.data.portfolio_version_id) await new Promise<void>((resolveRead) => { control.release = resolveRead })
+      const body = structuredClone(snapshot.analytics)
+      if (corruptCash && body.data.summary) Object.assign(body.data.summary, { opening_cash: '100001.00', cash: body.data.summary.cash === '100041.00' ? '100042.00' : '100001.00' })
+      await route.fulfill({ headers, json: body }); return
+    }
+    await route.fallback()
+  })
+  return control
+}
+
+test('M4 displays FIFO realized results and remaining purchase costs from an exact selected prefix', async ({ page }) => {
+  await authoredModules(page); const control = await fifoReads(page); await signIn(page, 'portfolio')
+  const area = page.getByRole('region', { name: 'Ledger cash-flow analytics', exact: true })
+  await expect(page.getByRole('heading', { name: 'Virtual cash: INR 100041.00', exact: true })).toBeVisible()
+  await expect(area.getByText('INR 55.00', { exact: true })).toHaveCount(2)
+  await expect(area.getByText('INR 14.00', { exact: true })).toHaveCount(2)
+  await expect(area.getByText('INR 41.00', { exact: true })).toHaveCount(2)
+  await expect(area.getByText('Unavailable while shares remain', { exact: true })).toBeVisible()
+  control.blockPartial = true
+  await page.getByRole('button', { name: 'View balances after order #3', exact: true }).click()
+  await expect(page.getByRole('heading', { name: 'Virtual cash: INR 100040.00', exact: true })).toBeVisible()
+  await expect(area.getByText('Loading replay-verified analytics…', { exact: true })).toBeVisible()
+  await expect(area.getByText('INR 55.00', { exact: true })).toHaveCount(0)
+  await expect.poll(() => typeof control.release).toBe('function')
+  control.release?.()
+  await expect(area.locator('dl').getByText('INR 60.00', { exact: true })).toHaveCount(2)
+  await expect(area.locator('tbody').getByText('INR 60.00', { exact: true })).toHaveCount(2)
+  await expect(area.getByText('INR 20.00', { exact: true })).toHaveCount(2)
+  const purchase = page.locator('li').filter({ has: page.getByText('Executed virtual unit price: INR 10.00', { exact: true }) })
+  await purchase.getByText('Quote and source versions', { exact: true }).click()
+  await expect(purchase.getByText('Fixed-price engineering acceptance fixture · Engineering fixture', { exact: true })).toBeVisible()
+  await expect(purchase).toContainText(fifo.snapshots.partial.ledger.data.entries[0]!.quote.id)
+  await expect(purchase).toContainText(fifo.snapshots.partial.ledger.data.entries[0]!.request.corpus_version_id)
+  await page.setViewportSize({ width: 375, height: 900 })
+  expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
+})
+
+test('M4 refuses self-consistent analytics that disagree with the selected account cash', async ({ page }) => {
+  await authoredModules(page); await fifoReads(page, true); await signIn(page, 'portfolio')
+  const area = page.getByRole('region', { name: 'Ledger cash-flow analytics', exact: true })
+  await expect(area.getByRole('alert')).toContainText('cash differs')
+  await expect(area.locator('dl')).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'Virtual cash: INR 100041.00', exact: true })).toBeVisible()
+})
 
 test('M3 administrator drafts an example, reviews and publishes without rendering filing/source text as HTML', async ({ page }) => {
   await authoredModules(page, { admin: true, empty: true }); await signIn(page, 'learning')
