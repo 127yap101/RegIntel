@@ -21,11 +21,15 @@ export function checkNumericalPacket(packet: T.NumericalReviewPacket): void {
   const { gate, binding, review } = packet
   const words = checkedNumericalProof(binding)
   requireMatch(gate.evidence_binding_id === binding.id && gate.context_record_id === binding.context_record_id && gate.parse_version_id === binding.parse_version_id && gate.source_sha256 === binding.source_sha256 && sameValue(gate.evidence_ids, words.map((word) => word.id)))
+  checkNumericalGate(gate)
+  if (review) checkNumericalReview(review, gate)
+}
+
+export function checkNumericalGate(gate: T.BoundNumericalGateRun): void {
   requireMatch(sameValue(gate.checks.map((check) => check.code), NUMERICAL_GATE_CODES))
   const expected = gate.checks.some((check) => check.state === 'FAIL') ? 'QUARANTINED' : gate.checks.some((check) => check.state === 'REVIEW') ? 'REVIEW_REQUIRED' : 'READY_FOR_REVIEW'
   requireMatch(gate.state === expected && (expected !== 'QUARANTINED' || gate.quantity_proposal === null) && (expected !== 'READY_FOR_REVIEW' || gate.quantity_proposal !== null))
   if (gate.quantity_proposal) parseContract('FinancialPeriod', gate.quantity_proposal.period)
-  if (review) checkNumericalReview(review, gate)
 }
 
 export function checkNumericalPreparation(value: T.NumericalPublicationPreparation, packet?: T.NumericalReviewPacket): void {

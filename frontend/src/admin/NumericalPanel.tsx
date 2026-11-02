@@ -3,6 +3,8 @@ import { Button } from '../components/Button'
 import { AdminApi, AdminError } from './api'
 import { canonical, checked } from './wire'
 import type * as T from './generated'
+import { NumericalQueue } from './NumericalQueue'
+import { queuedPacketMismatch } from './numericalQueueChecks'
 
 type PendingDecision =
   | { kind: 'context'; body: T.NumericalContextReviewRequest }
@@ -50,12 +52,14 @@ export function NumericalPanel({ api, busy, run, pendingChanged, clearSource, in
       throw error
     }
   }
-  function clearLoaded(): void { setPacket(null); setPreparation(null); setCandidate(null); setAcceptance(null); setContextNote(''); setAcceptNote(''); clearSource() }
-  function load(): void {
+  function clearLoaded(): void { setPacket(null); setPreparation(null); setCandidate(null); setAcceptance(null); setContextNote(''); setAcceptNote(''); setContextDecision('REJECT'); setAcceptDecision('REJECT'); clearSource() }
+  function load(selected = gateId.trim(), expected?: T.NumericalGateQueueItem): void {
     clearLoaded()
     void run(async (signal) => {
-      const loaded = await api.numericalPacket(canonical(gateId.trim()), signal)
-      const restored = candidateId.trim() ? await api.numericalCandidate(loaded, canonical(candidateId.trim()), signal) : null
+      const loaded = await api.numericalPacket(canonical(selected), signal)
+      const mismatch = expected ? queuedPacketMismatch(expected, loaded) : null
+      if (mismatch) throw new AdminError(false, mismatch === 'SOURCE' ? 'The selected numerical check differs from its loaded source. Refresh the queue before reviewing.' : 'The recorded context review differs from its queued audit. Refresh before reviewing; recorded decisions cannot be removed or replaced.')
+      const restored = !expected && candidateId.trim() ? await api.numericalCandidate(loaded, canonical(candidateId.trim()), signal) : null
       const decision = restored ? await api.numericalAcceptance(restored, signal) : null
       if (!signal.aborted) { setPacket(loaded); setCandidate(restored); setPreparation(restored?.preparation ?? null); setAcceptance(decision) }
     })
@@ -96,6 +100,7 @@ export function NumericalPanel({ api, busy, run, pendingChanged, clearSource, in
   return <section aria-label="Numerical filing review" className="mt-5 min-w-0 rounded-xl border border-line bg-white p-5">
     <h3 className="text-xl font-semibold">Numerical filings</h3>
     <p className="mt-2 text-sm text-muted">Inspect exact source context, record separate review decisions, then select an accepted candidate for the publication draft below.</p>
+    <NumericalQueue api={api} locked={locked} run={run} invalidate={() => { clearLoaded(); setGateId(''); setCandidateId('') }} open={(item) => { setGateId(item.gate.id); setCandidateId(''); load(item.gate.id, item) }} />
     <form className="mt-4 grid gap-3 sm:grid-cols-2" onSubmit={(event) => { event.preventDefault(); load() }}>
       <label className="text-sm">Saved numerical gate ID<input required disabled={locked} value={gateId} onChange={(event) => { clearLoaded(); setGateId(event.target.value) }} className="admin-input" spellCheck={false} /></label>
       <label className="text-sm">Saved numerical candidate ID (optional)<input disabled={locked} value={candidateId} onChange={(event) => { clearLoaded(); setCandidateId(event.target.value) }} className="admin-input" spellCheck={false} /></label>

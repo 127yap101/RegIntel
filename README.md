@@ -15,6 +15,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Shared filing corpus across M1–M4](docs/SHARED_CORPUS_SESSION.md): retain a verified publication across workspaces, explicitly select latest, and preserve pending-order inputs.
 - [Unified numerical publication](docs/UNIFIED_NUMERICAL_PUBLICATION.md): publish explicitly accepted native numerical evidence through the shared M1 corpus used by all four modules.
 - [Numerical administrator workflow](docs/NUMERICAL_ADMIN_WORKFLOW.md): inspect saved native gates, record context and acceptance decisions, and select candidates for the existing publication draft.
+- [Stored numerical check queue](docs/NUMERICAL_REVIEW_QUEUE.md): find retained checks by uploaded company label and review state before opening the complete source packet.
 - [Native amendment evidence](docs/NATIVE_AMENDMENT_SUPPORT.md): retain separate original words for reviewed parent/child identity, references, effects and dates.
 - [Virtual portfolio FIFO analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md): inspect exact realized results and remaining purchase costs through a selected immutable ledger version.
 - `docs/README.md`: finalized specification index.
@@ -24,12 +25,15 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-The latest engineering checkpoint adds
+The latest engineering checkpoint adds a
+[stored numerical review queue](docs/NUMERICAL_REVIEW_QUEUE.md) for the M1
+administrator workflow. Source checks remain separate from fresh acceptance and
+publication. It follows
 [FIFO portfolio analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md), with exact realized
 sold-share results and remaining purchase costs. It builds on the shared
 [native amendment publication path](docs/NATIVE_AMENDMENT_SUPPORT.md) used by
 M1–M4. See the
-[FIFO measured report](data/portfolio-fifo-validation-report.json) and
+[queue measured report](data/numerical-review-queue-validation-report.json) and
 [current state](CURRENT_STATE.md) for current checks and remaining real-data /
 content acceptance. Earlier implementation snapshots below retain their original
 checkpoint counts; they do not establish full-project completion.

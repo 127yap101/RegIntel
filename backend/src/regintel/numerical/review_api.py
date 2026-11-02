@@ -4,7 +4,7 @@ import hashlib
 from collections.abc import Callable
 from typing import Annotated
 
-from fastapi import APIRouter, Depends, HTTPException, Request
+from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import model_validator
 
 from regintel.auth.dependencies import user_dependency
@@ -26,6 +26,16 @@ from regintel.numerical.gate_models import BoundNumericalGateRun
 from regintel.numerical.gate_repository import BoundNumericalGateRepository
 from regintel.numerical.publication_input_repository import NumericalPublicationInputRepository
 from regintel.numerical.publication_models import NumericalPublicationPreparation
+from regintel.numerical.queue_models import (
+    MAX_QUEUE_OFFSET,
+    MAX_QUEUE_PAGE,
+    ContextReviewFilter,
+    GateStateFilter,
+    NumericalGateQueuePage,
+    NumericalGateQueueRequest,
+    QueueQuery,
+)
+from regintel.numerical.queue_repository import NumericalGateQueueRepository
 from regintel.numerical.repository import (
     NumericalAuthorizationError,
     NumericalNotFound,
@@ -109,6 +119,26 @@ def create_numerical_review_router(
             review = None
         return NumericalReviewPacket(
             gate=gate.result, binding=gate.source_input.binding, review=review
+        )
+
+    @router.get("", response_model=SuccessEnvelope[NumericalGateQueuePage], responses=errors)
+    def queue(
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+        state: GateStateFilter = "ALL",
+        review: ContextReviewFilter = "UNREVIEWED",
+        query: QueueQuery = "",
+        offset: Annotated[int, Query(ge=0, le=MAX_QUEUE_OFFSET)] = 0,
+        limit: Annotated[int, Query(ge=1, le=MAX_QUEUE_PAGE)] = MAX_QUEUE_PAGE,
+    ) -> SuccessEnvelope[NumericalGateQueuePage]:
+        selection = NumericalGateQueueRequest(
+            state=state, review=review, query=query, offset=offset, limit=limit
+        )
+        return SuccessEnvelope(
+            data=perform(
+                lambda: NumericalGateQueueRepository(ready().source).queue(selection, user)
+            ),
+            meta=response_meta(request),
         )
 
     @router.get(

@@ -6,6 +6,7 @@ import { sameValue } from '../contracts/equality'
 import { checkNumericalObservation } from '../published/native'
 import { checkNumericalAcceptance, checkNumericalCandidate, checkNumericalPacket, checkNumericalPreparation, checkNumericalSnapshot } from './numerical'
 import { checkAmendmentSupport, checkManifestAmendments } from './amendments'
+import { checkNumericalQueue } from './numericalQueueChecks'
 export { sameValue } from '../contracts/equality'
 import type * as T from './generated'
 import schema from './schema.json'
@@ -18,6 +19,7 @@ export interface Wire {
   review_request: T.ReviewDecision; review_receipt: T.ReviewReceipt
   manifest: T.CorpusManifest; publication_request: T.PublicationRequest; evidence: T.EvidenceData
   numerical_packet: T.NumericalReviewPacket; numerical_review_request: T.NumericalContextReviewRequest
+  numerical_queue_request: T.NumericalGateQueueRequest; numerical_queue: T.NumericalGateQueuePage
   numerical_review: T.ReviewedNumericalContext; numerical_preparation: T.NumericalPublicationPreparation
   numerical_candidate_request: T.NumericalCandidateRequest; numerical_candidate: T.StoredNumericalCandidate
   numerical_acceptance_request: T.NumericalAcceptanceRequest; numerical_acceptance: T.StoredNumericalAcceptance
@@ -30,6 +32,7 @@ const validators = Object.fromEntries(Object.entries(schema.properties).map(([ke
 export function checked<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
   if (!validators[kind](value)) throw new Error('Administrator contract is invalid')
   if (kind === 'native_amendment_words') checkAmendmentSupport(value as T.NativeAmendmentWords)
+  if (kind === 'numerical_queue') checkNumericalQueue(value as T.NumericalGateQueuePage)
   return value as Wire[K]
 }
 
@@ -38,6 +41,7 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
   const envelope = value as Record<string, unknown>
   const meta = parseContract('ResponseMeta', envelope.meta)
   const data = checked(kind, envelope.data)
+  if (kind === 'numerical_queue' && Object.values(meta.versions).some((value) => value !== null)) throw new Error('A private queue cannot imply a published source version.')
   if (kind === 'filing_job') {
     const job = data as T.FilingJob
     if (meta.versions.filing_version_id !== job.filing_version_id || meta.versions.parse_version_id !== job.parse_version_id) throw new Error('Filing job source differs')

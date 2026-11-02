@@ -78,6 +78,13 @@ export class AdminApi {
     if (value.gate.id !== id) throw new AdminError(false)
     return value
   }
+  async numericalQueue(selection: T.NumericalGateQueueRequest, signal: AbortSignal): Promise<T.NumericalGateQueuePage> {
+    checked('numerical_queue_request', selection)
+    const params = new URLSearchParams(Object.entries(selection).map(([key, value]) => [key, String(value)]))
+    const page = await this.read('numerical_queue', `/v1/admin/numerical/gates?${params}`, signal)
+    if (page.state_filter !== selection.state || page.review_filter !== selection.review || page.query !== selection.query || page.offset !== selection.offset || page.limit !== selection.limit) throw new AdminError(false, 'The numerical queue differs from its selected filters or page.')
+    return page
+  }
   async reviewNumerical(packet: T.NumericalReviewPacket, body: T.NumericalContextReviewRequest, signal: AbortSignal): Promise<T.ReviewedNumericalContext> {
     checked('numerical_review_request', body)
     if (body.gate_run_id !== packet.gate.id || !sameValue(body.evidence_ids, packet.gate.evidence_ids) || !body.note.trim() || body.note.includes('\0') || body.decision === 'CONFIRM_CONTEXT' && packet.gate.state !== 'READY_FOR_REVIEW') throw new AdminError(false)

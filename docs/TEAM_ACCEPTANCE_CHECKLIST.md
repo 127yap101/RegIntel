@@ -47,6 +47,13 @@ they do not create records in a teammate's fresh database. The
 accepted numerical candidates. These four unresolved inputs still need actual
 source/context approval before they can use it.
 
+The [stored numerical check queue](NUMERICAL_REVIEW_QUEUE.md) now finds records
+from that installation by literal uploaded company label and recorded gate/review
+state. Open a result to inspect its full original evidence; a ready historical
+label does not establish current eligibility. Empty results do not create the
+retained laptop records in a fresh clone. Source intake, genuine approval and
+the existing mandatory checks still precede acceptance/publication.
+
 ## M2 / Yash: check the real comparison acceptance cases
 
 Use [the acceptance guide](M2_ACCEPTANCE.md). Once M1 genuinely publishes supported

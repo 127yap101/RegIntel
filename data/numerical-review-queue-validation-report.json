@@ -1,0 +1,770 @@
+{
+  "version": "1.0.0",
+  "recorded_at_utc": "2026-11-02T18:09:05.562104+00:00",
+  "client_date": "2026-11-02",
+  "client_timezone": "Asia/Calcutta",
+  "base_commit": "594d6848a4314c24a06a5fabd4471c3f3c584875",
+  "branch": "codex/m2-comparison",
+  "status": "VERIFIED_LOCAL_NUMERICAL_REVIEW_QUEUE; VERIFY_CONTAINING_COMMIT_CI",
+  "all_modules_complete": false,
+  "change": [
+    "Current-admin read-only discovery of retained numerical gates and context reviews",
+    "Literal case-insensitive uploaded-company-label search; gate/review filters; bounded stable-ID pagination",
+    "Canonical result/review/request bytes, hashes, metadata and source/parse/context membership verified without loading 40 MiB complete inputs per row",
+    "Historical scope cannot imply current validation, acceptance eligibility or publication membership",
+    "Opening a row requires the exact immutable gate/source and any already-recorded review; a later review may appear on a previously unreviewed row",
+    "Filter/page navigation clears prior source and unsubmitted notes; decision inputs reset to REJECT",
+    "Queue navigation remains locked during uncertain writes; logout/revocation cancels reads and clears private results"
+  ],
+  "bounds": {
+    "page_size": 20,
+    "max_offset": 10000,
+    "max_query_characters": 120,
+    "retained_payload_bytes": 8388608,
+    "lookahead_validated": true,
+    "no_partial_success_on_budget_or_invalid_history": true
+  },
+  "verification": {
+    "backend_focused": {
+      "tests": 62,
+      "passed": 62,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 0.495,
+      "local_artifact": ".cache/numerical-queue-backend-final-20261102.xml",
+      "sha256": "e0d0343f94e35fb839a645e59645ad8854566693835aa21240406b0e6f2b1bc9"
+    },
+    "frontend_all_units": {
+      "tests": 436,
+      "passed": 436,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 13.04,
+      "local_artifact": ".cache/numerical-queue-frontend-final-20261102.xml",
+      "sha256": "d9fc31594bf2fae4e4058dd416e5ef4ba637e6a8399d76046fd4192faad24696"
+    },
+    "chromium_all_modules": {
+      "tests": 73,
+      "passed": 73,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 434.188,
+      "local_artifact": ".cache/numerical-queue-browser-final-20261102.xml",
+      "sha256": "cbe5915b418d5cd23917e189ca33f7f661f3f5c7620ab3ca4f8b3794657bbe83"
+    },
+    "owned_postgresql_http": {
+      "queue": {
+        "tests": 19,
+        "passed": 19,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 133.625,
+        "local_artifact": ".cache/numerical-queue-http-final-20261102.xml",
+        "sha256": "72ab4aee8ceac6e288541906448468d3763ed82c3176cdddae93a27588c10ac2"
+      },
+      "existing_review_api": {
+        "tests": 8,
+        "passed": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 50.286,
+        "local_artifact": ".cache/numerical-queue-review-final-20261102.xml",
+        "sha256": "2605c3393ee4cc301214492424029eea3b331003da9449f3e2537d17093cef2b"
+      },
+      "existing_review_accept_publish_workflow": {
+        "tests": 1,
+        "passed": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0,
+        "case_seconds": 22.6,
+        "local_artifact": ".cache/numerical-queue-workflow-final-20261102.xml",
+        "sha256": "3b8e4e3c846b025959e39aaf0f3332d93de2a1907c11ca42f8cd16565cf20cee"
+      }
+    },
+    "distinct_owned_postgresql_http_passed": 28
+  },
+  "verification_scope": {
+    "backend": "62 focused queue/wire and existing numerical administrator contract cases; no full non-integration backend repeat locally for this read-only private API change.",
+    "database": "Selected owned queue/current-review/admin workflow checks, not the full integration selection.",
+    "frontend": "Complete frontend units, production build and Chromium suite repeated after final immutable-review guard and test changes.",
+    "historical_baseline": "Exact predecessor passes all three GitHub jobs; prior full local backend count 2,489 plus six existing Windows filesystem skips belongs to that predecessor and is not a newly rerun count."
+  },
+  "static_generated": {
+    "commands": 13,
+    "all_passed": true,
+    "ruff_formatted_files": 329,
+    "mypy_sources": 201
+  },
+  "commands": {
+    "static_0": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.203,
+      "log": ".cache/numerical-queue-static_0-20261102.log",
+      "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+      "recorded_at_utc": "2026-11-02T17:36:25.098674+00:00"
+    },
+    "static_1": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "ruff",
+        "format",
+        "--check",
+        "--config",
+        "backend/pyproject.toml",
+        "backend",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.15,
+      "log": ".cache/numerical-queue-static_1-20261102.log",
+      "log_sha256": "6b099da40f532e26c5c35459e92d60f49177b53b18590e2a6c2fec13092c4b68",
+      "recorded_at_utc": "2026-11-02T17:36:25.250445+00:00"
+    },
+    "static_2": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "mypy",
+        "--config-file",
+        "backend/pyproject.toml",
+        "backend/src",
+        "scripts/init-local-env.py",
+        "scripts/init-auth-env.py",
+        "scripts/check-infra.py",
+        "scripts/check-migrations.py",
+        "scripts/check-ingestion-runtime.py",
+        "scripts/check-evidence-runtime.py",
+        "scripts/check-entity-runtime.py",
+        "scripts/check-candidate-runtime.py",
+        "scripts/check-validation-runtime.py",
+        "scripts/check-processing-runtime.py",
+        "scripts/check-publication-runtime.py",
+        "scripts/check-published-reads-runtime.py",
+        "scripts/check-retrieval-runtime.py",
+        "scripts/acquire-embedding-model.py",
+        "scripts/export-contracts.py",
+        "scripts/export-published-reads.py",
+        "scripts/export-retrieval.py",
+        "scripts/export-admin.py",
+        "scripts/export-analysis.py",
+        "scripts/generate-analysis-fixtures.py",
+        "scripts/check-analysis-runtime.py",
+        "scripts/evaluate-analysis.py",
+        "scripts/probe-numerical-page.py",
+        "scripts/benchmark-full-filing.py",
+        "scripts/capture-native-source.py",
+        "scripts/generate-read-fixtures.py",
+        "scripts/generate-fixtures.py",
+        "scripts/export-fixture-cases.py",
+        "scripts/acquire-worker-libs.py",
+        "scripts/inspect-docling-source.py",
+        "scripts/render-parse-qa.py",
+        "scripts/export-learning-portfolio.py"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 3.319,
+      "log": ".cache/numerical-queue-static_2-20261102.log",
+      "log_sha256": "0904b832ea89c955542ea68f0eb8c818ea8e34c39dd7fd842f6fb1d9b204944c",
+      "recorded_at_utc": "2026-11-02T17:36:28.572367+00:00"
+    },
+    "static_3": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-contracts.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.408,
+      "log": ".cache/numerical-queue-static_3-20261102.log",
+      "log_sha256": "4c48f1ed0cfe28fe85affc012a9a15fde654403fb8f9c0ea24327fa0954eeee1",
+      "recorded_at_utc": "2026-11-02T17:36:28.983645+00:00"
+    },
+    "static_4": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-published-reads.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.143,
+      "log": ".cache/numerical-queue-static_4-20261102.log",
+      "log_sha256": "4b9ebaa5166fc23d7c968b1bfe1b3f4de26619ac97c0be257c518c7a8b8c4f44",
+      "recorded_at_utc": "2026-11-02T17:36:31.128643+00:00"
+    },
+    "static_5": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-retrieval.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.033,
+      "log": ".cache/numerical-queue-static_5-20261102.log",
+      "log_sha256": "5d6fa2a210abb531deebe2e7c4d1df740a7c0ff1d8db1187b212ced75da52f4c",
+      "recorded_at_utc": "2026-11-02T17:36:33.166186+00:00"
+    },
+    "static_6": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-admin.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.16,
+      "log": ".cache/numerical-queue-static_6-20261102.log",
+      "log_sha256": "f22c928cf8f580d9994b48f966a0336c554aa7095fda6cc57770d4a6c1c457c8",
+      "recorded_at_utc": "2026-11-02T17:36:35.328350+00:00"
+    },
+    "static_7": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-analysis.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.221,
+      "log": ".cache/numerical-queue-static_7-20261102.log",
+      "log_sha256": "d34a012e3605c81bdea776ddcc48062aadfc82adc4917b0123390cc2004e9b93",
+      "recorded_at_utc": "2026-11-02T17:36:37.554153+00:00"
+    },
+    "static_8": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-analysis-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.252,
+      "log": ".cache/numerical-queue-static_8-20261102.log",
+      "log_sha256": "86533c03e493eef5f8c354522f8a25e6a720ec229fe06dfc3c860012237ed200",
+      "recorded_at_utc": "2026-11-02T17:36:39.808694+00:00"
+    },
+    "static_9": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-read-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.985,
+      "log": ".cache/numerical-queue-static_9-20261102.log",
+      "log_sha256": "1a57edf09a3aa4d37116754537be9abbe767101080ce7448c45f5b005a2ca9c7",
+      "recorded_at_utc": "2026-11-02T17:36:41.793865+00:00"
+    },
+    "static_10": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/generate-fixtures.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 1.056,
+      "log": ".cache/numerical-queue-static_10-20261102.log",
+      "log_sha256": "4d098cce736812169e67303e960b5b6b6af18a0da43a3fdca1b39d7186348818",
+      "recorded_at_utc": "2026-11-02T17:36:42.851881+00:00"
+    },
+    "static_11": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-fixture-cases.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 0.545,
+      "log": ".cache/numerical-queue-static_11-20261102.log",
+      "log_sha256": "3e0f67c9c99b69ebf389d2644fce3c200c2fd8cfdefe3ad8997adc08e8f44119",
+      "recorded_at_utc": "2026-11-02T17:36:43.403143+00:00"
+    },
+    "static_12": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/export-learning-portfolio.py",
+        "--check"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 2.08,
+      "log": ".cache/numerical-queue-static_12-20261102.log",
+      "log_sha256": "ecdc0510240c2e5b25edaca942a3decf3746e439659780f35204413fc02dd4f0",
+      "recorded_at_utc": "2026-11-02T17:36:45.478818+00:00"
+    },
+    "frontend_lint": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "lint"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 21.352,
+      "log": ".cache/numerical-queue-frontend_lint-20261102.log",
+      "log_sha256": "960f1eb37ac4d28430af9bef2c98f32333254854ffde619330f53d373ce0f632",
+      "recorded_at_utc": "2026-11-02T18:02:14.725564+00:00"
+    },
+    "frontend_typecheck": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "typecheck"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 9.451,
+      "log": ".cache/numerical-queue-frontend_typecheck-20261102.log",
+      "log_sha256": "faeaa94bcf7012d86f91ca647580449f56a263fb7eaf572c54789764f60a9b8f",
+      "recorded_at_utc": "2026-11-02T18:01:52.971347+00:00"
+    },
+    "backend_focused": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "-m",
+        "pytest",
+        "-c",
+        "backend/pyproject.toml",
+        "backend/tests/test_numerical_queue.py",
+        "backend/tests/test_numerical_queue_wire.py",
+        "backend/tests/test_admin_numerical_contract.py",
+        "--basetemp",
+        ".cache/numerical-queue-backend-final-tmp-20261102",
+        "-o",
+        "cache_dir=.cache/numerical-queue-backend-final-cache",
+        "--junitxml",
+        ".cache/numerical-queue-backend-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 3.561,
+      "log": ".cache/numerical-queue-backend_focused-20261102.log",
+      "log_sha256": "a23a9ad200f294406e7e2e3416c03efdcc8e1434dceb1428495749449bcbfa68",
+      "recorded_at_utc": "2026-11-02T18:08:41.101077+00:00"
+    },
+    "queue_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_numerical_queue_http.py",
+        "--junit-report",
+        ".cache/numerical-queue-http-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 138.56,
+      "log": ".cache/numerical-queue-queue_http-20261102.log",
+      "log_sha256": "61a8f5bf908a9e658016b865ce67eed334308593c265f0f571409f835af7cd3d",
+      "recorded_at_utc": "2026-11-02T17:39:41.298046+00:00"
+    },
+    "review_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_numerical_review_http.py",
+        "--junit-report",
+        ".cache/numerical-queue-review-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 55.697,
+      "log": ".cache/numerical-queue-review_http-20261102.log",
+      "log_sha256": "f9f378c8e321f25f289ceac32887b376af038302ea0275720d6df89cf2e25575",
+      "recorded_at_utc": "2026-11-02T17:40:36.999223+00:00"
+    },
+    "workflow_http": {
+      "command": [
+        "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+        "scripts/check-migrations.py",
+        "--test-file",
+        "backend/tests/integration/test_numerical_admin_workflow.py",
+        "--junit-report",
+        ".cache/numerical-queue-workflow-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison",
+      "exit_code": 0,
+      "seconds": 31.345,
+      "log": ".cache/numerical-queue-workflow_http-20261102.log",
+      "log_sha256": "ecd8dedb8cb30b3c9c4756fa292720ac783066b9e6aade5db8585924a3c669a5",
+      "recorded_at_utc": "2026-11-02T17:41:08.346258+00:00"
+    },
+    "frontend_units": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "vitest",
+        "run",
+        "--reporter=default",
+        "--reporter=junit",
+        "--outputFile=../.cache/numerical-queue-frontend-final-20261102.xml"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 18.613,
+      "log": ".cache/numerical-queue-frontend_units-20261102.log",
+      "log_sha256": "2a4e7778203fa3424d6020d448fea56ec05acc802adf10a1d37db979fdd2694a",
+      "recorded_at_utc": "2026-11-02T18:02:33.342946+00:00"
+    },
+    "frontend_build": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "build"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 25.972,
+      "log": ".cache/numerical-queue-frontend_build-20261102.log",
+      "log_sha256": "2ebce981bf296d600edd800a426ca13a22e488aa62a8c95ae1dccbb075b8b2d5",
+      "recorded_at_utc": "2026-11-02T18:02:59.309752+00:00"
+    },
+    "chromium": {
+      "command": [
+        "D:\\RegIntel\\.tools\\pnpm\\pnpm.cmd",
+        "exec",
+        "playwright",
+        "test",
+        "--reporter=list,junit"
+      ],
+      "cwd": "D:\\RegIntel\\.cache\\worktrees\\m2-comparison\\frontend",
+      "exit_code": 0,
+      "seconds": 232.55,
+      "log": ".cache/numerical-queue-chromium-20261102.log",
+      "log_sha256": "d534121641252f681c6086a00ac5917cf09c461a3483f0d61e4637d120221862",
+      "recorded_at_utc": "2026-11-02T18:06:51.871899+00:00"
+    }
+  },
+  "authored_fixture": {
+    "original_capture": ".cache/migration-tmp-a9905bb4ad82480ab4290805fcda71bc/test_recorded_decisions_filter0/numerical-queue-wire.json",
+    "bytes": 237996,
+    "sha256": "07f952504a11833f75dea08f4a2f90b27e10ef5e55498f09aa1480169ad5417d",
+    "pages": [
+      "all",
+      "all_next",
+      "confirmed",
+      "empty",
+      "rejected",
+      "unreviewed"
+    ],
+    "packets": 2,
+    "capture_matches_fixture": false,
+    "original_capture_bytes": 237997,
+    "original_capture_sha256": "1858ade682565f4733f80d93146bb97f9df9e4b8348532109bed056e5279f1b3",
+    "capture_json_values_match": true,
+    "terminal_newline_normalized_from_crlf_to_lf": true,
+    "path": "frontend/src/admin/numerical-queue.fixture.json",
+    "source": "Actual owned authenticated HTTP pages and complete packets over declared fictional source/geometry and hostile intake metadata; not real review, accepted filing data or research gold.",
+    "distinct_gates_in_captured_all_pages": 23,
+    "queue_json_round_trips": 6,
+    "complete_packet_round_trips": 2,
+    "gates_created_through_application": true,
+    "database_immutability_guards_disabled": false
+  },
+  "attempts": [
+    {
+      "stage": "initial_backend_test_setup",
+      "tests": 53,
+      "passed": 52,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 0.803,
+      "local_artifact": ".cache/numerical-queue-initial-20261102.xml",
+      "sha256": "4501d4a2ffd7175b31456e98dd5a273075a2f8ce3fac26bd8c5b46c9485967ed",
+      "outcome": "One test passed a raw dictionary to the model-only canonical serializer. Corrected the test to validate its altered gate model before hashing; final focused checks pass."
+    },
+    {
+      "stage": "initial_frontend_search_schema",
+      "tests": 82,
+      "passed": 81,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 0.939,
+      "local_artifact": ".cache/numerical-queue-frontend-schema-attempt-20261102.xml",
+      "sha256": "0a3e1d9ab93edcf581647f9038308e398dfed581ce5682ee54833dde7a401361",
+      "outcome": "The exported serialization schema lost the 120-character maximum when layered constrained RawText metadata was combined with a pattern. Added an independent private constrained query type, valid-Unicode checking and an explicit validation/serialization schema-parity test. Backend primitive/frozen schemas were not changed."
+    },
+    {
+      "stage": "typescript_development",
+      "outcome": "Resolved a Windows import-basename collision by naming the pure helper numericalQueueChecks.ts. A later negative test now obtains its branded canonical ID through the existing validator; no any cast or type check was disabled.",
+      "local_artifact": ".cache/numerical-queue-branded-id-typecheck-attempt-20261102.log"
+    },
+    {
+      "stage": "static_formatting",
+      "outcome": "Split the authored capture notice into adjacent string literals to satisfy the existing line bound; its data text is unchanged.",
+      "local_artifact": ".cache/numerical-queue-static-initial-20261102.log"
+    },
+    {
+      "stage": "fixture_terminal_newline",
+      "outcome": "The final file audit found the captured wrapper used a Windows terminal CRLF. Normalized only that newline to LF, asserted identical parsed JSON, retained the original hash and updated the producer to emit explicit LF. The 62 focused Python cases were repeated; the full SQL/frontend/browser checks were not repeated for this format-only change."
+    },
+    {
+      "stage": "browser_connection",
+      "tests": 72,
+      "passed": 71,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0,
+      "case_seconds": 447.484,
+      "local_artifact": ".cache/numerical-queue-browser-connection-attempt-20261102.xml",
+      "sha256": "e840756492bf7f284cb82acdd26cfd0a4b5c1fb9aaa8dd5fa9345fb52fc54f88",
+      "outcome": "One existing retrieval setup timed out before the username field appeared. The retained trace records net::ERR_CONNECTION_FAILED for /node_modules/.vite/deps/react-dom_client.js and no application-specific page error. No cause beyond this connection failure is inferred. Repeated final frontend checks and the full browser suite without changing timeouts or removing assertions.",
+      "retained_trace": ".cache/numerical-queue-browser-connection-attempt-20261102.zip"
+    }
+  ],
+  "runtime": {
+    "host": "Windows x64",
+    "python": "3.12.14",
+    "node": "v24.19.0",
+    "pnpm": "11.19.0",
+    "browser": "Chromium",
+    "private_test_ports": [
+      18073,
+      5187
+    ]
+  },
+  "operational_effects": {
+    "new_migrations": [],
+    "migrations_1_to_22_unchanged": true,
+    "frozen_numerical_sources_except_private_api_unchanged": true,
+    "new_dependencies": [],
+    "new_required_environment_variables": [],
+    "new_private_endpoints": [
+      "GET /v1/admin/numerical/gates"
+    ],
+    "new_public_ports": [],
+    "original_database_migrated": false,
+    "new_real_reviews_or_acceptances": 0,
+    "new_real_corpus_versions": 0,
+    "paid_model_calls": 0,
+    "external_quote_provider_calls": 0,
+    "quotes": "UNAVAILABLE_BY_USER_CHOICE"
+  },
+  "owned_database_cleanup": {
+    "checked_at_utc": "2026-11-02T18:00:41.919857+00:00",
+    "exact_owned_database_names": [
+      "regintel_test_m0_3_0d7e9fcea5e44a2c964245da6d20a163",
+      "regintel_test_m0_3_2dce88f80be04b05bd9f38bf0e283de6",
+      "regintel_test_m0_3_55eee540c55a498fa9ab42525f347faa",
+      "regintel_test_m0_3_8e06e1f967d7470984eae520a8fc608b",
+      "regintel_test_m0_3_af9fba6d21ca4ef4aa4c27be7d122299"
+    ],
+    "remaining_owned_databases": [],
+    "original_migration_versions": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11
+    ],
+    "original_migration_history_sha256": "9e3bf4762b2e0563326f7b64bb7ee9d48d8a11e4888c169c27856c107e056aae",
+    "matches_predecessor_observation": true,
+    "read_only_verification": true
+  },
+  "base_ci": {
+    "checked_at_utc": "2026-11-02T17:48:25.549387+00:00",
+    "head_revision": "594d6848a4314c24a06a5fabd4471c3f3c584875",
+    "remote_head_revision": "594d6848a4314c24a06a5fabd4471c3f3c584875",
+    "branch": "codex/m2-comparison",
+    "run": {
+      "id": 41410643939,
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/41410643939",
+      "status": "completed",
+      "conclusion": "success",
+      "head_revision": "594d6848a4314c24a06a5fabd4471c3f3c584875",
+      "jobs": [
+        {
+          "name": "Foundation (windows-2025)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Foundation (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    },
+    "containing_commit_ci": "Verify separately after push."
+  },
+  "limits": [
+    "All four real numerical inputs remain unresolved and seven M3 starter drafts remain unreviewed; no engineering fixture authorizes real approval.",
+    "Source intake and saved gate creation still precede the queue; a fresh clone contains neither another installation's private records nor its original PDFs.",
+    "Queue results are live historical pages, not a frozen complete-corpus snapshot. Refresh after decisions; newly inserted IDs can change subsequent offset pages.",
+    "A ready stored gate is not proof of current source/registry/policy/configuration eligibility; fresh mandatory actions remain required.",
+    "No full local backend/integration rerun or fresh-clone handoff is claimed by this checkpoint.",
+    "Real amendment acceptance, real comparison/content acceptance, feature/corpus freeze and held-out evaluation remain incomplete.",
+    "Production build retains the existing large-chunk advisory."
+  ],
+  "source_sha256": {
+    "backend/src/regintel/admin/models.py": "46fd72e7345dd6205d02841742c790eaacde88a2486fc1726a7a3cde73e71bf2",
+    "backend/src/regintel/numerical/review_api.py": "f666d8946306bc873e961867051b231944a0809c588cf53dd535f2cc55dfd57f",
+    "backend/src/regintel/numerical/queue_models.py": "dd1989d62b1a26ffa87b45793706bc521817cd42ac4141a7092e964ef746db95",
+    "backend/src/regintel/numerical/queue_repository.py": "0fe69728e012bd35ba322f68d72e1e802f8a08354347d74abf9747fd1669190e",
+    "backend/tests/test_numerical_queue.py": "3eb84a5efbc1e4e89e118fa99400ccfe80c7ffde19aa075114914af1029801b5",
+    "backend/tests/test_numerical_queue_wire.py": "82b8a7181e5d751a06b613c157c1c52aafcd2006b450b6f47b56741dca5932df",
+    "backend/tests/integration/test_numerical_queue_http.py": "4033be3173adb6d5a63b4f8f2e8ff51d4f80f7d8dd40cb381db9dc4de2b2e750",
+    "frontend/src/admin/NumericalPanel.tsx": "df1b5157f6854d1041548f13605b00780251b3633961fb02eabd1f58a8a8be8f",
+    "frontend/src/admin/NumericalQueue.tsx": "ad68a75166754a9137280b75fcf84617de99d83a40ad50e43146de9901a99f58",
+    "frontend/src/admin/api.ts": "56d1c185d70c7fb4d29fc1493855c23a14c60a44706603834155da231b6a51cb",
+    "frontend/src/admin/wire.ts": "f2f57c1720397634a4fffc82dd2fbe7d5991633fe5022ccc7b6f9474067bd5e8",
+    "frontend/src/admin/numerical.ts": "7130be019bd6ca0298d7b1209976bbe8c45218573cff7886fd0abbff11a2a7b0",
+    "frontend/src/admin/numericalQueueChecks.ts": "dd0209b025aa4efab4fa05bea9edbd75131a6dfc0b900d6698e48319535d8006",
+    "frontend/src/admin/numericalQueueChecks.test.ts": "cf3ba5c4da98c00a609bfb9dd152e38e3d486210e4a2f38b8fd3b1120e7d4ab7",
+    "frontend/src/admin/numerical-queue.fixture.json": "07f952504a11833f75dea08f4a2f90b27e10ef5e55498f09aa1480169ad5417d",
+    "frontend/tests/e2e/numerical-admin.spec.ts": "8af820e8805f4c2e5101853983c744c651db70124ca42fc699a9d997448da741",
+    "frontend/tests/e2e/numerical-queue.spec.ts": "534017c51ec068304dac94b4d226556e26485a98c847ad0e06c7a3979a9fb6b0"
+  },
+  "frozen_source_sha256": {
+    "backend/src/regintel/numerical/acceptance_models.py": "4de8f1f4f43c76a79b54cd526ec4b990f82b11cb001053d7ae5ad3aed32539a6",
+    "backend/src/regintel/numerical/acceptance_repository.py": "1cc19aa20abd8fbc9d06baab5e70a10e4959d91beeeb949f29797ec77a46649d",
+    "backend/src/regintel/numerical/bound_gate.py": "fe8ad28b42275cd8c832e8551ef75a3e0a908be026478a8faac672300ff6b80f",
+    "backend/src/regintel/numerical/candidate_models.py": "5303dc94a8dec993e2c9a058de9f5fb491502d1751da02023678cdf7b3f688ba",
+    "backend/src/regintel/numerical/candidate_repository.py": "f7af8254a4f5b7b6bb0ebc28b1a6e21dfa678269fa68885c6f37a825f20cdc61",
+    "backend/src/regintel/numerical/context_gate.py": "7a15858ec0566bd2132d9b04170f77cb3fe65aa49e85da8ed763a8ea2dee4e5f",
+    "backend/src/regintel/numerical/context_inputs.py": "971db11be1da9fc6d6e170f3ea4316c48dd6bd3f8ca1f8e00c3e44105f9c4d85",
+    "backend/src/regintel/numerical/context_models.py": "ea9f3d050eeadd8e3ee00a649a53c549c951159e12fa061596093dba893cd819",
+    "backend/src/regintel/numerical/context_periods.py": "7b87d847db748185b8d4794134de6bd643b9d73d24bf3e8b8abb6a20670eee71",
+    "backend/src/regintel/numerical/context_records.py": "5880664170c83ae0b5248ac1d6c52352090ede3d1fd8e1309fcaa045883772b1",
+    "backend/src/regintel/numerical/context_repository.py": "5cc3c9bc4c52dc5d6ce0cefa0edd53ddcd5fcb1523f8b1c8ea589ed6f150a03c",
+    "backend/src/regintel/numerical/context_storage.py": "89686d1713b86a648cdc74f3979573e79d46b73c90718e192f153c0c04ccbf1d",
+    "backend/src/regintel/numerical/draft_api.py": "0d9e7374d0e877bcb95e46d10e4fc1b961fb2c33abb196a8cbf4f7e71b73e052",
+    "backend/src/regintel/numerical/draft_models.py": "42906b1c7186adaca34cd0b64610133360aef5fa6679458a34b84ce1d738ea5b",
+    "backend/src/regintel/numerical/draft_projection.py": "cecf3b7553723235d1dba3d9f51caa0e777ae3ee5441f4898d5e80ee0ea0c127",
+    "backend/src/regintel/numerical/draft_repository.py": "fd4b8af665ca748c88c90a44d0fe8d00b03cdd3bda5fff2ea264a2d76f959264",
+    "backend/src/regintel/numerical/evidence_binding.py": "6e102258ee7545101fc1ff95bf9d040cb83dd6ae29d70c49085e1d3816346d07",
+    "backend/src/regintel/numerical/evidence_binding_models.py": "9ae845deb76307acdf9c0bbddad2f67357fdb7b8845574d6308d598464a5dcf5",
+    "backend/src/regintel/numerical/evidence_binding_repository.py": "9271a12795a14e20cffbb06d778933abf4f79640f5fd16b1f7f8b95bb2c8e631",
+    "backend/src/regintel/numerical/gate_models.py": "8320157e04775b333aacf79331b15647f693324df490a1c4e8e9a2218526e3ff",
+    "backend/src/regintel/numerical/gate_repository.py": "085424fba42dd32248f0d1284373961f5785af628389510528be326a39482eb5",
+    "backend/src/regintel/numerical/models.py": "fc07cded74970501d6d918588a665d50b738c21bae068128da92c2457917525b",
+    "backend/src/regintel/numerical/publication_input.py": "d8c08d663eb41a8185aa98c73ca50f3a6c7319f9aa9b208bf456451ce04f7e63",
+    "backend/src/regintel/numerical/publication_input_repository.py": "e46254a75b4d9d94a9871457044fcc0469032b20e266fdbce4d75abf4e4cfdab",
+    "backend/src/regintel/numerical/publication_models.py": "8456c31d58a0c9446b3f5b33cc2a02ff2d23aca21488cd9da331620236dba38b",
+    "backend/src/regintel/numerical/repository.py": "a24d12b5f38cacc075a89c5fc2236fe3843bae199e2c9384fdd5b65dae684f91",
+    "backend/src/regintel/numerical/review_models.py": "a7f392328e75dcde27e3294dc4b4f831e0c4912eecdb469d480169b0a77801eb",
+    "backend/src/regintel/numerical/review_repository.py": "d3179becafd5c164ce4d97e0650a9ff03b861f161887f01f25c9c8633459b933",
+    "backend/src/regintel/numerical/source_pages.py": "9d9c638fc43bcd74d5c51e9c391f58050c0d66801486d20ea977b1a9ff29f05f",
+    "backend/src/regintel/numerical/__init__.py": "08f41d61624b0c1d0f271b74733981062049d80fb3d0ca05835c1238db4c7753",
+    "infra/migrations/0001_foundation.sql": "496889943f5fda3a674b6f1a5e469267b3303f8c3293d802d4ffc48a482c68d6",
+    "infra/migrations/0002_auth.sql": "c4b6a5f95f313e527182804ff2c0263f0661a41a3fd648038795930420f05291",
+    "infra/migrations/0003_ingestion.sql": "aa67358f920784a50ddb7b39fef9e1f9061f3753b0034c2c02f3e338d26a89f6",
+    "infra/migrations/0004_jobs.sql": "e2be2e54071e776ff5155086333bdff524510f654138ccc0a0aef82e0894b534",
+    "infra/migrations/0005_evidence.sql": "89369f5d29628fba557094d51754e6b7151cdc5910aed64ec837576e35db9f0d",
+    "infra/migrations/0006_entities.sql": "8c9fefdf88fc7cf7f762e8d90375b645cd7bc30f91b89c2022a6d04de34f8249",
+    "infra/migrations/0007_candidates.sql": "5385dfda7247aed38dfc152e687a8c5535019e23878a8cc6463ae13b9158f48e",
+    "infra/migrations/0008_validation.sql": "7f739c54b0ed7b7049b22fa3a6d2bbfb780afa84d165913d2b710b9b12fec66d",
+    "infra/migrations/0009_processing.sql": "806ff0dc9324460baca93169c72158959aa0024d02544ce21a176c373a02cf60",
+    "infra/migrations/0010_processing_evidence_order.sql": "1ce2f1e7d30c6720a6eff114422493ded98d55bab0f22ebbc6da710ed6ccea83",
+    "infra/migrations/0011_publication.sql": "310b96aec87ff153826cbc0a0edf997becb96a27e487e3624e3c18e2479ad9b6",
+    "infra/migrations/0012_numerical_preparation.sql": "444b64cfa81072deff7ff2e12f88d3554a6ba9a220efd1904ac1d2590756bdb3",
+    "infra/migrations/0013_numerical_context.sql": "721bf092164df938a369ccff4b2b4268b8b1e79a4f5b579696a3687a8c57a319",
+    "infra/migrations/0014_native_context_evidence.sql": "2ed81a33a55a38105a820aab69550c1e1ce5846fecf0d9f5d50023d3018fe3d3",
+    "infra/migrations/0015_learning.sql": "c6091c96d844abf503ec995816b937a76ee9b1703136bae4c013b5f4cd447c9c",
+    "infra/migrations/0016_virtual_portfolio.sql": "4121ccccfddd82b2ab5a322bed65e48b3eedd2ee79eeac49101faec34942461a",
+    "infra/migrations/0017_bound_numerical_gates.sql": "59afcf5759eab4ef874f25fe84f8975ee2da720c40dbb8cd7c6ecc55c14a0288",
+    "infra/migrations/0018_numerical_context_reviews.sql": "b51fafe9ae307ccc7b0bfa3c9b8869fea9f8df79b2c401916fae48a4e7786ac7",
+    "infra/migrations/0019_numerical_candidates.sql": "2dc243090780b51f90f7f5bec8b5d477212a08b90ff9d547771418531c088179",
+    "infra/migrations/0020_numerical_acceptances.sql": "38e58b549d7519c1fe81fec0bc275c5bc6d66f004fb47bfe92819197721c4522",
+    "infra/migrations/0021_unified_numerical_publication.sql": "db3313975d5d02632d7acabfabbf390a8dcb2e230fc32d9a2195fe6c1dac4c66",
+    "infra/migrations/0022_native_amendment_support.sql": "cf87439845c72db64063db2971c66f9294ff11fac077a98313bec514f8106ab2"
+  }
+}

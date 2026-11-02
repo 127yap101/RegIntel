@@ -1,6 +1,6 @@
 # Numerical filing review in the administrator workspace
 
-29 October 2026. This screen connects the existing native numerical review APIs
+Updated 2 November 2026. This screen connects the existing native numerical review APIs
 to the common M1 publication workflow. The resulting published corpus is consumed
 by M1 evidence/facts, M2 comparison, M3 filing context and M4 company selection.
 It adds no migration, dependency, required environment variable or quote source.
@@ -26,7 +26,7 @@ Generate the administrator contracts after updating the checkout:
 .\backend\.venv\Scripts\python.exe scripts/export-admin.py
 ```
 
-The screen starts from a saved numerical gate. Source upload, native capture,
+The screen finds or directly loads a saved numerical gate. Source upload, native capture,
 approved entity/metric/policy context and exact binding/gate creation remain the
 [source-intake workflow](M2_SOURCE_INTAKE.md) and
 [bound gate workflow](M2_BOUND_NUMERICAL_GATES.md). A fresh clone has no laptop
@@ -37,7 +37,9 @@ seed a database or supply a real decision.
 
 1. Open **Administrator workspace**, sign in with this installation's current
    administrator account and choose **Numerical filings**.
-2. Enter the **Saved numerical gate ID**. Optionally enter its saved candidate
+2. Use [the stored numerical check queue](NUMERICAL_REVIEW_QUEUE.md) to search
+   uploaded company labels, filter stored gate/review states and **Open stored
+   check**. Alternatively enter the **Saved numerical gate ID**. Optionally enter its saved candidate
    ID to restore the candidate and its recorded acceptance/rejection. Select
    **Load numerical review**.
 3. Inspect all 14 gate checks, raw/normalized decimal strings, period and basis.
@@ -88,6 +90,11 @@ or current-admin revocation clears private state; cancelled reads cannot restore
 it. Closing/reloading the browser also clears that memory. Use the retained IDs
 and original submitted request to recover stored state rather than inventing a
 different decision. Existing immutable decisions cannot be edited in this screen.
+
+The queue is retained history. Refresh it after decisions; opening a row loads
+the complete packet and may reveal a later recorded review. An old ready result
+cannot override changed current source/approval context. Filters and paging clear
+old source selections and notes, and remain locked during uncertain writes.
 
 ## Verification and limits
 

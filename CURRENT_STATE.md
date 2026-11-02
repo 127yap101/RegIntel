@@ -18,6 +18,56 @@ Updated: 2026-11-02 (Asia/Calcutta).
 
 ## Latest verified state
 
+- **Stored numerical review queue, 2 November:** current administrators can now
+  find retained M1 numerical checks by literal uploaded-company label and stored
+  gate/review state, then open their complete source packet without a copied gate
+  ID. Stable-ID pages contain at most 20 results, with a 10,000 offset bound and
+  an explicit 8 MiB retained-payload budget. Uploaded labels and raw proposals are
+  intake data, not accepted company identities or financial facts.
+
+- The read-only queue verifies canonical result/review/request bytes, hashes,
+  source/parse/context membership and recorded audit metadata. It does not load
+  each complete gate input of up to 40 MiB or perform fresh approval. Opening a
+  result requires the exact gate/source; an already-recorded review cannot
+  disappear or be replaced, while a later review may appear on an earlier
+  unreviewed row. Navigation clears old source/notes and resets decision inputs.
+  Uncertain writes lock queue controls; logout/revocation cancels reads and clears
+  private data. See `docs/NUMERICAL_REVIEW_QUEUE.md` and its bounded plan.
+
+- Current verification passes **62 focused backend/wire cases**,
+  **436 frontend units**, **73 Chromium scenarios across all modules**
+  and **28 selected owned PostgreSQL/HTTP cases**, including the existing
+  context/candidate/acceptance/publication workflow. Lint, strict typing,
+  production build and thirteen static/generated commands pass (Ruff
+  329 files; mypy 201 sources). The actual authored HTTP capture retains 23 distinct
+  gates across 20-row/three-row pages, recorded decisions and complete packets;
+  six page and two packet JSON round-trips pass. See
+  `data/numerical-review-queue-validation-report.json` for source hashes, captures,
+  disclosed development attempts and an initial failed connection to a Vite
+  dependency. The final browser repeat retains all assertions and timeout settings.
+
+- Separate queue models/readers preserve every frozen numerical source except
+  the private API, and all 22 migration bytes. One private GET endpoint is added;
+  no dependency, required environment setting, worker rebuild, runtime quote
+  provider or public port is added. The five exact owned test databases are
+  removed. The original database remains at migrations 1–11 and matches the
+  predecessor's migration-history hash; no original migration was applied.
+
+- Exact predecessor `594d684` passes all three GitHub jobs in run 41410643939.
+  Its full local backend count of 2,489 and six existing Windows filesystem skips
+  belongs to that prior checkpoint. The full backend/integration selections were
+  not rerun locally for this read-only private API change; current local backend
+  coverage is the focused selection above. Verify this containing checkpoint's
+  remote SHA and CI independently.
+
+- Continue actual source intake and source/context approval. The queue requires
+  saved gates on that installation and does not seed another laptop's records.
+  All four real numerical inputs remain unresolved; the real M2 acceptance plan
+  is empty and seven M3 starters remain unreviewed. Real amendment-pair acceptance,
+  remaining module acceptance/evaluation, feature/corpus freeze and fresh-clone
+  handoff remain outstanding. Quotes remain unavailable by user choice. All four
+  modules and research are not complete; earlier checkpoint counts are historical.
+
 - **FIFO portfolio analytics, 2 November:** M4 now derives cumulative realized
   sold-share results and allocated/remaining purchase costs from the complete
   replay-verified selected ledger. Oldest executed purchase lots are consumed

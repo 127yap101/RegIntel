@@ -1,5 +1,43 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest numerical queue continuation, 2 November: read
+`docs/NUMERICAL_REVIEW_QUEUE_PLAN.md`, `docs/NUMERICAL_REVIEW_QUEUE.md`,
+`data/numerical-review-queue-validation-report.json` and the newest CURRENT_STATE.md
+entry before older snapshots. Work across all four modules, adapt M1 as needed,
+and commit/push verified checkpoints to `codex/m2-comparison` remain authorized.
+Immutable evidence/review/amendment/ledger history and mandatory gates remain.
+
+The private M1 numerical workspace now discovers stored gates by literal uploaded
+company label and recorded gate/review states. It uses stable-ID bounded pages,
+canonical retained results/reviews and complete source membership. Opening a row
+loads the full packet: its gate/source and any prior review must match, while a
+later recorded review may appear on an older unreviewed row. Historical readiness
+does not waive fresh source/registry/policy/configuration checks. Navigation clears
+source/notes; uncertain writes lock controls; logout/revocation aborts and clears.
+Separate queue modules preserve frozen gate/review sources and all 22 migrations.
+
+Current checks pass 62 focused backend/wire cases, 436 full frontend
+units, 73 Chromium scenarios, 28 selected owned PostgreSQL/HTTP cases
+and thirteen static/generated checks. The actual authored capture holds 23 gates
+across twenty-row/three-row pages, with six page and two complete-packet JSON
+round-trips. Exact owned databases are removed; the original database remains at
+migrations 1–11 with the predecessor's history hash. No new dependency, migration,
+required setting, quote source or public port is added. The report discloses the
+query-schema bound fix, test typing corrections and a Vite dependency connection
+failure followed by the complete unchanged-timeout browser repeat. Full local
+backend/integration selections were not repeated. Predecessor `594d684` passes all
+three jobs in GitHub run 41410643939; check the containing checkpoint independently.
+
+Next prioritize actual source intake and real M1 context/approval resolution,
+real amendment acceptance, M2 comparison acceptance and M3 content review. The
+queue discovers saved gates; it cannot create source intake or seed another
+installation. Four actual numerical inputs remain unresolved, the real comparison
+acceptance plan is empty and seven learning starters remain unreviewed. Do not
+substitute authored capture values/IDs or invented review decisions. Continue M4
+acceptance/evaluation, frozen held-out evaluation and fresh-clone handoff. Runtime
+quotes remain unavailable by the user's choice. All modules/research are not
+complete. Earlier checkpoint records below are historical.
+
 Latest FIFO continuation, 2 November: read
 `docs/PORTFOLIO_FIFO_ANALYTICS_PLAN.md`, `docs/PORTFOLIO_FIFO_ANALYTICS.md`,
 `data/portfolio-fifo-validation-report.json` and the newest CURRENT_STATE.md entry

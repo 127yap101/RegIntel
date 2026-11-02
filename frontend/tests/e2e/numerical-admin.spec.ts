@@ -179,6 +179,8 @@ for (const kind of ['context', 'candidate', 'acceptance'] as const) test(`lost $
   if (kind === 'acceptance') await accept(page)
   await expect(page.getByRole('alert')).toContainText('could not be completed')
   await expect(page.getByLabel('Saved numerical gate ID', { exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Find numerical checks', exact: true })).toBeDisabled()
+  await expect(page.getByLabel('Uploaded company name contains', { exact: true })).toBeDisabled()
   await expect(page.getByRole('button', { name: 'Filing jobs', exact: true })).toBeDisabled()
   if (kind === 'context') await expect(page.getByLabel('Context review note', { exact: true })).toBeDisabled()
   if (kind === 'acceptance') await expect(page.getByLabel('Numerical acceptance note', { exact: true })).toBeDisabled()
