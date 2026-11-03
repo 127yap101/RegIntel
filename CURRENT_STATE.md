@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-02 (Asia/Calcutta).
+Updated: 2026-11-03 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,54 @@ Updated: 2026-11-02 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Operational native source intake, 3 November:** an explicit local
+  administrator command now checks retained original PDF/native-bank/contextual
+  page files and imports source evidence through the existing M1 producer. The
+  separate `check` action needs no database/credentials; import prompts for the
+  existing account password and rechecks current administrator authority before
+  each persistence boundary. Neither action runs Docling/models on Windows or
+  approves a financial context, candidate, fact or publication. See
+  `docs/NATIVE_SOURCE_INTAKE_PLAN.md` and `docs/NATIVE_SOURCE_INTAKE.md`.
+
+- File hashes, complete original native coverage and the exact selected contextual
+  bridge are replayed before database writes. Explicit input bounds and smaller
+  selected parser limits are enforced. Caller-owned native jobs have no Celery
+  dispatch intent; existing worker dispatch stays the default and ownership
+  cannot change on replay. Repeat/concurrent imports verify actual sealed
+  artifact/configuration/capture membership and every retained native page.
+  Metadata conflicts, changed captures, corruption and revocation cannot become
+  terminal-success receipts. Durable queued/running checkpoints can resume; later
+  failures may retain original/capture records without a partially sealed parse.
+
+- Verification passes **28 focused preparation/command cases**, **2,566 full
+  backend cases plus 6 existing Windows filesystem skips**, **65 distinct
+  selected owned PostgreSQL cases** (20 import, 16 upload and 29 existing native
+  producer), and thirteen static/generated commands (Ruff 335 files; mypy 204
+  sources). The command's real password authentication and source read-back are
+  tested through the actual owned database. Both retained actual Premier/Waaree
+  originals, complete banks and four selected context pages each also pass
+  **preparation only**, without database/approval/publication access. These source
+  checks do not approve the four financial inputs. The measured report records
+  exact hashes, scopes, initial stopped-container failure and overlapping
+  development attempts separately from final serial import coverage.
+
+- All 22 migration files and 81 existing source/contract/lock/descriptor files
+  checked against the predecessor remain unchanged. No dependency, required
+  environment variable, worker rebuild, quote source, service or public port is
+  added. A project-local command entry point is added. All seven exact owned
+  databases are removed; the original database remains at migrations 1–11 with
+  its predecessor history hash. Frontend files are unchanged and their checks
+  were not repeated locally. Exact predecessor `db74f4b` passes all three GitHub
+  jobs in run 41498062780; verify this containing checkpoint after push.
+
+- Continue exact financial context drafting and issuer/metric/policy/applicability
+  resolution, then existing bound gates and independent review/acceptance/common
+  publication. This command does not create gate records for the historical
+  queue. Four actual numerical inputs and the real M2 acceptance plan remain
+  unresolved, seven M3 starters remain unreviewed, and real amendment/module
+  acceptance, freeze, held-out evaluation and fresh-clone handoff remain pending.
+  Quotes remain unavailable by the user's decision. All modules are not complete.
 
 - **Stored numerical review queue, 2 November:** current administrators can now
   find retained M1 numerical checks by literal uploaded-company label and stored

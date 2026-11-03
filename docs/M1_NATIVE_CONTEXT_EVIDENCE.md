@@ -72,10 +72,12 @@ existing evidence repository reads those same IDs through its existing contract.
 This does not create numerical candidates, override mandatory context checks,
 approve definitions/identities, accept observations or publish a corpus.
 
-The producer is an internal programmatic path. The legacy Celery worker and
-upload UI do not automatically select this native/context profile. Runtime
-selection, mandatory numerical validation/review and acceptance/publication
-remain necessary before these inputs can be consumed as accepted M2 facts.
+The producer remains separately selected from the legacy Celery worker and
+upload UI. The [native source intake command](NATIVE_SOURCE_INTAKE.md) now
+replays explicitly selected retained files and persists through this producer,
+without a worker dispatch or native-host Docling execution. Mandatory numerical
+context, validation/review and acceptance/publication remain necessary before
+these inputs can be consumed as accepted M2 facts.
 
 ## Capture command and measured verification
 

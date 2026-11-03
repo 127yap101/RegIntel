@@ -26,8 +26,10 @@ Generate the administrator contracts after updating the checkout:
 .\backend\.venv\Scripts\python.exe scripts/export-admin.py
 ```
 
-The screen finds or directly loads a saved numerical gate. Source upload, native capture,
-approved entity/metric/policy context and exact binding/gate creation remain the
+The screen finds or directly loads a saved numerical gate. The
+[native source intake command](NATIVE_SOURCE_INTAKE.md) now persists explicitly
+selected retained original/native/page captures. Approved entity/metric/policy
+context and exact binding/gate creation remain the
 [source-intake workflow](M2_SOURCE_INTAKE.md) and
 [bound gate workflow](M2_BOUND_NUMERICAL_GATES.md). A fresh clone has no laptop
 gate IDs, private source files or real approvals. Browser test fixtures do not

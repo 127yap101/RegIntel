@@ -97,7 +97,11 @@ class JobRepository:
         config: str,
         actor: UUID,
         auth_version: int,
+        *,
+        worker_dispatch: bool = True,
     ) -> FilingJob:
+        if type(worker_dispatch) is not bool:
+            raise ValueError("Explicit job dispatch ownership must be a boolean.")
         blob = source.blob
         with self.connect() as connection, connection.transaction():
             authorization = connection.execute(
@@ -168,13 +172,13 @@ class JobRepository:
                     (source_blob_id, filing_version_id, metadata_sha256) VALUES (%s, %s, %s)""",
                     (blob_id, version_id, metadata.sha256),
                 )
-            connection.execute(
+            inserted = connection.execute(
                 """INSERT INTO regintel.filing_jobs
                 (id, filing_version_id, source_blob_id, configuration_sha256, submitted_by)
                 VALUES (%s, %s, %s, %s, %s)
-                ON CONFLICT (filing_version_id, configuration_sha256) DO NOTHING""",
+                ON CONFLICT (filing_version_id, configuration_sha256) DO NOTHING RETURNING id""",
                 (str(uuid4()), version_id, blob_id, config, actor),
-            )
+            ).fetchone()
             created = connection.execute(
                 """SELECT id FROM regintel.filing_jobs
                 WHERE filing_version_id = %s AND configuration_sha256 = %s""",
@@ -183,10 +187,17 @@ class JobRepository:
             if created is None:
                 raise UploadError(503, "JOB_STORAGE_UNAVAILABLE")
             job_id = str(created[0])
-            connection.execute(
-                "INSERT INTO regintel.job_dispatch (job_id) VALUES (%s) ON CONFLICT DO NOTHING",
-                (job_id,),
-            )
+            if inserted is None:
+                intent = connection.execute(
+                    "SELECT job_id FROM regintel.job_dispatch WHERE job_id=%s", (job_id,)
+                ).fetchone()
+                if (intent is not None) != worker_dispatch:
+                    raise UploadError(409, "JOB_DISPATCH_CONFLICT")
+            if worker_dispatch:
+                connection.execute(
+                    "INSERT INTO regintel.job_dispatch (job_id) VALUES (%s) ON CONFLICT DO NOTHING",
+                    (job_id,),
+                )
             result = _job(connection, job_id)
             if result is None:
                 raise UploadError(503, "JOB_STORAGE_UNAVAILABLE")

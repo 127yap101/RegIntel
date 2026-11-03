@@ -1,5 +1,12 @@
 # M2 numerical source intake
 
+Current operational update, 3 November 2026: the
+[native source intake command](NATIVE_SOURCE_INTAKE.md) checks explicit retained
+original/native/page files and persists through the existing M1 producer.
+Its source-only receipt does not approve the amounts or create financial context
+and gate records. The preparation snapshot below remains historical; its four
+actual numerical inputs still require independent source/context approval.
+
 Two existing seed companies have a small source-review packet in
 `data/analysis-source-review.json`. It contains official URLs, immutable download
 hashes, cover/listing dates, CINs, table/context page locators and four raw

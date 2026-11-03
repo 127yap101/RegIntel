@@ -1,6 +1,6 @@
 # Team acceptance checklist for M1–M4
 
-Prepared 28 October 2026; updated 2 November 2026. The user reported an approximate
+Prepared 28 October 2026; updated 3 November 2026. The user reported an approximate
 7–10 day submission window on 27 October. Use `codex/m2-comparison`; `main` retains the earlier M1
 manual-testing checkout. This checklist records work to do, not completed review
 or module acceptance. No reviewer, approval or gold label is assigned by this file.
@@ -53,6 +53,12 @@ state. Open a result to inspect its full original evidence; a ready historical
 label does not establish current eligibility. Empty results do not create the
 retained laptop records in a fresh clone. Source intake, genuine approval and
 the existing mandatory checks still precede acceptance/publication.
+
+The [native source intake command](NATIVE_SOURCE_INTAKE.md) now checks explicit
+retained files and seals source evidence through the existing M1 producer. Its
+preparation/import receipt is not a context approval or a saved numerical gate.
+Use the returned installation-specific IDs for subsequent exact drafting and
+mandatory checks; do not reuse this worksheet's historical IDs as local records.
 
 ## M2 / Yash: check the real comparison acceptance cases
 

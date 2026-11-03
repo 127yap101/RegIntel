@@ -2,6 +2,25 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Operational native source intake, 3 November
+
+Continued from `db74f4b` with the bounded native intake plan. Added an explicit
+check/import command over exact original/native/page files, current-admin private
+password authentication and the existing M1 producer. Caller-owned source jobs
+have no worker dispatch; existing default upload behavior and all frozen parser/
+financial/publication gates remain. Terminal replay compares sealed bytes and
+complete native coverage; source preparation never approves financial facts.
+
+Final verification passes 28 focused cases, 2,566 full backend cases/6
+existing Windows skips, 65 selected owned database cases and thirteen static/
+generated checks. Actual Premier/Waaree preparations pass with no database or
+approval. See `data/native-source-intake-validation-report.json` for hashes,
+scope, stopped-container recovery and overlapping development attempts. Seven
+exact owned databases are removed. Original migration history remains 1–11;
+all 22 migration files/81 checked existing files are unchanged. No dependency,
+required environment variable, worker rebuild, price source or public port added.
+Real financial/content/module/held-out/fresh-clone acceptance is still pending.
+
 ## Unified numerical publication for all four modules, 28–29 October
 
 Continued from `5e9f613` after the user explicitly removed the M1 data/interface

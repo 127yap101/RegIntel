@@ -59,6 +59,7 @@ regintel-db = "regintel.db.cli:main"
 regintel-auth = "regintel.auth.cli:main"
 regintel-api = "regintel.auth.cli:serve_main"
 regintel-dispatch = "regintel.ingestion.cli:main"
+regintel-native-intake = "regintel.parsing.intake_cli:main"
 
 [dependency-groups]
 dev = [

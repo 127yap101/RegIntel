@@ -1,5 +1,42 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest source-intake continuation, 3 November: read
+`docs/NATIVE_SOURCE_INTAKE_PLAN.md`, `docs/NATIVE_SOURCE_INTAKE.md`,
+`data/native-source-intake-validation-report.json` and newest CURRENT_STATE.md
+before older snapshots. M1–M4 implementation and tested commits/pushes to
+`codex/m2-comparison` remain authorized; mandatory evidence/review gates remain.
+
+The explicit local command checks original/native/page files without a database,
+then imports with the existing account password/current-admin checks through
+existing source/capture/job/native sealing. No native-host Docling execution,
+financial context/gate/approval or publication is performed. Caller-owned jobs
+have no worker outbox; default legacy dispatch is unchanged and existing ownership
+cannot change. Replay checks the actual artifact/configuration/captures and every
+retained native page, including terminal jobs. Interrupted queued/running work
+can resume; terminal failures cannot be renamed successful.
+
+Final checks pass 28 focused cases, 2,566 full backend cases with 6 existing
+Windows skips, 65 distinct selected owned database cases and thirteen static/
+generated checks. Actual Premier/Waaree original/native/page preparations pass,
+four selected pages each, without database or approval access. The report
+discloses initial stopped infrastructure and overlapping development attempts;
+final new import coverage was rerun serially after all implementation changes.
+Seven exact owned databases are removed; original history remains migrations
+1–11. All 22 migration files and 81 checked existing files remain unchanged.
+No dependency, required setting, worker rebuild, quote feed or public port is
+added. UI source is unchanged; browser checks were not repeated locally. Exact
+predecessor `db74f4b` passes all three jobs in run 41498062780; check this containing
+checkpoint independently after push.
+
+Next complete exact context drafting and genuine source-backed identity/metric/
+policy/applicability resolution, saved bound gates and independent administrator
+review/acceptance/common publication. Intake alone does not populate the review
+queue. Four actual numerical inputs remain unresolved; real M2 acceptance is
+empty and seven M3 drafts remain unreviewed. Continue real amendment/module
+acceptance, feature/corpus freeze, held-out evaluation and fresh-clone handoff.
+Runtime quotes remain unavailable. All modules/research are not complete.
+Earlier checkpoint entries below are historical.
+
 Latest numerical queue continuation, 2 November: read
 `docs/NUMERICAL_REVIEW_QUEUE_PLAN.md`, `docs/NUMERICAL_REVIEW_QUEUE.md`,
 `data/numerical-review-queue-validation-report.json` and the newest CURRENT_STATE.md
