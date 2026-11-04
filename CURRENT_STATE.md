@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-03 (Asia/Calcutta).
+Updated: 2026-11-04 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,60 @@ Updated: 2026-11-03 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Native company identity, 4 November:** an explicit
+  `native-company-registration-1` profile now preserves each original word of a
+  complete company name/CIN heading in the existing administrator entity API,
+  registry and published catalogs. It supports one CIN and no aliases/additional
+  identifiers. Joined inspection text is a company label/semantic check, never a
+  fabricated exact quotation or evidence record. Source/parse/page membership,
+  whole words, consecutive original order and explicit name/CIN context are
+  independently checked in Python and SQL. See `docs/NATIVE_COMPANY_IDENTITY_PLAN.md`
+  and `docs/NATIVE_COMPANY_IDENTITY.md`.
+
+- Migration **23** activates the native guard while retaining the original
+  legacy guard and old registration JSON. An owned populated-schema upgrade
+  preserves all prior authority row fingerprints, registry bytes/hash and legacy
+  guard definition/OID. Identifier uniqueness, current-admin audit, immutable
+  replay/conflicts and independent financial reviews/acceptance/publication stay
+  required. Current resolver/numerical fingerprints intentionally change; the
+  numerical identity includes migration 23. Old records keep their hashes and
+  require fresh prerequisites for current acceptance rather than relabeling.
+
+- Verification passes **20 new unit cases**, **2,586 full backend cases plus
+  6 existing Windows filesystem skips**, **167 distinct selected owned
+  PostgreSQL cases** and thirteen static/generated checks (Ruff 341 files; mypy
+  205 sources). The final source-only identity can resolve ISSUER in a fresh
+  numerical gate without changing the earlier unresolved record. A separate
+  authored review/candidate/acceptance/publication proof consumes the new identity
+  through M1 facts, an available M2 cell, M3 exact-source context and M4 company
+  selection with the configured QUOTES_UNAVAILABLE rejection. This is not a
+  priced runtime demo or real financial/content approval.
+
+- Offline Premier/Waaree checks replay actual retained original/native/context
+  files and verify native identity word support against their projection. IDs
+  are temporary: no actual database parse, company registration, human approval
+  or financial decision is created. The report records hashes, configuration
+  changes, selected test scope and development attempts. All nine exact owned
+  databases are removed; the original database remains at migrations 1–11 with
+  its predecessor history hash. Migrations 1–22 and 94 checked existing files
+  remain unchanged. Background processing requires matching rebuilt worker code;
+  an isolated image built from the approved Dockerfile passes offline/non-root
+  parser/stage imports and source checks. Its parser inventory/processing code
+  matches the existing descriptor. The original worker image/service is retained.
+  No dependency, required setting, price feed, service or public port is added.
+  Frontend/wire files are unchanged; UI checks
+  were not repeated locally. Exact predecessor `14d628e` passes all three CI jobs
+  in run 41583199283; verify this containing checkpoint after push.
+
+- Continue actual source-backed identity review and fresh context/gate creation,
+  then qualified-unit/basis/policy/applicability resolution and independent
+  acceptance/common publication. The native identity form is a low-level existing
+  API/repository path; no new browser identity drafting flow is added. All four
+  actual numerical inputs, real M2 acceptance and seven M3 starter reviews remain
+  unresolved. Real amendment/module acceptance, freeze, held-out evaluation and
+  fresh-clone handoff remain pending. Quotes remain unavailable. All modules and
+  research effectiveness are not complete.
 
 - **Operational native source intake, 3 November:** an explicit local
   administrator command now checks retained original PDF/native-bank/contextual

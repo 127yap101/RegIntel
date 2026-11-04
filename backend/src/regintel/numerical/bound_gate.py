@@ -34,6 +34,8 @@ def bound_gate_configuration_sha256() -> str:
         "numerical/evidence_binding_repository.py",
         "numerical/models.py",
         "entities/models.py",
+        "entities/native_support.py",
+        "publication/support.py",
         "contracts/models.py",
         "contracts/primitives.py",
         "validation/models.py",
@@ -44,11 +46,12 @@ def bound_gate_configuration_sha256() -> str:
     for name in names:
         body = (package / name).read_bytes()
         digest.update(name.encode("ascii") + b"\0" + len(body).to_bytes(8, "big") + body)
-    migration = package.parents[2] / "infra/migrations/0017_bound_numerical_gates.sql"
-    body = migration.read_bytes()
-    digest.update(
-        b"infra/migrations/0017_bound_numerical_gates.sql\0" + len(body).to_bytes(8, "big") + body
-    )
+    for name in (
+        "infra/migrations/0017_bound_numerical_gates.sql",
+        "infra/migrations/0023_native_company_identity.sql",
+    ):
+        body = (package.parents[2] / name).read_bytes()
+        digest.update(name.encode("ascii") + b"\0" + len(body).to_bytes(8, "big") + body)
     return digest.hexdigest()
 
 

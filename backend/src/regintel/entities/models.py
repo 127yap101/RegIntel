@@ -89,10 +89,84 @@ class EntityRegistration(ContractModel):
         return self
 
 
+class NativeEntityWords(ContractModel):
+    """Separate original words; their inspection label is never an exact source span."""
+
+    schema_version: Literal["native-entity-words-1"]
+    parse_version_id: CanonicalId
+    spans: Annotated[tuple[EvidenceAnchor, ...], Field(strict=False, min_length=1, max_length=128)]
+
+    @model_validator(mode="after")
+    def whole_bounded_words(self) -> Self:
+        if (
+            len({span.evidence_id for span in self.spans}) != len(self.spans)
+            or any(
+                span.start != 0
+                or span.end != len(span.quote)
+                or "\x00" in span.quote
+                or not span.quote.strip()
+                for span in self.spans
+            )
+            or sum(len(span.quote) for span in self.spans) > 2048
+        ):
+            raise ValueError("Native identity support requires distinct bounded whole words.")
+        return self
+
+    def inspection_text(self) -> str:
+        return " ".join(span.quote for span in self.spans)
+
+
+class NativeCompanyRegistration(ContractModel):
+    """Initial native company profile: an explicit whole name/CIN heading, no aliases."""
+
+    schema_version: Literal["native-company-registration-1"]
+    id: CanonicalId
+    kind: Literal["COMPANY"]
+    legal_name: EntityName
+    legal_name_support: NativeEntityWords
+    issuer_header: NativeEntityWords
+    aliases: Annotated[tuple[ApprovedAlias, ...], Field(strict=False, max_length=0)] = ()
+    identifiers: Annotated[
+        tuple[ApprovedIdentifier, ...], Field(strict=False, min_length=1, max_length=1)
+    ]
+    review_note: ReviewNote
+
+    @model_validator(mode="after")
+    def explicit_name_and_cin(self) -> Self:
+        import re
+
+        identifier = self.identifiers[0]
+        name = self.legal_name_support
+        header = self.issuer_header
+        if (
+            self.legal_name != name.inspection_text()
+            or not self.review_note.strip()
+            or "\x00" in self.review_note
+            or not any(char.isalnum() for char in self.legal_name)
+            or identifier.kind != "CIN"
+            or name.parse_version_id != header.parse_version_id
+            or header.spans[: len(name.spans)] != name.spans
+            or header.spans[-1] != identifier.support
+            or re.fullmatch(
+                re.escape(self.legal_name)
+                + r" (?:CORPORATE IDENTITY NUMBER|CIN): "
+                + re.escape(identifier.value),
+                header.inspection_text(),
+                re.I | re.ASCII,
+            )
+            is None
+        ):
+            raise ValueError("Native company support needs its complete explicit name/CIN heading.")
+        return self
+
+
+type RegisteredEntity = EntityRegistration | NativeCompanyRegistration
+
+
 class RegistrySnapshot(ContractModel):
     revision: SafeInteger
     sha256: Sha256Hash
-    entities: Annotated[tuple[EntityRegistration, ...], Field(strict=False, max_length=10000)]
+    entities: Annotated[tuple[RegisteredEntity, ...], Field(strict=False, max_length=10000)]
 
     @model_validator(mode="after")
     def validate_fingerprint(self) -> Self:

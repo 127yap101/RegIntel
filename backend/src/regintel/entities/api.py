@@ -11,7 +11,7 @@ from regintel.auth.types import User
 from regintel.contracts.http import response_meta
 from regintel.contracts.models import ContractModel, ErrorEnvelope, SuccessEnvelope
 from regintel.contracts.primitives import CanonicalId
-from regintel.entities.models import EntityRegistration, EntityReview, EntityRun
+from regintel.entities.models import EntityReview, EntityRun, RegisteredEntity
 from regintel.entities.repository import (
     EntityAuthorizationError,
     EntityConflict,
@@ -108,7 +108,7 @@ def create_entity_router(auth: AuthService | None, service: EntityService | None
     @router.post("", response_model=RegistrationEnvelope, responses=errors)
     def register(
         request: Request,
-        body: EntityRegistration,
+        body: RegisteredEntity,
         user: Annotated[User, Depends(admin)],
         entities: Annotated[EntityService, Depends(configured)],
     ) -> RegistrationEnvelope:

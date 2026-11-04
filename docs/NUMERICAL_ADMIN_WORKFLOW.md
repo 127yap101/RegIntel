@@ -35,6 +35,14 @@ context and exact binding/gate creation remain the
 gate IDs, private source files or real approvals. Browser test fixtures do not
 seed a database or supply a real decision.
 
+[Native company identity support](NATIVE_COMPANY_IDENTITY.md), activated by
+migration 23, now preserves a multiword name/CIN heading as separate exact word
+anchors in the existing registry. After a genuine identity review, rerun context
+inspection and bound gates against the current registry/configuration. Older
+saved gates retain their original hashes and remain historical; an old ready
+state cannot waive fresh prerequisites. Financial context approval and
+publication are still independent actions.
+
 ## Review, accept and publish
 
 1. Open **Administrator workspace**, sign in with this installation's current

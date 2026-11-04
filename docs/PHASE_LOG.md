@@ -2,6 +2,28 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Native company identity and shared catalogs, 4 November
+
+Continued from `14d628e`. A versioned native company profile now preserves
+separate whole name/CIN words through the existing registry endpoint/table and
+frozen accepted-data catalogs. Migration 23 selects native guards and preserves
+legacy data/guard. Current resolver/numerical hashes intentionally change; old
+records retain their hashes and require current prerequisite checks.
+
+Final verification passes 20 new units, 2,586 full backend cases/6 existing
+Windows skips, 167 selected owned SQL cases and thirteen static/generated
+checks. Native identity reaches all four APIs through separate financial reviews,
+acceptance and common publication; M4 retains QUOTES_UNAVAILABLE. An owned
+populated-22 upgrade preserves existing authority rows, registry bytes and the
+legacy guard. Actual Premier/Waaree identity preparation is checked without
+database/registration/approval. See the measured report for exact hashes/scope.
+All nine exact owned databases are removed; original migration history remains
+1–11 and old 22 migration files are unchanged. Real source/content acceptance,
+evaluation and fresh-clone handoff remain pending. The isolated approved worker
+image is rebuilt and verified offline/non-root against current source and the
+existing parser descriptor; background jobs require matching worker code. No
+dependency, required setting, quote feed, service or public port added.
+
 ## Operational native source intake, 3 November
 
 Continued from `db74f4b` with the bounded native intake plan. Added an explicit

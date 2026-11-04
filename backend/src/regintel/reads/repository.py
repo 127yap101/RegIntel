@@ -7,7 +7,7 @@ from regintel.candidates.models import MetricDefinition
 from regintel.contracts.models import ContractModel
 from regintel.db.config import DatabaseSettings
 from regintel.db.migrations import connect_database
-from regintel.entities.models import EntityRegistration, RegistrySnapshot, canonical_bytes
+from regintel.entities.models import RegisteredEntity, RegistrySnapshot, canonical_bytes
 from regintel.numerical.gate_repository import _read as read_native_gate
 from regintel.publication.models import (
     CorpusManifest,
@@ -27,7 +27,7 @@ class ReadNotFound(ValueError):
 
 
 class Catalog(ContractModel):
-    entities: tuple[EntityRegistration, ...]
+    entities: tuple[RegisteredEntity, ...]
     metrics: tuple[MetricDefinition, ...]
 
 
@@ -36,7 +36,7 @@ class CatalogReader(Protocol):
 
 
 class RegistryContents(ContractModel):
-    entities: tuple[EntityRegistration, ...]
+    entities: tuple[RegisteredEntity, ...]
 
 
 class ReadRepository:
@@ -74,7 +74,7 @@ class ReadRepository:
                 "e.registry_revision,e.id " + selection,
                 (keys,),
             ).fetchall()
-        entities: dict[str, EntityRegistration] = {}
+        entities: dict[str, RegisteredEntity] = {}
         metrics: dict[str, MetricDefinition] = {}
         for row in rows:
             source = ValidationInput.model_validate_json(body(row[1], row[2], maximum=64_000_000))

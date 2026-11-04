@@ -45,8 +45,14 @@ def stable_id(value: str) -> str:
 
 def current_configuration() -> ResolverConfiguration:
     digest = hashlib.sha256()
-    for name in ("models.py", "identifiers.py", "resolution.py"):
-        contents = Path(__file__).with_name(name).read_bytes()
+    for name in (
+        "entities/models.py",
+        "entities/identifiers.py",
+        "entities/resolution.py",
+        "entities/native_support.py",
+        "publication/support.py",
+    ):
+        contents = (Path(__file__).parent.parent / name).read_bytes()
         digest.update(name.encode("ascii") + b"\0" + len(contents).to_bytes(8, "big") + contents)
     return ResolverConfiguration(
         spacy_version=version("spacy"),

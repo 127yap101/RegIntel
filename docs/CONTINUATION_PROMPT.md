@@ -1,5 +1,46 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest native company continuation, 4 November: read
+`docs/NATIVE_COMPANY_IDENTITY_PLAN.md`, `docs/NATIVE_COMPANY_IDENTITY.md`,
+`data/native-company-identity-validation-report.json` and newest CURRENT_STATE.md.
+Continue M1–M4 and tested commits/pushes to `codex/m2-comparison`; the user allows
+adapting interfaces/data, while immutable evidence/history and mandatory gates remain.
+
+The existing administrator entity endpoint/registry now accepts a separate native
+company profile: exact individual words for a complete name/CIN heading, one CIN,
+no aliases/additional identifiers. Labels/inspection text are never fabricated
+exact quotations. Migration 23 selects native guards without replacing the
+legacy guard/data. Registry snapshots and frozen published catalogs carry both
+types. Current resolver/numerical fingerprints include identity/source-order
+code (numerical also migration 23). Retain old hashes/history; rerun current
+prerequisites after actual registry review. Registration alone accepts no fact.
+
+Final checks pass 20 new units, 2,586 full backend cases/6 existing Windows
+skips, 167 distinct selected owned database cases and thirteen static/generated
+checks. A populated-22 upgrade preserves all existing authority rows/registry
+bytes and legacy guard definition/OID. Native identity flows through separate
+financial context review, candidate/acceptance and common publication into all
+four module APIs. M4 retains its quotes-unavailable rejection. Actual Premier/
+Waaree native identity preparation checks use temporary IDs with no database,
+registry or human/financial approval. Nine exact owned databases are removed;
+original history remains migrations 1–11. All previous 22 migration files and
+94 checked existing files are unchanged. Background processing requires
+matching rebuilt worker code; an isolated approved-Dockerfile image passes
+offline/non-root imports, source hashes and the existing parser inventory/code
+descriptor. Original worker image/service is retained. No dependency, required
+setting, price source or public port is added. Frontend/wire files are
+unchanged and UI checks were not repeated. Exact predecessor `14d628e` passes all
+three jobs in run 41583199283; check the containing checkpoint independently.
+
+Next prioritize actual identity review and fresh numerical context/gates, then
+qualified units, basis, metric/policy and applicability resolution. The registry
+profile can resolve ISSUER but cannot waive the other checks. Four actual
+numerical inputs and real M2 acceptance remain unresolved, seven M3 starters
+remain unreviewed. Continue real amendment/module acceptance, freeze, held-out
+evaluation and fresh-clone handoff. The new identity path is a low-level API/
+repository flow, not a browser drafting form. Quotes remain unavailable. All
+modules/research are not complete. Entries below are historical checkpoints.
+
 Latest source-intake continuation, 3 November: read
 `docs/NATIVE_SOURCE_INTAKE_PLAN.md`, `docs/NATIVE_SOURCE_INTAKE.md`,
 `data/native-source-intake-validation-report.json` and newest CURRENT_STATE.md

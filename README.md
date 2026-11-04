@@ -17,6 +17,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Numerical administrator workflow](docs/NUMERICAL_ADMIN_WORKFLOW.md): inspect saved native gates, record context and acceptance decisions, and select candidates for the existing publication draft.
 - [Stored numerical check queue](docs/NUMERICAL_REVIEW_QUEUE.md): find retained checks by uploaded company label and review state before opening the complete source packet.
 - [Native source intake](docs/NATIVE_SOURCE_INTAKE.md): check retained originals/native banks/page captures and import source evidence through the existing M1 producer before financial context review.
+- [Native company identity](docs/NATIVE_COMPANY_IDENTITY.md): register an explicitly reviewed company name/CIN from separate original words without inventing a joined source quotation.
 - [Native amendment evidence](docs/NATIVE_AMENDMENT_SUPPORT.md): retain separate original words for reviewed parent/child identity, references, effects and dates.
 - [Virtual portfolio FIFO analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md): inspect exact realized results and remaining purchase costs through a selected immutable ledger version.
 - `docs/README.md`: finalized specification index.
@@ -26,21 +27,22 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-The latest engineering checkpoint adds an explicit
+The latest engineering checkpoint adds
+[native company identity support](docs/NATIVE_COMPANY_IDENTITY.md), retaining
+each original word of a reviewed name/CIN heading in the existing registry and
+published catalogs. Migration 23 preserves legacy registration history; current
+resolver/numerical fingerprints require fresh processing. See its
+[measured report](data/native-company-identity-validation-report.json). The
 [native source intake command](docs/NATIVE_SOURCE_INTAKE.md), joining retained
-offline captures to saved M1 source evidence. Preparation/import remain separate
-from financial context approval, acceptance and common publication. See its
-[measured report](data/native-source-intake-validation-report.json). It follows a
-[stored numerical review queue](docs/NUMERICAL_REVIEW_QUEUE.md) for the M1
-administrator workflow. Source checks remain separate from fresh acceptance and
-publication. It follows
-[FIFO portfolio analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md), with exact realized
-sold-share results and remaining purchase costs. It builds on the shared
-[native amendment publication path](docs/NATIVE_AMENDMENT_SUPPORT.md) used by
-M1–M4. See the
-[queue measured report](data/numerical-review-queue-validation-report.json) and
-[current state](CURRENT_STATE.md) for current checks and remaining real-data /
-content acceptance. Earlier implementation snapshots below retain their original
+offline captures to saved M1 source evidence, and the
+[stored numerical review queue](docs/NUMERICAL_REVIEW_QUEUE.md) support the
+administrator workflow. Preparation/import remain separate from financial
+context approval, acceptance and common publication. M1–M4 share the
+[native amendment publication path](docs/NATIVE_AMENDMENT_SUPPORT.md), while
+[FIFO portfolio analytics](docs/PORTFOLIO_FIFO_ANALYTICS.md) exposes exact realized
+sold-share results and remaining purchase costs. See
+[current state](CURRENT_STATE.md) for verification and remaining real-data/content
+acceptance. Earlier implementation snapshots below retain their original
 checkpoint counts; they do not establish full-project completion.
 
 M0/M1A and bounded M1.5–M1.9 are verified on the approved Windows/native API

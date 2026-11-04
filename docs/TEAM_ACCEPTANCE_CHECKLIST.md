@@ -60,6 +60,13 @@ preparation/import receipt is not a context approval or a saved numerical gate.
 Use the returned installation-specific IDs for subsequent exact drafting and
 mandatory checks; do not reuse this worksheet's historical IDs as local records.
 
+The [native company identity profile](NATIVE_COMPANY_IDENTITY.md) now supports
+an explicit reviewed name/CIN heading without a synthetic combined quotation.
+It requires migration 23. Its registration can resolve an issuer prerequisite;
+it cannot resolve qualified unit/basis/context support or approve the four
+financial inputs. Preserve old records and rerun current prerequisites after
+the actual registry decision.
+
 ## M2 / Yash: check the real comparison acceptance cases
 
 Use [the acceptance guide](M2_ACCEPTANCE.md). Once M1 genuinely publishes supported

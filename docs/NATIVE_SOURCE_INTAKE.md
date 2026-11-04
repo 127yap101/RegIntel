@@ -128,6 +128,12 @@ context drafting, approved issuer/metric/policy support and the
 The historical numerical queue discovers gates only after that gate work exists.
 This command alone does not populate it or seed a teammate's clone.
 
+For company names represented by separate native words, the
+[native company identity profile](NATIVE_COMPANY_IDENTITY.md) now provides the
+existing administrator registry endpoint with explicit word/heading support.
+That additional workflow requires migration 23 and an actual reviewed decision;
+intake does not perform it automatically.
+
 See the [validation report](../data/native-source-intake-validation-report.json)
 for measured results and source fingerprints. Authored blank-PDF declarations
 exercise engineering integrity and authorization, never real-filing accuracy,

@@ -6,7 +6,7 @@ from dataclasses import dataclass
 from uuid import UUID
 
 import psycopg
-from pydantic import ValidationError
+from pydantic import TypeAdapter, ValidationError
 
 from regintel.auth.types import User
 from regintel.contracts.models import TextEvidence
@@ -14,9 +14,10 @@ from regintel.db.config import DatabaseSettings
 from regintel.db.connections import CompletionHook, ConnectionFactory
 from regintel.db.migrations import DatabaseConnection, MigrationError, connect_database
 from regintel.entities.models import (
-    EntityRegistration,
     EntityReview,
     EntityRun,
+    NativeCompanyRegistration,
+    RegisteredEntity,
     RegistrySnapshot,
     canonical_bytes,
 )
@@ -26,6 +27,7 @@ from regintel.parsing.models import ParseArtifact
 from regintel.parsing.native_context import NativeContextConfiguration, project_native_context
 
 REGISTRY_LOCK_ID = 5928237198818004551
+REGISTRATION = TypeAdapter[RegisteredEntity](RegisteredEntity)
 
 
 @dataclass(frozen=True)
@@ -88,7 +90,7 @@ def _authorize(connection: DatabaseConnection, user: User) -> None:
         raise EntityAuthorizationError("Entity writes require a current administrator.")
 
 
-def _registry_bytes(entities: tuple[EntityRegistration, ...]) -> bytes:
+def _registry_bytes(entities: tuple[RegisteredEntity, ...]) -> bytes:
     return json.dumps(
         {"entities": [entity.model_dump(mode="json") for entity in entities]},
         sort_keys=True,
@@ -103,9 +105,7 @@ def _snapshot(connection: DatabaseConnection) -> RegistrySnapshot:
         "SELECT registration_bytes,registration_sha256 "
         "FROM regintel.entity_registrations ORDER BY id"
     ).fetchall()
-    entities = tuple(
-        EntityRegistration.model_validate_json(_checked(row[0], row[1])) for row in rows
-    )
+    entities = tuple(REGISTRATION.validate_json(_checked(row[0], row[1])) for row in rows)
     return RegistrySnapshot(
         revision=len(entities), sha256=_digest(_registry_bytes(entities)), entities=entities
     )
@@ -130,14 +130,26 @@ class EntityRepository:
             return self._connection_factory()
         return connect_database(self.database)
 
-    def register(self, registration: EntityRegistration, user: User) -> bool:
+    def register(self, registration: RegisteredEntity, user: User) -> bool:
         """Atomically register one reviewed identity; identical replay is a no-op."""
-        registration = EntityRegistration.model_validate(registration.model_dump(mode="python"))
+        registration = REGISTRATION.validate_python(registration.model_dump(mode="python"))
         payload = canonical_bytes(registration)
         try:
             with self.connect() as connection, connection.transaction():
                 _authorize(connection, user)
                 connection.execute("SELECT pg_advisory_xact_lock(%s)", (REGISTRY_LOCK_ID,))
+                if isinstance(registration, NativeCompanyRegistration):
+                    from regintel.entities.native_support import verify_native_company
+
+                    sealed = self.sealed_evidence_for_parse(
+                        registration.legal_name_support.parse_version_id
+                    )
+                    try:
+                        verify_native_company(registration, sealed.artifact, sealed.evidence)
+                    except ValueError:
+                        raise EntitySourceError(
+                            "Native company source support is invalid."
+                        ) from None
                 existing = connection.execute(
                     "SELECT registration_bytes,registration_sha256 "
                     "FROM regintel.entity_registrations WHERE id=%s",
