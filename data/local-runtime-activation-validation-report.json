@@ -1,0 +1,609 @@
+{
+  "version": "1.0.0",
+  "client_date": "2026-11-05",
+  "client_timezone": "Asia/Calcutta",
+  "recorded_at_utc": "2026-11-05T16:26:16.303870+00:00",
+  "base_commit": "48f5efb04806c8c127b41f0bc7d0627477b2c2da",
+  "branch": "codex/m2-comparison",
+  "status": "VERIFIED_LOCAL_RUNTIME_ACTIVATION; VERIFY_CONTAINING_COMMIT_CI",
+  "all_modules_complete": false,
+  "change": [
+    "Existing regintel-api accepts explicit --asset-project for source/model/parser assets, separate from credentials and Python imports.",
+    "Current migration history and parser descriptor/code identity are validated before runtime assembly; pending/changed/unknown schema fails safely.",
+    "--check validates configuration/schema without starting services, constructing storage/broker, migrating, seeding accounts or approving content.",
+    "One DatabaseSettings instance is reused by the assembled repositories; normal native API remains loopback-only.",
+    "Original database was upgraded using existing migrations 12-23 after verified backup and restored-copy rehearsal. Existing authority, audits and source assets were retained."
+  ],
+  "verification": {
+    "affected_backend": {
+      "tests": 188,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 11.467,
+      "artifact": ".cache/runtime-launch-unit-final-20261104.xml",
+      "sha256": "ba0f77d97bce2b6997a831e32a71d4f32541cc8f924f8b221da956a7782b15a8"
+    },
+    "new_unit_cases_in_selection": 15,
+    "owned_postgresql_http": {
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "seconds": 23.369,
+      "artifact": ".cache/runtime-launch-storage-final-20261104.xml",
+      "sha256": "b8f649d744e2b824aba1b86f648dbb0c6a8eb179b7dfa3d4b9f9754c7f45fb94"
+    },
+    "sql_scope": "Authored populated schema-11 -> 23 upgrade preserves prior rows, then separately exercises current CLI assembly and M1-M4 HTTP contracts. Authored data is not real financial/content acceptance.",
+    "static_generated": {
+      "passed_commands": 13,
+      "ruff_formatted_files": 343,
+      "mypy_sources": 205,
+      "commands": {
+        "static_0": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "-m",
+            "ruff",
+            "check",
+            "--config",
+            "backend/pyproject.toml",
+            "backend",
+            "scripts/init-local-env.py",
+            "scripts/init-auth-env.py",
+            "scripts/check-infra.py",
+            "scripts/check-migrations.py",
+            "scripts/check-ingestion-runtime.py",
+            "scripts/check-evidence-runtime.py",
+            "scripts/check-entity-runtime.py",
+            "scripts/check-candidate-runtime.py",
+            "scripts/check-validation-runtime.py",
+            "scripts/check-processing-runtime.py",
+            "scripts/check-publication-runtime.py",
+            "scripts/check-published-reads-runtime.py",
+            "scripts/check-retrieval-runtime.py",
+            "scripts/acquire-embedding-model.py",
+            "scripts/export-contracts.py",
+            "scripts/export-published-reads.py",
+            "scripts/export-retrieval.py",
+            "scripts/export-admin.py",
+            "scripts/export-analysis.py",
+            "scripts/generate-analysis-fixtures.py",
+            "scripts/check-analysis-runtime.py",
+            "scripts/evaluate-analysis.py",
+            "scripts/probe-numerical-page.py",
+            "scripts/benchmark-full-filing.py",
+            "scripts/capture-native-source.py",
+            "scripts/generate-read-fixtures.py",
+            "scripts/generate-fixtures.py",
+            "scripts/export-fixture-cases.py",
+            "scripts/acquire-worker-libs.py",
+            "scripts/inspect-docling-source.py",
+            "scripts/render-parse-qa.py",
+            "scripts/export-learning-portfolio.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.306,
+          "log": ".cache/runtime-launch-final-static_0-20261104.log",
+          "log_sha256": "82b3e6a6c090a57601d22943bd23fca9218d1031dbe5a7b754092f9a156b4f18",
+          "recorded_at_utc": "2026-11-04T05:51:08.601727+00:00"
+        },
+        "static_1": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "-m",
+            "ruff",
+            "format",
+            "--check",
+            "--config",
+            "backend/pyproject.toml",
+            "backend",
+            "scripts/init-local-env.py",
+            "scripts/init-auth-env.py",
+            "scripts/check-infra.py",
+            "scripts/check-migrations.py",
+            "scripts/check-ingestion-runtime.py",
+            "scripts/check-evidence-runtime.py",
+            "scripts/check-entity-runtime.py",
+            "scripts/check-candidate-runtime.py",
+            "scripts/check-validation-runtime.py",
+            "scripts/check-processing-runtime.py",
+            "scripts/check-publication-runtime.py",
+            "scripts/check-published-reads-runtime.py",
+            "scripts/check-retrieval-runtime.py",
+            "scripts/acquire-embedding-model.py",
+            "scripts/export-contracts.py",
+            "scripts/export-published-reads.py",
+            "scripts/export-retrieval.py",
+            "scripts/export-admin.py",
+            "scripts/export-analysis.py",
+            "scripts/generate-analysis-fixtures.py",
+            "scripts/check-analysis-runtime.py",
+            "scripts/evaluate-analysis.py",
+            "scripts/probe-numerical-page.py",
+            "scripts/benchmark-full-filing.py",
+            "scripts/capture-native-source.py",
+            "scripts/generate-read-fixtures.py",
+            "scripts/generate-fixtures.py",
+            "scripts/export-fixture-cases.py",
+            "scripts/acquire-worker-libs.py",
+            "scripts/inspect-docling-source.py",
+            "scripts/render-parse-qa.py",
+            "scripts/export-learning-portfolio.py"
+          ],
+          "exit_code": 0,
+          "seconds": 0.256,
+          "log": ".cache/runtime-launch-final-static_1-20261104.log",
+          "log_sha256": "c7fc3473adb15a67b7499b1ec44759d67517fac73fcb31dc04d5026810292ad3",
+          "recorded_at_utc": "2026-11-04T05:51:08.850548+00:00"
+        },
+        "static_2": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "-m",
+            "mypy",
+            "--config-file",
+            "backend/pyproject.toml",
+            "backend/src",
+            "scripts/init-local-env.py",
+            "scripts/init-auth-env.py",
+            "scripts/check-infra.py",
+            "scripts/check-migrations.py",
+            "scripts/check-ingestion-runtime.py",
+            "scripts/check-evidence-runtime.py",
+            "scripts/check-entity-runtime.py",
+            "scripts/check-candidate-runtime.py",
+            "scripts/check-validation-runtime.py",
+            "scripts/check-processing-runtime.py",
+            "scripts/check-publication-runtime.py",
+            "scripts/check-published-reads-runtime.py",
+            "scripts/check-retrieval-runtime.py",
+            "scripts/acquire-embedding-model.py",
+            "scripts/export-contracts.py",
+            "scripts/export-published-reads.py",
+            "scripts/export-retrieval.py",
+            "scripts/export-admin.py",
+            "scripts/export-analysis.py",
+            "scripts/generate-analysis-fixtures.py",
+            "scripts/check-analysis-runtime.py",
+            "scripts/evaluate-analysis.py",
+            "scripts/probe-numerical-page.py",
+            "scripts/benchmark-full-filing.py",
+            "scripts/capture-native-source.py",
+            "scripts/generate-read-fixtures.py",
+            "scripts/generate-fixtures.py",
+            "scripts/export-fixture-cases.py",
+            "scripts/acquire-worker-libs.py",
+            "scripts/inspect-docling-source.py",
+            "scripts/render-parse-qa.py",
+            "scripts/export-learning-portfolio.py"
+          ],
+          "exit_code": 0,
+          "seconds": 3.97,
+          "log": ".cache/runtime-launch-final-static_2-20261104.log",
+          "log_sha256": "57e1151cbcf764b373bae0e652d59a6d1961723923367cb31a88de7b10ee6122",
+          "recorded_at_utc": "2026-11-04T05:51:12.828798+00:00"
+        },
+        "static_3": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-contracts.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 0.853,
+          "log": ".cache/runtime-launch-final-static_3-20261104.log",
+          "log_sha256": "4c48f1ed0cfe28fe85affc012a9a15fde654403fb8f9c0ea24327fa0954eeee1",
+          "recorded_at_utc": "2026-11-04T05:51:13.680795+00:00"
+        },
+        "static_4": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-published-reads.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.406,
+          "log": ".cache/runtime-launch-final-static_4-20261104.log",
+          "log_sha256": "4b9ebaa5166fc23d7c968b1bfe1b3f4de26619ac97c0be257c518c7a8b8c4f44",
+          "recorded_at_utc": "2026-11-04T05:51:16.088648+00:00"
+        },
+        "static_5": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-retrieval.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.936,
+          "log": ".cache/runtime-launch-final-static_5-20261104.log",
+          "log_sha256": "5d6fa2a210abb531deebe2e7c4d1df740a7c0ff1d8db1187b212ced75da52f4c",
+          "recorded_at_utc": "2026-11-04T05:51:19.022660+00:00"
+        },
+        "static_6": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-admin.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.627,
+          "log": ".cache/runtime-launch-final-static_6-20261104.log",
+          "log_sha256": "f22c928cf8f580d9994b48f966a0336c554aa7095fda6cc57770d4a6c1c457c8",
+          "recorded_at_utc": "2026-11-04T05:51:21.644662+00:00"
+        },
+        "static_7": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-analysis.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.249,
+          "log": ".cache/runtime-launch-final-static_7-20261104.log",
+          "log_sha256": "d34a012e3605c81bdea776ddcc48062aadfc82adc4917b0123390cc2004e9b93",
+          "recorded_at_utc": "2026-11-04T05:51:23.905293+00:00"
+        },
+        "static_8": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/generate-analysis-fixtures.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.311,
+          "log": ".cache/runtime-launch-final-static_8-20261104.log",
+          "log_sha256": "86533c03e493eef5f8c354522f8a25e6a720ec229fe06dfc3c860012237ed200",
+          "recorded_at_utc": "2026-11-04T05:51:26.217900+00:00"
+        },
+        "static_9": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/generate-read-fixtures.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.479,
+          "log": ".cache/runtime-launch-final-static_9-20261104.log",
+          "log_sha256": "1a57edf09a3aa4d37116754537be9abbe767101080ce7448c45f5b005a2ca9c7",
+          "recorded_at_utc": "2026-11-04T05:51:28.697514+00:00"
+        },
+        "static_10": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/generate-fixtures.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 1.35,
+          "log": ".cache/runtime-launch-final-static_10-20261104.log",
+          "log_sha256": "4d098cce736812169e67303e960b5b6b6af18a0da43a3fdca1b39d7186348818",
+          "recorded_at_utc": "2026-11-04T05:51:30.050488+00:00"
+        },
+        "static_11": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-fixture-cases.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 0.703,
+          "log": ".cache/runtime-launch-final-static_11-20261104.log",
+          "log_sha256": "3e0f67c9c99b69ebf389d2644fce3c200c2fd8cfdefe3ad8997adc08e8f44119",
+          "recorded_at_utc": "2026-11-04T05:51:30.753472+00:00"
+        },
+        "static_12": {
+          "command": [
+            "D:\\RegIntel\\backend\\.venv\\Scripts\\python.exe",
+            "scripts/export-learning-portfolio.py",
+            "--check"
+          ],
+          "exit_code": 0,
+          "seconds": 2.565,
+          "log": ".cache/runtime-launch-final-static_12-20261104.log",
+          "log_sha256": "ecdc0510240c2e5b25edaca942a3decf3746e439659780f35204413fc02dd4f0",
+          "recorded_at_utc": "2026-11-04T05:51:33.319275+00:00"
+        }
+      }
+    },
+    "full_backend_rerun": false,
+    "frontend_source_unchanged": true,
+    "frontend_suite_rerun": false,
+    "independent_code_review": "No blocking findings; no mutations or test execution by reviewer.",
+    "actual_browser": {
+      "status": "REAL_LOCAL_FOUR_MODULE_BROWSER_READS_PASS",
+      "requestInterception": false,
+      "schema": 23,
+      "frontendFilesChanged": false,
+      "stages": [
+        {
+          "module": "M1",
+          "originalPdfRendered": true,
+          "exactEvidenceRegion": true,
+          "sourceViewObservedMs": 6951
+        },
+        {
+          "module": "M2",
+          "workspaceVisible": true,
+          "comparisonBlockedWithoutAcceptedNumericalInputs": true
+        },
+        {
+          "module": "M3",
+          "starters": 7,
+          "loadedForEditingOnly": true,
+          "reviewOrPublicationPerformed": false
+        },
+        {
+          "module": "M4",
+          "accountCreationAvailable": true,
+          "accountOrOrderCreated": false,
+          "quotesUnavailableVisible": true
+        }
+      ],
+      "unexpectedWrites": 0,
+      "browserErrors": 0,
+      "credentialsInUrls": false,
+      "browserStorageEntries": 0,
+      "sourceOrContentApproval": false,
+      "successfulPricedRuntimeTrade": false,
+      "artifact": ".cache/local-runtime-activation-20261105/browser-report.json",
+      "sha256": "c84921a8a146e936d4847b7a7578ed9e5883f3c8e58b8cf41309516e873ea023",
+      "source_view_time_is_uncontrolled_observation_not_benchmark": true
+    }
+  },
+  "original_database": {
+    "upgrade_applied_on": "2026-11-04",
+    "old_schema": 11,
+    "current_schema": 23,
+    "backup_verified": true,
+    "backup_bytes": 2243794,
+    "backup_sha256": "350bcf3e9b106401691a76eef7d821dc6ad6c66c2c1b7e58c4c84fc7e5273b53",
+    "restored_copy_rehearsal_passed": true,
+    "existing_table_snapshots_preserved": 48,
+    "old_column_values_and_migration_prefix_preserved": true,
+    "rechecked_after_restart_worker_and_browser_on": "2026-11-05",
+    "final_operational_check": {
+      "checked_at_utc": "2026-11-05T05:38:23.753929+00:00",
+      "schema": 23,
+      "retained_table_snapshots": 48,
+      "existing_values_preserved": true,
+      "migration_history_matches_upgrade": true,
+      "backup_verified": true,
+      "owned_databases_absent": [
+        "regintel_test_activation_48dfcdd15f424cb18cf6d6e7b36963b7",
+        "regintel_test_m0_3_5007795c8a194f939222f1a83dbc9a53",
+        "regintel_test_m0_3_e3a74b571aa74039a176c0c31b913c73"
+      ],
+      "jobs": {
+        "filing_jobs": [
+          [
+            "PARSED",
+            1
+          ],
+          [
+            "SOURCE_VERIFIED",
+            1
+          ]
+        ],
+        "processing_jobs": [
+          [
+            "FAILED",
+            1
+          ],
+          [
+            "SUCCEEDED",
+            2
+          ]
+        ]
+      },
+      "queue_lengths": {},
+      "unacknowledged_deliveries": 0,
+      "financial_or_content_approval_created": false,
+      "worker": {
+        "image_id": "sha256:664596a1899d23bdf718bcf459dd13ba412646e690eec566408398072bd10bc4",
+        "status": "running",
+        "health": "healthy",
+        "user": "10001:10001",
+        "read_only": true,
+        "cap_drop": [
+          "ALL"
+        ],
+        "security_options": [
+          "no-new-privileges:true"
+        ],
+        "ports": {}
+      }
+    },
+    "original_source_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+    "published_corpus_version_id": "614d7861-3f8f-4d5c-a9e5-d7423c2aba58",
+    "published_companies": 1,
+    "published_conditional_narratives": 1,
+    "accepted_real_numerical_inputs": 0,
+    "credentials_rotated": false,
+    "new_financial_or_content_approvals": false,
+    "backup_and_credentials_committed": false
+  },
+  "worker": {
+    "build_and_offline_imports": {
+      "checked_at_utc": "2026-11-04T06:05:43.695127+00:00",
+      "image_tag": "regintel-ingestion:runtime-launch-validation-20261104",
+      "original_worker_image_id": "sha256:5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b",
+      "build_exit_code": 0,
+      "build_seconds": 36.608,
+      "dockerfile": "infra/worker.Dockerfile",
+      "dockerfile_sha256": "b074ac2da84928c7544701a973179b4775b4d39c0d417ff4465116821cb9500e",
+      "build_network": "default",
+      "import_verification_network": "none",
+      "build_log_sha256": "3800dff742644b787c2d0b4ef53947b80f7fab1d581629f3c9a400bee21b0a94",
+      "started_worker_service": false,
+      "public_ports": [],
+      "host_software_installed": false,
+      "image_id": "sha256:664596a1899d23bdf718bcf459dd13ba412646e690eec566408398072bd10bc4",
+      "original_worker_image_unchanged": true,
+      "parser": {
+        "uid": 10001,
+        "python": "3.12.15",
+        "runtime_code": {
+          "adapter_code_sha256": "9236d4dfeed37f286e428543f3f86a2ed7030f8883c50796f0cc6eedf7578a1f",
+          "geometry_code_sha256": "a5108d8a9b47939757acfab73358750096fb4d42d3baec3c1f45aa5d628b745a",
+          "sdk_code_sha256": "920eeced6f890638a4acb417f913ac10406fb6c53c8c41e88b3c48c6745c5d0b",
+          "artifact_models_code_sha256": "6e37624d6b5a4f7615ab392951a230eba4788deed45933717611f3a88140ece7"
+        },
+        "package_manifest_sha256": "31dd0ebc316f27c741e61f572ba56fe14bf2ae17961606c9c92b4800b01ec0d3"
+      },
+      "stages": {
+        "uid": 10001,
+        "python": "3.12.15",
+        "resolver": {
+          "version": "1.0.0",
+          "spacy_version": "3.8.16",
+          "rapidfuzz_version": "3.14.6",
+          "code_sha256": "389b4f3cf0f0fd2a407bc1feba391122ada09729d623d916c98c220e234d7cef",
+          "fuzzy_threshold": 85.0,
+          "max_proposals": 5
+        },
+        "source_sha256": {
+          "auth/cli.py": "7a47cd4f57c377129e28af4954de4f3f635e5844f8cb64a396839780ea75b704",
+          "entities/api.py": "47b1d645b905b6d15c40d8c50e46717acbe3f476b3a4484b4b8e423891d56f35",
+          "entities/models.py": "90a43a4b56c6e2437e7a2f70ec19c1dd05369f39757fbfc08293650e381623bd",
+          "entities/repository.py": "611c3763b030d29927d914021f326c8031820949a895f9dc1347f9e6bbc7437e",
+          "entities/resolution.py": "e345a873491796cbc6b47bf38c2c8a6806a404f30c7924c0a901d3bba78235d2",
+          "entities/native_support.py": "400c7000be02d24513f7610e36c53466ccc144b16ef5792111d1c1eb8be62085",
+          "numerical/bound_gate.py": "6991cb4a57b8ae63f258d5dfcd1098b83a35e686357da15495977cb9dfdc2f5b",
+          "reads/repository.py": "c6531e83ff67ba6e7ccc5a90bb47cdecdaeefaed59cac42f5ef5b84459de6c53"
+        },
+        "native_schema": "native-company-registration-1"
+      },
+      "status": "OFFLINE_NONROOT_REBUILT_IMAGE_IMPORTS_AND_SOURCE_HASHES_VERIFIED"
+    },
+    "selection": {
+      "checked_at_utc": "2026-11-05T05:36:12.759588+00:00",
+      "schema": 23,
+      "retained_table_snapshots": 48,
+      "existing_values_preserved": true,
+      "migration_history_matches_upgrade": true,
+      "backup_verified": true,
+      "owned_databases_absent": [
+        "regintel_test_activation_48dfcdd15f424cb18cf6d6e7b36963b7",
+        "regintel_test_m0_3_5007795c8a194f939222f1a83dbc9a53",
+        "regintel_test_m0_3_e3a74b571aa74039a176c0c31b913c73"
+      ],
+      "jobs": {
+        "filing_jobs": [
+          [
+            "PARSED",
+            1
+          ],
+          [
+            "SOURCE_VERIFIED",
+            1
+          ]
+        ],
+        "processing_jobs": [
+          [
+            "FAILED",
+            1
+          ],
+          [
+            "SUCCEEDED",
+            2
+          ]
+        ]
+      },
+      "queue_lengths": {},
+      "unacknowledged_deliveries": 0,
+      "financial_or_content_approval_created": false,
+      "old_image_id": "sha256:5ea1bac10eb3ffdbfe7c3c060763b233f11f85a7096dec790f53243f46c1711b",
+      "backup_image_tag": "regintel-ingestion:before-runtime-20261104",
+      "selected_image_id": "sha256:664596a1899d23bdf718bcf459dd13ba412646e690eec566408398072bd10bc4",
+      "selected_image_tag": "regintel-ingestion:local"
+    },
+    "current_service": {
+      "image_id": "sha256:664596a1899d23bdf718bcf459dd13ba412646e690eec566408398072bd10bc4",
+      "status": "running",
+      "health": "healthy",
+      "user": "10001:10001",
+      "read_only": true,
+      "cap_drop": [
+        "ALL"
+      ],
+      "security_options": [
+        "no-new-privileges:true"
+      ],
+      "ports": {}
+    },
+    "existing_compose_network_and_original_mounts_reused": true,
+    "new_job_delivery_exercised": false,
+    "scope": "Current image identity, offline parser/stage imports, empty queue and existing service health verified. No new filing/job submitted."
+  },
+  "native_runtime": {
+    "code_project": "D:/RegIntel/.cache/worktrees/m2-comparison",
+    "asset_project": "D:/RegIntel",
+    "api_url": "http://127.0.0.1:8000",
+    "frontend_url": "http://127.0.0.1:5173",
+    "started_hidden_on": "2026-11-05",
+    "service_availability_is_time_specific": true,
+    "restart_guide": "docs/LOCAL_RUNTIME.md",
+    "old_main_code_is_not_current_runtime": true
+  },
+  "source_sha256": {
+    "backend/src/regintel/auth/cli.py": "7a47cd4f57c377129e28af4954de4f3f635e5844f8cb64a396839780ea75b704",
+    "backend/tests/test_api_launch.py": "3ffb204417a029b6d1a31d4473375bf2cbdf7e306f50f7d4b549749fb04810c2",
+    "backend/tests/integration/test_api_launch_storage.py": "29696e5e3d07834771f3842866562b69184e8605880ec2c095821450eb6cd074"
+  },
+  "preservation": {
+    "verified_existing_file_count": 107,
+    "unchanged_migration_files": 23,
+    "resolver_code_sha256": "389b4f3cf0f0fd2a407bc1feba391122ada09729d623d916c98c220e234d7cef",
+    "bound_gate_configuration_sha256": "569118214f210cbcdfa1e2065d2f3dbf0c83a58141ce8d3c19e025cf99e1337e",
+    "dependencies_changed": false,
+    "required_environment_variables_added": false,
+    "public_api_contract_changed": false,
+    "new_service_or_public_port": false
+  },
+  "predecessor_ci": {
+    "checked_at_utc": "2026-11-05T05:38:01.200749+00:00",
+    "head_revision": "48f5efb04806c8c127b41f0bc7d0627477b2c2da",
+    "remote_head_revision": "48f5efb04806c8c127b41f0bc7d0627477b2c2da",
+    "branch": "codex/m2-comparison",
+    "run": {
+      "id": 41779415998,
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/41779415998",
+      "status": "completed",
+      "conclusion": "success",
+      "head_revision": "48f5efb04806c8c127b41f0bc7d0627477b2c2da",
+      "jobs": [
+        {
+          "name": "Foundation (windows-2025)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Foundation (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  },
+  "development_notes": [
+    "Initial owned SQL development attempt found stopped data services; final serial unit/SQL/static checks passed after restarting only existing RegIntel infrastructure.",
+    "Ruff import ordering used the explicit backend configuration; the final checks retain their assertions.",
+    "The private restored-copy HTTP probe initially asserted a guessed numerical queue URL; corrected to the actual /v1/admin/numerical/gates and checked its authenticated response.",
+    "An initial browser probe used a five-second locator wait for PDF rendering; it was aligned with the existing source-proof 30-second wait, retaining exact source/highlight assertions. A select locator was corrected to its existing combobox role; module sessions were explicitly signed out between roles.",
+    "An offline image build could not resolve Hatchling build metadata. The existing approved Dockerfile built using normal dependency access; parser/stage import verification then passed with network disabled. No dependency pins or host installation changed.",
+    "The copied private worker verification helper initially expected a renamed native schema literal. Corrected only the helper to native-company-registration-1 and verified the same built image without rebuilding.",
+    "The handover audit found services stopped. On 5 November the existing data services, matching worker and current native API/frontend were restarted. Fresh actual browser checks passed; original values/history were rechecked afterward."
+  ],
+  "remaining": [
+    "Four real numerical candidates still require source-backed identity/context/policy/applicability resolution, fresh gates, independent acceptance and common publication.",
+    "Real M2 acceptance plan remains empty; seven M3 starter drafts remain unreviewed and no reviewed glossary is published locally.",
+    "Runtime quotes remain unavailable by user choice; no account/order or successful priced trade was created by the browser proof.",
+    "Real amendment-pair/module acceptance, feature/corpus freeze, held-out research evaluation and fresh-clone handoff remain pending."
+  ]
+}

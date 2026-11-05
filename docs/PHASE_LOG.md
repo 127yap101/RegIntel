@@ -2,6 +2,44 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Current local runtime activation, 4–5 November
+
+Continued from `48f5efb`. Extended the existing native API command with explicit
+`--asset-project` and read-only `--check`. Schema history and parser/code identity
+are validated before assembly; credentials/imports stay independent and the API
+remains loopback-only. No dependency, required setting, migration or public API
+contract changed. Independent code review found no blocking issue.
+
+Final source verification on 4 November passes 188 selected backend cases
+(including 15 new), one owned populated-11-to-23 upgrade and actual CLI/four-module
+HTTP test, plus 13 static/generated checks (Ruff 343; mypy 205). On 5 November
+their source/log hashes were checked against current files. Full backend/frontend
+suites were not repeated; earlier full counts retain their original scope.
+
+The original database was backed up, restored to one exact owned trial, upgraded
+and verified before applying existing migrations 12–23 to the original. All 48
+prior table/column snapshots and old migration prefix survive. Backup is retained
+privately; trial and two exact runner databases are absent. Original database
+schema is now 23; earlier schema-11 statements in this log are historical.
+
+After the handover audit found services stopped, 5 November activation restarted
+only existing data services, selected the verified current image under the local
+worker tag, retained its predecessor under `before-runtime-20261104`, and started
+the existing non-root/read-only worker without a public port. The current API and
+frontend run natively in hidden processes on loopback, using current worktree code
+and original assets. Worker health/imports/source inventory pass; queues were idle.
+No new job delivery was exercised. Post-browser SQL checks preserve all prior data.
+
+Fresh real local browser reads pass all four module workspaces and exact original
+PDF highlighting, with no unexpected writes/errors. Real comparison remains
+blocked; seven starters remain unreviewed; M4 shows unavailable quotes and no
+account/order was created. The report separately records authored tests, actual
+reads, development failures/corrections and remaining acceptance work. Exact
+predecessor CI run 41779415998 passes all three jobs. See
+`data/local-runtime-activation-validation-report.json` and `docs/LOCAL_RUNTIME.md`.
+Verify the containing commit after push; continue real numerical/context approval,
+module/amendment acceptance, evaluation and fresh-clone handoff.
+
 ## Native company identity and shared catalogs, 4 November
 
 Continued from `14d628e`. A versioned native company profile now preserves

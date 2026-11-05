@@ -1,5 +1,10 @@
 # Run, inspect and pause RegIntel
 
+For the current `codex/m2-comparison` application, read
+[the local runtime guide](LOCAL_RUNTIME.md) and latest `CURRENT_STATE.md` first.
+They describe schema 23, explicit code/asset selection and current activation.
+The M1 schema-11 commands, counts and proofs below are historical checkpoints.
+
 ## Administrator filing and review workspace (M1.12)
 
 Start the configured native API and frontend using the commands below. Choose

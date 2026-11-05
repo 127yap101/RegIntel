@@ -1,6 +1,7 @@
 """Explicit local seed/check/server entry points; no credentials in command arguments."""
 
 import argparse
+import json
 from pathlib import Path
 
 import uvicorn
@@ -10,6 +11,7 @@ from regintel.auth.errors import AuthUnavailable, InvalidAuthentication, SeedCon
 from regintel.auth.repository import PostgreSQLAuthRepository, seed_users
 from regintel.auth.service import AuthService
 from regintel.db.config import load_database_settings
+from regintel.db.migrations import MigrationError, migration_status
 
 ROOT = Path(__file__).resolve().parents[4]
 
@@ -50,6 +52,17 @@ def serve_main() -> None:
     parser = _parser("Run the configured native API on loopback.")
     parser.add_argument("--port", type=int, default=8000)
     parser.add_argument(
+        "--asset-project",
+        type=Path,
+        default=ROOT,
+        help="Explicit project containing data/uploads, parser configuration and models.",
+    )
+    parser.add_argument(
+        "--check",
+        action="store_true",
+        help="Validate schema/configuration without starting services or changing data.",
+    )
+    parser.add_argument(
         "--numerical-runtime-file",
         type=Path,
         help="Selected native numerical parser descriptor; omitted disables numerical review HTTP.",
@@ -58,12 +71,63 @@ def serve_main() -> None:
     if not 1 <= args.port <= 65535:
         parser.error("The port must be between 1 and 65535.")
     try:
+        assets = args.asset_project.resolve(strict=True)
+        if not assets.is_dir():
+            raise ValueError("The selected asset project must be a directory.")
+        database = load_database_settings(args.env_file)
+        schema = migration_status(database)
+        if schema.pending:
+            raise SystemExit(
+                f"Database has {len(schema.pending)} pending migrations for this checkout. "
+                "Run regintel-db migrate with this checkout and the selected --env-file "
+                "before starting the API. No migration was applied."
+            )
         service = AuthService(
-            PostgreSQLAuthRepository(load_database_settings(args.env_file)),
+            PostgreSQLAuthRepository(database),
             load_auth_settings(args.auth_env_file),
         )
-    except (OSError, ValueError, AuthUnavailable):
-        raise SystemExit("Authentication configuration is unavailable; secrets omitted.") from None
+        from regintel.ingestion.config import native_ingestion_settings
+        from regintel.parsing.configuration import (
+            current_runtime_code_hashes,
+            load_runtime_configuration,
+        )
+
+        ingestion_settings = native_ingestion_settings(assets, args.env_file)
+        numerical_configuration = (
+            load_runtime_configuration(args.numerical_runtime_file)
+            if args.numerical_runtime_file is not None
+            else None
+        )
+        if numerical_configuration is not None and any(
+            getattr(numerical_configuration, name) != digest
+            for name, digest in current_runtime_code_hashes().model_dump().items()
+        ):
+            raise ValueError("The numerical descriptor differs from installed parser code.")
+    except (OSError, ValueError, AuthUnavailable, MigrationError):
+        raise SystemExit(
+            "API configuration/schema check failed. Verify the selected asset project, "
+            "environment files, parser descriptors and migration history; secrets omitted."
+        ) from None
+
+    model_root = assets / "models/bge-small-en-v1.5"
+    if args.check:
+        print(
+            json.dumps(
+                {
+                    "status": "CONFIGURATION_VALIDATED",
+                    "database_schema_version": schema.applied[-1],
+                    "asset_project": str(assets),
+                    "source_directory_present": ingestion_settings.source_root.is_dir(),
+                    "publication_model_directory_present": model_root.is_dir(),
+                    "numerical_review_configured": numerical_configuration is not None,
+                    "processing_configuration_sha256": ingestion_settings.configuration_sha256,
+                    "live_services_checked": False,
+                    "authentication_checked": False,
+                    "content_approved": False,
+                }
+            )
+        )
+        return
     from regintel.admin.repository import AdminRepository
     from regintel.candidates.api import CandidateService
     from regintel.candidates.repository import CandidateRepository
@@ -73,7 +137,6 @@ def serve_main() -> None:
     from regintel.evidence.repository import EvidenceRepository
     from regintel.ingestion.api import IngestionService
     from regintel.ingestion.broker import create_celery, sender
-    from regintel.ingestion.config import native_ingestion_settings
     from regintel.ingestion.repository import JobRepository
     from regintel.main import create_app
     from regintel.processing.api import ProcessingService
@@ -90,27 +153,24 @@ def serve_main() -> None:
     from regintel.validation.api import ValidationService
     from regintel.validation.repository import ValidationRepository
 
-    ingestion_settings = native_ingestion_settings(ROOT, args.env_file)
     ingestion = IngestionService(
         ingestion_settings,
-        JobRepository(load_database_settings(args.env_file)),
+        JobRepository(database),
         sender(create_celery(ingestion_settings)),
     )
     from regintel.numerical.repository import NumericalRepository
     from regintel.numerical.review_repository import NumericalContextReviewRepository
-    from regintel.parsing.configuration import load_runtime_configuration
 
     numerical_source = (
         NumericalRepository(
-            load_database_settings(args.env_file),
+            database,
             ingestion.storage,
-            load_runtime_configuration(args.numerical_runtime_file),
+            numerical_configuration,
         )
-        if args.numerical_runtime_file is not None
+        if numerical_configuration is not None
         else None
     )
 
-    model_root = ROOT / "models/bge-small-en-v1.5"
     publication = None
     graph = None
     if model_root.is_dir():
@@ -118,7 +178,7 @@ def serve_main() -> None:
             configuration = current_configuration(model_root)
             graph = Neo4jProjection.from_env(args.env_file)
             publication = PublicationService(
-                PublicationRepository(load_database_settings(args.env_file), numerical_source),
+                PublicationRepository(database, numerical_source),
                 graph,
                 configuration,
                 model_root=model_root,
@@ -126,12 +186,10 @@ def serve_main() -> None:
         except (OSError, ValueError, ImportError):
             raise SystemExit("Publication prerequisites are invalid; secrets omitted.") from None
 
-    evidence_service = EvidenceService(
-        EvidenceRepository(load_database_settings(args.env_file)), ingestion.storage
-    )
+    evidence_service = EvidenceService(EvidenceRepository(database), ingestion.storage)
     read_service = PublishedReadService(
-        PublicationRepository(load_database_settings(args.env_file)),
-        ReadRepository(load_database_settings(args.env_file)),
+        PublicationRepository(database),
+        ReadRepository(database),
         evidence_service,
         graph,
     )
@@ -144,36 +202,26 @@ def serve_main() -> None:
         uvicorn.run(
             create_app(
                 auth_service=service,
-                admin_repository=AdminRepository(load_database_settings(args.env_file)),
+                admin_repository=AdminRepository(database),
                 ingestion_service=ingestion,
                 evidence_service=evidence_service,
-                entity_service=EntityService(
-                    EntityRepository(load_database_settings(args.env_file))
-                ),
-                candidate_service=CandidateService(
-                    CandidateRepository(load_database_settings(args.env_file))
-                ),
-                validation_service=ValidationService(
-                    ValidationRepository(load_database_settings(args.env_file))
-                ),
+                entity_service=EntityService(EntityRepository(database)),
+                candidate_service=CandidateService(CandidateRepository(database)),
+                validation_service=ValidationService(ValidationRepository(database)),
                 processing_service=ProcessingService(
-                    ProcessingRepository(load_database_settings(args.env_file)),
+                    ProcessingRepository(database),
                     processing_sender(create_celery(ingestion_settings)),
                 ),
                 publication_service=publication,
                 read_service=read_service,
-                learning_service=LearningService(
-                    LearningRepository(load_database_settings(args.env_file)), read_service
-                ),
-                portfolio_service=PortfolioService(
-                    PortfolioRepository(load_database_settings(args.env_file)), read_service
-                ),
+                learning_service=LearningService(LearningRepository(database), read_service),
+                portfolio_service=PortfolioService(PortfolioRepository(database), read_service),
                 numerical_review_repository=NumericalContextReviewRepository(numerical_source)
                 if numerical_source is not None
                 else None,
                 retrieval_service=RetrievalService(
                     read_service,
-                    SearchRepository(load_database_settings(args.env_file)),
+                    SearchRepository(database),
                     Neo4jExpansion(graph) if graph is not None else None,
                     model_root=model_root if model_root.is_dir() else None,
                 ),

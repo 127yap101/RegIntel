@@ -8,6 +8,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 - `AGENTS.md`: operating contract, evidence rules and specification navigation.
 - `CURRENT_STATE.md`: latest implementation/verification status and exact resume direction.
+- [Current M1–M4 runtime](docs/LOCAL_RUNTIME.md): check schema/configuration and explicitly select the existing laptop assets when running the integration checkout.
 - [Run/check/sleep guide](docs/RUN_AND_CHECK.md): current app/API launch commands, saved proof, verification and safe pause/resume.
 - [M1 teammate testing guide](docs/M1_TEAM_TESTING.md): initialize another computer, verify local accounts and distinguish an empty database from a populated filing demo.
 - [M3/M4 run and test guide](docs/M3_M4_RUN_AND_TEST.md): use the module branch, review/publish learning content and test the deterministic virtual ledger.
@@ -27,7 +28,16 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-The latest engineering checkpoint adds
+The latest checkpoint activates the current four-module runtime with explicit
+source/model asset selection and a read-only schema/configuration check. The
+original laptop database was upgraded to migration 23 after a verified backup
+and restore rehearsal; current code, original assets and the matching worker
+are documented in the [runtime guide](docs/LOCAL_RUNTIME.md). See the
+[measured activation report](data/local-runtime-activation-validation-report.json)
+for selected tests, actual browser checks and remaining real-data acceptance.
+Service availability is time-specific; use the guide after shutdown or sleep.
+
+The preceding checkpoint adds
 [native company identity support](docs/NATIVE_COMPANY_IDENTITY.md), retaining
 each original word of a reviewed name/CIN heading in the existing registry and
 published catalogs. Migration 23 preserves legacy registration history; current
@@ -86,7 +96,8 @@ relative percentage differences with input provenance. Missing, conflicting or
 unresolved context blocks arithmetic. Quotes remain explicitly unavailable by
 user choice. Comparison baseline `921e6a6` passes
 [Windows/Ubuntu and infrastructure CI](https://github.com/127yap101/RegIntel/actions/runs/39007655529).
-The original M1 main checkout stays available for manual testing.
+The original `main` checkout contains older M1 code. On the existing laptop,
+use the current runtime guide because the shared database is now at schema 23.
 See the [M2 plan](docs/M2_IMPLEMENTATION_PLAN.md) and
 [current state](CURRENT_STATE.md) for verification and remaining acceptance work.
 The [M2 acceptance runner](docs/M2_ACCEPTANCE.md) checks independent expected

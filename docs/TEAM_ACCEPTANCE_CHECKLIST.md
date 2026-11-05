@@ -1,8 +1,10 @@
 # Team acceptance checklist for M1–M4
 
-Prepared 28 October 2026; updated 3 November 2026. The user reported an approximate
-7–10 day submission window on 27 October. Use `codex/m2-comparison`; `main` retains the earlier M1
-manual-testing checkout. This checklist records work to do, not completed review
+Prepared 28 October 2026; updated 5 November 2026. The user reported an approximate
+7–10 day submission window on 27 October. Use `codex/m2-comparison`; `main` retains
+older M1 code. The original laptop database is now at schema 23; use the
+[current runtime guide](LOCAL_RUNTIME.md) for matching code and original assets.
+This checklist records work to do, not completed review
 or module acceptance. No reviewer, approval or gold label is assigned by this file.
 
 Start with [teammate setup](M1_TEAM_TESTING.md) and

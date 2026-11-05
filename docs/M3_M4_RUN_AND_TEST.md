@@ -1,8 +1,10 @@
 # Run and test the learning and virtual-portfolio baseline
 
-Updated 2 November 2026. These modules are on `codex/m2-comparison` in
+Updated 5 November 2026. These modules are on `codex/m2-comparison` in
 127yap101/RegIntel. Pull that branch to work on M2–M4. The original `main` checkout
-and its saved M1 test corpus have not been migrated or replaced.
+retains older M1 code. Use the [current local runtime guide](LOCAL_RUNTIME.md)
+for matching code, schema and assets on Yash's laptop; consult CURRENT_STATE.md
+for the measured activation result.
 
 ## Another teammate's computer
 
@@ -24,8 +26,9 @@ already populated Docker volume without following the existing setup guide.
 
 After the documented local `.env` and `.env.auth` initialization, run these from
 the new clone. These commands intentionally migrate **that clone's configured
-database**, through migration 22. On Yash's current laptop, preserve the original
-`D:\RegIntel` database and use the disposable checks below instead.
+database**, through migration 23. On Yash's laptop use the explicit current-code /
+existing-asset commands in the local runtime guide. Starting the older main
+checkout does not select the current four-module runtime.
 
 ```powershell
 powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\compose.ps1 up
@@ -33,6 +36,7 @@ powershell.exe -NoProfile -ExecutionPolicy Bypass -File .\scripts\compose.ps1 up
 .\backend\.venv\Scripts\regintel-db.exe check --env-file .env
 .\backend\.venv\Scripts\regintel-auth.exe seed --env-file .env --auth-env-file .env.auth
 .\backend\.venv\Scripts\regintel-auth.exe check --env-file .env --auth-env-file .env.auth
+.\backend\.venv\Scripts\regintel-api.exe --env-file .env --auth-env-file .env.auth --check
 .\backend\.venv\Scripts\regintel-api.exe --env-file .env --auth-env-file .env.auth
 ```
 

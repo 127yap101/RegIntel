@@ -1,5 +1,51 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest local activation continuation, 5 November: read `docs/LOCAL_RUNTIME.md`,
+`docs/LOCAL_RUNTIME_ACTIVATION_PLAN.md`,
+`data/local-runtime-activation-validation-report.json` and newest CURRENT_STATE.md.
+Continue the authorized four-module work and tested pushes to `codex/m2-comparison`.
+
+The original database has been upgraded from 11 to 23, after verified backup and
+restored-copy rehearsal on 4 November. Its 48 prior table snapshots and migration
+history are preserved and rechecked after the 5 November restart/browser proof.
+Three exact owned test/trial databases are absent; the host backup stays ignored.
+Older instructions claiming the original database is still at 11 are historical.
+Do not run old schema-11-only probes or start old main code as the current app.
+
+Current code is `D:\RegIntel\.cache\worktrees\m2-comparison`; credentials,
+sources and models remain in `D:\RegIntel`. The existing API launcher now has
+explicit `--asset-project` and read-only `--check` options. Schema and compatible
+parser descriptors are validated before assembly; assets never select credentials
+or Python imports. Use the exact code/asset launch commands in the guide. Native
+API/frontend were left on loopback 8000/5173 in hidden processes on 5 November;
+check ownership/health after sleep/restart rather than launching duplicates.
+
+Existing data services and worker were restarted. Current verified worker image
+664596a1899d23bdf718bcf459dd13ba412646e690eec566408398072bd10bc4 is selected as
+`regintel-ingestion:local`, preserving the old image under
+`regintel-ingestion:before-runtime-20261104`. It is healthy, non-root/read-only,
+without a worker port, on the existing network/original mounts. Offline imports,
+inventory and source hashes passed; no new job delivery was tested. Queues and
+active database jobs were empty; historical job states remain intact.
+
+Recorded final checks pass 188 selected backend tests (15 new), one owned
+populated-schema upgrade/current CLI/four-module HTTP case and 13 static/generated
+checks. Their hashes match on 5 November; independent code review found no blocker.
+Fresh actual browser reads pass source PDF/highlight, M2 missing-input blocking,
+seven unreviewed M3 starters and M4 account-creation/quotes-unavailable display.
+No account/order or source/content approval was created. No frontend, migration,
+dependency, required setting or wire-contract change; all 23 migrations and 107
+checked existing files retain their hashes. Full suites were not rerun for this
+launcher change. Exact predecessor 48f5efb passes all three CI jobs in run
+41779415998; verify the containing activation checkpoint independently after push.
+
+Next complete the existing actual source intake/identity/context/gate/acceptance/
+common-publication path. Four real numerical inputs and real M2 acceptance remain
+unresolved, seven M3 starters need actual supported reviews, and runtime quotes
+remain unavailable. Continue genuine amendment/module acceptance, feature/corpus
+freeze, held-out evaluation and fresh-clone reproduction. Do not replace real
+approval with fixture IDs/results. Earlier entries below are historical snapshots.
+
 Latest native company continuation, 4 November: read
 `docs/NATIVE_COMPANY_IDENTITY_PLAN.md`, `docs/NATIVE_COMPANY_IDENTITY.md`,
 `data/native-company-identity-validation-report.json` and newest CURRENT_STATE.md.

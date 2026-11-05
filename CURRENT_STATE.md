@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-04 (Asia/Calcutta).
+Updated: 2026-11-05 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,70 @@ Updated: 2026-11-04 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Current local runtime activation, 4–5 November:** the existing API launcher
+  now accepts explicit `--asset-project` and read-only `--check` options. Current
+  code can use the original installation's source/model assets while credentials
+  and Python imports remain separately explicit. Ordered migration history and
+  parser descriptor/code identity are checked before runtime construction.
+  Pending/changed/unknown schema fails safely; no automatic migration, seed,
+  service start or content approval occurs. See `docs/LOCAL_RUNTIME.md` and
+  `data/local-runtime-activation-validation-report.json`.
+
+- **The original database is now at migrations 1–23.** On 4 November, a verified
+  backup and restored-copy upgrade rehearsal preceded applying existing
+  migrations 12–23. All 48 existing table snapshots, prior column values and the
+  original migration-history prefix were preserved. On 5 November these were
+  rechecked against the live database after service/worker startup and browser
+  reads. The host backup remains ignored, and all three exact owned test/trial
+  databases are absent. Older entries saying the original database remains at
+  1–11 describe historical checkpoints, not its current state. Do not rerun old
+  schema-11-only runtime probes against it.
+
+- Current application code remains in
+  `D:\RegIntel\.cache\worktrees\m2-comparison`; original credentials, sources and
+  models remain in `D:\RegIntel`. The old `main` checkout is not the current
+  four-module runtime. On 5 November the existing data services were restarted,
+  followed by the current native API/frontend on loopback ports 8000/5173 in
+  hidden processes. Availability is time-specific; use the restart guide after
+  shutdown/sleep and identify port owners before starting another instance.
+
+- The verified current worker image
+  `sha256:664596a1899d23bdf718bcf459dd13ba412646e690eec566408398072bd10bc4`
+  is selected as `regintel-ingestion:local` on the existing Compose network with
+  original source/model mounts. Its predecessor is retained as
+  `regintel-ingestion:before-runtime-20261104`. Offline/non-root parser/stage
+  imports, descriptor inventory and eight selected source hashes passed. The
+  existing worker is healthy as UID/GID 10001, with a read-only filesystem, all
+  capabilities dropped, no-new-privileges and no published port. Database jobs
+  and broker deliveries were idle before selection and remain unchanged. This
+  checkpoint does not claim new job-delivery/processing acceptance.
+
+- Final source tests recorded on 4 November pass **188 selected backend cases**
+  (including 15 new launcher tests), **one owned populated-11-to-23 database/HTTP
+  case**, and **13 static/generated checks** (Ruff 343 files; mypy 205 sources).
+  Source/log hashes were reverified on 5 November; independent code review found
+  no blocker. The previous full backend count belongs to `48f5efb`, not a new
+  full-suite run. Frontend code and all 23 migration files are unchanged; no
+  dependency, required environment variable, public API contract or service was
+  added. Resolver/numerical fingerprints remain unchanged from that predecessor.
+
+- Fresh actual local browser checks on 5 November pass all four workspaces:
+  Premier's original PDF renders with its exact evidence region; M2 correctly
+  blocks comparison without accepted numerical inputs; M3 loads seven unreviewed
+  starters for inspection only; M4 exposes account creation and unavailable
+  quotes. No account/order, financial/content approval, unexpected write or
+  browser error was created. Existing seeded account sign-in succeeds. These
+  reads do not establish real numerical acceptance or a priced portfolio demo.
+
+- Exact predecessor `48f5efb` passes all three GitHub jobs in run 41779415998,
+  verified 5 November. Verify the containing activation commit after push.
+  Continue real source-backed identity/context/policy/applicability decisions,
+  fresh gates, independent acceptance and common publication. All four actual
+  numerical inputs, real M2 acceptance and seven M3 starter reviews remain
+  unresolved. Real amendment/module acceptance, freeze, held-out evaluation and
+  fresh-clone handoff remain pending. Quotes remain unavailable by user choice;
+  all modules and research are not complete. Earlier entries below are historical.
 
 - **Native company identity, 4 November:** an explicit
   `native-company-registration-1` profile now preserves each original word of a
