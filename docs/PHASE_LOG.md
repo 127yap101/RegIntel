@@ -2,6 +2,39 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Actual numerical source intake and review queue, 6–7 November
+
+Used unchanged source `188c951` and the bounded intake plan. After a private
+pg_dump/header/hash check and row inventory, imported the two retained original
+prospectuses with complete native banks and eight selected contextual captures.
+Two current native parses retain 1,184 original pages and 5,699 word-evidence
+rows. Each import replays with an identical receipt; neither dispatches Celery.
+
+Reused only historical exact word/cell selections after complete capture/hash
+matching. Replaced all disposable source/parse/capture/entity/metric references
+with actual current local references; no historical approval snapshot was reused.
+Premier selects its existing exact CIN binding. Waaree and the missing revenue
+metric remain explicit unregistered proposals. Four context/gate records save
+and replay, all REVIEW_REQUIRED, with 120/120/133/133 evidence IDs. No identity,
+policy, financial review, acceptance, publication or learning/ledger change.
+
+Services stopped during the interruption, causing the first browser attempt to
+fail before login. Restarted existing data services and native current API/
+frontend. The initial five-second packet assertion expired during an in-flight
+read; a bounded 30-second check records actual packet latency. Actual browser/HTTP
+checks pass company-filtered queues, all four
+original PDF value highlights, disabled confirmation and blocked preparation,
+plus the existing four-module workspace reads. No unexpected writes/errors.
+Post-read inventories preserve every old row and all 45 protected tables with
+unchanged schema23 history. The new backup was not restore-rehearsed; comparisons
+detect concurrent changes after operations, rather than locking out other users.
+
+Independent workflow/browser review found no blocker. No production code,
+dependency, migration or setting changed, and full suites were not rerun locally.
+Exact unchanged source 188c951 passes all three jobs in CI run42065077380.
+See `data/real-numerical-intake-validation-report.json` and the actual-review
+guide. Financial/content/module approval, evaluation and handoff remain pending.
+
 ## Current local runtime activation, 4–5 November
 
 Continued from `48f5efb`. Extended the existing native API command with explicit

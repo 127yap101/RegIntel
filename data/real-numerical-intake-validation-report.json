@@ -1,0 +1,729 @@
+{
+  "version": "actual-numerical-intake-validation-1",
+  "purpose": "Actual source evidence intake and unresolved review queue; no financial approval, research score or complete module acceptance.",
+  "recorded_at_utc": "2026-11-07T13:05:37.748374+00:00",
+  "source_revision": "188c951c226d34a09d48aecfc30a663f6bc7b334",
+  "branch": "codex/m2-comparison",
+  "database_schema": 23,
+  "status": "ACTUAL_SOURCE_IMPORT_AND_UNRESOLVED_QUEUE_VERIFIED",
+  "environment": "Approved Windows native API/frontend, existing Linux data containers, original installation assets.",
+  "production_code_changed": false,
+  "dependencies_added": [],
+  "migrations_added": [],
+  "required_environment_variables_added": [],
+  "operational_path": [
+    "authenticated import_intake",
+    "NumericalContextStorage.save",
+    "BoundNumericalGateRepository.run/get/replay",
+    "actual HTTP/browser reads",
+    "post-read row inventory"
+  ],
+  "backup": {
+    "bytes": 2431028,
+    "sha256": "0f03f59f4dad0a9f0f25995bd294f77a7a7c2b0c9b8be6d4b25a6fb0afb6b5c3",
+    "pg_dump_success": true,
+    "custom_dump_header_verified": true,
+    "restored_this_backup": false,
+    "retained_privately": true
+  },
+  "preservation": {
+    "all_existing_rows_preserved": true,
+    "protected_tables_unchanged": 45,
+    "migration_history_unchanged": true,
+    "inserted_rows": {
+      "blocks": 5699,
+      "bound_numerical_gate_runs": 4,
+      "evidence": 5699,
+      "evidence_boxes": 5699,
+      "filing_ingestion_keys": 2,
+      "filing_jobs": 2,
+      "filing_versions": 2,
+      "filings": 2,
+      "native_parse_context_captures": 8,
+      "native_parse_manifests": 2,
+      "native_parse_source_pages": 1184,
+      "native_parse_table_sources": 8,
+      "numerical_context_pages": 16,
+      "numerical_context_records": 4,
+      "numerical_page_captures": 8,
+      "numerical_source_words": 5699,
+      "pages": 1184,
+      "parse_artifacts": 2,
+      "parse_versions": 2,
+      "source_blobs": 2
+    },
+    "method": "Every pre-existing row hash/multiplicity remains; 45 protected table inventories and migration history are exactly unchanged. Checks detect concurrent changes after operations, not prevent them."
+  },
+  "documents": [
+    {
+      "label": "premier",
+      "company_name_raw": "Premier Energies Limited",
+      "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca",
+      "source_bytes": 10710612,
+      "native_manifest_sha256": "723eb90a904062e285717ec5ac7bfb0ecdd76ad7df7a33e889d459df050355c9",
+      "context_physical_pdf_pages": [
+        1,
+        20,
+        22,
+        30
+      ],
+      "plan_sha256": "274193a9e253bccff7cbb8569900aacc57e2b1f5635a65833096b885775df428",
+      "receipt": {
+        "status": "SOURCE_EVIDENCE_SEALED",
+        "job": {
+          "id": "a7235db9-8005-43d6-8dc5-3fcec3a351a0",
+          "filing_version_id": "85c6badf-fbb0-413e-974e-2117c5edb4f1",
+          "source_blob_id": "817d53ae-d472-4559-b7f5-1d046ffc62b7",
+          "source_sha256": "aeac8f5598627bf5704d0ae714c4ec536570f320cbb552f682a29ed3d3fc14ca",
+          "configuration_sha256": "e2ab7a458677e02bb4487c7d8294cc1c1d7b5febe1baf89a35826777fe4d7ed2",
+          "state": "PARSED",
+          "attempts": 1,
+          "page_count": 558,
+          "parse_version_id": "2d2ebe80-0ff1-4c5f-a5ec-2bdc801f5400",
+          "failure_code": null
+        },
+        "capture_ids": [
+          "49ff7cde-d6d6-41b4-a774-de01c5b9f417",
+          "5ab71487-e937-4898-ba39-608c8820b117",
+          "2c86a706-144f-4f4c-a858-e1669b06b62b",
+          "fe8dfc38-c651-4963-a99a-f90b9d31895d"
+        ],
+        "acceptance_eligible": false
+      },
+      "subject_reference": {
+        "id": "581d1b0d-98fd-4a23-8e15-5574dac650a2",
+        "registered": true,
+        "new_registration_created": false
+      },
+      "import_seconds": 172.076,
+      "identical_replay": true,
+      "replay_seconds": 140.116,
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_parent_inferred": false
+    },
+    {
+      "label": "waaree",
+      "company_name_raw": "Waaree Energies Limited",
+      "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89",
+      "source_bytes": 8749613,
+      "native_manifest_sha256": "97517097dc08f21702d050dee52d57bc3884c65fa72a5f6c398b5640bfadcf50",
+      "context_physical_pdf_pages": [
+        1,
+        19,
+        21,
+        99
+      ],
+      "plan_sha256": "654bee79288bc03b6a9beceb6d5f958ae20b2155deadb4e4a450d9f01515e9aa",
+      "receipt": {
+        "status": "SOURCE_EVIDENCE_SEALED",
+        "job": {
+          "id": "ec1953b7-bd06-4f9c-a365-fb1da5a72150",
+          "filing_version_id": "b23a7e66-d8dd-4738-a78f-1c8250072109",
+          "source_blob_id": "2d032fce-7017-42c3-ad40-884c7ba1ffa6",
+          "source_sha256": "e43eccf533fbe81ebe875f9792d32d4f541570b035d39df17326ead11b8a5c89",
+          "configuration_sha256": "7cfc4b605a1a4a2af9c6cccd042afebf441e48147d06bf59b60b1bb9f8588a15",
+          "state": "PARSED",
+          "attempts": 1,
+          "page_count": 626,
+          "parse_version_id": "e95238e7-86c2-482f-a6b5-47efc3ea6087",
+          "failure_code": null
+        },
+        "capture_ids": [
+          "6634e294-b534-44af-a4bc-5598af54e0f0",
+          "c659b3e0-b765-47d8-b594-add3c83f9da6",
+          "c0eaa9c7-8624-49b7-8512-666afee72238",
+          "d6b55c37-644e-46d9-a216-0e035df08a9c"
+        ],
+        "acceptance_eligible": false
+      },
+      "subject_reference": {
+        "id": "22961129-2ea8-4667-bd62-7ece45a28629",
+        "registered": false,
+        "new_registration_created": false
+      },
+      "import_seconds": 204.396,
+      "identical_replay": true,
+      "replay_seconds": 204.911,
+      "publication_date": null,
+      "effective_date": null,
+      "amendment_parent_inferred": false
+    }
+  ],
+  "metric_reference": {
+    "id": "3df220c0-8cb5-483a-8116-7d4c4eb80f25",
+    "registered": false,
+    "new_registration_created": false
+  },
+  "gates": [
+    {
+      "gate_id": "1b2fa447-0a6a-4e12-a2e7-6a115a62bfbd",
+      "context_record_id": "2c024cc0-e2bb-4182-88cf-f1accc3f5593",
+      "parse_version_id": "2d2ebe80-0ff1-4c5f-a5ec-2bdc801f5400",
+      "state": "REVIEW_REQUIRED",
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "PASS",
+          "message": "One source issuer name/CIN matches the supplied approval snapshot."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "PASS",
+          "message": "One local restated statement caption supplies the proposed basis."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "input_sha256": "1a01b2b6c6a51224a10c1bf8c664452ab9dc3d641e3e66e33b97d54d9b0b4622",
+      "configuration_sha256": "569118214f210cbcdfa1e2065d2f3dbf0c83a58141ce8d3c19e025cf99e1337e",
+      "raw_value": "31,437.93",
+      "replay_equal": true,
+      "historical_selection_sha256": "9137bae9519bbb1885f6f951e8d0aab89a44f7ab64e76ca226b6922470576334",
+      "historical_approval_snapshots_reused": false,
+      "capture_content_matched": true,
+      "acceptance_eligible": false,
+      "key": "premier-21",
+      "evidence_count": 120,
+      "evidence_id_list_sha256": "a9462beeb9410f779a74e1876d12b6efeac3734928687dd00c51aaf96225697f",
+      "quantity_proposal": {
+        "raw_value": "31,437.93",
+        "normalized_value": "31437.93",
+        "normalized_unit": "million",
+        "currency": "INR",
+        "period": {
+          "kind": "DURATION",
+          "start_date": "2023-04-01",
+          "end_date": "2024-03-31",
+          "instant_date": null,
+          "raw_label": "As at and for the year ended March 31, 2024"
+        },
+        "basis": "CONSOLIDATED"
+      },
+      "human_context_review": null,
+      "publication_input_state": "BLOCKED"
+    },
+    {
+      "gate_id": "029705e3-8f6f-4770-879a-8cb83c64f87f",
+      "context_record_id": "6d5a477f-17e5-4a98-ac35-bf914d35e7aa",
+      "parse_version_id": "2d2ebe80-0ff1-4c5f-a5ec-2bdc801f5400",
+      "state": "REVIEW_REQUIRED",
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "PASS",
+          "message": "One source issuer name/CIN matches the supplied approval snapshot."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "PASS",
+          "message": "One local restated statement caption supplies the proposed basis."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "input_sha256": "b2d03776d5cd73be8b210e7e34e65ccd10a8d70d92c1b0d2ac106b29e4ee50a7",
+      "configuration_sha256": "569118214f210cbcdfa1e2065d2f3dbf0c83a58141ce8d3c19e025cf99e1337e",
+      "raw_value": "14,285.34",
+      "replay_equal": true,
+      "historical_selection_sha256": "6f74af53d677714a98131bb2827d806d08bc513df58d7f7ab36eca6f35790bc3",
+      "historical_approval_snapshots_reused": false,
+      "capture_content_matched": true,
+      "acceptance_eligible": false,
+      "key": "premier-22",
+      "evidence_count": 120,
+      "evidence_id_list_sha256": "01afe4e33af27a2738058eb894171583e0af9e9d62201f87eb66133a29ad194d",
+      "quantity_proposal": {
+        "raw_value": "14,285.34",
+        "normalized_value": "14285.34",
+        "normalized_unit": "million",
+        "currency": "INR",
+        "period": {
+          "kind": "DURATION",
+          "start_date": "2022-04-01",
+          "end_date": "2023-03-31",
+          "instant_date": null,
+          "raw_label": "As at and for the year ended March 31, 2023"
+        },
+        "basis": "CONSOLIDATED"
+      },
+      "human_context_review": null,
+      "publication_input_state": "BLOCKED"
+    },
+    {
+      "gate_id": "e2c4c253-e41c-4091-b7dd-a77f19b7519c",
+      "context_record_id": "4141c3c2-cb70-4d50-a1e8-9cced305e052",
+      "parse_version_id": "e95238e7-86c2-482f-a6b5-47efc3ea6087",
+      "state": "REVIEW_REQUIRED",
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "REVIEW",
+          "message": "The original CIN needs one unambiguous approved registry binding."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "REVIEW",
+          "message": "The separate basis clause needs statement applicability review."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "input_sha256": "9e4861343ca974f36e5b3e67c98cd0fcc23415ae8a2feeb247c5c38b24009455",
+      "configuration_sha256": "569118214f210cbcdfa1e2065d2f3dbf0c83a58141ce8d3c19e025cf99e1337e",
+      "raw_value": "67,508.73",
+      "replay_equal": true,
+      "historical_selection_sha256": "c54dd572b77d89e19d3e7b1203a2cffb5429d94bd45ef7b71080bb6194ca5cc1",
+      "historical_approval_snapshots_reused": false,
+      "capture_content_matched": true,
+      "acceptance_eligible": false,
+      "key": "waaree-9",
+      "evidence_count": 133,
+      "evidence_id_list_sha256": "c1f98b0e4b8491ed0f25f461a3c0dd966163f861ec6df4fc5a3f320e6083ae8d",
+      "quantity_proposal": {
+        "raw_value": "67,508.73",
+        "normalized_value": "67508.73",
+        "normalized_unit": "million",
+        "currency": "INR",
+        "period": {
+          "kind": "DURATION",
+          "start_date": "2022-04-01",
+          "end_date": "2023-03-31",
+          "instant_date": null,
+          "raw_label": "Year ended March 31, 2023"
+        },
+        "basis": "CONSOLIDATED"
+      },
+      "human_context_review": null,
+      "publication_input_state": "BLOCKED"
+    },
+    {
+      "gate_id": "d1b75071-d830-4615-a0dc-b02f5d1e806d",
+      "context_record_id": "6ba1db0f-5fa7-4b55-89be-e05c0c03e97e",
+      "parse_version_id": "e95238e7-86c2-482f-a6b5-47efc3ea6087",
+      "state": "REVIEW_REQUIRED",
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "REVIEW",
+          "message": "The original CIN needs one unambiguous approved registry binding."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "REVIEW",
+          "message": "The separate basis clause needs statement applicability review."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "input_sha256": "e7feb171b24e7fbf3e924b9d4d2123a6204f3bdbec03f27f4d2e9b5c03e66549",
+      "configuration_sha256": "569118214f210cbcdfa1e2065d2f3dbf0c83a58141ce8d3c19e025cf99e1337e",
+      "raw_value": "1,13,976.09",
+      "replay_equal": true,
+      "historical_selection_sha256": "d3d22523709445397c9832292fba6dee7c7e369a9d6c5dde48357a5dd0e43171",
+      "historical_approval_snapshots_reused": false,
+      "capture_content_matched": true,
+      "acceptance_eligible": false,
+      "key": "waaree-10",
+      "evidence_count": 133,
+      "evidence_id_list_sha256": "7e7e0da87dbac818be54d0f68e2f3a617a0801eb3a64492f62b8d8a7636b0d1e",
+      "quantity_proposal": {
+        "raw_value": "1,13,976.09",
+        "normalized_value": "113976.09",
+        "normalized_unit": "million",
+        "currency": "INR",
+        "period": {
+          "kind": "DURATION",
+          "start_date": "2023-04-01",
+          "end_date": "2024-03-31",
+          "instant_date": null,
+          "raw_label": "Year ended March 31, 2024"
+        },
+        "basis": "CONSOLIDATED"
+      },
+      "human_context_review": null,
+      "publication_input_state": "BLOCKED"
+    }
+  ],
+  "browser": {
+    "status": "ACTUAL_INTAKE_QUEUE_AND_FOUR_MODULE_BROWSER_READS_PASS",
+    "checkedAtUtc": "2026-11-07T13:05:06.927Z",
+    "requestInterception": false,
+    "schema": 23,
+    "frontendFilesChanged": false,
+    "stages": [
+      {
+        "module": "M1-M2 actual review intake",
+        "requestInterception": false,
+        "queueRows": 4,
+        "gates": [
+          {
+            "key": "premier-21",
+            "gate_id": "1b2fa447-0a6a-4e12-a2e7-6a115a62bfbd",
+            "state": "REVIEW_REQUIRED",
+            "review": null,
+            "evidenceCount": 120,
+            "publicationInputState": "BLOCKED",
+            "originalPdfRendered": true,
+            "exactEvidenceRegion": true,
+            "packetLoadObservedMs": 15250,
+            "sourceViewObservedMs": 8461
+          },
+          {
+            "key": "premier-22",
+            "gate_id": "029705e3-8f6f-4770-879a-8cb83c64f87f",
+            "state": "REVIEW_REQUIRED",
+            "review": null,
+            "evidenceCount": 120,
+            "publicationInputState": "BLOCKED",
+            "originalPdfRendered": true,
+            "exactEvidenceRegion": true,
+            "packetLoadObservedMs": 15279,
+            "sourceViewObservedMs": 2238
+          },
+          {
+            "key": "waaree-9",
+            "gate_id": "e2c4c253-e41c-4091-b7dd-a77f19b7519c",
+            "state": "REVIEW_REQUIRED",
+            "review": null,
+            "evidenceCount": 133,
+            "publicationInputState": "BLOCKED",
+            "originalPdfRendered": true,
+            "exactEvidenceRegion": true,
+            "packetLoadObservedMs": 6006,
+            "sourceViewObservedMs": 2333
+          },
+          {
+            "key": "waaree-10",
+            "gate_id": "d1b75071-d830-4615-a0dc-b02f5d1e806d",
+            "state": "REVIEW_REQUIRED",
+            "review": null,
+            "evidenceCount": 133,
+            "publicationInputState": "BLOCKED",
+            "originalPdfRendered": true,
+            "exactEvidenceRegion": true,
+            "packetLoadObservedMs": 11118,
+            "sourceViewObservedMs": 4404
+          }
+        ],
+        "financialReviewPerformed": false
+      },
+      {
+        "module": "M1",
+        "originalPdfRendered": true,
+        "exactEvidenceRegion": true,
+        "sourceViewObservedMs": 7856
+      },
+      {
+        "module": "M2",
+        "workspaceVisible": true,
+        "comparisonBlockedWithoutAcceptedNumericalInputs": true
+      },
+      {
+        "module": "M3",
+        "starters": 7,
+        "loadedForEditingOnly": true,
+        "reviewOrPublicationPerformed": false
+      },
+      {
+        "module": "M4",
+        "accountCreationAvailable": true,
+        "accountOrOrderCreated": false,
+        "quotesUnavailableVisible": true
+      }
+    ],
+    "unexpectedWrites": 0,
+    "browserErrors": 0,
+    "credentialsInUrls": false,
+    "browserStorageEntries": 0,
+    "sourceOrContentApproval": false,
+    "successfulPricedRuntimeTrade": false
+  },
+  "verification_artifacts_sha256": {
+    "state.json": "f21ce4d4ca0f5fdeb9fcda4c3ee235ba518283d42e35ca30c5868971f0e087f5",
+    "browser-report.json": "dc3319b5309e25e9c3751681cdb7cd91304a2d5efc0d76bc1c2dcba03aa7fa81",
+    "activate-real-review-20261106.py": "a150b6a8ffe2b2e46ef4ddfd912d3497b595e0611a547ba729131c17ce874b51",
+    "check-real-intake-browser-20261107.cjs": "ba0737effae7cd3f3ff96c88fd373d465902bf17e8a05720397ce1785915d193"
+  },
+  "independent_review": {
+    "source_workflow": "No blocker found; backup/after-operation comparison limits explicitly recorded.",
+    "browser": "No intended writes beyond authentication; write detector includes every non-read method."
+  },
+  "prior_source_ci": {
+    "checked_at_utc": "2026-11-06T05:50:35.745348+00:00",
+    "head_revision": "188c951c226d34a09d48aecfc30a663f6bc7b334",
+    "remote_head_revision": "188c951c226d34a09d48aecfc30a663f6bc7b334",
+    "branch": "codex/m2-comparison",
+    "run": {
+      "id": 42065077380,
+      "url": "https://github.com/127yap101/RegIntel/actions/runs/42065077380",
+      "status": "completed",
+      "conclusion": "success",
+      "head_revision": "188c951c226d34a09d48aecfc30a663f6bc7b334",
+      "jobs": [
+        {
+          "name": "Foundation (ubuntu-24.04)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Foundation (windows-2025)",
+          "status": "completed",
+          "conclusion": "success"
+        },
+        {
+          "name": "Local data infrastructure (Linux)",
+          "status": "completed",
+          "conclusion": "success"
+        }
+      ]
+    }
+  },
+  "development_events": [
+    "Premier import/replay completed on 6 November; remaining imports/gates completed on 7 November.",
+    "Local services stopped during the interruption. First browser attempt failed with connection refused before login; existing services restarted.",
+    "Initial packet assertion used the default five-second wait and expired while the real request was still in progress. Actual packet/queue checks use a bounded 30-second wait and record observed packet latency; private HTTP reads retain the existing application 120-second request budget."
+  ],
+  "limits": [
+    "No new company/metric/policy registration, financial context review, candidate acceptance or publication.",
+    "Waaree and revenue metric references remain unregistered proposals. Premier uses its existing exact CIN binding.",
+    "Only selected context pages produce the 5,699 new bound word-evidence rows; complete native bank coverage is 1,184 pages.",
+    "No new Celery job delivery exercised; source intake jobs are caller-owned without dispatch.",
+    "Published corpus, seven unreviewed M3 starters and M4 ledger remain unchanged. Runtime quotes remain unavailable.",
+    "Full test suites not rerun for this operational/documentation-only change; unchanged application revision passes all three prior CI jobs.",
+    "Real numerical/amendment/module acceptance, held-out evaluation, feature/corpus freeze and fresh-clone handoff remain pending.",
+    "Installation-specific source/parse/gate IDs are not available merely by cloning GitHub."
+  ]
+}

@@ -16,6 +16,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 - [Shared filing corpus across M1–M4](docs/SHARED_CORPUS_SESSION.md): retain a verified publication across workspaces, explicitly select latest, and preserve pending-order inputs.
 - [Unified numerical publication](docs/UNIFIED_NUMERICAL_PUBLICATION.md): publish explicitly accepted native numerical evidence through the shared M1 corpus used by all four modules.
 - [Numerical administrator workflow](docs/NUMERICAL_ADMIN_WORKFLOW.md): inspect saved native gates, record context and acceptance decisions, and select candidates for the existing publication draft.
+- [Actual numerical review walkthrough](docs/REAL_NUMERICAL_REVIEW.md): open the imported Premier/Waaree source checks and resolve their remaining prerequisites.
 - [Stored numerical check queue](docs/NUMERICAL_REVIEW_QUEUE.md): find retained checks by uploaded company label and review state before opening the complete source packet.
 - [Native source intake](docs/NATIVE_SOURCE_INTAKE.md): check retained originals/native banks/page captures and import source evidence through the existing M1 producer before financial context review.
 - [Native company identity](docs/NATIVE_COMPANY_IDENTITY.md): register an explicitly reviewed company name/CIN from separate original words without inventing a joined source quotation.
@@ -28,7 +29,15 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-The latest checkpoint activates the current four-module runtime with explicit
+The latest operational checkpoint imports the actual Premier and Waaree source
+packets into the original local installation and saves four unresolved numerical
+checks. Actual browser/HTTP verification opens all four PDF value highlights;
+all four financial inputs still require review and publication remains blocked.
+See the [review walkthrough](docs/REAL_NUMERICAL_REVIEW.md) and
+[measured intake report](data/real-numerical-intake-validation-report.json).
+These local database records and PDFs are not included in a Git clone.
+
+The preceding checkpoint activates the current four-module runtime with explicit
 source/model asset selection and a read-only schema/configuration check. The
 original laptop database was upgraded to migration 23 after a verified backup
 and restore rehearsal; current code, original assets and the matching worker

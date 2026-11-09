@@ -1,5 +1,37 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest actual-source continuation, 7 November: read `docs/REAL_NUMERICAL_REVIEW.md`,
+`docs/REAL_NUMERICAL_INTAKE_PLAN.md`, the measured
+`data/real-numerical-intake-validation-report.json` and newest CURRENT_STATE.md.
+Both prospectuses are now imported into the original schema-23 installation:
+1,184 native pages, eight context captures, 5,699 exact word-evidence rows.
+Both imports and four actual bound gates replay identically. All four gates are
+REVIEW_REQUIRED; publication-input reads are BLOCKED and no review is recorded.
+
+Use actual local IDs from the new report/checklist, not older disposable IDs.
+Premier's existing CIN binding passes ISSUER. Waaree identity and the revenue
+metric remain unregistered proposals. Resolve current issuer/metric/policy,
+unit, basis, cross-page applicability and source qualifiers with real supported
+decisions, then save fresh gates. Context confirmation, candidate acceptance and
+common publication are separate; do not fabricate human approval to clear them.
+
+The pre-intake private dump has command/header/hash verification, not a new
+restore rehearsal. Every old row survives and all 45 protected tables remain
+exactly unchanged after actual browser reads. Source/context/gate tables now
+have intentional additions; older full-table source-count equality checks are
+historical. Schema is still 23. Current runtime uses the integration worktree
+and original assets as documented; services were restarted on 7 November after
+an interruption. Check their actual health before restarting again.
+
+Actual browser checks pass all four new PDF value highlights, queue/packet/
+blocked-preparation reads and existing M1–M4 workspaces, with no unexpected
+write/error. No production code/dependency/migration/setting changed; source
+188c951 passes all three CI jobs in run 42065077380. Full suites were not rerun
+for this operational checkpoint. Continue all four modules and tested pushes;
+real M2 acceptance, seven M3 reviews, real amendment/module acceptance, freeze,
+held-out evaluation and fresh-clone handoff remain pending. Quotes stay unavailable.
+Older continuation entries below describe their original checkpoint only.
+
 Latest local activation continuation, 5 November: read `docs/LOCAL_RUNTIME.md`,
 `docs/LOCAL_RUNTIME_ACTIVATION_PLAN.md`,
 `data/local-runtime-activation-validation-report.json` and newest CURRENT_STATE.md.

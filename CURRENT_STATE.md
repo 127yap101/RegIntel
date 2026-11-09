@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-05 (Asia/Calcutta).
+Updated: 2026-11-07 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,53 @@ Updated: 2026-11-05 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Actual numerical review intake, 6–7 November:** both retained Premier and
+  Waaree prospectuses now exist in the original local database through the current
+  authenticated native intake path. The two sealed parses retain 1,184 original
+  pages, eight selected context captures and 5,699 exact word-evidence records.
+  Repeat imports return identical receipts. Four remapped context drafts and
+  bound gates are saved and replayed against actual local parse/evidence IDs.
+  See `docs/REAL_NUMERICAL_REVIEW.md` and
+  `data/real-numerical-intake-validation-report.json`.
+
+- All four gates are **REVIEW_REQUIRED**, with no context review or accepted
+  financial input. Premier uses its existing exact CIN binding; Waaree and the
+  revenue metric retain explicitly unregistered proposal references. Both
+  companies need metric/policy, unit, cross-page applicability and source-language
+  resolution; Waaree also needs issuer and basis resolution. Historical exact
+  selections were reused only after matching complete captures; old disposable
+  identities and approval snapshots were discarded. Each Premier gate retains
+  120 exact evidence IDs, each Waaree gate 133. All four actual publication-input
+  reads return BLOCKED.
+
+- Before these writes, a private custom dump was checked for command success,
+  header and hash; this new backup was not restore-rehearsed. Subsequent row-hash
+  inventories preserve every existing row and all 45 protected tables, including
+  reviews, accepted/published state, learning and portfolio data. Schema remains
+  23. New source/context/gate rows are intentional additions: older whole-table
+  equality probes describe the pre-intake state and must not be reused as a
+  current source-count expectation.
+
+- Actual browser checks on 7 November find both companies' two unreviewed gates,
+  open all four original PDF value highlights, verify disabled context confirmation
+  and absent candidate preparation, and read the blocked preparation APIs. Existing
+  M1–M4 workspace reads also pass with no unexpected write or browser error. Seven
+  M3 starters remain unreviewed; M4 quotes remain unavailable and no account/order
+  is created. Existing data services and native API/frontend were restarted after
+  an interruption; availability remains time-specific.
+  The four saved packets took 6.0–15.3 seconds to open; PDF value highlights took
+  2.2–8.5 seconds. These observations expose a review-read performance limitation,
+  not a measured latency benchmark or a claim of responsive completion.
+
+- This is an operational/documentation checkpoint with **no application code,
+  dependency, migration or required setting change**. Exact source revision
+  `188c951` passes all three CI jobs in run 42065077380. No full suites were rerun
+  locally for this source-only operation. Independent workflow/browser review
+  found no blocker. Continue genuine source-backed prerequisites, separate
+  acceptance/common publication, real M2 cases, M3 reviews and module/amendment
+  acceptance, followed by freeze, held-out evaluation and fresh-clone handoff.
+  The project is not complete. Entries below retain their historical scope.
 
 - **Current local runtime activation, 4–5 November:** the existing API launcher
   now accepts explicit `--asset-project` and read-only `--check` options. Current
