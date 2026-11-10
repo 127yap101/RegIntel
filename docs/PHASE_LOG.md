@@ -2,6 +2,40 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Learning selection race and shared-module verification, 9–10 November
+
+Continued from pushed `08f60ee`. A pending learning context/PDF response could
+repopulate old evidence after the user changed definition/company/disclosure.
+Disabled those selectors while the existing shared operation is busy and guarded
+the two response state updates against cancellation. This does not cancel an
+administrator write or alter portfolio state. Added delayed context/PDF browser
+regressions that check all three selections lock, unlock after completion and
+clear old context/evidence on the next change. The old code fails on its enabled
+definition selector; both new cases pass on the fix. Late response after unmount
+is not a separately exercised scenario in these new tests.
+
+`pnpm check` passes lint, TypeScript, 436 unit tests and production build. Build
+reports a large-chunk warning; it is not suppressed. Playwright runs
+`learning-portfolio.spec.ts` and `module-corpus.spec.ts` on separate loopback test
+ports 8107/5187 with one worker: all 18 cases pass, including both new tests, M4
+FIFO/history/retry and M1–M4 common-corpus behavior. The two new tests also passed
+in a focused run; they are not counted twice as distinct cases. Independent
+review found no blocker. Logs remain ignored under `.cache/learning-selection-20261109`.
+
+Two test launches were not executed while automatic approval review hit a usage
+limit. Each was retried through the same approval path after its reset time;
+the completed results above are actual runs. No production DB writes, financial
+or content approval, new dependency, migration, environment setting or worker
+rebuild. Backend suites were not rerun for this frontend-only change. Exact
+predecessor 08f60ee passes all three CI jobs in run42576708056.
+
+Separately, offline validation of a retained 5.97 MB gate packet took 3.43 profiled
+seconds, with 2.64 seconds in repeated source geometry validation. This is one
+profiled operation, not endpoint latency or a benchmark. No optimization was made:
+changing geometry/adapter code affects parser/preparation/binding fingerprints,
+and historical gate replay needs explicit compatibility handling. Actual reviewed
+content, financial publication, evaluation and fresh-clone acceptance remain open.
+
 ## Actual numerical source intake and review queue, 6–7 November
 
 Used unchanged source `188c951` and the bounded intake plan. After a private

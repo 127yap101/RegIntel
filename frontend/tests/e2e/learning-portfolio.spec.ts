@@ -215,6 +215,50 @@ test('M3 learner sees reviewed source context and no authoring controls on a nar
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
 
+for (const pendingRead of ['context', 'PDF'] as const) {
+  test(`M3 keeps filing selections fixed while a ${pendingRead} read is pending`, async ({ page }) => {
+    test.setTimeout(60_000)
+    await authoredModules(page)
+    const control: { release?: () => void } = {}
+    const pattern = pendingRead === 'context' ? `${apiOrigin}/v1/learning/context` : `${apiOrigin}/v1/**/source.pdf**`
+    await page.route(pattern, async (route) => {
+      if (route.request().method() === 'OPTIONS') { await route.fallback(); return }
+      await new Promise<void>((release) => { control.release = release })
+      if (pendingRead === 'context') { await route.fallback(); return }
+      const pdf = Buffer.from(published.pdf_base64, 'base64')
+      await route.fulfill({ status: 200, body: pdf, contentType: 'application/pdf', headers: {
+        'Access-Control-Allow-Origin': webOrigin, 'Access-Control-Expose-Headers': 'ETag,Content-Length,X-Corpus-Version-ID',
+        'Content-Length': String(pdf.length), ETag: `"${published.evidence.data.evidence.source_sha256}"`,
+        'X-Corpus-Version-ID': published.info.data.corpus_version_id,
+      } })
+    })
+    await signIn(page, 'learning')
+    const term = page.getByRole('combobox', { name: 'Definition', exact: true })
+    const company = page.getByRole('combobox', { name: 'Company', exact: true })
+    const disclosure = page.getByRole('combobox', { name: 'Disclosure', exact: true })
+    await term.selectOption(ids.definition)
+    await company.selectOption(published.companies.data.companies[0]!.id)
+    await disclosure.selectOption(published.facts.data.facts[0]!.observation.id)
+    await page.getByRole('button', { name: 'Show reviewed context', exact: true }).click()
+    if (pendingRead === 'PDF') await page.getByRole('button', { name: /View source page/ }).click()
+    try {
+      await expect.poll(() => typeof control.release).toBe('function')
+      for (const selection of [term, company, disclosure]) await expect(selection).toBeDisabled()
+      await expect(term).toHaveValue(ids.definition)
+      await expect(company).toHaveValue(published.companies.data.companies[0]!.id)
+      await expect(disclosure).toHaveValue(published.facts.data.facts[0]!.observation.id)
+    } finally { control.release?.() }
+    if (pendingRead === 'PDF') await expect(page.getByText('Source verified · page rendered', { exact: true })).toBeVisible({ timeout: 30_000 })
+    else await expect(page.getByRole('button', { name: /View source page/ })).toBeVisible()
+    for (const selection of [term, company, disclosure]) await expect(selection).toBeEnabled()
+    await company.selectOption('')
+    await expect(page.getByRole('button', { name: /View source page/ })).toHaveCount(0)
+    await expect(page.getByRole('region', { name: 'Exact source page', exact: true })).toHaveCount(0)
+    await expect(disclosure).toHaveValue('')
+    await expect(page.getByRole('button', { name: 'Show reviewed context', exact: true })).toBeDisabled()
+  })
+}
+
 test('M3 selects an earlier reviewed glossary and clears context when returning to the current version', async ({ page }) => {
   await authoredModules(page, { admin: true, history: true }); await signIn(page, 'learning')
   await expect(page.getByText('Later authored glossary definition, separate from the earlier version.', { exact: true })).toBeVisible()

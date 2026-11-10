@@ -1,5 +1,28 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest frontend continuation, 10 November: a verified M3 fix keeps definition,
+company and disclosure selections fixed while context/PDF or administrator work
+is pending, and ignores cancelled context/PDF responses. It prevents a previous
+disclosure or PDF from appearing under a changed selection without aborting the
+shared administrator-write controller. The old code fails the delayed-context
+selector check; the two new delayed-read regressions pass on the fix.
+
+All 436 frontend unit tests, 18 selected Chromium learning/portfolio/shared-corpus
+cases, lint, strict TypeScript and build pass. The two regressions are included
+in the 18, not additional cases. Build retains a large-chunk warning. These are
+authored engineering scenarios; no source/content approval or original DB write.
+Backend, migrations, dependencies and worker image are unchanged. Source-intake
+checkpoint 08f60ee passes all three CI jobs in run 42576708056; verify this newer
+containing fix after push. Continue actual identity/context/policy resolution,
+separate financial acceptance/common publication, real M2 cases, seven M3 reviews,
+module/amendment acceptance, evaluation and fresh-clone handoff. Quotes remain
+unavailable as requested. No phase or research completion is implied.
+
+The numerical-read profile identifies repeated geometry validation as a hotspot.
+No performance code was changed: parser/preparation/binding fingerprints and
+historical gate readability need coordinated compatibility tests before that
+optimization. Do not bypass evidence checks or silently refresh old fingerprints.
+
 Latest actual-source continuation, 7 November: read `docs/REAL_NUMERICAL_REVIEW.md`,
 `docs/REAL_NUMERICAL_INTAKE_PLAN.md`, the measured
 `data/real-numerical-intake-validation-report.json` and newest CURRENT_STATE.md.

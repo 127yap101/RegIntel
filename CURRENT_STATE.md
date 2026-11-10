@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-07 (Asia/Calcutta).
+Updated: 2026-11-10 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,31 @@ Updated: 2026-11-07 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Learning selection race fixed, 9–10 November:** changing
+  a definition/company/disclosure during a pending context or PDF read could
+  display the earlier response beneath a changed selection. The local frontend
+  fix locks those three selectors while busy and ignores cancelled context/PDF
+  responses. It preserves the controller used by administrator writes. A new
+  delayed-context regression failed on the old code's enabled selector; both
+  delayed-context/PDF regressions pass on the fix. Independent review found no
+  blocker. Verification passes all **436 frontend unit tests**, **18 selected
+  Chromium tests** across learning/portfolio/shared-corpus flows (including the
+  two new regressions), lint, strict TypeScript and the production build. The
+  build still reports a large-chunk warning. These browser cases use labelled
+  engineering fixtures, not real content/financial approvals. Backend code,
+  migrations, dependencies, environment variables and worker image are unchanged;
+  backend suites were not rerun for this frontend-only fix. No original database
+  writes or new real module acceptance were performed. See the updated
+  `docs/M3_M4_RUN_AND_TEST.md`; verify the containing commit's CI after push.
+
+- Source-intake checkpoint `08f60ee` is pushed to `codex/m2-comparison` and passes
+  all three jobs in GitHub run 42576708056. Actual source-review records and
+  remaining financial/content decisions are unchanged. An offline packet profile
+  identifies repeated geometry validation as a hotspot; no optimization was made.
+  Changing those routines affects parser/preparation/binding fingerprints and
+  needs separate historical replay compatibility work. Existing gates must remain
+  readable; performance work cannot bypass source checks.
 
 - **Actual numerical review intake, 6–7 November:** both retained Premier and
   Waaree prospectuses now exist in the original local database through the current

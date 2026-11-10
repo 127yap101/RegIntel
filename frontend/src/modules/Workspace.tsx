@@ -130,20 +130,20 @@ function LearningPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: Mo
       <h3 id="learning-context-heading" className="text-lg font-semibold">Published filing context</h3>
       {companyError && <p className="mt-3 text-sm">{companyError}</p>}
       <div className="mt-4 grid gap-4 sm:grid-cols-2">
-        <label className="text-sm">Definition<select className={inputClass} value={selectedTerm} onChange={(event) => { setSelectedTerm(event.target.value); setContext(null); setSource(null); setObservation('') }}><option value="">Select a reviewed definition</option>{glossary?.definitions.map((item) => <option key={item.definition.id} value={item.definition.id}>{item.definition.draft.term}</option>)}</select></label>
-        <label className="text-sm">Company<select className={inputClass} value={company} onChange={(event) => { setCompany(event.target.value); setFacts(null); setContext(null); setSource(null); setObservation(''); setMetric('') }}><option value="">Select a published company</option>{companies?.companies.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
-        <label className="text-sm sm:col-span-2">Disclosure<select className={inputClass} value={observation} onChange={(event) => { setObservation(event.target.value); setContext(null); setSource(null) }}><option value="">Select a matching published disclosure</option>{choices.map((item) => <option key={item.observation.id} value={item.observation.id}>{item.metric.label}: {item.observation.raw_text.slice(0, 160)}</option>)}</select></label>
+        <label className="text-sm">Definition<select className={inputClass} disabled={busy} value={selectedTerm} onChange={(event) => { setSelectedTerm(event.target.value); setContext(null); setSource(null); setObservation('') }}><option value="">Select a reviewed definition</option>{glossary?.definitions.map((item) => <option key={item.definition.id} value={item.definition.id}>{item.definition.draft.term}</option>)}</select></label>
+        <label className="text-sm">Company<select className={inputClass} disabled={busy} value={company} onChange={(event) => { setCompany(event.target.value); setFacts(null); setContext(null); setSource(null); setObservation(''); setMetric('') }}><option value="">Select a published company</option>{companies?.companies.map((item) => <option key={item.id} value={item.id}>{item.name}</option>)}</select></label>
+        <label className="text-sm sm:col-span-2">Disclosure<select className={inputClass} disabled={busy} value={observation} onChange={(event) => { setObservation(event.target.value); setContext(null); setSource(null) }}><option value="">Select a matching published disclosure</option>{choices.map((item) => <option key={item.observation.id} value={item.observation.id}>{item.metric.label}: {item.observation.raw_text.slice(0, 160)}</option>)}</select></label>
       </div>
       {selected && !(selected.definition.draft.metric_ids?.length) && <p className="mt-3 text-sm">This definition has no reviewed filing-metric link. Its general definition and sources remain available.</p>}
       <Button className="mt-4" disabled={busy || !glossary || !companies || !observation || !selectedTerm} onClick={() => run(async (signal) => {
         if (!glossary || !companies) return
         const result = await api.read('context', '/v1/learning/context', signal, { glossary_version_id: glossary.glossary_version_id, definition_id: selectedTerm, corpus_version_id: companies.view.corpus_version_id, observation_id: observation, as_of_date: null })
         if (result.definition.definition.id !== selectedTerm || result.observation.id !== observation || result.glossary_version_id !== glossary.glossary_version_id || result.view.corpus_version_id !== companies.view.corpus_version_id) throw new ModuleError(0, 'The explanation differs from the selected context.')
-        setContext(result); setSource(null)
+        if (!signal.aborted) { setContext(result); setSource(null) }
       })}>Show reviewed context</Button>
       {context && <div className="mt-5 space-y-3"><p className="whitespace-pre-wrap text-sm leading-6">{context.observation.raw_text}</p><p className="text-xs text-muted">Original published disclosure · no generated paraphrase</p>{context.evidence.map((record) => <Button key={record.evidence.record.id} variant="secondary" disabled={busy} onClick={() => run(async (signal) => {
         const bytes = await api.published.pdf({ corpus: context.view.corpus_version_id, historical: false, asOf: context.view.as_of_date ?? '' }, context.observation.id, record.evidence.source_sha256, signal)
-        setSource({ record, bytes })
+        if (!signal.aborted) setSource({ record, bytes })
       })}>View source page {record.evidence.record.source.page_index + 1}</Button>)}</div>}
       {source && <SourceViewer source={source.record} bytes={source.bytes} />}
     </section>

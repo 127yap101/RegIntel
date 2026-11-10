@@ -89,6 +89,9 @@ and native executables; no new module dependency or mandatory env variable is ad
    available M1 metric. **Show reviewed context** retains the exact published
    disclosure, corpus version and evidence; **View source page** uses M1's verified
    original-PDF viewer. No paraphrase or new filing fact is generated.
+   Definition, company and disclosure selections stay fixed while an operation
+   is pending. After it finishes, changing a selection clears the previous
+   context and source page before another request can be made.
 
 No financial glossary has been automatically seeded or marked human-reviewed.
 The tests use labelled authored definitions; they do not establish educational
