@@ -1,5 +1,27 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest continuation, 14 November: the working branch adds source-specific
+numerical applicability attestations, migration 24 and authenticated requirements,
+submission and history APIs. Read `docs/NUMERICAL_APPLICABILITY_REVIEW.md` and the
+latest CURRENT_STATE.md. Complete the separately versioned gate consumer and
+administrator UI next, retaining exact legacy canonical bytes and source
+qualifications through fresh validation, confirmation, acceptance and publication.
+The four real packets still have missing metric/policy approvals and Waaree
+issuer approval. Do not treat an attestation as a completed context confirmation.
+
+M3 saved-draft Open controls now respect the parent operation's busy state.
+The delayed-review regression reproduces the original enabled-control bug and
+passes on the fix. Nineteen selected Chromium module/shared-corpus cases pass.
+M4 focused arithmetic/FIFO checks pass, with runtime quotes still unavailable.
+Seven actual starter definitions still need content review. Current original
+database schema is 23, while the new checkout requires 24. The original database
+has not been upgraded during this checkpoint. Consult CURRENT_STATE.md for
+finished checks before activation. The final checkpoint passes 29 new pure
+contract tests, 28 storage tests, 7 API tests, 436 frontend unit tests and
+19 selected browser tests, plus the focused M4 and existing numerical regressions.
+Full backend suite attempts were interrupted. The build retains its large-bundle
+warning. Check the containing commit's GitHub Actions result after push.
+
 Latest frontend continuation, 10 November: a verified M3 fix keeps definition,
 company and disclosure selections fixed while context/PDF or administrator work
 is pending, and ignores cancelled context/PDF responses. It prevents a previous

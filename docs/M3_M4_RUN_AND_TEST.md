@@ -1,10 +1,18 @@
 # Run and test the learning and virtual-portfolio baseline
 
-Updated 5 November 2026. These modules are on `codex/m2-comparison` in
+Updated 14 November 2026. These modules are on `codex/m2-comparison` in
 127yap101/RegIntel. Pull that branch to work on M2–M4. The original `main` checkout
 retains older M1 code. Use the [current local runtime guide](LOCAL_RUNTIME.md)
 for matching code, schema and assets on Yash's laptop; consult CURRENT_STATE.md
 for the measured activation result.
+
+The current branch includes migration24 for numerical applicability review.
+Yash's existing installation is still at schema23, so its next startup using
+current code needs the tested migration upgrade. See CURRENT_STATE.md for the
+latest verification and `NUMERICAL_APPLICABILITY_REVIEW.md` for the API boundary.
+M3 saved-draft Open controls now wait for pending operations to finish. Browser
+verification includes a delayed administrator review response and checks that
+the recorded result arrives once, followed by available publication controls.
 
 ## Another teammate's computer
 

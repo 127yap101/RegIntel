@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-10 (Asia/Calcutta).
+Updated: 2026-11-14 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,52 @@ Updated: 2026-11-10 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Numerical applicability review and M3 write protection, 12–14 November:**
+  added a versioned applicability request, immutable administrator attestation
+  repository and three authenticated API operations. Decisions retain exact gate
+  hashes, binding, value/row/period cells, complete phrase evidence and selected
+  pages. Migration 24 adds the append-only review table with source-language,
+  membership, actor and immutability guards. Existing canonical gate records stay
+  readable. See `docs/NUMERICAL_APPLICABILITY_REVIEW.md` for the implemented API
+  and the remaining integration boundary.
+
+- Applicability attestations still need a separately versioned gate consumer and
+  administrator UI before they can participate in context confirmation and
+  publication. All four actual saved packets remain blocked by unapproved
+  metric/policy inputs, with Waaree also requiring issuer approval. Offline reads
+  identify four applicable assertions per Premier packet and seven per Waaree
+  packet. No real review, financial acceptance or publication was performed.
+  The original installation remains at schema 23. This checkout requires
+  migration 24 before its next runtime startup. Dependencies, settings and parser
+  runtime descriptor are unchanged.
+
+- M3 now disables saved-draft Open controls during a pending parent operation.
+  Opening a draft previously aborted the shared controller used by an in-flight
+  review/write. The new delayed-review browser test fails on the old enabled
+  control and passes with the fix. All **19** selected Chromium learning,
+  portfolio and shared-corpus cases pass with zero flaky/skipped cases.
+  All **436** frontend unit tests, lint, strict TypeScript and the production
+  build pass. The existing large-bundle warning remains.
+  M4's **66** focused engine/analytics/FIFO unit cases and **4** FIFO database
+  cases pass. Quotes remain unavailable under the user's decision.
+
+- Numerical verification passes **29** new pure contract tests, **102** existing
+  numerical/launcher regression tests, **7** authenticated API database tests and
+  **2** upgrade/module-startup database checks. The 29-case suite required fixes
+  to authored test fixtures' sorted page membership and empty-registry hashes.
+  The final **28** storage cases pass, including direct SQL rejection of
+  unsupported qualifiers, concurrent retries and populated schema-23-to-24
+  history preservation. An earlier run lost the database service during one
+  fixture setup and was rerun successfully. Backend lint/format and strict typing of
+  all 177 source files pass. Full backend unit-suite attempts were interrupted
+  and are not claimed as completed. Test data is authored engineering evidence.
+
+- Previous pushed commit `c1dd344` passes all three GitHub Actions jobs in
+  run 42804116278. Verify the new containing checkpoint after push. Real M2
+  acceptance, seven M3 content reviews, remaining M4 valuation/returns/allocation
+  work, real amendment acceptance, freeze/evaluation and fresh-clone handoff
+  remain pending.
 
 - **Learning selection race fixed, 9–10 November:** changing
   a definition/company/disclosure during a pending context or PDF read could

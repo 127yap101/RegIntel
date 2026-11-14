@@ -2,6 +2,42 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Numerical applicability and M3 draft-write protection, 12–14 November
+
+Implemented exact applicability requirements, request validation, an immutable
+current-administrator repository and three private HTTP endpoints. Migration24
+retains the complete gate/cell/phrase/page selection, actor and request hashes.
+Database guards reject unsupported source qualifiers, examples and instruction
+text alongside missing mandatory prerequisites. Legacy gate formats are preserved.
+The next gate consumer and administrator controls remain pending. No actual
+source approval, accepted observation or publication was created.
+
+Pure applicability tests pass 29, existing numerical/launcher regression tests
+pass 102, administrator HTTP database tests pass 7, and two earlier upgrade/runtime
+checks pass. Test fixture repairs retained sorted capture membership and valid
+empty-registry hashes. The original local database remains schema 23. Backend
+lint/format and strict typing of 177 source files pass. Full backend suite attempts
+were interrupted. The final 28 storage cases pass, including concurrent decisions,
+direct SQL semantic guards and populated schema-23-to-24 history preservation.
+The earlier service-interrupted storage run was rerun successfully.
+
+M3's saved-draft Open buttons previously called the shared operation runner while
+a review response was pending. They now use the parent's busy state. A new
+delayed-write browser regression fails on the old enabled control and passes on
+the fix. The final browser report retains 19 expected, zero unexpected, zero flaky
+and zero skipped cases across learning/portfolio/shared-corpus tests. All 436
+frontend unit tests, lint, strict TypeScript and build pass, with the existing
+large-bundle warning. M4 verification
+passes 66 focused arithmetic/FIFO unit tests and 4 FIFO database tests. Quotes stay unavailable.
+
+Read-only inspection of all four actual saved numerical gates returns ineligible
+applicability requirements due to unapproved metric/policy inputs and Waaree
+issuer identity. Full source qualifications and exact evidence are retained.
+The implementation still needs to consume actual attestations in new gate inputs
+before context confirmation and financial acceptance. Runtime, dependency and
+model-provider choices are unchanged. Previous commit `c1dd344` passes all three CI jobs
+in run 42804116278. New checkpoint CI must be checked after push.
+
 ## Learning selection race and shared-module verification, 9–10 November
 
 Continued from pushed `08f60ee`. A pending learning context/PDF response could

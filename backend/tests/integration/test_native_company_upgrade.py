@@ -66,7 +66,9 @@ def test_upgrade_keeps_existing_registration_registry_hash_and_legacy_guard(
             "WHERE oid='regintel.validate_entity_registration()'::regprocedure"
         ).fetchone()
     migrate(auth_database)
-    assert snapshot(auth_database) == before
+    after = snapshot(auth_database)
+    assert {table: after[table] for table in before} == before
+    assert set(after) - set(before) == {"numerical_applicability_reviews"}
     assert canonical_bytes(repository.snapshot()) == canonical_bytes(registry)
     with connect_database(auth_database) as connection:
         assert (
@@ -79,6 +81,9 @@ def test_upgrade_keeps_existing_registration_registry_hash_and_legacy_guard(
         versions = connection.execute(
             "SELECT version FROM regintel_meta.schema_migrations ORDER BY applied_order"
         ).fetchall()
-        assert [row[0] for row in versions] == list(range(1, 24))
+        assert [row[0] for row in versions] == list(range(1, 25))
+        assert connection.execute(
+            "SELECT count(*) FROM regintel.numerical_applicability_reviews"
+        ).fetchone() == (0,)
     assert not repository.register(body, user)
     assert repository.register(body.model_copy(update={"id": str(uuid4())}), user)

@@ -10,11 +10,11 @@ import fifo from '../../src/modules/fifo.fixture.json' with { type: 'json' }
 const starterPack: unknown = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../data/learning-starter-drafts.json'), 'utf8'))
 
 // Browser fixtures are authored engineering data, separate from real review/quotes.
-async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean; history?: boolean } = {}) {
+async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; pendingReview?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean; history?: boolean } = {}) {
   let stored = structuredClone(definition) as unknown as StoredDefinition
   let available = !options.empty
   let saved = !options.empty
-  let storedReview = options.empty ? null : reviewed as unknown as ReviewedDefinition | null
+  let storedReview = options.empty || options.pendingReview ? null : reviewed as unknown as ReviewedDefinition | null
   let accountCreated = false
   let recorded: OrderRequest | null = null
   let appended = false
@@ -197,6 +197,35 @@ test('M3 administrator drafts an example, reviews and publishes without renderin
   await expect(article.locator('script')).toHaveCount(0)
   await expect(article.getByRole('link', { name: 'Authored source' })).toHaveAttribute('rel', 'noopener noreferrer')
   expect(await page.evaluate(() => sessionStorage.length + localStorage.length)).toBe(0)
+})
+
+test('M3 keeps saved draft selection fixed until the pending review response arrives', async ({ page }) => {
+  await authoredModules(page, { admin: true, pendingReview: true })
+  const control: { release?: () => void } = {}
+  let reviewWrites = 0
+  await page.route(`${apiOrigin}/v1/learning/drafts/${ids.definition}/review`, async (route) => {
+    if (route.request().method() === 'POST') {
+      reviewWrites += 1
+      await new Promise<void>((release) => { control.release = release })
+    }
+    await route.fallback()
+  })
+  await signIn(page, 'learning')
+  const openDraft = page.getByRole('button', { name: 'Open Authored learning term', exact: true })
+  await openDraft.click()
+  await page.getByLabel('Review note', { exact: true }).fill('Authored engineering review only.')
+  await page.getByRole('button', { name: 'Approve definition', exact: true }).click()
+  try {
+    await expect.poll(() => typeof control.release).toBe('function')
+    await expect(openDraft).toBeDisabled()
+    await expect(page.getByLabel('Saved draft ID', { exact: true })).toHaveValue(ids.definition)
+    await expect(page.getByRole('button', { name: 'Publish approved definition', exact: true })).toBeDisabled()
+  } finally { control.release?.() }
+  await expect(page.getByText('Review recorded: APPROVE', { exact: true })).toBeVisible()
+  await expect(openDraft).toBeEnabled()
+  await expect(page.getByRole('button', { name: 'Approve definition', exact: true })).toBeDisabled()
+  await expect(page.getByRole('button', { name: 'Publish approved definition', exact: true })).toBeEnabled()
+  expect(reviewWrites).toBe(1)
 })
 
 test('M3 learner sees reviewed source context and no authoring controls on a narrow screen', async ({ page }) => {

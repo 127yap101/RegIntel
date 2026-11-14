@@ -94,7 +94,7 @@ def test_populated_m1_upgrade_preserves_old_columns_and_assembles_current_module
         str(source),
     ]
     monkeypatch.setattr(sys, "argv", [*arguments, "--check"])
-    with pytest.raises(SystemExit, match="12 pending migrations"):
+    with pytest.raises(SystemExit, match="13 pending migrations"):
         cli.serve_main()
     assert snapshot(auth_database, original_columns)[1] == before
     assert migration_status(auth_database, old).applied == tuple(range(1, 12))
@@ -104,7 +104,7 @@ def test_populated_m1_upgrade_preserves_old_columns_and_assembles_current_module
     all_columns, upgraded = snapshot(auth_database)
     cli.serve_main()
     report = json.loads(capsys.readouterr().out)
-    assert report["database_schema_version"] == 23
+    assert report["database_schema_version"] == 24
     assert not report["authentication_checked"] and not report["content_approved"]
     assert snapshot(auth_database, all_columns)[1] == upgraded
     assert not (source / "data/uploads").exists()

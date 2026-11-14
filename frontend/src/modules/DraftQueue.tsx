@@ -6,7 +6,7 @@ import type { DefinitionQueue } from './generated'
 const states = ['ALL', 'PENDING_REVIEW', 'APPROVED', 'REJECTED'] as const
 const inputClass = 'mt-1 min-h-11 w-full rounded-lg border border-line bg-white px-3 py-2 text-sm'
 
-export function DraftQueue({ api, onOpen }: { api: ModuleApi; onOpen: (identity: string) => void }) {
+export function DraftQueue({ api, busy, onOpen }: { api: ModuleApi; busy: boolean; onOpen: (identity: string) => void }) {
   const [filter, setFilter] = useState<DefinitionQueue['state']>('PENDING_REVIEW')
   const [term, setTerm] = useState('')
   const [selection, setSelection] = useState({ state: filter, query: '', offset: 0 })
@@ -33,7 +33,7 @@ export function DraftQueue({ api, onOpen }: { api: ModuleApi; onOpen: (identity:
     </form>
     {page && <>
       <p className="mt-4 text-xs text-muted">{page.total} matching drafts · {page.state.replaceAll('_', ' ')}</p>
-      {page.items.length ? <ul className="mt-3 space-y-3">{page.items.map((item) => <li key={item.definition.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-paper p-3"><div className="min-w-0"><p className="break-words text-sm font-semibold">{item.definition.draft.term}</p><p className="mt-1 text-xs text-muted">{item.state.replaceAll('_', ' ')}</p></div><Button variant="secondary" onClick={() => onOpen(item.definition.id)}>Open {item.definition.draft.term}</Button></li>)}</ul> : <p className="mt-3 text-sm">No drafts match these filters.</p>}
+      {page.items.length ? <ul className="mt-3 space-y-3">{page.items.map((item) => <li key={item.definition.id} className="flex flex-wrap items-center justify-between gap-3 rounded-lg bg-paper p-3"><div className="min-w-0"><p className="break-words text-sm font-semibold">{item.definition.draft.term}</p><p className="mt-1 text-xs text-muted">{item.state.replaceAll('_', ' ')}</p></div><Button variant="secondary" disabled={busy} onClick={() => onOpen(item.definition.id)}>Open {item.definition.draft.term}</Button></li>)}</ul> : <p className="mt-3 text-sm">No drafts match these filters.</p>}
       <div className="mt-4 flex gap-3"><Button variant="secondary" disabled={page.offset === 0} onClick={() => { setPage(null); setSelection({ ...selection, offset: Math.max(0, page.offset - page.limit) }) }}>Previous drafts</Button><Button variant="secondary" disabled={page.offset + page.items.length >= page.total} onClick={() => { setPage(null); setSelection({ ...selection, offset: page.offset + page.limit }) }}>Next drafts</Button></div>
     </>}
     {!page && !error && <p role="status" className="mt-4 text-sm">Loading saved drafts…</p>}

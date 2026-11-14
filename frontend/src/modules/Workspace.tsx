@@ -157,7 +157,7 @@ function LearningPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: Mo
         setHasExample(Boolean(example)); setExampleOperation(example?.operation ?? 'ADD'); setExampleLeft(example?.left ?? ''); setExampleRight(example?.right ?? ''); setExampleUnit(example?.unit ?? ''); setExampleExplanation(example?.explanation ?? '')
         setDraft(null); setReviewed(null); setSavedId(''); setNote(''); setMetric(''); setError('')
       }} /></div>
-      <div className="mt-5"><DraftQueue api={api} onOpen={(identity) => run((signal) => loadDraft(identity, signal))} /></div>
+      <div className="mt-5"><DraftQueue api={api} busy={busy} onOpen={(identity) => run((signal) => loadDraft(identity, signal))} /></div>
       <form className="mt-4 grid gap-4 sm:grid-cols-2" onSubmit={(event) => {
         event.preventDefault()
         run(async (signal) => {
