@@ -81,7 +81,7 @@ def test_upgrade_keeps_existing_registration_registry_hash_and_legacy_guard(
         versions = connection.execute(
             "SELECT version FROM regintel_meta.schema_migrations ORDER BY applied_order"
         ).fetchall()
-        assert [row[0] for row in versions] == list(range(1, 25))
+        assert [row[0] for row in versions] == list(range(1, 26))
         assert connection.execute(
             "SELECT count(*) FROM regintel.numerical_applicability_reviews"
         ).fetchone() == (0,)

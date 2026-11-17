@@ -8,6 +8,7 @@ import type { DefinitionDraft, ModuleWire, OrderRequest, StoredDefinition } from
 import schema from './schema.json'
 import { checkNumericalObservation } from '../published/native'
 import { checkAnalyticsAmounts } from './analyticsAmounts'
+import { checkValuation } from './valuationAmounts'
 
 export type { ModuleWire } from './generated'
 
@@ -93,9 +94,14 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
     const selected = data as ModuleWire['glossary'] | ModuleWire['learning_status'] | ModuleWire['context']
     if (meta.versions.glossary_version_id !== selected.glossary_version_id) throw new ModuleError(0, 'The returned glossary version changed.')
   }
-  if (kind === 'portfolio' || kind === 'order' || kind === 'ledger' || kind === 'analytics') {
-    const selected = data as ModuleWire['portfolio'] | ModuleWire['order'] | ModuleWire['ledger'] | ModuleWire['analytics']
+  if (kind === 'portfolio' || kind === 'order' || kind === 'ledger' || kind === 'analytics' || kind === 'valuation') {
+    const selected = data as ModuleWire['portfolio'] | ModuleWire['order'] | ModuleWire['ledger'] | ModuleWire['analytics'] | ModuleWire['valuation']
     if (meta.versions.portfolio_version_id !== selected.portfolio_version_id) throw new ModuleError(0, 'The returned portfolio version changed.')
+  }
+  if (kind === 'valuation') {
+    const valuation = data as ModuleWire['valuation']
+    if (meta.versions.corpus_version_id !== null || meta.versions.quote_version_id !== (valuation.quote_version_ids.length === 1 ? valuation.quote_version_ids[0] : null)) throw new ModuleError(0, 'Valuation source versions differ from the supplied quote snapshots.')
+    try { checkValuation(valuation) } catch (failure: unknown) { throw new ModuleError(0, failure instanceof Error ? failure.message : 'Portfolio valuation does not reconcile.') }
   }
   if (kind === 'analytics') {
     const analytics = data as ModuleWire['analytics']

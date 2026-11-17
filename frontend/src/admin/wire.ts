@@ -19,6 +19,10 @@ export interface Wire {
   review_request: T.ReviewDecision; review_receipt: T.ReviewReceipt
   manifest: T.CorpusManifest; publication_request: T.PublicationRequest; evidence: T.EvidenceData
   numerical_packet: T.NumericalReviewPacket; numerical_review_request: T.NumericalContextReviewRequest
+  numerical_applicability_requirements: T.NumericalApplicabilityRequirements
+  numerical_applicability_request: T.NumericalApplicabilityRequest
+  numerical_applicability_review: T.ReviewedNumericalApplicability
+  numerical_applicability_gate: T.NumericalApplicabilityGateResult
   numerical_queue_request: T.NumericalGateQueueRequest; numerical_queue: T.NumericalGateQueuePage
   numerical_review: T.ReviewedNumericalContext; numerical_preparation: T.NumericalPublicationPreparation
   numerical_candidate_request: T.NumericalCandidateRequest; numerical_candidate: T.StoredNumericalCandidate
@@ -42,6 +46,7 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
   const meta = parseContract('ResponseMeta', envelope.meta)
   const data = checked(kind, envelope.data)
   if (kind === 'numerical_queue' && Object.values(meta.versions).some((value) => value !== null)) throw new Error('A private queue cannot imply a published source version.')
+  if (kind.startsWith('numerical_applicability_') && Object.values(meta.versions).some((value) => value !== null)) throw new Error('A private applicability review cannot imply a published source version.')
   if (kind === 'filing_job') {
     const job = data as T.FilingJob
     if (meta.versions.filing_version_id !== job.filing_version_id || meta.versions.parse_version_id !== job.parse_version_id) throw new Error('Filing job source differs')
@@ -78,6 +83,7 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
     if (meta.versions.parse_version_id !== evidence.record.source.parse_version_id || meta.versions.filing_version_id !== evidence.record.source.filing_version_id) throw new Error('Evidence source version differs')
   }
   if (kind === 'numerical_packet') checkNumericalPacket(data as T.NumericalReviewPacket)
+  if (kind === 'numerical_applicability_gate') checkNumericalPacket((data as T.NumericalApplicabilityGateResult).packet)
   if (kind === 'numerical_preparation') checkNumericalPreparation(data as T.NumericalPublicationPreparation)
   if (kind === 'numerical_candidate') checkNumericalCandidate(data as T.StoredNumericalCandidate)
   if (kind === 'numerical_acceptance') checkNumericalAcceptance(data as T.StoredNumericalAcceptance)

@@ -258,7 +258,7 @@ def test_changed_physical_source_and_configuration_block_new_reviews(reviewed_ca
     source = binding.source
     before = snapshot(source.database)
     with monkeypatch.context() as patch:
-        patch.setattr(review_module, "bound_gate_configuration_sha256", lambda: "f" * 64)
+        patch.setattr(review_module, "configuration_for_input", lambda _: "f" * 64)
         with pytest.raises(NumericalReviewConflict, match="installed"):
             repository.save(proposal, source.user)
     original = source.source_path.read_bytes()

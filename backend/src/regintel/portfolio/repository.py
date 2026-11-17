@@ -33,6 +33,7 @@ from regintel.portfolio.models import (
     PortfolioAccount,
     QuoteSnapshot,
 )
+from regintel.portfolio.valuation import PortfolioValuation, value_portfolio
 
 
 class PortfolioError(ValueError):
@@ -317,30 +318,70 @@ class PortfolioRepository:
 
     def analytics(self, user: User, *, version: str | None = None) -> PortfolioAnalytics:
         with self.transaction(user) as connection:
-            identity = self._account(connection, user)
-            account = self._state(
-                connection, identity, self._through(connection, identity, version)
-            )
-            if account.committed_orders > MAX_ANALYTICS_ENTRIES:
-                return unavailable_analytics(account)
-            size = connection.execute(
-                "SELECT coalesce(sum(octet_length(entry_bytes)),0) "
-                "FROM regintel.portfolio_orders WHERE account_id=%s AND sequence<=%s",
-                (UUID(identity), account.committed_orders),
-            ).fetchone()
-            if size is None or not isinstance(size[0], int) or size[0] > MAX_ANALYTICS_BYTES:
-                return unavailable_analytics(account)
-            row = connection.execute(
-                "SELECT opening_cash FROM regintel.portfolio_accounts WHERE id=%s",
-                (UUID(identity),),
-            ).fetchone()
-            assert row is not None
-            if not isinstance(row[0], Decimal):
-                raise PortfolioUnavailable("The opening virtual credit is unavailable.")
-            rows = connection.execute(
-                "SELECT entry_bytes,entry_sha256 FROM regintel.portfolio_orders "
-                "WHERE account_id=%s AND sequence<=%s ORDER BY sequence LIMIT %s",
-                (UUID(identity), account.committed_orders, MAX_ANALYTICS_ENTRIES),
-            ).fetchall()
-            entries = tuple(LedgerEntry.model_validate_json(_checked(r[0], r[1])) for r in rows)
-            return ledger_analytics(account, row[0], entries)
+            return self._analytics(connection, user, version)
+
+    def _analytics(
+        self, connection: DatabaseConnection, user: User, version: str | None
+    ) -> PortfolioAnalytics:
+        identity = self._account(connection, user)
+        account = self._state(connection, identity, self._through(connection, identity, version))
+        if account.committed_orders > MAX_ANALYTICS_ENTRIES:
+            return unavailable_analytics(account)
+        size = connection.execute(
+            "SELECT coalesce(sum(octet_length(entry_bytes)),0) "
+            "FROM regintel.portfolio_orders WHERE account_id=%s AND sequence<=%s",
+            (UUID(identity), account.committed_orders),
+        ).fetchone()
+        if size is None or not isinstance(size[0], int) or size[0] > MAX_ANALYTICS_BYTES:
+            return unavailable_analytics(account)
+        row = connection.execute(
+            "SELECT opening_cash FROM regintel.portfolio_accounts WHERE id=%s",
+            (UUID(identity),),
+        ).fetchone()
+        assert row is not None
+        if not isinstance(row[0], Decimal):
+            raise PortfolioUnavailable("The opening virtual credit is unavailable.")
+        rows = connection.execute(
+            "SELECT entry_bytes,entry_sha256 FROM regintel.portfolio_orders "
+            "WHERE account_id=%s AND sequence<=%s ORDER BY sequence LIMIT %s",
+            (UUID(identity), account.committed_orders, MAX_ANALYTICS_ENTRIES),
+        ).fetchall()
+        entries = tuple(LedgerEntry.model_validate_json(_checked(r[0], r[1])) for r in rows)
+        return ledger_analytics(account, row[0], entries)
+
+    def valuation(self, user: User, *, version: str | None = None) -> PortfolioValuation:
+        """Value an owned ledger prefix at the current server time without storing a quote."""
+        with self.transaction(user) as connection:
+            analytics = self._analytics(connection, user, version)
+            at = self.clock()
+            if at.tzinfo is None or at.utcoffset() is None:
+                raise PortfolioUnavailable("The valuation clock requires an explicit timezone.")
+            snapshots = {}
+            for company in analytics.companies:
+                if company.quantity == 0:
+                    continue
+                try:
+                    supplied = self.quotes.snapshot(company.company_id, at)
+                    quote = (
+                        QuoteSnapshot.model_validate(supplied.model_dump(mode="python"))
+                        if supplied is not None
+                        else None
+                    )
+                except Exception:
+                    raise PortfolioUnavailable(
+                        "The configured quote snapshot source is unavailable."
+                    ) from None
+                if quote is not None:
+                    stored = connection.execute(
+                        "SELECT quote_bytes,quote_sha256 "
+                        "FROM regintel.portfolio_quote_snapshots WHERE id=%s",
+                        (UUID(quote.id),),
+                    ).fetchone()
+                    if stored is not None and _checked(stored[0], stored[1]) != canonical_bytes(
+                        quote
+                    ):
+                        raise PortfolioConflict(
+                            "The quote snapshot identity belongs to other retained source bytes."
+                        )
+                snapshots[company.company_id] = quote
+            return value_portfolio(analytics, snapshots, at)

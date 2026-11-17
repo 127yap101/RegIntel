@@ -2,6 +2,7 @@ import { getApiBaseUrl } from '../api/health'
 import { parseContract } from '../contracts/runtime'
 import { canonical, checked, decode, sameValue } from './wire'
 import { checkNumericalAcceptance, checkNumericalCandidate, checkNumericalPreparation, checkNumericalReview } from './numerical'
+import { applicabilitySelection, checkApplicabilityRequirements, checkApplicabilityReview } from './numericalApplicability'
 import type { Wire } from './wire'
 import type * as T from './generated'
 
@@ -92,6 +93,34 @@ export class AdminApi {
     checkNumericalReview(value, packet.gate)
     if (!sameValue(value.request, body)) throw new AdminError(false)
     return value
+  }
+  async numericalApplicabilityRequirements(packet: T.NumericalReviewPacket, signal: AbortSignal): Promise<T.NumericalApplicabilityRequirements> {
+    const value = await this.read('numerical_applicability_requirements', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/applicability/requirements`, signal)
+    await checkApplicabilityRequirements(value, packet)
+    return value
+  }
+  async numericalApplicabilityReview(packet: T.NumericalReviewPacket, signal: AbortSignal): Promise<T.ReviewedNumericalApplicability | null> {
+    const response = await this.request(`/v1/admin/numerical/gates/${canonical(packet.gate.id)}/applicability`, signal, undefined, false, true)
+    if (response.status === 404) return null
+    const value = decode('numerical_applicability_review', await response.json() as unknown)
+    await checkApplicabilityReview(value, packet)
+    return value
+  }
+  async reviewNumericalApplicability(packet: T.NumericalReviewPacket, requirements: T.NumericalApplicabilityRequirements, body: T.NumericalApplicabilityRequest, signal: AbortSignal): Promise<T.ReviewedNumericalApplicability> {
+    checked('numerical_applicability_request', body)
+    await checkApplicabilityRequirements(requirements, packet)
+    if (!requirements.eligible || !sameValue(applicabilitySelection(body), applicabilitySelection(requirements)) || !body.note.trim() || body.note.includes('\0')) throw new AdminError(false)
+    const value = await this.read('numerical_applicability_review', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/applicability`, signal, body)
+    await checkApplicabilityReview(value, packet)
+    if (!sameValue(value.request, body)) throw new AdminError(false, 'The applicability response differs from the submitted review. Retry the same request to verify its outcome.')
+    return value
+  }
+  async runNumericalApplicability(packet: T.NumericalReviewPacket, review: T.ReviewedNumericalApplicability, signal: AbortSignal): Promise<T.NumericalReviewPacket> {
+    await checkApplicabilityReview(review, packet)
+    const value = await this.read('numerical_applicability_gate', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/applicability/gate`, signal, {})
+    const resolved = value.packet
+    if (value.base_gate_run_id !== packet.gate.id || value.applicability_review_id !== review.id || resolved.gate.id === packet.gate.id || resolved.gate.state !== 'READY_FOR_REVIEW' || resolved.gate.context_record_id !== packet.gate.context_record_id || !sameValue(resolved.binding, packet.binding) || !sameValue(resolved.gate.quantity_proposal, packet.gate.quantity_proposal) || packet.gate.checks.some((check, index) => check.state === 'PASS' && !sameValue(check, resolved.gate.checks[index]))) throw new AdminError(false, 'The rerun gate differs from the selected source or applicability review. Retry to verify its outcome.')
+    return resolved
   }
   async numericalPreparation(packet: T.NumericalReviewPacket, signal: AbortSignal): Promise<T.NumericalPublicationPreparation> {
     const value = await this.read('numerical_preparation', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/publication-input`, signal)

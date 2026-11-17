@@ -7,6 +7,7 @@ import { definitionInput, ModuleApi, ModuleError, orderInput } from './api'
 import { confirmOrder, pendingOrder, retainOrder } from './pending'
 import { DraftQueue } from './DraftQueue'
 import { Analytics } from './Analytics'
+import { Valuation } from './Valuation'
 import { StarterDrafts } from './StarterDrafts'
 import { GlossaryHistory } from './GlossaryHistory'
 import { PortfolioHistory } from './PortfolioHistory'
@@ -253,7 +254,7 @@ function PortfolioPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: M
   }
   const name = (identity: string) => companies?.companies.find((item) => item.id === identity)?.name ?? identity
   return <div className="mt-6 space-y-5">
-    <p className="rounded-lg bg-paper p-4 text-sm">Quotes are unavailable until a reviewed price source is configured. Submitted virtual orders receive a recorded rejection without changing cash or holdings. Current market valuation is unavailable.</p>
+    <p className="rounded-lg bg-paper p-4 text-sm">Quotes are unavailable until a reviewed price source is configured. Submitted virtual orders receive a recorded rejection without changing cash or holdings. Held positions need valid quotes for valuation; cash-only portfolios can still be valued.</p>
     {!loaded && <p role="status">Loading virtual account…</p>}
     {loaded && !account && <Button disabled={busy} onClick={() => run(async (signal) => { setAccount(await api.read('portfolio', '/v1/portfolio/accounts', signal, {})); await refresh(signal) })}>Create virtual account with INR 100000.00</Button>}
     {account && <>
@@ -271,6 +272,7 @@ function PortfolioPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: M
       {receipt && <p role="status" className="rounded-lg bg-paper p-4 text-sm">Recorded order #{receipt.entry.sequence}: {receipt.entry.evaluation.state} · {receipt.entry.evaluation.reason.replaceAll('_', ' ')}</p>}
       <section className="rounded-xl border border-line bg-white p-5"><h3 className="font-semibold">Holdings</h3>{account.state.holdings.length ? <ul className="mt-3 space-y-2 text-sm">{account.state.holdings.map((item) => <li key={item.company_id}>{name(item.company_id)} · {item.quantity} shares</li>)}</ul> : <p className="mt-3 text-sm text-muted">No virtual holdings.</p>}</section>
       <Analytics key={account.portfolio_version_id} api={api} account={account} companyName={name} />
+      <Valuation key={`valuation-${account.portfolio_version_id}`} api={api} account={account} companyName={name} />
       <PortfolioHistory ledger={ledger} busy={busy || pending !== null} companyName={name} onVersion={inspect} onPage={(offset) => run(async (signal) => { setLedger(await api.ledgerSnapshot(account, signal, offset)) })} />
     </>}
     {error && <p role="alert" className="rounded-lg border border-line bg-white p-4 text-sm">{error}</p>}

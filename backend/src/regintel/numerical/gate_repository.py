@@ -12,7 +12,7 @@ from regintel.db.migrations import DatabaseConnection, MigrationError
 from regintel.entities.models import canonical_bytes
 from regintel.evidence.projection import ProjectionError
 from regintel.ingestion.storage import UploadError
-from regintel.numerical.bound_gate import bound_gate_configuration_sha256, validate_bound_numerical
+from regintel.numerical.bound_gate import configuration_for_input, validate_bound_numerical
 from regintel.numerical.context_inputs import load_context_input
 from regintel.numerical.context_storage import _history
 from regintel.numerical.evidence_binding import bind_context_evidence
@@ -20,9 +20,11 @@ from regintel.numerical.evidence_binding_repository import _sealed_parse, _store
 from regintel.numerical.gate_models import (
     MAX_GATE_INPUT_BYTES,
     MAX_GATE_RESULT_BYTES,
+    ApplicabilityGateInput,
     BoundGateInput,
     BoundNumericalGateRun,
     StoredBoundNumericalGate,
+    parse_gate_input_json,
 )
 from regintel.numerical.repository import (
     NumericalAuthorizationError,
@@ -45,7 +47,7 @@ def _read(connection: DatabaseConnection, identity: str) -> StoredBoundNumerical
         raise NumericalNotFound("The bound numerical gate run is unavailable.")
     body = _checked(row[0], row[1], MAX_GATE_INPUT_BYTES)
     result_bytes = _checked(row[2], row[3], MAX_GATE_RESULT_BYTES)
-    packet = BoundGateInput.model_validate_json(body)
+    packet = parse_gate_input_json(body)
     result = BoundNumericalGateRun.model_validate_json(result_bytes)
     if (
         canonical_bytes(packet) != body
@@ -64,12 +66,16 @@ def _read(connection: DatabaseConnection, identity: str) -> StoredBoundNumerical
         }
     )
     if (
-        result.configuration_sha256 == bound_gate_configuration_sha256()
+        result.configuration_sha256 == configuration_for_input(packet)
         and validate_bound_numerical(packet) != result
     ):
         raise NumericalSourceError(
             "The gate result differs from its retained deterministic inputs."
         )
+    if isinstance(packet, ApplicabilityGateInput):
+        from regintel.numerical.resolved_gate_repository import require_retained_applicability
+
+        require_retained_applicability(connection, packet)
     return stored
 
 

@@ -3,14 +3,14 @@ import type { PortfolioAccount, PortfolioAnalytics } from './generated'
 const fields = ['buy_spend', 'sale_proceeds', 'net_cash_flow', 'realized_cost_basis', 'remaining_cost_basis', 'realized_result'] as const
 type AmountField = (typeof fields)[number]
 
-function cents(value: string): bigint {
+export function cents(value: string): bigint {
   const match = value.length <= 128 ? /^(-?)(0|[1-9]\d*)(?:\.(\d{1,2}))?$/u.exec(value) : null
   if (!match) throw new Error('Portfolio amounts require exact decimal currency values.')
   const amount = BigInt(match[2]!) * 100n + BigInt((match[3] ?? '').padEnd(2, '0'))
   return match[1] ? -amount : amount
 }
 
-function reconcile(value: Pick<NonNullable<PortfolioAnalytics['summary']>, AmountField>): Record<AmountField, bigint> {
+export function reconcile(value: Pick<NonNullable<PortfolioAnalytics['summary']>, AmountField>): Record<AmountField, bigint> {
   const amounts = Object.fromEntries(fields.map((field) => [field, cents(value[field])])) as Record<AmountField, bigint>
   if (amounts.buy_spend < 0n || amounts.sale_proceeds < 0n || amounts.realized_cost_basis < 0n || amounts.remaining_cost_basis < 0n || amounts.realized_cost_basis + amounts.remaining_cost_basis !== amounts.buy_spend || amounts.sale_proceeds - amounts.realized_cost_basis !== amounts.realized_result || amounts.sale_proceeds - amounts.buy_spend !== amounts.net_cash_flow) throw new Error('FIFO costs and cash-flow amounts do not reconcile.')
   return amounts

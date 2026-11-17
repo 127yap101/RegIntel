@@ -4,11 +4,12 @@ import hashlib
 from typing import Annotated, Literal, Self
 from uuid import UUID
 
-from pydantic import Field, model_validator
+from pydantic import Field, TypeAdapter, model_validator
 
 from regintel.contracts.models import ContractModel
 from regintel.contracts.primitives import CanonicalId, RawText, Sha256Hash
 from regintel.entities.models import canonical_bytes
+from regintel.numerical.applicability_models import ReviewedNumericalApplicability
 from regintel.numerical.context_models import NumericalContextInput, NumericalQuantityProposal
 from regintel.numerical.context_records import NumericalContextRecord
 from regintel.numerical.evidence_binding_models import NumericalEvidenceBinding
@@ -117,8 +118,60 @@ class BoundNumericalGateRun(ContractModel):
         return self
 
 
+class ApplicabilityGateInput(BoundGateInput):
+    """A new gate retains the unresolved result and its exact applicability decision."""
+
+    schema_version: Literal["bound-numerical-applicability-input-1"] = (
+        "bound-numerical-applicability-input-1"
+    )
+    base_result: BoundNumericalGateRun
+    base_submitted_by: CanonicalId
+    base_auth_version: Annotated[int, Field(strict=True, ge=1)]
+    applicability: ReviewedNumericalApplicability
+
+    def base_input(self) -> BoundGateInput:
+        return BoundGateInput(
+            context=self.context, current_context=self.current_context, binding=self.binding
+        )
+
+    def base_gate(self) -> "StoredBoundNumericalGate":
+        return StoredBoundNumericalGate(
+            source_input=self.base_input(),
+            result=self.base_result,
+            submitted_by=self.base_submitted_by,
+            auth_version=self.base_auth_version,
+        )
+
+    @model_validator(mode="after")
+    def exact_applicability_source(self) -> Self:
+        base, request = self.base_result, self.applicability.request
+        if (
+            base.state != "REVIEW_REQUIRED"
+            or hashlib.sha256(canonical_bytes(self.base_input())).hexdigest() != base.input_sha256
+            or base.context_record_id != self.context.id
+            or base.parse_version_id != self.binding.parse_version_id
+            or base.evidence_binding_id != self.binding.id
+            or base.source_sha256 != self.context.source_sha256
+            or request.gate_run_id != base.id
+            or request.gate_input_sha256 != base.input_sha256
+            or request.gate_result_sha256 != hashlib.sha256(canonical_bytes(base)).hexdigest()
+            or request.binding_id != self.binding.id
+        ):
+            raise ValueError("Applicability gate must retain the exact unresolved base gate.")
+        return self
+
+
+GateInput = Annotated[ApplicabilityGateInput | BoundGateInput, Field(union_mode="left_to_right")]
+_GATE_INPUT_ADAPTER: TypeAdapter[ApplicabilityGateInput | BoundGateInput] = TypeAdapter(GateInput)
+
+
+def parse_gate_input_json(body: bytes) -> ApplicabilityGateInput | BoundGateInput:
+    """Read both historical packets and the explicit applicability input version."""
+    return _GATE_INPUT_ADAPTER.validate_json(body)
+
+
 class StoredBoundNumericalGate(ContractModel):
-    source_input: BoundGateInput
+    source_input: GateInput
     result: BoundNumericalGateRun
     submitted_by: CanonicalId
     auth_version: Annotated[int, Field(strict=True, ge=1)]

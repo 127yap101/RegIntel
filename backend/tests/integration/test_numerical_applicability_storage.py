@@ -236,7 +236,7 @@ def test_changed_registry_or_source_blocks_first_attestation(applicability_case,
     source = binding.source
     before = snapshot(source.database)
     with monkeypatch.context() as patch:
-        patch.setattr(review_module, "bound_gate_configuration_sha256", lambda: "f" * 64)
+        patch.setattr(review_module, "configuration_for_input", lambda _: "f" * 64)
         with pytest.raises(NumericalApplicabilityConflict):
             repository.save(request, source.user)
     original = source.source_path.read_bytes()
@@ -416,7 +416,7 @@ def test_populated_schema23_upgrade_preserves_exact_gate_and_every_existing_tabl
     before_hash = hashlib.sha256(original_bytes).hexdigest()
     report = migrate(auth_database)
     assert report.already_applied == tuple(range(1, 24))
-    assert report.newly_applied == (24,)
+    assert report.newly_applied == (24, 25)
     after = snapshot(auth_database)
     assert set(after) - set(before) == {"numerical_applicability_reviews"}
     assert {table: after[table] for table in before} == before

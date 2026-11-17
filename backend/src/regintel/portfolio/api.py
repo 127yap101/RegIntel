@@ -20,6 +20,7 @@ from regintel.portfolio.repository import (
     PortfolioUnavailable,
 )
 from regintel.portfolio.service import PortfolioService
+from regintel.portfolio.valuation import PortfolioValuation
 from regintel.reads.repository import ReadNotFound, ReadUnavailable
 
 
@@ -135,5 +136,20 @@ def create_portfolio_router(
     ) -> SuccessEnvelope[PortfolioAnalytics]:
         data = perform(lambda: ready().repository.analytics(user, version=portfolio_version_id))
         return envelope(data, request, data.portfolio_version_id)
+
+    @router.get(
+        "/v1/portfolio/valuation",
+        response_model=SuccessEnvelope[PortfolioValuation],
+        responses=errors,
+    )
+    def valuation(
+        request: Request,
+        user: Annotated[User, Depends(reader)],
+        portfolio_version_id: CanonicalId | None = None,
+    ) -> SuccessEnvelope[PortfolioValuation]:
+        """Value selected holdings at the response's explicit current server timestamp."""
+        data = perform(lambda: ready().repository.valuation(user, version=portfolio_version_id))
+        quote = data.quote_version_ids[0] if len(data.quote_version_ids) == 1 else None
+        return envelope(data, request, data.portfolio_version_id, quote=quote)
 
     return router

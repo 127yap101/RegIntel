@@ -8,7 +8,7 @@ import type { Highlight } from './geometry'
 
 GlobalWorkerOptions.workerSrc = workerUrl
 
-export function SourceViewer({ source, bytes }: { source: Pick<PublishedEvidence, 'evidence' | 'supports' | 'context_supports'>; bytes: Uint8Array<ArrayBuffer> }) {
+export function SourceViewer({ source, bytes, onVerified }: { source: Pick<PublishedEvidence, 'evidence' | 'supports' | 'context_supports'>; bytes: Uint8Array<ArrayBuffer>; onVerified?: (evidenceId: string) => void }) {
   const canvas = useRef<HTMLCanvasElement>(null)
   const [rendered, setRendered] = useState<{ width: number; height: number; boxes: Highlight[]; geometry: boolean } | null>(null)
   const [error, setError] = useState('')
@@ -41,9 +41,10 @@ export function SourceViewer({ source, bytes }: { source: Pick<PublishedEvidence
       const geometry = geometryMatches(record.page_geometry, page.view, page.rotate)
       const boxes = geometry ? record.boxes.map((box) => highlightBox(box, viewport)).filter((box): box is Highlight => box !== null) : []
       setRendered({ width: viewport.width, height: viewport.height, boxes, geometry })
+      if (geometry && boxes.length > 0 && boxes.length === record.boxes.length) onVerified?.(record.id)
     }).catch(() => { if (active) setError('This source page could not be rendered. Exact support and source details remain below.') })
     return () => { active = false; rendering?.cancel(); void loading?.destroy() }
-  }, [bytes, record])
+  }, [bytes, record, onVerified])
 
   return <section aria-label="Exact source page" className="mt-6 rounded-xl border border-line bg-white p-5">
     <h3 className="text-lg font-semibold">Source page {record.source.page_index + 1}</h3>

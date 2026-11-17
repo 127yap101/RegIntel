@@ -14,6 +14,12 @@ from regintel.numerical.acceptance_models import (
     NumericalAcceptanceRequest,
     StoredNumericalAcceptance,
 )
+from regintel.numerical.applicability_api import NumericalApplicabilityGateResult
+from regintel.numerical.applicability_models import (
+    NumericalApplicabilityRequest,
+    NumericalApplicabilityRequirements,
+    ReviewedNumericalApplicability,
+)
 from regintel.numerical.candidate_models import NumericalCandidateRequest, StoredNumericalCandidate
 from regintel.numerical.publication_models import NumericalPublicationPreparation
 from regintel.numerical.queue_models import NumericalGateQueuePage, NumericalGateQueueRequest
@@ -90,6 +96,10 @@ class AdminWire(ContractModel):
     publication_request: PublicationRequest
     evidence: EvidenceData
     numerical_packet: NumericalReviewPacket
+    numerical_applicability_requirements: NumericalApplicabilityRequirements
+    numerical_applicability_request: NumericalApplicabilityRequest
+    numerical_applicability_review: ReviewedNumericalApplicability
+    numerical_applicability_gate: NumericalApplicabilityGateResult
     numerical_queue_request: NumericalGateQueueRequest
     numerical_queue: NumericalGateQueuePage
     numerical_review_request: NumericalContextReviewRequest

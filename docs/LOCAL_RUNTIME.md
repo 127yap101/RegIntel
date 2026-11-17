@@ -1,8 +1,15 @@
 # Run the current M1–M4 application
 
-Updated 5 November 2026. Use branch `codex/m2-comparison`. This guide covers
+Updated 16 November 2026. Use branch `codex/m2-comparison`. This guide covers
 matching application code, database schema and source/model assets. A successful
 launch does not approve filings, glossary drafts, prices or research results.
+
+Current code requires migrations through25. The original installation was last
+recorded at23; migrations24–25 have been exercised in disposable test databases,
+including populated-history preservation. They have not been applied to that
+original installation in the 16 November checkpoint. Complete the documented
+backup/upgrade procedure before restarting it with the new code. The launcher's
+check will report the pending migrations explicitly.
 
 ## Check configuration before starting
 

@@ -13,11 +13,15 @@ from regintel.db.migrations import DatabaseConnection, MigrationError
 from regintel.entities.models import canonical_bytes
 from regintel.evidence.projection import ProjectionError
 from regintel.ingestion.storage import UploadError
-from regintel.numerical.bound_gate import bound_gate_configuration_sha256, validate_bound_numerical
+from regintel.numerical.bound_gate import configuration_for_input, validate_bound_numerical
 from regintel.numerical.context_inputs import load_context_input
 from regintel.numerical.evidence_binding import bind_context_evidence
 from regintel.numerical.evidence_binding_repository import _sealed_parse, _stored_evidence
-from regintel.numerical.gate_models import BoundGateInput, StoredBoundNumericalGate
+from regintel.numerical.gate_models import (
+    ApplicabilityGateInput,
+    BoundGateInput,
+    StoredBoundNumericalGate,
+)
 from regintel.numerical.gate_repository import _read as read_gate
 from regintel.numerical.repository import (
     NumericalAuthorizationError,
@@ -42,8 +46,10 @@ class NumericalReviewConflict(ValueError):
 
 
 def review_configuration_sha256() -> str:
+    from regintel.numerical.resolved_gate import resolved_gate_configuration_sha256
+
     package = Path(__file__).resolve().parent
-    digest = hashlib.sha256(bound_gate_configuration_sha256().encode("ascii"))
+    digest = hashlib.sha256(resolved_gate_configuration_sha256().encode("ascii"))
     for name, path in (
         ("numerical/review_models.py", package / "review_models.py"),
         ("numerical/review_repository.py", package / "review_repository.py"),
@@ -81,14 +87,29 @@ def _read(connection: DatabaseConnection, gate_id: str) -> ReviewedNumericalCont
 def _fresh(
     connection: DatabaseConnection, source: NumericalRepository, gate: StoredBoundNumericalGate
 ) -> None:
-    if gate.result.configuration_sha256 != bound_gate_configuration_sha256():
+    if gate.result.configuration_sha256 != configuration_for_input(gate.source_input):
         raise NumericalReviewConflict("Run the installed numerical gates before reviewing context.")
     context = gate.source_input.context
     current, _ = load_context_input(connection, source, context.source_input.draft)
     artifact, configuration = _sealed_parse(connection, gate.result.parse_version_id)
     binding = bind_context_evidence(context, artifact, configuration)
     _stored_evidence(connection, binding)
-    packet = BoundGateInput(context=context, current_context=current, binding=binding)
+    packet: BoundGateInput | ApplicabilityGateInput
+    if isinstance(gate.source_input, ApplicabilityGateInput):
+        from regintel.numerical.resolved_gate_repository import require_retained_applicability
+
+        require_retained_applicability(connection, gate.source_input)
+        packet = ApplicabilityGateInput(
+            context=context,
+            current_context=current,
+            binding=binding,
+            base_result=gate.source_input.base_result,
+            base_submitted_by=gate.source_input.base_submitted_by,
+            base_auth_version=gate.source_input.base_auth_version,
+            applicability=gate.source_input.applicability,
+        )
+    else:
+        packet = BoundGateInput(context=context, current_context=current, binding=binding)
     if packet != gate.source_input or validate_bound_numerical(packet) != gate.result:
         raise NumericalReviewConflict(
             "Source or approval context changed; inspect and bind it again."

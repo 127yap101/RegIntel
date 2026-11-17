@@ -1,12 +1,13 @@
 # Run and test the learning and virtual-portfolio baseline
 
-Updated 14 November 2026. These modules are on `codex/m2-comparison` in
+Updated 16 November 2026. These modules are on `codex/m2-comparison` in
 127yap101/RegIntel. Pull that branch to work on M2–M4. The original `main` checkout
 retains older M1 code. Use the [current local runtime guide](LOCAL_RUNTIME.md)
 for matching code, schema and assets on Yash's laptop; consult CURRENT_STATE.md
 for the measured activation result.
 
-The current branch includes migration24 for numerical applicability review.
+The current branch includes migrations24–25 for numerical applicability review
+and its separate gate rerun.
 Yash's existing installation is still at schema23, so its next startup using
 current code needs the tested migration upgrade. See CURRENT_STATE.md for the
 latest verification and `NUMERICAL_APPLICABILITY_REVIEW.md` for the API boundary.
@@ -34,7 +35,7 @@ already populated Docker volume without following the existing setup guide.
 
 After the documented local `.env` and `.env.auth` initialization, run these from
 the new clone. These commands intentionally migrate **that clone's configured
-database**, through migration 23. On Yash's laptop use the explicit current-code /
+database**, through migration25. On Yash's laptop use the explicit current-code /
 existing-asset commands in the local runtime guide. Starting the older main
 checkout does not select the current four-module runtime.
 
@@ -154,9 +155,21 @@ return404. The browser first loads the account and pins its dependent reads to
 that version, so later orders do not mix into an earlier view. Refresh selects the
 latest version. This changes neither old ledger entries nor quote availability.
 
-Market valuation/total value are explicitly unavailable. Returns, unrealized
-P&L, market-value allocation and a reviewed quote-data workflow remain further M4 work. No real
-money, recommendation, live execution or model-controlled balance change is added.
+**Virtual portfolio valuation** now requests server-selected quote snapshots for
+the selected ledger holdings. It displays holdings market value, total virtual
+value (cash plus holdings), unrealized FIFO result and total result, with the
+valuation time and source snapshots. Any holding without a valid quote makes the
+portfolio totals unavailable; partial totals are not presented. A cash-only
+portfolio can be valued without a price. Runtime quotes remain unavailable under
+the existing decision, so successful holdings valuation uses authored providers
+in tests only.
+
+`GET /v1/portfolio/valuation` accepts the same optional `portfolio_version_id`.
+An earlier version selects earlier holdings and cash, valued at the response's
+current server time; it does not claim a historical market price or a time-series
+return. The read neither stores quotes nor changes the ledger. Return rates,
+market-value allocation and a reviewed quote-data workflow remain further M4 work.
+No new dependency or environment variable is needed.
 
 ## Automated checks
 
@@ -173,6 +186,8 @@ With the existing data services running and this clone's `.env` configured:
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_numerical_context_review_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_history_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_fifo_storage.py
+.\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_valuation_storage.py
+.\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_numerical_applicability_gate_storage.py
 pnpm --dir frontend exec playwright test tests/e2e/learning-portfolio.spec.ts --workers=1
 ```
 

@@ -17,7 +17,7 @@ export function Analytics({ api, account, companyName }: { api: ModuleApi; accou
   const summary = result?.summary
   return <section className="min-w-0 rounded-xl border border-line bg-white p-5" aria-labelledby="ledger-analytics-heading">
     <h3 id="ledger-analytics-heading" className="font-semibold">Ledger cash-flow analytics</h3>
-    <p className="mt-2 text-sm text-muted">Cash flow tracks virtual money paid and received. Realized results cover sold shares using their oldest purchase costs first (FIFO). Remaining purchase cost is retained separately; market valuation remains unavailable.</p>
+    <p className="mt-2 text-sm text-muted">Cash flow tracks virtual money paid and received. Realized results cover sold shares using their oldest purchase costs first (FIFO). Remaining purchase cost is retained separately from the quote-based valuation below.</p>
     {summary && <>
       <dl className="mt-4 grid gap-3 text-sm sm:grid-cols-2">
         <div><dt className="text-muted">Executed / rejected orders</dt><dd>{summary.executed_orders} / {summary.rejected_orders}</dd></div>

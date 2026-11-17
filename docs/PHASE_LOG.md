@@ -2,6 +2,54 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Reviewed gate integration and portfolio valuation, 16–17 November
+
+Implemented a versioned applicability gate input retaining the exact unresolved
+gate, original actor, source binding and stored applicability decision. The explicit
+rerun reproduces fresh source/approval checks and changes only supported
+applicability REVIEW checks to PASS. Existing PASS checks, quantities, original
+words and historical canonical bytes remain unchanged. Migration25 adds a
+membership guard; the existing confirmation, candidate acceptance and atomic
+publication paths remain separate. The administrator screen supports verified
+source inspection, review/history and exact retries after uncertain responses.
+
+Added read-only M4 valuation of one owned ledger prefix with current
+server-selected quote snapshots, Decimal market/total value and unrealized FIFO
+result. Missing prices suppress complete totals; cash-only accounts remain
+valueable. The browser retains source/time/version details and clears the earlier
+valuation during a same-version refresh. The runtime quote provider remains
+unavailable. Return rates/allocation and reviewed price-data intake remain pending.
+M3's reviewed-content, source-context and pending-operation flows pass regression
+checks; no actual starter definition has been approved.
+
+Final verification: 2,675 backend unit cases pass with six Windows-specific skips;
+494 frontend unit cases, lint, strict typing and production build pass. Backend
+Ruff/format and mypy of 180 source files pass. The existing large-bundle warning
+remains. Fifty-two selected Chromium cases pass with no final unexpected/flaky/
+skipped cases: 30 numerical-admin/applicability and 22 learning/portfolio/corpus.
+Four cases inspect eight source phrases and have a documented 90-second test
+budget; final local browser runs used one worker and a 90-second case limit.
+
+Focused PostgreSQL verification passes 17 resolved-gate storage cases through
+common publication, 8 new HTTP cases, 28 existing applicability cases, 3 populated
+upgrade/startup checks and 18 portfolio valuation/history/FIFO cases. Original
+rows and complete qualified-word evidence survive. Runners create and remove
+only their owned disposable databases. The HTTP source-change expectation was
+corrected from 503 to 409 and rerun; the API-startup test now expects 14 pending
+migrations when upgrading schema 11 to 25. Initial broad tests hit shared Windows
+temp-directory permissions; the successful rerun uses a fresh project cache
+directory. Initial module-browser collection needed an explicit Node JSON import
+attribute; the corrected browser run passes. Earlier numerical-browser runs hit
+loading timeouts under concurrent checks; final bounded runs pass all assertions.
+
+No original database upgrade, source review, financial acceptance/publication or
+portfolio order was performed. Original schema remains recorded at 23; current
+code requires 25 before activation. No new dependency, environment setting,
+worker image or price provider. Real approvals, real M2 acceptance, seven M3
+reviews, remaining M4 analytics, amendment acceptance, evaluation and handoff
+remain outstanding. Prior fe73ba4 passes all three CI jobs; verify this containing
+checkpoint after its authorized push to codex/m2-comparison.
+
 ## Numerical applicability and M3 draft-write protection, 12–14 November
 
 Implemented exact applicability requirements, request validation, an immutable

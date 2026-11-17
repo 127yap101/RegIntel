@@ -1,5 +1,29 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest continuation, 17 November: the working branch now implements the
+applicability gate consumer and administrator UI, plus M4 snapshot valuation.
+Read CURRENT_STATE.md for completed checks and outstanding verification before
+activation. Migration25 guards a new immutable gate input that retains the base
+gate and stored review. Exact source/approval rechecks precede resolution; context
+confirmation, acceptance and publication remain separate. Original schema23 data
+has not been migrated by this checkpoint. Current startup requires25.
+
+The portfolio endpoint/UI values selected holdings at an explicit current server
+time using only server-selected quotes. Missing prices prevent complete totals;
+cash-only valuation works. Current runtime quotes remain unavailable. Return
+rates/allocation, actual M2 acceptance, seven M3 reviews, actual amendments,
+evaluation and reproduction remain pending. No real approval is implied by an
+authored engineering test. Prior checkpoint fe73ba4 passes all three CI jobs in
+run43588462458; check the new checkpoint's exact revision after push.
+
+Final local checks pass 2,675 backend unit tests (six Windows-specific skips),
+494 frontend unit tests, 74 focused database cases and 52 selected Chromium
+cases, plus lint, typing and build. The numerical storage path reaches common
+publication with every original evidence word retained. An initially incorrect
+HTTP status expectation, migration-count expectation and Node JSON fixture import
+were corrected and verified. The original database is still at recorded schema23;
+the next activation needs migrations24–25 and then genuine source/content reviews.
+
 Latest continuation, 14 November: the working branch adds source-specific
 numerical applicability attestations, migration 24 and authenticated requirements,
 submission and history APIs. Read `docs/NUMERICAL_APPLICABILITY_REVIEW.md` and the

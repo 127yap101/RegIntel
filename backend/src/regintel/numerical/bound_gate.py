@@ -9,6 +9,7 @@ from regintel.numerical.context_models import WordPhrase
 from regintel.numerical.evidence_binding import binding_configuration_sha256
 from regintel.numerical.gate_models import (
     GATE_CODES,
+    ApplicabilityGateInput,
     BoundGateCheck,
     BoundGateInput,
     BoundNumericalGateRun,
@@ -142,6 +143,10 @@ def _bound(value: BoundGateInput) -> bool:
 
 
 def validate_bound_numerical(value: BoundGateInput) -> BoundNumericalGateRun:
+    if isinstance(value, ApplicabilityGateInput):
+        from regintel.numerical.resolved_gate import validate_resolved_numerical
+
+        return validate_resolved_numerical(value)
     value = BoundGateInput.model_validate(value.model_dump(mode="python"))
     inspection = inspect_context(value.current_context)
     checks: dict[str, BoundGateCheck] = {
@@ -220,3 +225,12 @@ def validate_bound_numerical(value: BoundGateInput) -> BoundNumericalGateRun:
             else (),
         }
     )
+
+
+def configuration_for_input(value: BoundGateInput) -> str:
+    """Select the installed policy without reinterpreting legacy input packets."""
+    if isinstance(value, ApplicabilityGateInput):
+        from regintel.numerical.resolved_gate import resolved_gate_configuration_sha256
+
+        return resolved_gate_configuration_sha256()
+    return bound_gate_configuration_sha256()

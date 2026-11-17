@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-14 (Asia/Calcutta).
+Updated: 2026-11-17 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,58 @@ Updated: 2026-11-14 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Applicability gate integration and portfolio valuation, 16–17 November:**
+  the new versioned numerical input retains its unresolved gate, original actor,
+  exact evidence binding and stored applicability review. An explicit rerun
+  revalidates current source and approvals, then resolves only the supported
+  applicability checks. Context confirmation, candidate acceptance and common
+  publication remain separate. Migration 25 adds membership guards without
+  rewriting earlier rows or canonical input bytes. The administrator UI exposes
+  exact source inspection, review/history, uncertain-response retries and the
+  separate gate rerun. See `docs/NUMERICAL_APPLICABILITY_REVIEW.md`.
+
+- M4 now calculates quote-based market value, cash-plus-holdings total,
+  unrealized FIFO result and total result using Decimal and explicit source
+  versions/time. Its read-only endpoint and browser panel select one owned
+  ledger version. Missing/stale/conflicting quotes cannot produce portfolio
+  totals; cash-only accounts can be valued without prices. The configured runtime
+  quote provider remains unavailable. Return rates and allocation remain pending.
+  M3's existing reviewed-content and pending-operation controls remain in scope
+  for regression verification; its seven real starter reviews remain pending.
+
+- Verification passes the full backend unit suite: **2,675 passed, 6 Windows
+  platform/symlink skips**. The new numerical pure suite contributes 22 cases;
+  17 storage cases include separate confirmation, acceptance and common
+  publication with complete source-word preservation. Eight new HTTP cases pass
+  after correcting a test's expected source-conflict status; 28 existing
+  applicability storage cases and three upgrade/startup checks pass. Populated
+  schema 24-to-25 and older-schema upgrades preserve their existing rows.
+  M4 passes 8 valuation storage/API cases, 6 history and 4 FIFO regressions.
+  These 74 focused database cases use owned disposable databases and authored
+  engineering sources; no real financial/content approval is implied.
+
+- All **494 frontend unit tests** pass, alongside lint, strict TypeScript and
+  production build. **52 selected Chromium cases** pass: 30 numerical-admin and
+  applicability cases plus 22 learning/portfolio/shared-corpus cases. Browser
+  verification covers exact source inspection, uncertain-write retries, separate
+  gate reruns, M3 pending-operation controls and M4 same-version quote refresh.
+  Backend lint/format and mypy of 180 source files pass. The existing large-bundle
+  warning remains. Initial runs encountered a denied shared pytest temp folder,
+  browser timeouts under concurrent load and a Node JSON-import fixture error;
+  final runs pass using project-local temp storage and the corrected fixture.
+  Four browser cases requiring eight PDF inspections have a documented 90-second
+  budget. The broader browser verification used one worker and a 90-second
+  per-case limit; no assertions were removed.
+
+- Previous checkpoint `fe73ba4` passes all three GitHub jobs in run 43588462458.
+  Verify the containing checkpoint's exact GitHub revision after push.
+  No original-source review, account/order, financial acceptance or publication
+  has been performed in this checkpoint. The original installation remains at
+  its recorded schema 23; current code requires 25 before activation. No dependency,
+  setting or worker-image change. Actual numerical approvals/publication, real
+  M2 expected-result acceptance, seven M3 reviews, remaining M4 analytics, real
+  amendment acceptance, freeze/evaluation and fresh-clone handoff remain pending.
 
 - **Numerical applicability review and M3 write protection, 12–14 November:**
   added a versioned applicability request, immutable administrator attestation
