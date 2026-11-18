@@ -1,0 +1,115 @@
+{
+  "version": "1.0.0",
+  "client_date": "2026-11-18",
+  "branch": "codex/m2-comparison",
+  "base_commit": "9f6d17a63f031a0fb8669abadb89fa80bb8e6d83",
+  "scope": "Gemini-inspired navigation integrated with existing M1-M4 workflows; M4 snapshot metrics; local schema25 readiness",
+  "all_modules_complete": false,
+  "verification": {
+    "backend_unit": {
+      "passed": 88,
+      "new_metric_cases": 40,
+      "intentional_invalid_float_fixture_warnings": 2,
+      "path": ".cache/metrics-unit-20261118.xml",
+      "sha256": "496c834840f3b523dad539a9fae3ca2bdbcc8f29f0bd78243d3fa96a0be100a7"
+    },
+    "new_owned_database_http": {
+      "passed": 6,
+      "original_database_used": false,
+      "owned_database_removed": true,
+      "path": ".cache/metrics-db-20261117a.xml",
+      "sha256": "8426fc792a768677362b116f5ef791a279238f40d9b20def35e7e72cd9a1d4d1"
+    },
+    "frontend_unit": {
+      "unique_cases_verified": 541,
+      "full_selection_passed": 540,
+      "corrected_navigation_selection_passed": 4,
+      "single_clean_full_run": false,
+      "note": "One missing-jsdom-method test stub failed in the sequential full run; all four navigation cases pass after correction. Do not double-count the three previously passing cases. Earlier fork startup errors are not passing results.",
+      "artifacts": [
+        {
+          "path": ".cache/ui-unit-final-20261118.log",
+          "sha256": "75b256bea7e65499b5c89d12414f817e3a43f8146168f71beb3e7bc01d56053b"
+        },
+        {
+          "path": ".cache/ui-navigation-final-20261118.log",
+          "sha256": "099ea39efb00a893173cc254dceef199fb9f09b774b5170603cba2318320a358"
+        }
+      ]
+    },
+    "browser": {
+      "unique_cases_verified": 94,
+      "initial_passed": 87,
+      "initial_failed": 7,
+      "focused_rerun_passed": 7,
+      "single_clean_full_run": false,
+      "initial_workers": 2,
+      "final_workers": 1,
+      "per_case_timeout_ms": 90000,
+      "note": "Three initial cold-dependency timeouts; one native modal focus defect; three narrow-screen helpers still assumed desktop navigation. No feature assertions removed.",
+      "artifacts": [
+        {
+          "path": ".cache/integrated-ui-browser-20261118.log",
+          "sha256": "08b5727050de617251f0b874226af1f3933cdbc8f6ecc8cbb764ac2fcb1f23d6"
+        },
+        {
+          "path": ".cache/integrated-ui-browser-final-20261118.log",
+          "sha256": "1f74c2b887715dc2e8ff97a4773e1fcc0abd81a4364cc6c40a7784aee64d3a0f"
+        }
+      ]
+    },
+    "static": {
+      "ruff_check": "PASS",
+      "ruff_format_files": 330,
+      "mypy_source_files": 181,
+      "generated_module_contracts": "MATCH",
+      "eslint": "PASS_AFTER_FOCUSED_TEST_FIX",
+      "typescript": "PASS"
+    },
+    "production_build": {
+      "result": "PASS",
+      "warning": "Existing large bundle; index JS1756.19kB, gzip490.97kB",
+      "path": ".cache/ui-build-final-20261118.log",
+      "sha256": "d9713881f36cc5285141ab205d637e153e088d9471279d6e123e42e79d57f31e"
+    },
+    "visual": {
+      "desktop_1440": "INSPECTED",
+      "mobile_375": "INSPECTED",
+      "mobile_menu": "INSPECTED",
+      "screenshots_private_ignored": true
+    },
+    "live_runtime": {
+      "verified_at_utc": "2026-11-18T15:40:09.104265+00:00",
+      "backend_health": 200,
+      "frontend": 200,
+      "seeded_learner_authenticates": true,
+      "authenticated_reads": {
+        "/v1/published-corpus": 200,
+        "/v1/quotes": 200,
+        "/v1/learning/status": 200,
+        "/v1/portfolio": 200,
+        "/v1/portfolio/metrics": 200
+      },
+      "writes": false
+    }
+  },
+  "dependencies_added": {
+    "wouter": "3.13.0",
+    "lucide-react": "1.73.0",
+    "regexparam_transitive": "3.0.0",
+    "use-sync-external-store_transitive": "1.7.0"
+  },
+  "new_migrations_or_environment_variables": [],
+  "github": {
+    "prior_checkpoint": "9f6d17a",
+    "prior_all_jobs_passed_run": 43999512694,
+    "containing_checkpoint_ci": "VERIFY_AFTER_PUSH"
+  },
+  "remaining": [
+    "Real numerical prerequisites/reviews, acceptance and common publication for M2",
+    "Seven real M3 starter content reviews",
+    "Runtime quote source remains unavailable by user decision",
+    "Real amendment acceptance and held-out evaluation/freeze",
+    "Fresh-clone reproduction and team acceptance"
+  ]
+}

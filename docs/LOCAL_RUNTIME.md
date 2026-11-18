@@ -1,15 +1,14 @@
 # Run the current M1–M4 application
 
-Updated 16 November 2026. Use branch `codex/m2-comparison`. This guide covers
+Updated 18 November 2026. Use branch `codex/m2-comparison`. This guide covers
 matching application code, database schema and source/model assets. A successful
 launch does not approve filings, glossary drafts, prices or research results.
 
-Current code requires migrations through25. The original installation was last
-recorded at23; migrations24–25 have been exercised in disposable test databases,
-including populated-history preservation. They have not been applied to that
-original installation in the 16 November checkpoint. Complete the documented
-backup/upgrade procedure before restarting it with the new code. The launcher's
-check will report the pending migrations explicitly.
+Current code requires migrations through25. The original installation now has
+all25 matching migrations and no pending migration. The current CLI assembly,
+existing sign-in and authenticated M1–M4 reads were verified without changing
+stored rows. See the [schema25 readiness record](../data/local-runtime-schema25-readiness-report.json).
+Other installations must check their own history; startup never migrates silently.
 
 ## Check configuration before starting
 
@@ -46,8 +45,14 @@ numerical review additionally requires its own explicit, matching
 
 The code checkout is `D:\RegIntel\.cache\worktrees\m2-comparison`; the existing
 credentials, upload storage and models remain in `D:\RegIntel`. The original
-database was upgraded to schema 23 after a verified backup and restore rehearsal.
-See the [measured activation result](../data/local-runtime-activation-validation-report.json).
+database is verified at schema25. An earlier schema23 backup was restored and
+upgraded in a separate rehearsal database. A later local session applied24–25
+and added one virtual account/order; the next upgrade attempt correctly stopped
+before writing because its baseline had changed. Readiness checks then preserved
+all69 current tables, including those additions. The retained earlier backup
+does not contain that account/order. The owned rehearsal database was removed.
+The [older activation result](../data/local-runtime-activation-validation-report.json)
+records the earlier schema23 activation.
 The older
 `D:\RegIntel` code checkout is not the current four-module application. Its
 historical schema-11 runtime probes must not be used as current-schema checks.
@@ -88,6 +93,13 @@ Open <http://127.0.0.1:5173/>; API documentation is at
 port requires identifying the existing process; launching another instance does
 not replace it. If the agent has already left the current runtime running, use
 that runtime directly. API liveness alone does not establish sign-in/data readiness.
+
+The refined Gemini-inspired layout is integrated into this current branch.
+M1/M2 use `/app/companies`, `/app/research` and `/app/comparison`; M3 uses
+`/app/learning`, M4 `/app/portfolio`, and the complete administrator workflow
+uses `/admin`. The original Gemini edits in the older main checkout remain
+untouched. Use current code to reach all four modules. Production hosting must
+serve the frontend entry page for these browser paths, as Vite does locally.
 
 New asynchronous ingestion/processing also needs the approved worker with
 matching processing code, parser descriptor and source/model mounts. Viewing

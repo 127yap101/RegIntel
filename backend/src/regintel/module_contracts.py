@@ -15,6 +15,7 @@ from regintel.learning.models import (
 )
 from regintel.learning.service import LearningContextRequest, LearningExplanation
 from regintel.portfolio.analytics import PortfolioAnalytics
+from regintel.portfolio.metrics import PortfolioSnapshotMetrics
 from regintel.portfolio.models import LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount
 from regintel.portfolio.valuation import PortfolioValuation
 
@@ -38,3 +39,4 @@ class ModuleWire(ContractModel):
     ledger: LedgerPage
     analytics: PortfolioAnalytics
     valuation: PortfolioValuation
+    snapshot_metrics: PortfolioSnapshotMetrics

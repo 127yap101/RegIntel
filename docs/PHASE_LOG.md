@@ -2,6 +2,58 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Integrated navigation, snapshot metrics and local readiness, 17–18 November
+
+Adapted the user-provided Gemini layout from the older main checkout into the
+current four-module branch, preserving the original edits. Kept the existing
+Explorer, administrator and module bodies and their shared-corpus contracts;
+omitted copied older contexts and unsupported verification guarantees. Added
+browser routes and accessible mobile navigation. Real-browser checks exposed
+focus restoration while the modal background was still inert; dismissal now
+closes the native dialog before returning focus. Narrow-screen tests use the
+new menu rather than requiring a visible desktop sidebar.
+
+Implemented read-only M4 simple return and allocation from one exact valuation,
+with Decimal inputs, six-place half-even ratios, explicit rounding residuals and
+unavailable/zero-denominator states. The existing valuation endpoint is unchanged.
+The browser validates ratios using BigInt and retains account/version/time/source
+binding. Forty new metrics cases plus48 existing valuation/analytics cases pass;
+six disposable database/API cases pass with no writes. Backend Ruff/format,
+mypy181 and generated contract checks pass. No new migration or runtime quote
+source is introduced. Navigation adds exact wouter/lucide pins plus two transitive
+packages; local package linking used the existing store and lockfile policy checks.
+
+The schema23 backup was restored and upgraded24–25 on an owned trial database,
+with preserved rows and read-only current application probes. Before the original
+upgrade attempt, another local session applied24–25 and created one virtual
+account/order. The baseline guard stopped before mutation. The subsequent
+readiness check validates all25 migration hashes and12 authenticated reads,
+preserves all69 current tables, and confirms the66 other pre-existing tables
+unchanged from the earlier baseline. Seeded sign-in, original published PDF,
+learning reads and existing cash-only metrics work. Runtime quotes are unavailable.
+The trial database/container dump are removed; the private host backup remains
+and predates the account/order additions. See the sanitized schema25 report.
+
+Final UI coverage is541 unique unit cases and94 unique Chromium cases. The
+sequential unit run passed540, then all four navigation cases passed after
+explicitly mocking dialog methods absent from pinned jsdom. Lint, strict typing
+and production build pass; the existing large-chunk warning remains. The
+initial full browser run passed87/94: three startup timeouts, a genuine modal
+focus defect and three mobile navigation helper assumptions. An initial frontend
+run passed534 assertions but failed two worker startups, so it is not a passing
+full-suite result. All seven affected browser cases then passed in a1.3minute
+single-worker rerun. Desktop/mobile screenshots were visually inspected. Real financial/content
+reviews, numerical publication/acceptance, amendment evaluation and fresh-clone
+reproduction remain incomplete.
+
+The existing three data services had stopped overnight; restarted those same
+containers and launched the current native API/frontend on loopback8000/5173.
+Schema/configuration check passes25, seeded learner authentication succeeds,
+frontend/liveness return200 and five authenticated module reads return200 with
+no record creation. No worker rebuild/start or public port is introduced.
+`data/integrated-ui-metrics-validation-report.json` records measured scopes and
+artifact hashes. Verify the containing commit's CI after push.
+
 ## Reviewed gate integration and portfolio valuation, 16–17 November
 
 Implemented a versioned applicability gate input retaining the exact unresolved

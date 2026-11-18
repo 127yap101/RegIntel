@@ -1,6 +1,6 @@
 # Run and test the learning and virtual-portfolio baseline
 
-Updated 16 November 2026. These modules are on `codex/m2-comparison` in
+Updated 18 November 2026. These modules are on `codex/m2-comparison` in
 127yap101/RegIntel. Pull that branch to work on M2–M4. The original `main` checkout
 retains older M1 code. Use the [current local runtime guide](LOCAL_RUNTIME.md)
 for matching code, schema and assets on Yash's laptop; consult CURRENT_STATE.md
@@ -8,8 +8,8 @@ for the measured activation result.
 
 The current branch includes migrations24–25 for numerical applicability review
 and its separate gate rerun.
-Yash's existing installation is still at schema23, so its next startup using
-current code needs the tested migration upgrade. See CURRENT_STATE.md for the
+Yash's existing installation now has all25 matching migrations; authenticated
+readiness checks preserve its existing data. See CURRENT_STATE.md for the
 latest verification and `NUMERICAL_APPLICABILITY_REVIEW.md` for the API boundary.
 M3 saved-draft Open controls now wait for pending operations to finish. Browser
 verification includes a delayed administrator review response and checks that
@@ -167,9 +167,22 @@ in tests only.
 `GET /v1/portfolio/valuation` accepts the same optional `portfolio_version_id`.
 An earlier version selects earlier holdings and cash, valued at the response's
 current server time; it does not claim a historical market price or a time-series
-return. The read neither stores quotes nor changes the ledger. Return rates,
-market-value allocation and a reviewed quote-data workflow remain further M4 work.
-No new dependency or environment variable is needed.
+return. The read neither stores quotes nor changes the ledger.
+
+The browser now uses `GET /v1/portfolio/metrics` to obtain this valuation,
+simple return and allocation in one response. Simple return is total result
+divided by opening virtual credit, multiplied by100. Allocation includes cash
+and every open holding, each divided by total virtual value. The screen retains
+the exact currency numerator/denominator and rounds percentages to six decimal
+places using half-even rounding. The displayed allocation sum and signed
+rounding residual are explicit; weights are never adjusted to force100%.
+Zero denominators and unavailable valuations cannot produce a percentage.
+Refreshing the account clears the previous metrics while the new snapshot loads.
+
+These are selected-ledger metrics at the stated valuation time, not annualized
+or time-series returns. The existing `/valuation` endpoint remains available.
+A reviewed quote-data workflow remains further M4 work; runtime prices remain
+unavailable by the existing decision. No dependency or environment variable is added.
 
 ## Automated checks
 
@@ -187,6 +200,7 @@ With the existing data services running and this clone's `.env` configured:
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_history_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_fifo_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_valuation_storage.py
+.\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_portfolio_metrics_storage.py
 .\backend\.venv\Scripts\python.exe scripts\check-migrations.py --test-file backend/tests/integration/test_numerical_applicability_gate_storage.py
 pnpm --dir frontend exec playwright test tests/e2e/learning-portfolio.spec.ts --workers=1
 ```

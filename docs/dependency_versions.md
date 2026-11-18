@@ -1,5 +1,29 @@
 # RegIntel Finance — Tested Dependency Register
 
+## Integrated navigation and icons — 17 November 2026
+
+The user requested refinement of Gemini's UI changes from the older M1 checkout.
+The current four-module frontend adopts its routing/icon packages with exact pins,
+retaining the existing React, TypeScript, Vite and Tailwind versions. Wouter is the
+single browser router; Lucide supplies navigation icons. Neither owns credentials,
+financial state or source evidence. Installation reused the existing pnpm store;
+its lockfile policy check made registry requests, with no package downloads.
+
+| Component | Exact version | License | Scope |
+|---|---|---|---|
+| wouter | 3.13.0 | Unlicense | Browser paths, links and history navigation |
+| lucide-react | 1.73.0 | ISC; Feather-derived icons MIT | Navigation icons |
+| regexparam | 3.0.0 | MIT | Wouter path matching |
+| use-sync-external-store | 1.7.0 | MIT | Wouter subscription adapter |
+
+Metadata accepts the existing React19.2.0 installation. The lockfile retains all
+prior package resolutions and adds only these four. Distributed notices are in
+`frontend/public/navigation-dependency-notices.txt`. See CURRENT_STATE.md for
+actual verification; no new backend dependency, service or environment variable.
+References: installed exact-version manifests/licenses,
+[Wouter](https://github.com/molefrog/wouter) and
+[Lucide licensing](https://lucide.dev/license).
+
 ## M1.12 administrator workspace — 16 October 2026
 
 No dependency, lock, migration or environment-variable changes. Reuses the

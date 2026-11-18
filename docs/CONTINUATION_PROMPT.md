@@ -1,5 +1,36 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest continuation, 18 November: use CURRENT_STATE.md and
+`docs/PROJECT_COMPLETION_PROMPT.md` for the active scope. Older entries below are
+historical checkpoints. Gemini's UI changes were found in the old original main
+checkout; its files remain untouched. The integration checkout now adapts that
+layout around the current M1/M2 Explorer, complete administrator workflow and
+M3/M4 workspace components, retaining shared corpus state and existing gates.
+Browser paths, mobile navigation and truthful current module labels are added.
+Two pinned frontend dependencies and their notices are documented in the
+dependency register. Do not replace current contracts with Gemini's older copied
+authentication/data contexts.
+
+M4 snapshot metrics now expose exact simple return and allocation from one server
+valuation, with Decimal arithmetic, six-place half-even rounding and explicit
+unavailable/zero states. Runtime quotes remain unavailable; no price is invented.
+The original database is verified at25. A separate local session had applied24–25
+and added one account/order after the backup rehearsal; this task's guard stopped
+before writing. Authenticated current reads preserve all69 current tables. The
+earlier backup is retained but predates those additions. The owned trial database
+is removed. See `data/local-runtime-schema25-readiness-report.json`.
+
+Current checks cover88 backend unit, six database/API,541 unique frontend unit
+and94 unique browser cases, plus static/contract/build checks. Frontend coverage
+combines a full run with focused corrections; CURRENT_STATE.md discloses the
+initial failures and actual scopes. Verify the containing commit's CI after push.
+Actual numerical approvals,
+common publication and real M2 expected-result checks remain critical. Seven M3
+starter drafts need content review. Original old gates may require a fresh
+machine-generated gate under current configuration before a source-supported
+applicability review; keep immutable history and never fabricate a reviewer.
+Real amendment acceptance, evaluation/freeze and fresh-clone handoff remain.
+
 Latest continuation, 17 November: the working branch now implements the
 applicability gate consumer and administrator UI, plus M4 snapshot valuation.
 Read CURRENT_STATE.md for completed checks and outstanding verification before

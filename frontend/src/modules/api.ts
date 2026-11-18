@@ -9,6 +9,7 @@ import schema from './schema.json'
 import { checkNumericalObservation } from '../published/native'
 import { checkAnalyticsAmounts } from './analyticsAmounts'
 import { checkValuation } from './valuationAmounts'
+import { checkSnapshotMetrics } from './snapshotMetricsAmounts'
 
 export type { ModuleWire } from './generated'
 
@@ -102,6 +103,12 @@ export function decode<K extends keyof ModuleWire>(kind: K, value: unknown): Mod
     const valuation = data as ModuleWire['valuation']
     if (meta.versions.corpus_version_id !== null || meta.versions.quote_version_id !== (valuation.quote_version_ids.length === 1 ? valuation.quote_version_ids[0] : null)) throw new ModuleError(0, 'Valuation source versions differ from the supplied quote snapshots.')
     try { checkValuation(valuation) } catch (failure: unknown) { throw new ModuleError(0, failure instanceof Error ? failure.message : 'Portfolio valuation does not reconcile.') }
+  }
+  if (kind === 'snapshot_metrics') {
+    const metrics = data as ModuleWire['snapshot_metrics']
+    const valuation = metrics.valuation
+    if (meta.versions.portfolio_version_id !== valuation.portfolio_version_id || meta.versions.corpus_version_id !== null || meta.versions.quote_version_id !== (valuation.quote_version_ids.length === 1 ? valuation.quote_version_ids[0] : null)) throw new ModuleError(0, 'Snapshot metrics differ from the selected valuation source versions.')
+    try { checkSnapshotMetrics(metrics) } catch (failure: unknown) { throw new ModuleError(0, failure instanceof Error ? failure.message : 'Snapshot return or allocation does not reconcile.') }
   }
   if (kind === 'analytics') {
     const analytics = data as ModuleWire['analytics']

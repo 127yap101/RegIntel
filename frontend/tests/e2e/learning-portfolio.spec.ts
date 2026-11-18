@@ -6,7 +6,7 @@ import { apiOrigin, webOrigin } from '../ports'
 import { readFileSync } from 'node:fs'
 import { resolve } from 'node:path'
 import fifo from '../../src/modules/fifo.fixture.json' with { type: 'json' }
-import { cashOnlyValuation, fifoValuation } from '../../src/modules/valuationFixtures.test-support'
+import { cashOnlyMetrics, fifoMetrics } from '../../src/modules/snapshotMetricsFixtures.test-support'
 
 const starterPack: unknown = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../data/learning-starter-drafts.json'), 'utf8'))
 
@@ -80,12 +80,12 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
         appended = true
         recorded = rejection().entry.request as OrderRequest
       }
-    } else if ((path === '/v1/portfolio/ledger' || path === '/v1/portfolio/analytics' || path === '/v1/portfolio/valuation') && accountCreated) {
+    } else if ((path === '/v1/portfolio/ledger' || path === '/v1/portfolio/analytics' || path === '/v1/portfolio/metrics') && accountCreated) {
       const selected = new URL(route.request().url()).searchParams.get('portfolio_version_id')
       expect(selected).not.toBeNull()
       const included = selected === ids.order && recorded !== null
       const version = included ? ids.order : ids.account
-      data = path.endsWith('/valuation') ? envelope(cashOnlyValuation(included), { portfolio_version_id: version }) : path.endsWith('/analytics') ? envelope(analytics(included), { portfolio_version_id: version }) : envelope({ account_id: ids.account, portfolio_version_id: version, entries: included && recorded ? [rejection(recorded).entry] : [], total: included ? 1 : 0, offset: 0 }, { portfolio_version_id: version })
+      data = path.endsWith('/metrics') ? envelope(cashOnlyMetrics(included), { portfolio_version_id: version }) : path.endsWith('/analytics') ? envelope(analytics(included), { portfolio_version_id: version }) : envelope({ account_id: ids.account, portfolio_version_id: version, entries: included && recorded ? [rejection(recorded).entry] : [], total: included ? 1 : 0, offset: 0 }, { portfolio_version_id: version })
     }
     else if (path === '/v1/portfolio/orders') {
       const input = route.request().postDataJSON() as OrderRequest
@@ -102,6 +102,9 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
 
 async function signIn(page: Page, mode: 'learning' | 'portfolio', reload = false) {
   if (!reload) await page.goto('/')
+  await expect(page.getByRole('main')).toBeVisible()
+  const menu = page.getByRole('button', { name: 'Open navigation', exact: true })
+  if (await menu.isVisible()) await menu.click()
   await page.getByRole('link', { name: mode === 'learning' ? 'Financial learning' : 'Virtual portfolio', exact: true }).click()
   await page.getByLabel('Username', { exact: true }).fill('authored.learner')
   await page.getByLabel('Password', { exact: true }).fill('authored-password')
@@ -109,7 +112,7 @@ async function signIn(page: Page, mode: 'learning' | 'portfolio', reload = false
 }
 
 async function fifoReads(page: Page, corruptCash = false, quotes = true) {
-  const control: { blockPartial: boolean; release?: () => void; blockValuation: boolean; releaseValuation?: () => void } = { blockPartial: false, blockValuation: false }
+  const control: { blockPartial: boolean; release?: () => void; blockValuation: boolean; releaseValuation?: () => void; corruptMetrics: boolean; metricsReads: number; separateValuationReads: number } = { blockPartial: false, blockValuation: false, corruptMetrics: false, metricsReads: 0, separateValuationReads: 0 }
   await page.route(`${apiOrigin}/v1/portfolio**`, async (route) => {
     const url = new URL(route.request().url())
     if (route.request().method() !== 'GET') { await route.fallback(); return }
@@ -119,11 +122,14 @@ async function fifoReads(page: Page, corruptCash = false, quotes = true) {
     if (!snapshot) { await route.fulfill({ status: 404, headers }); return }
     if (url.pathname === '/v1/portfolio') { await route.fulfill({ headers, json: snapshot.portfolio }); return }
     if (url.pathname === '/v1/portfolio/ledger') { await route.fulfill({ headers, json: snapshot.ledger }); return }
-    if (url.pathname === '/v1/portfolio/valuation') {
+    if (url.pathname === '/v1/portfolio/valuation') control.separateValuationReads += 1
+    if (url.pathname === '/v1/portfolio/metrics') {
+      control.metricsReads += 1
       if (control.blockValuation) await new Promise<void>((release) => { control.releaseValuation = release })
       const key = (Object.keys(fifo.snapshots) as (keyof typeof fifo.snapshots)[]).find((name) => fifo.snapshots[name] === snapshot)!
-      const value = fifoValuation(key, quotes)
-      await route.fulfill({ headers, json: envelope(value, { portfolio_version_id: value.portfolio_version_id, quote_version_id: value.quote_version_ids[0] ?? null }) }); return
+      const value = fifoMetrics(key, quotes)
+      if (control.corruptMetrics) value.simple_return.percentage = '1.000000'
+      await route.fulfill({ headers, json: envelope(value, { portfolio_version_id: value.valuation.portfolio_version_id, quote_version_id: value.valuation.quote_version_ids[0] ?? null }) }); return
     }
     if (url.pathname === '/v1/portfolio/analytics') {
       if (control.blockPartial && selected === fifo.snapshots.partial.portfolio.data.portfolio_version_id) await new Promise<void>((resolveRead) => { control.release = resolveRead })
@@ -137,9 +143,18 @@ async function fifoReads(page: Page, corruptCash = false, quotes = true) {
 }
 
 test('M4 shows current snapshot valuation, exact sources and selected historical holdings', async ({ page }) => {
-  await authoredModules(page); await fifoReads(page); await signIn(page, 'portfolio')
+  await authoredModules(page); const control = await fifoReads(page); await signIn(page, 'portfolio')
   const area = page.getByRole('region', { name: 'Virtual portfolio valuation', exact: true })
   await expect(area.getByText('INR 100091.00', { exact: true })).toBeVisible()
+  const metrics = area.getByRole('region', { name: 'Snapshot return and allocation', exact: true })
+  await expect(metrics).toContainText('Simple return: 0.091000%')
+  await expect(metrics).toContainText('INR 91.00 total result ÷ INR 100000.00 opening credit')
+  await expect(metrics.getByRole('table')).toContainText('denominator INR 100091.00')
+  await expect(metrics.getByRole('row').filter({ hasText: 'Virtual cash' })).toContainText('99.950045%')
+  await expect(metrics).toContainText('Rounding residual to 100%: 0.000000 percentage points')
+  // React StrictMode may abort and repeat a read; each result must use this single endpoint.
+  expect(control.metricsReads).toBeGreaterThan(0)
+  expect(control.separateValuationReads).toBe(0)
   await area.getByText('Valuation quote source', { exact: true }).click()
   await expect(area).toContainText('Engineering fixture')
   await expect(area).toContainText('Authored valuation fixture <script>untrusted text</script>')
@@ -148,6 +163,8 @@ test('M4 shows current snapshot valuation, exact sources and selected historical
   await page.getByRole('button', { name: 'View balances after order #3', exact: true }).click()
   await expect(area.getByText('INR 100065.00', { exact: true })).toBeVisible()
   await expect(area.getByText('INR 5.00', { exact: true })).toBeVisible()
+  await expect(metrics).toContainText('Simple return: 0.065000%')
+  await expect(metrics.getByRole('table')).toContainText('denominator INR 100065.00')
   await expect(area).toContainText(fifo.snapshots.partial.portfolio.data.portfolio_version_id)
   await page.setViewportSize({ width: 375, height: 900 })
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
@@ -159,9 +176,13 @@ test('M4 withholds held-position totals without quotes and still values a closed
   await expect(area.getByRole('status')).toContainText('at least one holding lacks a valid quote')
   await expect(area.locator('dl')).toHaveCount(0)
   await expect(area).toContainText('Quote unavailable')
+  await expect(area).toContainText('Simple return and allocation are unavailable')
+  await expect(area.getByRole('table')).toHaveCount(0)
   await page.getByRole('button', { name: 'View balances after order #4', exact: true }).click()
   await expect(area.getByText('INR 100055.00', { exact: true })).toBeVisible()
   await expect(area.getByText('INR 55.00', { exact: true })).toBeVisible()
+  await expect(area).toContainText('Simple return: 0.055000%')
+  await expect(area.getByRole('row').filter({ hasText: 'Virtual cash' })).toContainText('100.000000%')
 })
 
 test('M4 clears the previous valuation while refreshing quotes for the same portfolio version', async ({ page }) => {
@@ -174,8 +195,20 @@ test('M4 clears the previous valuation while refreshing quotes for the same port
     await expect.poll(() => typeof control.releaseValuation).toBe('function')
     await expect(area.getByText('Loading portfolio valuation…', { exact: true })).toBeVisible()
     await expect(area.locator('dl')).toHaveCount(0)
+    await expect(area.getByRole('region', { name: 'Snapshot return and allocation' })).toHaveCount(0)
   } finally { control.blockValuation = false; control.releaseValuation?.() }
   await expect(area.getByText('INR 100091.00', { exact: true })).toBeVisible()
+})
+
+test('M4 withholds valuation and percentages when the return differs from its exact inputs', async ({ page }) => {
+  await authoredModules(page); const control = await fifoReads(page)
+  control.corruptMetrics = true
+  await signIn(page, 'portfolio')
+  const area = page.getByRole('region', { name: 'Virtual portfolio valuation', exact: true })
+  await expect(area.getByRole('alert')).toContainText('does not match its exact valuation inputs')
+  await expect(area.locator('dl')).toHaveCount(0)
+  await expect(area.getByRole('region', { name: 'Snapshot return and allocation' })).toHaveCount(0)
+  await expect(page.getByRole('heading', { name: 'Virtual cash: INR 100041.00', exact: true })).toBeVisible()
 })
 
 test('M4 displays FIFO realized results and remaining purchase costs from an exact selected prefix', async ({ page }) => {

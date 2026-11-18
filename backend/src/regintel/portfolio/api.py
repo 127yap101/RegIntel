@@ -12,6 +12,7 @@ from regintel.contracts.http import response_meta
 from regintel.contracts.models import ContractModel, ErrorEnvelope, SuccessEnvelope
 from regintel.contracts.primitives import CanonicalId
 from regintel.portfolio.analytics import PortfolioAnalytics
+from regintel.portfolio.metrics import PortfolioSnapshotMetrics
 from regintel.portfolio.models import LedgerPage, OrderReceipt, OrderRequest, PortfolioAccount
 from regintel.portfolio.repository import (
     PortfolioConflict,
@@ -151,5 +152,22 @@ def create_portfolio_router(
         data = perform(lambda: ready().repository.valuation(user, version=portfolio_version_id))
         quote = data.quote_version_ids[0] if len(data.quote_version_ids) == 1 else None
         return envelope(data, request, data.portfolio_version_id, quote=quote)
+
+    @router.get(
+        "/v1/portfolio/metrics",
+        response_model=SuccessEnvelope[PortfolioSnapshotMetrics],
+        responses=errors,
+    )
+    def metrics(
+        request: Request,
+        user: Annotated[User, Depends(reader)],
+        portfolio_version_id: CanonicalId | None = None,
+    ) -> SuccessEnvelope[PortfolioSnapshotMetrics]:
+        data = perform(
+            lambda: ready().repository.snapshot_metrics(user, version=portfolio_version_id)
+        )
+        value = data.valuation
+        quote = value.quote_version_ids[0] if len(value.quote_version_ids) == 1 else None
+        return envelope(data, request, value.portfolio_version_id, quote=quote)
 
     return router

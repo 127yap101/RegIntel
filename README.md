@@ -8,6 +8,7 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 - `AGENTS.md`: operating contract, evidence rules and specification navigation.
 - `CURRENT_STATE.md`: latest implementation/verification status and exact resume direction.
+- [Project completion prompt](docs/PROJECT_COMPLETION_PROMPT.md): reusable instructions for finishing the capstone without inventing approvals or results.
 - [Current M1–M4 runtime](docs/LOCAL_RUNTIME.md): check schema/configuration and explicitly select the existing laptop assets when running the integration checkout.
 - [Run/check/sleep guide](docs/RUN_AND_CHECK.md): current app/API launch commands, saved proof, verification and safe pause/resume.
 - [M1 teammate testing guide](docs/M1_TEAM_TESTING.md): initialize another computer, verify local accounts and distinguish an empty database from a populated filing demo.
@@ -29,7 +30,16 @@ A six-week capstone exploring **Amendment-Aware Evidence-Constrained Corporate R
 
 ## Current scope
 
-The latest operational checkpoint imports the actual Premier and Waaree source
+The current integration branch (`codex/m2-comparison`) refines Gemini's navigation
+and layout around all four existing module workflows. M4 adds snapshot return
+and allocation alongside valuation, with exact inputs and explicit unavailable
+states. Runtime quotes remain unavailable. The original installation is verified
+at schema25 with authenticated read-only checks; see the
+[readiness record](data/local-runtime-schema25-readiness-report.json).
+Use the [current runtime guide](docs/LOCAL_RUNTIME.md), and consult
+CURRENT_STATE.md for measured checks and remaining real-data acceptance.
+
+An earlier operational checkpoint imports the actual Premier and Waaree source
 packets into the original local installation and saves four unresolved numerical
 checks. Actual browser/HTTP verification opens all four PDF value highlights;
 all four financial inputs still require review and publication remains blocked.
@@ -37,7 +47,7 @@ See the [review walkthrough](docs/REAL_NUMERICAL_REVIEW.md) and
 [measured intake report](data/real-numerical-intake-validation-report.json).
 These local database records and PDFs are not included in a Git clone.
 
-The preceding checkpoint activates the current four-module runtime with explicit
+An earlier checkpoint activates the four-module runtime with explicit
 source/model asset selection and a read-only schema/configuration check. The
 original laptop database was upgraded to migration 23 after a verified backup
 and restore rehearsal; current code, original assets and the matching worker

@@ -1,0 +1,122 @@
+{
+  "version": "1.0.0",
+  "client_date": "2026-11-18",
+  "client_timezone": "Asia/Calcutta",
+  "measured_at_utc": "2026-11-17T17:55:29.006916+00:00",
+  "base_commit": "9f6d17a63f031a0fb8669abadb89fa80bb8e6d83",
+  "branch": "codex/m2-comparison",
+  "scope": "Original installation schema25 and authenticated read-only application readiness",
+  "all_modules_complete": false,
+  "backup": {
+    "scope": "Schema23 before later account/order additions",
+    "bytes": 34208754,
+    "sha256": "b3fb2f282ee7bd32fde5f91ae64f62faa926f5b2d2f3d085552c7faf810a4700",
+    "private_host_copy_retained": true,
+    "restored_and_migrated_on_owned_disposable_database": [
+      24,
+      25
+    ],
+    "rehearsal_all_existing_values_preserved": true,
+    "rehearsal_authenticated_reads_preserved_all_schema25_tables": true
+  },
+  "original_database": {
+    "applied_migrations": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19,
+      20,
+      21,
+      22,
+      23,
+      24,
+      25
+    ],
+    "pending_migrations": [],
+    "migration_applied_by_this_checkpoint": false,
+    "note": "Schema25 was already applied in another local session before this attempt. This helper stopped before migration, retained the new account/order, verified every other pre-existing table unchanged, and verified current authenticated reads without writes.",
+    "externally_observed_additions": {
+      "portfolio_accounts": {
+        "before": 0,
+        "current": 1
+      },
+      "portfolio_orders": {
+        "before": 0,
+        "current": 1
+      }
+    },
+    "other_preexisting_tables_unchanged": 66,
+    "all_tables_unchanged_during_readiness_checks": 69,
+    "schema23_history_prefix_preserved": true,
+    "all25_migration_names_and_hashes_match": true
+  },
+  "authenticated_readiness": {
+    "existing_seeded_accounts_authenticate": true,
+    "http_statuses": {
+      "/v1/published-corpus": 200,
+      "/v1/companies": 200,
+      "/v1/companies/581d1b0d-98fd-4a23-8e15-5574dac650a2/facts": 200,
+      "/v1/corpora/614d7861-3f8f-4d5c-a9e5-d7423c2aba58/observations/4745db6c-09db-4ee2-bc43-efb8a53c7b6b/source.pdf": 200,
+      "/v1/companies/581d1b0d-98fd-4a23-8e15-5574dac650a2/graph": 200,
+      "/v1/quotes": 200,
+      "/v1/learning/status": 200,
+      "/v1/learning/starter-pack": 200,
+      "/v1/learning/drafts": 200,
+      "/v1/portfolio": 200,
+      "/v1/portfolio/metrics": 200,
+      "/v1/admin/numerical/gates": 200
+    },
+    "published_corpus": {
+      "corpus_version_id": "614d7861-3f8f-4d5c-a9e5-d7423c2aba58",
+      "manifest_sha256": "6622925d2516aedd4c04194372c7783983b00b14271a9d7edcb7ff5b65cda58e",
+      "state": "AVAILABLE",
+      "as_of_date": null,
+      "historical": false,
+      "unresolved_parent_filing_version_ids": [
+        "295214b3-1c7a-44d4-8201-bf97a986a950"
+      ]
+    },
+    "company_count": 1,
+    "first_company_fact_count": 1,
+    "original_source_pdf_sha256": "a15329da96a20117a5cfaccf535ab3dc805c6ed195e392bb5ec6131f8f246347",
+    "quotes": {
+      "state": "UNAVAILABLE",
+      "reason": "NO_CONFIGURED_SOURCE",
+      "explanation": "No reviewed quote source is configured.",
+      "quotes": [],
+      "quote_version_id": null
+    },
+    "existing_portfolio_present": true,
+    "portfolio_metrics_state": "AVAILABLE",
+    "open_holdings": 0,
+    "actual_numerical_comparison_possible": false,
+    "financial_or_content_approval_created": false,
+    "new_account_or_order_created_by_probe": false
+  },
+  "cleanup": {
+    "owned_rehearsal_database_removed": true,
+    "owned_container_dump_removed": true,
+    "original_database_and_host_backup_retained": true
+  },
+  "limitations": [
+    "Readiness probes use the real CLI assembly and in-process HTTP client; they do not prove a persistent network server or full user acceptance.",
+    "The retained backup predates one externally created account and order; it is not a backup of those additions.",
+    "No real numerical/content approval, priced trade, amendment acceptance, held-out research result or fresh-clone reproduction is implied.",
+    "Runtime quotes remain unavailable; existing cash-only portfolio metrics need no price."
+  ]
+}

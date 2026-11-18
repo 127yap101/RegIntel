@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-17 (Asia/Calcutta).
+Updated: 2026-11-18 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,67 @@ Updated: 2026-11-17 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Current four-module integration, 17–18 November:** the user requested
+  refinement of Gemini's uncommitted UI work in the older `D:\RegIntel` main
+  checkout. Those originals remain untouched. The integration branch adopts its
+  sidebar, visual style and path navigation around the current Explorer,
+  administrator and learning/portfolio workspaces. It does not copy the older
+  duplicated authentication/data contexts. All four modules remain reachable;
+  unsupported verification guarantees and outdated M2–M4 placeholders are removed.
+  The original current-workflow components retain their corpus/evidence gates.
+  Two exact frontend dependencies are added: wouter3.13.0 and lucide-react1.73.0,
+  with two locked transitive packages. See `docs/dependency_versions.md`.
+
+- M4 now adds `/v1/portfolio/metrics`: one valuation snapshot supplies simple
+  return and cash/holding allocation. Decimal calculations retain exact currency
+  numerators/denominators, six-place half-even percentages and the signed rounding
+  residual. Zero denominators, missing quotes and ledger bounds cannot produce
+  partial ratios. The browser validates arithmetic with BigInt and keeps the
+  response bound to the selected account/version. The older valuation endpoint
+  remains unchanged. Runtime quotes remain unavailable. The focused backend
+  suite passes88 cases, including40 new metrics cases; six new disposable database
+  and HTTP cases pass. Ruff/format and mypy181 source files pass. Two intentional
+  Pydantic warnings exercise rejection of invalid floating-point fixtures.
+
+- The original installation is now verified at schema25, with all migration
+  names/hashes matching. This task restored its earlier schema23 backup and
+  rehearsed24–25 successfully, but a later local session applied those migrations
+  and added one virtual account/order before the actual upgrade attempt. The
+  preservation guard stopped before writing. Subsequent current CLI assembly,
+  seeded authentication and12 authenticated reads pass; all69 current tables are
+  unchanged by the checks, with the66 other pre-existing tables unchanged from
+  the earlier baseline. The existing cash-only account has available metrics
+  without quotes. No approval, account or order was created by these probes.
+  The owned rehearsal database/container dump were removed; the private host
+  backup remains and predates the later account/order. See
+  `data/local-runtime-schema25-readiness-report.json` and `docs/LOCAL_RUNTIME.md`.
+
+- Verification covers **541 unique frontend unit cases**: the sequential run
+  passed540, then all four navigation cases passed after supplying the pinned
+  jsdom's missing dialog methods in its test stub. This is a full-suite selection
+  plus a focused correction, not a single clean541-case run. An earlier run's
+  two worker-start errors are superseded by that sequential coverage. Lint,
+  strict TypeScript and production build pass; the1.76MB bundle warning remains.
+  **94 unique Chromium cases** pass across the initial87 passing cases and seven
+  successful focused reruns. Three initial failures were cold dependency-load
+  timeouts; the remainder exposed modal focus ordering and mobile helper
+  assumptions. Real-browser Escape/close focus, narrow viewport, direct/back/
+  unknown paths and all four module workflows are verified. Desktop/mobile
+  screenshots were inspected. No assertion was removed.
+  See `data/integrated-ui-metrics-validation-report.json` for the measured scopes
+  and artifact hashes. On18 November the existing data containers were restarted
+  after overnight shutdown, and the current native API/frontend were started on
+  loopback8000/5173. Live seeded learner sign-in and published-corpus, quote,
+  learning, portfolio and metrics reads return200. No record was created.
+
+- Prior checkpoint9f6d17a passes all three GitHub CI jobs in run43999512694.
+  Verify the containing checkpoint's exact GitHub revision after push. The original
+  corpus still has one conditional narrative and no accepted numerical inputs.
+  Actual M2 acceptance/publication, seven M3 content reviews, a reviewed quote-data
+  decision, real amendment acceptance, freeze/evaluation and fresh-clone handoff
+  remain. No module-wide or research completion is implied. A reusable completion
+  instruction is saved in `docs/PROJECT_COMPLETION_PROMPT.md`.
 
 - **Applicability gate integration and portfolio valuation, 16–17 November:**
   the new versioned numerical input retains its unresolved gate, original actor,

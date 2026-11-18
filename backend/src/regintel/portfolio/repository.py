@@ -24,6 +24,7 @@ from regintel.portfolio.analytics import (
     unavailable_analytics,
 )
 from regintel.portfolio.engine import evaluate_order
+from regintel.portfolio.metrics import PortfolioSnapshotMetrics, snapshot_metrics
 from regintel.portfolio.models import (
     Holding,
     LedgerEntry,
@@ -385,3 +386,8 @@ class PortfolioRepository:
                         )
                 snapshots[company.company_id] = quote
             return value_portfolio(analytics, snapshots, at)
+
+    def snapshot_metrics(
+        self, user: User, *, version: str | None = None
+    ) -> PortfolioSnapshotMetrics:
+        return snapshot_metrics(self.valuation(user, version=version))

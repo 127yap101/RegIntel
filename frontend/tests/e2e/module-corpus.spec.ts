@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 import type { Page } from '@playwright/test'
 import analysis from '../../src/analysis/fixtures.generated.json' with { type: 'json' }
 import { analytics, definition, envelope, glossary, ids, opening, rejection, reviewed, user } from '../../src/modules/fixtures.test-support'
-import { cashOnlyValuation } from '../../src/modules/valuationFixtures.test-support'
+import { cashOnlyMetrics } from '../../src/modules/snapshotMetricsFixtures.test-support'
 import type { LearningContextRequest, OrderRequest } from '../../src/modules/generated'
 import { apiOrigin, webOrigin } from '../ports'
 
@@ -69,7 +69,11 @@ async function movingHead(page: Page, loseFirstOrder = false) {
     else if (path === '/v1/portfolio' && accountCreated) data = envelope({ ...opening, committed_orders: recorded ? 1 : 0, portfolio_version_id: recorded ? ids.order : ids.account }, { portfolio_version_id: recorded ? ids.order : ids.account })
     else if (path === '/v1/portfolio/ledger' && accountCreated) data = envelope({ account_id: ids.account, portfolio_version_id: recorded ? ids.order : ids.account, entries: recorded ? [rejection(recorded).entry] : [], total: recorded ? 1 : 0, offset: 0 }, { portfolio_version_id: recorded ? ids.order : ids.account })
     else if (path === '/v1/portfolio/analytics' && accountCreated) data = envelope({ ...analytics(recorded !== null), corpus_version_ids: recorded ? [recorded.corpus_version_id] : [] }, { portfolio_version_id: recorded ? ids.order : ids.account })
-    else if (path === '/v1/portfolio/valuation' && accountCreated) data = envelope({ ...cashOnlyValuation(recorded !== null), corpus_version_ids: recorded ? [recorded.corpus_version_id] : [] }, { portfolio_version_id: recorded ? ids.order : ids.account })
+    else if (path === '/v1/portfolio/metrics' && accountCreated) {
+      const metrics = cashOnlyMetrics(recorded !== null)
+      metrics.valuation.corpus_version_ids = recorded ? [recorded.corpus_version_id] : []
+      data = envelope(metrics, { portfolio_version_id: recorded ? ids.order : ids.account })
+    }
     else if (path === '/v1/portfolio/orders') {
       const input = route.request().postDataJSON() as OrderRequest
       orders.push(input)
