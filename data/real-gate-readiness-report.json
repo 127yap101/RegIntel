@@ -1,0 +1,329 @@
+{
+  "verified_at_utc": "2026-11-19T05:46:17.553958+00:00",
+  "scope": "Actual original schema25 gate reads and applicability prerequisites; no writes",
+  "all_tables_unchanged": 69,
+  "source_packets_unchanged": true,
+  "review_or_acceptance_created": false,
+  "results": [
+    {
+      "packet": "premier-21",
+      "gate_id": "1b2fa447-0a6a-4e12-a2e7-6a115a62bfbd",
+      "state": "REVIEW_REQUIRED",
+      "acceptance_eligible": false,
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "PASS",
+          "message": "One source issuer name/CIN matches the supplied approval snapshot."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "PASS",
+          "message": "One local restated statement caption supplies the proposed basis."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "requirements_state": "CONFLICT",
+      "reason": "Run the installed numerical gates before reviewing context."
+    },
+    {
+      "packet": "premier-22",
+      "gate_id": "029705e3-8f6f-4770-879a-8cb83c64f87f",
+      "state": "REVIEW_REQUIRED",
+      "acceptance_eligible": false,
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "PASS",
+          "message": "One source issuer name/CIN matches the supplied approval snapshot."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "PASS",
+          "message": "One local restated statement caption supplies the proposed basis."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "requirements_state": "CONFLICT",
+      "reason": "Run the installed numerical gates before reviewing context."
+    },
+    {
+      "packet": "waaree-9",
+      "gate_id": "e2c4c253-e41c-4091-b7dd-a77f19b7519c",
+      "state": "REVIEW_REQUIRED",
+      "acceptance_eligible": false,
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "REVIEW",
+          "message": "The original CIN needs one unambiguous approved registry binding."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "REVIEW",
+          "message": "The separate basis clause needs statement applicability review."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "requirements_state": "CONFLICT",
+      "reason": "Run the installed numerical gates before reviewing context."
+    },
+    {
+      "packet": "waaree-10",
+      "gate_id": "d1b75071-d830-4615-a0dc-b02f5d1e806d",
+      "state": "REVIEW_REQUIRED",
+      "acceptance_eligible": false,
+      "checks": [
+        {
+          "code": "SOURCE",
+          "state": "PASS",
+          "message": "Retained source/version and selected preparation/configuration membership agree."
+        },
+        {
+          "code": "EXACT_WORDS",
+          "state": "PASS",
+          "message": "Every supplied reference retains its exact native word and word envelope."
+        },
+        {
+          "code": "TABLE",
+          "state": "PASS",
+          "message": "Original word mappings retain one aligned value, row label and period column."
+        },
+        {
+          "code": "ISSUER",
+          "state": "REVIEW",
+          "message": "The original CIN needs one unambiguous approved registry binding."
+        },
+        {
+          "code": "METRIC",
+          "state": "REVIEW",
+          "message": "A registered metric and numerical policy are required."
+        },
+        {
+          "code": "VALUE",
+          "state": "PASS",
+          "message": "The original value has an exact unscaled Decimal interpretation."
+        },
+        {
+          "code": "UNIT",
+          "state": "REVIEW",
+          "message": "Local source unit requires the matching registered metric policy."
+        },
+        {
+          "code": "CURRENCY",
+          "state": "PASS",
+          "message": "The local label has explicit retained currency support."
+        },
+        {
+          "code": "PERIOD",
+          "state": "PASS",
+          "message": "Both proposed boundaries retain explicit header and fiscal-definition support."
+        },
+        {
+          "code": "BASIS",
+          "state": "REVIEW",
+          "message": "The separate basis clause needs statement applicability review."
+        },
+        {
+          "code": "CONTEXT_SCOPE",
+          "state": "REVIEW",
+          "message": "Cross-page links require explicit applicability review."
+        },
+        {
+          "code": "FRESH_CONTEXT",
+          "state": "PASS",
+          "message": "Current registry, metric, policy and source snapshots match retained context."
+        },
+        {
+          "code": "BOUND_EVIDENCE",
+          "state": "PASS",
+          "message": "Existing M1 words retain exact original context membership."
+        },
+        {
+          "code": "SOURCE_LANGUAGE",
+          "state": "REVIEW",
+          "message": "Instructions fail; illustrative or qualified context needs review."
+        }
+      ],
+      "requirements_state": "CONFLICT",
+      "reason": "Run the installed numerical gates before reviewing context."
+    }
+  ]
+}

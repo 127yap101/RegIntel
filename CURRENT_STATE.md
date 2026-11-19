@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-18 (Asia/Calcutta).
+Updated: 2026-11-19 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,27 @@ Updated: 2026-11-18 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Handoff and actual review readiness, 19 November:** checkpoint `261787b`
+  passes all three GitHub CI jobs in run44338667233 (Windows, Ubuntu and Linux
+  data infrastructure). The disposable migration checker now accepts an explicit
+  `--env-file` so a separate clone can use the existing loopback service without
+  copying secrets. All17 focused cases pass, including target rejection, unchanged
+  configuration bytes/time and cleanup after failed test execution. Ruff/format
+  pass. No dependency, migration or environment variable is added. Exact-revision
+  local fresh-clone reproduction is the next engineering check.
+
+- Read-only inspection of all four original numerical packets preserves all69
+  database tables and exact saved packets. Current applicability requests reject
+  the older gate configuration. A fresh gate alone cannot unblock them: both
+  companies need approved metric/unit policies, and Waaree also needs an approved
+  issuer binding before the applicability step can resolve its allowed context,
+  basis and language checks. No redundant gate, review or acceptance was written.
+  See `data/real-gate-readiness-report.json` and the updated team checklist.
+  `docs/M3_CONTENT_REVIEW_PACKET.md` presents all seven exact unreviewed definitions,
+  examples, source links and specific wording questions for a real reviewer.
+  Source alignment is agent analysis, not content approval. Runtime quotes remain
+  unavailable by the existing user decision; M4 fixed-price tests remain fixtures.
 
 - **Current four-module integration, 17–18 November:** the user requested
   refinement of Gemini's uncommitted UI work in the older `D:\RegIntel` main

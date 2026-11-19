@@ -2,6 +2,26 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Handoff configuration and content review preparation, 19 November
+
+Verified remote checkpoint261787b with all three jobs successful in GitHub run
+44338667233. Added optional `--env-file` to the owned disposable-database checker,
+preserving its strict loopback5432/regintel source guard and random owned database
+cleanup. This lets a new clone use existing infrastructure without copying local
+credentials. Seventeen focused cases pass across default/absolute/relative paths,
+success/failure, malformed/overridden/nonlocal targets and subprocess failure.
+Source bytes/mtime remain unchanged and exception output omits synthetic secrets.
+Ruff and format checks pass. No new dependency, migration or environment variable.
+
+Read-only actual gate checks preserve all69 original schema25 tables and all four
+saved numerical packets. The installed applicability step rejects stale gate
+configuration. Independent replay analysis shows missing metric/unit approvals
+and Waaree identity approval would still block entry after a refresh. No new gate
+or financial review is written. Updated the team checklist with prerequisite
+ordering and current schema/metrics behavior. Prepared exact seven-term M3 review
+material with primary IFRS links, hypothetical arithmetic and wording questions;
+all definitions remain unreviewed. The packet is agent analysis, not signoff.
+
 ## Integrated navigation, snapshot metrics and local readiness, 17–18 November
 
 Adapted the user-provided Gemini layout from the older main checkout into the

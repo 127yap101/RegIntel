@@ -51,6 +51,12 @@ def main() -> int:
         description="Verify live contracts in a fresh disposable database."
     )
     parser.add_argument(
+        "--env-file",
+        type=Path,
+        default=root / ".env",
+        help="Read existing local database configuration from this file; default: project .env.",
+    )
+    parser.add_argument(
         "--test-file",
         type=Path,
         help="Explicitly select one integration test file; default runs all tests.",
@@ -80,7 +86,7 @@ def main() -> int:
     created = False
     exit_code = 1
     try:
-        settings = load_database_settings(root / ".env")
+        settings = load_database_settings(options.env_file)
         uri = urlsplit(settings.database_url.get_secret_value())
         if uri.hostname != "127.0.0.1" or uri.port != 5432 or uri.path != "/regintel" or uri.query:
             raise ValueError("Use the generated project-local database configuration.")

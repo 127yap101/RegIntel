@@ -1,8 +1,8 @@
 # Team acceptance checklist for M1–M4
 
-Prepared 28 October 2026; updated 7 November 2026. The user reported an approximate
+Prepared 28 October 2026; updated 19 November 2026. The user reported an approximate
 7–10 day submission window on 27 October. Use `codex/m2-comparison`; `main` retains
-older M1 code. The original laptop database is now at schema 23; use the
+older M1 code. The original laptop database is now verified at schema25; use the
 [current runtime guide](LOCAL_RUNTIME.md) for matching code and original assets.
 This checklist records work to do, not completed review
 or module acceptance. No reviewer, approval or gold label is assigned by this file.
@@ -43,6 +43,28 @@ resolution. Open these four local records using the
 IDs; each Waaree input retains 133. Do not replace them with one combined quote.
 Return corrections and source-supported review notes. Uncertain items remain
 unresolved; this worksheet cannot authorize an override or publication.
+
+The 19 November read-only check preserves all69 original tables and the exact
+four saved packets. Their configuration predates the installed applicability
+gate; requesting current requirements returns a conflict. Follow this order:
+
+1. Review and register the exact revenue metric and matching numerical unit
+   policy through the existing administrator APIs. Inspect the source headers;
+   registration is a real reviewer decision, not a way to silence a gate.
+2. Review Waaree's exact native name/CIN evidence and register its issuer binding.
+   Premier already has an approved binding on this installation.
+3. Rebuild the selected context/binding snapshots against those current approvals
+   and run the installed bound gates, retaining earlier immutable records.
+4. Inspect the returned applicability requirements. Only supported context,
+   reporting-basis and qualified-language checks may be resolved by this review.
+   Any remaining metric, unit, issuer or other failure must be corrected first.
+5. Record the evidence-backed applicability decision and explicitly rerun its
+   gates. Context confirmation, candidate acceptance and common corpus publication
+   are still separate actions; inspect each returned record before proceeding.
+
+A gate refresh alone does not resolve these missing approvals. See
+[the measured readiness report](../data/real-gate-readiness-report.json) and
+[the applicability workflow](NUMERICAL_APPLICABILITY_REVIEW.md).
 
 The current private [publication-input preparation](NUMERICAL_PUBLICATION_INPUT.md)
 returns `BLOCKED` for all four in actual 7 November HTTP checks. The IDs above
@@ -88,7 +110,8 @@ incompatible data does not produce a calculation.
 
 ## M3 / Shreya: review the seven learning drafts
 
-Use [the starter sources](M3_STARTER_DRAFT_SOURCES.md) and
+Use [the exact seven-entry review packet](M3_CONTENT_REVIEW_PACKET.md),
+[the starter sources](M3_STARTER_DRAFT_SOURCES.md) and
 [the learning workflow](M3_M4_RUN_AND_TEST.md#m3-reviewed-learning).
 For every draft, check the linked source, wording, applicability to the intended
 Indian filing context, hypothetical example and any proposed M1 metric mapping.
@@ -116,8 +139,11 @@ cases use labelled fixed-price automated fixtures in
 [database tests](../backend/tests/integration/test_portfolio_storage.py).
 Those prices are engineering data. A reviewed runtime price dataset/provider is
 still needed before a successful interactive trading demonstration; none is
-enabled by this checklist. Market valuation and remaining analytics limitations
-must stay visible.
+enabled by this checklist. Snapshot valuation, simple return and allocation are
+implemented; inspect their exact source/version and rounding residual. A cash-only
+account can have available metrics without quotes. A held position without a usable
+quote must withhold complete totals and percentages. No reviewed runtime feed is
+required to test these deliberately unavailable states.
 
 The [FIFO analytics guide](PORTFOLIO_FIFO_ANALYTICS.md) adds an independently
 specified fixed-price acceptance example. Check partial sales, losses, final

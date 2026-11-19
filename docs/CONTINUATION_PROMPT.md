@@ -1,5 +1,19 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest continuation, 19 November: checkpoint261787b passes all three GitHub jobs
+in run44338667233. The runner accepts `--env-file` for existing local configuration;
+17 focused tests and Ruff/format pass. Finish exact-revision clone reproduction
+using fresh clone-local virtualenv/node_modules and existing package/tool caches.
+Use the new runner option rather than copying secrets or creating infrastructure.
+
+The original schema25 read-only audit preserves all69 tables and the four saved
+packets. Their older gate configuration is stale, but rerunning it before genuine
+metric/policy approval (and Waaree identity approval) still cannot enter the
+applicability review. Preserve history and do not add duplicate blocked gates.
+Follow the prerequisite order in TEAM_ACCEPTANCE_CHECKLIST.md. Seven exact M3
+definitions/examples are prepared in M3_CONTENT_REVIEW_PACKET.md for a real
+reviewer; all remain unreviewed. Quotes stay unavailable as already requested.
+
 Latest continuation, 18 November: use CURRENT_STATE.md and
 `docs/PROJECT_COMPLETION_PROMPT.md` for the active scope. Older entries below are
 historical checkpoints. Gemini's UI changes were found in the old original main
