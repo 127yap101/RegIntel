@@ -1,5 +1,30 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+20 November CI follow-up:8624aa6 passed all three jobs in run44509742019. Preserve
+the completed19 November fresh-clone report and review packets. The actual review
+requests are still pending. Do not infer review approval from another continue
+request. Runtime readiness recorded below is historical and needs a fresh probe
+after laptop sleep/shutdown.
+
+Fresh-clone result, 19 November: exact8624aa6 from GitHub passes locked cached
+installation into new clone-local environments, all10 generators, production
+build,17 runner unit cases, nine disposable database cases and23 Chromium cases.
+The clone source stays clean; both owned databases were removed. The report and
+repeatable commands are in data/fresh-clone-validation-report.json and
+docs/FRESH_CLONE_VERIFICATION.md. Existing caches/tools/infrastructure were shared;
+this is not blank-machine/macOS or real-data handoff acceptance. The current
+original-assets runtime is again serving on loopback8000/5173 with schema25,
+seeded learner login and five authenticated reads verified200.
+
+Concrete real-review packets are now in M1_NUMERICAL_PREREQUISITE_REVIEW_PACKET.md
+and M3_CONTENT_REVIEW_PACKET.md. User/reviewer responses are pending; do not
+substitute agent analysis for these decisions. The M1 packet retains26 exact
+row/unit/identity anchors and the specific proposed fields. After actual approval,
+register through existing APIs, prepare fresh context snapshots/bindings and
+inspect all current gates before applicability review. Existing user choice
+keeps runtime quotes unavailable. Check exact CI for the containing checkpoint;
+8624aa6's run44509742019 was in progress at11:04UTC when last checked.
+
 Latest continuation, 19 November: checkpoint261787b passes all three GitHub jobs
 in run44338667233. The runner accepts `--env-file` for existing local configuration;
 17 focused tests and Ruff/format pass. Finish exact-revision clone reproduction

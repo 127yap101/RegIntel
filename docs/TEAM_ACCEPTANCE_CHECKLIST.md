@@ -44,6 +44,11 @@ IDs; each Waaree input retains 133. Do not replace them with one combined quote.
 Return corrections and source-supported review notes. Uncertain items remain
 unresolved; this worksheet cannot authorize an override or publication.
 
+The [prerequisite review packet](M1_NUMERICAL_PREREQUISITE_REVIEW_PACKET.md)
+contains proposed metric/policy fields and Waaree's exact native name/CIN
+anchors, with separate pending decision rows. Use it to return concrete
+corrections and source-supported reasoning before registration.
+
 The 19 November read-only check preserves all69 original tables and the exact
 four saved packets. Their configuration predates the installed applicability
 gate; requesting current requirements returns a conflict. Follow this order:
@@ -169,3 +174,9 @@ now have engineering implementations. Genuine numerical source/context approval,
 real amendment-pair acceptance, reviewed learning content and real-data evaluation
 remain outstanding. The agent can continue acceptance/handoff implementation
 while the team inspects sources and tests the existing workflows.
+
+For the bounded engineering reproduction on this laptop, see
+[the fresh-clone verification guide](FRESH_CLONE_VERIFICATION.md). It shares
+existing tools/package caches and infrastructure but installs fresh clone-local
+dependencies. It does not transfer the original corpus or constitute a teammate's
+real-data demo acceptance.

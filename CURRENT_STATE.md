@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-19 (Asia/Calcutta).
+Updated: 2026-11-20 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,40 @@ Updated: 2026-11-19 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Checkpoint verification, 20 November:** source8624aa6 passes all three
+  GitHub jobs in run44509742019 (Windows, Ubuntu and Linux data infrastructure).
+  The following fresh-clone evidence was completed on19 November and is now
+  being saved as its own documentation checkpoint. Runtime readiness below is
+  a measured19 November observation, not an assertion that servers survive sleep.
+
+- **Fresh-clone reproduction, 19 November:** downloaded exact pushed revision
+  `8624aa624dcb05d5e12633f4b7eae76fdff76b82` into a separate Windows clone, installed
+  new clone-local backend/frontend dependencies from locked existing caches and
+  regenerated all10 contract/fixture artifacts. Application imports resolve in
+  the clone and its final Git source state is clean. All17 runner unit cases,
+  nine disposable database cases (three shared M1–M4 corpus cases and six M4
+  metrics cases), and23 selected Chromium workflows pass. The production build
+  passes with the existing large-chunk warning. Both owned test databases were
+  removed. No original credentials/corpus/PDFs/models were copied. This is a
+  selected engineering reproduction with shared installed tools/caches/services,
+  not a blank-machine installation, full suite or real-data handoff acceptance.
+  The initial sandbox pnpm link attempt failed; the host-permission retry passed.
+  uv completed by copying after hardlink failure. See
+  `data/fresh-clone-validation-report.json` and `docs/FRESH_CLONE_VERIFICATION.md`.
+
+- Restored the current native API/frontend on loopback8000/5173. Schema check
+  passes25; actual network learner sign-in and five authenticated module reads
+  return200, with no content or financial approval. Original stored data remains
+  the runtime source. The M1 prerequisite packet now includes concrete metric,
+  policy and Waaree identity proposals with26 exact source-word anchors and
+  explicit pending decisions. The M3 packet reproduces all seven definitions and
+  three hypothetical examples; independent checks match the source JSON and
+  backend arithmetic. Both packets await genuine reviewer responses. Corrected
+  teammate setup to select the current integration branch instead of older main.
+  Source checkpoint8624aa6 CI run44509742019 subsequently completed successfully;
+  all three jobs were verified on20 November. Verify the containing documentation
+  checkpoint's exact CI revision after push.
 
 - **Handoff and actual review readiness, 19 November:** checkpoint `261787b`
   passes all three GitHub CI jobs in run44338667233 (Windows, Ubuntu and Linux

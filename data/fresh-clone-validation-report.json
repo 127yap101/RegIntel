@@ -1,0 +1,147 @@
+{
+  "verified_at_utc": "2026-11-19T11:04:59.039982+00:00",
+  "source_revision": "8624aa624dcb05d5e12633f4b7eae76fdff76b82",
+  "source_repository": "https://github.com/127yap101/RegIntel",
+  "source_branch": "codex/m2-comparison",
+  "scope": "Selected all-module engineering reproduction from GitHub in an isolated Windows x64 clone",
+  "fresh_clone": true,
+  "clone_tracked_and_untracked_source_clean": true,
+  "clone_local_virtualenv_and_node_modules": true,
+  "application_import_checked_inside_clone": true,
+  "shared_resources": [
+    "Python 3.12.14",
+    "uv 0.12.23",
+    "Node 24.19.0",
+    "pnpm 11.19.0",
+    "existing package caches",
+    "Chromium cache",
+    "existing local PostgreSQL service"
+  ],
+  "new_machine_install_tested": false,
+  "macos_tested": false,
+  "dependencies_locked_and_installed_offline": true,
+  "frontend_packages_reused": 285,
+  "frontend_packages_downloaded": 0,
+  "backend_packages_installed": 103,
+  "generators_passed": 10,
+  "unit_tests_passed": 17,
+  "database_tests_passed": 9,
+  "database_scopes": {
+    "runner": "unit tests; no database",
+    "shared-modules": 3,
+    "metrics": 6
+  },
+  "owned_databases": [
+    {
+      "name": "regintel_test_m0_3_1e9ce04887e440a68cbcd010ce346892",
+      "runner_cleanup_succeeded": true
+    },
+    {
+      "name": "regintel_test_m0_3_aa72264986f043079c0e4d9a16ff0485",
+      "runner_cleanup_succeeded": true
+    }
+  ],
+  "browser_tests_passed": 23,
+  "browser_failed": 0,
+  "browser_retries": 0,
+  "browser_workers": 1,
+  "browser_case_timeout_ms": 120000,
+  "browser_duration_reported": "3.5m",
+  "browser_data": "Authored HTTP fixtures; separate from real PostgreSQL integration cases",
+  "production_build_passed": true,
+  "full_suite_run": false,
+  "observed_issues": [
+    "Initial sandbox pnpm link creation failed with EPERM; retry with host permissions passed.",
+    "uv could not hardlink cache files and completed by copying.",
+    "Production bundle retains the existing large-chunk warning.",
+    "First cold browser case took approximately 1.1 minutes; all cases passed within the selected budget."
+  ],
+  "private_configuration_copied": false,
+  "original_corpus_or_pdf_or_model_copied": false,
+  "runtime_quotes": "UNAVAILABLE per existing user decision",
+  "real_financial_or_content_approval_created": false,
+  "local_original_runtime_readiness": {
+    "verified_at_utc": "2026-11-19T11:01:36.467556+00:00",
+    "writes": false,
+    "backend_health": 200,
+    "seeded_learner_authenticates": true,
+    "authenticated_reads": {
+      "/v1/published-corpus": 200,
+      "/v1/quotes": 200,
+      "/v1/learning/status": 200,
+      "/v1/portfolio": 200,
+      "/v1/portfolio/metrics": 200
+    },
+    "frontend": 200
+  },
+  "remaining": [
+    "Actual source/metric/policy/identity decisions and numerical publication",
+    "Real M2 expected-result acceptance",
+    "Seven M3 human content reviews",
+    "Real amendment acceptance",
+    "Feature/corpus freeze and held-out evaluation",
+    "Teammate real-data setup/demo and handoff acceptance"
+  ],
+  "artifacts": [
+    {
+      "path_from_private_clone": ".cache-backend-install.log",
+      "bytes": 3027,
+      "sha256": "17d2f2284b2e130bf71bfb3e24417860faa50bf8695edc616564320ad8fe8f8b"
+    },
+    {
+      "path_from_private_clone": ".cache-frontend-install.log",
+      "bytes": 2497,
+      "sha256": "d32116a84ec7939f17c30e02f9eb10266ce276fa8fddfc78351b9617a010781d"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/generation.log",
+      "bytes": 405,
+      "sha256": "622e9b6d20a10a6b44e90f7a3410b0b25694b438b4ac2ac6e8cf8ba6b979ba96"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/build.log",
+      "bytes": 809,
+      "sha256": "fc14a898693774f088dcb2d956560e624d9d05c772fc026b444c34188e6d405a"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/browser.log",
+      "bytes": 5026,
+      "sha256": "ac7d418176710dc4640480efa7cafcbaf40b879df1af2aea77353926803a87c6"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/browser-report/index.html",
+      "bytes": 550620,
+      "sha256": "cc92eb910822c584b881b79865f452a7025f00a158a0bd1159bcc5eb0dc63051"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/runner.xml",
+      "bytes": 3416,
+      "sha256": "0ef3b569fc4a913d6f0e7ae262a72d30ef23b39f52be37e1a57c0c4ed83a6f51"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/runner.log",
+      "bytes": 101,
+      "sha256": "e0c7c7bf0c86221b7586929e41159a0c56103da6b7a8809af5dd7e527be7b6d5"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/shared-modules.xml",
+      "bytes": 792,
+      "sha256": "6861eb552ba226db4d9a657a64105d12f4bbe7e797e4b4739535a79bf43e9034"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/shared-modules.log",
+      "bytes": 854,
+      "sha256": "90dfb317404ba41e87083fa3dc4d6b06ca1bf18bd4cd93df110990752c395975"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/metrics.xml",
+      "bytes": 1207,
+      "sha256": "3b942ffb7d2856cda7bc41720f95efb71500c68bdc4d5687e12783947ad3857b"
+    },
+    {
+      "path_from_private_clone": ".cache/reproduction/metrics.log",
+      "bytes": 847,
+      "sha256": "f2283e54bbc01d5290587df8f6e0f686ca39298fa6567bf5d1537f645d3a96ce"
+    }
+  ]
+}

@@ -5,17 +5,19 @@ and measured engineering reports. It does not supply another machine's accounts,
 passwords, Docker volumes, PostgreSQL corpus, original PDFs or model files.
 `http://127.0.0.1:5173` refers to the computer opening that address.
 
-The commands below are for a teammate's own installation. Preserve the existing
-M1 checkout and manual-testing database on Yash's laptop. Do not switch that
-checkout to the M2 branch or apply M2 preparation migrations to its database.
+Updated 19 November 2026. The commands below are for a teammate's own installation.
+For Yash's existing laptop, use [the current runtime guide](LOCAL_RUNTIME.md): its
+database is already verified at schema25 and its assets live outside the current
+code worktree. Do not run new-installation credential setup against existing data.
 
 ## Install and initialize a teammate's Windows environment
 
-For the M1 release, use `main` in a new clone. Development on M2 uses
-`codex/m2-comparison` in its own checkout and database configuration.
+For the current integrated M1–M4 application, use `codex/m2-comparison` in a new
+clone. `main` retains an older M1 snapshot and does not contain the current four
+modules. Use [the module guide](M3_M4_RUN_AND_TEST.md) for their current workflows.
 
 ```powershell
-git clone --branch main https://github.com/127yap101/RegIntel.git
+git clone --branch codex/m2-comparison https://github.com/127yap101/RegIntel.git
 cd RegIntel
 ```
 

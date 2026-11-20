@@ -2,6 +2,14 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Checkpoint CI follow-up, 20 November
+
+Source8624aa6 completed all three GitHub jobs successfully in run44509742019:
+Windows, Ubuntu and Linux data infrastructure. Verified the exact local/remote
+revision and run on20 November. Saving the completed19 November reproduction
+report and concrete reviewer packets as a separate documentation checkpoint.
+No actual source or glossary approval has been received or written.
+
 ## Handoff configuration and content review preparation, 19 November
 
 Verified remote checkpoint261787b with all three jobs successful in GitHub run
@@ -21,6 +29,33 @@ or financial review is written. Updated the team checklist with prerequisite
 ordering and current schema/metrics behavior. Prepared exact seven-term M3 review
 material with primary IFRS links, hypothetical arithmetic and wording questions;
 all definitions remain unreviewed. The packet is agent analysis, not signoff.
+
+Downloaded exact pushed8624aa6 into an isolated clone, installed its own virtualenv
+and node_modules from locked offline caches, regenerated10 artifact groups and
+verified clone-local imports. uv copied files after hardlink failure; pnpm's
+initial sandbox link operation failed with EPERM, then the host-permission retry
+reused285 packages with no downloads. Installed103 backend packages. Production
+build passes; the existing large-chunk warning remains. The clone passes17 runner
+unit cases, three shared-corpus storage/HTTP cases, six portfolio metrics storage/
+HTTP cases, and23 Chromium workflows in one clean3.5minute browser run. The first
+cold case took1.1minutes within the120second case budget. No assertion was removed
+and no browser retry was required. Both owned test databases were removed and
+the clone's final source status is clean. No secrets or original corpus/assets
+were copied. This selected reproduction shares existing host tools/caches/services
+and does not complete real-data handoff or a full test/evaluation suite.
+
+Prepared the concrete M1 prerequisite reviewer packet with proposed metric/policy
+fields and26 exact row/unit/identity anchors; all decisions remain pending.
+Independent runner review found no actionable issue and rechecked17 focused cases.
+Independent M3 packet review matches all seven definitions and three examples;
+backend arithmetic is200.00,25% and30.00. Corrected the older teammate guide's
+branch and migration directions to match the current integration checkout.
+Restored hidden native API/frontend on loopback8000/5173; schema25 check, existing
+learner sign-in and five authenticated module reads pass. No actual source review,
+numerical acceptance, glossary publication, account or order was created.
+See data/fresh-clone-validation-report.json for scopes and private artifact hashes.
+CI run44509742019 for8624aa6 was in progress at11:04UTC; no completion is claimed.
+
 
 ## Integrated navigation, snapshot metrics and local readiness, 17–18 November
 
