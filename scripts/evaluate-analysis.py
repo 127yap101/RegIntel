@@ -3,16 +3,14 @@
 import argparse
 import hashlib
 import json
-import runpy
-from collections.abc import Callable
 from datetime import UTC, datetime
 from pathlib import Path
-from typing import cast
 from uuid import uuid4
 
 from regintel.analysis.acceptance import AcceptancePlan, evaluate
 from regintel.analysis.service import ComparisonService
 from regintel.db.config import load_database_settings
+from regintel.db.snapshot import SNAPSHOT_VERSION, snapshot_database
 from regintel.evidence.api import EvidenceService
 from regintel.evidence.repository import EvidenceRepository
 from regintel.ingestion.config import native_ingestion_settings
@@ -33,23 +31,17 @@ def run(plan_path: Path, source_project: Path) -> dict[str, object]:
     plan = AcceptancePlan.model_validate_json(raw)
     source_project = source_project.resolve()
     settings = load_database_settings(source_project / ".env")
-    snapshot = cast(
-        Callable[[], dict[str, str]],
-        runpy.run_path(str(source_project / "scripts/check-published-reads-runtime.py"))[
-            "snapshot"
-        ],
-    )
-    before = snapshot()
-    reads = PublishedReadService(
-        PublicationRepository(settings),
-        ReadRepository(settings),
-        EvidenceService(
-            EvidenceRepository(settings),
-            SourceStorage(native_ingestion_settings(source_project, source_project / ".env")),
-        ),
-        None,
-    )
+    before = snapshot_database(settings)
     try:
+        reads = PublishedReadService(
+            PublicationRepository(settings),
+            ReadRepository(settings),
+            EvidenceService(
+                EvidenceRepository(settings),
+                SourceStorage(native_ingestion_settings(source_project, source_project / ".env")),
+            ),
+            None,
+        )
         scope = reads.scope(plan.corpus_version_id, None, False)
         catalog = reads.catalog.catalog(scope.manifest)
         report = evaluate(plan, scope.info, ComparisonService(reads).compare)
@@ -64,7 +56,7 @@ def run(plan_path: Path, source_project: Path) -> dict[str, object]:
             ),
         }
     finally:
-        after = snapshot()
+        after = snapshot_database(settings)
         if before != after:
             raise ValueError("Authoritative state changed during the read-only acceptance run.")
     report.update(
@@ -72,6 +64,7 @@ def run(plan_path: Path, source_project: Path) -> dict[str, object]:
         plan_sha256=hashlib.sha256(raw).hexdigest(),
         state_table_hashes=before,
         state_tables_unchanged=len(before),
+        state_snapshot_version=SNAPSHOT_VERSION,
         provider_calls=0,
     )
     return report

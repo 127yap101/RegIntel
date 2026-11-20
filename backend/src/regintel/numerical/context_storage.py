@@ -100,55 +100,61 @@ class NumericalContextStorage:
     def _save(self, draft: NumericalContextDraft, user: User) -> NumericalContextRecord:
         with self.source.connect() as connection, connection.transaction():
             connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
-            _authorize(connection, user)
-            source, blob = load_context_input(connection, self.source, draft)
-            result = inspect_context(source)
-            storage_sha = storage_configuration_sha256()
-            identity = context_record_id(result.id, storage_sha)
-            existing = connection.execute(
-                "SELECT id FROM regintel.numerical_context_records WHERE id=%s", (UUID(identity),)
-            ).fetchone()
-            if existing is not None:
-                return _history(connection, identity)
-            source_bytes, result_bytes = canonical_bytes(source), canonical_bytes(result)
-            if (
-                not 0 < len(source_bytes) <= MAX_INPUT_BYTES
-                or not 0 < len(result_bytes) <= MAX_INSPECTION_BYTES
-            ):
-                raise NumericalSourceError("Context history exceeds its explicit storage budget.")
-            inserted = connection.execute(
-                """INSERT INTO regintel.numerical_context_records
-                (id,filing_version_id,source_blob_id,source_sha256,input_bytes,input_sha256,
-                 inspection_id,inspection_bytes,inspection_sha256,context_configuration_sha256,
-                 storage_configuration_sha256,page_count,submitted_by,auth_version)
-                VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
-                ON CONFLICT DO NOTHING RETURNING id""",
-                (
-                    UUID(identity),
-                    UUID(draft.filing_version_id),
-                    UUID(blob.id),
-                    blob.sha256,
-                    source_bytes,
-                    hashlib.sha256(source_bytes).hexdigest(),
-                    UUID(result.id),
-                    result_bytes,
-                    hashlib.sha256(result_bytes).hexdigest(),
-                    result.configuration_sha256,
-                    storage_sha,
-                    len(source.pages),
-                    user.id,
-                    user.auth_version,
-                ),
-            ).fetchone()
-            if inserted is None:
-                return _history(connection, identity)
-            for ordinal, page in enumerate(source.pages):
-                connection.execute(
-                    "INSERT INTO regintel.numerical_context_pages(record_id,ordinal,capture_id) "
-                    "VALUES(%s,%s,%s)",
-                    (UUID(identity), ordinal, UUID(page.id)),
-                )
+            return self._save_in_transaction(connection, draft, user)
+
+    def _save_in_transaction(
+        self, connection: DatabaseConnection, draft: NumericalContextDraft, user: User
+    ) -> NumericalContextRecord:
+        """Use the caller's transaction when context and gates must commit together."""
+        _authorize(connection, user)
+        source, blob = load_context_input(connection, self.source, draft)
+        result = inspect_context(source)
+        storage_sha = storage_configuration_sha256()
+        identity = context_record_id(result.id, storage_sha)
+        existing = connection.execute(
+            "SELECT id FROM regintel.numerical_context_records WHERE id=%s", (UUID(identity),)
+        ).fetchone()
+        if existing is not None:
             return _history(connection, identity)
+        source_bytes, result_bytes = canonical_bytes(source), canonical_bytes(result)
+        if (
+            not 0 < len(source_bytes) <= MAX_INPUT_BYTES
+            or not 0 < len(result_bytes) <= MAX_INSPECTION_BYTES
+        ):
+            raise NumericalSourceError("Context history exceeds its explicit storage budget.")
+        inserted = connection.execute(
+            """INSERT INTO regintel.numerical_context_records
+            (id,filing_version_id,source_blob_id,source_sha256,input_bytes,input_sha256,
+             inspection_id,inspection_bytes,inspection_sha256,context_configuration_sha256,
+             storage_configuration_sha256,page_count,submitted_by,auth_version)
+            VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s)
+            ON CONFLICT DO NOTHING RETURNING id""",
+            (
+                UUID(identity),
+                UUID(draft.filing_version_id),
+                UUID(blob.id),
+                blob.sha256,
+                source_bytes,
+                hashlib.sha256(source_bytes).hexdigest(),
+                UUID(result.id),
+                result_bytes,
+                hashlib.sha256(result_bytes).hexdigest(),
+                result.configuration_sha256,
+                storage_sha,
+                len(source.pages),
+                user.id,
+                user.auth_version,
+            ),
+        ).fetchone()
+        if inserted is None:
+            return _history(connection, identity)
+        for ordinal, page in enumerate(source.pages):
+            connection.execute(
+                "INSERT INTO regintel.numerical_context_pages(record_id,ordinal,capture_id) "
+                "VALUES(%s,%s,%s)",
+                (UUID(identity), ordinal, UUID(page.id)),
+            )
+        return _history(connection, identity)
 
     def save(self, draft: NumericalContextDraft, user: User) -> NumericalContextRecord:
         draft = NumericalContextDraft.model_validate(draft.model_dump(mode="python"))

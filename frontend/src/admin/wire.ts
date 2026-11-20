@@ -19,6 +19,7 @@ export interface Wire {
   review_request: T.ReviewDecision; review_receipt: T.ReviewReceipt
   manifest: T.CorpusManifest; publication_request: T.PublicationRequest; evidence: T.EvidenceData
   numerical_packet: T.NumericalReviewPacket; numerical_review_request: T.NumericalContextReviewRequest
+  numerical_refresh_request: T.NumericalRefreshRequest; numerical_refresh: T.NumericalRefreshResult
   numerical_applicability_requirements: T.NumericalApplicabilityRequirements
   numerical_applicability_request: T.NumericalApplicabilityRequest
   numerical_applicability_review: T.ReviewedNumericalApplicability
@@ -47,6 +48,7 @@ export function decode<K extends keyof Wire>(kind: K, value: unknown): Wire[K] {
   const data = checked(kind, envelope.data)
   if (kind === 'numerical_queue' && Object.values(meta.versions).some((value) => value !== null)) throw new Error('A private queue cannot imply a published source version.')
   if (kind.startsWith('numerical_applicability_') && Object.values(meta.versions).some((value) => value !== null)) throw new Error('A private applicability review cannot imply a published source version.')
+  if (kind === 'numerical_refresh' && Object.values(meta.versions).some((value) => value !== null)) throw new Error('Refreshed checks cannot imply a published source version.')
   if (kind === 'filing_job') {
     const job = data as T.FilingJob
     if (meta.versions.filing_version_id !== job.filing_version_id || meta.versions.parse_version_id !== job.parse_version_id) throw new Error('Filing job source differs')

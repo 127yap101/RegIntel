@@ -1,0 +1,108 @@
+{
+  "report_version": "numerical-refresh-validation-1",
+  "verified_dates_local": ["2026-11-20", "2026-11-21"],
+  "timezone": "Asia/Calcutta",
+  "source_base_revision": "c36fc7b42bee1a80fc05a82fd347516740c6d1a5",
+  "branch": "codex/m2-comparison",
+  "scope": "Selected engineering checks for numerical prerequisite refresh, current-schema acceptance preservation and uncertain portfolio-order retry handling.",
+  "backend_unit": {
+    "passed": 107,
+    "runs": [
+      {
+        "passed": 87,
+        "files": [
+          "backend/tests/test_bound_numerical_gate.py",
+          "backend/tests/test_numerical_applicability_gate.py",
+          "backend/tests/test_admin_numerical_contract.py",
+          "backend/tests/test_admin_api.py",
+          "backend/tests/test_analysis_evaluator_runner.py"
+        ]
+      },
+      {"passed": 20, "files": ["backend/tests/test_analysis_acceptance.py"]}
+    ]
+  },
+  "disposable_database": {
+    "passed": 67,
+    "files": {
+      "backend/tests/integration/test_numerical_refresh.py": 13,
+      "backend/tests/integration/test_database_snapshot.py": 8,
+      "backend/tests/integration/test_numerical_context_history.py": 35,
+      "backend/tests/integration/test_bound_numerical_gate_storage.py": 11
+    },
+    "owned_databases_removed": true,
+    "real_source_approvals_written": false
+  },
+  "frontend_unit": {
+    "passed": 95,
+    "files": {
+      "frontend/src/admin/numerical.test.ts": 53,
+      "frontend/src/admin/numericalApplicability.test.ts": 31,
+      "frontend/src/admin/numericalRefresh.test.ts": 11
+    }
+  },
+  "chromium": {
+    "passed": 24,
+    "runs": [
+      {"file": "frontend/tests/e2e/learning-portfolio.spec.ts", "selection": "Six new 403/404/422 retry cases and the existing lost-response/reload case", "passed": 7},
+      {"file": "frontend/tests/e2e/numerical-refresh.spec.ts", "selection": "All refresh cases", "passed": 4},
+      {"file": "frontend/tests/e2e/numerical-applicability.spec.ts", "selection": "All applicability cases", "passed": 13}
+    ],
+    "fixture_data": "AUTHORED",
+    "real_approvals_or_prices_created": false
+  },
+  "static_and_build": {
+    "ruff": "PASS with backend/pyproject.toml",
+    "ruff_format": "PASS, 369 files",
+    "backend_mypy": "PASS, 184 source files",
+    "frontend_typecheck": "PASS",
+    "frontend_eslint": "PASS",
+    "frontend_production_build": "PASS",
+    "build_warning": "Existing main JavaScript chunk is approximately 1.76 MB before gzip."
+  },
+  "actual_m2_acceptance": {
+    "checked_at_utc": "2026-11-20T12:00:25.957164+00:00",
+    "status": "BLOCKED",
+    "cli_exit": 2,
+    "state_snapshot_version": "current-database-rows-1",
+    "tables_and_ledger_unchanged": 70,
+    "published_companies": 1,
+    "active_observations": 1,
+    "active_numeric_facts": 0,
+    "numeric_metric_definitions": 0,
+    "cases_executed": 0,
+    "missing_categories": 6,
+    "review_metadata_present": false,
+    "provider_calls": 0,
+    "private_report_sha256": "b63602920fa6e765fd6c9bbbd547fdc37f078c2d1e75236153173fd9d3533175"
+  },
+  "failures_and_corrections": [
+    "A new M4 case reproduced the previous defect: a declined retry could clear an earlier uncertain order. The original key is now retained; all seven selected cases pass.",
+    "Initial refresh unit tests exposed shared fixture references and invalid test typing; cloned fixtures and validated request construction corrected them.",
+    "The first four refresh browser cases timed out because setup did not select the Numerical filings queue. Corrected navigation passes all four cases.",
+    "Storage regression startup failed while existing containers were stopped. The same approved containers were restarted; each final disposable-database run passed and removed its own database.",
+    "An initial root-level Ruff command omitted the backend configuration and reported unrelated default-rule errors. The repository-configured lint and format checks pass without unrelated source edits."
+  ],
+  "independent_review": "Read-only M1 backend/frontend review reported no actionable correctness defect.",
+  "local_runtime": {
+    "verified_at_utc": "2026-11-20T18:33:37.332802+00:00",
+    "schema_version": 25,
+    "api_health_status": 200,
+    "frontend_status": 200,
+    "seeded_learner_authenticates": true,
+    "authenticated_module_reads": 5,
+    "authenticated_module_read_status": 200,
+    "bind_address": "127.0.0.1",
+    "content_approvals_or_orders_created": false
+  },
+  "new_dependencies": [],
+  "new_migrations": [],
+  "new_environment_variables": [],
+  "limitations": [
+    "These are selected engineering checks, not the complete suite, real-data acceptance or a research benchmark.",
+    "Actual metric/policy and Waaree issuer decisions remain pending. No refresh was written to the original numerical source records.",
+    "Seven M3 definitions/examples still need genuine content review.",
+    "Runtime quotes remain unavailable by user choice; M4 order scenarios use authored fixed-price fixtures.",
+    "The preservation helper checks rows and table inventory, not sequences, every schema object or external graph state; use a quiet write window.",
+    "New-checkpoint GitHub CI must be verified after push; the base documentation checkpoint passes all three jobs in run44678897948."
+  ]
+}

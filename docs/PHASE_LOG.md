@@ -2,6 +2,60 @@
 
 This is the actual execution record, not a specification or performance report. Dates use Asia/Calcutta. Record relevant command arguments and results without credentials. Preserve prior entries; correct mistakes explicitly.
 
+## Numerical refresh, acceptance preservation and portfolio retries, 20–21 November
+
+Added an administrator-only source/approval refresh with the selected historical
+gate ID and input/result hashes. Current context and base gate commit together
+under a repeatable-read transaction and stable approval locks. Draft/pages/parse,
+source identity and exact words/cells/evidence must remain unchanged. Old context,
+gate and reviews remain history; no applicability attestation transfers into a
+new base gate. The frontend checks the returned membership and retains uncertain
+requests with conflicting actions locked. The existing storage implementation
+hash changes because its transactional helper was refactored; no schema change.
+
+Replaced M2's older asset-checkout snapshot helper with current installed code.
+The evaluator validates complete migration history and hashes all discovered
+application tables plus the migration ledger in a read-only repeatable-read
+snapshot. The actual run preserves70 entries (69 application tables plus ledger)
+and remains BLOCKED: one published company/conditional narrative, zero numerical
+facts/metrics/cases, six missing categories, no reviewer metadata/provider calls.
+The check covers rows and table inventory, not all schema objects or graph state.
+
+Reproduced and fixed an M4 uncertain-order retry defect. A later403/404/422 cannot
+justify clearing an original request whose earlier send had an unknown outcome.
+Its original key now remains until a verified receipt. First-attempt definitive
+rejections can still be cleared. No quote feed or ledger calculation changed.
+M3's seven drafts and M1's real prerequisites remain pending genuine review.
+
+Verification:107 distinct backend unit cases;67 disposable database cases across
+refresh13, snapshot8, context history35 and bound-gate storage11;95 frontend unit
+cases;24 Chromium cases across M4 retries7, refresh4 and applicability13. All pass
+in their final scoped runs. Each owned database was removed. Ruff/format using
+backend/pyproject.toml pass369 files; mypy passes184 source files; frontend strict
+types, ESLint and production build pass. Existing1.76MB main-chunk warning remains.
+Independent read-only review found no actionable M1 defect. See the measured
+report in `data/numerical-refresh-validation-report.json` and the refresh guide.
+
+Disclosed initial failures: the M4 reproduction failed before its fix; refresh
+test fixtures needed independent copies and typed request construction; browser
+setup initially omitted the Numerical filings queue selection. Corrected tests
+pass without weakened assertions. Regression startup initially failed because
+the existing data containers were stopped; restarted those same three containers.
+A root Ruff invocation without backend configuration reported unrelated errors;
+the correctly configured check passes without unrelated source changes.
+
+No new dependency, migration, environment variable, paid usage, content approval
+or real numerical publication. The actual evaluator is a blocked acceptance
+result, and authored tests do not establish real-world research effectiveness.
+Documentation checkpointc36fc7b is green in all three CI jobs (run44678897948),
+verified21 November. Verify the containing implementation checkpoint after push.
+
+Restored the native API/frontend on loopback8000/5173 with existing assets and
+credentials. Configuration/schema25 validates; an actual network probe at
+00:03 IST on21 November verifies seeded learner sign-in, health, frontend and
+five authenticated module reads all200. The probe creates no content, review or
+order. Its private receipt is `.cache/live-runtime-20261121/readiness.json`.
+
 ## Checkpoint CI follow-up, 20 November
 
 Source8624aa6 completed all three GitHub jobs successfully in run44509742019:

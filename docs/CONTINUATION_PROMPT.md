@@ -1,5 +1,31 @@
 # Continue RegIntel M1, M2, M3 and M4
 
+Latest continuation, 21 November: the numerical administrator now has an explicit
+atomic source/approval refresh. Read `M1_NUMERICAL_REFRESH.md` before using it.
+The transaction refactor changes the current storage-configuration hash; old
+records remain history. Actual metric/policy and Waaree issuer approvals are
+still pending. Record genuine decisions through the existing registration APIs
+before refreshing the four original gates, then inspect remaining applicability
+and context checks. Do not treat a continue request as a financial/content review.
+
+M2's evaluator now snapshots the complete current application table inventory and
+migration ledger using installed code, not an assets-checkout Python helper. The
+actual run preserved70 tables/ledger entries but is correctly BLOCKED with zero
+numerical cases and six missing categories. M4 preserves an uncertain original
+order across later403/404/422 responses. Quotes stay unavailable; seven M3 drafts
+await real review. See `data/numerical-refresh-validation-report.json` for exact
+verification scope and remaining limits. No dependencies/migrations/env added.
+
+Documentation checkpointc36fc7b passes all three CI jobs in run44678897948,
+verified21 November. Check the containing implementation checkpoint's own CI.
+The runtime evidence below is dated; always probe listeners after sleep/shutdown.
+
+Final scoped checks pass107 backend units,67 disposable database cases,95
+frontend units and24 Chromium cases, plus lint/types/build. The current native
+app was restored on loopback8000/5173 on21 November; schema25, seeded learner
+sign-in and five authenticated reads pass. No real source/content approval or
+publication was written. The production build retains its existing chunk warning.
+
 20 November CI follow-up:8624aa6 passed all three jobs in run44509742019. Preserve
 the completed19 November fresh-clone report and review packets. The actual review
 requests are still pending. Do not infer review approval from another continue
@@ -23,7 +49,7 @@ row/unit/identity anchors and the specific proposed fields. After actual approva
 register through existing APIs, prepare fresh context snapshots/bindings and
 inspect all current gates before applicability review. Existing user choice
 keeps runtime quotes unavailable. Check exact CI for the containing checkpoint;
-8624aa6's run44509742019 was in progress at11:04UTC when last checked.
+8624aa6's run44509742019 subsequently passed all three jobs, verified20 November.
 
 Latest continuation, 19 November: checkpoint261787b passes all three GitHub jobs
 in run44338667233. The runner accepts `--env-file` for existing local configuration;

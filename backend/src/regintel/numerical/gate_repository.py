@@ -86,40 +86,44 @@ class BoundNumericalGateRepository:
     def _run(self, record_id: str, parse_id: str, user: User) -> StoredBoundNumericalGate:
         with self.source.connect() as connection, connection.transaction():
             connection.execute("SET TRANSACTION ISOLATION LEVEL REPEATABLE READ")
-            _authorize(connection, user)
-            context = _history(connection, record_id)
-            current, _ = load_context_input(connection, self.source, context.source_input.draft)
-            artifact, configuration = _sealed_parse(connection, parse_id)
-            binding = bind_context_evidence(context, artifact, configuration)
-            _stored_evidence(connection, binding)
-            packet = BoundGateInput(context=context, current_context=current, binding=binding)
-            result = validate_bound_numerical(packet)
-            body, output = canonical_bytes(packet), canonical_bytes(result)
-            connection.execute(
-                "INSERT INTO regintel.bound_numerical_gate_runs "
-                "(id,context_record_id,parse_version_id,input_bytes,input_sha256,"
-                "result_bytes,result_sha256,configuration_sha256,state,submitted_by,auth_version) "
-                "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(id) DO NOTHING",
-                (
-                    UUID(result.id),
-                    UUID(record_id),
-                    UUID(parse_id),
-                    body,
-                    result.input_sha256,
-                    output,
-                    hashlib.sha256(output).hexdigest(),
-                    result.configuration_sha256,
-                    result.state,
-                    user.id,
-                    user.auth_version,
-                ),
-            )
-            retained = _read(connection, result.id)
-            if retained.source_input != packet or retained.result != result:
-                raise NumericalSourceError(
-                    "The gate identity belongs to different immutable inputs."
-                )
-            return retained
+            return self._run_in_transaction(connection, record_id, parse_id, user)
+
+    def _run_in_transaction(
+        self, connection: DatabaseConnection, record_id: str, parse_id: str, user: User
+    ) -> StoredBoundNumericalGate:
+        """Use the caller's transaction when a new context must commit with its gate."""
+        _authorize(connection, user)
+        context = _history(connection, record_id)
+        current, _ = load_context_input(connection, self.source, context.source_input.draft)
+        artifact, configuration = _sealed_parse(connection, parse_id)
+        binding = bind_context_evidence(context, artifact, configuration)
+        _stored_evidence(connection, binding)
+        packet = BoundGateInput(context=context, current_context=current, binding=binding)
+        result = validate_bound_numerical(packet)
+        body, output = canonical_bytes(packet), canonical_bytes(result)
+        connection.execute(
+            "INSERT INTO regintel.bound_numerical_gate_runs "
+            "(id,context_record_id,parse_version_id,input_bytes,input_sha256,"
+            "result_bytes,result_sha256,configuration_sha256,state,submitted_by,auth_version) "
+            "VALUES(%s,%s,%s,%s,%s,%s,%s,%s,%s,%s,%s) ON CONFLICT(id) DO NOTHING",
+            (
+                UUID(result.id),
+                UUID(record_id),
+                UUID(parse_id),
+                body,
+                result.input_sha256,
+                output,
+                hashlib.sha256(output).hexdigest(),
+                result.configuration_sha256,
+                result.state,
+                user.id,
+                user.auth_version,
+            ),
+        )
+        retained = _read(connection, result.id)
+        if retained.source_input != packet or retained.result != result:
+            raise NumericalSourceError("The gate identity belongs to different immutable inputs.")
+        return retained
 
     def run(self, record_id: str, parse_id: str, user: User) -> StoredBoundNumericalGate:
         for identity in (record_id, parse_id):

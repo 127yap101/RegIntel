@@ -2,7 +2,7 @@
 
 import hashlib
 from collections.abc import Callable
-from typing import Annotated
+from typing import Annotated, Literal
 
 from fastapi import APIRouter, Depends, HTTPException, Query, Request
 from pydantic import model_validator
@@ -36,6 +36,8 @@ from regintel.numerical.queue_models import (
     QueueQuery,
 )
 from regintel.numerical.queue_repository import NumericalGateQueueRepository
+from regintel.numerical.refresh_models import NumericalRefreshRequest
+from regintel.numerical.refresh_repository import NumericalRefreshRepository
 from regintel.numerical.repository import (
     NumericalAuthorizationError,
     NumericalNotFound,
@@ -78,6 +80,30 @@ class NumericalReviewPacket(ContractModel):
             )
         ):
             raise ValueError("A review packet must retain its selected gate and exact binding.")
+        return self
+
+
+class NumericalRefreshResult(ContractModel):
+    schema_version: Literal["numerical-refresh-result-1"] = "numerical-refresh-result-1"
+    request: NumericalRefreshRequest
+    previous_context_record_id: CanonicalId
+    context_changed: bool
+    gate_changed: bool
+    packet: NumericalReviewPacket
+    acceptance_eligible: Literal[False] = False
+    mandatory_m1_validation_complete: Literal[False] = False
+    publishes_fact: Literal[False] = False
+
+    @model_validator(mode="after")
+    def exact_transition(self) -> "NumericalRefreshResult":
+        if (
+            self.context_changed
+            != (self.previous_context_record_id != self.packet.gate.context_record_id)
+            or self.gate_changed != (self.request.gate_run_id != self.packet.gate.id)
+            or self.context_changed
+            and not self.gate_changed
+        ):
+            raise ValueError("Refresh status must match its selected old and new records.")
         return self
 
 
@@ -150,6 +176,34 @@ def create_numerical_review_router(
         # Historical inspection never promotes retained inputs to a fresh confirmation.
         return SuccessEnvelope(
             data=perform(lambda: packet(gate_id, user)), meta=response_meta(request)
+        )
+
+    @router.post(
+        "/{gate_id}/refresh",
+        response_model=SuccessEnvelope[NumericalRefreshResult],
+        responses=errors,
+    )
+    def refresh(
+        gate_id: CanonicalId,
+        body: NumericalRefreshRequest,
+        request: Request,
+        user: Annotated[User, Depends(administrator)],
+    ) -> SuccessEnvelope[NumericalRefreshResult]:
+        if body.gate_run_id != gate_id:
+            raise HTTPException(409, "The refresh differs from the selected historical gate.")
+        store = ready()
+        refreshed = perform(lambda: NumericalRefreshRepository(store.source).refresh(body, user))
+        selected = perform(lambda: packet(refreshed.gate.result.id, user))
+        return SuccessEnvelope(
+            data=NumericalRefreshResult(
+                request=body,
+                previous_context_record_id=refreshed.previous_context_record_id,
+                context_changed=refreshed.previous_context_record_id
+                != selected.gate.context_record_id,
+                gate_changed=body.gate_run_id != selected.gate.id,
+                packet=selected,
+            ),
+            meta=response_meta(request),
         )
 
     @router.post(

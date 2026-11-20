@@ -11,7 +11,7 @@ import { cashOnlyMetrics, fifoMetrics } from '../../src/modules/snapshotMetricsF
 const starterPack: unknown = JSON.parse(readFileSync(resolve(import.meta.dirname, '../../../data/learning-starter-drafts.json'), 'utf8'))
 
 // Browser fixtures are authored engineering data, separate from real review/quotes.
-async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; pendingReview?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean; history?: boolean } = {}) {
+async function authoredModules(page: Page, options: { admin?: boolean; empty?: boolean; pendingReview?: boolean; loseResponse?: boolean; wrongVersion?: boolean; appendDuringRead?: boolean; history?: boolean; declinedOrderResponses?: readonly (403 | 404 | 422 | undefined)[] } = {}) {
   let stored = structuredClone(definition) as unknown as StoredDefinition
   let available = !options.empty
   let saved = !options.empty
@@ -90,6 +90,8 @@ async function authoredModules(page: Page, options: { admin?: boolean; empty?: b
     else if (path === '/v1/portfolio/orders') {
       const input = route.request().postDataJSON() as OrderRequest
       requests.push(input)
+      const declined = options.declinedOrderResponses?.[requests.length - 1]
+      if (declined) { await route.fulfill({ status: declined, headers }); return }
       if (recorded) expect(input).toEqual(recorded)
       else recorded = input
       if (options.loseResponse && requests.length === 1) { await route.abort('failed'); return }
@@ -464,3 +466,43 @@ test('M4 keeps the exact request across a lost response and reload, then records
   expect(await page.evaluate(() => sessionStorage.length + localStorage.length)).toBe(0)
   expect(await page.evaluate(() => document.documentElement.scrollWidth <= innerWidth)).toBe(true)
 })
+
+for (const status of [403, 404, 422] as const) {
+  test(`M4 preserves an uncertain original request after a ${status} retry response`, async ({ page }) => {
+    const requests = await authoredModules(page, { loseResponse: true, declinedOrderResponses: [undefined, status] })
+    await signIn(page, 'portfolio')
+    await page.getByRole('button', { name: 'Create virtual account with INR 100000.00' }).click()
+    await page.getByRole('combobox', { name: 'Published company', exact: true }).selectOption(published.companies.data.companies[0]!.id)
+    await page.getByRole('button', { name: 'Submit virtual order', exact: true }).click()
+    await expect(page.getByRole('alert')).toContainText('could not be confirmed')
+    await page.reload(); await signIn(page, 'portfolio', true)
+    await page.getByRole('button', { name: 'Retry same virtual order', exact: true }).click()
+    await expect.poll(() => requests.length).toBe(2)
+    await expect(page.getByRole('alert')).toBeVisible()
+    await expect(page.getByRole('button', { name: 'Retry same virtual order', exact: true })).toBeEnabled()
+    await expect(page.getByRole('button', { name: 'Clear declined request', exact: true })).toHaveCount(0)
+    await expect(page.getByRole('button', { name: 'Submit virtual order', exact: true })).toBeDisabled()
+    expect(await page.evaluate((identity) => JSON.parse(sessionStorage.getItem(`regintel.pending-virtual-order.${identity}`) ?? 'null') as unknown, ids.user)).toEqual(requests[0])
+    await page.getByRole('button', { name: 'Retry same virtual order', exact: true }).click()
+    await expect(page.getByText('Recorded order #1: REJECTED · QUOTES UNAVAILABLE', { exact: true })).toBeVisible()
+    expect(requests).toHaveLength(3)
+    expect(requests[1]).toEqual(requests[0]); expect(requests[2]).toEqual(requests[0])
+    await expect(page.getByText('1 recorded orders · whole shares · zero fees', { exact: true })).toBeVisible()
+    expect(await page.evaluate(() => sessionStorage.length + localStorage.length)).toBe(0)
+  })
+
+  test(`M4 allows clearing a first-attempt ${status} rejection without an uncertain earlier send`, async ({ page }) => {
+    const requests = await authoredModules(page, { declinedOrderResponses: [status] })
+    await signIn(page, 'portfolio')
+    await page.getByRole('button', { name: 'Create virtual account with INR 100000.00' }).click()
+    await page.getByRole('combobox', { name: 'Published company', exact: true }).selectOption(published.companies.data.companies[0]!.id)
+    await page.getByRole('button', { name: 'Submit virtual order', exact: true }).click()
+    await expect(page.getByRole('button', { name: 'Clear declined request', exact: true })).toBeVisible()
+    await expect(page.getByText('0 recorded orders · whole shares · zero fees', { exact: true })).toBeVisible()
+    await page.getByRole('button', { name: 'Clear declined request', exact: true }).click()
+    await expect(page.getByRole('button', { name: 'Retry same virtual order', exact: true })).toHaveCount(0)
+    await expect(page.getByRole('button', { name: 'Submit virtual order', exact: true })).toBeEnabled()
+    expect(requests).toHaveLength(1)
+    expect(await page.evaluate(() => sessionStorage.length + localStorage.length)).toBe(0)
+  })
+}

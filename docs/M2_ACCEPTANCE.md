@@ -33,9 +33,11 @@ $env:PYTHONPATH = 'D:\RegIntel\.cache\worktrees\m2-comparison\backend\src;D:\Reg
 & D:\RegIntel\backend\.venv\Scripts\python.exe scripts/evaluate-analysis.py --plan data/analysis-acceptance-plan.json --source-project D:\RegIntel
 ```
 
-`--source-project` reads the existing approved local `.env`, source storage and
-read-only state-snapshot helper. It avoids copying credentials or modifying the
-M1 checkout. No API/frontend server is started, so M1's ports remain available.
+`--source-project` selects the existing approved local `.env` and source storage.
+The evaluator uses the current installed `regintel.db.snapshot` implementation;
+it never executes Python helpers from the source-assets checkout. Credentials
+remain in their existing location. No API/frontend server is started, so M1's
+ports remain available.
 Use the normal locked setup in a teammate's own clone; these machine-specific
 paths are not portable prerequisites.
 
@@ -55,7 +57,10 @@ be copied into the real-data plan as financial observations.
 Use published M1 input observations and exact source/context evidence to prepare
 the plan. Any new observations must first follow M1's own ingestion, gates,
 review and publication workflow. M2 cannot populate missing authoritative facts.
-Keep the current main corpus unchanged while it is being manually tested.
+The user's 28 October authorization permits adapting M1 data and interfaces for
+integration; it does not waive immutable evidence/history, review or publication
+gates. This evaluator remains read-only. Prepare and publish any authorized
+changes through M1 before selecting the corpus for an acceptance run.
 
 The [numerical source intake](M2_SOURCE_INTAKE.md) records a small inspected
 seed-company pair and its outstanding M1 evidence/period requirements. These
@@ -109,10 +114,25 @@ Unsupported or oversized cases fail explicitly without truncating evidence.
 Each run writes a fresh ignored `.cache/analysis-acceptance-<uuid>/report.json`.
 It records the plan hash, selected manifest/policy, actual/expected values and
 IDs, category coverage, review status and the actual published numerical
-inventory. The existing read-only snapshot checks all 37 authoritative tables
-before and after; a changed state fails the run. A concurrent legitimate M1
-write can also fail this check, so use a quiet window for the preservation proof.
-The evaluator does not contact a model or quote provider.
+inventory. Before and after evaluation, the current snapshot helper validates
+the complete installed migration history and discovers all current `regintel`
+base tables plus the migration ledger. Each snapshot uses a repeatable-read,
+read-only transaction. Changed rows or table inventory fail the run. Reports
+declare `state_snapshot_version=current-database-rows-1` and retain table digests,
+not raw rows.
+
+The 20 November controlled-corpus run preserved 70 digests (69 application tables
+and the migration ledger), with one published company, one active narrative
+observation and zero numerical facts. It returned `BLOCKED`: zero executed cases,
+all six required categories missing and no reviewer metadata. This is a measured
+incomplete acceptance result, not an acceptance pass.
+
+Use a quiet window: a concurrent legitimate M1 write can fail the comparison.
+Equal endpoints establish row/table-inventory preservation, not a complete
+schema audit or absence of transient changes. Sequence counters and external
+Neo4j state are outside this check. See [preservation scope and the measured
+result](M2_PRESERVATION_CHECKS.md). The evaluator does not contact a model or quote
+provider.
 
 | CLI exit | Report outcome | Meaning |
 |---|---|---|

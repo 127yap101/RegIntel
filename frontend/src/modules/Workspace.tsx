@@ -239,13 +239,16 @@ function PortfolioPanel({ api, selectedCorpus = null, onSelectCorpus }: { api: M
   }
   function submit(request: OrderRequest): void {
     if (historical) { setError('Refresh the current portfolio before submitting an order.'); return }
+    const earlierOutcomeUncertain = pending !== null && !notCommitted
     try { retainOrder(api.user.id, request) } catch (failure: unknown) { setError(message(failure)); return }
     setPending(request)
     setNotCommitted(false)
     run(async (signal) => {
       let result: OrderReceipt
       try { result = await api.order(request, signal) } catch (failure: unknown) {
-        if (failure instanceof ModuleError && [403, 404, 422].includes(failure.status)) setNotCommitted(true)
+        // A declined retry says nothing about an earlier unconfirmed send.
+        // Keep its original key until the recorded outcome is verified.
+        if (!earlierOutcomeUncertain && failure instanceof ModuleError && [403, 404, 422].includes(failure.status)) setNotCommitted(true)
         throw failure
       }
       confirmOrder(api.user.id); setReceipt(result); setPending(null)

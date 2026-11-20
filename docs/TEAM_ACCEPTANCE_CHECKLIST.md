@@ -1,6 +1,6 @@
 # Team acceptance checklist for M1–M4
 
-Prepared 28 October 2026; updated 19 November 2026. The user reported an approximate
+Prepared 28 October 2026; updated 21 November 2026. The user reported an approximate
 7–10 day submission window on 27 October. Use `codex/m2-comparison`; `main` retains
 older M1 code. The original laptop database is now verified at schema25; use the
 [current runtime guide](LOCAL_RUNTIME.md) for matching code and original assets.
@@ -43,6 +43,11 @@ resolution. Open these four local records using the
 IDs; each Waaree input retains 133. Do not replace them with one combined quote.
 Return corrections and source-supported review notes. Uncertain items remain
 unresolved; this worksheet cannot authorize an override or publication.
+
+After genuine prerequisite registrations, use the new
+[source and approval refresh](M1_NUMERICAL_REFRESH.md) to retain the exact source
+selection while creating current context/base checks. Refreshing does not create
+a review or carry old applicability decisions into a new gate.
 
 The [prerequisite review packet](M1_NUMERICAL_PREREQUISITE_REVIEW_PACKET.md)
 contains proposed metric/policy fields and Waaree's exact native name/CIN

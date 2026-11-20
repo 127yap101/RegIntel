@@ -1,6 +1,6 @@
 # RegIntel Finance — Current State
 
-Updated: 2026-11-20 (Asia/Calcutta).
+Updated: 2026-11-21 (Asia/Calcutta).
 
 ## Authorized scope and decisions
 
@@ -17,6 +17,42 @@ Updated: 2026-11-20 (Asia/Calcutta).
 - On28October the user explicitly removed the requirement to preserve M1 data and module interfaces and authorized adapting them as needed for integration. Update contracts, consumers and schema coherently; use the existing publication path. Immutable source evidence, review/amendment history and mandatory acceptance gates remain design requirements. Necessary changes no longer need a separate preservation exception.
 
 ## Latest verified state
+
+- **Numerical integration and retry fixes, 20–21 November:** added an explicit
+  administrator refresh that atomically saves current numerical context and base
+  checks while preserving the selected draft, parse, exact evidence and historical
+  records. The UI verifies the response and retains uncertain requests for retry.
+  It does not carry applicability attestations into a new gate or create approvals.
+  See `docs/M1_NUMERICAL_REFRESH.md`. The context-storage implementation hash
+  changes with the transaction refactor; historical records remain immutable.
+
+- M2 acceptance preservation now uses the current installed code, a read-only
+  repeatable-read snapshot, complete migration validation and catalog-discovered
+  application tables plus the migration ledger. It no longer executes a helper
+  from the assets checkout. The actual controlled-corpus run preserved all70
+  tables/ledger entries and correctly remains `BLOCKED`: zero numerical facts,
+  zero cases, six missing categories and no reviewer metadata. See
+  `docs/M2_PRESERVATION_CHECKS.md`. This is not a real-data acceptance pass.
+
+- M4 now retains the original order request after a lost response even when a
+  later retry receives403/404/422; that rejection cannot establish the earlier
+  send's outcome. First-attempt definitive rejections can still be cleared.
+  Seven targeted browser cases pass after a test reproduced the prior defect.
+  Runtime quotes remain unavailable. M3's seven definitions/examples and M1's
+  source prerequisites still await genuine reviewer decisions; none were created
+  by these changes. No new dependency, migration or environment variable.
+
+- Final scoped verification passes107 backend units,67 disposable database cases,
+  95 frontend units and24 Chromium cases. Ruff/format, strict backend/frontend
+  typing, ESLint and production build pass; the existing large-chunk warning
+  remains. On21 November the current local app was restored on loopback8000/5173:
+  schema25 validation, real seeded learner sign-in and five authenticated reads
+  pass. This is a point-in-time readiness check, not full module acceptance.
+
+- Pushed documentation checkpoint `c36fc7b` passes all three GitHub jobs in
+  run44678897948, verified21 November. Verification for the new implementation
+  checkpoint is recorded in `data/numerical-refresh-validation-report.json`;
+  check that checkpoint's own GitHub result after push.
 
 - **Checkpoint verification, 20 November:** source8624aa6 passes all three
   GitHub jobs in run44509742019 (Windows, Ubuntu and Linux data infrastructure).

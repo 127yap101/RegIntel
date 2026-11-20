@@ -22,6 +22,10 @@ async function digest(value: string): Promise<Uint8Array> {
 }
 function hex(bytes: Uint8Array): string { return Array.from(bytes, (value) => value.toString(16).padStart(2, '0')).join('') }
 
+export async function numericalGateDigest(gate: T.BoundNumericalGateRun): Promise<string> {
+  return hex(await digest(canonicalJson(gate)))
+}
+
 export function applicabilitySelection(value: Selection) {
   return { gate_run_id: value.gate_run_id, gate_input_sha256: value.gate_input_sha256, gate_result_sha256: value.gate_result_sha256, binding_id: value.binding_id, value_cell_id: value.value_cell_id, row_cell_id: value.row_cell_id, period_cell_id: value.period_cell_id, assertions: value.assertions, reviewed_page_indices: value.reviewed_page_indices }
 }
@@ -29,7 +33,7 @@ export function applicabilitySelection(value: Selection) {
 export async function checkApplicabilitySelection(value: Selection, packet: T.NumericalReviewPacket): Promise<void> {
   const { binding, gate } = packet
   requireMatch(value.gate_run_id === gate.id && value.gate_input_sha256 === gate.input_sha256 && value.binding_id === binding.id)
-  requireMatch(value.gate_result_sha256 === hex(await digest(canonicalJson(gate))))
+  requireMatch(value.gate_result_sha256 === await numericalGateDigest(gate))
   requireMatch(value.value_cell_id === binding.cells[0]?.artifact_cell_id && value.row_cell_id === binding.cells[1]?.artifact_cell_id && value.period_cell_id === binding.cells[2]?.artifact_cell_id)
   const pages = [...new Set(binding.phrases.flatMap((phrase) => phrase.words.map((word) => word.evidence.source.page_index)))].sort((a, b) => a - b)
   requireMatch(sameValue(value.reviewed_page_indices, pages))

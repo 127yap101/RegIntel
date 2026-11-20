@@ -3,6 +3,7 @@ import { parseContract } from '../contracts/runtime'
 import { canonical, checked, decode, sameValue } from './wire'
 import { checkNumericalAcceptance, checkNumericalCandidate, checkNumericalPreparation, checkNumericalReview } from './numerical'
 import { applicabilitySelection, checkApplicabilityRequirements, checkApplicabilityReview } from './numericalApplicability'
+import { checkNumericalRefresh, numericalRefreshRequest } from './numericalRefresh'
 import type { Wire } from './wire'
 import type * as T from './generated'
 
@@ -77,6 +78,13 @@ export class AdminApi {
   async numericalPacket(id: string, signal: AbortSignal): Promise<T.NumericalReviewPacket> {
     const value = await this.read('numerical_packet', `/v1/admin/numerical/gates/${canonical(id)}`, signal)
     if (value.gate.id !== id) throw new AdminError(false)
+    return value
+  }
+  async refreshNumerical(packet: T.NumericalReviewPacket, body: T.NumericalRefreshRequest, signal: AbortSignal): Promise<T.NumericalRefreshResult> {
+    checked('numerical_refresh_request', body)
+    if (!sameValue(body, await numericalRefreshRequest(packet))) throw new AdminError(false)
+    const value = await this.read('numerical_refresh', `/v1/admin/numerical/gates/${canonical(packet.gate.id)}/refresh`, signal, body)
+    await checkNumericalRefresh(value, packet, body)
     return value
   }
   async numericalQueue(selection: T.NumericalGateQueueRequest, signal: AbortSignal): Promise<T.NumericalGateQueuePage> {
